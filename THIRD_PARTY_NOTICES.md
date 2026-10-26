@@ -209,3 +209,7 @@ public/models/ 下的 56 份 GLB 与 56 幅 WebP 构型预览由本站参数化�
 ## 软件依赖
 
 React、Vite、TypeScript、Three.js、Lucide 等依赖保留各自包中的许可。构建阶段使用 sharp（Apache-2.0）转换模型预览图。准确版本见 package-lock.json；安装后可在相应 node_modules 包中查阅许可文本。
+
+## v9 轨道实验室地球底图
+
+`public/images/lab/earth-blue-marble-2004-07.webp`：NASA Earth Observatory / Reto Stöckli，Blue Marble Next Generation，2004 年 7 月全球无云合成底图。来源：[NASA Base Map](https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/base-map/)；使用规则：[NASA Images and Media](https://www.nasa.gov/nasa-brand-center/images-and-media/)。从官方 5400×2700 JPG 等比例转换为 4096×2048 WebP（quality 87），未裁剪、旋转或修改地貌。用于三维球面及等经纬度地图背景，不是实时观测影像，也不暗示 NASA 为本站模型背书。逐项下载地址、坐标映射与处理说明见 `research/orbit-imagery-v9.json`。

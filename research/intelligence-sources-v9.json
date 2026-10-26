@@ -1,0 +1,1871 @@
+[
+  {
+    "id": "nasa-news",
+    "name": "NASA · 新闻与任务公告",
+    "url": "https://www.nasa.gov/news/",
+    "type": "机构与任务",
+    "region": [
+      "美国"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "任务进展",
+      "载人航天",
+      "技术试验"
+    ],
+    "evidenceRole": "official",
+    "description": "任务里程碑、发射安排和机构发布的起点；技术细节通常需要继续追到任务页、研究报告或发布会资料。",
+    "whatToLookFor": [
+      "任务计划、执行结果及日期更正",
+      "试验阶段、合作合同与任务架构变化"
+    ],
+    "queryExamples": [
+      "site:nasa.gov \"mission\" \"test\" after:2026-10-01",
+      "site:nasa.gov \"Artemis\" \"updated\""
+    ],
+    "checks": [
+      "区分发布会预告、计划说明与已执行事件",
+      "保留编辑更正说明，合同授予不写成技术已验证"
+    ],
+    "cadence": "每周；任务窗口期间加查",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "网页公开；多语言转述应回到英文原文核对。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开新闻入口并核对任务、新闻发布和历史档案导航。"
+    }
+  },
+  {
+    "id": "nasa-science",
+    "name": "NASA Science · 任务博客",
+    "url": "https://science.nasa.gov/science-blogs/",
+    "type": "机构与任务",
+    "region": [
+      "美国"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "深空探测",
+      "科学任务",
+      "任务运行"
+    ],
+    "evidenceRole": "official",
+    "description": "面向科学任务的过程记录，常能看到在轨调试、科学阶段、异常处置与测试进度。",
+    "whatToLookFor": [
+      "任务日志中的状态转移与技术限制",
+      "科学数据发布、仪器调试与任务结束记录"
+    ],
+    "queryExamples": [
+      "site:science.nasa.gov/blogs \"commissioning\"",
+      "site:science.nasa.gov \"simulation\" \"test\""
+    ],
+    "checks": [
+      "区分发布日期、操作执行日和未来计划",
+      "科学成果不直接推断未公开工程遥测或控制律"
+    ],
+    "cadence": "每周；关注任务有更新时",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "公开网页；旧 blogs 入口会重定向到 science-blogs。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开并确认新版任务博客入口。"
+    }
+  },
+  {
+    "id": "jpl-news",
+    "name": "NASA JPL · 新闻与工程试验",
+    "url": "https://www.jpl.nasa.gov/news/",
+    "type": "机构与任务",
+    "region": [
+      "美国"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "深空探测",
+      "环境试验",
+      "机器人"
+    ],
+    "evidenceRole": "official",
+    "description": "适合追踪行星探测器、巡视器、导航与试验设施；报道经常把工程活动与照片说明放在一起。",
+    "whatToLookFor": [
+      "热真空、振动、声学、质量属性测试",
+      "深空巡航、导航、仪器与巡视器操作"
+    ],
+    "queryExamples": [
+      "site:jpl.nasa.gov/news \"testing\" \"spacecraft\"",
+      "site:jpl.nasa.gov/news \"navigation\""
+    ],
+    "checks": [
+      "照片日期与试验开始/结束日期分开记录",
+      "通过某项环境试验不等于整任务所有工况已经验证"
+    ],
+    "cadence": "每周",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "新闻正文及照片说明公开；影像使用需保留具体署名。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已读新闻列表及 Griffin-1 环境试验报道。"
+    }
+  },
+  {
+    "id": "esa-news",
+    "name": "ESA · 新闻稿",
+    "url": "https://www.esa.int/Newsroom/Press_Releases",
+    "type": "机构与任务",
+    "region": [
+      "欧洲"
+    ],
+    "language": [
+      "英文",
+      "多语言"
+    ],
+    "topics": [
+      "任务进展",
+      "科学任务",
+      "空间站"
+    ],
+    "evidenceRole": "official",
+    "description": "欧洲航天局正式新闻稿目录，便于识别任务决策、科学阶段与合作进展的机构口径。",
+    "whatToLookFor": [
+      "任务里程碑、科学运行和任务延期",
+      "航天员、空间站与计划决策"
+    ],
+    "queryExamples": [
+      "site:esa.int \"commissioning\" \"mission\"",
+      "site:esa.int \"Press Release\" \"2026\""
+    ],
+    "checks": [
+      "区分理事会决定、媒体邀请与工程状态",
+      "多语言页面可能发布时间不同，保存原始版本"
+    ],
+    "cadence": "每周",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "公开新闻稿；专业技术信息还需跟进 Science & Exploration、Operations 或论文。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开新闻稿列表，核对编号、日期与类别。"
+    }
+  },
+  {
+    "id": "cnsa",
+    "name": "国家航天局 · 要闻与任务发布",
+    "url": "https://www.cnsa.gov.cn/",
+    "type": "机构与任务",
+    "region": [
+      "中国"
+    ],
+    "language": [
+      "中文"
+    ],
+    "topics": [
+      "探月与深空",
+      "任务进展",
+      "国际合作"
+    ],
+    "evidenceRole": "official",
+    "description": "中国民用航天任务与合作信息的正式入口；适合核对任务命名、官方进度和政策范围。",
+    "whatToLookFor": [
+      "探月、行星探测与科学任务正式消息",
+      "新闻发布会、白皮书与国际合作"
+    ],
+    "queryExamples": [
+      "site:cnsa.gov.cn 探测器 试验",
+      "site:cnsa.gov.cn 任务 轨道 2026"
+    ],
+    "checks": [
+      "转载稿需追到原始发布机构和原文日期",
+      "宣传介绍中的目标与已完成里程碑分别标注"
+    ],
+    "cadence": "每周",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "本轮正文抓取超时，官方搜索索引可见；维护时需实际打开目标文章。",
+    "status": "active",
+    "verification": {
+      "method": "search-result",
+      "note": "确认官网身份及近期索引，未将抓取超时等同于网站停更。"
+    }
+  },
+  {
+    "id": "cmse",
+    "name": "中国载人航天 · 新闻中心",
+    "url": "https://www.cmse.gov.cn/xwzx/",
+    "type": "机构与任务",
+    "region": [
+      "中国"
+    ],
+    "language": [
+      "中文"
+    ],
+    "topics": [
+      "载人航天",
+      "交会对接",
+      "空间站"
+    ],
+    "evidenceRole": "official",
+    "description": "用于神舟、天舟、空间站和载人探月的任务状态核对，与载荷研制企业的宣传口径互相区分。",
+    "whatToLookFor": [
+      "发射、对接、舱外活动与返回时间线",
+      "任务发布会与工程安排"
+    ],
+    "queryExamples": [
+      "site:cmse.gov.cn 交会对接 空间站",
+      "site:cmse.gov.cn 试验 载人探月"
+    ],
+    "checks": [
+      "以具体任务新闻为依据，不从网站栏目名称推断型号能力",
+      "检索同一事件的更正稿，保留北京时间与时区"
+    ],
+    "cadence": "每周；任务窗口期间加查",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "本轮入口抓取超时；官方索引可核对，旧域名不作为替代证据。",
+    "status": "active",
+    "verification": {
+      "method": "search-result",
+      "note": "确认 cmse.gov.cn 新闻中心索引，目标页需下次维护复核。"
+    }
+  },
+  {
+    "id": "nssc",
+    "name": "中国科学院国家空间科学中心",
+    "url": "https://www.nssc.cas.cn/",
+    "type": "机构与任务",
+    "region": [
+      "中国"
+    ],
+    "language": [
+      "中文",
+      "英文"
+    ],
+    "topics": [
+      "空间科学",
+      "空间天气",
+      "科学载荷"
+    ],
+    "evidenceRole": "official",
+    "description": "空间科学任务与空间环境研究入口，可继续追溯新闻中引用的论文、载荷团队和数据。",
+    "whatToLookFor": [
+      "科学卫星在轨阶段及首批数据",
+      "空间天气、磁层与电离层研究"
+    ],
+    "queryExamples": [
+      "site:nssc.cas.cn 科研进展 论文",
+      "site:english.nssc.cas.cn \"science orbit\""
+    ],
+    "checks": [
+      "中心新闻与论文结论分层记录",
+      "确认 DOI、数据时段和科学载荷，不把研究结果扩展到未测试工况"
+    ],
+    "cadence": "每两周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "中文、英文站本轮抓取超时；官方索引均可检索。",
+    "status": "active",
+    "verification": {
+      "method": "search-result",
+      "note": "读到官方索引中的 SMILE 状态及科研新闻摘要；未宣称全文全部可读。"
+    }
+  },
+  {
+    "id": "jaxa",
+    "name": "JAXA · 新闻稿与记者会",
+    "url": "https://www.jaxa.jp/press/index_j.html",
+    "type": "机构与任务",
+    "region": [
+      "日本"
+    ],
+    "language": [
+      "日文",
+      "英文"
+    ],
+    "topics": [
+      "运载火箭",
+      "深空探测",
+      "工程试验"
+    ],
+    "evidenceRole": "official",
+    "description": "日本任务、发动机试验和发布会记录；日文版有时比英文摘要保留更多工程语境。",
+    "whatToLookFor": [
+      "H3、发动机地面试验及任务运行",
+      "MMX、SLIM、Hayabusa 等探测项目"
+    ],
+    "queryExamples": [
+      "site:jaxa.jp/press H3 試験",
+      "site:jaxa.jp \"MMX\" \"press\""
+    ],
+    "checks": [
+      "比对日文正文与英文译文，保留专有名词",
+      "同一试验的执行日、结果发布日与认证状态分开"
+    ],
+    "cadence": "每周",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "索引可读，本轮直接打开新闻稿入口只返回跳转页；需跟进具体新闻。",
+    "status": "active",
+    "verification": {
+      "method": "search-result",
+      "note": "已核对官方新闻稿和更新信息搜索索引。"
+    }
+  },
+  {
+    "id": "isro",
+    "name": "ISRO · Press Releases",
+    "url": "https://www.isro.gov.in/ISRO_EN/Press.html",
+    "type": "机构与任务",
+    "region": [
+      "印度"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "运载火箭",
+      "载人航天",
+      "月球探测"
+    ],
+    "evidenceRole": "official",
+    "description": "按年份列出正式发布，适合核对任务准备、推进试验、返回与轨道处置记录。",
+    "whatToLookFor": [
+      "Gaganyaan、Chandrayaan 与运载器试验",
+      "再入处置、微重力与任务合作"
+    ],
+    "queryExamples": [
+      "site:isro.gov.in \"test\" \"propulsion\"",
+      "site:isro.gov.in \"mission\" \"re-entry\""
+    ],
+    "checks": [
+      "官方表格显示日期可能不同于事件日期",
+      "技术开发完成与飞行认证/任务成功不要合并"
+    ],
+    "cadence": "每两周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "公开按年目录，文章正文逐条访问。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开 Press 目录并核对年份与发布记录。"
+    }
+  },
+  {
+    "id": "dlr",
+    "name": "DLR · 研究新闻",
+    "url": "https://www.dlr.de/en/latest/news",
+    "type": "机构与任务",
+    "region": [
+      "德国",
+      "欧洲"
+    ],
+    "language": [
+      "英文",
+      "德文"
+    ],
+    "topics": [
+      "仿真方法",
+      "机器人",
+      "再入与气动"
+    ],
+    "evidenceRole": "official",
+    "description": "覆盖航天研究机构、实验室和技术转移；适合寻找试验设施、飞行实验与研究项目的详细入口。",
+    "whatToLookFor": [
+      "再入、机器人、GNC 和航天器试验",
+      "仿真方法、设施能力与研究论文线索"
+    ],
+    "queryExamples": [
+      "site:dlr.de \"simulation\" \"spacecraft\"",
+      "site:dlr.de \"re-entry\" \"experiment\""
+    ],
+    "checks": [
+      "研究样机、仿真结果和实际飞行演示分别记录",
+      "注意航空、能源和航天栏目混合，按研究问题筛选"
+    ],
+    "cadence": "每两周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "新闻页框架可读，结果列表依赖动态加载；可配合站点限定搜索。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已核对新闻页搜索与栏目结构；不宣称动态结果全文已抓取。"
+    }
+  },
+  {
+    "id": "cnes",
+    "name": "CNES · Espace presse",
+    "url": "https://cnes.fr/presse",
+    "type": "机构与任务",
+    "region": [
+      "法国",
+      "欧洲"
+    ],
+    "language": [
+      "法文"
+    ],
+    "topics": [
+      "深空探测",
+      "运载火箭",
+      "科学载荷"
+    ],
+    "evidenceRole": "official",
+    "description": "法国航天机构的任务与载荷发布，可补充 ESA 或国际合作项目中法方仪器与工程贡献。",
+    "whatToLookFor": [
+      "MMX、行星载荷与国际合作任务",
+      "Ariane、地球观测与仪器研制"
+    ],
+    "queryExamples": [
+      "site:cnes.fr \"mission\" \"instrument\"",
+      "site:cnes.fr \"simulation\""
+    ],
+    "checks": [
+      "翻译后保留任务阶段与法文技术名词",
+      "合作方报道可互证时间线，但不能当成独立试验报告"
+    ],
+    "cadence": "每两周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "法文公开新闻稿，含资源与图像入口。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开新闻页并核对日期和任务链接。"
+    }
+  },
+  {
+    "id": "spacex-updates",
+    "name": "SpaceX · 技术更新",
+    "url": "https://www.spacex.com/updates/reusability",
+    "type": "企业与工程",
+    "region": [
+      "美国"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "重复使用",
+      "运载火箭",
+      "任务进展"
+    ],
+    "evidenceRole": "official",
+    "description": "企业关于飞行试验、构型改动和重复使用的第一方说明；适合建立按版本记录的技术变化表。",
+    "whatToLookFor": [
+      "Starship 与 Super Heavy 构型更改",
+      "飞行目标、复盘、试验与回收过程"
+    ],
+    "queryExamples": [
+      "site:spacex.com/updates \"Starship\" \"V3\"",
+      "site:spacex.com/launches \"flight\""
+    ],
+    "checks": [
+      "始终标注“SpaceX 表示”，公司目标不写成独立验证事实",
+      "保留飞行编号与硬件代次；累计数据与单次数据分开"
+    ],
+    "cadence": "每周；试飞前后加查",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "页面可能依赖动态加载；本轮正文直接抓取为空，但官方搜索索引保留技术更新。",
+    "status": "active",
+    "verification": {
+      "method": "search-result",
+      "note": "已核对官方索引中 V3 构型说明和轨道飞行更新；未确认 RSS。"
+    }
+  },
+  {
+    "id": "blue-origin",
+    "name": "Blue Origin · News",
+    "url": "https://www.blueorigin.com/news",
+    "type": "企业与工程",
+    "region": [
+      "美国"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "运载火箭",
+      "月球着陆",
+      "推进系统"
+    ],
+    "evidenceRole": "official",
+    "description": "New Glenn、Blue Moon、发动机与空间系统的企业发布，适合跟进构型、测试状态与任务计划。",
+    "whatToLookFor": [
+      "发动机点火与飞行测试里程碑",
+      "月面着陆器、载荷与任务合作"
+    ],
+    "queryExamples": [
+      "site:blueorigin.com/news \"test\"",
+      "site:blueorigin.com/news \"Blue Moon\""
+    ],
+    "checks": [
+      "区分任务授予、制造、地面试验与已飞行状态",
+      "性能数字保留构型、试验条件和企业声明属性"
+    ],
+    "cadence": "每周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "企业新闻公开，部分页面按语言重定向。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开新闻目录并核对产品/任务分类。"
+    }
+  },
+  {
+    "id": "rocket-lab",
+    "name": "Rocket Lab · News",
+    "url": "https://rocketlabcorp.com/updates/index.jsp",
+    "type": "企业与工程",
+    "region": [
+      "美国",
+      "新西兰"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "运载火箭",
+      "卫星平台",
+      "任务进展"
+    ],
+    "evidenceRole": "official",
+    "description": "覆盖 Electron、Neutron 和空间系统；新闻、任务资料与投资者公告需要区分用途。",
+    "whatToLookFor": [
+      "飞行执行与任务手册",
+      "Neutron 开发、构型和试验安排"
+    ],
+    "queryExamples": [
+      "site:rocketlabcorp.com/updates \"Neutron\"",
+      "site:investors.rocketlabcorp.com/news \"development\""
+    ],
+    "checks": [
+      "开发目标与交付/飞行结果分开",
+      "投资者公告中的前瞻性陈述保留原始限定语"
+    ],
+    "cadence": "每周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "新闻页有动态内容；投资者站可补查正式公告，不能只依赖首页卡片。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开官网新闻入口；搜索索引能定位开发更新，正文逐篇核查。"
+    }
+  },
+  {
+    "id": "ula",
+    "name": "United Launch Alliance · Newsroom",
+    "url": "https://newsroom.ulalaunch.com/",
+    "type": "企业与工程",
+    "region": [
+      "美国"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "运载火箭",
+      "上面级",
+      "任务架构"
+    ],
+    "evidenceRole": "official",
+    "description": "发布发射任务、Centaur、Vulcan 与合作信息，并提供任务与编辑文章入口。",
+    "whatToLookFor": [
+      "上面级构型与开发阶段",
+      "任务轨道、发射状态和用户资料"
+    ],
+    "queryExamples": [
+      "site:newsroom.ulalaunch.com \"Centaur\"",
+      "site:newsroom.ulalaunch.com \"Vulcan\" \"mission\""
+    ],
+    "checks": [
+      "任务计划和研制目标保留条件语句",
+      "产品演进说明需核对当前飞行构型，不能直接改写历史型号"
+    ],
+    "cadence": "每两周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "公开新闻正文，旧报道可作为构型历史证据。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已读新闻目录及 2026-10-23 Centaur/Artemis 合作声明。"
+    }
+  },
+  {
+    "id": "airbus-space",
+    "name": "Airbus · Newsroom",
+    "url": "https://www.airbus.com/en/newsroom",
+    "type": "企业与工程",
+    "region": [
+      "欧洲"
+    ],
+    "language": [
+      "英文",
+      "多语言"
+    ],
+    "topics": [
+      "卫星平台",
+      "科学载荷",
+      "空间系统"
+    ],
+    "evidenceRole": "official",
+    "description": "航空与航天共用新闻入口；使用 Space 任务名或产品名检索，寻找制造、总装与载荷交付资料。",
+    "whatToLookFor": [
+      "科学卫星、太阳翼和平台总装",
+      "推进、电信与在轨服务的企业技术文章"
+    ],
+    "queryExamples": [
+      "site:airbus.com/en/newsroom \"space\" \"satellite\"",
+      "site:airbus.com \"JUICE\" \"test\""
+    ],
+    "checks": [
+      "从航空新闻中过滤航天条目",
+      "合同、交付、集成完成与飞行成功是不同事件"
+    ],
+    "cadence": "每两周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "公开新闻入口；产品页参数应同时记录版本和适用构型。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已核对官方 newsroom 与新闻类型。"
+    }
+  },
+  {
+    "id": "arianespace",
+    "name": "Arianespace · Actualités",
+    "url": "https://www.arianespace.com/fr/actualites/",
+    "type": "企业与工程",
+    "region": [
+      "欧洲"
+    ],
+    "language": [
+      "法文",
+      "英文"
+    ],
+    "topics": [
+      "运载火箭",
+      "任务进展",
+      "发射服务"
+    ],
+    "evidenceRole": "official",
+    "description": "发射运营方的新闻和任务包入口；用于追踪 Ariane 任务编号、轨道目标与发射资料。",
+    "whatToLookFor": [
+      "任务编号、有效载荷和飞行手册",
+      "发射时序、任务执行与合同消息"
+    ],
+    "queryExamples": [
+      "site:arianespace.com \"dossier de vol\"",
+      "site:arianespace.com \"Ariane 6\" \"mission\""
+    ],
+    "checks": [
+      "任务合同不等于已发射",
+      "发射时间使用最后更新版本，保留 UTC 与当地时间"
+    ],
+    "cadence": "每周；发射窗口期间加查",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "已打开法文目录；其最新 newsroom 子站本轮抓取受限。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "目录可读并提供任务资料和新 newsroom 导航。"
+    }
+  },
+  {
+    "id": "landspace",
+    "name": "蓝箭航天 · 新闻与蓝洞察",
+    "url": "https://www.landspace.com/news.html?catid=1&mao=1",
+    "type": "企业与工程",
+    "region": [
+      "中国"
+    ],
+    "language": [
+      "中文"
+    ],
+    "topics": [
+      "重复使用",
+      "液氧甲烷",
+      "工程试验"
+    ],
+    "evidenceRole": "official",
+    "description": "企业新闻、技术路线、蓝洞察与资料下载共同构成研制信息入口，适合追踪朱雀系列的试验条件。",
+    "whatToLookFor": [
+      "发动机、垂直起降与回收试验",
+      "朱雀构型与公开技术说明"
+    ],
+    "queryExamples": [
+      "site:landspace.com 朱雀 三号 试验",
+      "site:landspace.com 蓝洞察 发动机"
+    ],
+    "checks": [
+      "企业自述、媒体转载和技术文章分别标注",
+      "试验高度、时长与飞行状态不可替代入轨能力验证"
+    ],
+    "cadence": "每周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "公开中文页面；技术文章可从官网“蓝洞察”继续查阅。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开官网新闻及蓝洞察入口。"
+    }
+  },
+  {
+    "id": "casc",
+    "name": "中国航天科技集团 · 集团要闻",
+    "url": "https://www.spacechina.com/n25/n2014789/n2014804/index.html",
+    "type": "企业与工程",
+    "region": [
+      "中国"
+    ],
+    "language": [
+      "中文",
+      "英文"
+    ],
+    "topics": [
+      "运载火箭",
+      "卫星研制",
+      "工程试验"
+    ],
+    "evidenceRole": "official",
+    "description": "集团任务和研制消息入口，适合进一步定位院所、型号研制与原始采访来源。",
+    "whatToLookFor": [
+      "长征系列、卫星平台和试验进展",
+      "总体、推进、载荷等研制单位线索"
+    ],
+    "queryExamples": [
+      "site:spacechina.com 试验 卫星",
+      "site:spacechina.com 长征 构型"
+    ],
+    "checks": [
+      "转载来源可能是新华社或中国航天报，保留原署名",
+      "宣传中未给出的技术指标保持未知"
+    ],
+    "cadence": "每周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "中文集团要闻页可读；英文站本轮曾超时。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "从官方导航打开集团要闻，确认入口与栏目。"
+    }
+  },
+  {
+    "id": "thales-alenia",
+    "name": "Thales Alenia Space · Press Releases",
+    "url": "https://www.thalesaleniaspace.com/en/press-releases",
+    "type": "企业与工程",
+    "region": [
+      "欧洲"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "卫星平台",
+      "载荷研制",
+      "热控与结构"
+    ],
+    "evidenceRole": "official",
+    "description": "卫星与空间基础设施主承包商发布，可补充平台、载荷分工、总装交付和工程构型。",
+    "whatToLookFor": [
+      "通信与科学载荷的技术分工",
+      "卫星制造、交付、总装与发射状态"
+    ],
+    "queryExamples": [
+      "site:thalesaleniaspace.com \"payload\" \"test\"",
+      "site:thalesaleniaspace.com \"satellite\" \"integration\""
+    ],
+    "checks": [
+      "主承包商与分包商职责要具体到系统",
+      "交付/合同措辞不写成已在轨验证"
+    ],
+    "cadence": "每两周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "公开企业新闻；图片、示意图仍需单独核查许可。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开新闻目录并核对日期、合同与发射类条目。"
+    }
+  },
+  {
+    "id": "nasa-ntrs",
+    "name": "NASA Technical Reports Server",
+    "url": "https://ntrs.nasa.gov/",
+    "type": "论文与学术",
+    "region": [
+      "美国"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "技术报告",
+      "仿真方法",
+      "验证与确认"
+    ],
+    "evidenceRole": "index",
+    "description": "NASA 技术报告与论文元数据入口，可查会议文、报告、演示资料和可公开全文。不同文献类型不能混称期刊论文。",
+    "whatToLookFor": [
+      "模型假设、试验条件与验证报告",
+      "旧任务工程资料及技术演变"
+    ],
+    "queryExamples": [
+      "NTRS: spacecraft simulation verification",
+      "NTRS: orbit propagation numerical integration"
+    ],
+    "checks": [
+      "记录 citation ID、作者、文献类型和报告日期",
+      "元数据公开不保证全文可公开下载；核对分发声明"
+    ],
+    "cadence": "每两周；专题研究时",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "元数据与部分全文公开；不访问需机构认证的注册内容。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已读 NTRS 首页说明与公开检索入口。"
+    }
+  },
+  {
+    "id": "arxiv",
+    "name": "arXiv · 跨学科预印本检索",
+    "url": "https://arxiv.org/list/physics.space-ph/recent",
+    "type": "论文与学术",
+    "region": [
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "预印本",
+      "轨道动力学",
+      "控制与优化"
+    ],
+    "evidenceRole": "index",
+    "description": "Space Physics 适合空间环境；轨道、控制与机器学习研究还需同时检索 eess.SY、cs.RO、math.OC 等相关类别。",
+    "whatToLookFor": [
+      "新方法、公开代码与补充材料",
+      "预印本更新及后续正式发表版本"
+    ],
+    "queryExamples": [
+      "site:arxiv.org \"spacecraft\" \"trajectory optimization\"",
+      "site:arxiv.org \"orbit determination\" \"uncertainty\""
+    ],
+    "checks": [
+      "保存 arXiv ID 与 v1/v2 版本，预印本不标成已同行评审",
+      "检查是否已有 DOI、期刊版本或撤回说明"
+    ],
+    "cadence": "每周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "近期列表可读；高级搜索入口本轮曾超时。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已读近期 Space Physics 列表；使用跨分类检索补足动力学主题。"
+    }
+  },
+  {
+    "id": "aiaa-jgcd",
+    "name": "Journal of Guidance, Control, and Dynamics",
+    "url": "https://arc.aiaa.org/journal/jgcd",
+    "type": "论文与学术",
+    "region": [
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "制导导航控制",
+      "轨道动力学",
+      "飞行动力学"
+    ],
+    "evidenceRole": "research",
+    "description": "面向 GNC 与飞行动力学研究的期刊入口；可从目录定位算法、稳定性分析、设计条件与应用论文。",
+    "whatToLookFor": [
+      "轨道确定、姿态控制与交会规划",
+      "优化、滤波、鲁棒性和数值验证"
+    ],
+    "queryExamples": [
+      "site:arc.aiaa.org \"spacecraft\" \"guidance\"",
+      "site:arc.aiaa.org \"orbital\" \"uncertainty\""
+    ],
+    "checks": [
+      "保留 DOI、卷期和 online publication 日期",
+      "只读摘要时不补写算法实现、性能结论或实验条件"
+    ],
+    "cadence": "每月（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "期刊入口本轮 403；AIAA 官方期刊范围页可读。部分全文需要订阅。",
+    "status": "active",
+    "verification": {
+      "method": "access-limited",
+      "note": "已读 AIAA 官方 Journal Scopes and Content；未绕过出版商访问限制。",
+      "evidenceUrls": [
+        "https://aiaa.org/publications/journals/Journal-Scopes-and-Content/"
+      ]
+    }
+  },
+  {
+    "id": "acta-astronautica",
+    "name": "Acta Astronautica",
+    "url": "https://www.sciencedirect.com/journal/acta-astronautica",
+    "type": "论文与学术",
+    "region": [
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "航天系统",
+      "任务设计",
+      "推进系统"
+    ],
+    "evidenceRole": "research",
+    "description": "跨航天工程与任务研究的期刊目录，用于补充系统级设计、任务概念与工程方法；纳入情报前需实际阅读目标论文。",
+    "whatToLookFor": [
+      "任务设计、航天系统与推进研究",
+      "模型验证、原型试验和综述"
+    ],
+    "queryExamples": [
+      "\"Acta Astronautica\" \"mission design\" DOI",
+      "\"Acta Astronautica\" \"spacecraft simulation\""
+    ],
+    "checks": [
+      "以 DOI 和出版商记录确定版本，勿使用仿冒期刊站",
+      "综述引用与作者新结果分开；摘要不足以支持技术复现"
+    ],
+    "cadence": "每月（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "出版商入口本轮返回 403；只保存正式入口，不据此宣称读过最新论文。",
+    "status": "active",
+    "verification": {
+      "method": "access-limited",
+      "note": "直接访问受限，后续维护需逐篇确认摘要或合法公开全文。",
+      "evidenceUrls": [
+        "https://www.ncbi.nlm.nih.gov/nlmcatalog/9890631"
+      ]
+    }
+  },
+  {
+    "id": "astrodynamics",
+    "name": "Astrodynamics",
+    "url": "https://link.springer.com/journal/42064",
+    "type": "论文与学术",
+    "region": [
+      "中国",
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "轨道动力学",
+      "任务设计",
+      "空间环境"
+    ],
+    "evidenceRole": "research",
+    "description": "关注航天动力学与相关工程研究；官网提供正式目录、online first 与期刊信息。",
+    "whatToLookFor": [
+      "轨道设计、导航、天体动力学",
+      "姿态运动、空间碎片与优化方法"
+    ],
+    "queryExamples": [
+      "site:link.springer.com/journal/42064 \"orbit\"",
+      "\"Astrodynamics\" \"trajectory\" \"DOI\""
+    ],
+    "checks": [
+      "区分 online first 与卷期日期",
+      "Hybrid 发表模式下逐篇核对开放获取状态"
+    ],
+    "cadence": "每月（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "期刊主页公开；全文权限按单篇文章确定。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开期刊主页，核对 Hybrid 与 online-first/卷期入口。"
+    }
+  },
+  {
+    "id": "hkxb",
+    "name": "航空学报 · 目录与过刊",
+    "url": "https://hkxb.buaa.edu.cn/CN/article/showOldVolumnList.do",
+    "type": "论文与学术",
+    "region": [
+      "中国"
+    ],
+    "language": [
+      "中文"
+    ],
+    "topics": [
+      "飞行动力学",
+      "制导导航控制",
+      "结构与热控"
+    ],
+    "evidenceRole": "research",
+    "description": "中文航空航天研究目录，可由专题、综述和过刊定位动力学、控制、结构及多学科研究。",
+    "whatToLookFor": [
+      "中文综述、方法论文与专题专刊",
+      "与英文术语对应的研究路线"
+    ],
+    "queryExamples": [
+      "site:hkxb.buaa.edu.cn 航天器 仿真 验证",
+      "site:hkxb.buaa.edu.cn 轨道 优化"
+    ],
+    "checks": [
+      "保存文章编号或 DOI，不能只引用过刊页",
+      "网络优先与正式卷期可能不同；获取全文后再写方法细节"
+    ],
+    "cadence": "每月（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "过刊公开；搜索索引与页面抓取缓存时间可能不同，逐篇核对。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开过刊目录和期刊导航。"
+    }
+  },
+  {
+    "id": "cja",
+    "name": "Chinese Journal of Aeronautics",
+    "url": "https://www.sciencedirect.com/journal/chinese-journal-of-aeronautics",
+    "type": "论文与学术",
+    "region": [
+      "中国",
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "飞行动力学",
+      "控制与优化",
+      "多物理场"
+    ],
+    "evidenceRole": "research",
+    "description": "英文航空航天研究补充入口，便于追踪中文团队的国际发表及关联数据、代码。",
+    "whatToLookFor": [
+      "航天器控制、飞行器设计与计算方法",
+      "多学科优化和实验验证"
+    ],
+    "queryExamples": [
+      "\"Chinese Journal of Aeronautics\" \"spacecraft\"",
+      "\"Chinese Journal of Aeronautics\" \"multidisciplinary\""
+    ],
+    "checks": [
+      "同名中文新闻不替代原论文方法与结果",
+      "按 DOI 关联补充材料与更正，记录是否只读摘要"
+    ],
+    "cadence": "每月（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "出版商页面本轮 403；航空学报官网直接链接此期刊入口。",
+    "status": "active",
+    "verification": {
+      "method": "access-limited",
+      "note": "从航空学报官方导航确认 CJA 链接；未获取受限全文。"
+    }
+  },
+  {
+    "id": "joss",
+    "name": "Journal of Open Source Software",
+    "url": "https://joss.theoj.org/",
+    "type": "论文与学术",
+    "region": [
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "研究软件",
+      "开源项目",
+      "可复现研究"
+    ],
+    "evidenceRole": "research",
+    "description": "研究软件论文与公开评审入口；适合筛选可复现的数值库，并把论文、仓库版本与测试记录连起来。",
+    "whatToLookFor": [
+      "航天、数值计算与可视化研究软件",
+      "软件论文中的功能范围和公开审查"
+    ],
+    "queryExamples": [
+      "site:joss.theoj.org \"orbital\"",
+      "site:joss.theoj.org \"simulation\" \"dynamics\""
+    ],
+    "checks": [
+      "JOSS 软件审查不等于所有科学应用均获独立验证",
+      "保存论文 DOI、归档版本和当前仓库 commit 的关系"
+    ],
+    "cadence": "每月（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "论文及公开软件材料可查，依单篇说明核对许可。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已读官网的软件期刊定位和论文目录。"
+    }
+  },
+  {
+    "id": "hal",
+    "name": "HAL · 开放研究档案",
+    "url": "https://hal.science/",
+    "type": "论文与学术",
+    "region": [
+      "法国",
+      "国际"
+    ],
+    "language": [
+      "英文",
+      "法文"
+    ],
+    "topics": [
+      "作者稿",
+      "技术报告",
+      "开放获取"
+    ],
+    "evidenceRole": "index",
+    "description": "可检索作者稿、已发表或未发表研究以及学位论文；适合从合法作者稿补充出版商摘要。",
+    "whatToLookFor": [
+      "机构作者稿与技术报告",
+      "飞行动力学、控制和计算方法全文"
+    ],
+    "queryExamples": [
+      "site:hal.science \"spacecraft\" \"control\"",
+      "site:hal.science \"astrodynamics\""
+    ],
+    "checks": [
+      "确认 deposited version 与正式发表版本的差别",
+      "检查 embargo、许可、附件和后续更正"
+    ],
+    "cadence": "按专题查阅",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "主站本轮遇反机器人限制；About HAL 官方说明可读。",
+    "status": "active",
+    "verification": {
+      "method": "access-limited",
+      "note": "已读官方 About HAL；主站返回反机器人访问拒绝。",
+      "evidenceUrls": [
+        "https://about.hal.science/en/"
+      ]
+    }
+  },
+  {
+    "id": "zenodo",
+    "name": "Zenodo · 软件与数据归档",
+    "url": "https://zenodo.org/",
+    "type": "论文与学术",
+    "region": [
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "数据集",
+      "软件归档",
+      "可复现研究"
+    ],
+    "evidenceRole": "index",
+    "description": "用于查找论文关联的软件、数据和版本归档。DOI 提供持久引用，但本身不构成同行评审或正确性认证。",
+    "whatToLookFor": [
+      "论文补充数据与软件发布归档",
+      "具体版本 DOI、文件清单和许可证"
+    ],
+    "queryExamples": [
+      "site:zenodo.org \"orbit\" \"software\"",
+      "site:zenodo.org \"spacecraft\" \"dataset\""
+    ],
+    "checks": [
+      "区分概念 DOI 与版本 DOI，核对文件校验值和创建者",
+      "明确许可和数据产生条件，不能把平台托管视为质量背书"
+    ],
+    "cadence": "按专题查阅",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "主站本轮 429；About Zenodo 官方说明可读。",
+    "status": "active",
+    "verification": {
+      "method": "access-limited",
+      "note": "主站访问限流；官方 About 页确认研究数据和软件归档用途。",
+      "evidenceUrls": [
+        "https://about.zenodo.org/"
+      ]
+    }
+  },
+  {
+    "id": "crossref",
+    "name": "Crossref · DOI 元数据",
+    "url": "https://search.crossref.org/",
+    "type": "论文与学术",
+    "region": [
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "文献检索",
+      "版本核对",
+      "DOI"
+    ],
+    "evidenceRole": "index",
+    "description": "用于从题名和作者追索 DOI，校对期刊、出版日期与相关记录。元数据检索补足链接，不替代阅读全文。",
+    "whatToLookFor": [
+      "新闻中的论文标题与 DOI",
+      "出版版本、作者和期刊元数据"
+    ],
+    "queryExamples": [
+      "Crossref: spacecraft orbit propagation",
+      "Crossref: exact paper title and author"
+    ],
+    "checks": [
+      "题名相近不代表同一论文，核对作者/年份",
+      "元数据存在并不证明文章已开放获取或结论正确"
+    ],
+    "cadence": "按专题查阅",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "使用公开元数据入口；具体全文权限归出版商。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开 Crossref Metadata Search 和官方元数据检索说明，核对题名、作者、DOI 检索范围。",
+      "evidenceUrls": [
+        "https://www.crossref.org/documentation/retrieve-metadata/"
+      ]
+    }
+  },
+  {
+    "id": "gmat-releases",
+    "name": "NASA GMAT · 发布与软件说明",
+    "url": "https://software.nasa.gov/software/GSC-19640-1",
+    "type": "软件与数据",
+    "region": [
+      "美国"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "轨道动力学",
+      "任务设计",
+      "软件发布"
+    ],
+    "evidenceRole": "release",
+    "description": "从 NASA 软件目录进入 GMAT 的正式项目与发布资料，用于跟进轨道、导航和任务设计工具能力。",
+    "whatToLookFor": [
+      "版本发布、求解器与接口变化",
+      "安装条件、脚本示例和已知限制"
+    ],
+    "queryExamples": [
+      "site:software.nasa.gov \"GMAT\"",
+      "GMAT release notes orbit propagation"
+    ],
+    "checks": [
+      "记录实际安装版本，目录版本不代表本地已升级",
+      "用同一历元、坐标系、力模型和容差比较结果"
+    ],
+    "cadence": "每月；复现实验前",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "官方目录公开；下载和许可证以指向的正式项目说明为准。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已读 NASA GMAT R2026 条目与接口说明。"
+    }
+  },
+  {
+    "id": "orekit-news",
+    "name": "Orekit · 项目更新",
+    "url": "https://www.orekit.org/news.html",
+    "type": "软件与数据",
+    "region": [
+      "法国",
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "轨道动力学",
+      "轨道确定",
+      "软件发布"
+    ],
+    "evidenceRole": "release",
+    "description": "空间飞行动力学库的更新入口；关注力模型、时间尺度、坐标系和观测/估计接口的变化。",
+    "whatToLookFor": [
+      "发布说明、兼容性和缺陷修复",
+      "数据上下文、时间尺度与传播接口变化"
+    ],
+    "queryExamples": [
+      "site:orekit.org \"release\"",
+      "site:github.com/CS-SI/Orekit \"release\""
+    ],
+    "checks": [
+      "软件版本与 orekit-data 数据版本一起记录",
+      "社区讨论是排障线索，最终以代码、发布说明和复现算例核对"
+    ],
+    "cadence": "每月；依赖升级前",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "新闻页本轮遇反机器人限制；后续可在官方仓库核对发布标签。",
+    "status": "active",
+    "verification": {
+      "method": "access-limited",
+      "note": "新闻入口本轮访问受限，不声称已读取全部当前发布说明。"
+    }
+  },
+  {
+    "id": "tudat-releases",
+    "name": "TudatPy · Release notes",
+    "url": "https://py.api.tudat.space/en/stable/release_notes.html",
+    "type": "软件与数据",
+    "region": [
+      "荷兰",
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "轨道动力学",
+      "参数估计",
+      "软件发布"
+    ],
+    "evidenceRole": "release",
+    "description": "跟踪天体动力学工具的功能变化、接口调整与修复，适合维护跨工具轨道核验实验。",
+    "whatToLookFor": [
+      "传播、估计和环境建模改动",
+      "迁移说明、依赖与破坏性变更"
+    ],
+    "queryExamples": [
+      "site:py.api.tudat.space \"Release notes\"",
+      "site:docs.tudat.space \"estimation\""
+    ],
+    "checks": [
+      "固定实际包版本，不用滚动 stable 地址代表永久版本",
+      "新功能说明应由最小复现测试验证适用范围"
+    ],
+    "cadence": "每月；依赖升级前",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "文档公开，主页会链接当前稳定发布说明。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已从 Tudat 官网进入发布说明页并核对版本提示。"
+    }
+  },
+  {
+    "id": "basilisk-docs",
+    "name": "Basilisk · 框架文档与发布",
+    "url": "https://hanspeterschaub.info/basilisk/",
+    "type": "软件与数据",
+    "region": [
+      "美国",
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "姿态动力学",
+      "闭环仿真",
+      "硬件在环"
+    ],
+    "evidenceRole": "release",
+    "description": "航天器动力学与控制仿真框架资料，适合追踪模块接口、消息结构、示例与版本变化。",
+    "whatToLookFor": [
+      "动力学、导航和控制模块",
+      "实时仿真、Monte Carlo 与消息接口"
+    ],
+    "queryExamples": [
+      "site:hanspeterschaub.info/basilisk \"Release\"",
+      "site:hanspeterschaub.info/basilisk \"scenario\""
+    ],
+    "checks": [
+      "公开示例能运行不等于已匹配目标飞行器",
+      "固定版本、初始条件和仿真时钟，核对模块测试范围"
+    ],
+    "cadence": "每月；相关专题更新时",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "文档公开，含模块与版本入口。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已读框架定位、平台、实时/快于实时和版本说明。"
+    }
+  },
+  {
+    "id": "naif-announcements",
+    "name": "NAIF SPICE · Announcements",
+    "url": "https://naif.jpl.nasa.gov/naif/announcements.html",
+    "type": "软件与数据",
+    "region": [
+      "美国",
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "星历与坐标",
+      "观测几何",
+      "软件发布"
+    ],
+    "evidenceRole": "release",
+    "description": "SPICE 数据、工具包、文档和时间信息公告。适合发现会影响长期复现的闰秒、内核和工具链变化。",
+    "whatToLookFor": [
+      "SPICE Toolkit、内核与工具修订",
+      "闰秒、时间转换和训练资料"
+    ],
+    "queryExamples": [
+      "site:naif.jpl.nasa.gov/naif/announcements.html",
+      "site:naif.jpl.nasa.gov \"kernel\" \"update\""
+    ],
+    "checks": [
+      "内核文件名、覆盖区间、加载顺序和校验值必须保留",
+      "公告日期不是内核覆盖历元；预测星历与重构星历分开"
+    ],
+    "cadence": "每月；更新星历前",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "官方静态页公开，具体内核进入任务目录查看。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开公告页并核对时间信息与工具/数据导航。"
+    }
+  },
+  {
+    "id": "pds-releases",
+    "name": "NASA PDS · 数据发布",
+    "url": "https://pds.nasa.gov/",
+    "type": "软件与数据",
+    "region": [
+      "美国",
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "行星数据",
+      "科学载荷",
+      "数据发布"
+    ],
+    "evidenceRole": "release",
+    "description": "行星任务档案与发布日历入口。适合让情报条目继续链接到可以处理的科学产品。",
+    "whatToLookFor": [
+      "任务新批次数据与版本更新",
+      "PDS4 标签、校准说明及节点文档"
+    ],
+    "queryExamples": [
+      "site:pds.nasa.gov \"data release\"",
+      "site:pds.nasa.gov \"mission\" \"bundle\""
+    ],
+    "checks": [
+      "保存产品标识、版本、观测时间和校准级别",
+      "科学产品不等同完整工程遥测；数据发布时间与观测日期分开"
+    ],
+    "cadence": "每月；任务数据发布时",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "公开档案，按节点和产品说明下载。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已读发布列表、发布日历与节点导航。"
+    }
+  },
+  {
+    "id": "esa-psa",
+    "name": "ESA Planetary Science Archive",
+    "url": "https://psa.esa.int/psa/",
+    "type": "软件与数据",
+    "region": [
+      "欧洲"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "行星数据",
+      "科学载荷",
+      "数据发布"
+    ],
+    "evidenceRole": "release",
+    "description": "ESA 行星科学任务档案检索入口，与任务新闻配合查找仪器产品和档案版本。",
+    "whatToLookFor": [
+      "任务和仪器数据集合",
+      "处理级别、时间覆盖与校准材料"
+    ],
+    "queryExamples": [
+      "site:cosmos.esa.int \"PSA\" \"data release\"",
+      "site:psa.esa.int \"mission\""
+    ],
+    "checks": [
+      "记录产品标识、版本和仪器模式",
+      "公开下载与科学适用性分开判断，先读数据说明"
+    ],
+    "cadence": "每月；专题研究时",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "应用需要 JavaScript；本轮只验证旧档案入口重定向与应用要求。",
+    "status": "active",
+    "verification": {
+      "method": "access-limited",
+      "note": "archives.esac.esa.int/psa/ 重定向到 PSA 应用，未声称已浏览具体数据集。"
+    }
+  },
+  {
+    "id": "openmdao-releases",
+    "name": "OpenMDAO · Releases",
+    "url": "https://github.com/OpenMDAO/OpenMDAO/releases",
+    "type": "软件与数据",
+    "region": [
+      "美国",
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "多学科优化",
+      "数值方法",
+      "软件发布"
+    ],
+    "evidenceRole": "release",
+    "description": "多学科分析与优化框架发布日志，可追踪导数、求解器、记录器和优化接口的修复与变化。",
+    "whatToLookFor": [
+      "梯度、求解器及 API 变更",
+      "发布标签、弃用事项与已知问题"
+    ],
+    "queryExamples": [
+      "site:github.com/OpenMDAO/OpenMDAO/releases",
+      "site:openmdao.org \"derivatives\" \"release\""
+    ],
+    "checks": [
+      "保存版本和依赖，检查 breaking changes",
+      "优化成功标志不等于模型正确，独立核对导数与约束残差"
+    ],
+    "cadence": "每月；依赖升级前",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "公开仓库发布页可读；问题讨论与正式发布分开记录。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开官方仓库 Releases 入口。"
+    }
+  },
+  {
+    "id": "nasa-software",
+    "name": "NASA Software Catalog",
+    "url": "https://software.nasa.gov/",
+    "type": "软件与数据",
+    "region": [
+      "美国"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "工程软件",
+      "仿真工具",
+      "软件发布"
+    ],
+    "evidenceRole": "index",
+    "description": "发现机构公开发布的软件及使用条件；适合补足商业、受限发布和开源工具之间的区别。",
+    "whatToLookFor": [
+      "设计、仿真、数据与运行软件条目",
+      "新发布与软件许可/申请条件"
+    ],
+    "queryExamples": [
+      "site:software.nasa.gov \"simulation\"",
+      "site:software.nasa.gov \"General Public Release\""
+    ],
+    "checks": [
+      "免费下载不等于开源；逐项检查发布类型与许可",
+      "软件条目适用领域不自动证明本任务采用"
+    ],
+    "cadence": "每月（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "目录公开；部分软件可能要求申请或限定使用者。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已读目录的新发布区与使用入口。"
+    }
+  },
+  {
+    "id": "ecss",
+    "name": "ECSS · 标准与手册",
+    "url": "https://ecss.nl/",
+    "type": "软件与数据",
+    "region": [
+      "欧洲"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "工程标准",
+      "验证与确认",
+      "模型可信度"
+    ],
+    "evidenceRole": "release",
+    "description": "空间工程标准与手册的维护入口，用于核对模型、试验和工程过程中的术语、范围与版本。",
+    "whatToLookFor": [
+      "标准修订、勘误、手册与公开评审",
+      "试验、验证及模型适用性条款"
+    ],
+    "queryExamples": [
+      "site:ecss.nl \"modelling\" \"simulation\"",
+      "site:ecss.nl \"verification\" \"handbook\""
+    ],
+    "checks": [
+      "记录标准编号、修订版与发布日期",
+      "标准要求和指导手册不能互换；引用具体条款时阅读原文"
+    ],
+    "cadence": "每季度；相关标准使用前",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "本轮入口重定向到 ESA“Website unavailable”；保留来源并排队复查，不删除既有历史证据。",
+    "status": "review",
+    "verification": {
+      "method": "access-limited",
+      "note": "已确认临时不可用页面，未推断标准服务已永久停止。"
+    }
+  },
+  {
+    "id": "spacenews",
+    "name": "SpaceNews",
+    "url": "https://spacenews.com/",
+    "type": "专业媒体",
+    "region": [
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "商业航天",
+      "任务进展",
+      "产业政策"
+    ],
+    "evidenceRole": "reporting",
+    "description": "作为跨机构与企业的线索发现入口。技术结论应沿记者引用回溯到官方文件、论文或原始数据。",
+    "whatToLookFor": [
+      "跨公司任务变化与产业报道",
+      "政策、预算、合同与技术路线采访"
+    ],
+    "queryExamples": [
+      "site:spacenews.com \"spacecraft\" \"test\"",
+      "site:spacenews.com \"launch\" \"development\""
+    ],
+    "checks": [
+      "新闻、评论、赞助内容分别识别",
+      "匿名消息与公司声称保留归属，不升级成确认结果"
+    ],
+    "cadence": "每周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "本轮 robots 限制抓取；不能以搜索摘要代替全文。",
+    "status": "active",
+    "verification": {
+      "method": "access-limited",
+      "note": "保留行业媒体入口；正文访问未获验证，后续人工查阅。"
+    }
+  },
+  {
+    "id": "nasaspaceflight",
+    "name": "NASASpaceflight",
+    "url": "https://www.nasaspaceflight.com/",
+    "type": "专业媒体",
+    "region": [
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "发射任务",
+      "重复使用",
+      "现场观察"
+    ],
+    "evidenceRole": "reporting",
+    "description": "商业航天媒体与现场观察线索；名称中的 NASA 不代表美国航天局官方发布。",
+    "whatToLookFor": [
+      "任务报道、试飞观察和技术访谈",
+      "发射过程与公开影像的时间线"
+    ],
+    "queryExamples": [
+      "site:nasaspaceflight.com \"flight\" \"test\"",
+      "site:nasaspaceflight.com \"launch\" \"review\""
+    ],
+    "checks": [
+      "新闻正文与社区论坛帖子分开",
+      "目视观察可说明外观事件，不能确定内部故障根因"
+    ],
+    "cadence": "每周；试飞前后加查",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "本轮正文入口 403；部分内容或附加材料可能需会员。",
+    "status": "active",
+    "verification": {
+      "method": "access-limited",
+      "note": "仅确认入口与媒体身份，未宣称获取受限正文。"
+    }
+  },
+  {
+    "id": "ars-space",
+    "name": "Ars Technica · Space",
+    "url": "https://arstechnica.com/space/",
+    "type": "专业媒体",
+    "region": [
+      "美国",
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "商业航天",
+      "任务架构",
+      "技术报道"
+    ],
+    "evidenceRole": "reporting",
+    "description": "航天报道与 Rocket Report 等栏目适合发现争议点、计划变更和需要追问的一手资料。",
+    "whatToLookFor": [
+      "任务架构变动及工程采访",
+      "发射器开发与公开文件线索"
+    ],
+    "queryExamples": [
+      "site:arstechnica.com/space \"Rocket Report\"",
+      "site:arstechnica.com/space \"NASA\" \"test\""
+    ],
+    "checks": [
+      "记者解释、引述与本站推论分开",
+      "涉及性能和风险的判断回溯证据，不把标题当量化结论"
+    ],
+    "cadence": "每周（建议）",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "栏目列表可读，单篇全文和付费状态需逐篇确认。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开 Space 列表，核对作者、日期和文章类型。"
+    }
+  },
+  {
+    "id": "spaceflight-now",
+    "name": "Spaceflight Now",
+    "url": "https://spaceflightnow.com/",
+    "type": "专业媒体",
+    "region": [
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "发射任务",
+      "任务时序",
+      "现场观察"
+    ],
+    "evidenceRole": "reporting",
+    "description": "发射日程、现场报道和任务报告入口，适合建立事件时间线与查找原始直播。",
+    "whatToLookFor": [
+      "发射延迟、发射窗口和执行状态",
+      "任务报道、现场照片与回放链接"
+    ],
+    "queryExamples": [
+      "site:spaceflightnow.com \"launch\" \"mission\"",
+      "site:spaceflightnow.com \"scrub\""
+    ],
+    "checks": [
+      "日程是动态计划，记录抓取日期并核对运营方",
+      "页面发布日期与起飞时间可能不同；统一时区后再比较"
+    ],
+    "cadence": "每周；发射窗口期间加查",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "公开内容与会员区并存，不假定全部材料开放。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已打开首页与任务/日程导航。"
+    }
+  },
+  {
+    "id": "orbital-index",
+    "name": "The Orbital Index · 历史档案",
+    "url": "https://orbitalindex.com/",
+    "type": "专业媒体",
+    "region": [
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "技术综述",
+      "历史线索",
+      "开源项目"
+    ],
+    "evidenceRole": "reporting",
+    "description": "历史技术周刊可用于追索工程项目、论文和工具的原始链接。官网已宣布停止每周出版，因此不当作当前周更来源。",
+    "whatToLookFor": [
+      "历史任务、技术项目与开源链接",
+      "某项技术首次出现时的上下文"
+    ],
+    "queryExamples": [
+      "site:orbitalindex.com \"simulation\"",
+      "site:orbitalindex.com \"orbit\""
+    ],
+    "checks": [
+      "文章只作为线索，跟随原始链接核对后续进展",
+      "历史链接失效时保留原地址及迁移记录"
+    ],
+    "cadence": "按专题查阅",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "官网声明每周出版于 2026-01-07 结束，历史档案仍保留，并指向 Extended Mission。",
+    "status": "archive",
+    "verification": {
+      "method": "page-read",
+      "note": "已读官网停刊声明和档案导航。"
+    }
+  },
+  {
+    "id": "china-space-news",
+    "name": "中国航天报 · 报道与数字报入口",
+    "url": "https://www.spacechina.com/n25/n2014789/n2014829/c4066380/content.html",
+    "type": "专业媒体",
+    "region": [
+      "中国"
+    ],
+    "language": [
+      "中文"
+    ],
+    "topics": [
+      "工程采访",
+      "航天产业",
+      "研制历程"
+    ],
+    "evidenceRole": "reporting",
+    "description": "航天行业媒体的官方介绍与数字报导航，可追索型号采访、研制过程和院所报道；与主办集团存在明确组织关系。",
+    "whatToLookFor": [
+      "研制人员采访与试验过程报道",
+      "型号历史、工程组织和技术线索"
+    ],
+    "queryExamples": [
+      "site:spacechina.com \"来源：《中国航天报》\" 试验",
+      "site:spacechina.com \"中国航天报\" 型号"
+    ],
+    "checks": [
+      "注明行业媒体及主办关系，不当作独立第三方验证",
+      "采访中的定性描述不能替代完整试验数据"
+    ],
+    "cadence": "每两周；专题研究时",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "官方介绍页可读并提供数字报链接；数字报本轮抓取失败。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已读官方报刊介绍、主办关系及数字报导航。"
+    }
+  }
+]

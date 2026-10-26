@@ -1,0 +1,423 @@
+{
+  "version": 9,
+  "reviewedOn": "2026-10-26",
+  "title": "轨道几何、变轨与长期漂移",
+  "scope": "地心椭圆轨道教学实验。用统一常数连接三维轨道、球面地面轨迹、瞬时脉冲变轨与一阶 J2 平均漂移；数值积分实验仍单独比较二体问题的离散误差。预设参数用于研究规律，不代表对应在轨飞行器的当前状态。",
+  "conventions": {
+    "length": "km",
+    "time": "s",
+    "velocity": "km/s",
+    "uiAngle": "deg",
+    "internalAngle": "rad",
+    "inertialFrame": "教学用地心惯性系：Z 指向北极，XY 为赤道面，X 为任意固定参考方向；不是带有严格历元定义的 ICRF/GCRS 实现。",
+    "rotation": "右手系、列向量、主动旋转；PQW 到惯性系使用 Rz(Ω) Rx(i) Rz(ω)。",
+    "altitude": "近地点、远地点高度均相对选定球面半径 Re；不是相对 WGS 84 椭球面或地形的离地高度。",
+    "groundTrack": "球面地心经纬度。地球按常角速度绕惯性 Z 轴旋转，θ0 只控制演示初始经度。无实际日期、UT1 与地球定向参数时，不输出真实过境时间或城市可见性。",
+    "initialPhase": "M0 为 t=0 的平近点角；除圆轨道外，不等于真近点角。",
+    "j2": "默认只比较 Ω、ω 的一阶平均漂移。若未同步加入 M 的平均修正，应标为一阶漂移示意，不称为完整 J2 传播。"
+  },
+  "constants": [
+    {
+      "id": "earth-equatorial-radius",
+      "symbol": "Re",
+      "value": 6378.137,
+      "unit": "km",
+      "meaning": "WGS 84 赤道长半轴，在实验中同时作为球面地球半径。",
+      "sourceIds": ["nga-wgs84", "esa-godot-constants"]
+    },
+    {
+      "id": "earth-mu",
+      "symbol": "μ",
+      "value": 398600.4418,
+      "unit": "km³/s²",
+      "meaning": "WGS 84 地球引力常数 GM；计算全程保持同一 μ，不与 GPS 用户采用的另一组常数混用。",
+      "sourceIds": ["nga-wgs84", "esa-godot-constants"]
+    },
+    {
+      "id": "earth-angular-velocity",
+      "symbol": "ωE",
+      "value": 0.00007292115,
+      "unit": "rad/s",
+      "meaning": "WGS 84 名义地球自转角速度；相应自转周期为 2π/ωE，约 86164.100637 s。不是 86400 s 的平太阳日。",
+      "sourceIds": ["nga-wgs84", "esa-godot-constants"]
+    },
+    {
+      "id": "earth-j2",
+      "symbol": "J2",
+      "value": 0.00108262668,
+      "unit": "1",
+      "meaning": "教学用地球二阶带谐项系数。此正值对应未归一化 −C20；不能直接替换为完全归一化 C̅20。ESA 教程使用几乎相同的半径 6378.1363 km，本实验统一使用 6378.137 km。",
+      "sourceIds": ["esa-godot-j2", "freeflyer-j2"]
+    },
+    {
+      "id": "sso-target-rate",
+      "symbol": "Ω̇SSO",
+      "value": 0.9856473320990831,
+      "unit": "deg/day",
+      "meaning": "以 360°/365.2422 日作为教学用年平均太阳方向转速。用于求解近似太阳同步倾角，不计算真实太阳星历与地方时。",
+      "sourceIds": ["freeflyer-j2", "tudelft-orbits"]
+    }
+  ],
+  "audit": [
+    {
+      "area": "轨道几何",
+      "finding": "原有二维椭圆只能解释半长轴、偏心率与速度变化，无法区分倾角、升交点赤经和近地点幅角的作用。",
+      "change": "将轨道平面、赤道面、升交点、近远地点与运动方向一起呈现；选择参数时高亮它实际改变的几何对象。",
+      "check": "Ω 只改变轨道平面的赤道方位，i 改变平面倾斜，ω 在平面内移动近地点；三个效果不能混用。"
+    },
+    {
+      "area": "地面轨迹",
+      "finding": "仅显示惯性空间中的闭合轨道，容易让读者误以为每圈都飞越相同地面位置。",
+      "change": "把三维惯性轨道与球面经纬图按同一模拟时间联动；同时显示地球自转造成的经度移动。",
+      "check": "球面经度在 ±180° 处拆段；一圈结束不自动回到同一地面位置；同步赤道圆轨道应停在固定经度。"
+    },
+    {
+      "area": "变轨比较",
+      "finding": "仅列圆轨道速度和周期不足以连接任务设计。",
+      "change": "分解两次切向脉冲、转移时间和法向变轨成本，并比较低轨、高椭圆轨道远地点及合并圆化变平面。",
+      "check": "采用矢量速度差；变平面必须发生在相关轨道平面的交线上；标明脉冲、圆轨道和共面假设。"
+    },
+    {
+      "area": "长期漂移",
+      "finding": "二体闭合椭圆无法解释太阳同步轨道和高倾角椭圆轨道的选择。",
+      "change": "用天为单位比较节点与近地点平均漂移，并用临界倾角和太阳同步关系解释预设。",
+      "check": "与二体传播明确分开，不能把几条平均漂移公式的可视化称为高保真摄动积分。"
+    },
+    {
+      "area": "数值实验",
+      "finding": "现有 Euler、RK4、Verlet 对比、全步极值与步长细化具有保留价值。",
+      "change": "把它保留为独立数值工作台，通过同一初始轨道与几何实验连接，并补充物理模型误差与数值误差的区别。",
+      "check": "显示采样不可代替逐积分步误差统计；积分守恒良好不能证明省略阻力、J2 等因素后的物理模型准确。"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "leo-inclination",
+      "title": "低轨：倾角与地面覆盖",
+      "summary": "400 km 圆轨道，倾角 51.6°。观察同一条空间轨道为何在每圈经过不同经度。",
+      "parameters": {"perigee": 400, "apogee": 400, "inclination": 51.6, "raan": 30, "argPerigee": 0, "meanAnomaly": 0},
+      "observations": [
+        "圆轨道半径与速率保持不变，三维轨道的倾斜并不造成快慢变化。",
+        "球面地心纬度极值约为 ±51.6°；增大 Ω 只改变节点方位，不增大纬度范围。",
+        "每绕行一圈，地球继续自转；地面轨迹整体向西移动。",
+        "近地点幅角在圆轨道中不唯一，改变 ω 与改变初始相位会出现几何冗余。"
+      ],
+      "experiment": "固定高度与 Ω，将倾角依次改为 0°、51.6°、90°。分别记录周期、最大地心纬度和一圈后的升交点经度变化，再恢复 51.6° 比较 J2 开关下 1 日的节点方向。",
+      "limits": ["参数属于载人低轨常见尺度的教学示例，不是国际空间站实时轨道根数。", "覆盖纬度不等于传感器覆盖范围；本实验未计算视场、地形遮挡或地面站可见性。"],
+      "sourceIds": ["tudelft-orbits", "nasa-orbit-catalog", "naif-conics"]
+    },
+    {
+      "id": "sun-synchronous",
+      "title": "太阳同步：节点每天向东移动",
+      "summary": "700 km 圆轨道，倾角约 98.188°。逆行轨道的 J2 节点漂移朝东，选取适当倾角可使其接近太阳方向的年平均转速。",
+      "parameters": {"perigee": 700, "apogee": 700, "inclination": 98.18798163360589, "raan": 20, "argPerigee": 0, "meanAnomaly": 0},
+      "observations": [
+        "i 大于 90° 后 cos(i) 为负，J2 升交点漂移为正。",
+        "在固定高度下，98.188° 附近的平均节点速率约为 +0.985647°/日。",
+        "把倾角固定后只改变高度，节点漂移速率随半长轴改变，原有太阳同步条件不再成立。",
+        "轨道面的平均进动约束与地面轨迹重复周期是两个不同条件。"
+      ],
+      "experiment": "比较 700 km、倾角 90° 与 98.188° 的 30 日节点位置；随后将高度改为 500 km，重新求满足同一节点速率的倾角。记录高度、倾角、Ω̇ 和一日后的地面轨迹。",
+      "limits": ["没有真实太阳方向与历元，不给出 LTAN/LTDN、晨昏轨道或光照占比。", "太阳同步不保证每天重访同一地点，也不意味着持续日照。", "圆轨道近地点方向没有独立几何意义，ω̇ 只适合作为形式上的根数速率讨论。"],
+      "sourceIds": ["freeflyer-j2", "esa-godot-j2", "tudelft-orbits"]
+    },
+    {
+      "id": "geostationary",
+      "title": "地球静止：匹配自转周期",
+      "summary": "赤道圆轨道半径由 μ 与地球自转角速度求得。惯性系里仍在运动，旋转地球上却表现为固定经度。",
+      "parameters": {"perigee": 35786.035931157254, "apogee": 35786.035931157254, "inclination": 0, "raan": 0, "argPerigee": 0, "meanAnomaly": 0},
+      "observations": [
+        "n=ωE 时，两体圆轨道周期与选定地球自转周期完全相同。",
+        "初始相位与 θ0 的差决定演示中的驻留经度，Ω 和 ω 在此退化情形下不是独立可辨识量。",
+        "保持周期但增加倾角会产生南北移动；增加偏心率还会使角速度不均匀。",
+        "地球同步只约束周期，地球静止还要求顺行、赤道、圆轨道。"
+      ],
+      "experiment": "先运行一个自转周期检查经纬漂移；再把倾角改为 5°，保持半长轴不变。最后设置小偏心率并保持同一半长轴，观察每日轨迹形状如何变化。",
+      "limits": ["用高度整数 35786 km 只是近似同步，严格驻留基准应使用由当前常数求出的半径。", "真实地球静止卫星需要摄动建模与轨道保持；教学模型不用于经度站位预测。"],
+      "sourceIds": ["nga-wgs84", "nasa-orbit-catalog", "tudelft-orbits"]
+    },
+    {
+      "id": "geostationary-transfer",
+      "title": "转移轨道：在远地点改变速度方向",
+      "summary": "400×35786 km、倾角 28.5° 的椭圆轨道。比较近远地点速度、停留时间与圆化变平面的代价。",
+      "parameters": {"perigee": 400, "apogee": 35786, "inclination": 28.5, "raan": 0, "argPerigee": 0, "meanAnomaly": 0},
+      "observations": [
+        "等时间标记在近地点稀疏、在远地点密集；卫星在高空移动得慢，停留时间更长。",
+        "低轨出发的第一次脉冲提高远地点，第二次脉冲在远地点使速度达到目标圆轨道速度。",
+        "纯变平面代价随当前速度降低而降低，但到达高空本身需要能量和时间。",
+        "在远地点合并圆化与变平面，所需速度增量是两条速度向量之差，不能把两个标量结果直接相加。"
+      ],
+      "experiment": "以 400 km 圆轨道出发，分别计算共面 Hohmann、低轨先改变 28.5° 平面后再转移、远地点纯变平面后圆化，以及远地点合并圆化变平面的总 Δv。记录转移时间，并解释为何最后一种通常比同地点分两次脉冲更省。",
+      "limits": ["教学变平面示例令远地点位于共同节点线上，不代表任意给定轨道都能在远地点直接完成目标变平面。", "未做两次脉冲之间的最佳倾角分配，也未优化有限推力、发射约束或多脉冲转移。", "示例并非某一发射任务的实际 GTO 注入状态。"],
+      "sourceIds": ["tudelft-orbits", "naif-conics", "nasa-orbit-catalog"]
+    },
+    {
+      "id": "molniya-family",
+      "title": "高椭圆轨道：临界倾角与高纬停留",
+      "summary": "600×39700 km、倾角约 63.435°、近地点幅角 270°。在北半球远地点附近获得较长停留时间，并比较临界倾角两侧的近地点漂移。",
+      "parameters": {"perigee": 600, "apogee": 39700, "inclination": 63.43494882292201, "raan": 0, "argPerigee": 270, "meanAnomaly": 0},
+      "observations": [
+        "ω=270° 时，近地点在南侧，真近点角 180° 的远地点在北侧；不能把近远地点方向写反。",
+        "5 cos²(i)−1 接近零，令一阶 J2 近地点平均漂移消失，节点漂移仍存在。",
+        "把倾角分别改为 60° 与 66°，ω̇ 在临界倾角两侧改变符号。",
+        "接近半恒星日的周期与高纬停留共同影响地面轨迹，但仅满足其中之一不会自动形成重复覆盖。"
+      ],
+      "experiment": "保持高度不变，对比 60°、63.435°、66° 在 30 日后的远地点方向。再固定临界倾角，将 ω 从 270° 改为 90°，观察长时间停留区域从北侧移到南侧。",
+      "limits": ["600×39700 km 是 Molniya 类型的简化预设，并不精确等于半恒星日周期；按本站常数，600×39767.255 km 才满足二体半恒星日条件。", "临界倾角只消除一阶 J2 的平均近地点漂移，不能据此声称整个轨道固定或所有摄动抵消。", "长停留不等于连续通信覆盖，后者还需视场、地面站和星座几何。"],
+      "sourceIds": ["cornell-j2-notes", "agi-j2j4", "nasa-orbit-catalog"]
+    },
+    {
+      "id": "polar-orbit",
+      "title": "极轨：跨越两极与经度接缝",
+      "summary": "800 km 圆轨道、倾角 90°。用最简单的极轨检查轨道方向、地球自转和地图坐标的边界表现。",
+      "parameters": {"perigee": 800, "apogee": 800, "inclination": 90, "raan": 0, "argPerigee": 0, "meanAnomaly": 0},
+      "observations": [
+        "轨道跨越南北极，一阶 J2 升交点漂移因 cos(90°)=0 而接近零。",
+        "相邻轨道之间的地面经度发生变化，极轨本身并不等于太阳同步。",
+        "靠近极点时经度变化可以很快；在极点，经度没有唯一几何意义。",
+        "经度从 +180° 包装到 −180° 时应结束当前折线并从另一侧继续，不能横穿地图绘制错误连线。"
+      ],
+      "experiment": "显示三圈地面轨迹，记录每次升交点的经度；将初始经度移动到接近日期变更线的位置，检查轨迹拆段与当前点的连续性。随后改为 98.188°，观察极点不再被精确穿越。",
+      "limits": ["二维经纬图在极点存在坐标奇异，不是轨道或积分发生突变。", "地面轨迹使用球面地心纬度，不应用于精密遥感定位。"],
+      "sourceIds": ["tudelft-orbits", "sofa-cookbooks", "esa-godot-j2"]
+    }
+  ],
+  "theory": [
+    {
+      "id": "elements-and-state",
+      "title": "从轨道根数到三维位置",
+      "formula": "a=(rp+ra)/2；e=(ra−rp)/(ra+rp)；n=√(μ/a³)；M=M0+nt=E−e sin E；rPQW=[a(cos E−e), a√(1−e²) sin E, 0]；rECI=Rz(Ω) Rx(i) Rz(ω) rPQW",
+      "explanation": "先由近远地点半径确定椭圆大小和形状，再用开普勒方程把均匀增加的平近点角换为偏近点角。PQW 平面的 P 轴指向近地点，Q 轴沿运动方向，W 轴沿角动量方向。ω 在轨道平面内确定近地点方向，i 倾斜轨道面，Ω 确定升交点在赤道面内的方位。按列向量约定，最右侧旋转最先作用。三个旋转后的合成矩阵应保持向量长度与右手性。",
+      "derivation": [
+        "rp=Re+hp，ra=Re+ha；由 rp=a(1−e)、ra=a(1+e) 解得 a 与 e。",
+        "dE/dt=n/(1−e cos E)，因此 vPQW=[−a sin E·dE/dt, a√(1−e²) cos E·dE/dt, 0]。固定轨道平面时，速度与位置使用同一旋转矩阵。",
+        "h=r×v 的方向定义轨道法向；其与北极轴的夹角就是 i。升交点是从南向北穿越赤道的位置。"
+      ],
+      "pitfalls": ["hp、ha 是高度，进入引力公式前必须加 Re。", "M、E、ν 不同；不要用匀速增加的真近点角驱动椭圆动画。", "e=0 时近地点方向不唯一；i=0° 或 180° 时升交点方向不唯一。", "三维渲染库若使用 Y 轴向上，需要明确一次坐标映射，不能在动力学里随意交换轴。", "若 Ω、ω 随时间变化，仅旋转二体速度不包含旋转矩阵的时间导数，应标为近似瞬时速度。"],
+      "sourceIds": ["tudelft-orbits", "naif-conics", "jpl-orbit-elements"]
+    },
+    {
+      "id": "ground-track-and-earth-rotation",
+      "title": "地面轨迹由轨道运动与地球自转共同形成",
+      "formula": "θ=θ0+ωE t；rrot=Rz(−θ) rECI；λ=atan2(yrot,xrot)；φc=atan2(zrot,√(xrot²+yrot²))；Tsync=2π/ωE；rsync=(μ/ωE²)^(1/3)",
+      "explanation": "同一个惯性位置，必须先逆着地球自转方向旋转，才能得到旋转地球上的经度。这里的地面轨迹是地心向量与球面的交点：纬度为地心纬度，经度经 atan2 求得后包装到 −180° 至 180°。赤道顺行圆轨道若角速度恰好等于地球自转角速度，地面经度保持不变。严格的地固变换还包含历元、时间尺度、岁差章动、地球旋转角和极移；常速自转只用于解释几何关系。",
+      "derivation": [
+        "地球在惯性系中向东旋转 θ，因此同一位置在地球坐标中的分量使用反向角 −θ。",
+        "由 n=√(μ/a³)=ωE 可直接解得同步圆轨道半径，而不是先把周期设为 24 小时。",
+        "未摄动的轨道平面中，球面纬度的绝对最大值为 min(i,180°−i)，但传感器覆盖范围还取决于视场和高度。"
+      ],
+      "pitfalls": ["φc 是地心纬度，不是 WGS 84 大地纬度。", "θ0 没有绑定真实 UTC/UT1 历元时，地图经度只是演示方位。", "±180° 接缝处需要拆开折线；极点经度不唯一。", "地球同步、地球静止、太阳同步和重复地面轨迹是不同约束。", "若旋转地固速度也要输出，应使用 vrot=Rz(−θ)vECI−ωE×rrot，不能只旋转速度向量。"],
+      "sourceIds": ["nga-wgs84", "sofa-cookbooks", "nasa-orbit-catalog"]
+    },
+    {
+      "id": "hohmann-and-plane-change",
+      "title": "转移能量与改变轨道平面的代价",
+      "formula": "at=(r1+r2)/2；vc(r)=√(μ/r)；vt(r)=√[μ(2/r−1/at)]；ΔvH=|vt(r1)−vc(r1)|+|vc(r2)−vt(r2)|；tH=π√(at³/μ)；Δvplane=2v sin(δ/2)",
+      "explanation": "Hohmann 转移在两个同心共面圆轨道之间使用一条与两者相切的半椭圆。第一次脉冲在出发半径改变切向速度，第二次脉冲在目标半径完成圆化；下降转移中速度增量方向反向，但总预算仍累加各脉冲的模。变平面则比较同一点处两条速度向量。若同时改变速度大小和方向，使用余弦定理计算向量差；不能将圆化速度差与纯变平面代价直接相加。",
+      "derivation": [
+        "由比机械能 ε=v²/2−μ/r=−μ/(2a) 得到 vis-viva 公式 v²=μ(2/r−1/a)。",
+        "两条大小相等、夹角为 δ 的速度向量之差为 2v sin(δ/2)；不同速度大小时为 √(vi²+vf²−2vi vf cos δ)。",
+        "两轨道面的夹角满足 cos δ=cos i1 cos i2+sin i1 sin i2 cos(Ω2−Ω1)；只有特定共同节点条件下，δ 才等于 |i2−i1|。",
+        "半椭圆飞行时间为转移轨道周期的一半。r1=r2 是零变轨退化情形，不能把形式上的半周期解释成必需等待时间。"
+      ],
+      "pitfalls": ["纯变平面必须发生在两个轨道平面的交线上，不能任意选择位置。", "高空速度低，纯变平面较省，但抬高轨道需要额外脉冲和时间。", "合并圆化和变平面必须用速度向量夹角；不要把轨道倾角直接当作任意两条速度的夹角。", "Hohmann 不保证在双椭圆、多脉冲、有限推力或限定时间问题中全局最优。", "这些 Δv 是理想瞬时脉冲预算，不包含重力损失、姿态转动、有限燃烧和推进剂储备。"],
+      "sourceIds": ["tudelft-orbits", "naif-conics"]
+    },
+    {
+      "id": "j2-secular-effects",
+      "title": "J2 改变节点与近地点的平均方向",
+      "formula": "p=a(1−e²)；Ω̇=−(3/2)J2 n(Re/p)² cos i；ω̇=(3/4)J2 n(Re/p)²(5 cos² i−1)；Ṁ=n+(3/4)J2 n(Re/p)²√(1−e²)(3 cos² i−1)",
+      "explanation": "地球赤道隆起使引力场偏离点质量模型。对 J2 扰动按轨道周期平均后，可得到节点、近地点和平近点角的长期速率。顺行轨道的节点通常向西退行，逆行轨道可向东进动；倾角约 63.435° 或 116.565° 时，近地点的一阶平均漂移为零。太阳同步轨道选择高度、偏心率与倾角的组合，使节点向东的年平均转速接近太阳方向的年平均变化。平均根数模型不包含一个轨道周期内的短周期摆动。",
+      "derivation": [
+        "令 cos i=0 可知极轨的一阶节点漂移为零；令 5 cos² i−1=0 得到两个临界倾角。",
+        "给定 a、e 与目标节点速率 Ω̇target，可解 cos i=−2 Ω̇target/[3 J2 n(Re/p)²]。若右侧绝对值超过 1，则这组参数下无实数倾角解。",
+        "将 rad/s 换成 deg/day 时乘 86400·180/π；计算输入中的 i 必须先转成弧度。",
+        "若只把轨道整体按 Ω̇、ω̇ 旋转而 M 仍采用 nt，这是一阶方向漂移演示；完整的此类平均根数模型还应说明所采用的 Ṁ 约定。"
+      ],
+      "pitfalls": ["J2 与归一化 C̅20 的符号和尺度不同，不能直接替换。", "平均轨道根数与瞬时密切根数不是同一套数值。", "圆轨道的 ω̇ 可以形式计算，但实际近地点方向不唯一，不应画出具有唯一物理含义的漂移箭头。", "临界倾角不代表所有摄动消失；太阳同步不代表地面轨迹重复或连续日照。", "一阶平均漂移不含高阶重力、阻力、太阳月球引力、太阳辐射压及轨道保持；多年外推尤其不能当作真实星历。"],
+      "sourceIds": ["esa-godot-j2", "freeflyer-j2", "agi-j2j4", "cornell-j2-notes"]
+    },
+    {
+      "id": "numerical-and-physical-error",
+      "title": "步长误差与物理模型误差分别检查",
+      "formula": "ε=v²/2−μ/r；h=r×v；δε=(ε(t)−ε0)/|ε0|；δh=(|h(t)|−|h0|)/|h0|；pobs=log2[E(h)/E(h/2)]",
+      "explanation": "二体解析解为数值实验提供同一物理模型下的参考。用相同初态、相同结束时刻比较 Euler、RK4 与 Verlet，可以观察步长减半后的状态误差与守恒量变化。能量与角动量误差能暴露长期漂移，但它们不能替代位置误差，也不能评价模型省略了多少真实扰动。积分结果即使十分守恒，也仍然可能偏离受阻力和摄动影响的实际卫星轨迹。",
+      "derivation": [
+        "固定物理模型与初态，再分别改变积分方法和步长，避免同时改变多个因素。",
+        "如果误差已进入渐近区域，Euler、Verlet、RK4 的全局状态误差通常分别呈一、二、四阶趋势；实际观测阶次会受到舍入误差、末步处理和误差指标影响。",
+        "全程最大误差应逐积分步统计；用于浏览器绘图的稀疏采样不一定包含真正的峰值。"
+      ],
+      "pitfalls": ["小能量误差不保证小相位误差；应同时比较位置或到达时间。", "不同仿真必须在相同绝对时间比较，不能仅按数组索引对齐。", "高偏心率轨道近地点变化更快，单个固定步长可能无法兼顾全轨道精度。", "二体解析曲线只验证二体积分器，不验证真实任务的力模型、初始轨道或星历。"],
+      "sourceIds": ["naif-conics", "jpl-orbit-elements", "agi-j2j4"]
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "circular-400km",
+      "input": {"perigeeKm": 400, "apogeeKm": 400},
+      "expected": {"radiusKm": 6778.137, "speedKmPerSecond": 7.668558175407055, "periodSeconds": 5553.624271252228, "eccentricity": 0},
+      "toleranceNotes": "固定上述 μ、Re 的独立公式结果；建议速率绝对误差小于 1e−9 km/s，周期误差小于 1e−6 s。UI 可按有效位数四舍五入。"
+    },
+    {
+      "id": "synchronous-radius",
+      "input": {"earthRotationRadPerSecond": 0.00007292115, "inclinationDeg": 0, "eccentricity": 0},
+      "expected": {"radiusKm": 42164.172931157256, "altitudeKm": 35786.035931157254, "periodSeconds": 86164.10063718943},
+      "toleranceNotes": "用未四舍五入半径传播一日，球面经纬应在浮点容差内不变。以 35786 km 或 86400 s 替代会有预期漂移，不能把漂移隐藏掉。"
+    },
+    {
+      "id": "hohmann-400-to-35786",
+      "input": {"initialAltitudeKm": 400, "targetAltitudeKm": 35786, "planeAngleDeg": 0},
+      "expected": {"initialCircularSpeedKmPerSecond": 7.668558175407055, "targetCircularSpeedKmPerSecond": 3.0746612890103515, "transferDepartureSpeedKmPerSecond": 10.066030692222297, "transferArrivalSpeedKmPerSecond": 1.6181745894167723, "deltaV1KmPerSecond": 2.3974725168152418, "deltaV2KmPerSecond": 1.4564866995935792, "totalDeltaVKmPerSecond": 3.853959216408821, "transferSeconds": 19048.562509797113},
+      "toleranceNotes": "与由同一常数直接计算的标量公式核对。反向转移总 Δv 和时间相同，两次脉冲大小交换且切向符号反向；同高度应返回零变轨预算。"
+    },
+    {
+      "id": "plane-change-28-5deg",
+      "input": {"initialAltitudeKm": 400, "targetAltitudeKm": 35786, "planeAngleDeg": 28.5, "geometry": "变轨位置位于共同节点；比较同一速度方向平面夹角"},
+      "expected": {"purePlaneChangeAtInitialKmPerSecond": 3.7752816953217057, "purePlaneChangeAtTransferApoapsisKmPerSecond": 0.7966380077615545, "combinedCircularizationPlaneChangeKmPerSecond": 1.8240628665435332},
+      "toleranceNotes": "combined 为第二次脉冲本身，不能误当总转移预算；总预算还需加第一次脉冲。δ=0 应退化为纯速度大小差。"
+    },
+    {
+      "id": "hohmann-course-example",
+      "input": {"initialAltitudeKm": 185, "targetAltitudeKm": 800},
+      "expected": {"deltaV1KmPerSecond": 0.17248509527868539, "deltaV2KmPerSecond": 0.1686646491831585, "totalDeltaVKmPerSecond": 0.3411497444618439, "transferSeconds": 2833.847598309824},
+      "toleranceNotes": "与 TU Delft 课堂 185→800 km 案例作数量级交叉核对；课件使用较粗常数并把中间结果四舍五入，故其约 0.342 km/s 不应强制成为本站精确常数的数值断言。"
+    },
+    {
+      "id": "j2-400km-51-6deg",
+      "input": {"perigeeKm": 400, "apogeeKm": 400, "inclinationDeg": 51.6},
+      "expected": {"raanRateDegPerDay": -5.002322334417584, "formalArgumentPerigeeRateDegPerDay": 3.741277039940758},
+      "toleranceNotes": "角度输入为度、内部为弧度；圆轨道近地点方向退化，因此第二项仅检查公式，不作为有唯一物理方向的 UI 指标。i=90° 节点速率应接近零，i 与 180°−i 节点速率应等大反号。"
+    },
+    {
+      "id": "sso-700km",
+      "input": {"perigeeKm": 700, "apogeeKm": 700, "targetRaanRateDegPerDay": 0.9856473320990831},
+      "expected": {"inclinationDeg": 98.18798163360589, "periodSeconds": 5926.37907113444},
+      "toleranceNotes": "这是由本站常数和 365.2422 日年长度推导的教学倾角。不要与半长轴 a=7000 km 的经典 97.87377° 示例混淆；700 km 高度对应 a=7078.137 km。"
+    },
+    {
+      "id": "critical-inclination-and-half-day",
+      "input": {"perigeeKm": 600, "targetPeriodSeconds": 43082.050318594715},
+      "expected": {"criticalInclinationProgradeDeg": 63.43494882292201, "criticalInclinationRetrogradeDeg": 116.56505117707799, "semiMajorAxisKm": 26561.76451368632, "apogeeKm": 39767.25502737264},
+      "toleranceNotes": "临界倾角应令一阶 ω̇ 接近零；精确半日结果由本站名义自转周期推导。展示预设 600×39700 km 为近似轨道，不应测试为严格半日。"
+    },
+    {
+      "id": "rotation-and-groundtrack-signs",
+      "input": {"positionPqw": [1, 0, 0], "cases": "各测试相互独立"},
+      "expected": {"allAnglesZero": [1, 0, 0], "raan90Inclination0Argument0": [0, 1, 0], "raan0Inclination90Argument90": [0, 0, 1], "fixedInertialXAxisAfterQuarterEarthRotationLongitudeDeg": -90, "maximumLatitudeForInclination120Deg": 60},
+      "toleranceNotes": "这些几何基准独立于轨道尺度，可捕获矩阵乘法顺序、主动/被动旋转和地球自转正负号错误；near-zero 分量采用约 1e−12 的绝对容差。"
+    }
+  ],
+  "implementationChecks": [
+    "所有可调参数在输入层验证为有限数值；hp≤ha、hp≥0、0≤i≤180，内部椭圆参数满足 0≤e<1。",
+    "轨迹数组中的时间、状态、当前卫星位置、地面点来自同一时刻，不因动画缩放、暂停或切换模式产生相位跳跃。",
+    "重置预设同时重置与该轨道有关的时间和读数；长时间漂移与逐圈动画分别显示时间单位。",
+    "画面包含地球比例或明确的示意缩放说明，不能为了看清卫星而让轨道半径读数与几何比例矛盾。",
+    "地面轨迹在经度接缝处分段，并允许极点处经度不可定义；地图错误连线不应污染导出数据。",
+    "近远地点、节点标注随参数更新；圆轨道隐藏或解释近地点退化，赤道轨道隐藏或解释节点退化。",
+    "无解的太阳同步倾角显示无实数解；不把超出范围的 acos 参数强行夹紧后生成貌似有效的轨道。",
+    "本版 Δv 工作区限定圆轨道升轨及相同高度；下降转移不在交互范围。合并变平面到达脉冲与总 Δv 分别命名。",
+    "JSON 保存常数、模型名、坐标约定、时间零点和参数；CSV 字段标明单位，需与实验 JSON 配套使用。参考来源保留在页面及本文件。",
+    "保留两体数值工作台的全步误差统计和步长细化；图形采样频率只影响显示，不影响误差定义。"
+  ],
+  "sources": [
+    {
+      "id": "nga-wgs84",
+      "title": "NGA · World Geodetic System 1984",
+      "url": "https://earth-info.nga.mil/?action=wgs84&dir=wgs84",
+      "publisher": "美国国家地理空间情报局 NGA",
+      "checkedOn": "2026-10-26",
+      "type": "官方基准与常数",
+      "notes": "核对赤道长半轴、GM、名义自转角速度及单位。本站用球面 Re，未实现该页面完整椭球和参考框架。"
+    },
+    {
+      "id": "esa-godot-constants",
+      "title": "ESA GODOT · Core constants",
+      "url": "https://godot.io.esa.int/docs/api_reference/generated/generated/godot.core.constants.html",
+      "publisher": "欧洲航天局 ESA",
+      "checkedOn": "2026-10-26",
+      "type": "官方软件文档",
+      "notes": "交叉核对以 km 为单位的 WGS 84 常数和单位约定。"
+    },
+    {
+      "id": "tudelft-orbits",
+      "title": "TU Delft · AE2104 Orbital Mechanics",
+      "url": "https://ocw.tudelft.nl/wp-content/uploads/AE2104-Orbital-Mechanics-Slides_10.pdf",
+      "publisher": "代尔夫特理工大学 OpenCourseWare",
+      "checkedOn": "2026-10-26",
+      "type": "大学课程讲义",
+      "notes": "用于轨道根数变换、轨道机动和 Hohmann 课堂案例交叉检查。课件中太阳同步并不保证持续日照的说明也用于约束实验文案。"
+    },
+    {
+      "id": "naif-conics",
+      "title": "NASA/JPL NAIF · conics_c",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/conics_c.html",
+      "publisher": "NASA 喷气推进实验室 NAIF",
+      "checkedOn": "2026-10-26",
+      "type": "官方数值工具文档",
+      "notes": "核对经典圆锥轨道根数、km/rad/s 单位、历元与状态关系；该接口使用近地点半径，不是高度。本站没有调用 SPICE 实时星历。"
+    },
+    {
+      "id": "jpl-orbit-elements",
+      "title": "NASA/JPL SSD · Description of Orbits and Ephemerides",
+      "url": "https://ssd.jpl.nasa.gov/orbits_doc.html",
+      "publisher": "NASA 喷气推进实验室 Solar System Dynamics",
+      "checkedOn": "2026-10-26",
+      "type": "官方轨道数据说明",
+      "notes": "用于区分某历元的密切轨道根数、两体曲线和考虑摄动的实际星历。"
+    },
+    {
+      "id": "sofa-cookbooks",
+      "title": "IAU SOFA · Earth Attitude and Time Scale Cookbooks",
+      "url": "https://www.iausofa.org/cookbooks",
+      "publisher": "国际天文学联合会 SOFA Center",
+      "checkedOn": "2026-10-26",
+      "type": "天文标准软件与教程",
+      "notes": "用于说明严格地固转换所需的岁差、章动、极移、地球旋转角与时间尺度；常速旋转模型只覆盖其中一个几何关系。"
+    },
+    {
+      "id": "esa-godot-j2",
+      "title": "ESA GODOT · First-order J2 perturbations and geometry utilities",
+      "url": "https://godot.io.esa.int/docs/tutorials2/fundamentals/astro/05-perturbations-and-geometry-utilities.html",
+      "publisher": "欧洲航天局 ESA",
+      "checkedOn": "2026-10-26",
+      "type": "官方软件教程",
+      "notes": "核对一阶 J2 节点漂移及教学常数。教程中的地球半径为 6378.1363 km；本实验全程使用 6378.137 km，故精确结果按本站常数重算。页面本轮首次读取成功，后续重复抓取出现超时。"
+    },
+    {
+      "id": "freeflyer-j2",
+      "title": "FreeFlyer University Guide · J2 Perturbation",
+      "url": "https://freeflyer.com/_freeflyeruniversityguide/j2_perturbation.htm",
+      "publisher": "AI Solutions / FreeFlyer",
+      "checkedOn": "2026-10-26",
+      "type": "工程软件官方教学",
+      "notes": "核对节点漂移、太阳同步倾角求解和 a=7000 km 示例。该半长轴示例不可误写成高度 700 km；年长度和常数取值略有不同。"
+    },
+    {
+      "id": "agi-j2j4",
+      "title": "Ansys STK · TwoBody, J2Perturbation and J4Perturbation",
+      "url": "https://help.agi.com/stk/12.7.1/Content/stk/vehSat_orbitProp_2bodyJ2J4.htm",
+      "publisher": "Ansys / AGI",
+      "checkedOn": "2026-10-26",
+      "type": "工程软件官方模型说明",
+      "notes": "核对平均根数长期漂移模型的范围，以及节点、近地点和平近点角变化与高保真数值传播的区别。"
+    },
+    {
+      "id": "cornell-j2-notes",
+      "title": "V. Hunter Adams · MAE 4160/5160 Orbital Mechanics notes",
+      "url": "https://vanhunteradams.com/5160/Orbit/Supplements/orbit.html",
+      "publisher": "V. Hunter Adams，Cornell 课程作者",
+      "checkedOn": "2026-10-26",
+      "type": "大学课程作者讲义",
+      "notes": "用于节点、近地点 J2 平均速率与临界倾角的公式交叉核对。网页其他段落存在排版或文字错误，未直接照录；Molniya 近远地点方位由旋转公式独立检查。"
+    },
+    {
+      "id": "nasa-orbit-catalog",
+      "title": "NASA Earth Observatory · Catalog of Earth Satellite Orbits",
+      "url": "https://science.nasa.gov/earth/earth-observatory/catalog-of-earth-satellite-orbits/",
+      "publisher": "NASA Earth Observatory",
+      "checkedOn": "2026-10-26",
+      "type": "官方轨道类型介绍",
+      "notes": "用于低轨、同步、高椭圆轨道等类型的用途背景；不将文章中的示例参数当作当前任务星历或精密计算基准。"
+    }
+  ]
+}

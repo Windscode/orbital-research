@@ -3,7 +3,7 @@
     "lessons": 53,
     "resources": 84,
     "vehicles": 56,
-    "briefings": 27,
+    "briefings": 29,
     "workflows": 5
   },
   "resources": [
@@ -293,6 +293,37 @@
   ],
   "briefings": [
     {
+      "id": "centaur-artemis-development-2026",
+      "title": "ULA 公布面向 Artemis 的 Centaur 上面级开发计划",
+      "category": "推进与任务架构",
+      "date": "2026-10-23",
+      "publishedOn": "2026-10-23",
+      "eventDate": null,
+      "eventDateNote": "企业公布开发安排；资格鉴定和 2028 年任务支持均为后续计划。",
+      "verifiedOn": "2026-10-26",
+      "summary": "ULA 表示正与 NASA 开发面向 SLS 的 180K Centaur V 衍生上面级。公告提出加长贮箱、更换材料并更新航电与软件；载人评级仍需开展。",
+      "analysis": "公告将推进剂容量增长描述为约 50%，不等同于运载能力增加 50%。用于仿真时，应分别处理贮箱几何、干质量、推进剂质量、发动机性能与任务轨迹，保留基线版本。公开文字不足以确定壁厚、惯量或资格鉴定结果。",
+      "implication": "研究练习可比较不同推进剂装载量对质量比和任务裕量的影响，并把新增干质量列为参数区间。这是本站提出的敏感性研究方法，不是 ULA 公开的设计模型。",
+      "source": {
+        "title": "ULA · Centaur Upper Stage for Artemis Missions，2026-10-23",
+        "url": "https://newsroom.ulalaunch.com/releases/united-launch-alliance-is-collaborating-with-nasa-for-the-development-of-a-centaur-upper-stage-for-artemis-missions"
+      },
+      "tags": [
+        "Centaur",
+        "Artemis",
+        "低温上面级",
+        "设计版本"
+      ],
+      "relatedResources": [
+        "gmat",
+        "openmdao",
+        "nasa-ntrs"
+      ],
+      "sourceIds": [
+        "ula"
+      ]
+    },
+    {
       "id": "swift-science-mission-end-2026",
       "title": "Swift 完成最后一次科学观测，档案继续开放",
       "category": "任务运行",
@@ -319,6 +350,9 @@
         "orekit",
         "tudat",
         "nasa-ntrs"
+      ],
+      "sourceIds": [
+        "nasa-science"
       ]
     },
     {
@@ -347,36 +381,10 @@
         "basilisk",
         "gmat",
         "spice"
+      ],
+      "sourceIds": [
+        "nasa-news"
       ]
-    },
-    {
-      "id": "dragonfly-simulated-flight-2026",
-      "title": "Dragonfly 完成首次完整飞行场景仿真",
-      "category": "仿真方法",
-      "date": "2026-10-23",
-      "summary": "NASA 报道 Dragonfly 在 APL 的类飞行航电测试台完成迄今最全面的首次飞行场景仿真，涵盖多数系统及动作；真实飞行系统上的后续测试仍在计划中。",
-      "analysis": "这一场景把飞行软件、类飞行航电和模拟传感器输入放入实时闭环，并由 GPU 生成导航相机所见地形。它验证的是分离后寻址、转向和下降等动作之间的协同，不能称为土卫六实飞，也不能把多数系统覆盖写成全系统全部工况已经通过。报道还区分了测试台与未来真实飞行系统测试；部署机构载荷和角度试验是另一条验证链。对于研究项目，毫秒级时序、数据延迟和传感器一致性与轨迹形状同样重要。",
-      "implication": "本站研究建议：为 AerospaceSimUE 定义独立于渲染帧率的物理与控制时钟，记录相机/惯导/测距输入及控制输出。先复现正常场景，再分别引入图像延迟、测距缺失和部署初态变化；把离线算法、软件闭环与硬件连接的验证状态分开展示。",
-      "source": {
-        "title": "NASA · Dragonfly Completes First Simulated Flight",
-        "url": "https://science.nasa.gov/blogs/dragonfly/2026/10/23/nasas-dragonfly-completes-first-simulated-flight/"
-      },
-      "tags": [
-        "Dragonfly",
-        "实时闭环",
-        "硬件在环"
-      ],
-      "dateNote": "2026-10-23 是 NASA 报道发布日期；地面测试实际执行日未公开。文中的不早于 2028 年发射与 2034 年抵达均是报道时计划。",
-      "relatedResources": [
-        "basilisk",
-        "trick",
-        "fprime"
-      ],
-      "verifiedOn": "2026-10-25",
-      "accessedAt": "2026-10-25 05:39:21 UTC",
-      "publishedOn": "2026-10-23",
-      "eventDate": null,
-      "eventDateNote": "报道只称近期测试，未给出这次综合仿真的执行日；不可把 10 月 23 日直接标成试验发生日。"
     }
   ]
 }

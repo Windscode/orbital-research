@@ -1,0 +1,45 @@
+{
+  "version": 9,
+  "reviewedOn": "2026-10-26",
+  "items": [
+    {
+      "id": "earth-blue-marble-2004-07",
+      "title": "Blue Marble Next Generation · 2004 年 7 月全球无云底图",
+      "file": "/images/lab/earth-blue-marble-2004-07.webp",
+      "kind": "卫星数据合成底图",
+      "sourceUrl": "https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/base-map/",
+      "datasetUrl": "https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/",
+      "downloadUrl": "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/bmng/bmng-base/july/world.200407.3x5400x2700.jpg",
+      "technicalReferenceUrl": "https://assets.science.nasa.gov/content/dam/science/esd/eo/content-feature/bluemarble/bmng.pdf",
+      "credit": "NASA Earth Observatory",
+      "producer": "Reto Stöckli / NASA Earth Observatory",
+      "usage": "按 NASA Images and Media Usage Guidelines 用于个人网站的教育、信息展示与计算机图形演示，保留 NASA Earth Observatory 署名、资料来源与处理说明，不暗示 NASA 为本站或其计算模型背书。",
+      "usageUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "dataEra": "2004-07",
+      "dataEraNote": "2004 年 MODIS 数据制成的月度地表合成影像；不是当前地表、实时天气或某一瞬间的太空照片。",
+      "sourceDimensions": {"width": 5400, "height": 2700},
+      "dimensions": {"width": 4096, "height": 2048},
+      "bytes": 533566,
+      "processing": "下载 NASA 官方 JPEG，保留整幅 2:1 图像，以 sharp 等比例缩至 4096×2048 并转 WebP（quality 87）；未裁切、旋转、补画、调色或合成云层。",
+      "mapping": {
+        "projection": "Plate Carrée / 等距经纬网格",
+        "datum": "WGS84（数据集说明）",
+        "longitudeRange": [-180, 180],
+        "latitudeTopToBottom": [90, -90],
+        "mapPixelConvention": "u=(经度+180°)/360°，v=(90°−纬度)/180°；二维地图 v 向下。",
+        "reference": "技术文档第 5.1 节及 Table 2 给出投影与全球图幅范围。"
+      },
+      "clouds": false,
+      "reliefShading": false,
+      "limitations": [
+        "纹理仅提供地理背景；演示球体的半径、地球姿态与卫星状态由实验模型另行计算。",
+        "极区在等经纬度图上被拉伸；二维地图与球面纹理不要按等面积解释。",
+        "云筛选、插补和季节合成可能留下数据伪影；不能用于精密测绘或地理定位验证。"
+      ],
+      "verification": {
+        "method": "官方资料页、官方技术文档和媒体使用说明已打开阅读；下载文件解码、尺寸与视觉检查通过。",
+        "checkedOn": "2026-10-26"
+      }
+    }
+  ]
+}

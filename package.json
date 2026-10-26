@@ -1,7 +1,7 @@
 {
   "name": "orbital-research-observatory",
   "private": true,
-  "version": "8.0.0",
+  "version": "9.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5173",
@@ -12,14 +12,17 @@
     "check:expansion": "node scripts/check-expansion.mjs",
     "check:media": "node scripts/check-media.mjs",
     "check:navigation": "node scripts/test-research-navigation.mjs",
-    "test": "node scripts/check-content.mjs && node scripts/check-project.mjs && node scripts/test-orbit.mjs && node scripts/check-expansion.mjs && node scripts/test-model-view.mjs && node scripts/check-media.mjs && node scripts/test-research-navigation.mjs && node scripts/test-research-workflows.mjs && node scripts/test-numerical-lab.mjs && node scripts/check-bootstrap.mjs && node scripts/test-catalog-loading.mjs",
+    "test": "node scripts/check-content.mjs && node scripts/check-project.mjs && node scripts/test-orbit.mjs && node scripts/check-expansion.mjs && node scripts/test-model-view.mjs && node scripts/check-media.mjs && node scripts/test-research-navigation.mjs && node scripts/test-research-workflows.mjs && node scripts/test-numerical-lab.mjs && node scripts/check-bootstrap.mjs && node scripts/test-catalog-loading.mjs && node scripts/test-orbit-mission.mjs && node scripts/test-intelligence-library.mjs",
     "check:workflows": "node scripts/test-research-workflows.mjs",
     "predev": "node scripts/generate-bootstrap.mjs",
     "prebuild": "node scripts/generate-bootstrap.mjs",
     "check:numerical": "node scripts/test-numerical-lab.mjs",
     "check:bundle": "node scripts/check-bundle.mjs",
     "pretest": "node scripts/generate-bootstrap.mjs",
-    "check:models": "node scripts/test-model-view.mjs"
+    "check:models": "node scripts/test-model-view.mjs",
+    "check:mission": "node scripts/test-orbit-mission.mjs",
+    "check:intelligence": "node scripts/test-intelligence-library.mjs",
+    "research:packet": "node scripts/intelligence-packet.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

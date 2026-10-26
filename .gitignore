@@ -13,3 +13,5 @@ docs/screenshots/*
 !docs/screenshots/v7-*.jpg
 !docs/screenshots/v8-*.jpg
 .DS_Store
+
+!docs/screenshots/v9-*.jpg

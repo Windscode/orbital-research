@@ -1,5 +1,36 @@
 [
   {
+    "id": "centaur-artemis-development-2026",
+    "title": "ULA 公布面向 Artemis 的 Centaur 上面级开发计划",
+    "category": "推进与任务架构",
+    "date": "2026-10-23",
+    "publishedOn": "2026-10-23",
+    "eventDate": null,
+    "eventDateNote": "企业公布开发安排；资格鉴定和 2028 年任务支持均为后续计划。",
+    "verifiedOn": "2026-10-26",
+    "summary": "ULA 表示正与 NASA 开发面向 SLS 的 180K Centaur V 衍生上面级。公告提出加长贮箱、更换材料并更新航电与软件；载人评级仍需开展。",
+    "analysis": "公告将推进剂容量增长描述为约 50%，不等同于运载能力增加 50%。用于仿真时，应分别处理贮箱几何、干质量、推进剂质量、发动机性能与任务轨迹，保留基线版本。公开文字不足以确定壁厚、惯量或资格鉴定结果。",
+    "implication": "研究练习可比较不同推进剂装载量对质量比和任务裕量的影响，并把新增干质量列为参数区间。这是本站提出的敏感性研究方法，不是 ULA 公开的设计模型。",
+    "source": {
+      "title": "ULA · Centaur Upper Stage for Artemis Missions，2026-10-23",
+      "url": "https://newsroom.ulalaunch.com/releases/united-launch-alliance-is-collaborating-with-nasa-for-the-development-of-a-centaur-upper-stage-for-artemis-missions"
+    },
+    "tags": [
+      "Centaur",
+      "Artemis",
+      "低温上面级",
+      "设计版本"
+    ],
+    "relatedResources": [
+      "gmat",
+      "openmdao",
+      "nasa-ntrs"
+    ],
+    "sourceIds": [
+      "ula"
+    ]
+  },
+  {
     "id": "swift-science-mission-end-2026",
     "title": "Swift 完成最后一次科学观测，档案继续开放",
     "category": "任务运行",
@@ -26,6 +57,9 @@
       "orekit",
       "tudat",
       "nasa-ntrs"
+    ],
+    "sourceIds": [
+      "nasa-science"
     ]
   },
   {
@@ -54,6 +88,9 @@
       "basilisk",
       "gmat",
       "spice"
+    ],
+    "sourceIds": [
+      "nasa-news"
     ]
   },
   {
@@ -83,7 +120,10 @@
     "accessedAt": "2026-10-25 05:39:21 UTC",
     "publishedOn": "2026-10-23",
     "eventDate": null,
-    "eventDateNote": "报道只称近期测试，未给出这次综合仿真的执行日；不可把 10 月 23 日直接标成试验发生日。"
+    "eventDateNote": "报道只称近期测试，未给出这次综合仿真的执行日；不可把 10 月 23 日直接标成试验发生日。",
+    "sourceIds": [
+      "nasa-science"
+    ]
   },
   {
     "id": "roman-science-commissioning-2026",
@@ -107,7 +147,10 @@
       "PSF",
       "指向稳定"
     ],
-    "verifiedOn": "2026-10-26"
+    "verifiedOn": "2026-10-26",
+    "sourceIds": [
+      "nasa-science"
+    ]
   },
   {
     "id": "psyche-electric-cruise-2026",
@@ -131,7 +174,10 @@
       "低推力轨道",
       "角动量管理"
     ],
-    "verifiedOn": "2026-10-26"
+    "verifiedOn": "2026-10-26",
+    "sourceIds": [
+      "nasa-science"
+    ]
   },
   {
     "id": "mars-roamx-blade-2026",
@@ -162,7 +208,10 @@
       "nasa-ntrs"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 05:39:21 UTC"
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "sourceIds": [
+      "nasa-news"
+    ]
   },
   {
     "id": "ecosimpro-release-2026",
@@ -188,7 +237,8 @@
       "openmodelica"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": []
   },
   {
     "id": "euclid-comet-detection-2026",
@@ -212,7 +262,41 @@
       "数据关联",
       "巡天"
     ],
-    "verifiedOn": "2026-10-26"
+    "verifiedOn": "2026-10-26",
+    "sourceIds": [
+      "esa-news"
+    ]
+  },
+  {
+    "id": "griffin-environmental-tests-2026",
+    "title": "Griffin-1 完成 JPL 环境试验，质量特性与热真空成为研究线索",
+    "category": "系统验证",
+    "date": "2026-10-13",
+    "publishedOn": "2026-10-13",
+    "eventDate": null,
+    "eventDateNote": "试验自 7 月起分阶段进行；本条以 10 月 13 日报道日期索引，不虚构单一完成日期。",
+    "verifiedOn": "2026-10-26",
+    "summary": "JPL 报道 Griffin-1 经历了质量特性、EMI/EMC、振动、声学和热真空试验。环境试验完成后返回企业设施继续总装，发射仍是后续安排。",
+    "analysis": "这些试验分别约束动力学、电子兼容性和热环境模型，不能用一次“通过”替代完整验证链。原文未提供频响、测点时序或验收准则；只能据此建立试验类型和模型输出之间的对照。",
+    "implication": "本站建议建立验证矩阵：质量特性对应重心与惯量，振动对应结构响应，热真空对应温度和热平衡。传感器布置、输入谱与误差阈值需要单独证据。原文载荷质量的英制与公制数字不一致，本条未采用该数值。",
+    "source": {
+      "title": "NASA JPL · Testing Readies Voyager Technologies Lander for Moon Mission，2026-10-13",
+      "url": "https://www.jpl.nasa.gov/news/nasa-jpl-testing-readies-voyager-technologies-lander-for-moon-mission/"
+    },
+    "tags": [
+      "Griffin-1",
+      "环境试验",
+      "质量特性",
+      "热真空"
+    ],
+    "relatedResources": [
+      "nasa-ntrs",
+      "basilisk",
+      "calculix"
+    ],
+    "sourceIds": [
+      "jpl-news"
+    ]
   },
   {
     "id": "artemis-ii-science-data-2026",
@@ -251,6 +335,9 @@
         "title": "Artemis II Lunar Science Data User Guide",
         "url": "https://assets.science.nasa.gov/content/dam/science/missions/artemis/artemis-ii-prelimsci-report-/artemis2_data_user_guide.pdf?emrc=6ac65c2316ac9"
       }
+    ],
+    "sourceIds": [
+      "nasa-news"
     ]
   },
   {
@@ -272,7 +359,10 @@
     ],
     "verifiedOn": "2026-10-25",
     "accessedAt": "2026-10-25 04:55:02 UTC",
-    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。"
+    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。",
+    "sourceIds": [
+      "esa-news"
+    ]
   },
   {
     "id": "mfem-410-2026",
@@ -298,7 +388,10 @@
       "petsc"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": [
+      "openmdao-releases"
+    ]
   },
   {
     "id": "dealii-980-2026",
@@ -330,7 +423,8 @@
       "petsc"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": []
   },
   {
     "id": "openfoam14-2026",
@@ -356,7 +450,8 @@
       "gmsh"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": []
   },
   {
     "id": "esa-amat-2026",
@@ -377,7 +472,10 @@
     ],
     "verifiedOn": "2026-10-25",
     "accessedAt": "2026-10-25 04:55:02 UTC",
-    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。"
+    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。",
+    "sourceIds": [
+      "esa-news"
+    ]
   },
   {
     "id": "celestrak-catalog-format-2026",
@@ -403,7 +501,8 @@
       "orekit"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": []
   },
   {
     "id": "bepicolombo-rehearsal-2026",
@@ -424,7 +523,10 @@
     ],
     "verifiedOn": "2026-10-25",
     "accessedAt": "2026-10-25 04:55:02 UTC",
-    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。"
+    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。",
+    "sourceIds": [
+      "esa-news"
+    ]
   },
   {
     "id": "artemis-ii-return-2026",
@@ -456,6 +558,9 @@
         "title": "PDS Artemis II mission chronology (UTC)",
         "url": "https://pds-geosciences.wustl.edu/missions/artemis2/index.htm"
       }
+    ],
+    "sourceIds": [
+      "nasa-news"
     ]
   },
   {
@@ -477,7 +582,10 @@
     ],
     "verifiedOn": "2026-10-25",
     "accessedAt": "2026-10-25 04:55:02 UTC",
-    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。"
+    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。",
+    "sourceIds": [
+      "esa-news"
+    ]
   },
   {
     "id": "spenvis-4614-2026",
@@ -508,7 +616,8 @@
       "earthdata"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": []
   },
   {
     "id": "ariane64-debut-2026",
@@ -529,7 +638,10 @@
     ],
     "verifiedOn": "2026-10-25",
     "accessedAt": "2026-10-25 04:55:02 UTC",
-    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。"
+    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。",
+    "sourceIds": [
+      "esa-news"
+    ]
   },
   {
     "id": "nisar-science-phase-2025",
@@ -555,7 +667,10 @@
       "ansys-stk"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": [
+      "isro"
+    ]
   },
   {
     "id": "proba3-eclipse-2025",
@@ -581,7 +696,10 @@
       "spice"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": [
+      "esa-news"
+    ]
   },
   {
     "id": "blue-ghost-landing-2025",
@@ -607,7 +725,8 @@
       "abaqus"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": []
   },
   {
     "id": "spadex-docking-2025",
@@ -633,7 +752,10 @@
       "fprime"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": [
+      "isro"
+    ]
   },
   {
     "id": "change6-return-2024",
@@ -659,7 +781,10 @@
       "nasa-ntrs"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": [
+      "cnsa"
+    ]
   },
   {
     "id": "h3-tf2-2024",
@@ -685,7 +810,8 @@
       "capella"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": []
   },
   {
     "id": "slim-landing-analysis-2024",
@@ -711,6 +837,7 @@
       "thermal-desktop"
     ],
     "verifiedOn": "2026-10-25",
-    "accessedAt": "2026-10-25 04:53:32 UTC"
+    "accessedAt": "2026-10-25 04:53:32 UTC",
+    "sourceIds": []
   }
 ]

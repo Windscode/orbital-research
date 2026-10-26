@@ -1,0 +1,42 @@
+import {useEffect,useRef,useState} from 'react';
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {assetUrl} from './assetUrl';
+import {EARTH_RADIUS,orbitElements} from './orbit';
+import {EARTH_ROTATION,missionState,rotatePerifocal,type MissionOrbit,type Vector3} from './orbitMission';
+
+const sceneVector=(p:Vector3)=>new THREE.Vector3(p[0]/EARTH_RADIUS,p[2]/EARTH_RADIUS,-p[1]/EARTH_RADIUS);
+export default function OrbitScene({config,time,comparison,equator=true,vectors=true,circularGuides=false,view='oblique'}:{config:MissionOrbit;time:number;comparison?:MissionOrbit;equator?:boolean;vectors?:boolean;circularGuides?:boolean;view?:string}){
+ const host=useRef<HTMLDivElement>(null),current=useRef({time,equator,vectors,view});current.current={time,equator,vectors,view};
+ const api=useRef<(view:string)=>void>(()=>{});const [error,setError]=useState('');
+ useEffect(()=>api.current(view),[view]);
+ useEffect(()=>{
+  const el=host.current;if(!el)return;let renderer:THREE.WebGLRenderer;
+  try{renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});}catch{setError('当前浏览器没有提供 WebGL；地面轨迹、状态数据与其他实验仍可使用。');return;}
+  setError('');renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.3;renderer.domElement.setAttribute('aria-label','可旋转的三维地球与轨道；蓝线为当前轨道，金点为当前状态');renderer.domElement.setAttribute('role','img');el.appendChild(renderer.domElement);
+  const scene=new THREE.Scene();scene.background=new THREE.Color('#071323');
+  const camera=new THREE.PerspectiveCamera(38,1,.01,300);const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.minDistance=1.3;controls.maxDistance=90;controls.enablePan=false;
+  scene.add(new THREE.AmbientLight('#d6e6ff',2));const light=new THREE.DirectionalLight('#fff4dc',2.3);light.position.set(-4,5,8);scene.add(light);
+  const texture=new THREE.TextureLoader().load(assetUrl('/images/lab/earth-blue-marble-2004-07.webp'),()=>dirty=true);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
+  const globe=new THREE.Mesh(new THREE.SphereGeometry(1,96,64),new THREE.MeshStandardMaterial({map:texture,roughness:1,metalness:0}));scene.add(globe);
+  const atmosphere=new THREE.Mesh(new THREE.SphereGeometry(1.023,64,48),new THREE.ShaderMaterial({transparent:true,side:THREE.BackSide,depthWrite:false,uniforms:{},vertexShader:'varying vec3 n; varying vec3 v; void main(){vec4 p=modelViewMatrix*vec4(position,1.);n=normalize(normalMatrix*normal);v=normalize(-p.xyz);gl_Position=projectionMatrix*p;}',fragmentShader:'varying vec3 n; varying vec3 v; void main(){float a=pow(1.-abs(dot(n,v)),3.)*.42;gl_FragColor=vec4(.17,.49,1.,a);}'}));scene.add(atmosphere);
+  const starPositions=new Float32Array(480*3);let seed=19571004;const rand=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};for(let n=0;n<480;n++){const z=2*rand()-1,phi=rand()*2*Math.PI,r=80;starPositions.set([Math.sqrt(1-z*z)*Math.cos(phi)*r,z*r,Math.sqrt(1-z*z)*Math.sin(phi)*r],n*3);}const stars=new THREE.Points(new THREE.BufferGeometry().setAttribute('position',new THREE.BufferAttribute(starPositions,3)),new THREE.PointsMaterial({color:'#7690b1',size:.07,sizeAttenuation:true,transparent:true,opacity:.55}));scene.add(stars);
+  const line=(points:THREE.Vector3[],color:string,dashed=false)=>{const geometry=new THREE.BufferGeometry().setFromPoints(points),material=dashed?new THREE.LineDashedMaterial({color,dashSize:.09,gapSize:.065,transparent:true,opacity:.7}):new THREE.LineBasicMaterial({color,transparent:true,opacity:.95});const object=new THREE.Line(geometry,material);if(dashed)object.computeLineDistances();scene.add(object);return object;};
+  const o=orbitElements(config.perigee,config.apogee),orbitPoints=(c:MissionOrbit)=>{const e=orbitElements(c.perigee,c.apogee);return Array.from({length:361},(_,i)=>{const E=i/360*Math.PI*2;return sceneVector(rotatePerifocal([e.a*(Math.cos(E)-e.e),e.a*Math.sqrt(1-e.e*e.e)*Math.sin(E),0],c));});};line(orbitPoints(config),'#80b5ff');if(comparison)line(orbitPoints(comparison),'#f3ba73',true);if(circularGuides){line(orbitPoints({...config,apogee:config.perigee}),'#749b8f',true);line(orbitPoints({...config,perigee:config.apogee}),'#7186a2',true);}
+  const equatorLine=line(Array.from({length:129},(_,i)=>new THREE.Vector3(Math.cos(i/128*Math.PI*2)*1.005,0,-Math.sin(i/128*Math.PI*2)*1.005)),'#758ba7',true);
+  const equatorPlane=new THREE.Mesh(new THREE.RingGeometry(1.025,Math.max(1.4,o.ra/EARTH_RADIUS),128),new THREE.MeshBasicMaterial({color:'#48688c',side:THREE.DoubleSide,transparent:true,opacity:.055,depthWrite:false}));equatorPlane.rotation.x=Math.PI/2;scene.add(equatorPlane);
+  const orbitPlane=new THREE.Group();const axisPoints=Array.from({length:65},(_,i)=>sceneVector(rotatePerifocal([Math.cos(i/64*Math.PI*2)*o.rp,Math.sin(i/64*Math.PI*2)*o.rp,0],config)));orbitPlane.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(axisPoints),new THREE.LineBasicMaterial({color:'#294761',transparent:true,opacity:.35})));scene.add(orbitPlane);
+  const markerSize=Math.max(.026,Math.min(.065,o.ra/EARTH_RADIUS*.012));const marker=new THREE.Mesh(new THREE.SphereGeometry(markerSize,16,12),new THREE.MeshBasicMaterial({color:'#ffd29a'}));scene.add(marker);
+  for(const M of [0,180]){const p=sceneVector(missionState({...config,meanAnomaly:M},0).position);const apsis=new THREE.Mesh(new THREE.SphereGeometry(markerSize*.64,12,8),new THREE.MeshBasicMaterial({color:M?'#899fc1':'#dce9ff'}));apsis.position.copy(p);scene.add(apsis);}
+  const drop=line([new THREE.Vector3(),new THREE.Vector3()],'#e3b978',true);const velocity=new THREE.ArrowHelper(new THREE.Vector3(0,1,0),new THREE.Vector3(),.45,'#9ed9bf',.09,.045);scene.add(velocity);
+  let dirty=true,alive=true,raf=0,lastTime=NaN;
+  const fit=(name:string)=>{const extent=o.ra/EARTH_RADIUS,halfFov=Math.min(19*Math.PI/180,Math.atan(Math.tan(19*Math.PI/180)*camera.aspect)),d=Math.max(3.45,extent*1.08/Math.sin(halfFov)),direction=name==='north'?new THREE.Vector3(.001,1,0):name==='equator'?new THREE.Vector3(1,.03,1):new THREE.Vector3(1.15,.7,1.55);camera.up.set(0,1,0);camera.position.copy(direction.normalize().multiplyScalar(d));controls.target.set(0,0,0);controls.update();dirty=true;};api.current=fit;
+  const resize=()=>{if(!el.clientWidth||!el.clientHeight)return;renderer.setSize(el.clientWidth,el.clientHeight,false);camera.aspect=el.clientWidth/el.clientHeight;camera.updateProjectionMatrix();fit(current.current.view);};const observer=new ResizeObserver(resize);observer.observe(el);resize();
+  const lost=(e:Event)=>{e.preventDefault();setError('图形上下文已中断；切换实验页签后可重新载入。');};renderer.domElement.addEventListener('webglcontextlost',lost);
+  const animate=()=>{if(!alive)return;raf=requestAnimationFrame(animate);if(document.hidden)return;const state=current.current;if(state.time!==lastTime){const s=missionState(config,state.time),p=sceneVector(s.position);globe.rotation.y=EARTH_ROTATION*state.time;marker.position.copy(p);const coords=drop.geometry.getAttribute('position') as THREE.BufferAttribute;coords.setXYZ(0,p.x,p.y,p.z);const surface=p.clone().normalize();coords.setXYZ(1,surface.x,surface.y,surface.z);coords.needsUpdate=true;drop.computeLineDistances();velocity.position.copy(p);velocity.setDirection(sceneVector(s.velocity).normalize());velocity.setLength(Math.max(.28,Math.min(.8,s.speed/10)),.08,.04);lastTime=state.time;dirty=true;}
+   if(equatorLine.visible!==state.equator||velocity.visible!==state.vectors)dirty=true;equatorLine.visible=equatorPlane.visible=state.equator;velocity.visible=drop.visible=state.vectors;
+   if(controls.update()||dirty){renderer.render(scene,camera);dirty=false;}};raf=requestAnimationFrame(animate);
+  return()=>{alive=false;cancelAnimationFrame(raf);observer.disconnect();controls.dispose();renderer.domElement.removeEventListener('webglcontextlost',lost);scene.traverse(object=>{const m=object as THREE.Mesh;if(m.geometry)m.geometry.dispose();if(m.material){for(const material of Array.isArray(m.material)?m.material:[m.material])material.dispose();}});texture.dispose();renderer.dispose();renderer.domElement.remove();};
+ },[config,comparison,circularGuides]);
+ return <div className="orbital-scene" ref={host}>{error&&<div className="orbital-scene-error" role="status">{error}</div>}</div>;
+}
