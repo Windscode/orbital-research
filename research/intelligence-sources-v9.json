@@ -36,7 +36,10 @@
     "verification": {
       "method": "page-read",
       "note": "已打开新闻入口并核对任务、新闻发布和历史档案导航。"
-    }
+    },
+    "matchPrefixes": [
+      "/"
+    ]
   },
   {
     "id": "nasa-science",
@@ -1866,6 +1869,181 @@
     "verification": {
       "method": "page-read",
       "note": "已读官方报刊介绍、主办关系及数字报导航。"
+    }
+  },
+  {
+    "id": "nasa-nesc",
+    "name": "NASA NESC · 工程评估与技术经验",
+    "url": "https://www.nasa.gov/nesc/knowledge-products/technical-updates/",
+    "type": "机构与任务",
+    "region": [
+      "美国"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "工程验证",
+      "结构动力学",
+      "故障经验",
+      "推进与控制"
+    ],
+    "evidenceRole": "official",
+    "description": "NASA Engineering and Safety Center 的技术更新汇集工程评估、经验、技术公告与研究报告入口，适合补充新闻中通常缺少的模型边界、故障背景与验证方法。",
+    "whatToLookFor": [
+      "与当前知识或工具条目直接相关的技术公告",
+      "评估报告中的假设、数据来源和适用范围",
+      "年报中可继续追踪到原文的技术成果"
+    ],
+    "queryExamples": [
+      "site:nasa.gov/nesc structural dynamics model verification",
+      "site:nasa.gov/nesc propulsion transient technical bulletin"
+    ],
+    "checks": [
+      "技术更新摘要应继续追踪到具体公告或报告，记录文档编号和日期",
+      "区分评估发现、建议措施与后续已实施状态",
+      "历史经验只在相应构型和条件下引用，不外推为所有型号的统一规则"
+    ],
+    "cadence": "每月查看技术公告与更新；年报发布时补做一次专题梳理。此频率为维护建议，未建立自动任务。",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "已读取官方技术更新入口，可访问按年份组织的报告与技术产品链接；本次未批量阅读所有年报正文。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "读取官方入口，确认其按年汇集评估经验、技术公告、创新方法和论文；后续引用某项工程结论仍需读取对应全文。"
+    },
+    "matchPrefixes": [
+      "/nesc/"
+    ]
+  },
+  {
+    "id": "nasa-smallsat-soa",
+    "name": "NASA SmallSat · 分系统技术综述",
+    "url": "https://www.nasa.gov/smallsat-institute/sst-soa/",
+    "type": "论文与学术",
+    "region": [
+      "美国",
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "小卫星",
+      "热控能源",
+      "推进",
+      "导航控制",
+      "通信与地面系统"
+    ],
+    "evidenceRole": "research",
+    "description": "按航天器分系统组织的年度技术综述，可从任务需求继续追踪到技术选型、供应商资料和论文，适合发现知识库的内容缺口。所列产品和成熟度需要结合具体任务环境复核。",
+    "whatToLookFor": [
+      "各分系统基础约束、设计取舍与交叉依赖",
+      "新版本对性能、产品和参考文献的更新",
+      "可以回溯到原始技术资料的表格条目"
+    ],
+    "queryExamples": [
+      "site:nasa.gov/smallsat-institute/sst-soa thermal-control",
+      "site:nasa.gov/smallsat-institute/sst-soa power-subsystems end of life"
+    ],
+    "checks": [
+      "记录综述版本和所引用章节，不混用不同年份表格",
+      "厂商性能与独立在轨验证分别标记，产品收录不代表 NASA 推荐",
+      "TRL 与性能指标核对对应配置、环境、测试条件和原始引用"
+    ],
+    "cadence": "季度检查入口，年度新版本发布后逐章对照；没有新增版本时不重复生成情报。",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "已读取综述入口与热控、电源章节。正文说明技术覆盖并非完整清单，涉及厂商的数据不能视为统一条件下的实测比较。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "核查官方综述入口和两篇分系统正文，确认可用于知识补充和参考文献追踪；未核实其中全部商业产品的最新规格。"
+    }
+  },
+  {
+    "id": "ccsds-publications",
+    "name": "CCSDS · 标准与技术报告目录",
+    "url": "https://ccsds.org/publications/",
+    "type": "软件与数据",
+    "region": [
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "轨道数据交换",
+      "测控协议",
+      "任务数据",
+      "时间与元数据"
+    ],
+    "evidenceRole": "release",
+    "description": "CCSDS 的正式文档目录，可检查标准、推荐实践、说明性报告及版本状态。用于给轨道文件、遥测和指令接口提供可核对的字段定义，而不是仅列出协议名称。",
+    "whatToLookFor": [
+      "新增或修订的 Blue Book、Magenta Book 与说明性 Green Book",
+      "当前版本、勘误及已撤销文档",
+      "站内工具条目使用的数据格式与标准原文是否一致"
+    ],
+    "queryExamples": [
+      "site:ccsds.org Orbit Data Messages OEM OMM",
+      "site:ccsds.org publications space packet time code"
+    ],
+    "checks": [
+      "保存文档编号、版本、发布日期和勘误信息，不能只保存无版本首页",
+      "Blue、Magenta、Green、Orange 文档性质分别标注",
+      "符合某种格式不等于实现全部相关协议；实际接口仍需约定具体选项与任务扩展"
+    ],
+    "cadence": "每月检查新近发布目录；修改数据交换实现前再次核查相关标准版本。",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "已读取出版目录并打开 Orbit Data Messages 502.0-B-3 的公开 PDF；其他标准需逐项进入原文核查。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "目录包含不同类别、活跃和历史文档入口；本次核实 ODM PDF 标注 2023 年 4 月、Issue 3，不把该单项核查扩展为全部标准都已读完。"
+    }
+  },
+  {
+    "id": "jaxa-darts",
+    "name": "JAXA DARTS · 空间科学任务数据档案",
+    "url": "https://darts.isas.jaxa.jp/en/",
+    "type": "软件与数据",
+    "region": [
+      "日本",
+      "国际"
+    ],
+    "language": [
+      "英文",
+      "日文"
+    ],
+    "topics": [
+      "月球与行星数据",
+      "天文观测",
+      "太阳与空间物理",
+      "任务档案"
+    ],
+    "evidenceRole": "index",
+    "description": "ISAS/JAXA 的跨学科空间科学档案，提供按任务和数据集查找的入口，可补充 PDS、PSA 之外的日本任务资料与处理工具。任务介绍、产品列表和可下载数据应分开核实。",
+    "whatToLookFor": [
+      "具体任务的已发布数据集、说明文档与处理工具",
+      "数据新增、版本变化、查询系统维护与访问中断公告",
+      "任务页引用的论文、仪器信息与数据产品之间的对应关系"
+    ],
+    "queryExamples": [
+      "site:darts.isas.jaxa.jp SLIM navigation camera dataset",
+      "site:darts.isas.jaxa.jp Kaguya Hayabusa2 archive data"
+    ],
+    "checks": [
+      "沿任务页进入真实产品目录，核实产品级别、版本、仪器与观测时段",
+      "说明可视化查询应用不可用时是否仍有文件目录，未尝试的替代入口不标为可用",
+      "数据表 in preparation 或尚无产品时仅记录任务资料，不宣布数据公开完成"
+    ],
+    "cadence": "每月查看发布与维护公告；使用某任务数据前复核其产品列表和引用要求。",
+    "reviewedOn": "2026-10-26",
+    "accessNote": "首页和 SLIM 任务页可读；首页列出部分查询应用暂不可用，SLIM 数据集表仍为 in preparation。本次没有下载或分析任务数据文件。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "读取 DARTS 官方首页及 SLIM 子页，确认任务介绍与实际数据发布状态需分别判断；来源状态为 active 不表示所有子服务均可用。"
     }
   }
 ]

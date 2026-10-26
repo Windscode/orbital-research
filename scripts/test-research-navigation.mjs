@@ -13,6 +13,11 @@ const data={lessons:await read('learning'),resources:await read('library'),vehic
 let count=0;
 for(const [kind,items] of [['lesson',data.lessons],['resource',data.resources],['vehicle',data.vehicles],['briefing',data.briefings]])for(const item of items){const detail={kind,item};const hash=researchHash('knowledge',detail);assert.equal(parseResearchHash(hash).page,'knowledge');assert.deepEqual(findResearchDetail(hash,data),detail);count++;}
 assert.equal(parseResearchHash('').page,'home');assert.equal(findResearchDetail('#/knowledge?read=lesson%2Fmissing',data),null);assert.equal(findResearchDetail('#/knowledge?read=%E0%A4%A',data),null);assert.deepEqual(findResearchDetail(researchHash('home',{kind:'about'}),data),{kind:'about'});assert.equal(researchHash('vehicles',null),'#/vehicles');
+for(const context of ['#/research?topic=thermal-power-coupling','#/intelligence?view=sources','#/resources?plan=ground-replay','#/lab?experiment=numerical']){
+ const {page}=parseResearchHash(context),opened=researchHash(page,{kind:'lesson',item:data.lessons[0]},context);
+ assert.ok(opened.startsWith(context+'&read='));assert.equal(researchHash(page,null,opened),context);
+}
+assert.equal(researchHash('vehicles',null,'#/research?topic=thermal-power-coupling'),'#/vehicles');
 const good={completed:true,note:'坐标系与时间尺度需要独立核查。',updatedAt:'2026-10-25T00:00:00.000Z'};
 assert.deepEqual(validateStudyEntries({'frames-and-time':good,broken:{...good,note:[]},oversized:{...good,note:'x'.repeat(5001)}}),{'frames-and-time':good});assert.deepEqual(validateStudyEntries(null),{});assert.deepEqual(validateStudyEntries([]),{});assert.deepEqual(validateStudyEntries(JSON.parse('{"__proto__":{"completed":true,"note":"x","updatedAt":"x"}}')),{});
 const items=[{id:'body',title:'任务设计',summary:'通用任务',searchText:'NAIF SPICE 教程',label:'知识库'},{id:'title',title:'NAIF SPICE',summary:'坐标与时间',searchText:'轨道',label:'工具与数据'},{id:'image',title:'Apollo LM',summary:'月面影像',searchText:'NASA',label:'影像图鉴'}];

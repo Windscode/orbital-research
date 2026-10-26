@@ -16,3 +16,10 @@ export interface ResearchWorkflow {
  steps:{id:string;title:string;detail:string;output:string;check:string}[];
  validation:string[];pitfalls:string[];sources:Source[];
 }
+export interface ResearchDossier {
+ id:string;code:string;title:string;summary:string;question:string;domains:string[];
+ lessonIds:string[];resourceIds:string[];vehicleIds:string[];workflowIds:string[];briefingIds:string[];
+ modelScope:{level:string;model:string;inputs:string;outputs:string;limits:string}[];
+ investigation:{title:string;detail:string;deliverable:string;check:string}[];
+ dataChecklist:string[];commonErrors:string[];sources:Source[];reviewedOn:string;
+}

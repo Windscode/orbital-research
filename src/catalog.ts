@@ -1,11 +1,12 @@
 import {useEffect,useState} from 'react';
 import bootstrap from '../research/home-bootstrap.json';
-import type {Briefing,KnowledgeGraphData,Lesson,ResearchWorkflow,Resource,Vehicle} from './types';
+import type {Briefing,KnowledgeGraphData,Lesson,ResearchDossier,ResearchWorkflow,Resource,Vehicle} from './types';
 import {cachedResource} from './cachedResource';
-export interface ResearchCatalog {lessons:Lesson[];resources:Resource[];vehicles:Vehicle[];briefings:Briefing[];graph:KnowledgeGraphData;workflows:ResearchWorkflow[]}
+export interface ResearchCatalog {lessons:Lesson[];resources:Resource[];vehicles:Vehicle[];briefings:Briefing[];graph:KnowledgeGraphData;workflows:ResearchWorkflow[];dossiers:ResearchDossier[]}
 export const catalogCounts=bootstrap.counts;
 // This is deliberately a homepage subset, not a claim that the catalog is complete.
-export const homeCatalog:ResearchCatalog={lessons:[],resources:bootstrap.resources as Resource[],vehicles:[],briefings:bootstrap.briefings as Briefing[],graph:{domains:[],nodes:[],edges:[],paths:[]},workflows:[]};
+export const homeDossiers=bootstrap.dossierIndex;
+export const homeCatalog:ResearchCatalog={lessons:[],resources:bootstrap.resources as Resource[],vehicles:[],briefings:bootstrap.briefings as Briefing[],graph:{domains:[],nodes:[],edges:[],paths:[]},workflows:[],dossiers:[]};
 const catalogResource=cachedResource(()=>import('./catalogData').then(module=>module.catalog));
 export const loadResearchCatalog=catalogResource.load;
 export function useResearchCatalog(needed:boolean){

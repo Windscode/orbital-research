@@ -1,13 +1,14 @@
 import data from '../research/intelligence-sources-v9.json';
 import type {Briefing} from './types';
-export interface IntelligenceSource {id:string;name:string;url:string;type:string;region:string[];language:string[];topics:string[];evidenceRole:string;description:string;whatToLookFor:string[];queryExamples:string[];checks:string[];cadence:string;reviewedOn:string;accessNote:string;status:string;verification:{method:string;note:string};feedUrl?:string;searchUrl?:string}
+export interface IntelligenceSource {id:string;name:string;url:string;type:string;region:string[];language:string[];topics:string[];evidenceRole:string;description:string;whatToLookFor:string[];queryExamples:string[];checks:string[];cadence:string;reviewedOn:string;accessNote:string;status:string;verification:{method:string;note:string};feedUrl?:string;searchUrl?:string;matchPrefixes?:string[]}
 export const intelligenceSources=data as IntelligenceSource[];
 const host=(url:string)=>{try{return new URL(url).hostname.replace(/^www\./,'');}catch{return '';}};
 /** Exact hostname and longest applicable entry path; association is discovery, not endorsement. */
 export function matchIntelligenceSource(url:string,sources=intelligenceSources){
  let target:URL;try{target=new URL(url);}catch{return undefined;}
  const same=sources.filter(s=>host(s.url)===host(url));
- return same.sort((a,b)=>{const score=(s:IntelligenceSource)=>{const path=new URL(s.url).pathname.replace(/\/$/,'');return (target.pathname===path||target.pathname.startsWith(path+'/'))?path.length+1:0;};return score(b)-score(a)||a.id.localeCompare(b.id);})[0];
+ const scored=same.map(s=>({source:s,score:Math.max(...[new URL(s.url).pathname,...(s.matchPrefixes||[])].map(p=>{const path=p.replace(/\/$/,'');return target.pathname===path||target.pathname.startsWith(path+'/')?path.length+1:0;}))})).filter(s=>s.score>0).sort((a,b)=>b.score-a.score);
+ return scored[0]?.source||(same.length===1?same[0]:undefined);
 }
 export function sourceBriefings(id:string,briefings:Briefing[]){return briefings.filter(b=>b.sourceIds?.includes(id)||[b.source,...(b.additionalSources||[])].some(s=>matchIntelligenceSource(s.url)?.id===id));}
 export function parseSourceWatchlist(raw:string|null,sources=intelligenceSources){try{const value=JSON.parse(raw||'[]');return Array.isArray(value)?[...new Set(value.filter((id):id is string=>typeof id==='string'&&sources.some(s=>s.id===id)))]:[];}catch{return[];}}

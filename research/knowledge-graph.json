@@ -367,6 +367,42 @@
       "label": "网格拓扑与几何检查",
       "domain": "methods",
       "level": 3
+    },
+    {
+      "id": "spherical-harmonic-gravity",
+      "label": "球谐引力",
+      "domain": "orbits",
+      "level": 3
+    },
+    {
+      "id": "thermosphere-drag",
+      "label": "热层密度与阻力",
+      "domain": "orbits",
+      "level": 3
+    },
+    {
+      "id": "orbit-data-messages",
+      "label": "轨道数据交换",
+      "domain": "methods",
+      "level": 2
+    },
+    {
+      "id": "eclipse-illumination",
+      "label": "轨道食与照明",
+      "domain": "orbits",
+      "level": 2
+    },
+    {
+      "id": "radiative-view-factors",
+      "label": "视因子与辐射度",
+      "domain": "structures",
+      "level": 3
+    },
+    {
+      "id": "fault-tree-reliability",
+      "label": "故障树与共因失效",
+      "domain": "systems",
+      "level": 3
     }
   ],
   "edges": [
@@ -1509,6 +1545,186 @@
       "to": "cfd-verification",
       "type": "validation",
       "reason": "拓扑有效不能替代离散精度与力系数的网格收敛验证。"
+    },
+    {
+      "from": "perturbed-orbits",
+      "to": "spherical-harmonic-gravity",
+      "type": "prerequisite",
+      "reason": "在摄动力模型框架中分离非球形引力的阶次与系数约定。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "spherical-harmonic-gravity",
+      "type": "prerequisite",
+      "reason": "球谐系数在天体固连坐标中定义，计算需一致的状态与基底变换。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "spherical-harmonic-gravity",
+      "type": "prerequisite",
+      "reason": "加速度梯度和球坐标分量转换需要向量与矩阵基础。"
+    },
+    {
+      "from": "perturbed-orbits",
+      "to": "thermosphere-drag",
+      "type": "prerequisite",
+      "reason": "阻力是低轨摄动力的一项，需要先理解力模型接入与传播。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "thermosphere-drag",
+      "type": "prerequisite",
+      "reason": "地理坐标、太阳时和大气相对速度依赖正确的时空定义。"
+    },
+    {
+      "from": "probability-processes",
+      "to": "thermosphere-drag",
+      "type": "prerequisite",
+      "reason": "密度与弹道参数的不确定性需区分偏差、随机变化和相关性。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "orbit-data-messages",
+      "type": "prerequisite",
+      "reason": "消息中的参考系和时间标签决定状态数值的含义。"
+    },
+    {
+      "from": "orbit-propagation",
+      "to": "orbit-data-messages",
+      "type": "prerequisite",
+      "reason": "区分星历插值、平均根数理论与动力学传播。"
+    },
+    {
+      "from": "data-provenance",
+      "to": "orbit-data-messages",
+      "type": "prerequisite",
+      "reason": "交换文件需保留生成者、版本、哈希和有效区间。"
+    },
+    {
+      "from": "orbit-propagation",
+      "to": "eclipse-illumination",
+      "type": "prerequisite",
+      "reason": "轨道状态时间线提供遮挡几何。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "eclipse-illumination",
+      "type": "prerequisite",
+      "reason": "太阳、遮挡体和航天器位置必须处于一致历元与参考系。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "eclipse-illumination",
+      "type": "prerequisite",
+      "reason": "积分步长、事件搜索步长和求根容差需要分别控制。"
+    },
+    {
+      "from": "thermal-control",
+      "to": "radiative-view-factors",
+      "type": "prerequisite",
+      "reason": "辐射度计算产生的表面功率要回到热平衡方程。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "radiative-view-factors",
+      "type": "prerequisite",
+      "reason": "多表面反射通过矩阵方程求解。"
+    },
+    {
+      "from": "probability-processes",
+      "to": "fault-tree-reliability",
+      "type": "prerequisite",
+      "reason": "逻辑门概率需要条件概率、独立性和区间估计。"
+    },
+    {
+      "from": "systems-engineering",
+      "to": "fault-tree-reliability",
+      "type": "prerequisite",
+      "reason": "顶事件必须来自明确的功能、任务阶段和系统边界。"
+    },
+    {
+      "from": "spherical-harmonic-gravity",
+      "to": "orbit-determination",
+      "type": "coupling",
+      "reason": "重力模型差异影响定轨残差与状态预测。"
+    },
+    {
+      "from": "thermosphere-drag",
+      "to": "orbit-determination",
+      "type": "coupling",
+      "reason": "轨道残差同时包含密度和弹道参数误差，联合估计需检查可辨识性。"
+    },
+    {
+      "from": "thermosphere-drag",
+      "to": "space-environment",
+      "type": "coupling",
+      "reason": "空间天气驱动热层密度变化，同时影响其他环境模型。"
+    },
+    {
+      "from": "orbit-data-messages",
+      "to": "ground-operations",
+      "type": "coupling",
+      "reason": "地面计划与任务交换依赖版本明确、有效区间清楚的轨道资产。"
+    },
+    {
+      "from": "eclipse-illumination",
+      "to": "power-systems",
+      "type": "coupling",
+      "reason": "照明比例与阵列指向共同决定充电输入及最长放电时段。"
+    },
+    {
+      "from": "eclipse-illumination",
+      "to": "thermal-control",
+      "type": "coupling",
+      "reason": "入食和出食改变吸收太阳热流，触发冷端与热端暂态。"
+    },
+    {
+      "from": "radiative-view-factors",
+      "to": "geometry-reconstruction",
+      "type": "coupling",
+      "reason": "热交换需要面朝向、遮挡和开口信息，外观几何并不自动满足热模型要求。"
+    },
+    {
+      "from": "fault-tree-reliability",
+      "to": "fdir",
+      "type": "coupling",
+      "reason": "故障树提供关键组合，FDIR 试验返回检测、切换与恢复条件。"
+    },
+    {
+      "from": "fault-tree-reliability",
+      "to": "power-systems",
+      "type": "coupling",
+      "reason": "共享电源可能同时失效多个冗余通道，需要显式建模依赖。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "spherical-harmonic-gravity",
+      "type": "validation",
+      "reason": "收紧积分误差后才能识别阶次截断带来的轨道差异。"
+    },
+    {
+      "from": "observability",
+      "to": "thermosphere-drag",
+      "type": "validation",
+      "reason": "辨识密度比例和弹道参数前检查数据是否足以区分二者。"
+    },
+    {
+      "from": "state-estimation",
+      "to": "orbit-data-messages",
+      "type": "validation",
+      "reason": "协方差的来源、状态顺序和变换可由估计接口交叉核验。"
+    },
+    {
+      "from": "mesh-validity",
+      "to": "radiative-view-factors",
+      "type": "validation",
+      "reason": "法向、重叠面和几何开口会破坏视因子及能量闭合。"
+    },
+    {
+      "from": "uncertainty-quantification",
+      "to": "fault-tree-reliability",
+      "type": "validation",
+      "reason": "基础事件参数区间与抽样误差必须传播到顶事件概率。"
     }
   ],
   "paths": [
@@ -1705,6 +1921,68 @@
         "finite-elements",
         "verification-uncertainty",
         "mesh-validity"
+      ]
+    },
+    {
+      "id": "gravity-drag-models",
+      "title": "低轨环境与力模型验证",
+      "description": "从状态约定与摄动传播进入球谐系数和热层密度，比较模型截断、环境不确定性与定轨误差。",
+      "nodeIds": [
+        "vectors-matrices",
+        "differential-equations",
+        "numerical-integration",
+        "frames-and-time",
+        "orbit-propagation",
+        "perturbed-orbits",
+        "probability-processes",
+        "spherical-harmonic-gravity",
+        "thermosphere-drag",
+        "orbit-determination"
+      ]
+    },
+    {
+      "id": "illumination-thermal-chain",
+      "title": "日照、能源与热交换",
+      "description": "先求轨道食事件，再处理电源输入和节点热平衡，最后加入表面遮挡与多次反射。",
+      "nodeIds": [
+        "vectors-matrices",
+        "differential-equations",
+        "numerical-integration",
+        "frames-and-time",
+        "orbit-propagation",
+        "mission-architecture",
+        "eclipse-illumination",
+        "power-systems",
+        "thermal-control",
+        "radiative-view-factors"
+      ]
+    },
+    {
+      "id": "orbit-data-contracts",
+      "title": "轨道文件接入与语义验证",
+      "description": "明确参考系、时间和来源，再学习不同消息类型及分段星历检查，连接地面任务数据交换。",
+      "nodeIds": [
+        "vectors-matrices",
+        "differential-equations",
+        "numerical-integration",
+        "frames-and-time",
+        "orbit-propagation",
+        "data-provenance",
+        "orbit-data-messages",
+        "ground-operations"
+      ]
+    },
+    {
+      "id": "redundancy-reliability",
+      "title": "冗余架构与故障组合",
+      "description": "从任务功能和条件概率建立故障树，检查共享资源与共因，再把参数不确定性带入方案比较。",
+      "nodeIds": [
+        "vectors-matrices",
+        "probability-processes",
+        "systems-engineering",
+        "mission-architecture",
+        "fault-tree-reliability",
+        "uncertainty-quantification"
       ]
     }
   ]

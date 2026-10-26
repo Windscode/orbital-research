@@ -4047,5 +4047,219 @@
       "调用算法是否允许开放曲面或退化输入？",
       "选用的软件包许可是否适合当前分发方式？"
     ]
+  },
+  {
+    "id": "icgem",
+    "title": "ICGEM · 全球重力场模型服务",
+    "category": "数据与环境",
+    "kind": "重力系数与计算服务",
+    "summary": "GFZ 托管的全球重力模型目录，提供静态、时变及部分其他天体的球谐系数和模型说明。",
+    "details": "适合为轨道传播选择、下载和归档重力系数，也适合比较不同模型的频谱与重力函数。ICGEM 是模型汇集与服务平台，模型由不同机构提交；它不是一种统一重力场，也不直接提供原始重力观测。将系数接入传播器时必须同时读取 GM、参考半径、归一化、潮汐系统和时间有效性。其在线计算的地球表面重力函数不能不经定义核对就当作轨道加速度。",
+    "tags": [
+      "球谐引力",
+      "GFZ",
+      "GRACE",
+      "重力系数",
+      "模型溯源"
+    ],
+    "language": "数据文件 / Web",
+    "license": "按具体模型的数据许可与引用要求执行；核查模型页、DOI 元数据和系数文件头，不将整个目录统一标为 CC0。",
+    "accessModel": "data",
+    "url": "https://icgem.gfz.de/",
+    "docsUrl": "https://icgem.gfz.de/faq",
+    "sourceTitle": "GFZ ICGEM 官方 FAQ、模型下载及元数据说明",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "地球或其他天体重力模型筛选",
+      "球谐系数归档和阶次对照",
+      "传播器引力资产接入"
+    ],
+    "inputs": "模型名称、适用天体、目标历元、最大阶次；在线计算另需位置或区域及目标重力函数。",
+    "outputs": "模型系数文件、模型来源与引用信息；按服务配置生成的网格、点值或可视化。",
+    "limitations": "同名下载服务不保证不同模型具有相同单位、时间变化或潮汐约定；时变模型和高阶系数需对应任务时间与高度。本站未下载全目录，也未运行其在线计算。",
+    "usageEvidence": [
+      {
+        "organization": "GFZ / ICGEM",
+        "context": "官方说明确认平台负责收集、长期归档和发布多机构重力模型，并提供计算服务。这是机构托管的数据基础设施证据，不是某颗卫星采用某一模型的飞行证明。",
+        "sourceUrl": "https://icgem.gfz.de/faq",
+        "evidenceType": "机构数据服务；非具体任务采用证据"
+      }
+    ],
+    "alternatives": [
+      "shtools",
+      "nasa-pds"
+    ],
+    "starterWorkflow": [
+      "从模型目录选择一个静态模型，阅读其 DOI 和许可说明。",
+      "归档 gfc 文件及头部元数据，记录哈希而非只保存下载链接。",
+      "先在本地引力实现中只启用中心项与 C₂₀，再逐步提高阶次。",
+      "比较不同阶次的轨道误差，并保存模型来源与输入约定。"
+    ],
+    "starterWorkflowStatus": "基于官方文档的复现建议；本站未运行 ICGEM 计算服务。",
+    "selectionQuestions": [
+      "研究需要静态还是时变系数，历元是否在有效范围？",
+      "传播器是否支持该模型的归一化与潮汐约定？",
+      "模型许可、引用和再分发要求是否已在资产记录中保存？"
+    ]
+  },
+  {
+    "id": "shtools",
+    "title": "SHTOOLS / pyshtools",
+    "category": "数据与环境",
+    "kind": "球谐与行星场计算库",
+    "summary": "用于球谐变换、谱分析、重力与磁场计算的 Fortran/Python 工具，适合独立核验球谐系数的数值解释。",
+    "details": "SHTOOLS 提供球谐系数、网格、旋转及重力磁场例程，可作为轨道力模型的独立数值对照或地球与行星数据处理工具。它不负责完整航天器任务传播。调用具体接口时需核对归一化、相位、纬度定义、角度单位和输出基底；例如 MakeGravGridPoint 返回球坐标分量，指定 omega 时会包含离心项。把该输出用于惯性轨道传播前必须明确变换和力的定义。",
+    "tags": [
+      "球谐",
+      "pyshtools",
+      "重力场",
+      "频谱分析",
+      "独立验证"
+    ],
+    "language": "Fortran / Python / C 接口",
+    "license": "BSD-3-Clause；随软件获取的数据集仍需核查各自许可和引用。",
+    "accessModel": "open",
+    "url": "https://github.com/SHTOOLS/SHTOOLS",
+    "docsUrl": "https://shtools.github.io/SHTOOLS/",
+    "sourceTitle": "SHTOOLS 官方仓库、许可证与重力例程说明",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "球谐归一化与系数转换",
+      "单点引力和重力梯度计算",
+      "行星地形及场数据的频谱分析"
+    ],
+    "inputs": "球谐系数或球面网格、归一化与相位约定、最大阶次、GM、参考半径和计算点。",
+    "outputs": "球谐展开、网格、功率谱、引力向量或梯度；具体单位和分量定义以各例程文档为准。",
+    "limitations": "不是轨道传播器或重力模型精度认证工具；有些接口的输出包含可选离心项。未核查独立飞行任务采用该软件的直接证据，不能由库功能推断商业部署。",
+    "usageEvidence": [
+      {
+        "organization": "SHTOOLS 项目与方法论文作者",
+        "context": "项目官方文档提供球谐归一化转换、全球重力/磁场处理和研究级数据读取，并引用 Wieczorek 与 Meschede 的方法论文。这是项目作者的功能与方法证据，不代表某个商业航天任务已采用。",
+        "evidenceType": "项目官方文档与作者方法论文",
+        "sourceUrl": "https://shtools.github.io/SHTOOLS/"
+      }
+    ],
+    "alternatives": [
+      "tudat",
+      "orekit",
+      "icgem"
+    ],
+    "starterWorkflow": [
+      "固定软件版本并阅读具体重力接口的参数、返回基底和许可证。",
+      "构造仅 C₀₀=1 的合成系数，关闭离心项，核验中心引力。",
+      "加入与所用归一化一致的 C₂₀，和 J₂ 解析式比较。",
+      "读取公开模型，检查单位、角度及分量变换，再与传播器同一点加速度对照。"
+    ],
+    "starterWorkflowStatus": "基于官方文档的研究流程；本站未安装或运行 SHTOOLS。",
+    "selectionQuestions": [
+      "需要球谐数据处理还是完整轨道传播？",
+      "要比较的是纯引力、含离心项的重力，还是重力异常？",
+      "两套实现是否真正使用了同一系数、归一化与输出基底？"
+    ]
+  },
+  {
+    "id": "pymsis",
+    "title": "pymsis / NRLMSIS",
+    "category": "数据与环境",
+    "kind": "中性大气模型 Python 接口",
+    "summary": "对 NRLMSISE-00、MSIS 2.0/2.1 的 Python 包装，用于热层密度、组分与空间天气驱动的研究。",
+    "details": "pymsis 由科罗拉多大学 SWx TREC 项目发布，提供 NRLMSIS 模型的批量 Python 调用和示例，并可获取所需 F10.7/ap 驱动。复现时应固定软件、底层模型、活动选项与实际指数数组；自动联网获取输入会使不同日期的结果不完全相同。它输出经验模型结果，不是密度观测，也不是完整的轨道阻力传播器。包装层与底层模型具有不同许可，不能把整个计算链统称 MIT。",
+    "tags": [
+      "热层",
+      "NRLMSIS",
+      "空间天气",
+      "轨道阻力",
+      "密度不确定性"
+    ],
+    "language": "Python / Fortran",
+    "license": "pymsis 包装层为 MIT；仓库链接的 MSIS2_LICENSE 仅授予学术、非商业用途并含修改限制，商业等其他使用须联系 NRL。MSISE-00 与各模型版本另行核查，勿沿用包装层许可。",
+    "accessModel": "restricted",
+    "url": "https://github.com/SWxTREC/pymsis",
+    "docsUrl": "https://swxtrec.github.io/pymsis/",
+    "sourceTitle": "SWx TREC 官方仓库、文档与 MSIS2_LICENSE",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "空间天气驱动下的密度时间线",
+      "低轨阻力环境输入",
+      "模型版本与参数敏感性研究"
+    ],
+    "inputs": "日期时间、大地经纬度和高度、F10.7 日值及平均值、Ap/ap 历史和模型活动选项；具体顺序与单位按版本接口核对。",
+    "outputs": "总质量密度、组分数密度和温度等模型量；Python 示例的总质量密度为 kg/m³，不与原 Fortran 或其他接口的单位作无条件等同。",
+    "limitations": "经验模型不能保证单次风暴或短时局地密度真值；自动指数下载、底层代码获取和版本差异影响复现。底层 MSIS2 许可限制独立于 MIT 包装层。",
+    "usageEvidence": [
+      {
+        "organization": "University of Colorado SWx TREC",
+        "context": "官方文档明确说明其在线 MSIS 查看器使用 pymsis，通过云端函数展示模型数据。这是作者提供的实际演示应用说明，不代表飞行定轨或商业运营部署。",
+        "sourceUrl": "https://swxtrec.github.io/pymsis/",
+        "evidenceType": "项目作者自述的在线演示；非飞行应用证据"
+      }
+    ],
+    "alternatives": [],
+    "starterWorkflow": [
+      "分别核查 Python 包装层与选用 MSIS 版本的许可及安装依赖。",
+      "固定一个时段、位置和高度，并归档全部实际 F10.7/ap 输入。",
+      "先只导出密度与温度，检查数组形状、缺失值和单位，再接入阻力公式。",
+      "保持轨道、面积和质量相同，比较平静与扰动输入，并标明结果是模型输出。"
+    ],
+    "starterWorkflowStatus": "按官方示例设计的复现建议；本站未安装底层 MSIS 或运行 pymsis。",
+    "selectionQuestions": [
+      "用途是否符合所选底层模型许可，而不仅是 Python 包许可？",
+      "需要历史回放还是未来预测，驱动指数来自哪个版本？",
+      "研究是否有独立轨道或密度资料用于区分环境误差和弹道参数误差？"
+    ]
+  },
+  {
+    "id": "iau-sofa",
+    "title": "IAU SOFA · 基础天文标准算法",
+    "category": "轨道与任务",
+    "kind": "时间与参考系标准库",
+    "summary": "IAU 维护的天文算法集合，提供时间尺度、地球姿态、星表到观测方向及向量矩阵工具。",
+    "details": "SOFA 提供 Fortran 77 和 ANSI C 实现及配套 cookbook，适合为时间转换、天球与地固变换建立明确的标准算法参照。它并不自动提供任务所需的实时 EOP、精密行星星历或完整航天器轨道动力学。应按接口区分 UTC、UT1、TT 等尺度，显式提供地球姿态观测，并验证日期拆分和单位。使用其标准实现也不能补偿输入时间、观测站或坐标约定错误。",
+    "tags": [
+      "IAU",
+      "SOFA",
+      "时间尺度",
+      "地球姿态",
+      "参考系"
+    ],
+    "language": "ANSI C / Fortran 77",
+    "license": "SOFA 自定义许可证：允许免费用于商业等用途，衍生代码需标明来源与改动并遵守命名等条件；不是 MIT 或 BSD。DAT 例程另有用户替换例外。",
+    "accessModel": "source",
+    "url": "https://www.iausofa.org/",
+    "docsUrl": "https://www.iausofa.org/cookbooks",
+    "sourceTitle": "IAU SOFA 官方主页、cookbook 与 Terms and Conditions",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "时间尺度与历法转换",
+      "天球和地固参考系转换",
+      "天文方向和标准算法交叉验证"
+    ],
+    "inputs": "按例程定义的日期、时间尺度、EOP、观测站位置、天体或星表参数；各角度、距离与速度单位必须逐项核对。",
+    "outputs": "时间转换结果、地球姿态旋转矩阵、天文方向或向量运算结果；不等于飞行器传播轨迹。",
+    "limitations": "库不自动保证外部 EOP、闰秒表和星历始终最新；标准算法自洽并非任务数据精度认证。本站未核查某一商业航天任务直接使用 SOFA 的部署证据。",
+    "usageEvidence": [
+      {
+        "organization": "IAU SOFA Board / SOFA Center",
+        "context": "官方主页说明其职责是维护基础天文标准模型的算法与过程，并与 IERS 协作。这证明标准算法维护来源，不作为任何特定航天器采用证明。",
+        "sourceUrl": "https://www.iausofa.org/",
+        "evidenceType": "标准算法维护机构；非任务采用证据"
+      }
+    ],
+    "alternatives": [
+      "spice",
+      "orekit"
+    ],
+    "starterWorkflow": [
+      "固定官方软件版本、许可与测试程序，阅读时间和地球姿态 cookbook。",
+      "先复现文档中的输入输出示例，再建立本站匀速地球静止点解析基准。",
+      "接入有版本和覆盖范围的 EOP 与闰秒资料，显式处理超出覆盖的请求。",
+      "在一致尺度和约定下，与另一实现比较位置和速度，而非只比较旋转矩阵。"
+    ],
+    "starterWorkflowStatus": "基于官方 cookbook 的建议；本站未编译或运行 SOFA。",
+    "selectionQuestions": [
+      "需要天文标准转换还是完整任务星历系统？",
+      "UT1−UTC、极移与闰秒来自何处，是否覆盖目标日期？",
+      "衍生代码命名与来源声明是否按 SOFA 许可保存？"
+    ]
   }
 ]

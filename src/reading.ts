@@ -35,10 +35,11 @@ export function parseResearchHash(hash:string){
   const page=path.split('/')[0]||'home',read=new URLSearchParams(query).get('read')||'';
   return {page,read};
 }
-export function researchHash(page:string,detail:Detail|null){
-  if(!detail)return `#/${page}`;
-  const id=detail.kind==='about'?'about':`${detail.kind}/${detail.item.id}`;
-  return `#/${page}?${new URLSearchParams({read:id}).toString()}`;
+export function researchHash(page:string,detail:Detail|null,context=''){
+  const params=new URLSearchParams(parseResearchHash(context).page===page?context.split('?')[1]:'');
+  params.delete('read');
+  if(detail)params.set('read',detail.kind==='about'?'about':`${detail.kind}/${detail.item.id}`);
+  return `#/${page}${params.size?'?'+params.toString():''}`;
 }
 export function findResearchDetail(hash:string,data:{lessons:Lesson[];resources:Resource[];vehicles:Vehicle[];briefings:Briefing[]}):Detail|null{
   const {read}=parseResearchHash(hash);if(read==='about')return {kind:'about'};

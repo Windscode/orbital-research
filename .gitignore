@@ -15,3 +15,4 @@ docs/screenshots/*
 .DS_Store
 
 !docs/screenshots/v9-*.jpg
+!docs/screenshots/v10-*.jpg

@@ -16,6 +16,9 @@ for(const s of sources){
 }
 assert.equal(new Set(sources.map(s=>s.type)).size,5);assert.ok(sources.length>=47);
 assert.equal(match('https://www.nasa.gov/missions/artemis/example/')?.id,'nasa-news');
+assert.equal(match('https://www.nasa.gov/nesc/knowledge-products/nesc-technical-bulletins/')?.id,'nasa-nesc');
+assert.equal(match('https://www.nasa.gov/smallsat-institute/sst-soa/thermal-control/')?.id,'nasa-smallsat-soa');
+assert.equal(match('https://www.nasa.gov/nesc-example/')?.id,'nasa-news');
 assert.equal(match('https://science.nasa.gov/missions/swift/example/')?.id,'nasa-science');
 assert.equal(match('https://www.jpl.nasa.gov/news/example/')?.id,'jpl-news');
 assert.equal(match('https://nasa.gov.example.org/news/'),undefined);assert.equal(match('not a URL'),undefined);

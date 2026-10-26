@@ -4,7 +4,7 @@ import {gzipSync} from 'node:zlib';
 const base=new URL('../dist/',import.meta.url),manifest=JSON.parse(await readFile(new URL('.vite/manifest.json',base),'utf8'));
 const entry=Object.keys(manifest).find(k=>manifest[k].isEntry);assert.ok(entry);
 const initial=new Set();function visit(k){if(initial.has(k))return;initial.add(k);for(const child of manifest[k].imports||[])visit(child);}visit(entry);
-for(const route of ['src/catalogData.ts','src/KnowledgeMap.tsx','src/VehicleAtlas.tsx','src/ResearchHub.tsx','src/OrbitLab.tsx','src/IntelligenceHub.tsx','src/VehicleExplorer.tsx','src/ProjectShowcase.tsx']){
+for(const route of ['src/catalogData.ts','src/KnowledgeMap.tsx','src/VehicleAtlas.tsx','src/ResearchHub.tsx','src/ResearchDossiers.tsx','src/OrbitLab.tsx','src/IntelligenceHub.tsx','src/VehicleExplorer.tsx','src/ProjectShowcase.tsx']){
  // Rollup may emit a shared dynamic facade without its original source key.
  const name=route.split('/').at(-1).replace(/\.tsx?$/,''),matches=Object.keys(manifest).filter(k=>k===route||(manifest[k].name===name&&manifest[k].isDynamicEntry));
  assert.equal(matches.length,1,`${route} must resolve to one deferred entry`);const key=matches[0];

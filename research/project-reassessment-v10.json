@@ -1,0 +1,1034 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-26",
+  "title": "AerospaceSimUE：从实现接口到实际消费者",
+  "scope": {
+    "mode": "read-only",
+    "sourceTreeHead": "2c390170",
+    "latestStatusRecordBase": "558efeaa + retained working tree",
+    "latestStatusSections": "1.317–1.320",
+    "statement": "本轮只读网站现有项目资料、UE 工程当前台账、活动路线、指定实现与部分测试断言；没有修改 UE 工程，没有运行编译、测试或新仿真。源码 HEAD 是读取时的身份，不是历史验证输入身份。新增案例中的通过记录均转述有日期的项目台账，未独立重读这些新记录的原始运行日志。",
+    "publicPathPolicy": "实现位置均相对 UE5 工作区，仅用于说明与本地核查；不公开私人绝对路径、不复制源代码、不分发大型资产。",
+    "websiteFilesReviewed": [
+      "research/project-deep-dive.json",
+      "research/project-deep-dive-sources.json",
+      "src/ProjectShowcase.tsx"
+    ],
+    "testsExecuted": false,
+    "buildsExecuted": false,
+    "sourceProjectModified": false
+  },
+  "findings": [
+    {
+      "id": "baseline-drift",
+      "severity": "high",
+      "title": "当前概览仍使用旧基线",
+      "observation": "概览与 current-status 仍写 90fa6ebd，但当前台账已经更新到 §§1.317–1.320、558efeaa 加保留工作树；只读时源树 HEAD 为 2c390170。",
+      "impact": "读者无法区分最新源码、历史记录以及测试真正使用的工作树，容易把同日不同阶段合并成一次验证。",
+      "recommendation": "概览显示审查日期、读取时 HEAD、最新台账输入身份；每条历史验证保留其自己的 sourceIdentity，不用新 HEAD 覆盖旧记录。",
+      "evidenceIds": [
+        "current-status",
+        "thermal-interface-history",
+        "coulomb-field-history"
+      ]
+    },
+    {
+      "id": "thermal-interface-stale",
+      "severity": "high",
+      "title": "跨域换热实现缺口已部分关闭",
+      "observation": "当前代码已有显式电芯—板界面、逐点导热积分和两域等量反向热量；网站仍把跨热域交换整体列为缺失。",
+      "impact": "实际进展被遗漏，同时不能简单改成真实安装电热已完成。",
+      "recommendation": "将条件接口实现、受控短区间验证、真实安装本构与 28 V 供回缺口分别呈现；同域表面互照仍保留原适用范围。",
+      "evidenceIds": [
+        "support-owner",
+        "thermal-field",
+        "thermal-interface-code",
+        "thermal-interface-history"
+      ]
+    },
+    {
+      "id": "contact-scope-stale",
+      "severity": "high",
+      "title": "旧无摩擦记录不能代表当前全部接触能力",
+      "observation": "§1.313 无摩擦动态验证是正确历史记录；新增 §1.320 和 spatial_coulomb_contact.cpp 已实现完整材料场的库仑粘滑。现页面以无摩擦描述当前整个接触主题，过时。",
+      "impact": "直接改写旧验证范围又会把当时未测的摩擦混入历史结果。",
+      "recommendation": "保留旧验证卡，新增摩擦实现与独立历史卡；明确只有有界消费者，尚无真实发射台共同历史、摩擦热反馈或金属塑性接触资格。",
+      "evidenceIds": [
+        "contact-history",
+        "coulomb-field-code",
+        "coulomb-field-history"
+      ]
+    },
+    {
+      "id": "ground-count-and-ownership",
+      "severity": "medium",
+      "title": "32 件夹持材料与 33 件设施材料应同时保留",
+      "observation": "原 32 件支座/夹爪/叉座/销轴仍成立；facility v5 又加入 1 件完整参考混凝土平台。当前设施总数为 33，旧 2,123,008 四面体数字仅对应 32 件夹持材料。",
+      "impact": "只把数字 32 替换成 33 会错误沿用旧网格规模和历史身份。",
+      "recommendation": "总览显示 33 件地面材料，注明 32 件夹持组件 + 1 件平台；旧历史记录保持 32。地面质量、飞行器质量和参考混凝土材料来源分开解释。",
+      "evidenceIds": [
+        "ground-history",
+        "foundation-code",
+        "foundation-history"
+      ]
+    },
+    {
+      "id": "missing-input-integrity-case",
+      "severity": "medium",
+      "title": "缺少能看懂数据如何影响结果的案例",
+      "observation": "推进章节描述模型能力，但没有说明选中 CSV 中一段坏管径曾被跳过、为何剩余网络仍可能看起来有效，以及当前如何整网拒绝。",
+      "impact": "读者看不到资料、工程输入、求解器和消费者之间的具体因果关系。",
+      "recommendation": "加入两段管路、一个坏字段的流程案例，展示有效输入路径与拒绝路径；不把输入完整性修复包装成双介质高保真流动。",
+      "evidenceIds": [
+        "propulsion-model",
+        "feed-geometry-code",
+        "feed-geometry-history"
+      ]
+    },
+    {
+      "id": "observable-depth",
+      "severity": "medium",
+      "title": "观测量需要名称、单位与解释",
+      "observation": "当前案例有输入流程和笼统观测量，但缺少热量符号、逐点量与总量、摩擦功与耗散、失败后状态身份等可检查含义。",
+      "impact": "读者仍难以理解一次候选到底输出什么、如何判断输出有意义。",
+      "recommendation": "每个案例并列输入、处理步骤、输出字段、已有证据和下一验证；小图只解释数据流，数值图必须注明历史数据或教学示意。",
+      "evidenceIds": [
+        "thermal-interface-code",
+        "coulomb-field-code",
+        "feed-geometry-code"
+      ]
+    },
+    {
+      "id": "verification-levels",
+      "severity": "medium",
+      "title": "证据分级已有基础，仍缺消费者层级",
+      "observation": "ProjectShowcase 已区分源码实现、已读测试、历史记录和计划，这是正确的；但局部算法、原消费者、真实安装、完整任务之间的范围没有形成清晰横向矩阵。",
+      "impact": "低误差制造解、原消费者导入成功与真实任务有效性容易被读者混为一谈。",
+      "recommendation": "新增验证矩阵，将实现检查、参考解比较、实际输入接入、真实边界资格、连续任务列为不同层次。避免完成百分比和笼统‘全绿’。",
+      "evidenceIds": [
+        "current-status",
+        "current-test-policy",
+        "coulomb-field-history",
+        "foundation-history"
+      ]
+    }
+  ],
+  "caseStudies": [
+    {
+      "id": "cell-board-heat-exchange",
+      "title": "电芯—电路板的界面换热",
+      "question": "两个部件各自保存完整温场时，怎样传递同一份界面热量，并在求解失败后从原状态重试？",
+      "status": "implemented",
+      "verificationStatus": "recorded",
+      "summary": "原 Support 一源一板路径已有条件换热接口。热量由原表面对应点进入两侧完整有限元场，和电路、电芯库存、器件状态一起组成候选；真实安装面的几何与接触导热输入仍未齐。",
+      "inputs": [
+        {
+          "name": "共同初态",
+          "detail": "电芯完整电化学状态、板电路存储与控制器状态、两侧全部温度自由度及补偿低位，时间身份必须一致。"
+        },
+        {
+          "name": "界面来源",
+          "detail": "interface_id、producer_source_id、geometry_state_id，以及原 H1 网格两侧对应表面 trace。"
+        },
+        {
+          "name": "逐点导热",
+          "detail": "每个对应点提供 Gq = ∫h dA，单位 W/K；当前窗口内显式给定，不能从整个零件总热阻任意分摊。"
+        },
+        {
+          "name": "区间和预算",
+          "detail": "共同热窗口、电气细分时间、温度/电荷/器件功与逐点接口热量误差预算；边界函数按每次实际试探区间重新求值。"
+        }
+      ],
+      "steps": [
+        {
+          "title": "核对原域和原面",
+          "detail": "拒绝错域、错点数、负导热、重复接口及已另行计入同一热量的输入。"
+        },
+        {
+          "title": "求电芯子步",
+          "detail": "电芯在每个电气试探子步推进完整电化学与温场；原 Robin 边界在残量中求界面热量。"
+        },
+        {
+          "title": "给板施加反向载荷",
+          "detail": "电芯向外的逐点热量以完全相反的符号进入板原 H1 温场；接口热不再当作器件损耗加一次。"
+        },
+        {
+          "title": "比较完整候选",
+          "detail": "联合迭代同时检查两域全部温度、电路与库存、逐点热量 L1 差，以及板温度波形对热流的影响。SDIRK 中间阶段使用实际前缀积分热量。"
+        },
+        {
+          "title": "接受或重试",
+          "detail": "成功才整体替换 Support 状态；失败不返回部分温场、电荷、器件历史或接口热量，重试从同一已接受状态开始。"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "cell_to_board_heat_j",
+          "detail": "按接口保存逐点 J 数组，正号表示电芯→板；负号表示板→电芯。总量不能掩盖不同点正负热量相消。"
+        },
+        {
+          "name": "两个完整温场",
+          "detail": "完整温度向量及补偿低位、各自显热增量；部件均温只能作为展示量。"
+        },
+        {
+          "name": "共同状态与拒绝原因",
+          "detail": "电芯、电路、控制器、MCU、温场的同一时刻，候选成功标记和明确失败信息。"
+        }
+      ],
+      "historicalObservations": [
+        {
+          "source": "STATUS §1.317",
+          "date": "2026-10-26",
+          "kind": "historical-status-record",
+          "detail": "OFF 准备态窗口 0.125 µs；电芯初温 299 K、板 299.5 K，两个参考点 Gq 为 0.1/0.2 W/K。记录总交换热 −1.8748678907006144e−8 J，方向与热从较热板传向较冷电芯一致。"
+        },
+        {
+          "source": "STATUS §1.317；已读 obc_mcu_validation.cpp 断言",
+          "date": "2026-10-26",
+          "kind": "historical-status-record-and-test-code",
+          "detail": "记录比较了无接口同源候选的两侧显热；第 5 次边界调用故意拒绝后，原状态保持，重试得到相同接口热。这里只读断言与台账，未执行。"
+        }
+      ],
+      "proves": [
+        "代码中存在原一源一板消费者的逐点跨域换热路径。",
+        "历史受控算例检查了两侧反向载荷、实际显热改变和失败重试，而不只检查平均温度。"
+      ],
+      "doesNotProve": [
+        "没有证明真实电芯—安装材料—电路板的表面对应、压力/间隙/温度相关导热本构。",
+        "没有证明商品电池、真实 28 V 转换/F1 供回、整板启动、120 s 或完整任务资格。",
+        "热量误差预算只约束该离散计算，不包含材料与安装参数的不确定性。"
+      ],
+      "verificationSuggestions": [
+        "把真实安装面、覆盖范围与导热参数来源接入同一接口，并列出参数适用温度和压力范围。",
+        "在固定几何/参数后分别检查热窗口和空间网格求精，逐点比较界面热量与两域能量余额。",
+        "继续保留晚期边界拒绝、重复接口、错域和零导热对照，检查完整状态身份。"
+      ],
+      "existingEvidenceIds": [
+        "support-owner",
+        "thermal-field",
+        "runtime-rollback",
+        "current-status",
+        "current-test-policy"
+      ],
+      "newEvidenceIds": [
+        "thermal-interface-code",
+        "thermal-interface-tests",
+        "thermal-interface-history"
+      ],
+      "sourceLocations": [
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_runtime.h",
+          "line": 148,
+          "symbol": "ObcCellBoardThermalInterface / ObcElectricalWindowWork"
+        },
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/assembly_power_network_runtime.cpp",
+          "line": 589,
+          "symbol": "thermal_interfaces forwarding"
+        },
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_window.cpp",
+          "line": 254,
+          "symbol": "StepObcInputProtectionWindow"
+        },
+        {
+          "path": "AerospaceSimUE/StandaloneSimCore/obc_mcu_validation.cpp",
+          "line": 2251,
+          "symbol": "Support pointwise exchange assertions"
+        }
+      ]
+    },
+    {
+      "id": "full-material-stick-slip",
+      "title": "完整材料场的接触与库仑摩擦",
+      "question": "给两个接触材料施加切向载荷，如何判断粘着、滑动或分离，并把接触功与数值误差分开？",
+      "status": "implemented",
+      "verificationStatus": "recorded",
+      "summary": "当前完整材料动态入口增加了显式库仑摩擦。每轮仍求原位移、惯性和法向接触，再更新切向力；不是在冻结场解上补一个摩擦显示值。",
+      "inputs": [
+        {
+          "name": "原材料与历史",
+          "detail": "各体完整 H1 位移/速度、密度、一致质量、弹性本构、外载和规定边界，以及同一已接受起点。"
+        },
+        {
+          "name": "接触几何",
+          "detail": "原材料面、接触积分点和最近点或法向射线投影；斜面法向力须由间隙梯度转换。"
+        },
+        {
+          "name": "显式摩擦来源",
+          "detail": "逐点系数 μ、constitutive_source_id 与当前区间身份；数值增广参数 ρt 为 N/m，不能当作实际接触弹簧刚度。"
+        },
+        {
+          "name": "停止条件",
+          "detail": "力、间隙、切向固定点残差、功缺陷和最大迭代数；系数和数值预算不能从钢材名称推断。"
+        }
+      ],
+      "steps": [
+        {
+          "title": "求原动态候选",
+          "detail": "在原完整材料、原一致质量和法向约束下求本轮位移/速度；所有轮次都从同一输入历史定义物理区间。"
+        },
+        {
+          "title": "追踪两侧位移增量",
+          "detail": "TraceField 将两体完整场变化带到对应接触点，计算切向相对增量 s。"
+        },
+        {
+          "title": "返回库仑允许域",
+          "detail": "将切向试探乘子投影到 |λt|≤μN 的圆盘；粘着和滑动使用当前同一系数，分离时清除切向力。"
+        },
+        {
+          "title": "反投影回全部自由度",
+          "detail": "ProjectForces 用原迹的转置把等量反向点力送回两侧完整材料；重新求解直至全部预算满足。"
+        },
+        {
+          "title": "分开核对功与耗散",
+          "detail": "保留节点力接触功 Wt、D=ΣμN|s|、有符号 Wt+D 和逐点缺陷 L1；失败不发布材料或接口前缀。"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "逐点接触状态",
+          "detail": "法向乘子、切向力、相对切向增量、摩擦极限及分离状态。"
+        },
+        {
+          "name": "实际场响应",
+          "detail": "两体全部位移/速度、最终实际载荷对应反力、力残差以及线/角冲量残差。"
+        },
+        {
+          "name": "能量核查",
+          "detail": "Wt、D、Wt+D 与 L1 缺陷分别保存；当前没有自动将 D 或数值误差写进温场。"
+        }
+      ],
+      "historicalObservations": [
+        {
+          "source": "STATUS §1.320",
+          "date": "2026-10-26",
+          "kind": "historical-status-record",
+          "detail": "P1/P2、每体 6/48 四面体、10/5 ms 的受控案例包含单向/斜向滑移、自由切向粘着、两种投影、分离及下一完整区间续算。"
+        },
+        {
+          "source": "STATUS §1.320",
+          "date": "2026-10-26",
+          "kind": "historical-status-record",
+          "detail": "制造解参考采用独立有限应变公式和形函数积分；同源 μ=0 对照出现真实材料运动。台账保留首次参照几何错误、搜索预算调整及 UE 变量遮蔽失败，未宣称全 UE 套件通过。"
+        }
+      ],
+      "proves": [
+        "代码的摩擦会回到同一完整材料动力学求解，不只是后处理。",
+        "历史制造解与零摩擦对照支持受控条件下粘滑、分离、反向续算和力/功传递。"
+      ],
+      "doesNotProve": [
+        "不是任意非仿射、大滑移、接触边缘的网格收敛证明。",
+        "实际 LaunchConstraintRuntime 尚未持有共同场历史，真实锚固、预紧、驱动和安装摩擦输入仍缺。",
+        "不含磨损、润滑、速率/温度相关摩擦、实物标定、有限应变金属塑性或接触热反馈。",
+        "参考 COMSOL 理论不等于和 COMSOL 运行结果对照，也不代表相同乘子离散。"
+      ],
+      "verificationSuggestions": [
+        "下一步优先接入实际支座/夹持件、真实连接边界和摩擦参数来源，避免继续以独立小立方体数量代替消费者进展。",
+        "对同一实际安装同时检查空间网格、接触求积、时间步与大滑移几何搜索的独立影响。",
+        "定义摩擦热分配与接触导热后再进入共同热候选，不能把数值残差直接当热源。"
+      ],
+      "existingEvidenceIds": [
+        "contact-history",
+        "ground-history",
+        "current-status"
+      ],
+      "newEvidenceIds": [
+        "coulomb-field-code",
+        "coulomb-field-history"
+      ],
+      "sourceLocations": [
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/structures/spatial_hyperelastic_solid.h",
+          "line": 162,
+          "symbol": "SpatialCoulombFrictionInput / SpatialCoulombIterationControl"
+        },
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/structures/spatial_coulomb_contact.cpp",
+          "line": 42,
+          "symbol": "BuildCoulombContactDynamicCandidate"
+        },
+        {
+          "path": "docs/execution/STATUS.md",
+          "line": 23521,
+          "symbol": "§1.320"
+        }
+      ]
+    },
+    {
+      "id": "feed-data-to-propulsion",
+      "title": "供液输入检查与整网恢复",
+      "question": "如果选中 CSV 的第二段管路非法，推进消费者会收到缺一段但看似有效的网络，还是明确拒绝？",
+      "status": "implemented",
+      "verificationStatus": "recorded",
+      "summary": "当前入口不再静默删段、清零负参数或四舍五入并联数。任一选中非法行整体拒绝，并返回文件、行号和字段；原有效输入仍走同一压降与推进消费路径。",
+      "inputs": [
+        {
+          "name": "选中资产 CSV",
+          "detail": "管长 m、内径 m、粗糙度 m、局部损失系数 K、正整数并联数和启用标记；未选中资产不参与该次解析。"
+        },
+        {
+          "name": "数值语义",
+          "detail": "已给数值必须完整解析、有限并符合范围；D>0，长度/粗糙度/K≥0。零长度且 K>0 的局部阻力件可合法存在。"
+        },
+        {
+          "name": "流动输入",
+          "detail": "消费者给定总质量流量 kg/s、密度 kg/m³、动力黏度 Pa·s 和角色筛选；模型为管段几何压降近似。"
+        }
+      ],
+      "steps": [
+        {
+          "title": "逐行检查选中资产",
+          "detail": "完整解析数值与启用值；合法前缀后即使出现停用但非法的选中行，也不能返回部分网络。"
+        },
+        {
+          "title": "明确拒绝错误",
+          "detail": "错误形如 FEED_NETWORK_GEOMETRY_INVALID:<file>:<line>:<field>；网站演示使用虚构文件名，不展示本地绝对路径。"
+        },
+        {
+          "title": "计算每通道速度",
+          "detail": "总质量流量按并联数分配，由截面积和密度求速度，再求 Re。"
+        },
+        {
+          "title": "累积沿程与局部损失",
+          "detail": "低 Re 分支使用等价 Hagen–Poiseuille 形式，保留现有高 Re 关联与过渡阈值；任一活动段数值失败使完整串联结果失效。"
+        },
+        {
+          "title": "传入原推进消费者",
+          "detail": "同一有效网络参与供给压差和推进候选；拒绝发生在候选前，不补一个零压降替代连接。"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "几何有效性或具名错误",
+          "detail": "有效网络含完整选中段；无文件/无匹配的既有 optional 行为仍保留，不能宣称所有缺省字段都必拒绝。"
+        },
+        {
+          "name": "pressure_drop_pa",
+          "detail": "选中角色活动段的串联压降 Pa；并非空间压力场。"
+        },
+        {
+          "name": "核查摘要",
+          "detail": "活动段数、总长度、最小内径、最大速度/Re/摩擦因子；这些摘要不等同于逐空间点求解。"
+        }
+      ],
+      "historicalObservations": [
+        {
+          "source": "STATUS §1.319",
+          "date": "2026-10-26",
+          "kind": "historical-status-record",
+          "detail": "两段 CSV 路径与独立 Hagen–Poiseuille/局部损失对照；原月球三级和标准/欠推力探空火箭共五套选中资产均保留六段。"
+        },
+        {
+          "source": "STATUS §1.319",
+          "date": "2026-10-26",
+          "kind": "historical-status-record",
+          "detail": "原 PoweredAscentPropulsionModule 通过同一 CSV 消费压降、分流并检查回滚；合法前缀追加坏管径整体拒绝。历史回归曾因负例摘要篡改没有真的改变字符而失败，修正负例后重跑记录通过。"
+        }
+      ],
+      "proves": [
+        "只读代码显示：选择范围内的非法参数不能静默形成缺段网络。",
+        "历史记录覆盖原有效资产、独立管段参照和原推进消费者，而不只覆盖新解析函数。"
+      ],
+      "doesNotProve": [
+        "不证明任意 CSV 方言、所有场景或完整任务输入正确；可选字段仍有明确缺省，基础分隔解析不应宣传为通用 RFC CSV 导入器。",
+        "不包含压力—流量全联立、液/气/壁瞬态、相变、空化、组分或焓输运。",
+        "几何参数通过校验不等于它们来自实测或代表某个真实型号。"
+      ],
+      "verificationSuggestions": [
+        "保留‘合法前缀+坏第二行’、非整数并联数、数字尾缀和错误布尔值等全网拒绝检查。",
+        "展示输入来源、几何模型标签与适用工况；随后用真实端口通量与完整空间状态接管原消费者。",
+        "在物理模型扩展后分别验证质量、能量、组分守恒与网格/时间误差，不以解析器通过替代物理验证。"
+      ],
+      "existingEvidenceIds": [
+        "propulsion-model",
+        "current-status"
+      ],
+      "newEvidenceIds": [
+        "feed-geometry-code",
+        "feed-geometry-history"
+      ],
+      "sourceLocations": [
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/feed_network_runtime.cpp",
+          "line": 109,
+          "symbol": "LoadFeedNetworkGeometryCsv"
+        },
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/feed_network_runtime.cpp",
+          "line": 176,
+          "symbol": "EvaluateFeedNetworkPressureDrop"
+        },
+        {
+          "path": "AerospaceSimUE/StandaloneSimCore/m4_canonical_propulsion_feed_smoke.cpp",
+          "line": 196,
+          "symbol": "FEED_NETWORK_GEOMETRY_INVALID assertion"
+        },
+        {
+          "path": "docs/execution/STATUS.md",
+          "line": 23481,
+          "symbol": "§1.319"
+        }
+      ]
+    },
+    {
+      "id": "foundation-material-consumer",
+      "title": "参考平台与地面材料归属",
+      "question": "一个画面中的平台，什么时候才拥有可计算的体积、质量和温度场，又为什么仍不能直接模拟发射释放？",
+      "status": "implemented",
+      "verificationStatus": "recorded",
+      "summary": "facility v5 将原平台碰撞盒替换为完整参考混凝土实体，和原 32 件夹持材料组成 33 件地面材料。实体与原消费者接入已有记录，真实地基、连接和动态受载仍未具备。",
+      "inputs": [
+        {
+          "name": "参考平台几何",
+          "detail": "24×24×2 m 方形外轮廓，中心半径 5 m 贯穿口；设施坐标顶面 z=0、底面 z=−2 m。这是项目显式参考设计，不是现实发射场测绘。"
+        },
+        {
+          "name": "材料范围",
+          "detail": "参考普通混凝土密度 2300 kg/m³、比热 880 J/(kg·K)、导热率 1.15 W/(m·K)，来源为 COMSOL 官方稳态示例输入；项目声明 273.15–293.15 K 常值适用域。"
+        },
+        {
+          "name": "原设施身份",
+          "detail": "pad.material_part_id 指向同一地面 owner，保留原 32 件夹持材料的网格、位姿、来源与安装变换；不增加飞行器质量。"
+        },
+        {
+          "name": "场定义",
+          "detail": "原完整材料网格、明确材料本构与热边界；不存在从碰撞盒自动推导的锚固、地基或接触约束。"
+        }
+      ],
+      "steps": [
+        {
+          "title": "生成参考实体",
+          "detail": "保留方形外边界和全厚度，圆孔以逐级求精的弦离散；从三棱柱分割成相容四面体。"
+        },
+        {
+          "title": "独立核对质量矩",
+          "detail": "用方体减贯穿圆柱的解析积分比较体积、重心和完整惯量，分辨连续几何与离散圆孔的差异。"
+        },
+        {
+          "title": "沿原包和 Bridge 导入",
+          "detail": "v5 拒绝重复 owner、缺失引用和残留另一份 primitive pad；原碰撞注册只保留一个平台。"
+        },
+        {
+          "title": "在原材料上求完整场",
+          "detail": "显式材料/边界进入原 H1 温场；原安装位姿与来源摘要保持一致，不造虚假连接边把独立材料强行粘成一体。"
+        },
+        {
+          "title": "保留动态准入缺口",
+          "detail": "完整材料仍触发实际支撑响应要求；没有锚固、预紧、驱动和共同历史时，不恢复旧理想反力。"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "设施材料与几何",
+          "detail": "33 件地面材料，其中平台历史网格为 16,640 顶点、73,728 四面体；原 32 件夹持材料的 2,123,008 四面体是另一统计口径。"
+        },
+        {
+          "name": "独立质量属性",
+          "detail": "地面体积、质心、六分量惯量与离散误差；飞行器质量/矩快照保持原归属。"
+        },
+        {
+          "name": "完整温场与拒绝信息",
+          "detail": "原平台全部温度自由度及显热增量；不完整场输入和不具备真实支撑响应的路径明确失败。"
+        }
+      ],
+      "historicalObservations": [
+        {
+          "source": "STATUS §1.318",
+          "date": "2026-10-26",
+          "kind": "historical-status-record",
+          "detail": "角向 64/128/256 求精的质量矩比较记录约四倍误差下降；最终体积相对差 1.58506e−5，完整惯量相对差 3.65425e−6。"
+        },
+        {
+          "source": "STATUS §1.318",
+          "date": "2026-10-26",
+          "kind": "historical-status-record",
+          "detail": "原 package—Bridge—实际尾段消费者读取 33 件地面材料；平台完整温场用 T(z,t)=283.15+0.2z+0.001t K 的制造解检查一次 2 s 候选。它检查完整材料和指定边界，不是地面真实受载试验。"
+        }
+      ],
+      "proves": [
+        "平台已有完整实体、材料来源与原导入/消费者路径；地面和飞行器质量归属明确。",
+        "历史解析几何比较和制造温场检查了实际平台材料的受控数值行为。"
+      ],
+      "doesNotProve": [
+        "参考混凝土参数不是实测批次，也没有据此获得 ISO 认证或混凝土瞬态试验资格。",
+        "没有钢筋、开裂、蠕变、湿度、高温火焰、锚固、地基、预紧、驱动或共同结构历史。",
+        "塔架仍保留 primitive 碰撞路径；33 件设施材料不等于整个发射场的结构响应完成。"
+      ],
+      "verificationSuggestions": [
+        "先给出真实安装连接、地基边界与预紧/驱动载荷来源，再接到原共同场消费者。",
+        "在实际载荷条件下检查力传递、变形、接触范围、热边界与释放事件；几何求精不能替代结构响应收敛。",
+        "展示参考平台剖面和地面/飞行器归属，不使用生成图冒充真实 CAD 或运行云图。"
+      ],
+      "existingEvidenceIds": [
+        "ground-history",
+        "spatial-mass",
+        "current-status"
+      ],
+      "newEvidenceIds": [
+        "foundation-code",
+        "foundation-history"
+      ],
+      "sourceLocations": [
+        {
+          "path": "AerospaceSimUE/Tools/Authoring/generate_launch_foundation_material.py",
+          "line": 1,
+          "symbol": "reference design / continuous_moments / facility v5"
+        },
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/interaction/launch_material_fields.cpp",
+          "line": 17,
+          "symbol": "LaunchConstraintRuntime::CompileSupportMaterialFields"
+        },
+        {
+          "path": "docs/execution/STATUS.md",
+          "line": 23420,
+          "symbol": "§1.318"
+        }
+      ]
+    }
+  ],
+  "verificationMatrix": [
+    {
+      "subject": "双温域界面换热",
+      "implementation": "已读接口、传递与逐点热量累积实现",
+      "testCode": "已读 Support 反向热量/显热对照/晚期拒绝断言",
+      "historicalRecord": "§1.317 独立矩阵与原一源一板 OFF 短区间",
+      "realConsumer": "原 Support 有界消费者",
+      "remaining": "真实安装面、本构、环境通量及 28 V/F1 供回",
+      "newRunThisReview": false,
+      "evidenceIds": [
+        "thermal-interface-code",
+        "thermal-interface-tests",
+        "thermal-interface-history"
+      ]
+    },
+    {
+      "subject": "完整材料库仑粘滑",
+      "implementation": "已读逐点返回映射、原场重求与功/残差处理",
+      "testCode": "本轮没有完整读取新摩擦夹具；验证细节来自台账",
+      "historicalRecord": "§1.320 P1/P2 制造解、零摩擦/分离/续算",
+      "realConsumer": "standalone 与 UE 有界场验证；非实际发射约束共同历史",
+      "remaining": "真实夹持输入、非仿射/大滑移收敛、摩擦热、金属塑性",
+      "newRunThisReview": false,
+      "evidenceIds": [
+        "coulomb-field-code",
+        "coulomb-field-history"
+      ]
+    },
+    {
+      "subject": "供液 CSV 与压降",
+      "implementation": "已读选中行严格解析及整网失效逻辑",
+      "testCode": "定位原消费者非法字段断言；本轮未完整复核全部夹具",
+      "historicalRecord": "§1.319 两段解析对照、五套原资产和原推进消费者",
+      "realConsumer": "原 PoweredAscentPropulsionModule 的既有管段模型",
+      "remaining": "空间两介质、压力—流量联立、组分/焓与真实端口通量",
+      "newRunThisReview": false,
+      "evidenceIds": [
+        "feed-geometry-code",
+        "feed-geometry-history"
+      ]
+    },
+    {
+      "subject": "完整参考平台",
+      "implementation": "已读参考设计、v5 身份与原材料场编译路径",
+      "testCode": "本轮未重新读取独立几何/温场夹具全文",
+      "historicalRecord": "§1.318 几何求精、原包/Bridge 消费者和全温场制造解",
+      "realConsumer": "原完整尾段与 33 件设施导入、指定平台场",
+      "remaining": "真实基础/连接/驱动受载；塔架仍为 primitive",
+      "newRunThisReview": false,
+      "evidenceIds": [
+        "foundation-code",
+        "foundation-history"
+      ]
+    },
+    {
+      "subject": "旧动态法向接触",
+      "implementation": "沿用既有项目页实现说明",
+      "testCode": "本轮未重跑或重新完整读取旧夹具",
+      "historicalRecord": "§1.313 无摩擦、固定温度、40/20/10 ms；保留旧身份",
+      "realConsumer": "受控完整材料案例",
+      "remaining": "不能把 §1.320 摩擦能力倒写进这次历史验证",
+      "newRunThisReview": false,
+      "evidenceIds": [
+        "contact-history"
+      ]
+    },
+    {
+      "subject": "正式连续地月任务",
+      "implementation": "项目有相关模块和有界入口；不形成完整资格",
+      "testCode": "本轮未运行任务入口",
+      "historicalRecord": "当前 STATUS/route 仍为 V1/V2 Partial、V3 有界、V4 未准入",
+      "realConsumer": "正式连续组合未闭合",
+      "remaining": "head 边界、默认消费者、实际安装/供电/流体/机械多项缺口",
+      "newRunThisReview": false,
+      "evidenceIds": [
+        "current-status",
+        "current-test-policy"
+      ]
+    }
+  ],
+  "existingReportCorrections": [
+    {
+      "jsonPath": "$.overview.baseline",
+      "action": "replace",
+      "originalExcerpt": "2026-10-26 台账：90fa6ebd + 保留工作树；本页为源码与历史记录审查。",
+      "suggestedValue": "2026-10-26 只读审查：源树 HEAD 2c390170；最新台账 §§1.317–1.320 使用 558efeaa + 保留工作树。历史验证身份逐条保留。",
+      "basis": "当前 STATUS 首段及只读 git rev-parse；源树身份不等于测试身份。"
+    },
+    {
+      "jsonPath": "$.overview.metrics[3]",
+      "action": "replace",
+      "originalExcerpt": "32 / 尾段地面安装材料",
+      "suggestedValue": {
+        "value": "33",
+        "label": "地面完整材料",
+        "detail": "32 件支座/夹持组件 + 1 件参考混凝土平台。设施材料不计入飞行器质量，冷态接入不代表释放资格。",
+        "evidenceIds": [
+          "ground-history",
+          "foundation-history"
+        ]
+      },
+      "basis": "STATUS §1.318；不要给 33 件沿用旧 2,123,008 tet 统计。"
+    },
+    {
+      "jsonPath": "$.evidence[?(@.id=='current-status')].detail",
+      "action": "replace",
+      "originalExcerpt": "2026-10-26 台账基线为 90fa6ebd 加保留工作树。",
+      "suggestedValue": "2026-10-26 最新台账 §§1.317–1.320 基于 558efeaa 加保留工作树；读取时源树 HEAD 为 2c390170。已有 5978 件车辆冷态来源、33 件地面材料、条件双温域换热和完整材料摩擦的局部进展；head 边界、真实安装/供电、双介质流动与默认消费者仍未闭合。正式连续地月任务仍为 V1/V2 Partial、V3 有界、V4 未准入。",
+      "basis": "STATUS 首段、§1.320 末段；不覆盖各旧历史卡的 sourceIdentity。"
+    },
+    {
+      "jsonPath": "$.limitations[?(@.id=='electrothermal')].detail",
+      "action": "replace",
+      "originalExcerpt": "一源一板双温场共同候选存在，但真实 28 V 转换/F1 供回电、完整安装实体、跨热域交换与设备反馈尚未闭合；120 s 任务不能直接恢复。",
+      "suggestedValue": "一源一板完整双温场已有显式逐点条件换热，并进入原共同候选。真实安装面的对应关系、接触导热本构、环境通量、28 V 转换/F1 供回电和设备反馈仍未齐；参考短区间不授予整板或 120 s 任务资格。",
+      "basis": "接口实现及 STATUS §1.317；将已实现接口与缺失实际安装输入分开。"
+    },
+    {
+      "jsonPath": "$.limitations[?(@.id=='ground')].detail",
+      "action": "replace",
+      "originalExcerpt": "冷态 32 件地面材料已经接入；",
+      "suggestedValue": "冷态地面材料已增至 33 件，含 32 件支座/夹持组件与完整参考平台；锚固、连接、预紧、驱动及共同历史仍缺。库仑摩擦只有有界场验证，实际地面消费者未接管，摩擦热也尚未反馈温场。",
+      "basis": "STATUS §§1.318、1.320。"
+    },
+    {
+      "jsonPath": "$.deepTopics[?(@.id=='geometry-moments')].points[2].detail",
+      "action": "replace",
+      "originalExcerpt": "10 月 26 日原尾段八孔加入 24 件夹爪/叉座/销轴，与 8 支座共 32 件；完整矩、干涉和承压面积有历史检查。",
+      "suggestedValue": "10 月 26 日先完成 8 支座与 24 件夹爪/叉座/销轴；随后 facility v5 加入 1 件完整参考平台，设施共 33 件。旧 32 件的完整矩、干涉和承压面积记录保留，平台另有解析几何求精与原消费者记录。",
+      "basis": "STATUS §§1.316、1.318；历史与当前总览区分。"
+    },
+    {
+      "jsonPath": "$.deepTopics[?(@.id=='thermal-radiation')].limits[0]",
+      "action": "replace",
+      "originalExcerpt": "互照当前限同一完整热域，尚未完成真实电芯/电路板跨域安装热耦合。",
+      "suggestedValue": "表面互照仍限同一完整热域；另一路电芯—板条件接触换热已进入两个完整温场，但真实安装几何与导热本构尚未齐。",
+      "basis": "radiation-boundary 原范围与新增 §1.317 是不同机制，不能互相覆盖。"
+    },
+    {
+      "jsonPath": "$.deepTopics[?(@.id=='contact')].summary",
+      "action": "replace",
+      "originalExcerpt": "全场接触已有动态验证记录，实际尾段安装尚未成为完整动态消费者。",
+      "suggestedValue": "完整材料动态接触现有法向约束与显式库仑粘滑；两者分别保留历史验证范围。真实尾段安装仍未成为持有共同场历史的动态消费者。",
+      "basis": "STATUS §§1.313、1.320 与当前实现。"
+    },
+    {
+      "jsonPath": "$.deepTopics[?(@.id=='contact')].points[3].detail",
+      "action": "replace",
+      "originalExcerpt": "32 件冷态地面材料已接入原导入链",
+      "suggestedValue": "33 件冷态地面材料已进入原导入链，含新增参考平台；真实锚固、预紧、驱动、安装摩擦本构与共同历史仍不足。新增摩擦算法不恢复旧理想反力路径。",
+      "basis": "STATUS §§1.318、1.320。"
+    },
+    {
+      "jsonPath": "$.deepTopics[?(@.id=='contact')].limits",
+      "action": "replace",
+      "originalExcerpt": "当前记录限固定温度 Neo-Hookean、无摩擦及有界验证入口。",
+      "suggestedValue": [
+        "§1.313 保留固定温度 Neo-Hookean、无摩擦、终点接触的原验证范围；§1.320 另有显式库仑粘滑制造解记录。",
+        "当前均为有界验证；尚无真实安装共同消费者、摩擦热反馈、有限应变金属塑性或发射释放资格。"
+      ],
+      "basis": "新能力不能倒写旧日志，也不能继续描述整个当前模型为无摩擦。"
+    },
+    {
+      "jsonPath": "$.scenarios[?(@.id=='support-retry')].steps[4].detail",
+      "action": "replace",
+      "originalExcerpt": "实际 28 V 转换、供回电和跨域热边界改变原消费者之前，不把局部短验扩称为整板 120 s。",
+      "suggestedValue": "条件跨域热接口已改变原两侧温场；仍须由真实安装几何、导热本构、28 V 转换和供回电输入接管。当前 OFF 参考短区间不等于整板启动或 120 s 资格。",
+      "basis": "STATUS §1.317；修订笼统缺失表述。"
+    },
+    {
+      "jsonPath": "$.scenarios[?(@.id=='ground-contact')].steps[0].detail",
+      "action": "replace",
+      "originalExcerpt": "8 支座加 24 夹持零件进入 facility v4；核对原 CAD 干涉、承压面积、质量矩和真实尾段导入。",
+      "suggestedValue": "原 8 支座与 24 夹持零件保留 v4 冷态记录；当前 v5 再加入完整参考平台，共 33 件。核对来源、质量矩、原安装变换和实际尾段导入，不把旧夹持网格计数当作新总数。",
+      "basis": "STATUS §§1.316、1.318。"
+    },
+    {
+      "jsonPath": "$.scenarios[?(@.id=='ground-contact')].steps[2].detail",
+      "action": "replace",
+      "originalExcerpt": "动态正常接触已有一致质量与完整场候选的受控时间求精记录，可作为后续实际消费者的算法基础。",
+      "suggestedValue": "法向动态接触已有一致质量和时间求精记录，新增库仑粘滑有独立制造解与零摩擦对照。两类记录仍属于有界材料场，实际安装必须另接真实载荷与共同历史。",
+      "basis": "STATUS §§1.313、1.320；‘法向’比‘正常接触’准确。"
+    },
+    {
+      "jsonPath": "$.evidence[?(@.id=='current-test-policy')].detail",
+      "action": "replace",
+      "originalExcerpt": "实际安装、供回电、跨域热和机械消费者输入未齐时先补实现。",
+      "suggestedValue": "10 月 26 日当前 route 已恢复按真实依赖开展必要验证，不自动恢复整板、120 s 与整车旧队列。条件跨域换热已有局部实现；真实安装热界面、28 V/F1 供回、地面锚固/驱动与实际共同消费者仍须补齐。",
+      "basis": "当前 ACTIVE_EXECUTION_ROUTE 与 STATUS §§1.317–1.320。"
+    },
+    {
+      "jsonPath": "$.validation[?(@.id=='validation-contact')]",
+      "action": "retain-and-add-separate-record",
+      "originalExcerpt": "固定温度 Neo-Hookean、无摩擦、终点接触约束。",
+      "suggestedValue": "保留该卡的原断言、曲线、范围和 5534d58b 历史身份。可把标题中的‘正常接触’改为‘法向接触’，但不得将新摩擦结果写入该次历史记录；另加 §1.320 卡。",
+      "basis": "原 §1.313 与新 §1.320 为不同验证事件。"
+    },
+    {
+      "jsonPath": "$.validation[?(@.id=='validation-installation')]",
+      "action": "retain-and-add-separate-record",
+      "originalExcerpt": "32 件地面材料共 2,123,008 个四面体。",
+      "suggestedValue": "保留该卡的 32 件夹持材料、原网格统计与 90fa6ebd 历史身份。新增平台/33 件设施的 §1.318 记录，不对旧卡做全局数字替换。",
+      "basis": "§1.316 与 §1.318 统计范围不同。"
+    },
+    {
+      "jsonPath": "$.evidence[?(@.id=='ground-history')]",
+      "action": "retain",
+      "originalExcerpt": "八个安装位的 32 件地面材料已有冷态记录",
+      "suggestedValue": "原日期化历史说明保留不变；当前概览和新增 foundation-history 说明 33 件设施总数。",
+      "basis": "原记录本身正确，不应把旧版本范围重写。"
+    },
+    {
+      "jsonPath": "$.scenarios[?(@.id=='variable-mass')].status",
+      "action": "retain",
+      "originalExcerpt": "planned",
+      "suggestedValue": "planned",
+      "basis": "本轮未执行该偏置推力实验；存在实现不等于该可视案例已运行。"
+    },
+    {
+      "jsonPath": "$.limitations[?(@.id=='audit')].detail",
+      "action": "replace",
+      "originalExcerpt": "辐射日志为直接核查，接触与地面安装为日期化台账记录。",
+      "suggestedValue": "本页基于只读源码、部分断言与历史资料，没有新增仿真通过结论。此前辐射结果曾直接核查原日志；新增双温域换热、库仑粘滑、供液入口和平台记录本轮只核对日期化 STATUS，未独立重读其原始运行日志或重跑。",
+      "basis": "准确区分前轮直接日志与本轮文档转述范围。"
+    }
+  ],
+  "newEvidenceRecords": [
+    {
+      "id": "thermal-interface-code",
+      "title": "电芯—板逐点条件换热进入原双温场",
+      "status": "implemented",
+      "detail": "ObcCellBoardThermalInterface 保存原两域表面 trace、来源/几何身份与逐点 ∫h dA。原窗口累积电芯向板的实际逐点热量，并在板侧使用反向载荷；完整温场、电路和电芯状态共同迭代。真实安装几何和接触导热本构仍由上游提供。",
+      "sources": [
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_runtime.h",
+          "line": 148,
+          "endLine": 164,
+          "symbol": "ObcCellBoardThermalInterface"
+        },
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_runtime.h",
+          "line": 230,
+          "endLine": 240,
+          "symbol": "ObcElectricalWindowWork"
+        },
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_window.cpp",
+          "line": 254,
+          "endLine": 294
+        },
+        {
+          "path": "docs/execution/STATUS.md",
+          "line": 23352,
+          "endLine": 23382
+        }
+      ]
+    },
+    {
+      "id": "thermal-interface-tests",
+      "title": "原 Support 断言检查反向热量与失败重试",
+      "status": "test-code",
+      "detail": "已读断言比较逐点反向载荷、无接口同源候选的两侧显热变化，并注入第 5 次边界调用失败。测试意图是检查共同状态不被部分推进及重试一致性；本轮未执行。",
+      "sources": [
+        {
+          "path": "AerospaceSimUE/StandaloneSimCore/obc_mcu_validation.cpp",
+          "line": 2251,
+          "endLine": 2276,
+          "symbol": "Support exchange and late-boundary refusal assertions"
+        }
+      ]
+    },
+    {
+      "id": "thermal-interface-history",
+      "title": "2026-10-26 双温域条件换热的历史短区间记录",
+      "status": "recorded",
+      "detail": "STATUS §1.317 记录独立四面体矩阵对照与原 Support 0.125 µs OFF 准备态：电芯 299 K、板 299.5 K、接口热约 −1.87487e−8 J，并检查实际显热与失败重试。本轮只读台账及部分断言，未重读原运行日志或重跑；不代表真实安装或整板启动。",
+      "sources": [
+        {
+          "path": "docs/execution/STATUS.md",
+          "line": 23352,
+          "endLine": 23418
+        }
+      ]
+    },
+    {
+      "id": "coulomb-field-code",
+      "title": "库仑切向力在原完整材料场内迭代",
+      "status": "implemented",
+      "detail": "显式逐点摩擦输入触发增广返回映射，每轮调用原动态法向候选。原迹及转置将两侧力传回全部 H1 自由度；力、滑移与功缺陷分别检查。耗散和数值余差未自动写入温场；这不是实际夹持机构的已接管响应。",
+      "sources": [
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/structures/spatial_hyperelastic_solid.h",
+          "line": 162,
+          "endLine": 179
+        },
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/structures/spatial_coulomb_contact.cpp",
+          "line": 31,
+          "endLine": 190,
+          "symbol": "BuildCoulombContactDynamicCandidate"
+        }
+      ]
+    },
+    {
+      "id": "coulomb-field-history",
+      "title": "2026-10-26 完整材料粘滑与功传递的历史记录",
+      "status": "recorded",
+      "detail": "STATUS §1.320 记录 P1/P2 制造解、滑动/自由切向粘着、零摩擦对照、分离与续算。输入为 558efeaa 加本包及保留工作树；不宣称纯 HEAD 或全 UE 套件通过。本轮未读取该批独立原始运行日志或重跑，实际发射台共同历史与热反馈仍缺。",
+      "sources": [
+        {
+          "path": "docs/execution/STATUS.md",
+          "line": 23521,
+          "endLine": 23597
+        }
+      ]
+    },
+    {
+      "id": "feed-geometry-code",
+      "title": "选中供液 CSV 的坏行不再产生部分有效网络",
+      "status": "implemented",
+      "detail": "LoadFeedNetworkGeometryCsv 要求已给数值完整解析、有限且满足几何范围，并联数为正整数、启用值明确；任何选中非法行整体抛错并给出文件/行/字段。压降计算保留管段近似，活动段数值失败使整个串联结果无效；可选字段与无匹配行为仍按原约定保留。",
+      "sources": [
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/feed_network_runtime.cpp",
+          "line": 43,
+          "endLine": 173,
+          "symbol": "strict selected-row loading"
+        },
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/feed_network_runtime.cpp",
+          "line": 176,
+          "endLine": 264,
+          "symbol": "EvaluateFeedNetworkPressureDrop"
+        }
+      ]
+    },
+    {
+      "id": "feed-geometry-history",
+      "title": "2026-10-26 供液入口与原推进消费者的历史记录",
+      "status": "recorded",
+      "detail": "STATUS §1.319 记录两段 CSV 的独立压降对照、五套原资产、同一原推进消费者及非法追加行拒绝；首次摘要负例未真正改值的失败与修复也保留。只支持输入完整性和既有管段范围，不支持完整流体热力学。本轮未重读该批原始日志或重跑。",
+      "sources": [
+        {
+          "path": "docs/execution/STATUS.md",
+          "line": 23481,
+          "endLine": 23519
+        }
+      ]
+    },
+    {
+      "id": "foundation-code",
+      "title": "facility v5 使用完整参考平台及同一地面 owner",
+      "status": "implemented",
+      "detail": "生成器明确 24×24×2 m、半径 5 m 贯穿孔的参考混凝土平台，复用原夹持材料。原材料场入口识别 v4/v5，核对完整来源、位姿和全部材料定义后才编译热/结构域；不会自行推断锚固或虚构材料连接。",
+      "sources": [
+        {
+          "path": "AerospaceSimUE/Tools/Authoring/generate_launch_foundation_material.py",
+          "line": 1,
+          "endLine": 37
+        },
+        {
+          "path": "AerospaceSimUE/Tools/Authoring/generate_launch_foundation_material.py",
+          "line": 128,
+          "endLine": 163
+        },
+        {
+          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/interaction/launch_material_fields.cpp",
+          "line": 17,
+          "endLine": 91,
+          "symbol": "CompileSupportMaterialFields"
+        }
+      ]
+    },
+    {
+      "id": "foundation-history",
+      "title": "2026-10-26 33 件地面材料与平台全温场的历史记录",
+      "status": "recorded",
+      "detail": "STATUS §1.318 记录原 32 件夹持材料加完整参考平台、解析质量矩求精、原 package—Bridge—尾段消费者及 16640 自由度平台制造温场。地面质量不计入飞行器，塔架仍为 primitive，真实锚固/地基/驱动与共同受载历史未齐。本轮仅核查台账，未读该批原始日志或重跑。",
+      "sources": [
+        {
+          "path": "docs/execution/STATUS.md",
+          "line": 23420,
+          "endLine": 23479
+        }
+      ]
+    }
+  ],
+  "externalMethodReferences": [
+    {
+      "id": "comsol-friction-theory",
+      "title": "COMSOL 6.4 — Tangential Contact with Friction",
+      "url": "https://doc.comsol.com/6.4/doc/com.comsol.help.sme/sme_ug_theory.06.088.html",
+      "checkedOn": "2026-10-26",
+      "supports": "原始厂商文档解释库仑粘滑与增广拉格朗日分离迭代。项目采用积分点约束，其数值离散及验证仍需单独说明。",
+      "doesNotSupport": "不是本项目运行 COMSOL 对照、商用软件认证或复制其实现的证据。"
+    },
+    {
+      "id": "comsol-reference-concrete",
+      "title": "COMSOL 6.3 — Thermal Bridges in Building Construction: 2D Composite Structure",
+      "url": "https://doc.comsol.com/6.3/doc/com.comsol.help.models.heat.thermal_bridge_2d_composite_structure/thermal_bridge_2d_composite_structure.html",
+      "checkedOn": "2026-10-26",
+      "supports": "官方示例列出参考混凝土 k=1.15 W/(m·K)、ρ=2300 kg/m³、cp=880 J/(kg·K)，研究类型为稳态。",
+      "doesNotSupport": "不支持项目平台的实测材料、混凝土瞬态实验或 ISO 认证声明。"
+    }
+  ],
+  "diagramNotes": [
+    {
+      "id": "thermal-window",
+      "title": "两域与一个共同窗口",
+      "purpose": "让读者看到电芯、板、界面热和共同状态的对应关系。",
+      "layout": "左侧电芯剖面示意、右侧电路板剖面示意，中间两个明确对应点与带方向的 Qq；下方是一条共同时间轴。",
+      "interaction": "切换‘参考换热’、‘无接口对照’、‘边界失败’三个解释状态；失败状态保留原完整状态，只撤销候选。",
+      "dataRule": "历史数值仅标注在参考短区间注释中；任何温度颜色与动画必须标‘流程示意，不是求解云图’，不得编造节点温度。",
+      "caption": "条件换热接口已实现；真实安装面的导热参数仍需接入。"
+    },
+    {
+      "id": "stick-slip",
+      "title": "接触点与材料场",
+      "purpose": "把粘着、滑动和分离与完整材料响应关联。",
+      "layout": "两块完整体的剖面示意、法向/切向箭头、右侧库仑圆盘，再下方分列接触功、耗散、数值缺陷。",
+      "interaction": "切换 μ=0、粘着、滑动、分离的教学状态；显示各状态输入条件与输出含义，不自动宣称它们是现场结果。",
+      "dataRule": "不伪造摩擦曲线或应力云图；使用代码原生 SVG/Canvas 原理图，不用生成图充当有限元结果。",
+      "caption": "原完整材料场参与求解；实际夹持机构尚未接管共同历史。"
+    },
+    {
+      "id": "csv-path",
+      "title": "同一份输入的有效与拒绝路径",
+      "purpose": "具体说明数据校验为什么影响物理结果。",
+      "layout": "两行教学 CSV 表 → 几何检查 → 管段压降 → 原推进消费者；错误支路停在几何检查并指出第二行 diameter 字段。",
+      "interaction": "在合法值与‘-0.02’/‘NaN’/并联数‘1.5’之间切换，显示整网拒绝。网页只演示接口逻辑，不调用原 UE 求解器。",
+      "dataRule": "示例文件名统一为 feed-example.csv；不得显示本地绝对路径。",
+      "caption": "参数合法性与物理模型有效性是两项不同检查。"
+    },
+    {
+      "id": "ground-ownership",
+      "title": "地面材料、飞行器与尚缺连接",
+      "purpose": "解释 32→33 的变化及冷态实体与真实受载之间的差别。",
+      "layout": "参考平台轴测/剖切示意，标注 24 m、2 m、贯穿孔 R5 m；八组夹持位置作为结构示意，地面与飞行器使用不同图例。",
+      "interaction": "切换‘完整材料’与‘尚缺边界’，后者只标锚固、预紧、驱动、地基，不能画成已完成连接。",
+      "dataRule": "不重建或导出大型私有 CAD；按已公开参考尺寸画轻量几何，标‘参考设计示意’。旧 32 件网格统计和新平台网格统计单列。",
+      "caption": "33 件地面材料不计入飞行器质量，也不等于释放机构已经验证。"
+    }
+  ]
+}
