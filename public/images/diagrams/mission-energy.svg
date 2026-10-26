@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+<title id="title">任务能量时序：从日照和食影功率积分到电池能量</title>
+<desc id="desc">合成教学周期96分钟，前60分钟日照发电180瓦，后36分钟食影不发电。基础负载100瓦，20至40分钟任务增加40瓦。理想电池能量从100瓦时升到166.7瓦时，再降到106.7瓦时，整周期净增加6.7瓦时。</desc>
+<defs>
+<marker id="arrow-lime" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#d3ef83" stroke-width="2"/></marker>
+<marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#8bb6d0" stroke-width="2"/></marker>
+<marker id="arrow-muted" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#839399" stroke-width="2"/></marker>
+</defs>
+<rect width="1400" height="900" fill="#10191e"/>
+<g font-family="Inter, Noto Sans SC, Microsoft YaHei, sans-serif" font-size="24" fill="#e8eee9">
+
+<text x="70" y="55" fill="#d3ef83" font-size="22" letter-spacing="3">ORBITAL / MISSION ENERGY</text>
+<text x="70" y="115" font-size="46" font-weight="600">电源预算要沿任务时间积分</text>
+<text x="70" y="158" fill="#9faeb2">合成教学任务：96 min 周期 · 60 min 日照 + 36 min 食影 · 非航天器遥测</text>
+<rect x="140" y="190" width="720" height="44" fill="#36382a"/>
+<rect x="860" y="190" width="432" height="44" fill="#243540"/>
+<text x="170" y="220" fill="#cfb280">日照：发电 + 充电</text>
+<text x="905" y="220" fill="#8bb6d0">食影：电池供电</text>
+<line x1="140" y1="242" x2="140" y2="758" stroke="#3c5058" stroke-width="1" stroke-dasharray="5 7"/><text x="140" y="789" text-anchor="middle" fill="#9faeb2" font-size="23">0</text>
+<line x1="380" y1="242" x2="380" y2="758" stroke="#3c5058" stroke-width="1" stroke-dasharray="5 7"/><text x="380" y="789" text-anchor="middle" fill="#9faeb2" font-size="23">20</text>
+<line x1="620" y1="242" x2="620" y2="758" stroke="#3c5058" stroke-width="1" stroke-dasharray="5 7"/><text x="620" y="789" text-anchor="middle" fill="#9faeb2" font-size="23">40</text>
+<line x1="860" y1="242" x2="860" y2="758" stroke="#3c5058" stroke-width="2" stroke-dasharray="5 7"/><text x="860" y="789" text-anchor="middle" fill="#9faeb2" font-size="23">60</text>
+<line x1="1292" y1="242" x2="1292" y2="758" stroke="#3c5058" stroke-width="1" stroke-dasharray="5 7"/><text x="1292" y="789" text-anchor="middle" fill="#9faeb2" font-size="23">96</text>
+<text x="70" y="274" fill="#9faeb2" font-size="23">功率 / W</text>
+<line x1="140" y1="490" x2="1292" y2="490" stroke="#30424a" stroke-width="1"/><text x="115" y="498" text-anchor="end" fill="#9faeb2" font-size="22">0</text>
+<line x1="140" y1="390" x2="1292" y2="390" stroke="#30424a" stroke-width="1"/><text x="115" y="398" text-anchor="end" fill="#9faeb2" font-size="22">100</text>
+<line x1="140" y1="310" x2="1292" y2="310" stroke="#30424a" stroke-width="1"/><text x="115" y="318" text-anchor="end" fill="#9faeb2" font-size="22">180</text>
+<path d="M140 310 H380 V390 H140Z M380 310 H620 V350 H380Z M620 310 H860 V390 H620Z" fill="#d3ef83" opacity="0.10"/>
+<path d="M860 390 H1292 V490 H860Z" fill="#8bb6d0" opacity="0.10"/>
+<path d="M140 310 H860 V490 H1292" fill="none" stroke="#d3ef83" stroke-width="4"/>
+<path d="M140 390 H380 V350 H620 V390 H1292" fill="none" stroke="#8bb6d0" stroke-width="4"/>
+<text x="220" y="300" fill="#d3ef83" font-size="23">180 W</text>
+<text x="421" y="338" fill="#8bb6d0" font-size="23">140 W</text>
+<text x="1055" y="380" fill="#8bb6d0" font-size="23">100 W</text>
+<text x="380" y="444" fill="#9faeb2" font-size="22">20–40 min：任务负载 +40 W</text>
+<text x="906" y="450" fill="#9faeb2" font-size="22">发电为 0；负载持续工作</text>
+<path d="M925 267 H967" stroke="#d3ef83" stroke-width="4"/><text x="978" y="275" fill="#9faeb2" font-size="22">P_gen</text>
+<path d="M1125 267 H1167" stroke="#8bb6d0" stroke-width="4"/><text x="1178" y="275" fill="#9faeb2" font-size="22">P_load</text>
+<text x="70" y="550" fill="#9faeb2" font-size="23">储能 / Wh</text>
+<text x="947" y="550" fill="#9faeb2" font-size="22">本例容量 180 Wh；全程未触顶</text>
+<line x1="140" y1="716" x2="1292" y2="716" stroke="#30424a" stroke-width="1"/><text x="115" y="724" text-anchor="end" fill="#9faeb2" font-size="22">100</text>
+<line x1="140" y1="648" x2="1292" y2="648" stroke="#30424a" stroke-width="1"/><text x="115" y="656" text-anchor="end" fill="#9faeb2" font-size="22">140</text>
+<line x1="140" y1="580" x2="1292" y2="580" stroke="#30424a" stroke-width="1"/><text x="115" y="588" text-anchor="end" fill="#9faeb2" font-size="22">180</text>
+<path d="M140 716 L380 670.6667 L620 648 L860 602.6667 L1292 704.6667" fill="none" stroke="#cfb280" stroke-width="4"/>
+<circle cx="140" cy="716" r="6" fill="#cfb280"/><circle cx="860" cy="602.6667" r="6" fill="#cfb280"/><circle cx="1292" cy="704.6667" r="6" fill="#cfb280"/>
+<text x="170" y="744" fill="#cfb280" font-size="23">E₀ = 100 Wh</text>
+<text x="890" y="622" fill="#cfb280" font-size="24">峰值 166.7 Wh</text>
+<text x="1120" y="683" fill="#cfb280" font-size="23">106.7 Wh</text>
+<text x="390" y="618" fill="#9faeb2" font-size="22">日照净充入 66.7 Wh</text>
+<text x="950" y="744" fill="#9faeb2" font-size="22">食影放出 60.0 Wh</text>
+<text x="670" y="789" fill="#9faeb2" font-size="23">时间 / min</text>
+<line x1="70" y1="812" x2="1330" y2="812" stroke="#35494f" stroke-width="1.5"/>
+<text x="70" y="851" font-size="28">E(t) = E₀ + ∫(P_gen − P_load) dt</text>
+<text x="885" y="851" fill="#d3ef83" font-size="28">本周期 ΔE = +6.7 Wh</text>
+<text x="70" y="885" fill="#9faeb2" font-size="22">图示取理想充放电效率；以 W、h 积分得 Wh。实际模型另计效率、容量、功率限制与退化。</text>
+
+</g>
+</svg>

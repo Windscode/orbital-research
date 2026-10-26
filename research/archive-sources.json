@@ -1,0 +1,34 @@
+[
+  {
+    "title": "月球与行星任务年表",
+    "organization": "NASA NSSDCA",
+    "url": "https://nssdc.gsfc.nasa.gov/planetary/chrono.html",
+    "description": "按年代继续查找 Luna、Mariner、Venera、Pioneer 等任务，补充本站尚未形成完整结构档案的历史任务。",
+    "boundary": "年表入口不等于每项任务都有完整工程参数；任务状态与资料覆盖应在对应条目再核查。",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "title": "国际月球任务索引",
+    "organization": "NASA Science",
+    "url": "https://science.nasa.gov/moon/missions/",
+    "description": "按国家、发射时间、任务类型与结果对照月球探测历史，适合建立跨型号与跨任务的时间线。",
+    "boundary": "任务级索引，不能直接当成单一飞行器的构型或性能数据库。",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "title": "Deep Space Chronicle · 1958–2000",
+    "organization": "NASA History / Asif A. Siddiqi",
+    "url": "https://science.nasa.gov/wp-content/uploads/2023/09/DSC_monograph24.pdf",
+    "description": "一部按年份组织的深空探测历史专著。保留成功与失败任务的上下文，可用来追索早期型号、研制背景和原始文献。",
+    "boundary": "2002 年出版，覆盖到 2000 年；不会提供之后任务的现状。",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "title": "NASA 3D Resources",
+    "organization": "NASA Science",
+    "url": "https://science.nasa.gov/3d-resources/",
+    "description": "继续查找官方发布的三维网格、可打印模型与纹理，作为外观细化的参考或后续建模素材。",
+    "boundary": "逐件核查素材说明与 NASA 媒体使用规则；可视化网格不自动具备工程精度，也不保证包含内部装配。本站模型为独立生成的参数化示意。",
+    "verifiedOn": "2026-10-25"
+  }
+]

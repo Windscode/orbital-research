@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+<title id="title">模型可信度：验证、校准、物理确认与数据溯源</title>
+<desc id="desc">数学模型到数值实现和预测输出构成计算链。Verification检查实现和数值误差。校准数据用于调整模型参数，独立参考数据用于Validation物理确认；未知机制限制使用范围。来源、转换、模型版本和运行记录贯穿全链。</desc>
+<defs>
+<marker id="arrow-lime" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#d3ef83" stroke-width="2"/></marker>
+<marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#8bb6d0" stroke-width="2"/></marker>
+<marker id="arrow-muted" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#839399" stroke-width="2"/></marker>
+</defs>
+<rect width="1400" height="900" fill="#10191e"/>
+<g font-family="Inter, Noto Sans SC, Microsoft YaHei, sans-serif" font-size="24" fill="#e8eee9">
+
+<text x="70" y="55" fill="#d3ef83" font-size="22" letter-spacing="3">ORBITAL / MODEL CREDIBILITY</text>
+<text x="70" y="115" font-size="46" font-weight="600">可信度来自不同问题的不同证据</text>
+<text x="70" y="158" fill="#9faeb2">先定义用途、输出量与允许误差，再决定需要哪些模型和验证证据。</text>
+<path d="M105 278 V250 H817 V278" fill="none" stroke="#d3ef83" stroke-width="2"/>
+<text x="460" y="225" text-anchor="middle" fill="#d3ef83" font-size="28">Verification · 实现正确、数值误差受控</text>
+<rect x="70" y="305" width="315" height="151" rx="4" fill="#18262c" stroke="#526b76" stroke-width="1.6"/>
+<rect x="535" y="305" width="315" height="151" rx="4" fill="#18262c" stroke="#526b76" stroke-width="1.6"/>
+<rect x="1000" y="305" width="330" height="151" rx="4" fill="#182b29" stroke="#698258" stroke-width="1.6"/>
+<text x="102" y="355" font-size="32">数学与概念模型</text>
+<text x="102" y="399" fill="#9faeb2">方程 · 假设 · 适用域</text>
+<text x="568" y="355" font-size="32">数值实现</text>
+<text x="568" y="399" fill="#9faeb2">代码 · 离散 · 求解器</text>
+<text x="1032" y="355" fill="#d3ef83" font-size="32">预测输出</text>
+<text x="1032" y="399" fill="#9faeb2">状态 · 载荷 · 不确定性</text>
+<path d="M385 380 H525" stroke="#839399" stroke-width="2.5" marker-end="url(#arrow-muted)"/>
+<path d="M850 380 H990" stroke="#d3ef83" stroke-width="2.5" marker-end="url(#arrow-lime)"/>
+<text x="415" y="422" fill="#9faeb2" font-size="22">实现</text>
+<text x="883" y="422" fill="#9faeb2" font-size="22">计算</text>
+<text x="550" y="496" fill="#9faeb2" font-size="22">解析 / 制造解 → 检查实现</text>
+<text x="550" y="532" fill="#9faeb2" font-size="22">网格 / 时间步 → 检查数值</text>
+<path d="M70 646 H40 V380 H60" stroke="#cfb280" stroke-width="2.5" marker-end="url(#arrow-muted)"/>
+<text x="70" y="514" fill="#cfb280" font-size="24">Calibration · 校准</text>
+<text x="70" y="551" fill="#9faeb2" font-size="22">调整参数，使模型贴合数据 A</text>
+<rect x="70" y="600" width="315" height="92" rx="4" fill="#26271f" stroke="#8a7b61" stroke-width="1.6"/>
+<text x="102" y="637" fill="#cfb280" font-size="28">校准数据 A</text>
+<text x="102" y="673" fill="#9faeb2" font-size="22">保存参数和校准工况</text>
+<path d="M1165 470 V585" stroke="#8bb6d0" stroke-width="2.5" marker-start="url(#arrow-blue)" marker-end="url(#arrow-blue)"/>
+<text x="940" y="511" fill="#8bb6d0" font-size="24">Validation</text>
+<text x="940" y="547" fill="#8bb6d0" font-size="24">物理确认</text>
+<rect x="1000" y="600" width="330" height="92" rx="4" fill="#172a32" stroke="#5d8092" stroke-width="1.6"/>
+<text x="1032" y="637" fill="#8bb6d0" font-size="28">独立参考数据 B</text>
+<text x="1032" y="673" fill="#9faeb2" font-size="22">工况匹配；含测量不确定性</text>
+<rect x="535" y="600" width="340" height="92" rx="4" fill="none" stroke="#cfb280" stroke-width="1.6" stroke-dasharray="7 7"/>
+<text x="560" y="637" fill="#cfb280" font-size="27">未知 / 未覆盖机制</text>
+<text x="560" y="673" fill="#9faeb2" font-size="22">记录影响，限定允许使用域</text>
+<text x="70" y="754" fill="#9faeb2" font-size="23">校准数据 A 不自动成为独立确认 B；拟合得好，不等于已经检验新工况预测。</text>
+<path d="M87 801 H1310" stroke="#465d65" stroke-width="2"/>
+<circle cx="100" cy="801" r="6" fill="#d3ef83"/><circle cx="500" cy="801" r="6" fill="#d3ef83"/>
+<circle cx="900" cy="801" r="6" fill="#d3ef83"/><circle cx="1300" cy="801" r="6" fill="#d3ef83"/>
+<text x="70" y="841" font-size="24">原始证据</text>
+<text x="410" y="841" font-size="24">转换脚本</text>
+<text x="810" y="841" font-size="24">模型版本</text>
+<text x="1180" y="841" font-size="24">运行与输出</text>
+<text x="70" y="881" fill="#9faeb2" font-size="22">贯穿全链的溯源：来源标识 · 单位 / 坐标 / 时间 · 假设 · 版本 · 运行配置</text>
+
+</g>
+</svg>

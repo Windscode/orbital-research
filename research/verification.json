@@ -1,0 +1,40 @@
+{
+  "checkedOn": "2026-10-25",
+  "environment": "Windows / Node 22.22.2 / local Vite / in-app browser",
+  "automatedChecks": {
+    "content": "34 searchable entries, 63 distinct HTTPS source URLs; unique IDs, required fields, non-future dates, inference assumptions and project boundaries checked. URL structure checks do not prove live availability.",
+    "orbit": "6 groups passed: circular reference, elliptical apsides, energy/angular-momentum from finite differences, independent high-eccentricity bracketed reference, invalid elements, invalid anomaly/eccentricity.",
+    "production": "TypeScript check and Vite production build passed."
+  },
+  "browserChecks": [
+    "Home composition and navigation render successfully.",
+    "Resource category filtering returns the three original orbit/mission tools (before STK addition).",
+    "Resource keyword Python returns nine relevant resources after language/full-text search fix.",
+    "Ctrl+K opens global search; Falcon finds its vehicle record; 四元数 finds two knowledge notes via body text.",
+    "Knowledge reader renders five paragraphs, formula, pitfall, exercise and original-source links; Escape closes the dialog.",
+    "Falcon 9 record renders public parameters, inferred methods, assumptions, uncertainties and sources.",
+    "Bookmark survives page reload and is visible in the reading queue; test bookmark removed afterwards.",
+    "400 km circular preset shows 92.6 min, e=0 and 7.669 km/s.",
+    "GTO preset uses 400 / 35786 km consistently; propagation advances time and changes altitude and speed; reset returns to perigee and T+0.",
+    "Export action reports completion and triggers the browser JSON download path.",
+    "390px iframe viewport: home, mobile navigation, vehicle cards, and orbit laboratory inspected visually.",
+    "768px iframe viewport: knowledge layout inspected visually.",
+    "Desktop project diagram and explanatory text inspected after removing conflicting SVG inline dimensions.",
+    "Browser error log returned no errors during representative navigation."
+  ],
+  "fixesFromQA": [
+    "Scaled circular orbit to remain inside the SVG viewport.",
+    "Added anomaly normalization, input-domain checks and robust high-eccentricity initialization.",
+    "Preserved keyboard focus indicators on search inputs.",
+    "Matched apogee slider step to the 35786 km preset.",
+    "Removed SVG inline size that clipped adjacent project text.",
+    "Extended search to language metadata, formulas and article body text.",
+    "Hosted fonts locally and improved reading size/contrast."
+  ],
+  "limits": [
+    "No UE simulation or long-running validation was executed; project claims are based on a read-only audit.",
+    "All six briefing source pages were independently reopened and checked; general source links can change later.",
+    "Responsive validation uses same-origin browser iframes, not physical phones.",
+    "No production hosting, server backend or automated content subscription was configured."
+  ]
+}

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900" role="img" aria-labelledby="two-body-orbit-title two-body-orbit-desc">
+<title id="two-body-orbit-title">二体轨道：几何不等于时间</title><desc id="two-body-orbit-desc">椭圆中心与引力焦点不同。图示近远地点半径、半长轴、沿切线速度及平均近点角到位置的计算链，近地点速度较大。</desc>
+<defs><marker id="a-lime" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#d3ef83" stroke-width="1.5"/></marker><marker id="a-blue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#8bb6d0" stroke-width="1.5"/></marker><marker id="a-gold" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#cfb280" stroke-width="1.5"/></marker><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#35505a" opacity=".35"/></pattern></defs>
+<rect width="1400" height="900" fill="#10191e"/><rect x="44" y="140" width="1312" height="700" fill="url(#grid)"/>
+<g font-family="'Microsoft YaHei','Noto Sans CJK SC',sans-serif" font-weight="400">
+<text x="56" y="48" font-size="15" fill="#8a9e9e" letter-spacing="2">ORBITAL / ENGINEERING FIELD DIAGRAM</text>
+<text x="56" y="100" font-size="38" fill="#e4e9df" >二体轨道：几何不等于时间</text><text x="1344" y="45" font-size="14" fill="#d3ef83" text-anchor="end" letter-spacing="1">TWO-BODY-ORBIT</text>
+<line x1="56" y1="125" x2="1344" y2="125" stroke="#33454c" stroke-width="1" /><text x="56" y="160" font-size="22" fill="#8a9e9e" >位置沿椭圆变化，速度随能量关系变化</text>
+<ellipse cx="480" cy="455" rx="270.6" ry="225.996" fill="#12232a" stroke="#8bb6d0" stroke-width="3"/>
+<line x1="178.24" y1="455" x2="791.6" y2="455" stroke="#33454c" stroke-width="1" stroke-dasharray="8 9"/>
+<circle cx="480" cy="455" r="3.28" fill="#8a9e9e"/>
+<text x="470.16" y="485.34" font-size="23" fill="#8a9e9e" >C</text>
+<circle cx="628.83" cy="455" r="22.14" fill="#2c4855" stroke="#8bb6d0" stroke-width="2"/>
+<text x="577.99" y="536.18" font-size="24" fill="#8bb6d0" >中心天体</text>
+<text x="589.47" y="562.42" font-size="22" fill="#8a9e9e" >位于焦点</text>
+<line x1="628.83" y1="455" x2="572.551" y2="242.634" stroke="#cfb280" stroke-width="3" marker-end="url(#a-gold)"/>
+<circle cx="572.551" cy="242.634" r="5.74" fill="#cfb280"/>
+<text x="587.311" y="244.274" font-size="23" fill="#cfb280" >当前位置</text>
+<text x="594.8" y="354.96" font-size="29" fill="#cfb280" >r</text>
+<line x1="572.551" y1="242.634" x2="477.431" y2="213.934" stroke="#d3ef83" stroke-width="3" marker-end="url(#a-lime)"/>
+<text x="457.751" y="205.734" font-size="23" fill="#d3ef83" >v：沿切线</text>
+<circle cx="750.6" cy="455" r="4.92" fill="#d3ef83"/>
+<circle cx="209.4" cy="455" r="4.92" fill="#8bb6d0"/>
+<line x1="750.6" y1="455" x2="750.6" y2="356.6" stroke="#d3ef83" stroke-width="3" marker-end="url(#a-lime)"/>
+<line x1="209.4" y1="455" x2="209.4" y2="509.12" stroke="#8bb6d0" stroke-width="3" marker-end="url(#a-blue)"/>
+<text x="745.68" y="499.28" font-size="24" fill="#d3ef83" >近地点</text>
+<text x="156.92" y="432.04" font-size="24" fill="#8bb6d0" >远地点</text>
+<line x1="628.83" y1="592.76" x2="750.6" y2="592.76" stroke="#d3ef83" stroke-width="2" marker-start="url(#a-lime)" marker-end="url(#a-lime)"/>
+<line x1="209.4" y1="628.84" x2="628.83" y2="628.84" stroke="#8bb6d0" stroke-width="2" marker-start="url(#a-blue)" marker-end="url(#a-blue)"/>
+<text x="676.8" y="582.92" font-size="25" fill="#d3ef83" >r_p</text>
+<text x="393.9" y="621.46" font-size="25" fill="#8bb6d0" >r_a</text>
+<line x1="209.4" y1="655.08" x2="750.6" y2="655.08" stroke="#cfb280" stroke-width="2" marker-start="url(#a-gold)" marker-end="url(#a-gold)"/>
+<text x="464.42" y="716" font-size="24" fill="#cfb280" >2a</text>
+<text x="300" y="329" font-size="23" fill="#8a9e9e" >椭圆示例 e = 0.55</text>
+<rect x="924" y="197" width="420" height="527" rx="16" fill="#142128" stroke="#33454c"/>
+<text x="952" y="241" font-size="27" fill="#d3ef83" >几何与时间分开处理</text>
+<text x="952" y="294" font-size="29" fill="#e4e9df" >r_p = a(1 − e)</text>
+<text x="952" y="339" font-size="29" fill="#e4e9df" >r_a = a(1 + e)</text>
+<text x="952" y="390" font-size="25" fill="#cfb280" >近地点更快：v_p &gt; v_a</text>
+<line x1="952" y1="421" x2="1316" y2="421" stroke="#33454c" stroke-width="2" />
+<text x="952" y="465" font-size="21" fill="#8a9e9e" >① 平均近点角 M 随时间线性增加</text>
+<text x="952" y="509" font-size="25" fill="#e4e9df" >② 解 M = E − e sin E</text>
+<text x="952" y="553" font-size="24" fill="#8bb6d0" >③ 由 E 计算位置与速度</text>
+<text x="952" y="610" font-size="28" fill="#e4e9df" >T = 2π √(a³ / μ)</text>
+<text x="952" y="665" font-size="23" fill="#8a9e9e" >μ 的单位须与 r、t 一致</text>
+<text x="952" y="700" font-size="23" fill="#cfb280" >不是匀速沿椭圆移动</text>
+<rect x="56" y="756" width="1288" height="53" rx="16" fill="#17232a"/>
+<text x="80" y="791" font-size="22" fill="#8a9e9e" >模型条件：无推力的两体椭圆轨道；图中天体大小、箭头长度与间距为示意。</text>
+<line x1="56" y1="835" x2="1344" y2="835" stroke="#33454c" stroke-width="1" />
+<text x="56" y="869" font-size="17" fill="#8a9e9e" >轨研 ORBITAL · 原创技术图解</text>
+<text x="1344" y="869" font-size="15" fill="#8a9e9e" text-anchor="end" letter-spacing="1">SCHEMATIC · NOT TO SCALE</text>
+</g></svg>

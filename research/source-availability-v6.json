@@ -1,0 +1,79 @@
+{
+  "checkedOn": "2026-10-26",
+  "scope": "仅本轮数值方法新增来源；旧资料保持原核查记录。",
+  "method": "一手网页、官方仓库、作者讲义及论文阅读；未运行相应工程软件。",
+  "sources": [
+    {
+      "title": "NASA NAIF · conics_c",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/conics_c.html",
+      "supports": "圆锥轨道根数到指定时刻状态的参考接口；比较前统一初态、μ、参考系与时刻。",
+      "version": "函数文档修订 1.1.2，2021-07-02；非工具包版本",
+      "checkedOn": "2026-10-26",
+      "researchRead": "success",
+      "caveat": "可访问不等于内容永久不变。"
+    },
+    {
+      "title": "Basilisk · Basic Orbit",
+      "url": "https://avslab.github.io/basilisk/examples/scenarioBasicOrbit.html",
+      "supports": "从点质量引力到 J2 场景的入门示例；模型差异不能全部解释成积分误差。",
+      "version": "查阅页面显示 2.12.0",
+      "checkedOn": "2026-10-26",
+      "researchRead": "success",
+      "caveat": "可访问不等于内容永久不变。"
+    },
+    {
+      "title": "Orekit · Propagation Overview",
+      "url": "https://github.com/CS-SI/Orekit/blob/develop/src/main/java/org/orekit/overview.html",
+      "supports": "传播器的内部积分步长与输出采样时刻可以独立；输出更密不等于积分更准。",
+      "version": "官方仓库 develop 浮动分支，2026-10-26 查阅",
+      "checkedOn": "2026-10-26",
+      "researchRead": "success",
+      "caveat": "浮动分支，页面中保留版本边界。"
+    },
+    {
+      "title": "NASA Glenn · Temporal Convergence",
+      "url": "https://www.grc.nasa.gov/www/wind/valid/tutorial/tempconv.html",
+      "supports": "时间精确计算应检查时间步长敏感性；此来源为 CFD 验证教程，并非对本站的认证。",
+      "version": "页面更新 2021-02-10",
+      "checkedOn": "2026-10-26",
+      "researchRead": "success",
+      "caveat": "可访问不等于内容永久不变。"
+    },
+    {
+      "title": "UCSD PHYS 141/241 · Numerical Integration",
+      "url": "https://jduarte.physics.ucsd.edu/phys141/lectures/03_Numerical_Methods.html",
+      "supports": "显式 Euler 与经典 RK4 的 ODE 更新过程，作为算法阅读材料。",
+      "version": "课程讲义，页面未标明确发布日期",
+      "checkedOn": "2026-10-26",
+      "researchRead": "success",
+      "caveat": "可访问不等于内容永久不变。"
+    },
+    {
+      "title": "Ernst Hairer · Symplectic Integrators",
+      "url": "https://www.unige.ch/~hairer/poly_geoint/week2.pdf",
+      "supports": "Störmer–Verlet 的二阶、辛性质及其在可分离哈密顿系统中的实现条件。",
+      "version": "TU München 讲义，2010 年 1–2 月",
+      "checkedOn": "2026-10-26",
+      "researchRead": "success",
+      "caveat": "研究查阅成功；主审再次读取时超时，存在访问波动。"
+    },
+    {
+      "title": "Hairer / Lubich / Wanner · Störmer–Verlet",
+      "url": "https://www.unige.ch/~hairer/preprints/gniverlet.html",
+      "supports": "结构保持方法长期行为与后向误差分析；良好的能量行为不等于精确守恒。",
+      "version": "作者站点研究摘要，页面未标日期",
+      "checkedOn": "2026-10-26",
+      "researchRead": "success",
+      "caveat": "可访问不等于内容永久不变。"
+    },
+    {
+      "title": "Siu A. Chin · Perihelion Precession Error",
+      "url": "https://arxiv.org/abs/math-ph/0608012",
+      "supports": "辛积分器在 Kepler 问题中的近心点进动误差，支持同时检查几何、相位和守恒量。",
+      "version": "2006-08-03；期刊 Phys. Rev. E 75, 036701，2007",
+      "checkedOn": "2026-10-26",
+      "researchRead": "success",
+      "caveat": "可访问不等于内容永久不变。"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "checkedOn": "2026-10-26",
+  "version": "5.0.0",
+  "scope": "本轮复查信息组织、跨资料路径、工具分类、备份恢复、移动布局与新增资料来源；未声称穷尽航天所有型号或重新核验所有旧资料。",
+  "resolved": [
+    {
+      "finding": "资料入口多，但研究过程及输入/输出契约分散",
+      "change": "4 条研究方案、16 个人工检查步骤、47 个资料关系；资料详情可返回方案；JSON 导出包含来源与许可信息。"
+    },
+    {
+      "finding": "本地学习记录只能导出，不能恢复",
+      "change": "增加严格文件校验、预览、未知条目说明和仅添加新条目的原子恢复，保存前重新读取共享存储。"
+    },
+    {
+      "finding": "工具目录缺少地面数据链和科学产品处理入口",
+      "change": "新增 8 个有来源、用途、输入输出、边界、选择问题和启动步骤的条目。"
+    },
+    {
+      "finding": "源码可见许可容易与开源混淆，功能文档容易与采用案例混淆",
+      "change": "显式 accessModel 支持源码可见与标准类别；资源详情只对官方案例/任务资料使用采用证据样式。"
+    },
+    {
+      "finding": "工具多关键词检索不一致且未覆盖输入输出",
+      "change": "复用 NFKC、多关键词 AND 和标题排序，补齐输入/输出/限制/步骤字段。"
+    },
+    {
+      "finding": "直接文档链接可能失效",
+      "change": "新增来源共检查 31 个原始 URL，发现 PDS 手册直链 404 和 SBN 门户 403/超时；替换为经 HTTP 200 验证的官方索引。CDAWeb 本地请求失败但网页阅读工具可读取，未判为死链。"
+    }
+  ],
+  "newResourceIds": [
+    "yamcs",
+    "openmct",
+    "openc3-cosmos",
+    "nasa-nos3",
+    "ccsds-standards",
+    "satnogs",
+    "pds4-tools",
+    "spdf-cdaweb"
+  ],
+  "workflowIds": [
+    "ground-replay",
+    "orbit-crosscheck",
+    "attitude-fdir",
+    "pds-reproduction"
+  ],
+  "visualDesign": [
+    "研究方案 / 工具目录双入口",
+    "四张研究问题选择卡、四幅原创代码 SVG 示意",
+    "输入契约、步骤详情、验证条件与关联资料分层排版",
+    "390px 与 768px 响应式检查、可见键盘焦点、减少动画偏好"
+  ],
+  "remaining": [
+    {
+      "priority": "next",
+      "topic": "首包与资料装载",
+      "detail": "主要 JSON 仍同步进入约 1.27 MB 的 JS 首包；下一步应拆分路由和延迟加载资料/搜索索引，而非仅拆文件隐藏构建提示。"
+    },
+    {
+      "priority": "next",
+      "topic": "档案覆盖与结构精度",
+      "detail": "50 个型号是选择性档案，三维含工程示意和未公开内部量；后续应按任务系列建立来源覆盖矩阵，再逐型细化，不能宣称全历史型号均已复原。"
+    },
+    {
+      "priority": "next",
+      "topic": "资料时效",
+      "detail": "情报仍为人工维护快照，没有在线抓取、外部求解或后台账户服务。逐条版本与证据核查优先于统一刷新日期。"
+    },
+    {
+      "priority": "later",
+      "topic": "个人研究数据",
+      "detail": "本轮恢复仅添加缺失条目，保留现存内容；收藏队列未加入学习记录导出，尚无多设备账户同步。"
+    }
+  ],
+  "originalUEProject": {
+    "path": "AerospaceSimUE",
+    "modified": false,
+    "simulationsRerun": false
+  },
+  "primaryResearchNotes": [
+    {
+      "subject": "OpenC3",
+      "finding": "所核查主分支为 Builder’s License V2；以当前文件为证据，不沿用旧 AGPL 标签。",
+      "url": "https://github.com/OpenC3/cosmos/blob/main/LICENSE.md"
+    },
+    {
+      "subject": "NOS3",
+      "finding": "当前名称为 NASA Operational Simulator for Space Systems，主许可 NOSA 1.3。",
+      "url": "https://github.com/nasa/nos3"
+    },
+    {
+      "subject": "CDAWeb",
+      "finding": "官方说明 SOAP 服务已于 2024 年 3 月移除；新内容指向 REST。",
+      "url": "https://cdaweb.gsfc.nasa.gov/WebServices/REST/"
+    },
+    {
+      "subject": "Basilisk",
+      "finding": "官方姿态反馈示例中的导航默认无误差、执行为外力矩；本站将故障注入明确标为建议扩展。",
+      "url": "https://avslab.github.io/basilisk/examples/scenarioAttitudeFeedback.html"
+    }
+  ]
+}

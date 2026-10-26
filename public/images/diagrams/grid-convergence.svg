@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+<title id="title">三网格收敛：从离散结果估计连续极限</title>
+<desc id="desc">合成教学函数 f(h)=1+0.02h²。细、中、粗三档网格尺度为1、2、4，对应1.020、1.080、1.320。等比加密推得二阶收敛，三网格安全因子1.25时细网格GCI约2.45%。数据不是实测。</desc>
+<defs>
+<marker id="arrow-lime" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#d3ef83" stroke-width="2"/></marker>
+<marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#8bb6d0" stroke-width="2"/></marker>
+<marker id="arrow-muted" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#839399" stroke-width="2"/></marker>
+</defs>
+<rect width="1400" height="900" fill="#10191e"/>
+<g font-family="Inter, Noto Sans SC, Microsoft YaHei, sans-serif" font-size="24" fill="#e8eee9">
+
+<text x="70" y="55" fill="#d3ef83" font-size="22" letter-spacing="3">ORBITAL / NUMERICAL EVIDENCE</text>
+<text x="70" y="115" font-size="46" font-weight="600">网格变细，结果趋向哪里？</text>
+<text x="70" y="158" fill="#9faeb2">合成教学函数 f(h) = 1 + 0.02h² · 单调、等比加密、渐近误差模型成立</text>
+<text x="75" y="219" fill="#9faeb2">观测量 f（无量纲）</text>
+<line x1="135" y1="650" x2="920" y2="650" stroke="#30424a" stroke-width="1"/><text x="110" y="658" text-anchor="end" fill="#9faeb2" font-size="22">1.0</text>
+<line x1="135" y1="549.9999999999999" x2="920" y2="549.9999999999999" stroke="#30424a" stroke-width="1"/><text x="110" y="557.9999999999999" text-anchor="end" fill="#9faeb2" font-size="22">1.1</text>
+<line x1="135" y1="450.00000000000006" x2="920" y2="450.00000000000006" stroke="#30424a" stroke-width="1"/><text x="110" y="458.00000000000006" text-anchor="end" fill="#9faeb2" font-size="22">1.2</text>
+<line x1="135" y1="349.99999999999994" x2="920" y2="349.99999999999994" stroke="#30424a" stroke-width="1"/><text x="110" y="357.99999999999994" text-anchor="end" fill="#9faeb2" font-size="22">1.3</text>
+<line x1="135" y1="250.0000000000001" x2="920" y2="250.0000000000001" stroke="#30424a" stroke-width="1"/><text x="110" y="258.0000000000001" text-anchor="end" fill="#9faeb2" font-size="22">1.4</text>
+<line x1="135" y1="240" x2="135" y2="678" stroke="#839399" stroke-width="2"/>
+<line x1="135" y1="678" x2="930" y2="678" stroke="#839399" stroke-width="2" marker-end="url(#arrow-muted)"/>
+<path d="M135 650 L152 649.8 L169 649.2 L186 648.2 L203 646.8 L220 645 L237 642.8 L254 640.2 L271 637.2 L288 633.8 L305 630 L322 625.8 L339 621.2 L356 616.2 L373 610.8 L390 605 L407 598.8 L424 592.2 L441 585.2 L458 577.8 L475 570 L492 561.8 L509.00000000000006 553.2 L526 544.2 L543 534.8 L560 525 L577 514.8 L594 504.2 L611 493.20000000000005 L628 481.8 L645 470 L662 457.79999999999995 L679 445.2 L696 432.20000000000005 L713 418.8 L730 405 L747 390.8 L764 376.2 L781 361.2 L798 345.8 L815 330 L831.9999999999999 313.8 L849 297.2 L866 280.2 L883.0000000000001 262.79999999999995 L900 245" fill="none" stroke="#8bb6d0" stroke-width="3.5"/>
+<line x1="135" y1="650" x2="920" y2="650" stroke="#d3ef83" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="608" y="635" fill="#d3ef83">连续极限 f₀ = 1.000</text>
+<path d="M305 630 V678 M475 570 V678 M815 330 V678" fill="none" stroke="#4c6571" stroke-width="1.5" stroke-dasharray="5 7"/>
+<circle cx="305" cy="630" r="7" fill="#d3ef83"/>
+<circle cx="475" cy="570" r="7" fill="#8bb6d0"/>
+<circle cx="815" cy="330" r="7" fill="#cfb280"/>
+<path d="M305 620 V583 H255" fill="none" stroke="#d3ef83" stroke-width="1.5"/>
+<text x="166" y="560" fill="#d3ef83" font-size="25">细：f₁ = 1.020</text>
+<text x="430" y="525" fill="#8bb6d0" font-size="25">中：f₂ = 1.080</text>
+<path d="M475 535 V561" stroke="#8bb6d0" stroke-width="1.5"/>
+<text x="630" y="291" fill="#cfb280" font-size="25">粗：f₃ = 1.320</text>
+<path d="M815 300 V320" stroke="#cfb280" stroke-width="1.5"/>
+<text x="135" y="715" fill="#9faeb2" text-anchor="middle">0</text>
+<text x="305" y="715" fill="#9faeb2" text-anchor="middle">1</text>
+<text x="475" y="715" fill="#9faeb2" text-anchor="middle">2</text>
+<text x="815" y="715" fill="#9faeb2" text-anchor="middle">4</text>
+<text x="420" y="758" fill="#9faeb2">归一化网格尺度 h →</text>
+<line x1="980" y1="220" x2="980" y2="760" stroke="#35494f" stroke-width="1.5"/>
+<text x="1020" y="251" fill="#d3ef83" font-size="25">01 / 观测收敛阶</text>
+<text x="1020" y="297" font-size="26">r = h₂/h₁ = h₃/h₂ = 2</text>
+<text x="1020" y="340" font-size="27">p = ln(4) / ln(2) = 2</text>
+<text x="1020" y="383" fill="#9faeb2" font-size="23">误差差值比：0.240/0.060</text>
+<text x="1020" y="466" fill="#d3ef83" font-size="25">02 / 细网格误差带</text>
+<text x="1020" y="514" font-size="31">GCI₁₂ ≈ 2.45%</text>
+<text x="1020" y="557" fill="#9faeb2" font-size="23">F_s = 1.25（三网格）</text>
+<text x="1020" y="600" fill="#9faeb2" font-size="23">此处以 f₁ 为归一化尺度</text>
+<text x="1020" y="681" fill="#cfb280" font-size="25">接近数值连续解</text>
+<text x="1020" y="723" fill="#9faeb2" font-size="23">仍须另做物理确认</text>
+<line x1="70" y1="798" x2="1330" y2="798" stroke="#35494f" stroke-width="1.5"/>
+<text x="70" y="840" fill="#9faeb2" font-size="23">GCI₁₂ = F_s |(f₁ − f₂)/f₁| / (rᵖ − 1)；f₁ 接近零时，应改用合理尺度或绝对误差。</text>
+<text x="70" y="878" fill="#9faeb2" font-size="22">图中数字均为教学设定，不代表实测或工程案例；迭代误差与时间步误差需独立检查。</text>
+
+</g>
+</svg>

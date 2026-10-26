@@ -1,0 +1,367 @@
+{
+  "version": 3,
+  "reviewedAt": "2026-10-25 05:39:21 UTC",
+  "contentAsOf": "2026-10-25",
+  "scope": {
+    "files": [
+      "research/library.json",
+      "research/briefings.json"
+    ],
+    "baseline": {
+      "resources": 57,
+      "briefings": 21
+    },
+    "newResources": 6,
+    "newBriefings": 1,
+    "coreStarterWorkflows": 10
+  },
+  "method": "浏览官方正文、手册、源代码许可及数据归档页；对全部既有条目做结构/日期/采用证据措辞筛查，对以下高影响对象重新读取一手来源。来源可访问与软件安装运行、科学验证是不同状态，本轮未安装或实测这些工程软件。搜索结果仅用于发现入口，不用搜索摘要代替正文核查。",
+  "checks": [
+    {
+      "id": "dragonfly-date-and-scope",
+      "recordIds": [
+        "dragonfly-simulated-flight-2026"
+      ],
+      "sourceUrls": [
+        "https://science.nasa.gov/blogs/dragonfly/2026/10/23/nasas-dragonfly-completes-first-simulated-flight/"
+      ],
+      "finding": "官方称 flight-like 航电台上迄今最全面的首次飞行场景，涵盖多数系统；实际飞行系统测试尚属计划。只给报道日，未给综合测试执行日。",
+      "changes": [
+        "删除原标题中可能被理解为全部系统验证的“完整”。",
+        "分离 publishedOn、未知 eventDate 与发射/到达计划。",
+        "补充 GPU 传感器仿真与真实飞行系统测试之间的区别。"
+      ],
+      "unresolved": [
+        "综合测试准确执行日期未公开，保持 null。"
+      ],
+      "status": "已修正"
+    },
+    {
+      "id": "artemis-archive-availability",
+      "recordIds": [
+        "artemis-ii-science-data-2026"
+      ],
+      "sourceUrls": [
+        "https://www.nasa.gov/blogs/missions/2026/10/07/nasa-releases-artemis-ii-lunar-science-data-images/",
+        "https://pds-geosciences.wustl.edu/missions/artemis2/index.htm",
+        "https://assets.science.nasa.gov/content/dam/science/missions/artemis/artemis-ii-prelimsci-report-/artemis2_data_user_guide.pdf?emrc=6ac65c2316ac9",
+        "https://naif.jpl.nasa.gov/pub/naif/pds/pds4/artemis2/artemis2_spice/"
+      ],
+      "finding": "新闻与 PDS 证明影像/音频/文档已公开；PDS 节点明确 SPICE bundle 延迟。指南第 6–7 页给出计划的 SPICE bundle 与 DOI，但核查指定目录 HTTP 404。",
+      "changes": [
+        "标题、摘要和分析明确已开放资料与待确认几何内核。",
+        "添加归档页与用户指南作为第二层来源。",
+        "将资料公开日与观测日分开记录。"
+      ],
+      "unresolved": [
+        "尚未确认任务 SPICE bundle 的实际公开时间及新路径；404 不证明其他位置绝无数据。"
+      ],
+      "status": "已修正并保留缺口"
+    },
+    {
+      "id": "artemis-return-time-zone",
+      "recordIds": [
+        "artemis-ii-return-2026"
+      ],
+      "sourceUrls": [
+        "https://www.nasa.gov/news-release/nasa-welcomes-record-setting-artemis-ii-moonfarers-back-to-earth/",
+        "https://pds-geosciences.wustl.edu/missions/artemis2/index.htm"
+      ],
+      "finding": "NASA 报道 4 月 10 日 17:07 PDT 溅落，PDS 对应 4 月 11 日 00:07 UTC；新闻 5 月 7 日修订飞行里程。",
+      "changes": [
+        "保留 4 月 10 日作为新闻日期，增加 UTC 事件时间与时区说明。",
+        "记录来源更新日期。"
+      ],
+      "unresolved": [],
+      "status": "已澄清"
+    },
+    {
+      "id": "adoption-scope-mathworks",
+      "recordIds": [
+        "matlab-aerospace-blockset"
+      ],
+      "sourceUrls": [
+        "https://www.mathworks.com/videos/how-nasa-modeled-artemis-i-in-matlab-and-simulink--1671048095326.html"
+      ],
+      "finding": "2022-12-14 供应商案例支持 Artemis I SLS 任务管理、Orion 电源及 GN&C 的 MATLAB/Simulink 使用，但未证明 Aerospace Blockset。",
+      "changes": [
+        "保留已有具体场景与“不证明 Aerospace Blockset”的限定；更新该证据核查时间。"
+      ],
+      "unresolved": [
+        "Aerospace Blockset 是否被该案例具体系统采用未获公开证明。"
+      ],
+      "status": "原限定正确"
+    },
+    {
+      "id": "adoption-scope-nx",
+      "recordIds": [
+        "siemens-nx"
+      ],
+      "sourceUrls": [
+        "https://blogs.sw.siemens.com/news/nx-customer-showcase-spacex/"
+      ],
+      "finding": "2010-12-20 Siemens 案例讨论 Falcon 1 开发中的 NX、NX Nastran、Femap 和 Teamcenter；不支持 2026 全公司标准或 Starship 工具链。",
+      "changes": [
+        "保留历史时点及型号限定；不能转给 MSC Nastran 作为采用证据。"
+      ],
+      "unresolved": [
+        "未核实 SpaceX 当前全公司工具标准。"
+      ],
+      "status": "原限定正确"
+    },
+    {
+      "id": "adoption-scope-stk",
+      "recordIds": [
+        "ansys-stk"
+      ],
+      "sourceUrls": [
+        "https://ansys.synopsys.com/ko-kr/blog/space-debris-an-environmental-crisis"
+      ],
+      "finding": "Ansys 客户文章具名引用 Astroscale GN&C 工程师，支持 ELSA-d 轨道、通信链路及星历工作流。浏览工具不可访问后通过 HTTPS 请求成功读取正文。",
+      "changes": [
+        "保留供应商发布、具体团队及任务范围；更新核查时间。"
+      ],
+      "unresolved": [],
+      "status": "原限定正确"
+    },
+    {
+      "id": "cea-modern-interface",
+      "recordIds": [
+        "nasa-cea"
+      ],
+      "sourceUrls": [
+        "https://github.com/nasa/cea",
+        "https://nasa.github.io/cea/"
+      ],
+      "finding": "官方现代仓库为原程序重新实现，Apache-2.0，文档显示 3.3.4。现有条目已正确区分现代接口与旧版 CEA/CEARUN。",
+      "changes": [
+        "保留条目，增加可复现热化学基线入门步骤与选型问题。"
+      ],
+      "unresolved": [
+        "未执行不同 CEA 版本的数值等价比较。"
+      ],
+      "status": "已复核"
+    },
+    {
+      "id": "sparta-release-and-scope",
+      "recordIds": [
+        "sparta"
+      ],
+      "sourceUrls": [
+        "https://sparta.github.io/",
+        "https://sparta.github.io/doc/Manual.html"
+      ],
+      "finding": "官网列出 2026-08-27 版本，定位低密度气体 DSMC；GPL 与按申请其他许可不能写成默认 LGPL。",
+      "changes": [
+        "保留已有准确许可与方法边界，补充粒子/网格/时间步/采样检查流程。"
+      ],
+      "unresolved": [
+        "未运行性能或精度基准。"
+      ],
+      "status": "已复核"
+    },
+    {
+      "id": "godot-license-and-historical-news",
+      "recordIds": [
+        "esa-godot"
+      ],
+      "sourceUrls": [
+        "https://godot.io.esa.int/docs/",
+        "https://godot.io.esa.int/docs/doxygen/core_2util_2Identifiers_8h_source.html",
+        "https://essr.esa.int/license/european-space-agency-community-license-v2-4-weak-copyleft-type-2",
+        "https://esoc.esa.int/content/godot-%E2%80%93-wait-over"
+      ],
+      "finding": "1.20.0 文档与源码标注 ESCL Weak 2.4；许可有地域定义。ESOC 新闻正文含 Juice/Euclid 尚未发射时的计划，与站点当前展示日期混杂，不宜据其推断今日采用状态。",
+      "changes": [
+        "新增条目分类工程软件，明确许可条件和 Python 接口是 C++ 子集。",
+        "采用证据仅使用项目文档类别，不从旧新闻新增当前任务采用断言。"
+      ],
+      "unresolved": [
+        "具体用户地域/主体资格需按发行许可核实；本轮未申请授权。"
+      ],
+      "status": "新增且限定"
+    },
+    {
+      "id": "jeod-reproducibility",
+      "recordIds": [
+        "nasa-jeod"
+      ],
+      "sourceUrls": [
+        "https://github.com/nasa/jeod",
+        "https://github.com/nasa/jeod/blob/main/README_jeod"
+      ],
+      "finding": "JEOD 5.4 README 说明 Trick 依赖、实验模型限制、非 Trick 演示未维护及部分 BET 数据不公开。回归资料附在发布资产，非全部在仓库中。",
+      "changes": [
+        "新增输入输出、依赖与公开数据可复现边界，不把 SIM_Apollo 样例视为历史 Apollo 采用证明。"
+      ],
+      "unresolved": [
+        "未下载或运行发行回归数据。"
+      ],
+      "status": "新增"
+    },
+    {
+      "id": "horizons-spacecraft-reconstruction",
+      "recordIds": [
+        "jpl-horizons"
+      ],
+      "sourceUrls": [
+        "https://ssd.jpl.nasa.gov/horizons/manual.html",
+        "https://ssd-api.jpl.nasa.gov/doc/horizons.html"
+      ],
+      "finding": "航天器轨迹包括历史拟合和未来预测，非实时；需检查修订日期、参考系和原任务天体星历。",
+      "changes": [
+        "新增具有查询参数、来源保存和 SPICE 对照的资源条目。"
+      ],
+      "unresolved": [
+        "未指定任务实际发起或校验星历数值查询。"
+      ],
+      "status": "新增"
+    },
+    {
+      "id": "iers-products-and-unread-message",
+      "recordIds": [
+        "iers-eop"
+      ],
+      "sourceUrls": [
+        "https://maia.usno.navy.mil/products/bulletin-a",
+        "https://data.iers.org/bulletins.php",
+        "https://maia.usno.navy.mil/products/iers-bulletins",
+        "https://www.iers.org/iers/en/newsmeetings/news/news",
+        "https://datacenter.iers.org/data/2/message_566.txt"
+      ],
+      "finding": "官方产品页可核实 Bulletin A、finals2000A 及预测/最终解区分。新闻页有 10 月 15 日算法更新消息 566，但正文被官方服务器 HTTP 400 拒绝。",
+      "changes": [
+        "新增 EOP 数据入口。",
+        "未把消息标题扩写成具体算法变更情报，替换为可读完整正文的 ROAMX 研究信号。"
+      ],
+      "unresolved": [
+        "Message 566 的具体算法变化未确认。"
+      ],
+      "status": "新增，未读内容不入正文"
+    },
+    {
+      "id": "asp-stable-workflow",
+      "recordIds": [
+        "ames-stereo-pipeline"
+      ],
+      "sourceUrls": [
+        "https://stereopipeline.readthedocs.io/en/latest/introduction.html",
+        "https://stereopipeline.readthedocs.io/en/stable/tutorial.html",
+        "https://github.com/NeoGeographyToolkit/StereoPipeline/blob/master/LICENSE"
+      ],
+      "finding": "latest 文档标记 3.8.0-alpha，stable 为 3.7.0；稳定教程中的 LRO NAC CSM 样例不需要下载整套 ISIS 数据，其他流程依赖不同。",
+      "changes": [
+        "新增条目指向 stable 教程，不将 alpha 当作稳定发行。",
+        "写明相机、尺度、高程基准和影像许可要求。"
+      ],
+      "unresolved": [
+        "未运行立体重建或确认每个传感器的完整数据规模。"
+      ],
+      "status": "新增"
+    },
+    {
+      "id": "openaerostruct-node-dof",
+      "recordIds": [
+        "openaerostruct"
+      ],
+      "sourceUrls": [
+        "https://mdolab-openaerostruct.readthedocs-hosted.com/en/latest/",
+        "https://mdolab-openaerostruct.readthedocs-hosted.com/en/latest/quick_example.html",
+        "https://github.com/mdolab/OpenAeroStruct/blob/main/LICENSE.md"
+      ],
+      "finding": "官方方法为 VLM 与每节点六自由度空间梁，不能混淆为整机飞行动力学六自由度。",
+      "changes": [
+        "新增低阶气动结构优化工作流和独立高保真校核边界。"
+      ],
+      "unresolved": [
+        "未执行优化或导数检查。"
+      ],
+      "status": "新增"
+    },
+    {
+      "id": "mars-roamx-prediction-vs-flight",
+      "recordIds": [
+        "mars-roamx-blade-2026"
+      ],
+      "sourceUrls": [
+        "https://www.nasa.gov/science-research/aeronautics-research/nasa-experimental-mars-helicopter-blade-designs-target-longer-flights/"
+      ],
+      "finding": "正文日期 10 月 20 日，更新 10 月 21 日，引用论文 9 月 22 日。NASA 明确未来性能估计和技术尚未可用于火星；不是新实飞纪录。",
+      "changes": [
+        "新增研究情报，区分翼型试验、数值预测和整机航程假设。",
+        "未指定新闻没有点名的 CFD 软件作为该团队实际采用。"
+      ],
+      "unresolved": [
+        "链接论文正文未能读取，未记录其详细模型设定或自行引用实验数字。"
+      ],
+      "status": "新增"
+    }
+  ],
+  "starterWorkflowRecordIds": [
+    "gmat",
+    "basilisk",
+    "tudat",
+    "spice",
+    "jsbsim",
+    "rocketpy",
+    "openmdao",
+    "dymos",
+    "nasa-cea",
+    "sparta"
+  ],
+  "starterWorkflowStatus": "既有 10 项核心工具及 6 项新增资源的步骤为基于官方文档的研究建议，未声称在本站执行。",
+  "informationDesignReferences": [
+    {
+      "title": "NASA Eyes",
+      "url": "https://science.nasa.gov/eyes/",
+      "idea": "以时间可回放、任务可进入的探索入口连接解释内容，清楚区分模拟轨迹与通信状态等数据类别。",
+      "inspection": "读取官方产品介绍，未进行本轮交互性能测试。"
+    },
+    {
+      "title": "JPL Europa Clipper Mission Profile",
+      "url": "https://www.jpl.nasa.gov/missions/europa-clipper/",
+      "idea": "先给目标、类型、状态和发射日期等任务概要，再进入仪器及新闻，适合飞行器档案的渐进信息层级。",
+      "inspection": "读取任务页内容结构。"
+    },
+    {
+      "title": "ESA Juice",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Juice",
+      "idea": "把任务目的、旅程、仪器与近期动态组织为相邻入口；轨迹节点能连接任务史与研究问题。",
+      "inspection": "读取任务页内容结构，未来节点保留计划属性。"
+    }
+  ],
+  "unresolved": [
+    "Artemis II SPICE bundle 的实际发布状态与覆盖仍需后续核查，不能以用户指南计划条目代替可用数据。",
+    "GODOT 的社区许可资格需由实际使用者按所在主体和地域核实。",
+    "IERS Message 566 正文无法读取，本轮不解释其算法更新内容。",
+    "商业采用案例是具名团队/任务/时间的公开证据，不是当前全行业工具占有率统计。",
+    "全部入门步骤均为文档指导，未构成软件实测或工程验证报告。"
+  ],
+  "verification": {
+    "status": "PASS",
+    "contentContract": {
+      "command": "node scripts/check-content.mjs",
+      "searchableEntriesAtCheck": 169,
+      "distinctHttpsSourceUrlsAtCheck": 304,
+      "note": "仅为结构契约验证，不声称 304 个链接均已重新访问或资料已完成科学审查。"
+    },
+    "extendedContentCheck": {
+      "resources": 63,
+      "briefings": 22,
+      "starterWorkflows": 16,
+      "reviewChecks": 15,
+      "minResourceDetailsCharacters": 198,
+      "minBriefingAnalysisAndImplicationCharacters": 174,
+      "adoptionEvidenceRecords": 10,
+      "checks": [
+        "已有必填字段及扩展输入/输出/限制完整",
+        "目录分类合法",
+        "替代资源与情报相关资源 ID 可解析",
+        "采用证据类型及 HTTPS 地址格式合法",
+        "入门步骤为 3–5 步，选型问题不少于 2 项",
+        "情报日期不晚于内容快照"
+      ]
+    },
+    "scientificValidation": "未执行工程软件或真实任务模型的科学验证。"
+  }
+}

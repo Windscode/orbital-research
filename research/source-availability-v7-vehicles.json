@@ -1,0 +1,463 @@
+{
+  "checkedOn": "2026-10-26",
+  "scope": "本轮新增六型号、三条情报、五幅图片使用的来源；不重置既有五十型号的核查日期。",
+  "method": "一手机构网页、仪器团队、官方数据档案、原始报告/论文及其可见索引段落；区别全文读取、索引核对和不可取得资源。未执行科学求解或任务数据重处理。",
+  "sources": [
+    {
+      "title": "NASA · TIROS 项目与 TIROS-1 系统",
+      "url": "https://science.nasa.gov/mission/tiros/",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "tiros-1"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "WMO OSCAR · TIROS-1 轨道与寿命",
+      "url": "https://space.oscar.wmo.int/satellites/view/tiros_1",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "tiros-1"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "NASA NTRS · TIROS I final meteorological satellite report",
+      "url": "https://ntrs.nasa.gov/citations/19640007992",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "tiros-1"
+      ],
+      "researchRead": "metadata-and-index",
+      "caveat": "核对 NTRS 报告入口和索引；没有逐页复现报告全部表格。"
+    },
+    {
+      "title": "NOAA NESDIS · TIROS-1 数据与地面站",
+      "url": "https://www.nesdis.noaa.gov/news/celebrating-the-worlds-first-meteorological-satellite-tiros-1",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "tiros-1"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "NASA · Telstar 与跨洋电视历史",
+      "url": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "telstar-1"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "Bell Labs 原始论文 · The spacecraft antennas（NTRS）",
+      "url": "https://ntrs.nasa.gov/citations/19640000965",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "telstar-1"
+      ],
+      "researchRead": "metadata-and-index",
+      "caveat": "NTRS 收录 Bell Labs 原始研究摘要，核对 6/4 GHz；未提取完整方向图。"
+    },
+    {
+      "title": "Bell Labs 原始论文 · The ground transmitter and receiver（NTRS）",
+      "url": "https://ntrs.nasa.gov/citations/19640000971",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "telstar-1"
+      ],
+      "researchRead": "metadata-and-index",
+      "caveat": "核对原始地面收发设备论文摘要；未取得全部噪声与损耗表。"
+    },
+    {
+      "title": "NASA · 1958—1964 卫星通信史",
+      "url": "https://ntrs.nasa.gov/citations/19660004987",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "telstar-1"
+      ],
+      "researchRead": "pdf-index-passages",
+      "caveat": "使用 NASA 卫星通信史的任务终止相关段落索引；不声明逐页审阅全书。"
+    },
+    {
+      "title": "NASA · 主要发射任务历史汇编",
+      "url": "https://ntrs.nasa.gov/citations/19800019885",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "telstar-1"
+      ],
+      "researchRead": "pdf-and-index",
+      "caveat": "官方微缩胶片 PDF 共 199 页，可读但部分字符 OCR 不可靠；不将模糊单位直接搬为精确数值。"
+    },
+    {
+      "title": "NASA · Landsat 1",
+      "url": "https://science.nasa.gov/mission/landsat-1/",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "landsat-1"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "USGS · Landsat 1 历史构型",
+      "url": "https://www.usgs.gov/landsat-missions/landsat-1",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "landsat-1"
+      ],
+      "researchRead": "official-index-only",
+      "caveat": "全文访问触发 JavaScript/human verification 或超时；使用官方索引摘要核对外形、质量与控制系统，NASA 任务页独立核对轨道和 MSS 能力。"
+    },
+    {
+      "title": "NASA · MSS 仪器与波段",
+      "url": "https://science.nasa.gov/mission/landsat/mss/",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "landsat-1"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "USGS · MSS Collection 2 Level-1",
+      "url": "https://www.usgs.gov/centers/eros/science/usgs-eros-archive-landsat-archives-landsat-1-5-multispectral-scanner",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "landsat-1"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "NASA · Viking 1 任务时间线",
+      "url": "https://science.nasa.gov/mission/viking-1/",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "viking-1-lander"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "NASA · Viking 飞行器与科学系统",
+      "url": "https://science.nasa.gov/mission/viking/spacecraft-and-science/",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "viking-1-lander"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "PDS · Viking Lander EDR 图像档案说明",
+      "url": "https://planetarydata.jpl.nasa.gov/w10n/viking_lander/vl_0002/document/volinfo.htm",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "viking-1-lander"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "Viking Lander · 官方系统标注图",
+      "url": "https://www.nasa.gov/history/45-years-ago-viking-1-and-2-off-to-mars/",
+      "checkedOn": "2026-10-26",
+      "researchRead": "primary-page-success",
+      "supports": "图像主题、拍摄阶段、署名与下载入口",
+      "usedBy": [
+        "viking-1-lander",
+        "viking-1-first-surface-image",
+        "viking-lander-components"
+      ],
+      "caveat": "下载文件已打开目视核对；未执行生成填充、裁切或伪造分辨率。"
+    },
+    {
+      "title": "PDS Atmospheres · Viking Lander 气象",
+      "url": "https://atmos.nmsu.edu/data_and_services/atmospheres_data/MARS/viking/viking_lander.html",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "viking-1-lander"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "PDS · Viking 1 着陆器上下文",
+      "url": "https://pds.nasa.gov/ds-view/pds/viewContext.jsp?identifier=urn%3Anasa%3Apds%3Acontext%3Ainstrument_host%3Aspacecraft.vl1&version=1.2",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "viking-1-lander"
+      ],
+      "researchRead": "official-index-passages",
+      "caveat": "PDS 上下文元数据核对系统组成；页面版本更新时应重新核对实体版本。"
+    },
+    {
+      "title": "NASA · MRO 任务与状态",
+      "url": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "mro"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "NASA/JPL · MRO launch press kit",
+      "url": "https://science.nasa.gov/wp-content/uploads/2024/03/44746_mro-launch.pdf",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "mro"
+      ],
+      "researchRead": "official-press-kit-index-passages",
+      "caveat": "使用原始发射新闻包 Quick Facts；该值属于发射设计工况。"
+    },
+    {
+      "title": "NASA · MRO science instruments",
+      "url": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/science-instruments/",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "mro"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "NASA NESC · Autonomous Aerobraking Phase 1",
+      "url": "https://ntrs.nasa.gov/citations/20120001988",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "mro"
+      ],
+      "researchRead": "pdf-index-passages",
+      "caveat": "核对 Autonomous Aerobraking Phase 1 报告的 MRO 基线输入；这些是研究模型参数，不是全任务历元真值。"
+    },
+    {
+      "title": "APL · CRISM 运行历史",
+      "url": "https://www.jhuapl.edu/destinations/instruments/crism",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "mro"
+      ],
+      "researchRead": "instrument-team-index-passages",
+      "caveat": "采用 APL 团队记载的 2023-04-04 关机日；部分二级资料列 4 月 3 日，未混用。"
+    },
+    {
+      "title": "PDS · MRO SPICE archive",
+      "url": "https://pds.nasa.gov/ds-view/pds/viewDataset.jsp?dsid=MRO-M-SPICE-6-V1.0",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "mro"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "PDS Geosciences · MRO 数据目录",
+      "url": "https://pds-geosciences.wustl.edu/missions/mro/",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "mro"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "ESA · Euclid overview",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_overview",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "euclid"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "ESA · VIS 与 NISP 仪器",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_s_instruments",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "euclid"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "ESA · Euclid 太阳电池与遮阳板安装",
+      "url": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Euclid_gains_solar_power_and_protection",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "euclid"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "ESA · Euclid 在轨调试",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Follow_Euclid_s_first_months_in_space",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "euclid"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "Euclid Consortium · Q2 发布与数据说明",
+      "url": "https://www.euclid-ec.org/science/q2/",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "euclid"
+      ],
+      "researchRead": "primary-page-or-official-index-read",
+      "caveat": "本轮核对本档案引用的事实，不代表审阅网站全部内容、下载所有数据或运行任务软件。"
+    },
+    {
+      "title": "Euclid 团队论文 · Structural-thermal-optical performance",
+      "url": "https://doi.org/10.1051/0004-6361/202557524",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "euclid"
+      ],
+      "researchRead": "author-paper-index-passages",
+      "caveat": "Euclid 团队原始研究的摘要及性能讨论可检索；未下载作者求解模型或完成数值复现。"
+    },
+    {
+      "title": "NASA/IPAC · Euclid data release timeline",
+      "url": "https://euclid.caltech.edu/page/data-release-timeline",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "euclid"
+      ],
+      "researchRead": "official-index-passages",
+      "caveat": "NASA/IPAC 当前计划与 ESA 较旧时间表有差异；只将 Q1、Q2 作为已发布，未宣称 DR1 已发布。"
+    },
+    {
+      "title": "NASA · Roman Space Telescope Enters Final Commissioning Phase",
+      "url": "https://science.nasa.gov/blogs/roman/2026/10/22/nasas-roman-space-telescope-enters-final-commissioning-phase/",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "roman-science-commissioning-2026"
+      ],
+      "researchRead": "primary-page-success",
+      "supports": "原文发布日期、事件阶段与工程边界",
+      "caveat": "NASA 于 10 月 22 日报道已进入科学调试，未给出正式阶段切换的独立日期。"
+    },
+    {
+      "title": "NASA · Psyche Heads Toward Asteroid Belt",
+      "url": "https://science.nasa.gov/blogs/psyche/2026/10/22/pedal-to-the-metal-nasas-psyche-heads-toward-asteroid-belt/",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "psyche-electric-cruise-2026"
+      ],
+      "researchRead": "primary-page-success",
+      "supports": "原文发布日期、事件阶段与工程边界",
+      "caveat": "9 月 28 日开始近连续电推进；10 月 22 日为 NASA 报道日。"
+    },
+    {
+      "title": "ESA · Euclid discovers new comet",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_discovers_new_comet",
+      "checkedOn": "2026-10-26",
+      "usedBy": [
+        "euclid-comet-detection-2026"
+      ],
+      "researchRead": "primary-page-success",
+      "supports": "原文发布日期、事件阶段与工程边界",
+      "caveat": "9 月 16—24 日采集影像，10 月 8 日由 MPC 确认；10 月 19 日为 ESA 报道日期。"
+    },
+    {
+      "title": "MRO · 总装与环境试验前的轨道器",
+      "url": "https://www.jpl.nasa.gov/images/pia07212-mars-reconnaissance-orbiter-in-high-bay/",
+      "checkedOn": "2026-10-26",
+      "researchRead": "primary-page-success",
+      "supports": "图像主题、拍摄阶段、署名与下载入口",
+      "usedBy": [
+        "mro-high-bay-2004"
+      ],
+      "caveat": "下载文件已打开目视核对；未执行生成填充、裁切或伪造分辨率。"
+    },
+    {
+      "title": "NASA / JPL / Lockheed Martin · 媒体使用条款",
+      "url": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+      "checkedOn": "2026-10-26",
+      "researchRead": "primary-page-success",
+      "supports": "署名、用途及版权限制",
+      "usedBy": [
+        "mro-high-bay-2004"
+      ],
+      "caveat": "JPL Image Use Policy 允许个人、教育与新闻用途，须保留图片指定署名；含合作方署名，因此不将其声明为本站自有或无条件公有领域。保留完整原图，用于任务资料介绍，不用于人物或机构代言。"
+    },
+    {
+      "title": "NASA / NASA Goddard Photo and Video · 媒体使用条款",
+      "url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "checkedOn": "2026-10-26",
+      "researchRead": "primary-page-success",
+      "supports": "署名、用途及版权限制",
+      "usedBy": [
+        "viking-1-first-surface-image",
+        "viking-lander-components",
+        "tiros-1-first-earth-view"
+      ],
+      "caveat": "NASA 官方媒体，按 Images and Media Usage Guidelines 用于个人研究与科普；保留来源和署名，不暗示 NASA 背书。下载官方 1900 × 1200 展示版本，未裁切或生成修补。"
+    },
+    {
+      "title": "TIROS-1 · 电视相机记录的地球云层",
+      "url": "https://science.nasa.gov/resource/tv-debut/",
+      "checkedOn": "2026-10-26",
+      "researchRead": "primary-page-success",
+      "supports": "图像主题、拍摄阶段、署名与下载入口",
+      "usedBy": [
+        "tiros-1-first-earth-view"
+      ],
+      "caveat": "下载文件已打开目视核对；未执行生成填充、裁切或伪造分辨率。"
+    },
+    {
+      "title": "Euclid · 载荷与服务模块对接完成",
+      "url": "https://www.esa.int/ESA_Multimedia/Images/2022/03/Euclid_with_payload_and_service_modules_connected",
+      "checkedOn": "2026-10-26",
+      "researchRead": "primary-page-success",
+      "supports": "图像主题、拍摄阶段、署名与下载入口",
+      "usedBy": [
+        "euclid-modules-2022"
+      ],
+      "caveat": "下载文件已打开目视核对；未执行生成填充、裁切或伪造分辨率。"
+    },
+    {
+      "title": "© ESA — S. Corvaja · 媒体使用条款",
+      "url": "https://www.esa.int/ESA_Multimedia/Terms_and_conditions_of_use_of_images_and_videos_available_on_the_esa_website",
+      "checkedOn": "2026-10-26",
+      "researchRead": "primary-page-success",
+      "supports": "署名、用途及版权限制",
+      "usedBy": [
+        "euclid-modules-2022"
+      ],
+      "caveat": "ESA Standard Licence：用于本个人网站的教育、编辑与信息介绍；保留 © ESA 及摄影者 S. Corvaja 署名、原始来源和条款链接。原图版权归 ESA，非 CC 或公有领域；本站代码许可证不覆盖此图。采用 ESA 可下载展示图，不裁切、不生成修补、不作商业宣传或暗示背书。"
+    }
+  ],
+  "accessExceptions": [
+    {
+      "url": "https://www.usgs.gov/landsat-missions/landsat-1",
+      "result": "直接全文访问出现 human verification / timeout",
+      "action": "参数明确标记官方索引核对，并用 NASA Landsat 1 页面交叉核对成像和轨道。"
+    },
+    {
+      "url": "https://photojournal.jpl.nasa.gov/tiff/PIA07212.tif",
+      "result": "旧 TIFF 链接重定向到 Photojournal 总页",
+      "action": "使用 JPL 当前页面直接提供的 JPEG；不宣称取得高分辨率 TIFF。"
+    },
+    {
+      "url": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2022/03/euclid_with_payload_and_service_modules_connected/24016475-1-eng-GB/Euclid_with_payload_and_service_modules_connected.jpg",
+      "result": "原尺寸入口返回 HTTP 403",
+      "action": "使用同一官方页面公开提供且可下载的 pillars JPEG（1920 × 2894），不是以认证绕过取得。"
+    },
+    {
+      "url": "https://www.nasa.gov/wp-content/uploads/2015/02/671425main_1964_71372l_co1.jpg",
+      "result": "可下载，但只有 274 × 256 像素，未通过网站图片最小宽度检查",
+      "action": "从正式媒体清单撤下并删除本次下载；Telstar 档案保留 NASA 原文链接，不人工放大。"
+    }
+  ]
+}

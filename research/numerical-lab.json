@@ -1,0 +1,105 @@
+{
+  "title": "轨道数值验证实验台",
+  "verifiedOn": "2026-10-26",
+  "scope": "自主实现的教学数值实验；外部资料支持方法说明，不代表已运行对应软件进行交叉验证。",
+  "relatedLessons": [
+    {
+      "id": "frames-and-time",
+      "title": "参考系与时间"
+    },
+    {
+      "id": "numerical-integration",
+      "title": "数值积分、容差与事件"
+    },
+    {
+      "id": "orbit-propagation",
+      "title": "轨道传播与摄动"
+    },
+    {
+      "id": "verification-uncertainty",
+      "title": "验证与不确定性"
+    }
+  ],
+  "questions": [
+    {
+      "title": "01 / 验证对象与参考解",
+      "explanation": "它检查离散算法在明确的点质量两体模型下如何接近开普勒参考解，属于数值验证。真实航天器还受重力场非球形、阻力、太阳辐射压、第三体与推力影响。数值误差小，不能直接证明物理模型足以解释真实观测。",
+      "nextTest": "先保存圆轨道 60 s、1 周期的报告，再改用 30 s。对比共同终点的位置误差及全程峰值。之后在独立工具中复现相同初态和常数；只有实际运行后，才能称为交叉核验。"
+    },
+    {
+      "title": "02 / 步长求精与观测阶数",
+      "explanation": "经典 RK4 的四阶结论指光滑问题在固定时间区间、足够小步长下的全局误差量级。粗步长可能尚未进入渐近区间；接近浮点精度或参考解精度时，误差也不再按幂律缩小。本实验使用每档自身积分时刻上的最大位置误差，三档峰值时刻可能略有不同。",
+      "nextTest": "选择近地圆轨道，依次使用 120、60、30 s。观察三档求精中的误差与观测阶数。不要只看整周期终点；局部误差抵消可能让单个时刻看起来异常准确。"
+    },
+    {
+      "title": "03 / 辛积分、能量偏差与相位误差",
+      "explanation": "Velocity-Verlet 在此处的可分离保守系统中具有二阶、辛与时间对称结构；这不等于精确保存原始能量。适当步长下能量偏差可能呈有界振荡，同时轨道相位或近心点方向继续产生误差。普通显式 Euler 与辛 Euler 是不同算法，本站使用前者。",
+      "nextTest": "选择 400 × 2000 km、60 s、10 周期，在位置误差与能量偏差之间切换。使用时间读取线比较不同周期，并检查角动量指标。延长时间本身不能替代步长求精。"
+    },
+    {
+      "title": "04 / 高偏心轨道的时间尺度",
+      "explanation": "高偏心椭圆在近地点速度大、加速度变化快，局部时间尺度比轨道周期短得多。按整个周期平均分配的固定时间步可能无法充分解析近地点。界面不把线性振子稳定界限直接当作 Kepler 轨道的安全步长。",
+      "nextTest": "切到 400 × 35786 km，比较 240、60、10 s。记录误差、力评估次数和实际终止时刻。若离散步末进入地球示意半径，实验会停止；这不是精确的撞击事件解。"
+    },
+    {
+      "title": "05 / 积分步与绘图采样",
+      "explanation": "积分步长决定本实验如何推进状态；输出抽样只决定保留多少点。这里所有积分步都参与峰值统计，曲线与 CSV 最多保留约 800 个样本加终点。工程传播器还可能使用步内插值生成固定时刻输出，其输出间隔不必等于内部积分步长。",
+      "nextTest": "导出 JSON，检查各方法的 steps、sampleStride 与 samples.length。确认缩短积分步长后，统计仍检查完整序列；不要从降采样 CSV 重新计算并声称得到完全相同的峰值。"
+    },
+    {
+      "title": "06 / 外部软件复现条件",
+      "explanation": "首先约定位置与速度的单位、地心惯性轨道平面、初始时刻和 μ，再关闭摄动并使用相同状态。本站 t = 0 是相对时间原点，不是 UTC 历元；若换成 SPICE 或实际星历，必须另外定义历元、时标和参考系。力评估次数反映这份实现的工作量，不是不同软件运行时间的基准。",
+      "nextTest": "依据 Basilisk 点质量轨道示例或 NAIF 圆锥传播接口准备独立脚本，保存版本、输入、容差和误差对齐规则。加入 J2 后，先将物理模型差异与积分误差分开，再与观测做确认。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "NASA NAIF · conics_c",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/conics_c.html",
+      "supports": "圆锥轨道根数到指定时刻状态的参考接口；比较前统一初态、μ、参考系与时刻。",
+      "version": "函数文档修订 1.1.2，2021-07-02；非工具包版本"
+    },
+    {
+      "title": "Basilisk · Basic Orbit",
+      "url": "https://avslab.github.io/basilisk/examples/scenarioBasicOrbit.html",
+      "supports": "从点质量引力到 J2 场景的入门示例；模型差异不能全部解释成积分误差。",
+      "version": "查阅页面显示 2.12.0"
+    },
+    {
+      "title": "Orekit · Propagation Overview",
+      "url": "https://github.com/CS-SI/Orekit/blob/develop/src/main/java/org/orekit/overview.html",
+      "supports": "传播器的内部积分步长与输出采样时刻可以独立；输出更密不等于积分更准。",
+      "version": "官方仓库 develop 浮动分支，2026-10-26 查阅"
+    },
+    {
+      "title": "NASA Glenn · Temporal Convergence",
+      "url": "https://www.grc.nasa.gov/www/wind/valid/tutorial/tempconv.html",
+      "supports": "时间精确计算应检查时间步长敏感性；此来源为 CFD 验证教程，并非对本站的认证。",
+      "version": "页面更新 2021-02-10"
+    },
+    {
+      "title": "UCSD PHYS 141/241 · Numerical Integration",
+      "url": "https://jduarte.physics.ucsd.edu/phys141/lectures/03_Numerical_Methods.html",
+      "supports": "显式 Euler 与经典 RK4 的 ODE 更新过程，作为算法阅读材料。",
+      "version": "课程讲义，页面未标明确发布日期"
+    },
+    {
+      "title": "Ernst Hairer · Symplectic Integrators",
+      "url": "https://www.unige.ch/~hairer/poly_geoint/week2.pdf",
+      "supports": "Störmer–Verlet 的二阶、辛性质及其在可分离哈密顿系统中的实现条件。",
+      "version": "TU München 讲义，2010 年 1–2 月"
+    },
+    {
+      "title": "Hairer / Lubich / Wanner · Störmer–Verlet",
+      "url": "https://www.unige.ch/~hairer/preprints/gniverlet.html",
+      "supports": "结构保持方法长期行为与后向误差分析；良好的能量行为不等于精确守恒。",
+      "version": "作者站点研究摘要，页面未标日期"
+    },
+    {
+      "title": "Siu A. Chin · Perihelion Precession Error",
+      "url": "https://arxiv.org/abs/math-ph/0608012",
+      "supports": "辛积分器在 Kepler 问题中的近心点进动误差，支持同时检查几何、相位和守恒量。",
+      "version": "2006-08-03；期刊 Phys. Rev. E 75, 036701，2007"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc" xml:lang="zh-CN">
+  <title id="title">集中参数热网络的储热、导热与辐射</title>
+  <desc id="desc">原创三节点热网络示意图。电子设备、电池和散热面分别保存温度与热容量，以热导连接。设备耗散、加热器和环境吸收热作为输入，散热面对等效辐射环境散热。图中给出节点能量平衡及简化灰体辐射方程，注明绝对温度用开尔文、热导用瓦每开尔文、热容量用焦耳每开尔文。</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#8bb6d0" opacity=".07"/></pattern>
+    <marker id="gold" markerWidth="13" markerHeight="13" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L11 5L0 10" fill="none" stroke="#cfb280" stroke-width="2"/></marker>
+    <marker id="blue" markerWidth="13" markerHeight="13" refX="10" refY="5" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M0 0L11 5L0 10" fill="none" stroke="#8bb6d0" stroke-width="2"/></marker>
+    <marker id="lime" markerWidth="13" markerHeight="13" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L11 5L0 10" fill="none" stroke="#d3ef83" stroke-width="2"/></marker>
+  </defs>
+  <rect width="1400" height="900" fill="#10191e"/><rect width="1400" height="900" fill="url(#grid)"/>
+  <g font-family="Microsoft YaHei, Noto Sans SC, Arial, sans-serif" fill="#dce6e3">
+    <text x="60" y="57" font-size="22" fill="#d3ef83" letter-spacing="2">轨研 ORBITAL / 04 · THERMAL ENERGY NETWORK</text>
+    <text x="60" y="115" font-size="42" font-weight="600">每一次温度变化，都应能回到能量账本</text>
+    <text x="60" y="157" font-size="23" fill="#9db1b5">节点近似内部温度均匀；边表示热交换。真实几何与接触需要单独建立依据。</text>
+    <g text-anchor="middle">
+      <text x="210" y="230" font-size="26" fill="#cfb280">设备耗散 Q₁</text>
+      <text x="700" y="230" font-size="26" fill="#cfb280">加热器 Q₂</text>
+      <text x="1190" y="220" font-size="25" fill="#cfb280">吸收环境热 Q_env</text>
+      <text x="1190" y="252" font-size="22" fill="#9db1b5">光学性质与姿态决定</text>
+    </g>
+    <path d="M210 252V297M700 252V297M1190 270V297" fill="none" stroke="#cfb280" stroke-width="3" marker-end="url(#gold)"/>
+    <rect x="60" y="300" width="300" height="180" rx="17" fill="#1c292b" stroke="#cfb280" stroke-opacity=".6"/>
+    <rect x="550" y="300" width="300" height="180" rx="17" fill="#172a30" stroke="#8bb6d0" stroke-opacity=".6"/>
+    <rect x="1040" y="300" width="300" height="180" rx="17" fill="#1b2a25" stroke="#d3ef83" stroke-opacity=".6"/>
+    <g text-anchor="middle">
+      <text x="210" y="351" font-size="31" fill="#cfb280">电子设备</text>
+      <text x="210" y="399" font-size="26">T₁ [K] · C₁ [J/K]</text>
+      <text x="210" y="445" font-size="23" fill="#9db1b5">内部发热与储热</text>
+      <text x="700" y="351" font-size="31" fill="#8bb6d0">电池</text>
+      <text x="700" y="399" font-size="26">T₂ [K] · C₂ [J/K]</text>
+      <text x="700" y="445" font-size="23" fill="#9db1b5">工作 / 存活温度边界</text>
+      <text x="1190" y="351" font-size="31" fill="#d3ef83">散热面</text>
+      <text x="1190" y="399" font-size="26">T₃ [K] · C₃ [J/K]</text>
+      <text x="1190" y="445" font-size="23" fill="#9db1b5">面积 A · 发射率 ε</text>
+    </g>
+    <path d="M371 390H539M861 390H1029" fill="none" stroke="#8bb6d0" stroke-width="3" marker-start="url(#blue)" marker-end="url(#blue)"/>
+    <g text-anchor="middle">
+      <text x="455" y="365" font-size="29" fill="#8bb6d0">G₁₂</text>
+      <text x="945" y="365" font-size="29" fill="#8bb6d0">G₂₃</text>
+      <text x="455" y="430" font-size="22" fill="#9db1b5">热流可反向</text>
+      <text x="945" y="430" font-size="22" fill="#9db1b5">高温流向低温</text>
+    </g>
+    <path d="M1190 480V578" fill="none" stroke="#d3ef83" stroke-width="3" marker-end="url(#lime)"/>
+    <text x="1150" y="537" text-anchor="end" font-size="24" fill="#d3ef83">Q_rad,out</text>
+    <rect x="1030" y="588" width="310" height="65" rx="12" fill="#14232c" stroke="#8bb6d0" stroke-dasharray="5 7"/>
+    <text x="1185" y="629" text-anchor="middle" font-size="24" fill="#8bb6d0">等效辐射环境 T_env</text>
+    <text x="1185" y="694" text-anchor="middle" font-size="22" fill="#9db1b5">箭头为选定正方向</text>
+    <rect x="60" y="535" width="925" height="185" rx="14" fill="#152329" stroke="#8bb6d0" stroke-opacity=".25"/>
+    <text x="85" y="577" font-size="28" fill="#d3ef83">节点净功率 = 储热变化</text>
+    <text x="85" y="626" font-size="27">C_i dT_i/dt = Q_i + Σ_j G_ij(T_j − T_i) − Q_rad,i</text>
+    <text x="85" y="675" font-size="27" fill="#cfb280">Q_rad,i = ε_i σ A_i (T_i⁴ − T_env⁴)</text>
+    <text x="85" y="704" font-size="22" fill="#9db1b5">辐射式为单一大黑体环境、视角因子为 1 的灰体基线。</text>
+    <rect x="60" y="748" width="1280" height="90" rx="13" fill="#20282a" stroke="#cfb280" stroke-opacity=".3"/>
+    <text x="85" y="784" font-size="25" fill="#cfb280">T 必须用 K</text>
+    <text x="410" y="784" font-size="25" fill="#cfb280">G：W/K · C：J/K</text>
+    <text x="930" y="784" font-size="25" fill="#cfb280">Q：W · q″：W/m²</text>
+    <text x="85" y="820" font-size="22" fill="#a8b7b8">Q_i 包含内热与另行定义的吸收热；背景辐射不可重复计入。太阳吸收率 α_sun 与红外发射率 ε_IR 不可混用。</text>
+    <text x="60" y="870" font-size="21" fill="#738b92">原理图解 · 集中参数示意 · NOT TO SCALE</text>
+    <text x="1340" y="870" text-anchor="end" font-size="21" fill="#738b92">理论依据 / NASA Thermal Control</text>
+  </g>
+</svg>

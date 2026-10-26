@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import ts from 'typescript';
+const source=await readFile(new URL('../src/cachedResource.ts',import.meta.url),'utf8');
+const compiled=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const {cachedResource}=await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
+let calls=0,resolveRead;
+const successful=cachedResource(()=>{calls++;return new Promise(resolve=>{resolveRead=resolve;});});
+assert.equal(successful.peek(),undefined);
+const first=successful.load(),second=successful.load();assert.equal(first,second);
+await Promise.resolve();assert.equal(calls,1);const fixture={id:'test-only'};resolveRead(fixture);
+assert.equal(await first,fixture);assert.equal(await second,fixture);assert.equal(successful.peek(),fixture);
+assert.equal(await successful.load(),fixture);assert.equal(calls,1);
+let attempts=0;
+const retry=cachedResource(async()=>{attempts++;if(attempts===1)throw new Error('test failure');return fixture;});
+await assert.rejects(retry.load(),/test failure/);assert.equal(retry.peek(),undefined);
+assert.equal(await retry.load(),fixture);assert.equal(attempts,2);
+console.log('PASS: deferred catalog shares concurrent reads, caches success, and retries a failed read without poisoning the cache.');

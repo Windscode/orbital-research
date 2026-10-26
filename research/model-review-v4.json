@@ -1,0 +1,363 @@
+{
+  "reviewedOn": "2026-10-25",
+  "scope": "Apollo LM、JWST 外部构型细化；四个新增早期探测器采用专用外形分支。",
+  "coordinateConvention": "使用归一化展示单位。Apollo LM 的 +Y 为上方、+Z 为前舱门和梯子方向；JWST 主镜大致位于 XY 平面、朝 +Z 方向。坐标用于观察与分解，不是任务参考系。",
+  "geometryPolicy": [
+    "公开资料约束可识别外形、部件数量及总体比例；未用照片推定精密 CAD、结构厚度、真实惯量、热光学参数或制造公差。",
+    "外壳与薄膜仍使用 external 材质标记；可拾取网格的 partId 与现有档案保持一致，所有新部件沿用现有功能分组。",
+    "窗口角度、金属箔颜色、天线姿态、薄膜间距和部分薄壁厚度为便于辨识而简化或夸大；展开状态并非真实机构运动学。",
+    "不导入第三方三维素材，不增加依赖，不改变其他通用类别的生成参数。"
+  ],
+  "models": [
+    {
+      "id": "apollo-lm",
+      "configuration": "以 NASA Apollo 12 标注图和 LM 结构报告校核的通用展开外部构型；不复刻某一架着陆后的完整历史状态。",
+      "changes": [
+        "以分层八点放样构造上升级多面体防护外罩，增加侧设备包络；不把多面体外罩宣称为真实承压舱。",
+        "前端增加两扇倾斜三角窗、窗下 EVA 舱门、顶部对接观察窗，并区分前部交会雷达碟与侧面可转向通信碟。",
+        "下降级改为低矮切角八边外包络与不同热控面板；四组支腿包含主撑、斜撑、圆足垫，前腿增加平台和九横档梯子。",
+        "增加四个四联 RCS 簇，共十六个喷口；上升和下降主发动机仍归属 engine 组。",
+        "crew 组只保留站立工作区域、扶持结构与控制台功能占位；不捏造完整内部布置。"
+      ],
+      "sources": [
+        {
+          "title": "Apollo 12 Press Kit · 整机标注图，PDF 第 80 页 / 印刷页 58a",
+          "url": "https://ntrs.nasa.gov/api/citations/19760066717/downloads/19760066717.pdf",
+          "use": "外包络、四足、前梯和两类天线的相对关系；不移植任务专属 RTG 容器。"
+        },
+        {
+          "title": "NASA TN D-7084 · Lunar Module Structural Subsystem",
+          "url": "https://ntrs.nasa.gov/api/citations/19730010174/downloads/19730010174.pdf?attachment=true",
+          "use": "区分防护外罩、圆柱承压舱与下降级十字梁；确认双窗、舱门和对接接口。"
+        },
+        {
+          "title": "Apollo’s Lunar Module Bridged Technological Leap to the Moon",
+          "url": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/",
+          "use": "核对三角前窗、顶部观察窗和十六个 RCS 喷口。"
+        }
+      ],
+      "notModeled": [
+        "真实热控箔褶皱、蒙皮厚度和内部管路",
+        "RCS 精确安装角及可转向天线机构行程",
+        "着陆后支柱压缩和任务专属表面实验设备",
+        "真实压力容器、载荷传递与制造尺寸"
+      ],
+      "selectableGroups": [
+        "stage-1",
+        "stage-2",
+        "docking",
+        "legs",
+        "engine",
+        "crew"
+      ],
+      "performance": {
+        "before": {
+          "meshes": 38,
+          "materials": 38,
+          "vertices": 12510,
+          "triangles": 16188
+        },
+        "after": {
+          "meshes": 107,
+          "materials": 107,
+          "vertices": 7490,
+          "triangles": 5324
+        },
+        "delta": {
+          "meshes": 69,
+          "materials": 69,
+          "vertices": -5020,
+          "triangles": -10864
+        },
+        "interpretation": "网格数量等于当前实现的材料实例数量，可作为绘制调用的上限量级；三角形/顶点计数不是帧率测量。"
+      },
+      "geometryFingerprint": "21bec40de89d5c41907a4fc00f171fba54cf82e97100f42e5437f4cec9d1d6af"
+    },
+    {
+      "id": "jwst",
+      "configuration": "完成展开的外部构型；以主镜和遮阳膜公开尺寸校核总体量级，厚度与薄膜间距为教学显示。",
+      "changes": [
+        "保留恰好十八块六角金色镜片与中央 AOS 遮光位置，增加暗色背板和主镜后方科学仪器功能舱。",
+        "用三条来自不同锚点的支臂与圆形次镜替代单杆方盒，主次镜沿示意光轴安排。",
+        "以自定义三角网格绘制五张风筝形膜，第一层最大，上层逐层缩小，外缘张开；长宽相对主镜接近 NASA 公布的约 21.2 × 14.2 m 对 6.5 m 关系。",
+        "用伸展塔连接光学冷侧与平台热侧；总线、通信碟和单条太阳电池阵布置在膜下方。",
+        "太阳翼采用单条折页阵列，不绘制对称双翼；全部六个现有档案分组可独立选择和分解。"
+      ],
+      "sources": [
+        {
+          "title": "NASA · Webb’s Mirrors",
+          "url": "https://science.nasa.gov/mission/webb/webbs-mirrors/",
+          "use": "主镜直径、十八六角分段、中央光学结构、圆形次镜及分段翼。"
+        },
+        {
+          "title": "NASA · Webb’s Sunshield",
+          "url": "https://science.nasa.gov/mission/webb/webbs-sunshield/",
+          "use": "五层膜、冷热侧、展开外包络尺寸与层间几何关系。"
+        },
+        {
+          "title": "NASA · Secondary Mirror Deployment Confirmed",
+          "url": "https://science.nasa.gov/blogs/webb/2022/01/05/secondary-mirror-deployment-confirmed/",
+          "use": "三臂支撑与次镜展开结构。"
+        },
+        {
+          "title": "NASA · Webb Telescope Spacecraft Diagram",
+          "url": "https://science.nasa.gov/asset/webb/webb-telescope-spacecraft-diagram/",
+          "use": "仪器、背板、伸展塔、平台与热侧附件的功能位置。"
+        },
+        {
+          "title": "NASA SVS · The 20-foot Solar Array",
+          "url": "https://svs.gsfc.nasa.gov/13208",
+          "use": "单条折页式太阳阵列的外形与公开长度量级。"
+        }
+      ],
+      "notModeled": [
+        "光学处方、真实面形和纳米级对准",
+        "真实薄膜厚度、张力、缆绳和褶皱",
+        "部署机构自由度、锁定顺序与铰链约束",
+        "精确遮挡、辐射视角因子、惯量与结构模态"
+      ],
+      "selectableGroups": [
+        "instruments",
+        "frame",
+        "heatshield",
+        "body",
+        "solar",
+        "antenna"
+      ],
+      "performance": {
+        "before": {
+          "meshes": 53,
+          "materials": 53,
+          "vertices": 5014,
+          "triangles": 5652
+        },
+        "after": {
+          "meshes": 121,
+          "materials": 121,
+          "vertices": 6763,
+          "triangles": 4356
+        },
+        "delta": {
+          "meshes": 68,
+          "materials": 68,
+          "vertices": 1749,
+          "triangles": -1296
+        },
+        "interpretation": "网格数量等于当前实现的材料实例数量，可作为绘制调用的上限量级；三角形/顶点计数不是帧率测量。"
+      },
+      "geometryFingerprint": "4a8e26d57f4f7c9ef6f2253fadcf4127002ba48dd56765b5221cc0a68ffc7324"
+    },
+    {
+      "id": "luna-9",
+      "configuration": "月面着陆后、四片花瓣展开的近球形舱；不同时展示接触阶段的充气缓冲包。",
+      "changes": [
+        "以近球形外壳、四片自定义曲面花瓣与铰接边缘替代通用四腿着陆平台。",
+        "顶部设置扫描电视柱、镜头头部与杆状天线；不绘制太阳翼或下降级发动机。",
+        "六个分组与型号档案一致；电源、无线电和计时功能占位位于球舱内。"
+      ],
+      "sources": [
+        {
+          "title": "NASA · Luna 9: First Soft Lander",
+          "url": "https://science.nasa.gov/image-article/apod-1996-august-25-luna-9-first-soft-lander/",
+          "use": "核对球舱、展开花瓣及扫描电视外形。"
+        },
+        {
+          "title": "NASA TM-77654 · Descent Vehicles，第25–26页",
+          "url": "https://ntrs.nasa.gov/api/citations/19850019621/downloads/19850019621.pdf",
+          "use": "球形着陆舱、展开支承与电视扫描的功能关系；只用于事实核对，不复制原图。"
+        }
+      ],
+      "notModeled": [
+        "真实气囊接触与回弹过程",
+        "花瓣精确展开运动学",
+        "真实电池、无线电内部安装尺寸"
+      ],
+      "selectableGroups": [
+        "body",
+        "frame",
+        "antenna",
+        "instruments",
+        "avionics",
+        "service"
+      ],
+      "performance": {
+        "before": null,
+        "after": {
+          "meshes": 31,
+          "materials": 31,
+          "vertices": 2832,
+          "triangles": 2292
+        },
+        "delta": null,
+        "interpretation": "网格数量等于当前实现的材料实例数量，可作为绘制调用的上限量级；三角形/顶点计数不是帧率测量。"
+      },
+      "geometryFingerprint": "8c4363c5c57152be879672c0603d35d63ebbbcf286489c222d4a4c85f066efc8"
+    },
+    {
+      "id": "venera-7",
+      "configuration": "早期球形金星着陆舱的竖直功能示意；不声称还原实际触地后的倾倒姿态。",
+      "changes": [
+        "外部球形隔热包络包围较小耐压舱，两个壳层均保留剖切与透视标记。",
+        "顶部伞舱与连接件归入档案 frame 分组；只表示收纳/连接，不把降落伞绘制为全程展开。",
+        "温度压力仪器、遥测及电源均为内部功能占位；不添加相机、太阳翼、四腿或现代着陆发动机。"
+      ],
+      "sources": [
+        {
+          "title": "NASA TM-77654 · Descent Vehicles，第33–35页",
+          "url": "https://ntrs.nasa.gov/api/citations/19850019621/downloads/19850019621.pdf",
+          "use": "区分 Venera 4–8 球形下降舱与后期金星着陆器，核对顶部减速伞/通信组件。"
+        }
+      ],
+      "notModeled": [
+        "真实耐压壳壁厚与热防护层构造",
+        "减速伞展开、撕裂与着陆姿态",
+        "内部结构尺寸及高温高压材料参数"
+      ],
+      "selectableGroups": [
+        "body",
+        "heatshield",
+        "frame",
+        "service",
+        "antenna",
+        "instruments",
+        "avionics"
+      ],
+      "performance": {
+        "before": null,
+        "after": {
+          "meshes": 15,
+          "materials": 15,
+          "vertices": 2085,
+          "triangles": 2784
+        },
+        "delta": null,
+        "interpretation": "网格数量等于当前实现的材料实例数量，可作为绘制调用的上限量级；三角形/顶点计数不是帧率测量。"
+      },
+      "geometryFingerprint": "ad21e8f48c9e8b5f620bfa506a39328ce2b3534b9be0c5ca50e6113b3553dd70"
+    },
+    {
+      "id": "mariner-4",
+      "configuration": "巡航展开外部构型，四翼呈略带切向偏置的风车式布局。",
+      "changes": [
+        "八边形总线、四块十字太阳翼与翼端太阳压叶片形成独立轮廓。",
+        "高增益碟、细长低增益天线和下方单电视扫描平台彼此分离。",
+        "太阳翼网格线按每翼一张网格合并，避免逐格建立大量小物体。"
+      ],
+      "sources": [
+        {
+          "title": "NASA · 55 Years Ago: Mariner 4 First to Explore Mars",
+          "url": "https://www.nasa.gov/history/55-years-ago-mariner-4-first-to-explore-mars/",
+          "use": "官方构型标注图、八边平台、四太阳翼、天线与电视扫描平台的关系。"
+        }
+      ],
+      "notModeled": [
+        "精确太阳压叶片角度和控制律",
+        "相机扫描机构真实行程",
+        "喷口安装角、内部管路与结构厚度"
+      ],
+      "selectableGroups": [
+        "body",
+        "solar",
+        "propulsion",
+        "antenna",
+        "instruments",
+        "avionics"
+      ],
+      "performance": {
+        "before": null,
+        "after": {
+          "meshes": 61,
+          "materials": 61,
+          "vertices": 3415,
+          "triangles": 2716
+        },
+        "delta": null,
+        "interpretation": "网格数量等于当前实现的材料实例数量，可作为绘制调用的上限量级；三角形/顶点计数不是帧率测量。"
+      },
+      "geometryFingerprint": "f2d10c1815638f73ba1c7f2acee1affa31061459d91eb075da9889cacd1796ef"
+    },
+    {
+      "id": "pioneer-10",
+      "configuration": "巡航展开外部构型，以高增益碟轴作为展示 +Y 方向。",
+      "changes": [
+        "圆形高增益碟与六边形总线配合独立馈源支杆，保留自旋轴方向的外形语义。",
+        "四台带散热片的 SNAP-19 分成两对放在两根桁架臂端；不沿用太阳翼模板。",
+        "磁强计置于第三方向的独立长臂，科学设备舱和天线边缘小喷口保留功能区别。"
+      ],
+      "sources": [
+        {
+          "title": "University of Iowa · Pioneer 10 Spacecraft Characteristics",
+          "url": "https://space.physics.uiowa.edu/pioneer/p10.html",
+          "use": "仪器团队资料明确四台 RTG、两根桁架、独立磁强计臂、2.74 m 高增益碟及边缘推进器。"
+        }
+      ],
+      "notModeled": [
+        "RTG 热源和散热材料参数",
+        "真实自旋平衡及结构模态",
+        "各天线频段的精确电磁面形和馈源布置"
+      ],
+      "selectableGroups": [
+        "body",
+        "antenna",
+        "service",
+        "instruments",
+        "propulsion",
+        "avionics",
+        "frame"
+      ],
+      "performance": {
+        "before": null,
+        "after": {
+          "meshes": 62,
+          "materials": 62,
+          "vertices": 3181,
+          "triangles": 3140
+        },
+        "delta": null,
+        "interpretation": "网格数量等于当前实现的材料实例数量，可作为绘制调用的上限量级；三角形/顶点计数不是帧率测量。"
+      },
+      "geometryFingerprint": "ce8967b78e0ccd664d21caee4f2e8c52d22d34c6f0efb9a40d23f38d069a68ac"
+    }
+  ],
+  "validation": {
+    "typescript": {
+      "command": "npx tsc -b",
+      "result": "passed"
+    },
+    "expansion": {
+      "command": "node scripts/check-expansion.mjs --skip-model-files",
+      "result": "54 passed, 0 failed, 0 warnings",
+      "dossiersTested": 48,
+      "fittedCameraViews": 16416,
+      "projectedBoundingBoxCorners": 131328,
+      "maxAbsoluteNdcCoordinate": 0.891015
+    },
+    "newProbeFixtures": {
+      "ids": [
+        "mariner-4",
+        "pioneer-10"
+      ],
+      "result": "分支已在内存中使用预期 kind 与 parts 列表构造，全部顶点有限；实际新增档案接入后的完整校验由最终复核更新。"
+    },
+    "featureAssertions": {
+      "apolloLM": {
+        "triangularWindows": 2,
+        "rcsNozzles": 16,
+        "footpads": 4,
+        "ladderRungs": 9
+      },
+      "jwst": {
+        "primaryMirrorSegments": 18,
+        "sunshieldMembranes": 5,
+        "secondarySupportArms": 3,
+        "solarArrays": 1
+      }
+    },
+    "nonTargetRegression": {
+      "unchangedLegacyModels": 44,
+      "method": "与修改前比较每个模型的 position 顶点数组、各 Mesh 变换、材质颜色与 partId 的 SHA-256；44 个未涉及型号完全一致。"
+    },
+    "glbExport": "未执行；由主任务统一导出，以避免覆盖其他代理正在补充的档案。",
+    "visualAcceptance": "最终交互和多视角外观由主任务使用 CUA 验收；本文件不宣称完成工程尺寸或制造验证。"
+  }
+}

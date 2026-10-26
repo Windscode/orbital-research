@@ -1,0 +1,1611 @@
+{
+  "domains": [
+    {
+      "id": "foundations",
+      "label": "数学与数值",
+      "color": "#cce68a",
+      "description": "向量空间、状态方程、求解器、优化以及统一的坐标与时间语义。"
+    },
+    {
+      "id": "orbits",
+      "label": "轨道与任务",
+      "color": "#8cbce8",
+      "description": "两体与摄动传播、定轨、转移、相对运动、交会风险和轨迹优化。"
+    },
+    {
+      "id": "gnc",
+      "label": "控制与导航",
+      "color": "#c2a2e7",
+      "description": "刚体与姿态、传感器、状态估计、闭环控制及受约束的动力下降。"
+    },
+    {
+      "id": "aero",
+      "label": "气动与再入",
+      "color": "#e8ae8c",
+      "description": "连续与稀薄流动、气动数据库、计算流体和再入热环境。"
+    },
+    {
+      "id": "propulsion",
+      "label": "推进与能源",
+      "color": "#e6cb7a",
+      "description": "化学与电推进性能、贮箱晃动及推进剂供给网络的耦合动力学。"
+    },
+    {
+      "id": "structures",
+      "label": "结构与热控",
+      "color": "#84c8b4",
+      "description": "有限元、振动、柔性多体与空间热设计的场、边界及耦合误差。"
+    },
+    {
+      "id": "systems",
+      "label": "航天器系统",
+      "color": "#e59ead",
+      "description": "空间环境、辐射、电源、通信、地面运行和故障处置。"
+    },
+    {
+      "id": "methods",
+      "label": "工程方法",
+      "color": "#a8b9c2",
+      "description": "系统工程、数据管理、模型验证、不确定性、协同仿真与实时测试。"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "vectors-matrices",
+      "label": "向量与条件数",
+      "domain": "foundations",
+      "level": 1
+    },
+    {
+      "id": "differential-equations",
+      "label": "状态与时间尺度",
+      "domain": "foundations",
+      "level": 1
+    },
+    {
+      "id": "probability-processes",
+      "label": "概率与随机过程",
+      "domain": "foundations",
+      "level": 2
+    },
+    {
+      "id": "numerical-integration",
+      "label": "积分与收敛",
+      "domain": "foundations",
+      "level": 2
+    },
+    {
+      "id": "numerical-optimization",
+      "label": "约束优化",
+      "domain": "foundations",
+      "level": 2
+    },
+    {
+      "id": "frames-and-time",
+      "label": "坐标与时间",
+      "domain": "foundations",
+      "level": 1
+    },
+    {
+      "id": "orbit-propagation",
+      "label": "两体轨道",
+      "domain": "orbits",
+      "level": 1
+    },
+    {
+      "id": "perturbed-orbits",
+      "label": "摄动与力模型",
+      "domain": "orbits",
+      "level": 2
+    },
+    {
+      "id": "orbit-determination",
+      "label": "轨道确定",
+      "domain": "orbits",
+      "level": 2
+    },
+    {
+      "id": "interplanetary-transfers",
+      "label": "转移与Lambert",
+      "domain": "orbits",
+      "level": 2
+    },
+    {
+      "id": "relative-motion",
+      "label": "相对运动",
+      "domain": "orbits",
+      "level": 2
+    },
+    {
+      "id": "cr3bp-libration",
+      "label": "地月三体与L点",
+      "domain": "orbits",
+      "level": 3
+    },
+    {
+      "id": "mission-architecture",
+      "label": "任务时间线",
+      "domain": "orbits",
+      "level": 3
+    },
+    {
+      "id": "six-dof",
+      "label": "六自由度",
+      "domain": "gnc",
+      "level": 2
+    },
+    {
+      "id": "attitude-kinematics",
+      "label": "姿态运动学",
+      "domain": "gnc",
+      "level": 1
+    },
+    {
+      "id": "attitude-control",
+      "label": "姿态控制",
+      "domain": "gnc",
+      "level": 3
+    },
+    {
+      "id": "state-estimation",
+      "label": "状态估计",
+      "domain": "gnc",
+      "level": 2
+    },
+    {
+      "id": "observability",
+      "label": "可观测性",
+      "domain": "gnc",
+      "level": 2
+    },
+    {
+      "id": "sensors-navigation",
+      "label": "传感器与导航",
+      "domain": "gnc",
+      "level": 2
+    },
+    {
+      "id": "aero-database",
+      "label": "气动数据库",
+      "domain": "aero",
+      "level": 2
+    },
+    {
+      "id": "cfd-verification",
+      "label": "CFD与收敛",
+      "domain": "aero",
+      "level": 3
+    },
+    {
+      "id": "rarefied-flow",
+      "label": "稀薄流与DSMC",
+      "domain": "aero",
+      "level": 3
+    },
+    {
+      "id": "entry-descent",
+      "label": "再入热气动",
+      "domain": "aero",
+      "level": 3
+    },
+    {
+      "id": "propulsion-models",
+      "label": "火箭推进",
+      "domain": "propulsion",
+      "level": 1
+    },
+    {
+      "id": "chemical-equilibrium",
+      "label": "热化学与CEA",
+      "domain": "propulsion",
+      "level": 2
+    },
+    {
+      "id": "electric-propulsion",
+      "label": "电推进",
+      "domain": "propulsion",
+      "level": 3
+    },
+    {
+      "id": "finite-elements",
+      "label": "结构有限元",
+      "domain": "structures",
+      "level": 2
+    },
+    {
+      "id": "structural-dynamics",
+      "label": "结构振动",
+      "domain": "structures",
+      "level": 2
+    },
+    {
+      "id": "thermal-control",
+      "label": "航天热控",
+      "domain": "structures",
+      "level": 2
+    },
+    {
+      "id": "power-systems",
+      "label": "电源与能量",
+      "domain": "systems",
+      "level": 2
+    },
+    {
+      "id": "communications-link",
+      "label": "射频链路",
+      "domain": "systems",
+      "level": 2
+    },
+    {
+      "id": "space-environment",
+      "label": "空间环境",
+      "domain": "systems",
+      "level": 1
+    },
+    {
+      "id": "systems-engineering",
+      "label": "系统与需求",
+      "domain": "methods",
+      "level": 1
+    },
+    {
+      "id": "verification-uncertainty",
+      "label": "验证与确认",
+      "domain": "methods",
+      "level": 2
+    },
+    {
+      "id": "uncertainty-quantification",
+      "label": "不确定性量化",
+      "domain": "methods",
+      "level": 3
+    },
+    {
+      "id": "data-provenance",
+      "label": "数据溯源",
+      "domain": "methods",
+      "level": 1
+    },
+    {
+      "id": "simulation-software",
+      "label": "仿真时序",
+      "domain": "methods",
+      "level": 2
+    },
+    {
+      "id": "multiphysics-coupling",
+      "label": "多物理场耦合",
+      "domain": "methods",
+      "level": 3
+    },
+    {
+      "id": "fdir",
+      "label": "故障诊断与恢复",
+      "domain": "systems",
+      "level": 3
+    },
+    {
+      "id": "ground-operations",
+      "label": "地面测控与运行",
+      "domain": "systems",
+      "level": 3
+    },
+    {
+      "id": "conjunction-risk",
+      "label": "碎片与交会风险",
+      "domain": "orbits",
+      "level": 3
+    },
+    {
+      "id": "liquid-sloshing",
+      "label": "液体晃动",
+      "domain": "propulsion",
+      "level": 3
+    },
+    {
+      "id": "flexible-multibody",
+      "label": "柔性多体耦合",
+      "domain": "structures",
+      "level": 3
+    },
+    {
+      "id": "powered-descent",
+      "label": "动力下降与回收",
+      "domain": "gnc",
+      "level": 3
+    },
+    {
+      "id": "fmi-cosimulation",
+      "label": "协同仿真与 FMI",
+      "domain": "methods",
+      "level": 3
+    },
+    {
+      "id": "real-time-hil",
+      "label": "实时与硬件在环",
+      "domain": "methods",
+      "level": 3
+    },
+    {
+      "id": "terrain-relative-navigation",
+      "label": "地形相对导航",
+      "domain": "gnc",
+      "level": 3
+    },
+    {
+      "id": "trajectory-transcription",
+      "label": "打靶与配点",
+      "domain": "orbits",
+      "level": 3
+    },
+    {
+      "id": "feed-system-transients",
+      "label": "供给网络与瞬态",
+      "domain": "propulsion",
+      "level": 3
+    },
+    {
+      "id": "radiation-transport",
+      "label": "辐射输运与剂量",
+      "domain": "systems",
+      "level": 3
+    }
+  ],
+  "edges": [
+    {
+      "from": "vectors-matrices",
+      "to": "six-dof",
+      "type": "prerequisite",
+      "reason": "三维力、力矩与惯量张量需要向量、矩阵及数值条件的基础。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "six-dof",
+      "type": "prerequisite",
+      "reason": "六自由度以连续状态方程描述位置、速度、姿态和角速度的耦合演化。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "six-dof",
+      "type": "prerequisite",
+      "reason": "合力与重力必须先表达在约定参考系，并正确转换体轴和惯性轴。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "six-dof",
+      "type": "prerequisite",
+      "reason": "平动和转动需同步积分，并用步长求精检查状态与守恒量。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "aero-database",
+      "type": "prerequisite",
+      "reason": "气动力与力矩系数的转换涉及向量投影、参考量和力矩平移。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "aero-database",
+      "type": "prerequisite",
+      "reason": "攻角、侧滑与风轴系数只有在坐标轴和符号约定明确时才可接入力模型。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "propulsion-models",
+      "type": "prerequisite",
+      "reason": "推力方向、作用点和多发动机合成需要一致的向量表示。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "propulsion-models",
+      "type": "prerequisite",
+      "reason": "质量流、燃烧室与推力建立过程要写成状态及其时间变化。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "verification-uncertainty",
+      "type": "prerequisite",
+      "reason": "需要先理解离散和截断误差，才能把数值验证与物理比较分开。"
+    },
+    {
+      "from": "data-provenance",
+      "to": "verification-uncertainty",
+      "type": "prerequisite",
+      "reason": "输入、模型和参考数据的身份必须可追踪，验证结论才有可复用边界。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "differential-equations",
+      "type": "prerequisite",
+      "reason": "状态向量、线性算子及特征值是分析动力系统和时间尺度的语言。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "numerical-integration",
+      "type": "prerequisite",
+      "reason": "积分器离散的是状态微分方程，必须先理解状态、初值及刚性。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "numerical-optimization",
+      "type": "prerequisite",
+      "reason": "梯度、雅可比、秩与条件数决定搜索方向和参数可辨识性。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "numerical-optimization",
+      "type": "prerequisite",
+      "reason": "轨迹优化以动力方程为约束，需要识别连续状态及时间演化。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "frames-and-time",
+      "type": "prerequisite",
+      "reason": "坐标变换依赖正交矩阵、基向量及状态向量的清晰定义。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "orbit-propagation",
+      "type": "prerequisite",
+      "reason": "位置、速度、历元与时间尺度的语义必须先确定，轨道状态才唯一。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "orbit-propagation",
+      "type": "prerequisite",
+      "reason": "数值传播需要误差控制，并以两体守恒量和解析参考检验积分。"
+    },
+    {
+      "from": "orbit-propagation",
+      "to": "perturbed-orbits",
+      "type": "prerequisite",
+      "reason": "先建立可验证的两体基线，才能隔离新增力模型引起的差异。"
+    },
+    {
+      "from": "perturbed-orbits",
+      "to": "orbit-determination",
+      "type": "prerequisite",
+      "reason": "观测预测由轨道传播产生，遗漏摄动会被估计参数错误吸收。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "orbit-determination",
+      "type": "prerequisite",
+      "reason": "加权残差、雅可比、协方差和秩亏诊断建立在矩阵运算上。"
+    },
+    {
+      "from": "orbit-propagation",
+      "to": "interplanetary-transfers",
+      "type": "prerequisite",
+      "reason": "转移弧和到达速度首先由两体能量、角动量与轨道几何约束。"
+    },
+    {
+      "from": "numerical-optimization",
+      "to": "interplanetary-transfers",
+      "type": "prerequisite",
+      "reason": "发射窗口和多段转移涉及边界条件、约束及局部最优的判读。"
+    },
+    {
+      "from": "orbit-propagation",
+      "to": "relative-motion",
+      "type": "prerequisite",
+      "reason": "相对动力学是参考轨道附近的近似，需先掌握参考轨道及其角速度。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "relative-motion",
+      "type": "prerequisite",
+      "reason": "相对位置和速度通常表达在旋转轨道系，必须包含运动基底的导数。"
+    },
+    {
+      "from": "interplanetary-transfers",
+      "to": "mission-architecture",
+      "type": "prerequisite",
+      "reason": "事件时间、脉冲与到达条件从转移方案产生，再进入任务资源编排。"
+    },
+    {
+      "from": "systems-engineering",
+      "to": "mission-architecture",
+      "type": "prerequisite",
+      "reason": "任务架构需要把目标分解为可验证需求、接口和分系统约束。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "multiphysics-coupling",
+      "type": "prerequisite",
+      "reason": "耦合场的状态、代数约束与反馈关系必须先建立在一致方程上。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "multiphysics-coupling",
+      "type": "prerequisite",
+      "reason": "各子模型积分步与交换步不同，须理解离散误差及时间同步。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "attitude-kinematics",
+      "type": "prerequisite",
+      "reason": "旋转矩阵、四元数和角速度运算需要向量空间及乘法约定。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "attitude-kinematics",
+      "type": "prerequisite",
+      "reason": "姿态映射方向和角速度表达系必须明确，才能写出正确运动学方程。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "attitude-kinematics",
+      "type": "prerequisite",
+      "reason": "有限步长的姿态传播必须处理单位约束并检查旋转误差。"
+    },
+    {
+      "from": "six-dof",
+      "to": "attitude-control",
+      "type": "prerequisite",
+      "reason": "控制力矩作用于刚体动力学，惯量与角动量决定闭环响应。"
+    },
+    {
+      "from": "attitude-kinematics",
+      "to": "attitude-control",
+      "type": "prerequisite",
+      "reason": "姿态误差与角速度反馈必须采用一致的旋转表示和误差定义。"
+    },
+    {
+      "from": "observability",
+      "to": "attitude-control",
+      "type": "prerequisite",
+      "reason": "控制依赖可获得的状态，需先判断传感器配置能约束哪些方向。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "state-estimation",
+      "type": "prerequisite",
+      "reason": "协方差、增益与白化残差均依赖稳定的矩阵分解和尺度处理。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "state-estimation",
+      "type": "prerequisite",
+      "reason": "滤波预测步骤来自状态动力方程及其线性化。"
+    },
+    {
+      "from": "observability",
+      "to": "state-estimation",
+      "type": "prerequisite",
+      "reason": "不可观测方向无法靠降低滤波噪声解决，需要先理解信息的来源。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "observability",
+      "type": "prerequisite",
+      "reason": "观测矩阵、奇异值和零空间用来识别状态的弱约束方向。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "observability",
+      "type": "prerequisite",
+      "reason": "可观测性随动力学与观测窗口改变，不能只检查单时刻测量方程。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "sensors-navigation",
+      "type": "prerequisite",
+      "reason": "测量时间戳、外参和坐标轴错误会直接变成导航状态偏差。"
+    },
+    {
+      "from": "attitude-kinematics",
+      "to": "sensors-navigation",
+      "type": "prerequisite",
+      "reason": "陀螺与星敏感器观测的融合需要正确的姿态和角速度关系。"
+    },
+    {
+      "from": "observability",
+      "to": "sensors-navigation",
+      "type": "prerequisite",
+      "reason": "传感器选择与机动设计应由所需状态的可观测性驱动。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "finite-elements",
+      "type": "prerequisite",
+      "reason": "装配矩阵、约束、线性求解与条件数决定有限元离散系统的可解性。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "finite-elements",
+      "type": "prerequisite",
+      "reason": "静态、瞬态和特征问题都来自连续场方程与边界条件的明确区分。"
+    },
+    {
+      "from": "finite-elements",
+      "to": "structural-dynamics",
+      "type": "prerequisite",
+      "reason": "模态质量、刚度和振型首先来自可信的结构离散及边界条件。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "structural-dynamics",
+      "type": "prerequisite",
+      "reason": "瞬态振动响应需处理高频模态、数值阻尼及时间步的误差。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "thermal-control",
+      "type": "prerequisite",
+      "reason": "热容与热阻网络形成能量状态方程，辐射还带来非线性项。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "thermal-control",
+      "type": "prerequisite",
+      "reason": "热瞬态可能跨越多个时间尺度，需要检查积分稳定性及能量误差。"
+    },
+    {
+      "from": "mission-architecture",
+      "to": "thermal-control",
+      "type": "prerequisite",
+      "reason": "日照、姿态、载荷工作和食影必须落实到任务时间线才有热边界。"
+    },
+    {
+      "from": "mission-architecture",
+      "to": "power-systems",
+      "type": "prerequisite",
+      "reason": "电源裕量取决于发电、载荷、食影与充放电的实际任务时序。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "power-systems",
+      "type": "prerequisite",
+      "reason": "荷电状态及能量账本随时间积分，事件处理误差会改变最低电量。"
+    },
+    {
+      "from": "mission-architecture",
+      "to": "communications-link",
+      "type": "prerequisite",
+      "reason": "可见窗口、数据生成和下传策略把静态链路预算变成可执行计划。"
+    },
+    {
+      "from": "orbit-propagation",
+      "to": "communications-link",
+      "type": "prerequisite",
+      "reason": "距离和地平线几何来自轨道，直接决定传播损耗与可见性。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "communications-link",
+      "type": "prerequisite",
+      "reason": "地面站与飞行器状态必须统一坐标和时间，才能得到可信指向与多普勒。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "simulation-software",
+      "type": "prerequisite",
+      "reason": "调度器必须尊重积分器接受步、事件定位与状态提交的语义。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "simulation-software",
+      "type": "prerequisite",
+      "reason": "仿真时间、采样时间和墙钟时间要分开，参考系数据也必须绑定历元。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "cfd-verification",
+      "type": "prerequisite",
+      "reason": "守恒方程、边界条件和闭合模型决定求解器实际求解的问题。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "cfd-verification",
+      "type": "prerequisite",
+      "reason": "残差收敛、时间步求精和空间网格求精需要分开评估。"
+    },
+    {
+      "from": "aero-database",
+      "to": "cfd-verification",
+      "type": "prerequisite",
+      "reason": "CFD 输出最终进入系数数据库，需明确参考面积、尺度和适用域。"
+    },
+    {
+      "from": "aero-database",
+      "to": "rarefied-flow",
+      "type": "prerequisite",
+      "reason": "需先理解气动系数和连续介质模型，才能辨别稀薄条件下失效的部分。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "rarefied-flow",
+      "type": "prerequisite",
+      "reason": "粒子或动理学模型与连续方程的关系有助于识别流态和闭合假设。"
+    },
+    {
+      "from": "propulsion-models",
+      "to": "chemical-equilibrium",
+      "type": "prerequisite",
+      "reason": "热化学状态用于生成燃烧室、喷管和推进性能参数，需先明白这些量如何进入推力。"
+    },
+    {
+      "from": "numerical-optimization",
+      "to": "chemical-equilibrium",
+      "type": "prerequisite",
+      "reason": "平衡组分问题有元素守恒和非负约束，初值、可行域与数值收敛同样重要。"
+    },
+    {
+      "from": "propulsion-models",
+      "to": "electric-propulsion",
+      "type": "prerequisite",
+      "reason": "电推进仍遵守动量与质量流关系，需要先区分推力、比冲和效率。"
+    },
+    {
+      "from": "orbit-propagation",
+      "to": "electric-propulsion",
+      "type": "prerequisite",
+      "reason": "低推力持续作用会改变轨道传播，不能直接套用瞬时脉冲转移。"
+    },
+    {
+      "from": "orbit-propagation",
+      "to": "entry-descent",
+      "type": "prerequisite",
+      "reason": "再入初始速度、航迹角与能量来自轨道边界条件。"
+    },
+    {
+      "from": "aero-database",
+      "to": "entry-descent",
+      "type": "prerequisite",
+      "reason": "气动力和气动热必须依赖适用流态下的系数与参考定义。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "space-environment",
+      "type": "prerequisite",
+      "reason": "空间环境数据必须绑定位置、历元、坐标系和时间尺度。"
+    },
+    {
+      "from": "perturbed-orbits",
+      "to": "space-environment",
+      "type": "prerequisite",
+      "reason": "轨道高度、日照与摄动决定环境暴露，环境又会改变阻力等力模型。"
+    },
+    {
+      "from": "verification-uncertainty",
+      "to": "uncertainty-quantification",
+      "type": "prerequisite",
+      "reason": "先建立数值误差和模型偏差的证据分类，才可解释输入传播的统计量。"
+    },
+    {
+      "from": "numerical-optimization",
+      "to": "uncertainty-quantification",
+      "type": "prerequisite",
+      "reason": "敏感性、参数校准和稳健设计涉及尺度、约束及优化结果的可识别性。"
+    },
+    {
+      "from": "systems-engineering",
+      "to": "data-provenance",
+      "type": "prerequisite",
+      "reason": "数据身份和变更影响要对应需求与配置项，才能说明结论对什么版本有效。"
+    },
+    {
+      "from": "attitude-control",
+      "to": "power-systems",
+      "type": "coupling",
+      "reason": "姿态改变太阳阵入射与发电，供电能力又限制执行器与控制模式。"
+    },
+    {
+      "from": "attitude-control",
+      "to": "communications-link",
+      "type": "coupling",
+      "reason": "姿态指向决定天线增益与捕获条件，链路计划反过来约束姿态机动。"
+    },
+    {
+      "from": "thermal-control",
+      "to": "power-systems",
+      "type": "coupling",
+      "reason": "电损耗形成热源，温度又改变电池与电路性能，需要共同能量账本。"
+    },
+    {
+      "from": "aero-database",
+      "to": "six-dof",
+      "type": "coupling",
+      "reason": "气动力与力矩驱动刚体运动，姿态和角速度反过来改变气动查询条件。"
+    },
+    {
+      "from": "propulsion-models",
+      "to": "six-dof",
+      "type": "coupling",
+      "reason": "推力、质量流和作用点共同影响平动、姿态及惯量变化。"
+    },
+    {
+      "from": "chemical-equilibrium",
+      "to": "thermal-control",
+      "type": "coupling",
+      "reason": "燃烧产物与高温性质影响热负荷，材料温度约束发动机可用工作域。"
+    },
+    {
+      "from": "electric-propulsion",
+      "to": "interplanetary-transfers",
+      "type": "coupling",
+      "reason": "低推力与功率限制改变可达轨迹和飞行时间，任务几何决定可用能源。"
+    },
+    {
+      "from": "space-environment",
+      "to": "perturbed-orbits",
+      "type": "coupling",
+      "reason": "太阳与地磁条件影响密度和阻力，轨道高度与日照决定环境暴露。"
+    },
+    {
+      "from": "entry-descent",
+      "to": "thermal-control",
+      "type": "coupling",
+      "reason": "再入轨迹决定热流历史，热防护质量与温度限制又影响可行轨迹。"
+    },
+    {
+      "from": "entry-descent",
+      "to": "rarefied-flow",
+      "type": "coupling",
+      "reason": "再入高度变化会跨越流态，需要把气动和热流模型的适用域连起来。"
+    },
+    {
+      "from": "finite-elements",
+      "to": "thermal-control",
+      "type": "coupling",
+      "reason": "温场与热膨胀产生结构响应，变形和接触又可能改变导热路径。"
+    },
+    {
+      "from": "structural-dynamics",
+      "to": "attitude-control",
+      "type": "coupling",
+      "reason": "柔性模态影响指向稳定与控制带宽，执行器激励又可能放大结构振动。"
+    },
+    {
+      "from": "sensors-navigation",
+      "to": "orbit-determination",
+      "type": "coupling",
+      "reason": "测量几何与噪声进入定轨，轨道预测又决定观测排程和可见性。"
+    },
+    {
+      "from": "state-estimation",
+      "to": "attitude-control",
+      "type": "coupling",
+      "reason": "控制依赖估计状态和不确定性，控制机动又改变可观测性。"
+    },
+    {
+      "from": "mission-architecture",
+      "to": "systems-engineering",
+      "type": "coupling",
+      "reason": "具体任务时序暴露资源冲突，推动上层需求与分系统分配修订。"
+    },
+    {
+      "from": "mission-architecture",
+      "to": "communications-link",
+      "type": "coupling",
+      "reason": "下传窗口决定数据缓存与操作计划，任务几何影响链路预算。"
+    },
+    {
+      "from": "multiphysics-coupling",
+      "to": "simulation-software",
+      "type": "coupling",
+      "reason": "耦合状态需要共同提交与失败恢复，调度和步长又影响反馈误差。"
+    },
+    {
+      "from": "data-provenance",
+      "to": "space-environment",
+      "type": "coupling",
+      "reason": "环境预测或观测产品的身份、时标和覆盖区间决定模型输入是否适用。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "observability",
+      "type": "validation",
+      "reason": "用白化奇异值和秩诊断观测系统的弱方向，而不只看输出残差。"
+    },
+    {
+      "from": "orbit-propagation",
+      "to": "numerical-integration",
+      "type": "validation",
+      "reason": "两体解析解和守恒量提供独立积分参考，检查轨道相位与长期漂移。"
+    },
+    {
+      "from": "orbit-determination",
+      "to": "perturbed-orbits",
+      "type": "validation",
+      "reason": "独立跟踪观测与留出预测可检验摄动模型及有效参数的用途。"
+    },
+    {
+      "from": "verification-uncertainty",
+      "to": "cfd-verification",
+      "type": "validation",
+      "reason": "把代码检验、迭代收敛、网格求精和实验比较分成不同证据。"
+    },
+    {
+      "from": "verification-uncertainty",
+      "to": "finite-elements",
+      "type": "validation",
+      "reason": "用解析极限、补丁试验和空间收敛检验有限元实现与用途。"
+    },
+    {
+      "from": "verification-uncertainty",
+      "to": "state-estimation",
+      "type": "validation",
+      "reason": "用独立真值、创新序列和置信区间覆盖检查估计一致性。"
+    },
+    {
+      "from": "verification-uncertainty",
+      "to": "simulation-software",
+      "type": "validation",
+      "reason": "回放和失败恢复检验软件一致性，但不替代独立物理验证。"
+    },
+    {
+      "from": "uncertainty-quantification",
+      "to": "mission-architecture",
+      "type": "validation",
+      "reason": "将输入散布传播到任务成果与资源裕量，区分名义成功和稳健成功。"
+    },
+    {
+      "from": "data-provenance",
+      "to": "verification-uncertainty",
+      "type": "validation",
+      "reason": "每项通过结果须绑定模型、工具、数据与输入身份，才能判断证据能否复用。"
+    },
+    {
+      "from": "multiphysics-coupling",
+      "to": "thermal-control",
+      "type": "validation",
+      "reason": "用接口能量守恒及交换步求精检查热流传递，不仅比较平均温度。"
+    },
+    {
+      "from": "chemical-equilibrium",
+      "to": "propulsion-models",
+      "type": "validation",
+      "reason": "平衡或冻结膨胀参考可以检查性能表一致性，但不能代替发动机实测效率。"
+    },
+    {
+      "from": "relative-motion",
+      "to": "orbit-propagation",
+      "type": "validation",
+      "reason": "用两条独立非线性惯性轨道检查线性相对运动的距离与时域边界。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "probability-processes",
+      "type": "prerequisite",
+      "reason": "协方差、相关结构和联合抽样需要向量空间、矩阵分解与半正定性基础。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "probability-processes",
+      "type": "prerequisite",
+      "reason": "连续随机激励经状态动力学传播，离散协方差必须结合状态转移矩阵。"
+    },
+    {
+      "from": "probability-processes",
+      "to": "state-estimation",
+      "type": "prerequisite",
+      "reason": "滤波更新使用条件概率和协方差，过程噪声必须保持连续与离散模型一致。"
+    },
+    {
+      "from": "probability-processes",
+      "to": "orbit-determination",
+      "type": "prerequisite",
+      "reason": "观测权重、参数相关性与形式协方差需要有明确的概率和噪声解释。"
+    },
+    {
+      "from": "probability-processes",
+      "to": "structural-dynamics",
+      "type": "prerequisite",
+      "reason": "随机振动的功率谱积分与方差依赖平稳性、单边双边谱及相关性约定。"
+    },
+    {
+      "from": "probability-processes",
+      "to": "uncertainty-quantification",
+      "type": "prerequisite",
+      "reason": "输入分布、相关抽样和有限样本置信度是解释不确定性传播结果的基础。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "cr3bp-libration",
+      "type": "prerequisite",
+      "reason": "三体目录采用旋转质心系与无量纲时间，状态和单位需要明确转换。"
+    },
+    {
+      "from": "orbit-propagation",
+      "to": "cr3bp-libration",
+      "type": "prerequisite",
+      "reason": "先理解两体运动与守恒量，才能辨认三体模型新增的动力学结构。"
+    },
+    {
+      "from": "perturbed-orbits",
+      "to": "cr3bp-libration",
+      "type": "prerequisite",
+      "reason": "必须理解多个引力源与参考原点处理，才能区分三体理想模型和真实星历环境。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "cr3bp-libration",
+      "type": "prerequisite",
+      "reason": "周期轨道闭合和雅可比常数检查需要受控的积分误差及独立求精。"
+    },
+    {
+      "from": "cr3bp-libration",
+      "to": "mission-architecture",
+      "type": "coupling",
+      "reason": "平动点附近的轨道几何与不稳定方向改变观测、导航、通信和维护计划。"
+    },
+    {
+      "from": "cr3bp-libration",
+      "to": "communications-link",
+      "type": "coupling",
+      "reason": "地月轨道族的几何改变遮挡、距离和指向条件，需要与通信窗口共同评估。"
+    },
+    {
+      "from": "cr3bp-libration",
+      "to": "numerical-integration",
+      "type": "validation",
+      "reason": "公开周期轨道的闭合误差与雅可比漂移可共同检查三体积分器。"
+    },
+    {
+      "from": "data-provenance",
+      "to": "cr3bp-libration",
+      "type": "validation",
+      "reason": "周期轨道目录的质量比、归一化单位、分支和版本必须随样例保存并复核。"
+    },
+    {
+      "from": "probability-processes",
+      "to": "state-estimation",
+      "type": "validation",
+      "reason": "独立随机试验的创新统计与置信区间覆盖，可检验滤波协方差是否与误差匹配。"
+    },
+    {
+      "from": "systems-engineering",
+      "to": "fdir",
+      "type": "prerequisite",
+      "reason": "故障边界、功能失效与恢复动作必须从系统需求和接口定义出发。"
+    },
+    {
+      "from": "state-estimation",
+      "to": "fdir",
+      "type": "prerequisite",
+      "reason": "残差检测与隔离依赖观测模型和一致的估计误差统计。"
+    },
+    {
+      "from": "simulation-software",
+      "to": "fdir",
+      "type": "prerequisite",
+      "reason": "持续判据、故障注入和恢复事件必须落在统一仿真时序上。"
+    },
+    {
+      "from": "mission-architecture",
+      "to": "ground-operations",
+      "type": "prerequisite",
+      "reason": "地面指令与观测计划由任务事件和资源约束驱动。"
+    },
+    {
+      "from": "communications-link",
+      "to": "ground-operations",
+      "type": "prerequisite",
+      "reason": "联络窗口、传输速率和传播时延决定命令与遥测何时可达。"
+    },
+    {
+      "from": "simulation-software",
+      "to": "ground-operations",
+      "type": "prerequisite",
+      "reason": "指令接受、执行和结果验证需要明确的调度、时间戳和事件日志。"
+    },
+    {
+      "from": "orbit-determination",
+      "to": "conjunction-risk",
+      "type": "prerequisite",
+      "reason": "碰撞概率需要共同历元的可信状态估计、协方差和数据质量说明。"
+    },
+    {
+      "from": "relative-motion",
+      "to": "conjunction-risk",
+      "type": "prerequisite",
+      "reason": "交会平面与最近接近几何依赖正确的相对状态和运动模型。"
+    },
+    {
+      "from": "probability-processes",
+      "to": "conjunction-risk",
+      "type": "prerequisite",
+      "reason": "协方差相关性、概率积分与稀有事件统计都需要明确概率假设。"
+    },
+    {
+      "from": "propulsion-models",
+      "to": "liquid-sloshing",
+      "type": "prerequisite",
+      "reason": "液体固定质量、模态质量和耗质必须与推进剂账本一致。"
+    },
+    {
+      "from": "six-dof",
+      "to": "liquid-sloshing",
+      "type": "prerequisite",
+      "reason": "贮箱受到的力与力矩要与主体平动及姿态动力学共同求解。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "liquid-sloshing",
+      "type": "prerequisite",
+      "reason": "晃动模态与主体时间尺度不同，需检查积分收敛和能量平衡。"
+    },
+    {
+      "from": "structural-dynamics",
+      "to": "flexible-multibody",
+      "type": "prerequisite",
+      "reason": "柔性降阶需要理解模态形状、阻尼与截断对目标输出的影响。"
+    },
+    {
+      "from": "six-dof",
+      "to": "flexible-multibody",
+      "type": "prerequisite",
+      "reason": "附件运动与主体加速度、惯量及角动量交换耦合。"
+    },
+    {
+      "from": "attitude-kinematics",
+      "to": "flexible-multibody",
+      "type": "prerequisite",
+      "reason": "大角度主体姿态与小弹性变形需要一致的参考系和旋转运动学。"
+    },
+    {
+      "from": "six-dof",
+      "to": "powered-descent",
+      "type": "prerequisite",
+      "reason": "三维推力、力臂及惯量约束必须由一致的刚体动力学检查。"
+    },
+    {
+      "from": "propulsion-models",
+      "to": "powered-descent",
+      "type": "prerequisite",
+      "reason": "下降段的推力、耗质、最小节流和启动延迟来自推进模型。"
+    },
+    {
+      "from": "numerical-optimization",
+      "to": "powered-descent",
+      "type": "prerequisite",
+      "reason": "轨迹可行性需要明确目标、非凸约束、离散化及求解收敛条件。"
+    },
+    {
+      "from": "attitude-control",
+      "to": "powered-descent",
+      "type": "prerequisite",
+      "reason": "规划推力方向需要在执行器限制下由姿态闭环实现。"
+    },
+    {
+      "from": "fdir",
+      "to": "power-systems",
+      "type": "coupling",
+      "reason": "安全维持和重复恢复消耗电量，电源状态又决定哪些恢复动作仍可执行。"
+    },
+    {
+      "from": "ground-operations",
+      "to": "fdir",
+      "type": "coupling",
+      "reason": "星上保护需要在断联期间自主管理，地面通过遥测诊断并恢复任务配置。"
+    },
+    {
+      "from": "conjunction-risk",
+      "to": "ground-operations",
+      "type": "coupling",
+      "reason": "规避决策截止、指令联络和机动执行误差共同决定方案是否能及时落实。"
+    },
+    {
+      "from": "conjunction-risk",
+      "to": "uncertainty-quantification",
+      "type": "validation",
+      "reason": "用独立积分与抽样对照概率，并报告数据质量、稀有事件区间及近似边界。"
+    },
+    {
+      "from": "liquid-sloshing",
+      "to": "attitude-control",
+      "type": "coupling",
+      "reason": "主体机动激励液体模态，液体反作用力矩又改变控制回路响应。"
+    },
+    {
+      "from": "flexible-multibody",
+      "to": "attitude-control",
+      "type": "coupling",
+      "reason": "控制器会激励附件模态，柔性变形和测量位置反过来限制指向性能。"
+    },
+    {
+      "from": "flexible-multibody",
+      "to": "liquid-sloshing",
+      "type": "coupling",
+      "reason": "附件与贮箱液体共同交换主体动量，可能出现相邻模态和耦合响应。"
+    },
+    {
+      "from": "entry-descent",
+      "to": "powered-descent",
+      "type": "coupling",
+      "reason": "再入和气动减速决定动力下降入口的质量、速度及散布，下降可行域又约束前段目标。"
+    },
+    {
+      "from": "state-estimation",
+      "to": "powered-descent",
+      "type": "coupling",
+      "reason": "重规划使用有延迟和不确定性的导航状态，下降机动改变观测条件。"
+    },
+    {
+      "from": "verification-uncertainty",
+      "to": "fdir",
+      "type": "validation",
+      "reason": "保留故障场景与无故障对照用于评估误报、漏检、隔离准确率及恢复代价。"
+    },
+    {
+      "from": "simulation-software",
+      "to": "ground-operations",
+      "type": "validation",
+      "reason": "可重放事件日志检验命令接收、执行、确认和资源账本的端到端一致性。"
+    },
+    {
+      "from": "verification-uncertainty",
+      "to": "liquid-sloshing",
+      "type": "validation",
+      "reason": "独立衰减与扫频工况检验等效模型的力、力矩及液位适用范围。"
+    },
+    {
+      "from": "verification-uncertainty",
+      "to": "flexible-multibody",
+      "type": "validation",
+      "reason": "以独立拉格朗日模型、能量和动量检查耦合方程及模态截断。"
+    },
+    {
+      "from": "uncertainty-quantification",
+      "to": "powered-descent",
+      "type": "validation",
+      "reason": "传播初值、风、测量和发动机延迟散布，比较可行域与接地失败分布。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "fmi-cosimulation",
+      "type": "prerequisite",
+      "reason": "区分内部积分误差与通信步长误差，需要积分和收敛概念。"
+    },
+    {
+      "from": "simulation-software",
+      "to": "fmi-cosimulation",
+      "type": "prerequisite",
+      "reason": "协同仿真须确定各模块读写时刻、状态归属和事件调度。"
+    },
+    {
+      "from": "multiphysics-coupling",
+      "to": "fmi-cosimulation",
+      "type": "prerequisite",
+      "reason": "导入接口的交换变量和守恒关系取决于物理耦合的定义。"
+    },
+    {
+      "from": "simulation-software",
+      "to": "real-time-hil",
+      "type": "prerequisite",
+      "reason": "执行期限、调度周期和仿真时间的一致性依赖软件时序定义。"
+    },
+    {
+      "from": "six-dof",
+      "to": "real-time-hil",
+      "type": "prerequisite",
+      "reason": "闭环测试台需要明确动力学状态、外部输入及模型适用范围。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "terrain-relative-navigation",
+      "type": "prerequisite",
+      "reason": "相机、地图和导航位置需在一致的坐标与时刻之间转换。"
+    },
+    {
+      "from": "sensors-navigation",
+      "to": "terrain-relative-navigation",
+      "type": "prerequisite",
+      "reason": "图像和高度先验需要传感器几何、标定及误差模型。"
+    },
+    {
+      "from": "state-estimation",
+      "to": "terrain-relative-navigation",
+      "type": "prerequisite",
+      "reason": "地图匹配结果应与先验融合，并检验残差和异常更新。"
+    },
+    {
+      "from": "numerical-optimization",
+      "to": "trajectory-transcription",
+      "type": "prerequisite",
+      "reason": "连续轨迹离散后形成带尺度和梯度要求的约束优化问题。"
+    },
+    {
+      "from": "numerical-integration",
+      "to": "trajectory-transcription",
+      "type": "prerequisite",
+      "reason": "打靶推进、配点缺陷和独立重积分都依赖误差控制。"
+    },
+    {
+      "from": "differential-equations",
+      "to": "feed-system-transients",
+      "type": "prerequisite",
+      "reason": "储质量、能量和管路惯性构成有不同时间尺度的动态方程。"
+    },
+    {
+      "from": "propulsion-models",
+      "to": "feed-system-transients",
+      "type": "prerequisite",
+      "reason": "供给系统需要质量流率、压力和发动机边界的一致接口。"
+    },
+    {
+      "from": "thermal-control",
+      "to": "feed-system-transients",
+      "type": "prerequisite",
+      "reason": "低温管路、贮箱和壁面储能需要热平衡与换热边界。"
+    },
+    {
+      "from": "space-environment",
+      "to": "radiation-transport",
+      "type": "prerequisite",
+      "reason": "外部粒子环境与器件效应不同，输运模型须先明确源的物理范围。"
+    },
+    {
+      "from": "probability-processes",
+      "to": "radiation-transport",
+      "type": "prerequisite",
+      "reason": "蒙特卡洛剂量估计需要独立样本、权重和统计误差概念。"
+    },
+    {
+      "from": "fmi-cosimulation",
+      "to": "thermal-control",
+      "type": "coupling",
+      "reason": "热容与导热拆分模型可以检查通信步长引入的温度和能量误差。"
+    },
+    {
+      "from": "fmi-cosimulation",
+      "to": "real-time-hil",
+      "type": "coupling",
+      "reason": "跨工具模型若进入实时台架，还需验证计算耗时、事件及通信期限。"
+    },
+    {
+      "from": "verification-uncertainty",
+      "to": "fmi-cosimulation",
+      "type": "validation",
+      "reason": "单体参考、通信间隔收敛与接口守恒提供不同层面的验证证据。"
+    },
+    {
+      "from": "real-time-hil",
+      "to": "fdir",
+      "type": "validation",
+      "reason": "接口故障、丢包和超时注入可检验恢复状态机在实际时序中的行为。"
+    },
+    {
+      "from": "real-time-hil",
+      "to": "attitude-control",
+      "type": "validation",
+      "reason": "执行器与传感器接口延迟可能改变闭环性能，需要实测时序对照。"
+    },
+    {
+      "from": "terrain-relative-navigation",
+      "to": "powered-descent",
+      "type": "coupling",
+      "reason": "地图定位误差和更新拒绝会改变动力下降的导航条件与目标可达性。"
+    },
+    {
+      "from": "data-provenance",
+      "to": "terrain-relative-navigation",
+      "type": "validation",
+      "reason": "原始影像、控制点和地形处理记录界定地图偏差及实验独立性。"
+    },
+    {
+      "from": "trajectory-transcription",
+      "to": "powered-descent",
+      "type": "coupling",
+      "reason": "动力下降的路径与推力约束可经打靶或配点离散后求解。"
+    },
+    {
+      "from": "trajectory-transcription",
+      "to": "electric-propulsion",
+      "type": "coupling",
+      "reason": "长时间低推力轨迹需要控制参数化、网格选择与可行性复核。"
+    },
+    {
+      "from": "verification-uncertainty",
+      "to": "trajectory-transcription",
+      "type": "validation",
+      "reason": "独立重积分与网格加密检验离散最优控制解的连续可行性。"
+    },
+    {
+      "from": "feed-system-transients",
+      "to": "liquid-sloshing",
+      "type": "coupling",
+      "reason": "供给引起的液量与压力变化会改变晃动模型参数，但二者状态不可重复计量。"
+    },
+    {
+      "from": "feed-system-transients",
+      "to": "multiphysics-coupling",
+      "type": "coupling",
+      "reason": "管路、壁面和贮箱之间需交换流量、焓和热流并检查守恒。"
+    },
+    {
+      "from": "uncertainty-quantification",
+      "to": "radiation-transport",
+      "type": "validation",
+      "reason": "独立样本统计和输入谱、材料不确定性应分别传播和报告。"
+    },
+    {
+      "from": "radiation-transport",
+      "to": "fdir",
+      "type": "coupling",
+      "reason": "辐射粒子输运结果需经器件响应模型才能形成单粒子故障注入率。"
+    }
+  ],
+  "paths": [
+    {
+      "id": "orbit-to-mission",
+      "title": "轨道力学与任务分析",
+      "description": "状态和时间定义、两体与摄动传播、转移轨道及地月三体模型；依次检查数值误差与任务约束。",
+      "nodeIds": [
+        "vectors-matrices",
+        "differential-equations",
+        "numerical-integration",
+        "frames-and-time",
+        "orbit-propagation",
+        "perturbed-orbits",
+        "numerical-optimization",
+        "interplanetary-transfers",
+        "cr3bp-libration",
+        "mission-architecture"
+      ]
+    },
+    {
+      "id": "guidance-navigation-control",
+      "title": "导航估计与姿态控制",
+      "description": "参考系、刚体运动、传感器几何与状态估计，继而研究姿态控制和执行器约束。",
+      "nodeIds": [
+        "vectors-matrices",
+        "frames-and-time",
+        "differential-equations",
+        "numerical-integration",
+        "six-dof",
+        "attitude-kinematics",
+        "observability",
+        "sensors-navigation",
+        "state-estimation",
+        "attitude-control"
+      ]
+    },
+    {
+      "id": "aerothermal-entry",
+      "title": "气动热与结构响应",
+      "description": "气动力数据库、连续与稀薄流动、再入热环境和结构响应；重点检查跨学科的边界条件。",
+      "nodeIds": [
+        "numerical-integration",
+        "aero-database",
+        "cfd-verification",
+        "rarefied-flow",
+        "entry-descent",
+        "thermal-control",
+        "finite-elements",
+        "structural-dynamics",
+        "multiphysics-coupling"
+      ]
+    },
+    {
+      "id": "propulsion-trade",
+      "title": "推进系统与任务权衡",
+      "description": "化学和电推进的性能模型、供给网络、低推力转移及电源约束；热控等路径外基础见各篇前置知识。",
+      "nodeIds": [
+        "differential-equations",
+        "propulsion-models",
+        "numerical-optimization",
+        "chemical-equilibrium",
+        "electric-propulsion",
+        "interplanetary-transfers",
+        "mission-architecture",
+        "power-systems",
+        "feed-system-transients"
+      ]
+    },
+    {
+      "id": "spacecraft-system",
+      "title": "航天器系统集成",
+      "description": "系统需求、空间环境与辐射输运、电源、热控、通信和软件时序；检查资源与接口一致性，统计等基础见各篇前置知识。",
+      "nodeIds": [
+        "systems-engineering",
+        "space-environment",
+        "radiation-transport",
+        "mission-architecture",
+        "power-systems",
+        "thermal-control",
+        "communications-link",
+        "simulation-software",
+        "multiphysics-coupling"
+      ]
+    },
+    {
+      "id": "trustworthy-simulation",
+      "title": "仿真验证与数据管理",
+      "description": "数据版本、数值误差、模型确认与不确定性传播，以及独立观测和交叉计算的用途。",
+      "nodeIds": [
+        "systems-engineering",
+        "data-provenance",
+        "numerical-integration",
+        "simulation-software",
+        "verification-uncertainty",
+        "uncertainty-quantification",
+        "orbit-determination",
+        "relative-motion",
+        "mission-architecture"
+      ]
+    },
+    {
+      "id": "noise-to-evidence",
+      "title": "随机误差与参数估计",
+      "description": "随机过程、可观测性和滤波，接续优化、不确定性传播与定轨中的参数误差分析。",
+      "nodeIds": [
+        "vectors-matrices",
+        "differential-equations",
+        "probability-processes",
+        "numerical-integration",
+        "observability",
+        "state-estimation",
+        "numerical-optimization",
+        "verification-uncertainty",
+        "uncertainty-quantification",
+        "orbit-determination"
+      ]
+    },
+    {
+      "id": "mission-operations-risk",
+      "title": "任务运行与故障处置",
+      "description": "交会几何、碰撞风险、地面运行和故障恢复；路径集中于应用阶段，所需基础见各篇前置知识。",
+      "nodeIds": [
+        "systems-engineering",
+        "simulation-software",
+        "mission-architecture",
+        "communications-link",
+        "state-estimation",
+        "orbit-determination",
+        "relative-motion",
+        "conjunction-risk",
+        "ground-operations",
+        "fdir"
+      ]
+    },
+    {
+      "id": "coupled-landing",
+      "title": "耦合动力学与动力着陆",
+      "description": "变质量、结构振动、液体晃动和柔性附件的耦合，再研究动力着陆约束；姿态等基础见各篇前置知识。",
+      "nodeIds": [
+        "differential-equations",
+        "numerical-integration",
+        "propulsion-models",
+        "six-dof",
+        "finite-elements",
+        "structural-dynamics",
+        "liquid-sloshing",
+        "flexible-multibody",
+        "numerical-optimization",
+        "powered-descent"
+      ]
+    },
+    {
+      "id": "cosimulation-to-hil",
+      "title": "协同仿真与实时测试",
+      "description": "积分和调度、热模型耦合、FMI 接口与硬件在环测试；同时检查模型误差、通信误差和执行期限。",
+      "nodeIds": [
+        "numerical-integration",
+        "simulation-software",
+        "thermal-control",
+        "multiphysics-coupling",
+        "fmi-cosimulation",
+        "six-dof",
+        "real-time-hil",
+        "verification-uncertainty"
+      ]
+    },
+    {
+      "id": "terrain-navigation-optimization",
+      "title": "地形导航与轨迹优化",
+      "description": "坐标、观测与状态估计，接续直接轨迹优化、地图定位和动力着陆；所需路径外基础见各篇前置知识。",
+      "nodeIds": [
+        "frames-and-time",
+        "numerical-integration",
+        "numerical-optimization",
+        "sensors-navigation",
+        "state-estimation",
+        "trajectory-transcription",
+        "terrain-relative-navigation",
+        "powered-descent"
+      ]
+    }
+  ]
+}

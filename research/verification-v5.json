@@ -1,0 +1,74 @@
+{
+  "checkedOn": "2026-10-26",
+  "version": "5.0.0",
+  "environment": "Windows / Node 22.22.2 / Vite 6.4.5 / React 19 / Codex in-app browser",
+  "counts": {
+    "lessons": 44,
+    "knowledgeNodes": 44,
+    "knowledgeRelations": 150,
+    "learningPaths": 9,
+    "resources": 71,
+    "briefings": 22,
+    "vehicleDossiers": 50,
+    "models": 50,
+    "visualLibraryAssets": 33,
+    "newInterfaceSchematics": 4,
+    "researchWorkflows": 4,
+    "manualResearchChecks": 16,
+    "crossLibraryReferences": 47,
+    "searchableEntries": 224
+  },
+  "automated": {
+    "fullSuite": "PASS: content, 6 orbit checks, 57 expansion checks, all 33 media, 187 deep-link roundtrips, 6 original storage regression scenarios, workflow and archive regression checks.",
+    "finalTargetedChecks": [
+      "npm run check:content: passed after URL corrections",
+      "npm run check:workflows: passed",
+      "npm run build: passed"
+    ],
+    "scientificScope": "Structural and numerical regression checks do not certify new research workflows, historical completeness, engineering geometry, or external-tool execution."
+  },
+  "browser": {
+    "productionOrigin": "http://127.0.0.1:5197",
+    "passed": [
+      "Four research selection cards and step selection",
+      "Plan-to-resource detail, resource-to-plan entry, and browser Back returning to reader",
+      "Strict invalid JSON rejection; valid archive preview: 2 new, 1 unknown skipped",
+      "Actual restore applied 2 fixture records; restored check appeared as 1/4 in workflow",
+      "Actual plan download inspected: 4 steps, 5 resource references, 4 primary sources, correct current check status",
+      "Global search opens selected scientific-image workflow",
+      "Full-field multi-keyword resource search includes NOS3 for NASA + 遥测",
+      "Source-available license filter returns OpenC3 COSMOS",
+      "390px and 768px iframe viewports: body clientWidth equals scrollWidth (380/758px with frame borders and scrollbars)",
+      "390px archive panel and study step details inspected"
+    ],
+    "logs": {
+      "productionErrors": 0,
+      "productionWarnings": 0
+    },
+    "dataCleanup": "Fixture progress and note removed through UI on dedicated test origin; main 5173 user records were not changed.",
+    "limitations": "Responsive checks use the repository iframe harness; they do not emulate a physical phone touch stack."
+  },
+  "build": {
+    "mainJavaScriptKB": 1270.26,
+    "mainJavaScriptGzipKB": 379.41,
+    "threeJavaScriptKB": 579.39,
+    "cssKB": 141.72,
+    "warning": "Existing large-chunk advisory remains; main content is still eagerly bundled."
+  },
+  "sourceAvailability": {
+    "file": "research/source-availability-v5.json",
+    "originalURLsProbed": 31,
+    "replacementURLsProbed": 2,
+    "corrected": "PDS direct PDF 404 and SBN portal access failure replaced by accessible official indexes",
+    "uncertainty": "CDAWeb local Node requests failed; official REST and archive content were readable via web browsing. No all-links-live claim."
+  },
+  "screenshots": [
+    "docs/screenshots/v5-research-workspace.jpg",
+    "docs/screenshots/v5-orbit-plan.jpg",
+    "docs/screenshots/v5-study-restore.jpg",
+    "docs/screenshots/v5-mobile-step.jpg",
+    "docs/screenshots/v5-mobile-restore.jpg"
+  ],
+  "originalUEProjectModified": false,
+  "published": false
+}

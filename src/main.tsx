@@ -1,0 +1,14 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import LoadBoundary from './LoadBoundary';
+import './styles.css';
+import './expansion.css';
+import './visual-refresh.css';
+import './reading.css';
+import './search-refinement.css';
+import './research-hub.css';
+import './numerical-lab.css';
+import './design-v7.css';
+import {MediaProvider} from './VisualMedia';
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><LoadBoundary><MediaProvider><App /></MediaProvider></LoadBoundary></React.StrictMode>);

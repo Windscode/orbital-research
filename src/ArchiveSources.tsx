@@ -1,0 +1,3 @@
+import {ArrowUpRight,LibraryBig} from 'lucide-react';
+import sources from '../research/archive-sources.json';
+export default function ArchiveSources(){return <section className="archive-sources"><div className="section-heading"><div><div className="eyebrow">BEYOND THIS COLLECTION</div><h2>官方任务与数据档案</h2></div><LibraryBig size={27} strokeWidth={1}/></div><p>本站的深度档案是历史选编。更广的任务谱系、失败任务与早期型号，可从这些已核查的原始目录继续追索。</p><div>{sources.map(s=><a key={s.url} href={s.url} target="_blank" rel="noreferrer"><span>{s.organization}<ArrowUpRight size={16}/></span><h3>{s.title}</h3><p>{s.description}</p><small>{s.boundary}</small></a>)}</div></section>}

@@ -1,0 +1,84 @@
+{
+  "checkedOn": "2026-10-26",
+  "version": "6.0.0",
+  "environment": "Windows / Node 22.22.2 / Vite 6.4.5 / React 19 / Codex in-app browser",
+  "counts": {
+    "lessons": 44,
+    "knowledgeNodes": 44,
+    "knowledgeRelations": 150,
+    "learningPaths": 9,
+    "resources": 71,
+    "briefings": 22,
+    "vehicleDossiers": 50,
+    "models": 50,
+    "visualLibraryAssets": 33,
+    "researchWorkflows": 4,
+    "searchableEntries": 225,
+    "newNumericalMethods": 3,
+    "numericalConfigurations": 45,
+    "newMethodSources": 8,
+    "newResearchQuestions": 6,
+    "linkedLessons": 4
+  },
+  "automated": {
+    "fullSuite": "PASS: npm test; existing content, Kepler, graph, 50 GLBs, all media, navigation, storage and workflows, plus 9 numerical checks, bootstrap consistency and deferred cache concurrency/retry.",
+    "build": "PASS: TypeScript and Vite production build.",
+    "bundle": "PASS: npm run check:bundle; full catalog and 5 heavy route components absent from initial static dependency closure.",
+    "observedOrders": {
+      "configuration": {
+        "perigee": 400,
+        "apogee": 400,
+        "step": 10,
+        "periods": 1
+      },
+      "euler": 0.9615,
+      "rk4": 4.0172,
+      "verlet": 2
+    },
+    "uiDomain": "45 configurations × 3 primary methods all finite; all completed, so early-stop guards were not triggered by this parameter sweep."
+  },
+  "performance": {
+    "previousMainJsApproxBytes": 1270260,
+    "initialJsBytes": 392631,
+    "initialGzipBytes": 126280,
+    "reductionPercent": 69.09,
+    "budgetBytes": 450000,
+    "deferredCatalogApproxBytes": 844520,
+    "deferredThreeExplorerApproxBytes": 579430,
+    "interpretation": "Build output only; not a latency or device performance benchmark. Large deferred chunks still produce a Vite warning."
+  },
+  "browser": {
+    "productionOrigin": "http://127.0.0.1:4173",
+    "developmentOrigin": "http://127.0.0.1:5173",
+    "passed": [
+      "Default Worker experiment renders all three methods and actual statistics.",
+      "Changed inputs explicitly label previous result until rerun.",
+      "Low-eccentricity 30 s / 10 period run changes computed output.",
+      "High-eccentricity 10 s / 10 period run completes.",
+      "Position / energy metric switch and keyboard time cursor update visible values.",
+      "JSON downloaded and inspected: 8 sources, 3 methods, reference conventions, configuration and 731 retained samples per method for the selected run.",
+      "CSV downloaded: 837 data rows and 9 consistently delimited columns for the default run.",
+      "Knowledge deep link cold reload resolves correct article; closing returns to page.",
+      "Unknown article deep link returns safely without a lingering dialog.",
+      "Global search finds the new experiment and Yamcs from the full catalog.",
+      "Knowledge-to-experiment and mode-switch roundtrips preserve the same selected result.",
+      "Original Kepler start/pause controls remain functional.",
+      "ResearchHub and VehicleAtlas load on demand; Sputnik 1 canvas, section mode, explosion and part explanation work.",
+      "390 px / 768 px iframe viewport content widths equal scroll widths at 380 / 758 px; comparison table scroll is contained."
+    ],
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "notes": [
+      "Cancellation button was not successfully exercised: the requested long run finished before the UI action arrived. Termination and stale-job guards remain implemented; no claim of browser cancellation validation.",
+      "Network-failure UI recovery was not fault-injected in browser; shared loading and retry behavior are covered by the isolated test.",
+      "Responsive verification uses an iframe on desktop, not a physical phone.",
+      "No existing notes or manual checklist state was altered in browser QA."
+    ]
+  },
+  "screenshots": [
+    "tests/screenshots/v6-numerical-desktop.jpg",
+    "tests/screenshots/v6-numerical-mobile.jpg"
+  ],
+  "scope": "Checks establish structural consistency, local numerical behavior and sampled UI flows. They do not certify engineering geometry, complete historical coverage, real spacecraft prediction or external-software cross-validation.",
+  "teardown": "Closed the two temporary QA tabs and stopped the development and production preview sessions started for this review. Start-Orbital.cmd remains the local launch entry."
+}

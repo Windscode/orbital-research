@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900" role="img" aria-labelledby="cr3bp-points-title cr3bp-points-desc">
+<title id="cr3bp-points-title">地月 CR3BP：五个平动点</title><desc id="cr3bp-points-desc">按地月质量比绘制的旋转质心系平动点位置，标出地球月球、共线不稳定点和有质量比稳定条件的三角点，并说明模型假设与雅可比常数。</desc>
+<defs><marker id="a-lime" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#d3ef83" stroke-width="1.5"/></marker><marker id="a-blue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#8bb6d0" stroke-width="1.5"/></marker><marker id="a-gold" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#cfb280" stroke-width="1.5"/></marker><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#35505a" opacity=".35"/></pattern></defs>
+<rect width="1400" height="900" fill="#10191e"/><rect x="44" y="140" width="1312" height="700" fill="url(#grid)"/>
+<g font-family="'Microsoft YaHei','Noto Sans CJK SC',sans-serif" font-weight="400">
+<text x="56" y="48" font-size="15" fill="#8a9e9e" letter-spacing="2">ORBITAL / ENGINEERING FIELD DIAGRAM</text>
+<text x="56" y="100" font-size="38" fill="#e4e9df" >地月 CR3BP：五个平动点</text><text x="1344" y="45" font-size="14" fill="#d3ef83" text-anchor="end" letter-spacing="1">CR3BP-POINTS</text>
+<line x1="56" y1="125" x2="1344" y2="125" stroke="#33454c" stroke-width="1" /><text x="56" y="160" font-size="22" fill="#8a9e9e" >归一化位置关系参考 JPL 周期轨道目录；天体半径夸大显示</text>
+<line x1="218" y1="440" x2="1025" y2="440" stroke="#8bb6d0" stroke-width="1.6" marker-end="url(#a-blue)"/>
+<line x1="620" y1="766" x2="620" y2="184" stroke="#8bb6d0" stroke-width="1.6" marker-end="url(#a-blue)"/>
+<text x="1029" y="470" font-size="26" fill="#8bb6d0" >x</text>
+<text x="632" y="193" font-size="26" fill="#8bb6d0" >y</text>
+<path d="M616.3548243171128 440L766.3548243171128 180.1923788646684L916.3548243171128 440" fill="none" stroke="#33454c" stroke-width="2" stroke-dasharray="8 7"/>
+<path d="M616.3548243171128 440L766.3548243171128 699.8076211353316L916.3548243171128 440" fill="none" stroke="#33454c" stroke-width="2" stroke-dasharray="8 7"/>
+<circle cx="616.3548243171128" cy="440" r="28" fill="#244656" stroke="#8bb6d0" stroke-width="2"/>
+<circle cx="916.3548243171128" cy="440" r="14" fill="#7d8c8f" stroke="#e4e9df" stroke-width="2"/>
+<text x="532" y="496" font-size="25" fill="#8bb6d0" >地球 m₁</text>
+<text x="926" y="515" font-size="24" fill="#e4e9df" >月球 m₂</text>
+<line x1="926.3548243171128" y1="448" x2="958" y2="486" stroke="#8a9e9e" stroke-width="1.5" />
+<circle cx="871.0745377317071" cy="440" r="7" fill="#cfb280"/>
+<circle cx="966.7046496334651" cy="440" r="7" fill="#cfb280"/>
+<circle cx="318.4812062569166" cy="440" r="7" fill="#cfb280"/>
+<circle cx="766.3548243171128" cy="180.1923788646684" r="7" fill="#d3ef83"/>
+<circle cx="766.3548243171128" cy="699.8076211353316" r="7" fill="#d3ef83"/>
+<path d="M871.0745377317071 431L851.0745377317071 393H815" fill="none" stroke="#cfb280" stroke-width="2" />
+<text x="807" y="382" font-size="30" fill="#cfb280" >L₁</text>
+<path d="M966.7046496334651 431L1000 392" fill="none" stroke="#cfb280" stroke-width="2" />
+<text x="996" y="379" font-size="30" fill="#cfb280" >L₂</text>
+<text x="296.4812062569166" y="416" font-size="30" fill="#cfb280" >L₃</text>
+<text x="787.3548243171128" y="188.1923788646684" font-size="30" fill="#d3ef83" >L₄</text>
+<text x="787.3548243171128" y="707.8076211353316" font-size="30" fill="#d3ef83" >L₅</text>
+<text x="169" y="598" font-size="25" fill="#e4e9df" >旋转系的原点在地月质心</text>
+<text x="169" y="639" font-size="25" fill="#8bb6d0" >地球：x = −μ̄</text>
+<text x="169" y="680" font-size="25" fill="#e4e9df" >月球：x = 1 − μ̄</text>
+<text x="169" y="721" font-size="21" fill="#8a9e9e" >质心靠近地心，图中未分开画出</text>
+<rect x="1062" y="196" width="282" height="555" rx="16" fill="#142128" stroke="#33454c"/>
+<text x="1086" y="240" font-size="26" fill="#d3ef83" >CR3BP 假设</text>
+<text x="1086" y="287" font-size="21" fill="#e4e9df" >两主天体作圆周运动</text>
+<text x="1086" y="326" font-size="21" fill="#e4e9df" >航天器质量可忽略</text>
+<text x="1086" y="365" font-size="21" fill="#e4e9df" >无推力及额外摄动</text>
+<line x1="1086" y1="391" x2="1320" y2="391" stroke="#33454c" stroke-width="2" />
+<text x="1086" y="436" font-size="27" fill="#8bb6d0" >μ̄ ≈ 0.01215</text>
+<text x="1086" y="481" font-size="26" fill="#cfb280" >L₁ / L₂ / L₃</text>
+<text x="1086" y="519" font-size="21" fill="#8a9e9e" >平衡点线性不稳定</text>
+<text x="1086" y="564" font-size="26" fill="#d3ef83" >L₄ / L₅</text>
+<text x="1086" y="602" font-size="21" fill="#8a9e9e" >满足质量比稳定条件</text>
+<text x="1086" y="655" font-size="27" fill="#e4e9df" >C = 2Ω − |v|²</text>
+<text x="1086" y="702" font-size="20" fill="#8a9e9e" >C 仅在该理想模型守恒</text>
+<text x="56" y="800" font-size="26" fill="#cfb280" >固定于旋转坐标系 ≠ 惯性静止；平动点处的引力并没有消失。</text>
+<line x1="56" y1="835" x2="1344" y2="835" stroke="#33454c" stroke-width="1" />
+<text x="56" y="869" font-size="17" fill="#8a9e9e" >轨研 ORBITAL · 原创技术图解</text>
+<text x="1344" y="869" font-size="15" fill="#8a9e9e" text-anchor="end" letter-spacing="1">SCHEMATIC · NOT TO SCALE</text>
+</g></svg>

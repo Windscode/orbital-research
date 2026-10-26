@@ -1,0 +1,3784 @@
+[
+  {
+    "id": "gmat",
+    "title": "NASA GMAT",
+    "category": "轨道与任务",
+    "kind": "工程软件",
+    "summary": "任务设计、轨道传播、机动与目标约束分析，支持图形化任务序列和脚本。",
+    "details": "GMAT 面向任务设计、轨道优化与导航研究，可用图形界面或脚本构建航天器、力模型和任务序列。输入应明确历元、坐标系、初始轨道与机动条件，输出轨道状态、事件、报告和星历。适合作为个人传播器的独立交叉校核工具，也适合研究有限推力与脉冲机动的区别。建议先复现二体轨道，再逐项加入摄动；不同工具对重力场、时间尺度或事件终止的默认设置不同，不能只比较最后一张轨道图。NASA 目录的版本与实际下载发行包需分别确认。",
+    "tags": [
+      "任务设计",
+      "轨道传播",
+      "独立校核"
+    ],
+    "language": "C++ · GUI · 脚本",
+    "license": "开源；以具体发行包许可证为准",
+    "url": "https://software.nasa.gov/software/GSC-19640-1",
+    "docsUrl": "https://gmat.atlassian.net/wiki/",
+    "sourceTitle": "NASA Software Catalog · General Mission Analysis Tool",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "任务设计",
+      "轨道传播",
+      "机动优化"
+    ],
+    "inputs": "历元、坐标系、初始状态、重力及环境模型、任务序列与约束。",
+    "outputs": "轨道状态历史、机动量、事件时刻、任务报告和星历。",
+    "limitations": "图形界面可配置的模型仍须核实适用域；下载版本、力模型及星历必须固定。",
+    "alternatives": [
+      "orekit",
+      "tudat",
+      "freeflyer"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "NASA",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://software.nasa.gov/software/GSC-19640-1",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "starterWorkflow": [
+      "保存发行版与脚本，显式设置历元、坐标系、初始状态和点质量重力。",
+      "传播一个轨道周期，导出位置速度并检查能量、角动量及周期。",
+      "逐项增加 J2、第三体或大气，记录每次只改变一个模型后的差异。",
+      "加入一次脉冲机动和明确的事件终止条件，与解析近似或独立传播器对照。"
+    ],
+    "selectionQuestions": [
+      "更需要图形化任务序列还是可嵌入应用的计算库？",
+      "计划使用的环境和机动模型是否由所选发行版支持？",
+      "能否完整记录脚本与辅助数据，使别人重跑同一任务？"
+    ],
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "basilisk",
+    "title": "Basilisk",
+    "category": "飞行动力学",
+    "kind": "开源项目",
+    "summary": "以航天器为中心的模块化仿真框架，连接轨道、姿态、传感器与飞控算法。",
+    "details": "Basilisk 使用 C/C++ 模块与 Python 编排，把动力学、飞行软件和任务调度组织为明确的消息链。支持轨道与姿态耦合、重复性蒙特卡洛及实时硬件在环场景，并可通过 Vizard 观察状态。输入是航天器参数、环境、模块连接和调度频率，输出是状态消息与记录数据。研究时应先检查每个模块的模型说明和测试，再讨论整套场景的可信度。框架提供了验证基础，但某个公开示例能够运行，并不意味着新增载荷、执行器或控制律已获得同等验证。",
+    "tags": [
+      "GN&C",
+      "姿轨耦合",
+      "Monte Carlo"
+    ],
+    "language": "C/C++ · Python",
+    "license": "ISC",
+    "url": "https://hanspeterschaub.info/basilisk/",
+    "docsUrl": "https://hanspeterschaub.info/basilisk/",
+    "sourceTitle": "AVS Lab / LASP · Basilisk Documentation",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "姿态与控制",
+      "系统仿真",
+      "验证与不确定性"
+    ],
+    "inputs": "质量惯量、轨道姿态、执行器传感器、环境与模块调度。",
+    "outputs": "动力学和飞行软件消息、时间历史、蒙特卡洛结果。",
+    "limitations": "模块级测试不等于特定整机验证；硬件在环还需时钟、接口与实时性设计。",
+    "alternatives": [
+      "nasa-42",
+      "matlab-aerospace-blockset",
+      "trick"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "AVS Lab / LASP",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://hanspeterschaub.info/basilisk/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "starterWorkflow": [
+      "将官方 scenarioBasicOrbit 示例复制到自己的研究目录，固定安装版本。",
+      "列出动力学模块、消息连接和任务周期，先复现点质量轨道结果。",
+      "加入单一姿态传感器和执行器，分别核查坐标系、单位与消息更新时间。",
+      "变化步长与控制周期，比较闭环状态和事件时刻后，再增加噪声及故障注入。"
+    ],
+    "selectionQuestions": [
+      "问题是否需要轨道、姿态、执行器及飞行软件的消息耦合？",
+      "所需模块是否有覆盖目标工况的说明与测试？",
+      "是否能管理多速率调度、延迟及记录数据，而不只查看 Vizard 动画？"
+    ],
+    "starterWorkflowSources": [
+      {
+        "title": "Basilisk scenarioBasicOrbit",
+        "url": "https://hanspeterschaub.info/basilisk/examples/scenarioBasicOrbit.html"
+      }
+    ],
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "tudat",
+    "title": "Tudat / TudatPy",
+    "category": "轨道与任务",
+    "kind": "开源项目",
+    "summary": "数值传播与参数估计工具箱，支持轨道、再入及行星际动力学研究。",
+    "details": "Tudat 的核心以 C++ 实现，通过 TudatPy 提供 Python 接口。它适合把天体环境、加速度、状态传播与观测模型置于同一研究脚本中，开展轨道估计、灵敏度分析及任务设计。输入包含环境数据、初始状态、传播器和观测配置，输出状态历史、观测残差和估计结果。建议把模型复杂度作为可控变量：先建立可解析基线，再加入重力场、大气和第三体作用。估计残差小不等于物理参数唯一可辨识，还需检查参数相关性、观测几何和先验约束。",
+    "tags": [
+      "参数估计",
+      "数值传播",
+      "科研工作流"
+    ],
+    "language": "C++ · Python",
+    "license": "BSD-3-Clause",
+    "url": "https://docs.tudat.space/",
+    "docsUrl": "https://docs.tudat.space/en/latest/index.html",
+    "sourceTitle": "TU Delft · Tudat Space / TudatPy Documentation",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "轨道传播",
+      "轨道确定",
+      "验证与不确定性"
+    ],
+    "inputs": "环境与力模型、初始状态、观测、待估参数和先验。",
+    "outputs": "传播轨迹、偏导、观测残差、估计参数与协方差。",
+    "limitations": "精度受观测质量与模型假设约束；残差下降不保证参数可辨识。",
+    "alternatives": [
+      "orekit",
+      "gmat",
+      "basilisk"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "TU Delft",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://docs.tudat.space/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "starterWorkflow": [
+      "按官方 Quickstart 建立点质量地球与单星，确认 SI 单位、弧度和 TDB 历元语义。",
+      "显式选择积分器、初值及终止条件，输出 Cartesian 状态和守恒量。",
+      "逐个开启摄动并做步长收敛，保存环境数据与软件版本。",
+      "若做参数估计，先用合成观测恢复已知参数，再分析真实数据中的偏差与可辨识性。"
+    ],
+    "selectionQuestions": [
+      "主要目标是数值传播、观测建模还是参数估计？",
+      "输入资料是否足以约束待估参数，而非只得到较小残差？",
+      "是否需要自己编排 Python 科研脚本并维护模型配置？"
+    ],
+    "starterWorkflowSources": [
+      {
+        "title": "TudatPy Quickstart",
+        "url": "https://docs.tudat.space/en/latest/getting-started/quickstart.html"
+      }
+    ],
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "spice",
+    "title": "NAIF SPICE",
+    "category": "数据与环境",
+    "kind": "工程软件",
+    "summary": "星历、姿态、时间和参考系的任务几何工具包及带版本的内核数据。",
+    "details": "SPICE 是 NASA JPL NAIF 的任务几何信息系统。通过星历、姿态、时钟和参考系等 kernel，计算天体相对位置、观测几何及坐标变换，适合连接真实任务资料和研究仿真。输入不仅是目标与时刻，还包括 kernel 集合、观察者、参考系及光行时修正选择；输出是具有明确定义的几何状态。SPICE 查询通常使用已有星历，不应被理解为自动求解任意新任务的完整动力学积分器。建议保存 meta-kernel、覆盖区间与文件版本，避免重叠数据或时间尺度混用导致隐蔽偏差。",
+    "tags": [
+      "星历",
+      "参考系",
+      "任务几何"
+    ],
+    "language": "C · Fortran · MATLAB · IDL",
+    "license": "依 NAIF Toolkit 使用条款",
+    "url": "https://naif.jpl.nasa.gov/naif/",
+    "docsUrl": "https://naif.jpl.nasa.gov/naif/documentation.html",
+    "sourceTitle": "NASA JPL NAIF · SPICE Concept / Toolkit Documentation",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "数据归档与环境",
+      "坐标与时间",
+      "任务几何"
+    ],
+    "inputs": "内核文件集合、目标、观察者、历元、参考系和光行时修正。",
+    "outputs": "位置速度、姿态变换、可见几何及时间换算。",
+    "limitations": "内核覆盖范围和版本限定结果；已有星历查询不同于任意任务的动力学预测。",
+    "alternatives": [
+      "orekit",
+      "gmat",
+      "nasa-pds"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "NASA JPL NAIF",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://naif.jpl.nasa.gov/naif/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "starterWorkflow": [
+      "从官方任务归档选择内核与说明，列出 LSK、SPK、PCK、FK 和所需姿态/时钟数据。",
+      "制作 meta-kernel，保存文件名、版本、覆盖区间与校验值，检查缺失和重叠。",
+      "先查询一个有覆盖的目标相对状态，明确参考系、单位和光行时修正。",
+      "用已知事件或官方样例校核后，再加入仪器视场及图像时标；遇到覆盖缺口时显式说明。"
+    ],
+    "selectionQuestions": [
+      "需要的是已有任务几何查询，还是尚未飞行任务的动力学预测？",
+      "所需时间、姿态、仪器和参考系内核是否全部公开且覆盖目标时段？",
+      "能否区分几何状态、观测状态以及重构与预测内核？"
+    ],
+    "starterWorkflowSources": [
+      {
+        "title": "NAIF SPICE Tutorials",
+        "url": "https://naif.jpl.nasa.gov/naif/tutorials.html"
+      }
+    ],
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "jsbsim",
+    "title": "JSBSim",
+    "category": "飞行动力学",
+    "kind": "开源项目",
+    "summary": "数据驱动的非线性六自由度飞行动力学，可嵌入交互式仿真和批量计算。",
+    "details": "JSBSim 以轻量的 C++ 动力学内核和 XML 飞行器定义组织气动、推进、控制与起落架模型。研究者可以从同一配置运行批量飞行试验，或连接可视化、自动驾驶和外部控制程序。输入是质量惯量、系数表、控制系统、初始状态与控制指令，输出是位置、速度、姿态和系统属性。它的价值在于模型可检查，而不是预设飞机参数天然精确。导入外部气动数据前，必须统一机体系、风轴系、参考面积、力矩参考点和单位；模型覆盖之外的工况应明确标记。",
+    "tags": [
+      "6DOF",
+      "数据驱动",
+      "飞控"
+    ],
+    "language": "C++ · XML · Python",
+    "license": "LGPL；具体版本见仓库 LICENSE",
+    "url": "https://github.com/JSBSim-Team/jsbsim",
+    "docsUrl": "https://jsbsim-team.github.io/jsbsim-reference-manual/",
+    "sourceTitle": "JSBSim Team · Reference Manual / Official Repository",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "飞行动力学",
+      "姿态与控制",
+      "系统仿真"
+    ],
+    "inputs": "XML 模型、质量惯量、气动表、推进参数、环境及操纵量。",
+    "outputs": "六自由度状态、载荷、推进与控制系统属性。",
+    "limitations": "公开机型是可运行模型，不代表获得真实制造商完整参数；高超声速模型需专门核查。",
+    "alternatives": [
+      "rocketpy",
+      "matlab-aerospace-blockset",
+      "basilisk"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "JSBSim Team",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://github.com/JSBSim-Team/jsbsim",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "starterWorkflow": [
+      "选官方可运行机型与初值脚本，固定积分步长并导出关键属性。",
+      "核对气动系数的坐标轴、参考面积、力矩参考点、单位及数据范围。",
+      "先验证定常配平及小扰动响应，再替换一类气动或推进数据。",
+      "将外部控制和渲染接入独立时序，检查停帧或加速播放是否改变物理结果。"
+    ],
+    "selectionQuestions": [
+      "目标工况是否在该飞行器气动和推进数据库覆盖内？",
+      "是否能获得可信质量惯量和配平数据，而不只是一套外形？",
+      "需要可嵌入的飞行动力学内核，还是完整任务环境和载荷模型？"
+    ],
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "rocketpy",
+    "title": "RocketPy",
+    "category": "飞行动力学",
+    "kind": "开源项目",
+    "summary": "探空与高功率火箭的轨迹、风场、变质量及降落伞下降仿真。",
+    "details": "RocketPy 用 Python 描述火箭、发动机与环境，提供六自由度轨迹计算、变质量效应、气象剖面和降落伞事件建模。输入推力曲线、质量惯量、外形与气动参数以及风场，输出飞行状态、远地点及落点等研究指标，也可开展蒙特卡洛散布分析。它很适合为探空火箭算例建立外部对照，但大型入轨火箭、复杂再入和特殊气动区域仍需逐项确认模型适用范围。推力积分、推进剂消耗与初末质量应自洽；把默认阻力曲线用于真实型号，只能形成假设场景而非经过标定的预测。",
+    "tags": [
+      "探空火箭",
+      "变质量",
+      "落点离散"
+    ],
+    "language": "Python",
+    "license": "MIT",
+    "url": "https://github.com/RocketPy-Team/RocketPy",
+    "docsUrl": "https://docs.rocketpy.org/en/latest/",
+    "sourceTitle": "RocketPy Team · Documentation / Official Repository",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "飞行动力学",
+      "推进与供给",
+      "验证与不确定性"
+    ],
+    "inputs": "外形、推力曲线、质量变化、气动参数、风场和降落伞逻辑。",
+    "outputs": "轨迹、远地点、落点及输入离散后的统计响应。",
+    "limitations": "探空火箭工作流不能直接替代大型运载器全任务模型；关键数据须独立标定。",
+    "alternatives": [
+      "jsbsim",
+      "matlab-aerospace-blockset"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "RocketPy Team",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://github.com/RocketPy-Team/RocketPy",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "starterWorkflow": [
+      "从 First Simulation 教程建立 Environment、Motor、Rocket 和 Flight，先使用可归档的固定环境。",
+      "检查推力积分、推进剂质量、惯量和质心定义是否自洽。",
+      "单独查看上升、远地点、开伞及下降事件，并核对输出单位和地面坐标。",
+      "基线可信后再设置参数分布及随机种子，输出落点散布和敏感性而非只报单次最大高度。"
+    ],
+    "selectionQuestions": [
+      "是否属于探空或高功率火箭工作流，所需多级或特殊工况是否受支持？",
+      "推力曲线、阻力和质量数据是测量值、厂家值还是假设？",
+      "不确定性分布有无资料依据，落点统计是否区分风与模型误差？"
+    ],
+    "starterWorkflowSources": [
+      {
+        "title": "RocketPy First Simulation",
+        "url": "https://docs.rocketpy.org/en/latest/user/first_simulation.html"
+      }
+    ],
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "orekit",
+    "title": "Orekit",
+    "category": "轨道与任务",
+    "kind": "开源项目",
+    "summary": "可嵌入工程系统的空间动力学库，处理时间、参考系、传播与轨道确定。",
+    "details": "Orekit 是 Java 空间动力学库，提供时间尺度、参考系、轨道传播、事件检测和轨道确定等基础能力。它适合搭建可重复运行的数据处理管线，也适合与图形前端分离部署。输入状态、力模型、地球定向参数、观测和辅助数据，输出传播状态、事件时刻及估计结果。选择它意味着需要自己定义应用流程，而不是获得现成的任务设计界面。建议固定依赖和辅助数据版本，并为每次输出记录坐标系与时间尺度。观测估计时还应分析测量偏差、参数相关性与观测几何，避免仅靠残差判断结果可信。",
+    "tags": [
+      "轨道确定",
+      "工程集成",
+      "事件检测"
+    ],
+    "language": "Java",
+    "license": "Apache-2.0",
+    "url": "https://github.com/CS-SI/Orekit",
+    "docsUrl": "https://www.orekit.org/",
+    "sourceTitle": "CS GROUP · Orekit Official Repository / Overview",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "坐标与时间",
+      "轨道传播",
+      "轨道确定"
+    ],
+    "inputs": "初始状态、辅助数据、力模型、观测和事件条件。",
+    "outputs": "传播状态、轨道确定结果、事件和时间坐标转换。",
+    "limitations": "属于库而非完整任务 GUI；需要自行管理应用流程、数据版本与精度预算。",
+    "alternatives": [
+      "tudat",
+      "gmat",
+      "freeflyer"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "Orekit / CS GROUP",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://github.com/CS-SI/Orekit",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC"
+  },
+  {
+    "id": "trick",
+    "title": "NASA Trick",
+    "category": "多物理场",
+    "kind": "开源项目",
+    "summary": "仿真调度、积分、输入和数据记录框架，适用于自定义动力学及系统模型。",
+    "details": "Trick 是 NASA Johnson Space Center 的仿真开发框架，为模型提供作业调度、数值积分、输入处理、数据记录和运行时交互等公共能力。输入是用户编写的领域模型与仿真配置，输出是时间推进后的模型状态及日志。它适合长期演进的多系统仿真，以及飞行软件或硬件在环研究。需要特别区分仿真基础设施与物理模型：采用 Trick 不会自动获得已校准的飞行器或高可信气动数据库。个人工程可借鉴其模型与调度分离思想；本地使用前仍应核对当前平台和编译依赖支持。",
+    "tags": [
+      "仿真架构",
+      "实时调度",
+      "硬件在环"
+    ],
+    "language": "C/C++ · Python",
+    "license": "NASA Open Source Agreement 1.3",
+    "url": "https://github.com/nasa/trick",
+    "docsUrl": "https://nasa.github.io/trick/",
+    "sourceTitle": "NASA JSC · Trick Simulation Environment",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "仿真集成",
+      "系统仿真",
+      "验证与不确定性"
+    ],
+    "inputs": "领域模型代码、作业周期、积分器、初值和测试脚本。",
+    "outputs": "时序模型状态、记录数据、运行日志和交互接口。",
+    "limitations": "不自带已验证整机物理；平台移植、线程同步及模型间因果关系由项目负责。",
+    "alternatives": [
+      "openmodelica",
+      "fmi",
+      "basilisk"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "NASA JSC",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://github.com/nasa/trick",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC"
+  },
+  {
+    "id": "openmdao",
+    "title": "OpenMDAO",
+    "category": "设计与优化",
+    "kind": "开源项目",
+    "summary": "多学科模型耦合、导数计算和优化框架，适用于气动、结构及任务设计权衡。",
+    "details": "OpenMDAO 是 Python 多学科分析与优化框架，可将子模型组织为组件和组，连接变量、求解耦合关系，并计算用于优化的导数。输入各学科模型、设计变量、约束和目标，输出可行设计、优化历史及灵敏度信息。它不替代气动或结构求解器，而是协调这些模型。研究中最值得关注的是尺度、单位、隐式耦合收敛和偏导正确性：优化器可能高效利用模型错误。先做导数检查和小规模基准，再增加设计自由度，通常比直接扩大优化问题更有价值。",
+    "tags": [
+      "MDO",
+      "梯度",
+      "系统设计"
+    ],
+    "language": "Python",
+    "license": "Apache-2.0",
+    "url": "https://github.com/OpenMDAO/OpenMDAO",
+    "docsUrl": "https://openmdao.org/",
+    "sourceTitle": "OpenMDAO · Official Repository / Documentation",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "多学科优化",
+      "方案论证",
+      "验证与不确定性"
+    ],
+    "inputs": "组件模型、连接关系、设计变量、约束、目标与导数。",
+    "outputs": "设计迭代、耦合解、目标值、约束残差和灵敏度。",
+    "limitations": "优化器依赖模型及导数质量；局部收敛不等于全局最优或工程可制造。",
+    "alternatives": [
+      "dymos",
+      "comsol-multiphysics"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "OpenMDAO Team",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://github.com/OpenMDAO/OpenMDAO",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "starterWorkflow": [
+      "把一个可独立验证的学科模型封装为组件，给所有输入输出标明单位。",
+      "先执行分析并检查连接、量纲和耦合残差，再调用优化驱动器。",
+      "对关键偏导和总导数进行独立数值检查，设置合适的变量及约束尺度。",
+      "从少量设计变量开始，保存优化历史，并用未参与优化的工况复核候选。"
+    ],
+    "selectionQuestions": [
+      "已有可信学科模型，还是误以为框架自带完整气动/结构求解器？",
+      "模型能否提供可靠导数，含不连续事件时准备如何处理？",
+      "主要瓶颈在模型调用、耦合收敛还是优化器选型？"
+    ],
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "dymos",
+    "title": "Dymos",
+    "category": "设计与优化",
+    "kind": "开源项目",
+    "summary": "基于 OpenMDAO 的动态优化工具，支持轨迹状态、控制历史与设计参数联合求解。",
+    "details": "Dymos 为动态多学科系统提供仿真与最优控制建模，支持把状态、控制、参数和边界条件组织为阶段及轨迹。输入常微分方程、路径约束、阶段连接和目标，输出离散的状态与控制历史。配点法把连续动力学转为优化约束，适合研究上升轨迹、能量管理或多阶段任务。收敛的离散解仍须独立前向积分，检查网格加密后是否稳定，以及约束在节点之间是否被违反。应先使用简化且可验证的动力学；更精细的求解器并不能补偿不可信的推力或气动输入。",
+    "tags": [
+      "最优控制",
+      "配点法",
+      "轨迹优化"
+    ],
+    "language": "Python",
+    "license": "Apache-2.0",
+    "url": "https://github.com/OpenMDAO/dymos",
+    "docsUrl": "https://openmdao.github.io/dymos/",
+    "sourceTitle": "Dymos · Multidisciplinary Optimal Control Library",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "机动优化",
+      "最优控制",
+      "多学科优化"
+    ],
+    "inputs": "动力学方程、状态控制边界、阶段连接、路径约束与目标。",
+    "outputs": "离散轨迹与控制历史、优化诊断和前向仿真对照。",
+    "limitations": "配点节点满足约束不保证节点间满足；需网格加密与独立积分验证。",
+    "alternatives": [
+      "gmat",
+      "tudat",
+      "openmdao"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "Dymos / OpenMDAO Team",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://github.com/OpenMDAO/dymos",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "starterWorkflow": [
+      "先运行官方最速降线等基础示例，理解状态、控制、参数与阶段的区别。",
+      "单独验证目标问题的 ODE 和单位，再定义边界、路径约束与阶段连接。",
+      "检查配点优化的缩放、收敛及约束残差，并记录网格设置。",
+      "将求得的控制前向积分，检查节点间约束和网格加密稳定性，再评价工程意义。"
+    ],
+    "selectionQuestions": [
+      "问题能否合理表达为分阶段动态最优控制系统？",
+      "动力学是否可微，事件和阶段边界是否有清楚定义？",
+      "是否准备独立前向积分，而不是把优化器成功状态当作物理验证？"
+    ],
+    "starterWorkflowSources": [
+      {
+        "title": "Dymos 官方文档与基础示例",
+        "url": "https://openmdao.github.io/dymos/"
+      }
+    ],
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "openvsp",
+    "title": "OpenVSP",
+    "category": "设计与优化",
+    "kind": "工程软件",
+    "summary": "飞行器参数化几何建模与分析工具，适用于概念设计和批量构型研究。",
+    "details": "OpenVSP 是参数化飞行器几何工具，可用机翼、机身等工程参数建立三维模型，再输出适合后续分析的几何数据，并提供脚本与 API。输入展弦比、截面、尺寸、位置和构型参数，输出几何、网格或分析所需的信息。对个人研究而言，它适合构建可追溯的构型族，而不只是制作视觉模型。公开照片反推的几何应附带测量与尺度误差；参数化外形也不包含真实内部质量分布。进入流场计算前，需要检查封闭性、交叠、尺度和网格质量。",
+    "tags": [
+      "参数化几何",
+      "概念设计",
+      "构型研究"
+    ],
+    "language": "C++ · GUI · Python API",
+    "license": "NASA Open Source Agreement 1.3",
+    "url": "https://openvsp.org/",
+    "docsUrl": "https://openvsp.org/learn.shtml",
+    "sourceTitle": "OpenVSP · About / Learn More",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "几何与构型",
+      "气动数据库",
+      "方案论证"
+    ],
+    "inputs": "部件几何参数、截面、布局与分析设置。",
+    "outputs": "参数化外形、参考几何、网格和分析输入。",
+    "limitations": "概念外形不含真实内部结构和质量分布；后续 CFD 仍需几何修复与网格检查。",
+    "alternatives": [
+      "freecad",
+      "catia",
+      "siemens-nx"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "OpenVSP Team",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://openvsp.org/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC"
+  },
+  {
+    "id": "su2",
+    "title": "SU2",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "开源流场求解与伴随优化套件，可用于气动分析、设计优化和系数数据库生成。",
+    "details": "SU2 提供偏微分方程数值求解和约束优化工具，主要应用包含计算流体力学与气动外形优化。输入网格、边界条件、流动工况和求解配置，输出压力、流场、气动力及相关灵敏度。对飞行动力学项目，实用路径是离线扫描工况，生成带参考量和适用域的气动表。残差下降不足以证明气动力可靠：仍需检查网格与时间步收敛、湍流模型、边界距离及守恒误差。跨声速、强分离与高温流动应采用与物理现象相符的模型，避免把单个案例外推为全包线数据库。",
+    "tags": [
+      "CFD",
+      "伴随优化",
+      "气动数据库"
+    ],
+    "language": "C++ · Python",
+    "license": "LGPL-2.1；附属组件见仓库",
+    "url": "https://github.com/su2code/SU2",
+    "docsUrl": "https://su2code.github.io/docs_v7/home/",
+    "sourceTitle": "SU2 Foundation / SU2 Team · Official Documentation",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "流体与气动",
+      "气动数据库",
+      "多学科优化"
+    ],
+    "inputs": "计算网格、流动条件、边界、数值格式及物理模型。",
+    "outputs": "场量、气动力和力矩系数、收敛记录及伴随灵敏度。",
+    "limitations": "复杂流动需相应物理模型；网格收敛和实验对照不能由残差曲线代替。",
+    "alternatives": [
+      "openfoam",
+      "ansys-fluent",
+      "fun3d"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "SU2 Foundation",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://github.com/su2code/SU2",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC"
+  },
+  {
+    "id": "celestrak",
+    "title": "CelesTrak GP / OMM",
+    "category": "数据与环境",
+    "kind": "公开数据",
+    "summary": "卫星目录与通用摄动轨道数据入口；新项目优先采用 OMM、JSON 或 CSV。",
+    "details": "CelesTrak 提供卫星 GP 数据及格式说明，可按目录号、国际编号或卫星分组查询。输入检索条件与格式，输出供 SGP4 使用的平均轨道根数，而非直接测得的位置或通用的瞬时开普勒根数。官方文档说明 GP 查询默认格式已转为 CSV；新目录号也已超出传统五位 TLE 范围。开发时应显式指定格式、保存历元与获取时间，并处理缺失字段和数据老化。适合过境可视化与算法学习，不能仅凭公开 GP 轨道就推断可靠碰撞概率；使用前需阅读当前访问政策。",
+    "tags": [
+      "OMM",
+      "SGP4",
+      "卫星目录"
+    ],
+    "language": "JSON · CSV · OMM · TLE",
+    "license": "遵守 CelesTrak 数据使用政策",
+    "url": "https://celestrak.org/",
+    "docsUrl": "https://celestrak.org/NORAD/documentation/gp-data-formats.php",
+    "sourceTitle": "CelesTrak · A New Way to Obtain GP Data",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "数据归档与环境",
+      "轨道传播",
+      "空间交通"
+    ],
+    "inputs": "目录号、分组、历元需求和显式返回格式。",
+    "outputs": "GP 平均根数、对象目录和格式元数据。",
+    "limitations": "GP 要用匹配的 SGP4 语义；非精密导航星历，不能直接提供可信碰撞概率。",
+    "alternatives": [
+      "space-track",
+      "spice"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "CelesTrak",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://celestrak.org/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC"
+  },
+  {
+    "id": "space-track",
+    "title": "Space-Track",
+    "category": "数据与环境",
+    "kind": "公开数据",
+    "summary": "空间目标目录及 GP 历史数据的规范查询入口，适合建立可追溯研究样本。",
+    "details": "Space-Track 提供带账户权限的空间目标数据与 REST API 文档。GP 面向当前轨道数据，GP_HISTORY 面向历史记录，两者应按研究目的区分使用。输入对象、历元范围和返回格式，输出目录或轨道记录；部分功能与数据需要登录或相应授权。建议批量查询、缓存已获取历史数据并保留原始响应，避免为每个目标重复访问。它提供的数据不是完整任务遥测，公开轨道精度与可用性也不等同于运营方精密星历。网站接入时应在服务端管理账户，且遵守最新查询频率和再分发条款。",
+    "tags": [
+      "轨道历史",
+      "API",
+      "数据溯源"
+    ],
+    "language": "REST · JSON · CSV · OMM",
+    "license": "依账户权限与 Space-Track 用户协议",
+    "url": "https://www.space-track.org/",
+    "docsUrl": "https://www.space-track.org/documentation",
+    "sourceTitle": "Space-Track · Help Documentation / API Use Guidelines",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "数据归档与环境",
+      "空间交通",
+      "轨道传播"
+    ],
+    "inputs": "账户权限、对象与历元范围、API 查询条件。",
+    "outputs": "当前或历史 GP、目录记录及原始响应。",
+    "limitations": "登录、频率和再分发受协议约束；运营方精密轨道与完整遥测不在同一概念。",
+    "alternatives": [
+      "celestrak"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "Space-Track",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://www.space-track.org/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC"
+  },
+  {
+    "id": "ansys-stk",
+    "title": "Ansys STK",
+    "category": "轨道与任务",
+    "kind": "工程软件",
+    "summary": "围绕任务场景组织轨道、平台、传感器与通信关系，研究系统在时空环境中的表现。",
+    "details": "STK 是面向数字任务工程的商业软件，适合分析轨道、平台运动、可见性、覆盖和通信等任务关系。输入包括场景历元、轨道或轨迹、地面站、载荷配置与分析约束，输出访问窗口、覆盖指标、报告和三维场景。它可作为任务几何与系统方案比较的平台，但不会仅凭一个外形模型自动生成可信的气动或内部系统参数。功能取决于 Pro、Premium Air、Premium Space 或 Enterprise 等许可证组合；任务设计或专业分析前应通过 License Viewer 确认能力。引擎嵌入和向其他用户分发也需相应授权，不能把可访问帮助文档理解为拥有软件使用权。",
+    "tags": [
+      "商业软件",
+      "任务分析",
+      "覆盖与链路"
+    ],
+    "language": "GUI · 场景建模 · 自动化接口",
+    "license": "商业专有许可；功能与运行时部署依授权组合",
+    "url": "https://ansys.synopsys.com/products/missions/ansys-stk",
+    "docsUrl": "https://help.agi.com/",
+    "sourceTitle": "Ansys · STK Product Overview / Official Help / License Viewer",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "任务设计",
+      "任务几何",
+      "通信与覆盖"
+    ],
+    "inputs": "场景历元、平台轨迹、传感器、地面设施及约束。",
+    "outputs": "访问窗口、覆盖和链路指标、报告与三维任务场景。",
+    "limitations": "不同能力依商业授权组合；任务几何可视化不会补齐飞行器内部物理参数。",
+    "alternatives": [
+      "gmat",
+      "freeflyer",
+      "orekit"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "Astroscale · ELSA-d 任务 GN&C 团队",
+        "context": "Ansys 于 2021-11-08 发布的正式客户文章引述 Astroscale GN&C 工程师 Yuki Seto：ELSA-d 任务使用 AGI STK 进行轨道设计与分析、链路预算及通信分析，并生成早期任务研究所需星历。证据来自供应商发布的具名客户陈述，限定于该任务及工作流；不代表 Astroscale 所有任务或全部控制软件都使用 STK。",
+        "sourceUrl": "https://ansys.synopsys.com/ko-kr/blog/space-debris-an-environmental-crisis",
+        "publisher": "Ansys（供应商客户文章）",
+        "evidenceDate": "2021-11-08",
+        "evidenceType": "官方案例",
+        "accessedAt": "2026-10-25 05:39:21 UTC"
+      },
+      {
+        "organization": "Ansys",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://ansys.synopsys.com/products/missions/ansys-stk",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 05:39:21 UTC"
+  },
+  {
+    "id": "matlab-aerospace-blockset",
+    "title": "MATLAB / Simulink Aerospace Blockset",
+    "category": "飞行动力学",
+    "kind": "工程软件",
+    "summary": "在 Simulink 中连接飞行器、环境与控制系统，开展闭环动力学仿真和设计权衡。",
+    "details": "Aerospace Blockset 提供飞行器动力学、环境、坐标变换和航空航天数学模块，适合研究飞机、旋翼飞行器及航天器的闭环系统。输入质量惯量、气动或推进数据、环境与控制器模型，输出轨迹、姿态和系统响应；结果可信度仍依赖参数、求解器设置与模型适用域。它是商业附加产品，官方明确要求 MATLAB、Simulink 和 Aerospace Toolbox。使用 Unreal Engine 三维仿真与可视化还需要 Simulink 3D Animation，且该工作流有平台限制。现成模块有助于组织模型，但不能替代真实飞行器的参数辨识和独立验证，额外工具箱也应按具体工作流确认授权。",
+    "tags": [
+      "商业软件",
+      "闭环仿真",
+      "模型设计"
+    ],
+    "language": "MATLAB · Simulink",
+    "license": "商业专有许可；依赖 MATLAB、Simulink、Aerospace Toolbox",
+    "url": "https://www.mathworks.com/products/aerospace-blockset.html",
+    "docsUrl": "https://www.mathworks.com/support/requirements/aerospace-blockset.html",
+    "sourceTitle": "MathWorks · Aerospace Blockset / Product Requirements / Documentation",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "飞行动力学",
+      "姿态与控制",
+      "系统仿真"
+    ],
+    "inputs": "质量惯量、气动推进数据库、环境、控制框图和求解配置。",
+    "outputs": "闭环轨迹、姿态、载荷、系统响应和测试记录。",
+    "limitations": "依赖 MATLAB、Simulink、Aerospace Toolbox；三维与代码生成等功能需另核依赖及许可。",
+    "alternatives": [
+      "jsbsim",
+      "basilisk",
+      "openmodelica"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "NASA · Artemis I 的 SLS / Orion 团队",
+        "context": "MathWorks 于 2022-12-14 发布的案例说明：SLS 任务管理逻辑使用 MATLAB / Simulink 进行仿真和验证，Orion 电源系统在该环境建模，GN&C 采用基于模型的设计。此证据是供应商对 Artemis I 特定系统的案例说明，只证明 MATLAB / Simulink 工作流；页面没有证明采用 Aerospace Blockset，不能扩展到整个产品组合或后续全部任务。",
+        "sourceUrl": "https://www.mathworks.com/videos/how-nasa-modeled-artemis-i-in-matlab-and-simulink--1671048095326.html",
+        "publisher": "MathWorks（供应商案例）",
+        "evidenceDate": "2022-12-14",
+        "evidenceType": "官方案例",
+        "accessedAt": "2026-10-25 05:39:21 UTC"
+      },
+      {
+        "organization": "Lockheed Martin Space Systems · MRO GN&C / Orbiter Test Bed 团队",
+        "context": "MathWorks 正式客户案例引述 MRO 姿态控制负责人 Jim Chapel：团队以 MATLAB / Simulink 开发 GN&C 算法和参数，并使用 Simscape Multibody、Simulink Coder 构建实时硬件在环 Orbiter Test Bed，连接 CAD 多体模型和飞行软件验证。案例对应 MRO 开发与早期运营历史，页面未给明确出版日；不据此宣称 2026 年所有项目仍用相同链路，也不证明使用 Aerospace Blockset。",
+        "sourceUrl": "https://www.mathworks.com/company/user_stories/lockheed-martin-space-systems-uses-a-real-time-simulator-to-automate-mars-reconnaissance-orbiter-development.html",
+        "publisher": "MathWorks（供应商具名客户案例）",
+        "evidencePeriod": "MRO 开发与早期运营历史；网页未标明确发布日期",
+        "evidenceType": "官方案例",
+        "accessedAt": "2026-10-25 04:58:00 UTC"
+      },
+      {
+        "organization": "MathWorks",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://www.mathworks.com/products/aerospace-blockset.html",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 05:39:21 UTC"
+  },
+  {
+    "id": "ansys-fluent",
+    "title": "Ansys Fluent",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "流动、传热与反应流求解工具，可用于气动系数生成和部件热流分析。",
+    "details": "Fluent 是商业计算流体力学软件，可研究湍流、传热、多相流和燃烧等现象。输入几何或网格、材料性质、边界条件及物理模型，输出速度、压力、温度分布和表面积分载荷。航天研究可用它离线建立选定工况的气动系数或热载荷，但应完成网格与时间步收敛、边界条件检查及试验对照；漂亮云图本身不能证明预测可靠。基础求解需要相应 CFD 授权，扩展并行计算需按版本与计算配置核对 HPC 许可；与 Mechanical 等产品联合求解时，还需对应产品授权。CPU 与 GPU 求解器的物理支持范围也应单独确认，不能假定配置无差别迁移。",
+    "tags": [
+      "商业软件",
+      "CFD",
+      "热流分析"
+    ],
+    "language": "GUI · 求解配置 · 批处理",
+    "license": "商业专有许可；扩展并行与联合求解需核对相应授权",
+    "url": "https://ansys.synopsys.com/products/fluids/ansys-fluent",
+    "docsUrl": "https://ansyshelp.ansys.com/public/Views/Secured/corp/v242/en/licensing/HPC_detail.html",
+    "sourceTitle": "Ansys · Fluent Product Overview / Licensing Guide（HPC 2024 R2，实施前核对目标版本）",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "流体与气动",
+      "热与环境",
+      "气动数据库"
+    ],
+    "inputs": "几何网格、物性、边界与初始条件、流动及化学模型。",
+    "outputs": "速度压力温度场、表面积分载荷、热流和监测量。",
+    "limitations": "商业许可及 HPC 权利需核对；CPU/GPU 物理支持和版本并不完全相同。",
+    "alternatives": [
+      "su2",
+      "openfoam",
+      "star-ccm"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "Ansys",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://ansys.synopsys.com/products/fluids/ansys-fluent",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:43:24 UTC"
+  },
+  {
+    "id": "comsol-multiphysics",
+    "title": "COMSOL Multiphysics",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "多物理场建模与有限元平台，适用于热、结构、电磁、流动及其耦合问题。",
+    "details": "COMSOL Multiphysics 是商业多物理场建模平台，工作流覆盖几何、材料、物理接口、网格、求解和结果评估。输入模型几何、物性、方程或物理接口及边界条件，输出场分布、派生量和参数扫描结果。个人航天研究可用它分析部件间的热、力或电磁耦合，但整机轨迹与控制流程仍需明确建立或与其他模型连接。专业物理接口和集成功能由附加模块扩展，实际可用能力取决于已购买的产品组合；基础平台不代表包含全部模块。许可证还有单机、指定用户和浮动网络等区别，远程、集群与应用部署权利应按所选许可核对。耦合求解收敛也仍需网格敏感性和实验依据支持。",
+    "tags": [
+      "商业软件",
+      "耦合物理",
+      "部件建模"
+    ],
+    "language": "GUI · Model Builder · Application Builder",
+    "license": "商业专有许可；专业模块与远程部署依许可类型及产品组合",
+    "url": "https://www.comsol.com/comsol-multiphysics",
+    "docsUrl": "https://www.comsol.com/documentation",
+    "sourceTitle": "COMSOL · Multiphysics Platform / Documentation / License Options",
+    "verifiedOn": "2026-10-25",
+    "workflow": [
+      "多物理场耦合",
+      "热与环境",
+      "结构与振动"
+    ],
+    "inputs": "几何材料、方程或物理接口、边界条件、网格及研究步。",
+    "outputs": "耦合场分布、派生量、参数扫描与应用模型。",
+    "limitations": "专业模块另授权；耦合收敛不能替代材料校准、网格敏感性和实验验证。",
+    "alternatives": [
+      "ansys-mechanical",
+      "ansys-fluent",
+      "openmodelica"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "NASA Marshall Space Flight Center / Jacobs ESSSA Group · Sean R. Fischbach 研究团队",
+        "context": "COMSOL News 2016 刊载 Sean R. Fischbach 署名案例，注明原发于 2015 年 12 月 NASA Tech Briefs：团队以 COMSOL 求解通用液体发动机平均流及声学速度势方程，研究燃烧室声模态和平均流效应。属于供应商刊物发布的具体研究使用证据，不是某型发动机定型或 NASA 全机构采用证明；文中 F-1 照片是背景图，不能据此声称该工具参与历史 F-1 原始设计。",
+        "sourceUrl": "https://www.comsol.com/story/download/427341/NASA_CN16.pdf",
+        "publisher": "COMSOL News 2016（研究者署名；注明原文出处）",
+        "evidencePeriod": "2016 年刊载；原文 2015 年 12 月",
+        "evidenceType": "官方案例",
+        "accessedAt": "2026-10-25 04:58:00 UTC"
+      },
+      {
+        "organization": "COMSOL",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
+        "sourceUrl": "https://www.comsol.com/comsol-multiphysics",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "accessedAt": "2026-10-25 04:58:00 UTC"
+  },
+  {
+    "id": "capella",
+    "title": "Eclipse Capella",
+    "category": "设计与优化",
+    "kind": "开源项目",
+    "summary": "基于 Arcadia 方法的系统架构建模工具，覆盖场景、功能链和逻辑及物理架构。",
+    "details": "Capella 结合 Arcadia 方法组织运行分析、系统需求与逻辑及物理架构，适合在建模前回答系统服务谁、有哪些功能、接口如何分配。输入是任务场景、功能、交换与约束，输出相互关联的架构模型和评审视图。它不直接计算火箭轨迹或结构应力，而为这些学科模型定义边界和证据关系。ArianeGroup 的公开案例描述了运载器试点及与既有需求管理的衔接，不能由此推断所有型号都采用同一流程。开源核心与协作、接口等商业扩展需区分，个人项目可先建立一条端到端功能链再连接数值算例。",
+    "tags": [
+      "MBSE",
+      "Arcadia",
+      "系统架构"
+    ],
+    "language": "Java · Eclipse · 图形建模",
+    "license": "开源；核心及扩展分别遵循各自许可证",
+    "url": "https://mbse-capella.org/",
+    "docsUrl": "https://mbse-capella.org/resources.html",
+    "workflow": [
+      "需求与系统工程",
+      "方案论证",
+      "验证与不确定性"
+    ],
+    "inputs": "任务场景、参与者、功能、逻辑接口、物理部件及约束。",
+    "outputs": "架构模型、功能链、接口分配和评审视图。",
+    "limitations": "模型关系不自动证明物理性能；协作插件与其他工具接口可能另有商业许可。",
+    "alternatives": [
+      "cameo",
+      "doors-next"
+    ],
+    "sourceTitle": "ArianeGroup · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "usageEvidence": [
+      {
+        "organization": "ArianeGroup",
+        "context": "ArianeGroup 系统工程负责人署名案例，描述 Arcadia / Capella 运载器试点；范围为试点评估和协作架构，不外推为全部型号采用。",
+        "sourceUrl": "https://mbse-capella.org/resources/pdf/Case_Study_ArianeGroup.pdf",
+        "evidenceType": "官方案例"
+      }
+    ]
+  },
+  {
+    "id": "cameo",
+    "title": "Cameo Systems Modeler",
+    "category": "设计与优化",
+    "kind": "工程软件",
+    "summary": "以 SysML 模型连接需求、行为、结构与参数关系，支持系统工程评审。",
+    "details": "Cameo Systems Modeler 是商业 SysML 系统建模环境，面向需求、结构、行为与参数关系的统一表达。输入系统元素、需求及关系定义，输出可导航模型、图表、追踪矩阵和一致性检查结果。航天项目可用它把任务约束分配到分系统，再标记由哪项仿真或试验提供验证证据。工具中的参数关系不等同于已验证的动力学模型；一致性检查也不能证明需求充分或设计正确。执行仿真、参数求解和团队协作可能依赖 Cameo Simulation Toolkit 等附加产品，应逐项核对许可与版本兼容，避免把产品家族全部能力视为基础授权。",
+    "tags": [
+      "MBSE",
+      "SysML",
+      "商业软件"
+    ],
+    "language": "GUI · SysML",
+    "license": "商业专有许可；仿真、协作等附加组件另核授权",
+    "url": "https://www.3ds.com/products/catia/no-magic/cameo-systems-modeler",
+    "workflow": [
+      "需求与系统工程",
+      "方案论证"
+    ],
+    "inputs": "需求、结构、行为、参数关系、验证关联及项目词汇。",
+    "outputs": "SysML 模型、追踪矩阵、评审图表和一致性诊断。",
+    "limitations": "架构正确性与物理可信度需人工及学科验证；仿真和协作扩展可能另购。",
+    "alternatives": [
+      "capella",
+      "polarion"
+    ],
+    "docsUrl": "https://www.3ds.com/products/catia/no-magic/cameo-systems-modeler",
+    "sourceTitle": "Dassault Systèmes · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Dassault Systèmes",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.3ds.com/products/catia/no-magic/cameo-systems-modeler",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "doors-next",
+    "title": "IBM DOORS / DOORS Next",
+    "category": "设计与优化",
+    "kind": "工程软件",
+    "summary": "需求基线、变更和追踪关系管理工具，用于关联需求、设计与验证记录。",
+    "details": "IBM 的 DOORS 与 DOORS Next 属于需求管理产品家族，但实施平台和功能细节不同，选型时不应混为同一个程序。它们适合组织需求、属性、链接和受控基线，使系统约束与设计、验证活动保持可追踪关系。输入经审核的需求条目、变更与验证链接，输出基线、差异和覆盖关系；对个人研究，核心价值是把例如轨道误差阈值转成有单位、有条件、有证据的验收条目。工具不能替团队写出合理需求，也不会自动校验仿真物理。商业授权、服务器部署和生命周期套件集成能力需分别确认，并在迁移时检查链接和历史是否完整。",
+    "tags": [
+      "需求管理",
+      "基线",
+      "商业软件"
+    ],
+    "language": "GUI · Web · 需求数据",
+    "license": "商业专有许可；DOORS 与 DOORS Next 的部署及授权分别确认",
+    "url": "https://www.ibm.com/products/requirements-management",
+    "workflow": [
+      "需求与系统工程",
+      "验证与不确定性",
+      "配置与交付"
+    ],
+    "inputs": "需求正文、属性、链接、基线和变更记录。",
+    "outputs": "受控需求库、追踪关系、差异和审查材料。",
+    "limitations": "不能自动判断需求充分性；迁移、集成和访问权限需要项目治理。",
+    "alternatives": [
+      "polarion",
+      "capella",
+      "cameo"
+    ],
+    "docsUrl": "https://www.ibm.com/products/requirements-management",
+    "sourceTitle": "IBM · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "usageEvidence": [
+      {
+        "organization": "IBM",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.ibm.com/products/requirements-management",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "polarion",
+    "title": "Siemens Polarion",
+    "category": "设计与优化",
+    "kind": "工程软件",
+    "summary": "需求、软件开发和测试管理平台，提供生命周期追踪与评审工作流。",
+    "details": "Polarion 面向应用生命周期管理，用关联工作项与文档组织需求、开发和测试过程，提供本地部署及云产品路径。输入需求、变更、测试用例和执行记录，输出可追踪的状态、覆盖关系与审查基线。航天仿真可把每次模型修改关联到测试集和数据版本，形成从研究假设到验收证据的可查询链。产品支持流程管理并不意味着项目自动符合某项适航或空间标准；合规仍取决于裁剪、独立评审和证据质量。实际能力受商业产品组合、集成与部署选择影响，个人项目可先借鉴其工作项和基线方法，再评估引入完整平台的成本。",
+    "tags": [
+      "ALM",
+      "需求追踪",
+      "商业软件"
+    ],
+    "language": "Web · 工作项 · LiveDocs",
+    "license": "商业专有许可；本地与 Polarion X 云方案按授权使用",
+    "url": "https://www.siemens.com/en-us/products/polarion/",
+    "workflow": [
+      "需求与系统工程",
+      "配置与交付",
+      "验证与不确定性"
+    ],
+    "inputs": "需求、设计链接、代码变更、测试计划与结果。",
+    "outputs": "覆盖追踪、工作流状态、受控文档和审查记录。",
+    "limitations": "平台功能不等于标准认证；外部连接器、云及本地部署需分别管理。",
+    "alternatives": [
+      "doors-next",
+      "capella"
+    ],
+    "docsUrl": "https://www.siemens.com/en-us/products/polarion/",
+    "sourceTitle": "Siemens · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Siemens",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.siemens.com/en-us/products/polarion/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "catia",
+    "title": "CATIA",
+    "category": "设计与优化",
+    "kind": "工程软件",
+    "summary": "面向复杂产品的参数化几何与装配设计，为学科分析提供受控形状。",
+    "details": "CATIA 提供复杂产品的三维设计与工程能力，产品体系包含 CATIA V5 和 3DEXPERIENCE 路径，具体角色和模块不能相互默认等价。航天研究可用参数化部件及装配表达布局、接口和构型变化，再输出适合网格或制造流程的几何。输入尺寸约束、截面、曲面和装配关系，输出受控模型与图样；质量属性只有在材料、实体和内部结构可信时才有意义。公开照片重建的外壳不能据此推导真实惯量。软件为商业许可，高级曲面、复合材料和其他专业能力需核对授权；导出中性格式后还需检查单位、拓扑和小特征对网格的影响。",
+    "tags": [
+      "CAD",
+      "构型管理",
+      "商业软件"
+    ],
+    "language": "GUI · 参数化 CAD",
+    "license": "商业专有许可；V5 / 3DEXPERIENCE 及专业角色分开核对",
+    "url": "https://www.3ds.com/products/catia",
+    "workflow": [
+      "几何与构型",
+      "配置与交付"
+    ],
+    "inputs": "尺寸约束、曲面、实体、材料和装配关系。",
+    "outputs": "零部件与装配几何、工程图和下游分析几何。",
+    "limitations": "外形不提供内部真实质量；不同产品角色和导出接口存在授权及兼容差异。",
+    "alternatives": [
+      "siemens-nx",
+      "creo",
+      "freecad"
+    ],
+    "docsUrl": "https://www.3ds.com/products/catia",
+    "sourceTitle": "Dassault Systèmes · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:58:00 UTC",
+    "usageEvidence": [
+      {
+        "organization": "YURI · ISS 微重力实验硬件设计团队",
+        "context": "Dassault Systèmes 的 2020 年客户案例及配套网页说明 YURI 自 2019 年创立起使用云端 3DEXPERIENCE，以 CATIA 设计用于 ISS 等微重力研究的模块化实验容器，并以 ENOVIA 跟踪设计变更。证据限定于案例所述硬件开发和模块复用流程；这不是运载器全机设计或所有空间生物实验采用 CATIA 的证明。年份来自 PDF 版权与案例版本，未虚构具体发布日期。",
+        "sourceUrl": "https://www.3ds.com/assets/invest/2020-12/yuri-case-study-2020.pdf",
+        "publisher": "Dassault Systèmes（供应商具名客户案例）",
+        "evidencePeriod": "2020 年版案例；描述 2019 年起的采用",
+        "evidenceType": "官方案例",
+        "accessedAt": "2026-10-25 04:58:00 UTC"
+      },
+      {
+        "organization": "Dassault Systèmes",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.3ds.com/products/catia",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "siemens-nx",
+    "title": "Siemens NX / Designcenter",
+    "category": "设计与优化",
+    "kind": "工程软件",
+    "summary": "机械产品的参数化几何、装配和制造工程工具，支持构型设计与生产数据管理。",
+    "details": "Siemens 的 CAD/CAM 产品体系提供参数化建模、装配及制造相关流程，当前产品入口以 Designcenter 与 NX CAM 等名称组织能力。对仿真研究，重要的是保持部件参数、装配参考和分析几何之间的关联，而不是只导出一次外观模型。输入工程尺寸、约束、材料和工艺条件，输出几何、装配、图样或制造数据；具体可用内容由所购模块决定。结构、热和流体求解还需相应分析工具及适当简化。商业许可与产品命名可能随版本变化，交换 STEP 等中性数据时应复核单位、闭合实体、容差和丢失的参数历史。",
+    "tags": [
+      "CAD/CAM",
+      "装配",
+      "商业软件"
+    ],
+    "language": "GUI · 参数化建模 · 自动化接口",
+    "license": "商业专有许可；CAD、CAM 及分析模块按产品组合授权",
+    "url": "https://www.siemens.com/en-us/products/cad-cam-software/",
+    "workflow": [
+      "几何与构型",
+      "配置与交付"
+    ],
+    "inputs": "尺寸、实体曲面、装配关系、材料和制造约束。",
+    "outputs": "工程几何、装配与图样、授权模块支持的制造数据。",
+    "limitations": "CAD 主模型仍需分析简化；中性格式通常不能保留全部特征和参数历史。",
+    "alternatives": [
+      "catia",
+      "creo",
+      "freecad"
+    ],
+    "docsUrl": "https://www.siemens.com/en-us/products/cad-cam-software/",
+    "sourceTitle": "Siemens · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Firefly Aerospace · 线束设计与一级发动机舱集成团队",
+        "context": "Siemens 于 2023-06-06 发布的案例引述 Firefly 集成工程师 Warren Terry，明确提及 NX harness CAD 在一级发动机舱线束集成及检查流程中的作用，并介绍其与 Capital 和设计数据流程的结合。证据是供应商发布的具名客户经验，限定于线束工程与该阶段集成；不证明 Firefly 每个飞行器、学科或产品都采用 NX / Simcenter。",
+        "sourceUrl": "https://blogs.sw.siemens.com/ee-systems/2023/06/06/electrical-and-electronic-development-for-space/",
+        "publisher": "Siemens（供应商客户案例）",
+        "evidenceDate": "2023-06-06",
+        "evidenceType": "官方案例",
+        "accessedAt": "2026-10-25 04:58:00 UTC"
+      },
+      {
+        "organization": "SpaceX · Falcon 1 历史开发项目",
+        "context": "Siemens 于 2010-12-20 发布的历史客户案例描述 SpaceX 在 Falcon 1 项目中选择 NX、NX Nastran、Femap 与 Teamcenter 建立受控开发环境。它证明当时该项目的 CAD / CAE / 数据管理组合，不代表 SpaceX 在 2026 年的全公司工具标准，也不证明 Starship 采用同一组合。文中的 NX Nastran 属于 Siemens 产品线，不能作为 MSC Nastran 的采用证据。",
+        "sourceUrl": "https://blogs.sw.siemens.com/news/nx-customer-showcase-spacex/",
+        "publisher": "Siemens（供应商历史客户案例）",
+        "evidenceDate": "2010-12-20",
+        "evidenceType": "官方案例",
+        "accessedAt": "2026-10-25 05:39:21 UTC"
+      },
+      {
+        "organization": "Siemens",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.siemens.com/en-us/products/cad-cam-software/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "creo",
+    "title": "PTC Creo",
+    "category": "设计与优化",
+    "kind": "工程软件",
+    "summary": "以参数和设计关联驱动机械构型迭代，适合可重复修改的工程模型。",
+    "details": "Creo 是参数化三维 CAD 产品家族，将部件、装配和工程文档组织为关联设计，另有 Creo+ 等交付形式。航天研究可用尺寸与约束构建结构件或设备布局，再把几何送入网格与学科分析。输入草图、特征、材料和装配约束，输出零件模型、图样及几何交换数据。模型的设计关联有助于迭代，但复杂修改仍可能破坏下游面编号或网格边界，需建立自动检查。基础设计能力不等于包含全部仿真或生成式设计模块，商业授权应按版本与套餐确认；由假设外形生成的体积或质量也只能作为研究先验，不是厂商实测数据。",
+    "tags": [
+      "CAD",
+      "参数化",
+      "商业软件"
+    ],
+    "language": "GUI · 参数化 CAD",
+    "license": "商业专有许可；Creo / Creo+ 及扩展按方案授权",
+    "url": "https://www.ptc.com/en/products/creo",
+    "workflow": [
+      "几何与构型",
+      "方案论证"
+    ],
+    "inputs": "特征尺寸、草图约束、材料和装配关系。",
+    "outputs": "关联三维模型、图样、交换几何及质量属性。",
+    "limitations": "修改可能改变拓扑引用；质量属性依真实内部构型和材料输入。",
+    "alternatives": [
+      "catia",
+      "siemens-nx",
+      "freecad"
+    ],
+    "docsUrl": "https://www.ptc.com/en/products/creo",
+    "sourceTitle": "PTC · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "usageEvidence": [
+      {
+        "organization": "PTC",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.ptc.com/en/products/creo",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "freecad",
+    "title": "FreeCAD",
+    "category": "设计与优化",
+    "kind": "开源项目",
+    "summary": "开源参数化 CAD，支持可编辑的研究几何、工程图和批量构型建模。",
+    "details": "FreeCAD 是跨平台参数化三维建模器，通过特征历史、约束草图和 Python API 支持机械设计及自动化。输入尺寸、截面、草图关系和实体操作，输出可修改的工程模型、图样和几何交换数据。它适合个人研究中建立公开参数驱动的火箭部件、设备布局或计算域；原生模型可保留假设，比只保存渲染网格更容易审查。不同工作台和外部求解器的能力及安装依赖应分别核对。几何导出成功并不证明流体域封闭或结构连接正确，仍要检查尺度、细小特征和拓扑变化，且不要从简化外壳直接推断真实飞行器质量惯量。",
+    "tags": [
+      "CAD",
+      "Python",
+      "参数化"
+    ],
+    "language": "C++ · Python · GUI",
+    "license": "LGPL-2.1；附加工作台与依赖另核许可证",
+    "url": "https://github.com/FreeCAD/FreeCAD",
+    "docsUrl": "https://wiki.freecad.org/",
+    "workflow": [
+      "几何与构型",
+      "网格与前处理"
+    ],
+    "inputs": "草图、特征尺寸、装配和几何操作脚本。",
+    "outputs": "原生参数模型、工程图及中性几何。",
+    "limitations": "外部工作台成熟度不同；导出后需重新检查拓扑、单位与分析适用性。",
+    "alternatives": [
+      "openvsp",
+      "catia",
+      "siemens-nx"
+    ],
+    "sourceTitle": "FreeCAD Project · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "usageEvidence": [
+      {
+        "organization": "FreeCAD Project",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://github.com/FreeCAD/FreeCAD",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "gmsh",
+    "title": "Gmsh",
+    "category": "设计与优化",
+    "kind": "开源项目",
+    "summary": "可脚本化的几何与有限元网格工具，支持网格尺度、物理分组和边界标记。",
+    "details": "Gmsh 是带有几何、网格、求解接口和后处理模块的开源工具，支持 GUI、脚本及多语言 API。它适合按参数生成计算域，并控制局部尺寸、物理分组和网格阶次，将结果交给有限元或流体求解器。输入几何、尺寸场和边界分组，输出网格与元素及边界标识；这些标识决定下游载荷如何施加，必须纳入版本管理。网格器不会判断选用的物理方程是否正确，细化也不能修复错误边界条件。曲率、狭缝和高长宽比区域应单独检查，比较不同网格时应保留相同几何与边界定义；开源和商业嵌入许可应按官方条款区分。",
+    "tags": [
+      "网格",
+      "前处理",
+      "自动化"
+    ],
+    "language": "C++ · Python · Julia · Fortran · .geo",
+    "license": "开源与商业许可路径以 Gmsh 官方条款为准",
+    "url": "https://gmsh.info/",
+    "docsUrl": "https://gmsh.info/doc/texinfo/gmsh.html",
+    "workflow": [
+      "网格与前处理",
+      "验证与不确定性"
+    ],
+    "inputs": "几何、尺寸场、元素阶次、物理分组与边界标识。",
+    "outputs": "计算网格、节点单元和可传递的边界分组。",
+    "limitations": "需检查质量和边界映射；网格细化不能纠正物理模型或载荷错误。",
+    "alternatives": [
+      "pointwise",
+      "freecad"
+    ],
+    "sourceTitle": "Gmsh Project · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Gmsh Project",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://gmsh.info/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "pointwise",
+    "title": "Cadence Fidelity Pointwise",
+    "category": "设计与优化",
+    "kind": "工程软件",
+    "summary": "专注 CFD 网格构建，控制边界层、结构与非结构区域的离散质量。",
+    "details": "Fidelity Pointwise 是 Cadence 流体分析产品体系中的网格工具，面向复杂几何和多类 CFD 求解器的前处理。官方介绍覆盖混合、重叠和高阶网格相关能力，以及格式交换和脚本自动化；具体工作流应核对目标版本。输入表面几何、边界层与局部尺度要求，输出带有边界设置的计算网格。对于火箭外流，重点应放在激波、分离及喷流附近需要何种分辨率，并以载荷量收敛检查网格方案。工具本身不提供可信气动系数，也不能替代湍流或化学模型选择。它采用商业许可，求解器接口及并行工作流应在采购或试用时分别确认。",
+    "tags": [
+      "CFD 网格",
+      "边界层",
+      "商业软件"
+    ],
+    "language": "GUI · 网格脚本",
+    "license": "商业专有许可；按 Cadence 具体授权使用",
+    "url": "https://www.cadence.com/en_US/home/tools/system-analysis/computational-fluid-dynamics/fidelity.html",
+    "workflow": [
+      "网格与前处理",
+      "流体与气动"
+    ],
+    "inputs": "表面几何、拓扑、边界层和局部尺寸设定。",
+    "outputs": "CFD 网格、边界标记和求解器交换数据。",
+    "limitations": "网格质量指标不能替代气动力与热流收敛；求解与网格许可应分清。",
+    "alternatives": [
+      "gmsh",
+      "ansys-fluent",
+      "star-ccm"
+    ],
+    "docsUrl": "https://www.cadence.com/en_US/home/tools/system-analysis/computational-fluid-dynamics/fidelity.html",
+    "sourceTitle": "Cadence · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Cadence",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.cadence.com/en_US/home/tools/system-analysis/computational-fluid-dynamics/fidelity.html",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "msc-nastran",
+    "title": "MSC Nastran",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "面向结构静力、动力与热分析的有限元求解，为载荷与模态预算提供依据。",
+    "details": "MSC Nastran 是商业有限元分析产品，官方功能覆盖线性与非线性静力、动力、热分析及相关优化能力。航天研究中可用于结构刚度、模态、响应和热应力问题，输入节点单元、材料、连接、约束与载荷，输出位移、应力、频率和响应结果。必须将具体产品与 Simcenter Nastran 或历史 NASA NASTRAN 代码区分，名称相近不代表相同许可和实现。建模时应审查连接刚度、质量分布和边界简化，尤其避免把约束造成的高频模态当成真实整机特性。商业模块与前后处理工具需分别确认，结果还应通过解析基准及试验进行相关性检查。",
+    "tags": [
+      "FEA",
+      "模态",
+      "商业软件"
+    ],
+    "language": "求解输入文件 · GUI 前后处理接口",
+    "license": "商业专有许可；模块及前后处理按授权组合",
+    "url": "https://nexus.hexagon.com/home/product/msc-nastran/",
+    "workflow": [
+      "结构与振动",
+      "热与环境",
+      "验证与不确定性"
+    ],
+    "inputs": "有限元网格、材料、质量、连接、约束和载荷。",
+    "outputs": "位移应力、模态、频响与授权求解序列支持的结果。",
+    "limitations": "不同 Nastran 产品不可直接等同；连接与约束建模通常主导误差。",
+    "alternatives": [
+      "ansys-mechanical",
+      "abaqus",
+      "calculix"
+    ],
+    "docsUrl": "https://nexus.hexagon.com/home/product/msc-nastran/",
+    "sourceTitle": "MSC Nastran 官方产品资料 · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "usageEvidence": [
+      {
+        "organization": "MSC Nastran 官方产品资料",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://nexus.hexagon.com/home/product/msc-nastran/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "ansys-mechanical",
+    "title": "Ansys Mechanical",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "静力、模态、接触及热结构耦合的有限元建模与求解工具。",
+    "details": "Mechanical 提供商业有限元结构分析环境，覆盖线性及非线性、动力、热和相关耦合问题。输入几何网格、材料本构、连接接触、约束及载荷历史，输出变形、应力、模态或瞬态响应。航天模型中，螺栓连接、薄壁屈曲、复合材料方向及温度依赖物性往往比界面操作更影响结论。接触收敛或安全系数显示正常，并不能证明载荷组合和失效准则正确；应检查网格、约束敏感性并对照实验或解析解。高级能力、并行计算和与其他 Ansys 产品的联合求解受商业授权组合限制，模型共享也应包含材料、单位和求解器版本。",
+    "tags": [
+      "结构分析",
+      "接触",
+      "商业软件"
+    ],
+    "language": "GUI · APDL / 自动化接口",
+    "license": "商业专有许可；专业模块、HPC 及联合求解分别核对",
+    "url": "https://ansys.synopsys.com/products/structures/ansys-mechanical",
+    "workflow": [
+      "结构与振动",
+      "热与环境",
+      "多物理场耦合"
+    ],
+    "inputs": "几何网格、本构、接触连接、约束与载荷历史。",
+    "outputs": "位移、应力、模态、热结构及时间响应。",
+    "limitations": "材料本构和边界条件需依据；收敛不等于失效预测获得验证。",
+    "alternatives": [
+      "msc-nastran",
+      "abaqus",
+      "calculix"
+    ],
+    "docsUrl": "https://ansys.synopsys.com/products/structures/ansys-mechanical",
+    "sourceTitle": "Ansys · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Ansys",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://ansys.synopsys.com/products/structures/ansys-mechanical",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "abaqus",
+    "title": "SIMULIA Abaqus",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "研究复杂材料、接触和非线性响应，为结构模型提供高保真局部分析。",
+    "details": "Abaqus 是商业有限元产品体系，包含面向隐式与显式求解的不同能力，常用于非线性结构、接触和材料行为研究。输入网格、本构、接触、边界以及时间载荷，输出应力应变、位移、能量与响应历史。航天应用可围绕局部连接、薄壁结构或热机械问题建立研究模型，再向系统级模型提取等效刚度或载荷限值。选择隐式或显式不能仅按计算速度：时间尺度、惯性作用和稳定步长都改变结果解释。商业许可、求解资源和其他 SIMULIA 产品需要分别核对；人工质量缩放、阻尼及材料拟合等设置必须记录，并通过能量平衡和试验约束检查。",
+    "tags": [
+      "非线性结构",
+      "接触",
+      "商业软件"
+    ],
+    "language": "GUI · 求解输入文件 · Python",
+    "license": "商业专有许可；Standard / Explicit 与计算资源按授权",
+    "url": "https://www.3ds.com/products/simulia/abaqus",
+    "workflow": [
+      "结构与振动",
+      "多物理场耦合",
+      "验证与不确定性"
+    ],
+    "inputs": "网格、本构、接触、初始状态、边界和载荷过程。",
+    "outputs": "应力应变、变形、能量和时间响应。",
+    "limitations": "阻尼、质量缩放或本构外推会改变物理；需检查时间尺度与能量平衡。",
+    "alternatives": [
+      "ansys-mechanical",
+      "msc-nastran",
+      "calculix"
+    ],
+    "docsUrl": "https://www.3ds.com/products/simulia/abaqus",
+    "sourceTitle": "Dassault Systèmes · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Dassault Systèmes",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.3ds.com/products/simulia/abaqus",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "calculix",
+    "title": "CalculiX",
+    "category": "多物理场",
+    "kind": "开源项目",
+    "summary": "可审查的有限元求解与前后处理，适合个人结构基准和热应力研究。",
+    "details": "CalculiX 提供有限元求解与图形前后处理工具，官方案例展示了旋转部件的应力、模态及相关结构计算。输入网格、材料、约束和载荷，输出节点及单元响应与后处理数据。它适合用开放输入文件学习从几何简化到求解验收的完整链条，例如先验证梁、壳与热膨胀算例，再扩展到部件。某些输入语法相似不代表与其他求解器全部功能兼容，元素、材料和接触实现须按手册核查。开源许可允许检查及修改代码，但复杂非线性模型仍要建立验证证据；对于未知材料、连接和载荷，应输出参数敏感性范围而非单个确定安全系数。",
+    "tags": [
+      "FEA",
+      "结构基准",
+      "开源求解"
+    ],
+    "language": "C · Fortran · 输入文件",
+    "license": "GPL-2.0-or-later（官方站点声明）",
+    "url": "https://www.calculix.de/",
+    "docsUrl": "https://www.dhondt.de/",
+    "workflow": [
+      "结构与振动",
+      "热与环境",
+      "验证与不确定性"
+    ],
+    "inputs": "节点单元、材料、接触、约束及载荷。",
+    "outputs": "位移应力、温度、模态与求解记录。",
+    "limitations": "兼容输入并不表示完整兼容物理功能；复杂模型需基准与实验对照。",
+    "alternatives": [
+      "ansys-mechanical",
+      "msc-nastran",
+      "abaqus"
+    ],
+    "sourceTitle": "CalculiX Developers · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "usageEvidence": [
+      {
+        "organization": "CalculiX Developers",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.calculix.de/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "thermal-desktop",
+    "title": "Ansys Thermal Desktop",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "航天器轨道辐射、导热与热流体网络建模工具，用于稳态及瞬态热分析。",
+    "details": "Thermal Desktop 面向从部件到整机的热建模，可结合有限差分、有限元与环境定义建立热节点和导热网络，并调用 Sinda 求解及后处理。航天应用常需要轨道几何、太阳照射、表面光学性质、功耗和接触导热作为输入，输出节点温度、热流与时间响应。OpenTD 提供模型自动化接口，适合批量修改工况与参数。温度结果对接触热阻、涂层退化及姿态历史敏感，不能只凭几何精细度判断可信度。软件、求解器和 CAD 环境依具体版本存在许可与依赖，应按目标版本核查；对外展示热平衡结论前需进行能量守恒和试验相关性检查。",
+    "tags": [
+      "热控",
+      "轨道辐射",
+      "商业软件"
+    ],
+    "language": "GUI · Sinda · OpenTD / .NET",
+    "license": "商业专有许可；Sinda、CAD 环境及相关组件依版本核对",
+    "url": "https://ansys.synopsys.com/en-gb/products/fluids/ansys-thermal-desktop",
+    "docsUrl": "https://developer.synopsys.com/docs/thermal-desktop",
+    "workflow": [
+      "热与环境",
+      "多物理场耦合"
+    ],
+    "inputs": "热节点与几何、材料光学性质、功耗、接触和轨道姿态历史。",
+    "outputs": "温度、导热辐射热流、热平衡及瞬态响应。",
+    "limitations": "接触与光学参数常主导误差；整机热模型须与热平衡试验相关。",
+    "alternatives": [
+      "esatan",
+      "comsol-multiphysics"
+    ],
+    "sourceTitle": "Ansys · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:45:41 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Ansys",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://ansys.synopsys.com/en-gb/products/fluids/ansys-thermal-desktop",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "esatan",
+    "title": "ESATAN-TMS",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "航天热分析工具链，包含辐射几何、轨道环境和热网络建模及求解。",
+    "details": "ESATAN-TMS 是商业空间热分析工具体系，可围绕热网络、辐射环境与任务工况预测温度和热流。UCL Mullard Space Science Laboratory 的公开工程页面说明其使用 ESATAN 开展集中参数及有限元热分析，并列出空间仪器相关工作。研究输入包括几何及热节点、导热路径、表面性质、内耗和外部环境，输出稳态或瞬态温度及热交换结果。对个人学习，适合关注轨道冷热工况如何传到设备温度预算。产品模块、许可证及接口需要向发行方确认；模型中未知接触热阻和表面污染不能由软件自动补全，应做敏感性分析并保留与热真空试验的对应关系。",
+    "tags": [
+      "空间热分析",
+      "热网络",
+      "商业软件"
+    ],
+    "language": "GUI · 热网络模型",
+    "license": "商业专有许可；模块与部署依发行方授权",
+    "url": "https://www.esatan-tms.com/",
+    "docsUrl": "https://www.esatan-tms.com/products/product.php",
+    "workflow": [
+      "热与环境",
+      "验证与不确定性"
+    ],
+    "inputs": "热节点、导热辐射连接、材料表面性质、功耗与任务环境。",
+    "outputs": "温度历史、热流和冷热工况分析。",
+    "limitations": "工具不能确定未知接触热阻；模块覆盖与接口需核对目标版本。",
+    "alternatives": [
+      "thermal-desktop",
+      "comsol-multiphysics"
+    ],
+    "sourceTitle": "UCL MSSL · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:45:41 UTC",
+    "usageEvidence": [
+      {
+        "organization": "UCL MSSL",
+        "context": "UCL MSSL 自述使用 ESATAN 进行集中参数和有限元热分析，页面列出 Solar Orbiter EAS、ExoMars PanCam 等仪器示例；不外推为整个任务所有单位的统一工具。",
+        "sourceUrl": "https://www.ucl.ac.uk/mathematical-physical-sciences/mssl/space-engineering/mechanical-and-thermal-engineering/esatan-thermal-analysis",
+        "evidenceType": "官方案例"
+      }
+    ]
+  },
+  {
+    "id": "openfoam",
+    "title": "OpenFOAM（Foundation）",
+    "category": "多物理场",
+    "kind": "开源项目",
+    "summary": "可修改方程与求解流程的 CFD 框架，适合构建可复现流动与传热研究。",
+    "details": "OpenFOAM Foundation 维护的 OpenFOAM 是以 C++ 为基础的开源流体与相关物理计算框架，使用字典配置网格、边界条件和求解流程。输入计算域、物性、初始及边界条件，输出流场、热量和积分载荷；研究者可修改或组合求解器来分析明确的问题。它适合批量工况及方法研究，但学习成本包括离散、边界语义和数值稳定性。Foundation 与其他同名发行体系的版本、求解器及字典并非完全一致，应固定发行来源和版本。火箭喷流、高温反应或稀薄气体并不能由通用示例直接覆盖，需逐项核对方程假设及验证数据。",
+    "tags": [
+      "CFD",
+      "有限体积",
+      "可复现计算"
+    ],
+    "language": "C++ · 字典配置 · Shell",
+    "license": "开源 GPL；具体版本和第三方依赖遵循发行包",
+    "url": "https://openfoam.org/",
+    "docsUrl": "https://doc.cfd.direct/openfoam/user-guide/",
+    "workflow": [
+      "流体与气动",
+      "热与环境",
+      "气动数据库"
+    ],
+    "inputs": "网格、初边值、物性、模型与数值字典。",
+    "outputs": "流场、通量、气动力热流和求解诊断。",
+    "limitations": "同名发行版不完全兼容；通用求解器不能默认覆盖高温非平衡或稀薄流。",
+    "alternatives": [
+      "su2",
+      "ansys-fluent",
+      "star-ccm"
+    ],
+    "sourceTitle": "OpenFOAM Foundation · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:45:41 UTC",
+    "usageEvidence": [
+      {
+        "organization": "OpenFOAM Foundation",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://openfoam.org/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "star-ccm",
+    "title": "Simcenter STAR-CCM+",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "在统一环境中完成网格、流动与多物理场分析，并自动化参数研究。",
+    "details": "STAR-CCM+ 是商业 CFD 与多物理场平台，官方能力覆盖流动、传热、多相、反应流及相关耦合，并将前处理、自动网格、求解和数据分析放在统一环境。输入几何、网格策略、材料、边界条件与研究参数，输出场量、载荷、热流及设计比较结果。航天研究可用自动化流程生成选定包线内的气动或热数据库，但批量运行也会批量放大错误模型。CPU、GPU 和不同物理模型的支持范围需要按版本核实。产品为商业授权，计算资源与部署方式依许可证；自动网格和设计探索不能替代网格独立性、守恒检查和外部试验约束。",
+    "tags": [
+      "CFD",
+      "自动网格",
+      "商业软件"
+    ],
+    "language": "GUI · 自动化脚本",
+    "license": "商业专有许可；计算与部署按 Siemens 授权方案",
+    "url": "https://www.siemens.com/en-us/products/simcenter/fluids-thermal-simulation/star-ccm/",
+    "workflow": [
+      "流体与气动",
+      "网格与前处理",
+      "多物理场耦合"
+    ],
+    "inputs": "几何、网格策略、物理模型、边界条件与扫描参数。",
+    "outputs": "流场、积分载荷、热流和设计比较。",
+    "limitations": "GPU 与 CPU 支持不应默认一致；自动流程仍需物理及网格验证。",
+    "alternatives": [
+      "ansys-fluent",
+      "openfoam",
+      "su2"
+    ],
+    "docsUrl": "https://www.siemens.com/en-us/products/simcenter/fluids-thermal-simulation/star-ccm/",
+    "sourceTitle": "Siemens · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:45:41 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Siemens",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.siemens.com/en-us/products/simcenter/fluids-thermal-simulation/star-ccm/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "fun3d",
+    "title": "NASA FUN3D",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "面向非结构网格的流体分析与设计套件，提供 NASA 研究级 CFD 工作流。",
+    "details": "FUN3D 是 NASA Langley 的非结构网格流体分析与设计软件体系，官方手册及教程涵盖多种流动、网格运动和设计分析场景。输入体网格、物理与边界设置及数值参数，输出流场、气动力和求解诊断；相关能力须以所获取版本的手册为准。它可作为高保真气动方法研究的参考，尤其值得学习案例如何定义边界、收敛和结果比较。公开可阅读手册不等于任何用户都可自由下载或再分发程序，获取须遵循 NASA 的申请及发行条款。复杂外流和耦合问题仍要做网格、时间步与模型敏感性分析，避免把 NASA 名称视为特定输入模型的验证背书。",
+    "tags": [
+      "CFD",
+      "非结构网格",
+      "NASA"
+    ],
+    "language": "求解配置 · 并行计算",
+    "license": "NASA 申请及发行许可；资格、用途和再分发以获批条款为准",
+    "url": "https://fun3d.larc.nasa.gov/",
+    "docsUrl": "https://fun3d.larc.nasa.gov/chapter-1.html",
+    "workflow": [
+      "流体与气动",
+      "气动数据库",
+      "多学科优化"
+    ],
+    "inputs": "非结构网格、边界、物理模型和数值设置。",
+    "outputs": "流场、气动力、求解诊断与所选模块结果。",
+    "limitations": "手册公开不等于软件无条件开放；特定流动适用域须逐版本核查。",
+    "alternatives": [
+      "su2",
+      "openfoam",
+      "ansys-fluent"
+    ],
+    "sourceTitle": "NASA Langley · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:45:41 UTC",
+    "usageEvidence": [
+      {
+        "organization": "NASA Langley",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://fun3d.larc.nasa.gov/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "nasa-cea",
+    "title": "NASA CEA",
+    "category": "多物理场",
+    "kind": "开源项目",
+    "summary": "现代开源热化学平衡库，通过多语言接口计算理论性能并连接系统研究。",
+    "details": "NASA 现代 CEA 是对原有化学平衡程序的完整重新实现，官方仓库采用 Apache-2.0，并提供 Fortran、C、Python 及其他接口路径。输入反应物、配比、状态和热力学约束，输出平衡组分、热力学与输运性质，以及理论火箭性能等应用结果。现代接口便于把热化学基线接入参数扫描和系统模型，但应与旧版 CEA、CEARUN 及历史输入流程区分并固定数据库与软件版本。平衡或冻结假设不包含完整喷注混合、有限速率、冷却和机械损失，理想比冲不能直接当作实机性能。迁移历史算例时，应比较输入语义、物种集合和输出定义，再讨论数值一致性。",
+    "tags": [
+      "热化学",
+      "理论性能",
+      "推进"
+    ],
+    "language": "Fortran · C · Python · MATLAB / Excel 接口",
+    "license": "Apache-2.0（NASA 现代 CEA 仓库）；外部依赖另核条款",
+    "url": "https://github.com/nasa/cea",
+    "docsUrl": "https://nasa.github.io/cea/",
+    "workflow": [
+      "推进与供给",
+      "方案论证"
+    ],
+    "inputs": "推进剂组成与配比、压力温度、热力学约束和喷管条件。",
+    "outputs": "平衡组分、热物性、理论温度和性能指标。",
+    "limitations": "理想平衡不包含完整实际发动机效率、喷注、冷却和不稳定性。",
+    "alternatives": [
+      "cantera",
+      "espss"
+    ],
+    "sourceTitle": "NASA · Modern CEA Repository / CEA 3.3.4 Documentation",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "usageEvidence": [
+      {
+        "organization": "NASA",
+        "context": "NASA 官方现代 CEA 仓库与文档说明重新实现、多语言 API 及许可；这是能力依据，并非特定发动机采用证明。",
+        "sourceUrl": "https://nasa.github.io/cea/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "starterWorkflow": [
+      "选择现代 NASA CEA 的固定发行版与官方示例，记录物种数据库和接口。",
+      "先算一个已知反应物与状态的平衡问题，核对组分和热力学量定义。",
+      "进行配比或压力扫描时，明确平衡/冻结及出口条件，保留完整输入。",
+      "把理论结果作为热化学基线；引入实测效率或损失模型前，说明其证据和适用范围。"
+    ],
+    "selectionQuestions": [
+      "需要平衡热化学基线还是有限速率反应与喷注混合过程？",
+      "旧版输入文件的物种和参数语义能否与现代接口一致对应？",
+      "输出是理论比冲还是包含可追踪损失模型的工程估计？"
+    ],
+    "starterWorkflowSources": [
+      {
+        "title": "NASA 现代 CEA 文档",
+        "url": "https://nasa.github.io/cea/"
+      }
+    ],
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "cantera",
+    "title": "Cantera",
+    "category": "多物理场",
+    "kind": "开源项目",
+    "summary": "以反应机理连接热力学、化学动力学与输运，研究燃烧时间尺度。",
+    "details": "Cantera 是用于化学动力学、热力学和输运过程的开源工具集合，支持反应器网络及一维反应流等研究。输入相定义、反应机理、热物性和初边值，输出组分演化、温度、反应速率与相应流动解。相比仅假定平衡，研究者可用它讨论点火、停留时间及有限速率效应，再为更大系统模型提供简化关系。结果高度依赖机理适用压力、温度和组分范围；公开示例及可收敛计算并不等于对火箭燃烧室进行了验证。软件许可与机理数据库的来源及使用条件需分别记录，且零维或一维模型不能自动覆盖三维混合、壁面冷却和声学耦合。",
+    "tags": [
+      "化学动力学",
+      "燃烧",
+      "反应器"
+    ],
+    "language": "Python · C++ · MATLAB · Fortran",
+    "license": "开源；程序和反应机理数据分别遵循其许可证",
+    "url": "https://www.cantera.org/",
+    "docsUrl": "https://cantera.org/stable/",
+    "workflow": [
+      "推进与供给",
+      "流体与气动"
+    ],
+    "inputs": "反应机理、热力学输运数据、状态及初边值。",
+    "outputs": "温度组分、反应速率、点火或一维反应流结果。",
+    "limitations": "机理超适用域外推风险高；低维反应器不等于整机燃烧室模型。",
+    "alternatives": [
+      "nasa-cea",
+      "openfoam",
+      "espss"
+    ],
+    "sourceTitle": "Cantera Developers · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:45:41 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Cantera Developers",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.cantera.org/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "espss",
+    "title": "ESPSS",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "在 EcosimPro 上建立推进系统部件网络，分析供给、增压和发动机瞬态。",
+    "details": "ESPSS 是 ESA 管理的推进系统仿真工具库，基于 EcosimPro，包含流体、热、控制和推进部件，支持稳态与瞬态系统研究。输入管路、阀门、储箱及发动机网络、工作介质、几何和控制规律，输出压力、温度、流量及系统动态响应。可用于研究充填、水击、增压、启停与循环性能，但每种部件模型和相关式都有适用条件。官方明确仅向 ESA 成员国组织提供，并需 ESA 事先批准，由指定发行方交付；拥有源模型也不等于开源许可。个人学习可研究公开案例结构，不能假定能够直接获取软件；结果仍需与部件和系统试验相关。",
+    "tags": [
+      "推进系统",
+      "管网瞬态",
+      "访问受限"
+    ],
+    "language": "EcosimPro · EL · 组件库",
+    "license": "ESA 管理的受限工具库；需批准且仅面向 ESA 成员国组织，另需 EcosimPro",
+    "url": "https://ecosimpro.com/products/espss/",
+    "workflow": [
+      "推进与供给",
+      "系统仿真",
+      "多物理场耦合"
+    ],
+    "inputs": "管路储箱阀门网络、介质物性、几何、初值与控制规律。",
+    "outputs": "压力温度流量、热流、启停过程和循环性能。",
+    "limitations": "访问资格受限；部件相关式与低维网络不直接替代三维流场及试验。",
+    "alternatives": [
+      "ecosimpro",
+      "openmodelica",
+      "cantera"
+    ],
+    "docsUrl": "https://ecosimpro.com/products/espss/",
+    "sourceTitle": "ESA / Empresarios Agrupados（产品资料） · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:45:41 UTC",
+    "usageEvidence": [
+      {
+        "organization": "ESA / Empresarios Agrupados（产品资料）",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://ecosimpro.com/products/espss/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "ecosimpro",
+    "title": "EcosimPro",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "以方程和部件端口组合连续离散系统，求解低维多学科动态模型。",
+    "details": "EcosimPro 是商业系统建模与仿真环境，面向零维、一维微分代数方程和离散事件，可混合因果与非因果建模。输入部件方程、端口连接、参数、初值与事件逻辑，输出稳态或瞬态解、残差和运行数据；专业库为推进、热流体等领域提供扩展。它适合研究系统耦合和控制时序，而非直接替代三维 CFD 或详细有限元。模型初始化、方程闭合与刚性对求解稳定性很关键，运行成功后仍需检查质量及能量守恒。IDE、编译器、平台与导出接口有版本要求，软件和专业库的商业许可分别确认，导出的黑盒模型也需保留接口、单位和适用条件。",
+    "tags": [
+      "DAE",
+      "系统仿真",
+      "商业软件"
+    ],
+    "language": "EL · GUI · C/C++ / Fortran 接口",
+    "license": "商业专有许可；专业库与模型导出权利依授权",
+    "url": "https://ecosimpro.com/products/ecosimpro/",
+    "workflow": [
+      "系统仿真",
+      "多物理场耦合",
+      "仿真集成"
+    ],
+    "inputs": "部件方程、端口网络、参数、初值、事件及实验配置。",
+    "outputs": "动态状态、稳态解、残差日志和模型接口。",
+    "limitations": "低维集总假设需验证；初始化与代数环可能影响收敛，专业库另授权。",
+    "alternatives": [
+      "openmodelica",
+      "fmi",
+      "trick"
+    ],
+    "docsUrl": "https://ecosimpro.com/products/ecosimpro/",
+    "sourceTitle": "Empresarios Agrupados · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:45:41 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Empresarios Agrupados",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://ecosimpro.com/products/ecosimpro/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "nasa-42",
+    "title": "42 Spacecraft Simulation",
+    "category": "飞行动力学",
+    "kind": "开源项目",
+    "summary": "围绕航天器姿态与轨道构建多刚体、柔性体及多星研究场景。",
+    "details": "42 的公开仓库将其定位为航天器姿态控制分析与设计仿真，包含姿态和轨道动力学、多体结构、刚性或柔性体及多航天器场景。输入航天器结构与参数、环境、初始状态和控制逻辑，输出状态及可视化，并可通过进程通信接口连接外部程序。它适合从概念控制律逐步过渡到集成测试研究，但示例所用传感器、执行器和柔性参数不代表某个真实型号。多体模型应审查关节约束、角动量和能量行为，跨程序连接还需统一时间步、单位和消息时序。项目源码可公开查阅，使用与再分发应以仓库 License 目录及相关第三方组件条款为准。",
+    "tags": [
+      "姿轨动力学",
+      "多体",
+      "控制验证"
+    ],
+    "language": "C · 配置文件 · IPC",
+    "license": "以仓库 License 目录及第三方组件条款为准",
+    "url": "https://github.com/ericstoneking/42",
+    "docsUrl": "https://github.com/ericstoneking/42/tree/master/Docs",
+    "workflow": [
+      "姿态与控制",
+      "飞行动力学",
+      "系统仿真"
+    ],
+    "inputs": "航天器多体结构、惯量、环境、轨道姿态初值和控制逻辑。",
+    "outputs": "姿轨状态、执行器传感器响应及可视化数据。",
+    "limitations": "多体和柔性参数必须有依据；外部接口不保证自动同步或实时性。",
+    "alternatives": [
+      "basilisk",
+      "matlab-aerospace-blockset"
+    ],
+    "sourceTitle": "42 Project / Eric Stoneking · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:45:41 UTC",
+    "usageEvidence": [
+      {
+        "organization": "42 Project / Eric Stoneking",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://github.com/ericstoneking/42",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "freeflyer",
+    "title": "FreeFlyer",
+    "category": "轨道与任务",
+    "kind": "工程软件",
+    "summary": "以任务脚本组织轨道设计和运营分析，连接传播、事件与结果展示。",
+    "details": "FreeFlyer 是 a.i. solutions 的商业航天任务设计与分析软件，官方产品入口强调任务设计、分析和运行场景。研究者可围绕航天器、轨道与事件建立可重复任务流程，输入初始状态、环境、机动和约束，输出状态历史、事件及分析报告。与纯库相比，它提供面向任务的工作环境，但各版本及许可层级实际包含的估计、优化或接口能力应单独核查。个人研究可用于与开放传播器进行一致配置的对照，差异应先排查时间尺度、力模型和事件定义。商业软件的历史任务经验不自动证明新建模型可靠，也不能由产品宣传反推出未公开任务参数。",
+    "tags": [
+      "任务分析",
+      "轨道设计",
+      "商业软件"
+    ],
+    "language": "任务脚本 · GUI",
+    "license": "商业专有许可；功能与部署依具体产品授权",
+    "url": "https://ai-solutions.com/",
+    "docsUrl": "https://ai-solutions.com/_help_Files/",
+    "workflow": [
+      "任务设计",
+      "轨道传播",
+      "轨道确定"
+    ],
+    "inputs": "历元初态、轨道环境、机动、任务事件和分析约束。",
+    "outputs": "状态历史、任务事件、轨迹分析与报告。",
+    "limitations": "专业能力依版本与授权；交叉验证须对齐初值、时间尺度及力模型。",
+    "alternatives": [
+      "gmat",
+      "orekit",
+      "tudat"
+    ],
+    "sourceTitle": "a.i. solutions · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:45:41 UTC",
+    "usageEvidence": [
+      {
+        "organization": "a.i. solutions",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://ai-solutions.com/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "petsc",
+    "title": "PETSc / TAO",
+    "category": "多物理场",
+    "kind": "开源项目",
+    "summary": "为自研科学计算程序提供并行线性、非线性和时间推进求解基础。",
+    "details": "PETSc 为偏微分方程科学计算提供可扩展数值组件，并包含 TAO 优化工具，支持 C、Fortran 与 Python 接口及多种并行硬件路径。它接收离散方程、矩阵或算子、残差和雅可比信息，输出数值解及收敛诊断。航天仿真开发者可用它搭建热、结构或流体求解器的代数层，但物理方程、离散与边界条件仍由应用负责。选择预条件器与求解容差应依据问题结构，而非只追求残差最小。并行速度与分区、通信和硬件相关，某一算例的性能不可直接外推；还需区分线性求解误差、非线性误差及网格离散误差，保留可复现配置。",
+    "tags": [
+      "数值基础",
+      "并行求解",
+      "PDE"
+    ],
+    "language": "C · Fortran · Python",
+    "license": "开源；PETSc 与可选外部依赖按各自许可证",
+    "url": "https://petsc.org/release/",
+    "workflow": [
+      "数值基础",
+      "多物理场耦合",
+      "验证与不确定性"
+    ],
+    "inputs": "矩阵或算子、残差雅可比、初值、预条件与容差。",
+    "outputs": "数值解、迭代和性能诊断、优化结果。",
+    "limitations": "提供数值设施而非领域模型；残差容差不能直接当作物理误差界。",
+    "alternatives": [
+      "mfem",
+      "dealii"
+    ],
+    "docsUrl": "https://petsc.org/release/",
+    "sourceTitle": "PETSc Developers · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "PETSc Developers",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://petsc.org/release/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "mfem",
+    "title": "MFEM",
+    "category": "多物理场",
+    "kind": "开源项目",
+    "summary": "高阶有限元库，提供自适应网格、离散算子及并行计算基础。",
+    "details": "MFEM 是轻量 C++ 有限元离散库，提供高阶网格与空间、多种离散方法、自适应细化和并行计算能力。输入网格、有限元空间、系数、积分形式和边界条件，输出组装算子、数值解和后处理数据。它适合研究高阶方法、热传导、结构或电磁等明确方程，但不是带有全部航天模型的现成工程软件。用户需要选择稳定的离散形式、积分阶次和求解器，并为守恒和收敛建立基准。官方列出的应用项目说明软件生态，不能单独证明某个航天型号采用；GPU 加速也应使用代表性工况测量，同时考虑网格、通信与数据传输成本。",
+    "tags": [
+      "高阶有限元",
+      "AMR",
+      "HPC"
+    ],
+    "language": "C++",
+    "license": "开源；具体版本与第三方依赖以项目许可证为准",
+    "url": "https://mfem.org/",
+    "docsUrl": "https://mfem.org/documentation/",
+    "workflow": [
+      "数值基础",
+      "多物理场耦合"
+    ],
+    "inputs": "网格、有限元空间、变分形式、材料系数与边界。",
+    "outputs": "离散算子、场解、自适应网格和诊断。",
+    "limitations": "领域本构与验证需自行建立；高阶不自动弥补几何和边界误差。",
+    "alternatives": [
+      "dealii",
+      "petsc"
+    ],
+    "sourceTitle": "MFEM Project · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "MFEM Project",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://mfem.org/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "dealii",
+    "title": "deal.II",
+    "category": "多物理场",
+    "kind": "开源项目",
+    "summary": "C++ 有限元库及系统教程，支持自适应离散、复杂方程和并行科学计算。",
+    "details": "deal.II 是用于构建有限元程序的 C++ 库，覆盖网格、自由度、有限元空间及并行计算等基础，并提供分层教程。输入偏微分方程的弱形式、几何网格、材料及边界设置，输出离散解、误差估计和可视化数据。它适合深入学习并开发自定义热、结构或耦合求解器，尤其适合对数值方法本身开展研究。教程能运行只说明示例条件得到满足，扩展到复杂材料或接触后仍需独立验证。选用单元、积分、约束处理与线性代数后端都会影响结果；实际软件许可证及可选依赖分别核查，并记录编译配置以便跨平台复现实验。",
+    "tags": [
+      "有限元开发",
+      "C++",
+      "数值研究"
+    ],
+    "language": "C++",
+    "license": "开源；deal.II 与可选依赖以具体发行许可证为准",
+    "url": "https://dealii.org/",
+    "docsUrl": "https://www.dealii.org/current/doxygen/deal.II/Tutorial.html",
+    "workflow": [
+      "数值基础",
+      "验证与不确定性"
+    ],
+    "inputs": "弱形式、网格、有限元空间、材料、约束和求解配置。",
+    "outputs": "场解、误差指标、细化网格与可视化结果。",
+    "limitations": "属于库而非完整领域应用；教程不为新增方程和本构提供自动验证。",
+    "alternatives": [
+      "mfem",
+      "petsc"
+    ],
+    "sourceTitle": "deal.II Project · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "deal.II Project",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://dealii.org/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "fmi",
+    "title": "Functional Mock-up Interface（FMI）",
+    "category": "多物理场",
+    "kind": "公开数据",
+    "summary": "仿真模型交换与协同仿真的接口标准；定义数据与调用契约，求解算法由工具实现。",
+    "details": "FMI 是 Modelica Association 维护的动态模型交换标准，以 XML、二进制或 C 代码等内容封装 FMU，供不同工具交互。输入和输出由模型变量、单位、因果性和生命周期接口定义；模型交换与联合仿真对积分器责任的分配不同，必须先辨别接口类型及标准版本。它适合把热流体、控制和飞行动力学模型接入同一研究场景，但接口合规不保证数值稳定、实时执行或物理守恒。通信步长、事件、回滚支持及初始化需要明确约定。标准公开可读，而某个 FMU 的导出、运行和再分发仍受模型及工具许可约束，不应将其误称为免费软件授权。",
+    "tags": [
+      "FMI",
+      "FMU",
+      "联合仿真"
+    ],
+    "language": "XML · C ABI · FMU",
+    "license": "公开标准；FMU 内模型、二进制和工具导出权利各自授权",
+    "url": "https://fmi-standard.org/",
+    "docsUrl": "https://fmi-standard.org/docs/3.0.2/",
+    "workflow": [
+      "仿真集成",
+      "系统仿真",
+      "配置与交付"
+    ],
+    "inputs": "FMU、变量映射、单位、接口版本及通信步长。",
+    "outputs": "跨工具变量交换、模型执行状态及耦合结果。",
+    "limitations": "标准不是求解器；接口兼容不保证稳定性、实时性或模型分发权。",
+    "alternatives": [
+      "openmodelica",
+      "ecosimpro",
+      "trick"
+    ],
+    "sourceTitle": "Modelica Association · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Modelica Association",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://fmi-standard.org/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "openmodelica",
+    "title": "OpenModelica",
+    "category": "多物理场",
+    "kind": "开源项目",
+    "summary": "用非因果方程和组件连接建立热、流体、机械与控制系统模型。",
+    "details": "OpenModelica 是开源 Modelica 建模、编译和仿真环境，适合将部件方程及端口关系转换为可求解的系统。输入 Modelica 类、连接、参数、初值和实验设置，输出状态历史、求解诊断及可用接口。对航天研究，可先建立阀门、储箱、热容和控制器等低维网络，研究质量能量守恒与事件逻辑，再与外部轨迹模型连接。使用标准语言不代表所有商业库都能无差别运行，模型库许可、语言特性和工具支持需要核对。初始化、代数环及刚性问题应通过残差和守恒分析诊断，不能靠调大容差掩盖错误；软件和引入的库也应分别记录版本。",
+    "tags": [
+      "Modelica",
+      "DAE",
+      "系统建模"
+    ],
+    "language": "Modelica · C/C++ · GUI",
+    "license": "开源；OpenModelica 及模型库分别遵循其官方许可",
+    "url": "https://openmodelica.org/",
+    "docsUrl": "https://openmodelica.org/doc/OpenModelicaUsersGuide/latest/",
+    "workflow": [
+      "系统仿真",
+      "多物理场耦合",
+      "仿真集成"
+    ],
+    "inputs": "Modelica 方程组件、连接、参数、初值和实验设置。",
+    "outputs": "编译模型、状态历史、求解诊断及支持的交换接口。",
+    "limitations": "模型库兼容性与授权不由语言标准保证；初始化和代数环需要处理。",
+    "alternatives": [
+      "ecosimpro",
+      "matlab-aerospace-blockset",
+      "fmi"
+    ],
+    "sourceTitle": "Open Source Modelica Consortium · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "Open Source Modelica Consortium",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://openmodelica.org/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "cfs",
+    "title": "NASA core Flight System（cFS）",
+    "category": "飞行动力学",
+    "kind": "开源项目",
+    "summary": "由飞行软件服务、操作系统适配和应用组件构成的航电软件框架。",
+    "details": "cFS 是 NASA 公开的可复用飞行软件体系，由核心执行服务、操作系统抽象、平台支持和应用等组成。输入应用代码、任务配置、命令与传感器消息，输出遥测、事件和应用行为。它不是轨道或六自由度物理求解器；在个人仿真中，应通过明确接口把动力学模拟器产生的传感器数据送入飞行软件，再接收执行器指令形成闭环。主仓库的示例组合不等于某一飞行任务的正式构建，目标硬件、操作系统、时序和故障处理仍须验证。开源代码方便检查架构，但真实部署需要工程化适配、测试覆盖、配置管理及许可审查，不能把成功启动当作可飞行证明。",
+    "tags": [
+      "飞行软件",
+      "航电",
+      "闭环测试"
+    ],
+    "language": "C · CMake · 配置",
+    "license": "Apache-2.0；组件和外部依赖另核许可证",
+    "url": "https://github.com/nasa/cFS",
+    "docsUrl": "https://github.com/nasa/cFS/tree/main/docs",
+    "workflow": [
+      "飞行软件",
+      "仿真集成",
+      "验证与不确定性"
+    ],
+    "inputs": "应用、任务配置、命令、传感器与时钟接口。",
+    "outputs": "遥测事件、应用状态和执行器指令。",
+    "limitations": "不是物理仿真器；公开示例构建不构成目标硬件及飞行任务认证。",
+    "alternatives": [
+      "fprime",
+      "ros2",
+      "trick"
+    ],
+    "sourceTitle": "NASA cFS Project · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "NASA cFS Project",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://github.com/nasa/cFS",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "fprime",
+    "title": "F Prime（F′）",
+    "category": "飞行动力学",
+    "kind": "开源项目",
+    "summary": "以组件、端口和测试工具构建嵌入式飞行软件及地面仿真测试台。",
+    "details": "F Prime 是 JPL 的组件化嵌入式软件框架，提供明确定义的端口、C++ 基础设施、通用组件及代码生成和测试工具。输入组件定义、连接、应用逻辑和目标平台配置，输出可执行软件、命令遥测接口及测试结果。官方列有 Ingenuity 等项目，但一个任务的飞行经验不能自动转移到新增组件。它适合把控制与任务逻辑接到外部动力学仿真，观察指令、遥测和故障事件的闭环关系。框架不提供真实气动或推进模型，线程、队列、时钟与设备驱动仍需设计和验证；开源许可也不免除第三方依赖和具体任务配置的独立审查。",
+    "tags": [
+      "飞行软件",
+      "组件架构",
+      "测试台"
+    ],
+    "language": "C++ · FPP · Python 工具",
+    "license": "开源；以 F Prime 仓库及第三方组件许可证为准",
+    "url": "https://fprime.jpl.nasa.gov/",
+    "docsUrl": "https://fprime.jpl.nasa.gov/overview/",
+    "workflow": [
+      "飞行软件",
+      "仿真集成",
+      "验证与不确定性"
+    ],
+    "inputs": "组件和端口、拓扑、逻辑、设备驱动与平台配置。",
+    "outputs": "嵌入式程序、命令遥测、事件与测试证据。",
+    "limitations": "框架不验证新增应用或硬件；任务经验不能直接视为所有组件合格。",
+    "alternatives": [
+      "cfs",
+      "ros2"
+    ],
+    "sourceTitle": "NASA JPL · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "NASA JPL",
+        "context": "JPL 官方概览列出 Ingenuity、Lunar Flashlight 等 F Prime 项目；采用证明限定于所列项目，不外推至任意任务或新增模块。",
+        "sourceUrl": "https://fprime.jpl.nasa.gov/overview/",
+        "evidenceType": "官方任务资料"
+      }
+    ]
+  },
+  {
+    "id": "ros2",
+    "title": "ROS 2",
+    "category": "飞行动力学",
+    "kind": "开源项目",
+    "summary": "分布式机器人软件框架，提供感知、控制和仿真进程之间的消息及组件机制。",
+    "details": "ROS 2 提供机器人应用的通信、工具及软件组织基础，可用节点、话题、服务和动作连接不同进程。输入传感器消息、控制请求和参数，输出命令、状态和记录数据；与外部模拟器配合时需约定仿真时钟、坐标树和消息频率。它适合原型研究、机器人载荷或地面测试台，并不自动提供航天动力学、确定实时性或飞行级可靠性。通信中间件和服务质量配置会影响丢包、延迟和发现行为，回放数据也不保证重现全部线程时序。各发行版的支持周期、软件包许可及平台兼容应固定，避免把桌面演示成功当作目标平台部署已验证。",
+    "tags": [
+      "机器人",
+      "中间件",
+      "仿真接口"
+    ],
+    "language": "C++ · Python · DDS / RMW",
+    "license": "开源；ROS 2 核心与各软件包分别遵循许可证",
+    "url": "https://github.com/ros2/ros2",
+    "docsUrl": "https://design.ros2.org/",
+    "workflow": [
+      "仿真集成",
+      "飞行软件",
+      "姿态与控制"
+    ],
+    "inputs": "节点、话题服务、消息、参数、时钟和服务质量配置。",
+    "outputs": "通信消息、控制指令、状态及记录数据。",
+    "limitations": "不是物理求解器；实时性和可靠性取决于系统设计、平台及中间件。",
+    "alternatives": [
+      "cfs",
+      "fprime",
+      "trick"
+    ],
+    "sourceTitle": "ROS 2 Project · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "ROS 2 Project",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://github.com/ros2/ros2",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "spenvis",
+    "title": "ESA SPENVIS",
+    "category": "数据与环境",
+    "kind": "工程软件",
+    "summary": "空间环境与辐射效应分析平台，输入轨道、环境和屏蔽条件生成研究结果。",
+    "details": "SPENVIS 是 ESA 空间环境及效应分析入口，由 BIRA-IASB 提供服务，覆盖辐射带、太阳粒子、银河宇宙线及其他空间环境主题。输入轨道、时间区间、模型选择和相关屏蔽或材料条件，输出环境谱、通量及工具支持的效应估计。它适合建立电子学、材料和任务环境的初步预算，但统计环境模型不等于某次任务实测，也不能直接承诺硬件寿命。不同模型的年代、适用轨道、太阳活动假设与置信口径应随结果保存。服务通常需要注册，具体数据和模型使用条款须核对；设计结论还需结合器件试验、屏蔽几何和工程裕度。",
+    "tags": [
+      "空间辐射",
+      "环境效应",
+      "ESA"
+    ],
+    "language": "Web · 模型配置 · 数据报告",
+    "license": "依 SPENVIS 服务、注册及各模型数据使用条款",
+    "url": "https://www.spenvis.oma.be/",
+    "workflow": [
+      "数据归档与环境",
+      "热与环境",
+      "验证与不确定性"
+    ],
+    "inputs": "轨道与任务时段、环境模型、屏蔽和材料参数。",
+    "outputs": "通量谱、环境和相关效应估计。",
+    "limitations": "统计模型非逐时实测；器件寿命需辐照试验和真实屏蔽结构约束。",
+    "alternatives": [
+      "earthdata",
+      "spice"
+    ],
+    "docsUrl": "https://www.spenvis.oma.be/",
+    "sourceTitle": "ESA / BIRA-IASB · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "ESA / BIRA-IASB",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.spenvis.oma.be/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "ecss",
+    "title": "ECSS 标准与手册",
+    "category": "数据与环境",
+    "kind": "公开数据",
+    "summary": "欧洲空间工程标准与手册，涉及系统、设计、验证、产品保证及工程交付要求。",
+    "details": "ECSS 是欧洲空间活动的标准体系，涵盖工程、项目管理、产品保证及相关领域，标准和手册可从官方入口查阅。它不是求解器或参数数据库，而是帮助定义需求、设计、试验和证据交付之间的关系。研究者输入项目目标和适用范围，形成经过裁剪的要求、验证计划及数据清单；具体采用应引用文档编号、版本和条款，不能只写遵循 ECSS。官方也提供裁剪与培训信息，个人项目可借鉴其可追踪方法而不过度引入大型组织流程。公开下载不等于任意修改或再版授权，最新版本与适用性应分别确认，完成自查也不等于获得第三方认证。",
+    "tags": [
+      "系统工程",
+      "验证标准",
+      "工程流程"
+    ],
+    "language": "标准 · 手册 · PDF",
+    "license": "公开访问；文档版权与再使用以 ECSS / ESA 条款为准",
+    "url": "https://ecss.nl/",
+    "docsUrl": "https://www.esa.int/Enabling_Support/Space_Engineering_Technology/Requirements_and_standards",
+    "workflow": [
+      "需求与系统工程",
+      "验证与不确定性",
+      "配置与交付"
+    ],
+    "inputs": "项目范围、任务风险、标准版本与裁剪依据。",
+    "outputs": "适用要求、验证与交付计划和条款追踪。",
+    "limitations": "标准非数值模型；自称符合不等于经过认证，版本和裁剪需要明确。",
+    "alternatives": [
+      "nasa-ntrs",
+      "doors-next",
+      "capella"
+    ],
+    "sourceTitle": "ESA · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "ESA",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Engineering_Technology/Requirements_and_standards",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "nasa-ntrs",
+    "title": "NASA STI / NTRS",
+    "category": "数据与环境",
+    "kind": "公开数据",
+    "summary": "检索 NASA 技术报告、研究论文与历史工程资料，为模型建立一手依据。",
+    "details": "NASA STI 资源库及 NTRS 入口整理 NASA 创建或资助的科学技术信息，包括技术报告、论文及多媒体记录。输入关键词、作者、报告编号或主题，输出元数据和可公开获取的文献；部分受限记录与全文访问需要相应资格。对航天仿真，最有价值的是追踪试验条件、坐标定义、误差描述和模型适用域，建立可复现的参考算例。报告标题或摘要不能替代阅读正文，历史报告中的构型和材料也不能直接套用到新型号。保存文献编号、页码、版本和引用链，并区分研究假设、试验数据与工程定型结论；数据库收录本身不构成正确性背书。",
+    "tags": [
+      "技术报告",
+      "一手文献",
+      "验证数据"
+    ],
+    "language": "报告 · 元数据 · API",
+    "license": "公开资料依各记录分发、版权与 NASA STI 使用条款；部分内容受限",
+    "url": "https://ntrs.nasa.gov/",
+    "docsUrl": "https://sti.nasa.gov/",
+    "workflow": [
+      "数据归档与环境",
+      "验证与不确定性",
+      "研究情报"
+    ],
+    "inputs": "主题、作者、报告编号、时间和访问范围。",
+    "outputs": "文献记录、报告全文、引用和数据线索。",
+    "limitations": "并非全部记录公开全文；历史算例需审查构型、单位、条件及不确定性。",
+    "alternatives": [
+      "nasa-pds",
+      "ecss"
+    ],
+    "sourceTitle": "NASA STI · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "NASA STI",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://sti.nasa.gov/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "nasa-pds",
+    "title": "NASA Planetary Data System",
+    "category": "数据与环境",
+    "kind": "公开数据",
+    "summary": "行星任务科学数据归档，包含数据标签、仪器文档和归档背景。",
+    "details": "PDS 是 NASA 行星科学长期归档体系，保存行星任务、地面和相关实验数据，并通过专业节点及标签标准提供检索和解释背景。输入目标天体、任务、仪器及产品条件，输出数据产品、标签、校准和文档。对仿真研究，可将地形、观测或任务几何资料作为环境与验证输入，但必须识别原始、校准和派生产品的处理等级。归档并不代表包含所有遥测或飞行软件，也不自动给出适用于任意模型的误差界。建议记录产品标识、版本、坐标系、单位和质量说明，配合 SPICE 检查几何，避免将经过处理的图像像素直接当成物理量或真实表面尺度。",
+    "tags": [
+      "行星数据",
+      "归档",
+      "任务产品"
+    ],
+    "language": "PDS 标签 · 科学数据 · 文档",
+    "license": "依产品记录、NASA 数据政策及各节点引用要求",
+    "url": "https://pds.nasa.gov/",
+    "docsUrl": "https://pds.nasa.gov/datastandards/about/",
+    "workflow": [
+      "数据归档与环境",
+      "任务几何",
+      "验证与不确定性"
+    ],
+    "inputs": "任务、天体、仪器、产品等级与时间条件。",
+    "outputs": "科学产品、标签、校准资料和归档文档。",
+    "limitations": "不包含任意任务全部遥测；处理等级、质量标记和几何背景不可省略。",
+    "alternatives": [
+      "spice",
+      "nasa-ntrs",
+      "earthdata"
+    ],
+    "sourceTitle": "NASA PDS · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "NASA PDS",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://pds.nasa.gov/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "earthdata",
+    "title": "NASA Earthdata / Earth Science Data",
+    "category": "数据与环境",
+    "kind": "公开数据",
+    "summary": "大气、地表与地球观测数据服务，提供带时空及产品版本信息的环境研究资料。",
+    "details": "NASA Earthdata 及地球科学数据体系提供对地观测与相关科学产品入口，服务于大气、陆地、海洋和地球系统研究。输入变量、时空范围、产品版本和分辨率需求，输出观测或派生数据及质量文档。飞行与再入研究可从中寻找环境背景，但遥感反演、再分析和直接观测的含义不同，不能把网格平均值当作飞行器路径上瞬时真值。下载后应检查单位、缺测码、垂直坐标、时间聚合及质量标志，并明确插值与外推方法。部分分发服务需要 Earthdata Login，产品引用和使用规则分别确认；该入口不自动提供经过特定任务验证的大气模型。",
+    "tags": [
+      "地球环境",
+      "遥感",
+      "数据质量"
+    ],
+    "language": "科学数据 · 元数据 · API",
+    "license": "依 NASA 数据政策与具体产品及服务条款；部分服务需登录",
+    "url": "https://www.earthdata.nasa.gov/",
+    "docsUrl": "https://science.nasa.gov/earth/data/",
+    "workflow": [
+      "数据归档与环境",
+      "飞行动力学",
+      "验证与不确定性"
+    ],
+    "inputs": "变量、时间、空间范围、产品等级和版本。",
+    "outputs": "地球科学数据、质量标记及产品说明。",
+    "limitations": "遥感与分析产品非路径瞬时真值；垂直坐标、分辨率及插值误差须审查。",
+    "alternatives": [
+      "spenvis",
+      "nasa-pds"
+    ],
+    "sourceTitle": "NASA Earth Science · 官方产品与项目资料",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:48:17 UTC",
+    "usageEvidence": [
+      {
+        "organization": "NASA Earth Science",
+        "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定航天机构采用证明。",
+        "sourceUrl": "https://science.nasa.gov/earth/data/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ]
+  },
+  {
+    "id": "sparta",
+    "title": "SPARTA",
+    "category": "多物理场",
+    "kind": "开源项目",
+    "summary": "用 DSMC 粒子方法研究稀薄气体，覆盖连续介质假设需要重新审视的流动区域。",
+    "details": "SPARTA 是主要由 Sandia 开发的并行直接模拟蒙特卡洛程序，用计算粒子表示低密度气体，在分层笛卡尔网格中处理运动、碰撞和化学，并与嵌入表面发生相互作用。输入粒子物种、来流状态、碰撞及表面模型、网格和时间步，输出统计场量、表面载荷热流及粒子数据。它适合稀薄气体方法研究，不能把连续流 CFD 网格和设置原样搬入。网格、时间步、每格粒子数及采样时长需要共同检查，统计噪声与离散偏差也应分别评估。官方以 GPL 发布，某些其他许可需申请；模型选择仍需实验或基准约束，高温反应与表面适应系数不能任意假设后宣称得到实机精确热流。",
+    "tags": [
+      "DSMC",
+      "稀薄流",
+      "粒子方法"
+    ],
+    "language": "C++ · MPI · Python 接口",
+    "license": "GPL；其他许可仅在项目明确批准时适用",
+    "url": "https://sparta.github.io/",
+    "docsUrl": "https://sparta.github.io/doc/Manual.html",
+    "sourceTitle": "SPARTA · Official Features / Users Manual",
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "workflow": [
+      "流体与气动",
+      "气动数据库",
+      "数值基础"
+    ],
+    "inputs": "气体物种与来流、碰撞和表面模型、网格、时间步及粒子权重。",
+    "outputs": "统计密度温度流速、表面载荷热流、碰撞和粒子数据。",
+    "limitations": "低密度气体方法；统计收敛、网格时间步和表面模型均需验证，不宜默认用于稠密连续流。",
+    "usageEvidence": [
+      {
+        "organization": "Sandia / SPARTA Project",
+        "context": "官方项目说明其开发背景与 DSMC 能力；此处不构成某一飞行器或任务采用证明。",
+        "sourceUrl": "https://sparta.github.io/features.html",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "alternatives": [
+      "su2",
+      "openfoam",
+      "ansys-fluent"
+    ],
+    "alternativesNote": "所列连续流工具用于不同流动区间或混合工作流，不能视为稀薄流下直接等价替代。",
+    "starterWorkflow": [
+      "从官方低复杂度样例开始，明确物种、来流、碰撞模型和表面边界。",
+      "估计目标工况的稀薄程度，判断 DSMC 是否适合并检查其物理假设。",
+      "分别变化网格、时间步、每格粒子数和采样时长，区分统计噪声与离散偏差。",
+      "保存随机种子、稳态判据和表面参数，对独立基准比较载荷或热流后再扩大几何复杂度。"
+    ],
+    "selectionQuestions": [
+      "目标区域的连续介质假设是否已经不足，需要 DSMC？",
+      "气体碰撞、化学反应和表面适应参数是否有依据？",
+      "是否有足够粒子和采样预算，并能解释统计置信度？"
+    ],
+    "starterWorkflowSources": [
+      {
+        "title": "SPARTA 官方手册",
+        "url": "https://sparta.github.io/doc/Manual.html"
+      }
+    ],
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "esa-godot",
+    "title": "ESA GODOT / GODOTPY",
+    "category": "轨道与任务",
+    "kind": "工程软件",
+    "summary": "将时间、参考系、轨道传播、观测估计与优化组织为可配置的任务分析软件。",
+    "details": "GODOT 是 ESA 面向航天任务分析和运行的天体动力学库，与同名游戏引擎无关。它通过 C++ 核心和 Python 接口提供时间、自动微分、参考系、重力、观测、传播及任务级配置能力；输入环境、星历、轨迹段、机动和观测，输出状态、事件、参数估计与优化结果。官方文档把 Core、Model、Cosmos 分层，适合研究如何把统一物理模型接入不同任务流程。Python 仅暴露部分 C++ 接口，不能假定两者完全等价。当前代码标注 ESA Community Weak 2.4，许可具有地域范围，公开文档不代表全球任意地点都可直接使用或再分发。个人研究应先核实适用许可，再选择基准传播算例；需要无此地域限制的工作流时可比较 Tudat 或 Orekit。",
+    "tags": [
+      "任务分析",
+      "自动微分",
+      "配置模型"
+    ],
+    "language": "C++ · Python",
+    "license": "ESA Software Community Licence Weak Copyleft 2.4；授权具有地域范围，以实际发行许可及资格为准",
+    "url": "https://godot.io.esa.int/docs/",
+    "docsUrl": "https://godot.io.esa.int/docs/guides/hhgtg.html",
+    "sourceTitle": "ESA Flight Dynamics · GODOT 1.20.0 Documentation / ESCL",
+    "workflow": [
+      "任务设计",
+      "轨道传播",
+      "轨道确定",
+      "多学科优化"
+    ],
+    "inputs": "环境与星历、时间尺度、参考系、轨迹段和机动、观测及待估参数。",
+    "outputs": "轨道与姿态状态、事件时刻、观测预测、估计及优化结果。",
+    "limitations": "公开文档不等于无条件开放许可；Python 接口覆盖有限，官方旧新闻中的任务计划不能作为当前运行状态。",
+    "alternatives": [
+      "tudat",
+      "orekit",
+      "gmat"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "ESA Flight Dynamics",
+        "context": "官方库文档及许可用于核实接口和使用条件；此记录不宣称特定公司或任务采用。",
+        "sourceUrl": "https://godot.io.esa.int/docs/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "additionalSources": [
+      {
+        "title": "GODOT 源码的许可标识",
+        "url": "https://godot.io.esa.int/docs/doxygen/core_2util_2Identifiers_8h_source.html"
+      },
+      {
+        "title": "ESA Community Weak Copyleft 2.4 正文",
+        "url": "https://essr.esa.int/license/european-space-agency-community-license-v2-4-weak-copyleft-type-2"
+      }
+    ],
+    "starterWorkflow": [
+      "确认所在使用场景符合发行许可，按官方安装页固定 GODOT / GODOTPY 版本。",
+      "从时间和参考系示例入手，再按 Universe 教程声明中心天体、星历与状态定义。",
+      "建立只含点质量重力的传播场景，输出状态与能量误差。",
+      "参照官方基准逐项增加摄动或机动，并保存完整配置和依赖数据版本。"
+    ],
+    "selectionQuestions": [
+      "是否已确认使用及再分发满足当前许可地域范围？",
+      "需要的接口是否由 GODOTPY 暴露，还是必须使用 C++？",
+      "是否愿意用配置和代码构建任务应用，并维护独立比较基准？"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "nasa-jeod",
+    "title": "NASA JEOD",
+    "category": "飞行动力学",
+    "kind": "开源项目",
+    "summary": "与 Trick 配合的航天器轨道和姿态模型库，提供模型文档与分层验证资料。",
+    "details": "JSC Engineering Orbital Dynamics 将动力学、环境、环境相互作用及通用数学工具分组，面向近地、月球和深空轨道及姿态仿真。输入天体环境、质量属性、初始状态和外部力矩，输出单星或多星的平动与转动历史，可与执行机构及 GN&C 模型连接。它主要为 Trick 仿真环境设计，当前 README 说明非 Trick 演示不再维护，不能把模型库视为直接嵌入任意引擎的即用组件。公开发行有模型文档、训练和回归流程，但部分最佳估计实飞轨迹数据为公开发布而移除；验证结论与可自行重跑的数据集必须区分。实验目录的模型也未达到常规模块同等验证和文档标准，选用时应单独审查。",
+    "tags": [
+      "轨道姿态",
+      "Trick",
+      "模型验证"
+    ],
+    "language": "C++ · Trick · Python 配置",
+    "license": "NASA Open Source Agreement 1.3",
+    "url": "https://github.com/nasa/jeod",
+    "docsUrl": "https://github.com/nasa/jeod/blob/main/README_jeod",
+    "sourceTitle": "NASA JSC · JEOD Official Repository / README_jeod",
+    "workflow": [
+      "飞行动力学",
+      "姿态与控制",
+      "仿真集成",
+      "验证与不确定性"
+    ],
+    "inputs": "天体环境、质量惯量与质心、状态初值、外力力矩、Trick 调度与积分配置。",
+    "outputs": "轨道姿态时间历史、环境作用、派生状态、模型回归记录。",
+    "limitations": "主要面向 Trick；部分实飞比较数据不公开，实验模型验证较弱，官方参考编译平台不能等同于本站已实测平台。",
+    "alternatives": [
+      "basilisk",
+      "nasa-42",
+      "tudat"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "NASA Johnson Space Center",
+        "context": "NASA 仓库说明模型结构、公开验证材料及已知限制；不把仿真样例名称视为真实任务采用证明。",
+        "sourceUrl": "https://github.com/nasa/jeod/blob/main/README_jeod",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "additionalSources": [
+      {
+        "title": "NASA JEOD 5.x 软件目录",
+        "url": "https://software.nasa.gov/software/MSC-27344-1"
+      },
+      {
+        "title": "JEOD 许可",
+        "url": "https://github.com/nasa/jeod/blob/main/LICENSE"
+      }
+    ],
+    "starterWorkflow": [
+      "按选定 JEOD 发布版的 README 配置对应 Trick 和编译环境，记录组合版本。",
+      "从 docs/Training 的基础动力学练习开始，使用非实验模型建立单星基线。",
+      "按发布说明获取额外的回归数据资产，区分预期失败算例与意外失败。",
+      "先检查无外力矩旋转及二体轨道，再接入执行器与控制器，记录时间步变化的影响。"
+    ],
+    "selectionQuestions": [
+      "项目是否本来就采用 Trick，或能承担框架集成成本？",
+      "需要的模型在正式目录还是未经同等验证的 experimental 目录？",
+      "所需实飞验证数据是否公开，能否独立复算？"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "jpl-horizons",
+    "title": "JPL Horizons",
+    "category": "数据与环境",
+    "kind": "公开数据",
+    "summary": "按目标、观测者和时间生成星历表，为任务几何与轨迹重建提供可追踪参考。",
+    "details": "Horizons 是 JPL 的在线星历系统，提供观测表、状态矢量和轨道根数等输出，也提供程序接口。查询必须明确目标编号、中心、历元和时间尺度、参考面、单位以及光行时修正，不能仅保存六列数值。它适合为月球、行星、小天体和已收录航天器建立几何参考，并与本地 SPICE 查询交叉检查。官方明确航天器轨迹可能同时包含历史拟合段和未来预测段，更新并非实时；部分任务长期不更新，历史轨迹还可能与旧版目标天体星历配套。输出小数位数并不代表真实精度，比较自主传播器时应先统一数据源、参考系和修正选项，再将差异归因于动力学。",
+    "tags": [
+      "星历服务",
+      "任务重建",
+      "观测几何"
+    ],
+    "language": "Web · HTTP API · 文本/JSON",
+    "license": "公开服务与数据；遵守 JPL API 使用约定及具体数据说明，非软件开源许可",
+    "url": "https://ssd.jpl.nasa.gov/horizons/",
+    "docsUrl": "https://ssd.jpl.nasa.gov/horizons/manual.html",
+    "sourceTitle": "NASA JPL SSD · Horizons Manual / API Documentation",
+    "workflow": [
+      "数据归档与环境",
+      "坐标与时间",
+      "任务几何",
+      "轨道传播"
+    ],
+    "inputs": "目标与中心编号、起止时刻、步长、参考系/面、时间尺度、单位和修正选项。",
+    "outputs": "几何或光行时修正的状态矢量、观测量、轨道根数及来源说明。",
+    "limitations": "航天器数据并非实时遥测，预测与历史段需区分；更新日期和配套天体星历决定可用精度。",
+    "alternatives": [
+      "spice",
+      "nasa-pds"
+    ],
+    "alternativesNote": "SPICE 是本地内核查询流程，PDS 是归档入口；两者均非 Horizons 在线接口的直接替代。",
+    "usageEvidence": [
+      {
+        "organization": "NASA JPL Solar System Dynamics",
+        "context": "官方服务手册说明数据来源和限制；不据此声称本站结果已与任务导航真值验证。",
+        "sourceUrl": "https://ssd.jpl.nasa.gov/horizons/manual.html",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "additionalSources": [
+      {
+        "title": "Horizons API 参数定义",
+        "url": "https://ssd-api.jpl.nasa.gov/doc/horizons.html"
+      }
+    ],
+    "starterWorkflow": [
+      "先选一个自然天体，明确目标/中心编号和 UTC 或 TDB 时间语义。",
+      "请求几何矢量时显式指定参考系、单位和 VEC_CORR=NONE，保留原始响应头。",
+      "用同一时间与数据版本在 SPICE 中查询，逐列比较位置和速度。",
+      "查询航天器时检查数据说明的修订日期及历史/预测覆盖，再决定能否作为研究对照。"
+    ],
+    "selectionQuestions": [
+      "需要物理几何状态还是考虑光行时后的观测位置？",
+      "目标航天器的轨迹更新日期及覆盖区间是否满足用途？",
+      "能否缓存查询结果和参数，避免在线更新改变旧研究？"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "iers-eop",
+    "title": "IERS 地球定向参数 / Bulletin A",
+    "category": "数据与环境",
+    "kind": "公开数据",
+    "summary": "极移、UT1 与天极偏移数据，用于惯性系和地固系之间的精密转换。",
+    "details": "IERS 的地球定向产品提供极移、UT1−UTC、日长及天极偏移等信息，连接地面站、轨道和天文参考系。USNO Rapid Service 的 Bulletin A 汇集观测解并提供预测，finals2000A 产品使用相应岁差章动约定，读入时还要识别观测/预测标志、单位和缺失字段。它不是位置轨迹本身，而是高精度地固坐标转换的重要辅助输入。长期离线复现应归档实际下载文件与校验值，不能让运行时静默换成最新预测。历史快速解、最终解与未来预测不应混为同一精度等级；更新某天 EOP 后地面轨迹变化，可能来自参考系输入，而非轨道积分器退化。",
+    "tags": [
+      "EOP",
+      "地固参考系",
+      "时间尺度"
+    ],
+    "language": "ASCII 数据 · Bulletin · 格式说明",
+    "license": "公开发布的科学数据；按 IERS / USNO 数据产品说明引用与使用",
+    "url": "https://maia.usno.navy.mil/products/bulletin-a",
+    "docsUrl": "https://data.iers.org/bulletins.php",
+    "sourceTitle": "IERS / USNO Rapid Service · Bulletin A Products",
+    "workflow": [
+      "数据归档与环境",
+      "坐标与时间",
+      "轨道确定",
+      "地面站几何"
+    ],
+    "inputs": "所需历元范围、参考系约定、数据产品版本及其快速解/最终解/预测类型。",
+    "outputs": "极移、UT1−UTC、日长、天极偏移及产品提供的误差和状态字段。",
+    "limitations": "预测误差随时间范围变化；不同产品的岁差章动约定与单位需要匹配，不能把预测标记丢弃。",
+    "alternatives": [
+      "orekit",
+      "tudat"
+    ],
+    "alternativesNote": "Orekit 与 Tudat 是可消费辅助数据的计算库，不能替代 IERS 观测产品来源。",
+    "usageEvidence": [
+      {
+        "organization": "IERS Rapid Service / Prediction Center · USNO",
+        "context": "官方产品说明列出观测来源、字段和预测范围；属于数据规范证据，不是某航天企业采用证明。",
+        "sourceUrl": "https://maia.usno.navy.mil/products/bulletin-a",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "additionalSources": [
+      {
+        "title": "IERS Bulletins 的职责区分",
+        "url": "https://maia.usno.navy.mil/products/iers-bulletins"
+      }
+    ],
+    "starterWorkflow": [
+      "按所用坐标变换库选择匹配的 EOP 产品，先读格式说明而非凭列号猜字段。",
+      "检查目标日期是否落在观测、快速解或预测段，记录数据发布时间。",
+      "归档文件和校验值，并让程序在数据越界或字段缺失时显式失败。",
+      "固定同一轨道，比较采用不同 EOP 解的地面站方位和地面轨迹差异。"
+    ],
+    "selectionQuestions": [
+      "研究精度是否需要极移、UT1 与天极偏移修正？",
+      "需要最终历史解还是面向未来任务的预测值？",
+      "离线环境如何保证 EOP 覆盖完整且不发生静默更新？"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "ames-stereo-pipeline",
+    "title": "NASA Ames Stereo Pipeline",
+    "category": "数据与环境",
+    "kind": "开源项目",
+    "summary": "任务立体影像与相机几何处理工具，用于生成地形、点云和正射影像。",
+    "details": "Ames Stereo Pipeline 用立体影像和相机模型重建三维点云，再生成数字地形、正射影像和可视化网格，并提供束平差与点云配准工具。输入必须有匹配的观测几何、影像处理等级和天体基准，不能把两张宣传图片直接当作定量地形来源。官方稳定版教程提供带 CSM 相机的 LRO NAC 裁剪样例，可先完成小区域重建；部分其他行星影像流程需要 USGS ISIS 与相关数据。选择算法、阴影、弱纹理、视差和相机偏差都会影响高程，生成看起来连续的 DEM 不等于精度已知。接入 Unreal 地形前应保存坐标投影、高程基准、采样尺度和无效像元，避免美术缩放改变真实坡度。",
+    "tags": [
+      "立体摄影测量",
+      "月面地形",
+      "任务重建"
+    ],
+    "language": "C++ · 命令行 · Python 辅助",
+    "license": "Apache-2.0；第三方组件及输入影像另按各自许可",
+    "url": "https://github.com/NeoGeographyToolkit/StereoPipeline",
+    "docsUrl": "https://stereopipeline.readthedocs.io/en/stable/tutorial.html",
+    "sourceTitle": "NASA Ames / NeoGeographyToolkit · ASP Stable Documentation",
+    "workflow": [
+      "数据归档与环境",
+      "地形与观测重建",
+      "任务几何",
+      "验证与不确定性"
+    ],
+    "inputs": "立体影像、相机内外参或 CSM/RPC 模型、天体基准及可选控制点/参考地形。",
+    "outputs": "点云、DEM/DTM、正射影像、纹理网格、调整后的相机及诊断数据。",
+    "limitations": "不是导航真值恢复器；不同相机流程依赖不同组件，影像许可不因工具开源而自动开放。",
+    "alternatives": [
+      "nasa-pds",
+      "spice"
+    ],
+    "alternativesNote": "PDS 与 SPICE 是上游影像和几何来源，不是立体重建求解器替代品。",
+    "usageEvidence": [
+      {
+        "organization": "NASA Ames Intelligent Robotics Group",
+        "context": "开发团队的文档和官方样例证明公开处理流程；不把研究历史概述外推成某任务全部地形均由本软件生成。",
+        "sourceUrl": "https://stereopipeline.readthedocs.io/en/latest/introduction.html",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "additionalSources": [
+      {
+        "title": "ASP Apache-2.0 许可",
+        "url": "https://github.com/NeoGeographyToolkit/StereoPipeline/blob/master/LICENSE"
+      },
+      {
+        "title": "官方已求解样例与数据",
+        "url": "https://github.com/NeoGeographyToolkit/StereoPipelineSolvedExamples"
+      }
+    ],
+    "starterWorkflow": [
+      "安装官方支持平台的稳定发行版，先使用教程的 LRO NAC 裁剪影像和 CSM 相机样例。",
+      "按教程在小窗口运行 parallel_stereo，检查匹配空洞和点云而非立即扩大区域。",
+      "用 point2dem 生成 DEM、误差影像和正射影像，保存投影及高程基准。",
+      "与独立参考地形或控制点比较后，再制作保留物理尺度的仿真场景资产。"
+    ],
+    "selectionQuestions": [
+      "影像是否有支持的相机模型和足够立体重叠？",
+      "需要的是科学地形还是仅视觉效果，误差预算如何定义？",
+      "能否取得独立高程参考，且接受相应平台、存储和计算成本？"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "openaerostruct",
+    "title": "OpenAeroStruct",
+    "category": "设计与优化",
+    "kind": "开源项目",
+    "summary": "基于涡格法与梁结构的机翼气动弹性分析和多学科优化工具。",
+    "details": "OpenAeroStruct 基于 OpenMDAO，将涡格法气动模型与每节点六自由度的空间梁结构耦合，面向升力面气动结构分析和优化。输入机翼网格、扭转、结构与材料参数、工况和设计约束，输出载荷、形变、应力相关约束及优化设计。官方有气动、结构、耦合和多工况教程，适合建立从低阶模型到更高保真校核的研究流程。这里的六自由度描述结构节点，不是完整飞行器的六自由度飞行动力学。涡格及简化阻力/结构模型不能替代强分离、激波细节或局部接头分析；优化器降低目标值时，应同步检查模型适用域、网格敏感性、导数和独立工况，避免只得到对简化模型有效的极端形状。",
+    "tags": [
+      "气动弹性",
+      "MDO",
+      "机翼设计"
+    ],
+    "language": "Python · OpenMDAO",
+    "license": "Apache-2.0",
+    "url": "https://github.com/mdolab/OpenAeroStruct",
+    "docsUrl": "https://mdolab-openaerostruct.readthedocs-hosted.com/en/latest/",
+    "sourceTitle": "University of Michigan MDO Lab · OpenAeroStruct Documentation",
+    "workflow": [
+      "气动分析",
+      "结构与振动",
+      "多学科优化",
+      "方案论证"
+    ],
+    "inputs": "升力面网格、扭转与截面、材料参数、流场工况、设计变量和约束。",
+    "outputs": "气动力与阻力估计、梁形变、结构约束响应、优化历史及灵敏度。",
+    "limitations": "低阶升力面及梁模型不覆盖所有流动或结构细节；节点六自由度不等于整机 6DOF 模型。",
+    "alternatives": [
+      "openmdao",
+      "openvsp",
+      "su2"
+    ],
+    "alternativesNote": "OpenMDAO 是优化框架，OpenVSP 提供几何与分析工作流，SU2 可用于更高保真气动校核；能力范围并不等价。",
+    "usageEvidence": [
+      {
+        "organization": "University of Michigan MDO Lab",
+        "context": "开发团队文档说明方法、算例和论文；不作为商业航天公司采购或型号采用证明。",
+        "sourceUrl": "https://mdolab-openaerostruct.readthedocs-hosted.com/en/latest/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "additionalSources": [
+      {
+        "title": "OpenAeroStruct Quick Example",
+        "url": "https://mdolab-openaerostruct.readthedocs-hosted.com/en/latest/quick_example.html"
+      },
+      {
+        "title": "OpenAeroStruct Apache-2.0 许可",
+        "url": "https://github.com/mdolab/OpenAeroStruct/blob/main/LICENSE.md"
+      }
+    ],
+    "starterWorkflow": [
+      "先复现官方气动 Quick Example，检查参考面积、工况单位和 CL / CD 的定义。",
+      "固定几何进行网格与导数检查，再开放少量扭转设计变量。",
+      "加入梁或翼盒模型，检查耦合收敛、材料输入和结构约束。",
+      "用多工况约束筛除只适合单点的设计，并将候选交给独立气动/结构方法校核。"
+    ],
+    "selectionQuestions": [
+      "研究对象能否合理表示为升力面与梁结构？",
+      "当前问题需要低成本趋势分析，还是已要求局部高保真结果？",
+      "有无独立模型检查气动、结构及优化后工况？"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+  },
+  {
+    "id": "yamcs",
+    "title": "Yamcs Mission Control",
+    "category": "轨道与任务",
+    "kind": "开源框架",
+    "accessModel": "open",
+    "language": "Java / Web / REST",
+    "license": "AGPL-3.0；另提供商业许可，依所选版本与条款",
+    "url": "https://github.com/yamcs/yamcs",
+    "docsUrl": "https://docs.yamcs.org/yamcs-server-manual/",
+    "sourceTitle": "Yamcs 官方仓库与服务器手册",
+    "tags": [
+      "地面测控",
+      "XTCE",
+      "遥测归档"
+    ],
+    "workflow": [
+      "任务运行",
+      "软件集成",
+      "验证与数据"
+    ],
+    "summary": "任务控制后端框架：连接遥测、任务数据库、参数处理、归档、报警与指令历史。",
+    "details": "Yamcs 以可配置的数据链路、任务数据库与处理器组织地面数据流。通用归档保存原始遥测包、参数、事件、报警及指令历史；研究时应同时核对产生时刻与接收时刻。它可扩展自定义协议和处理逻辑，但任务数据库、定标、链路配置及指令确认规则仍由使用者建立。",
+    "inputs": "原始遥测包、任务数据库 / XTCE、定标与报警规则、数据链路配置。",
+    "outputs": "带时间语义的参数、原始包归档、事件、报警及指令历史，可通过 API 访问。",
+    "limitations": "框架能力不等于任务适航或运行批准；需验证协议适配、时间同步、权限、冗余与恢复。AGPL 与商业许可是不同使用路径。",
+    "usageEvidence": [
+      {
+        "organization": "Space Applications Services / Yamcs",
+        "context": "官方服务器手册列出原始包、参数、事件、报警与指令历史的归档结构；仅据此说明功能，不推断某一客户的实际部署。",
+        "sourceUrl": "https://docs.yamcs.org/yamcs-server-manual/data-management/archive/",
+        "evidenceType": "项目文档"
+      }
+    ],
+    "alternatives": [
+      "openc3-cosmos"
+    ],
+    "starterWorkflow": [
+      "固定版本并运行官方模拟示例，保留配置和样本包。",
+      "选一个参数，核对原始位字段、定标、单位与时间戳。",
+      "以同一字典回放原始包，记录与实时参数的差异。"
+    ],
+    "selectionQuestions": [
+      "现有遥测协议能否映射到任务数据库？",
+      "产生时刻、接收时刻与重放时钟如何区分？",
+      "需要开源许可还是商业支持路径？"
+    ],
+    "verifiedOn": "2026-10-26",
+    "starterWorkflowStatus": "本站研究建议；未在本站执行外部工具"
+  },
+  {
+    "id": "openmct",
+    "title": "NASA Open MCT",
+    "category": "轨道与任务",
+    "kind": "开源框架",
+    "accessModel": "open",
+    "language": "JavaScript / Web",
+    "license": "Apache-2.0",
+    "url": "https://github.com/nasa/openmct",
+    "docsUrl": "https://nasa.github.io/openmct/documentation/",
+    "sourceTitle": "NASA Open MCT 官方站点与代码许可",
+    "tags": [
+      "任务可视化",
+      "遥测",
+      "仪表盘"
+    ],
+    "workflow": [
+      "任务运行",
+      "软件集成",
+      "验证与数据"
+    ],
+    "summary": "浏览器端任务可视化框架，展示实时及历史遥测、图像和时间线。",
+    "details": "Open MCT 提供对象、遥测与可视化扩展接口，由使用者连接数据源。官方说明其衍生软件用于 JPL 多项任务的数据展示，也支持 Ames 的月球车任务概念开发；该证据不表示所有 NASA 任务都采用它。历史查询、实时订阅与时间域需要通过适配层定义，框架本身不规定所有传输格式。",
+    "inputs": "对象 / 参数元数据、历史查询与实时订阅适配器、时间域定义。",
+    "outputs": "可组合的遥测曲线、表格、图像与时间线视图。",
+    "limitations": "主要定位为可视化框架，不能替代完整遥控后端、可靠归档、任务认证或飞控软件；数据有效性与缺测展示需自行设计。",
+    "usageEvidence": [
+      {
+        "organization": "NASA JPL / Ames",
+        "context": "官方主页说明基于 Open MCT 的软件用于 JPL 多任务数据可视化和 Ames 月球车任务概念开发；未据此声称特定在轨系统版本。",
+        "sourceUrl": "https://nasa.github.io/openmct/",
+        "evidenceType": "官方案例"
+      },
+      {
+        "organization": "NASA Open MCT",
+        "context": "仓库许可标明 Apache License 2.0。",
+        "sourceUrl": "https://github.com/nasa/openmct/blob/master/LICENSE.md",
+        "evidenceType": "项目文档"
+      }
+    ],
+    "alternatives": [
+      "yamcs",
+      "openc3-cosmos"
+    ],
+    "starterWorkflow": [
+      "固定仓库版本，先确认官方示例能显示历史数据。",
+      "为一个参数实现元数据、历史查询与实时订阅，明确时间域。",
+      "注入断流和旧数据，检查界面是否正确表达有效性。"
+    ],
+    "selectionQuestions": [
+      "需要数据展示框架，还是完整遥控系统？",
+      "历史数据和实时数据的字段与时间域是否一致？"
+    ],
+    "verifiedOn": "2026-10-26",
+    "starterWorkflowStatus": "本站研究建议；未在本站执行外部工具"
+  },
+  {
+    "id": "openc3-cosmos",
+    "title": "OpenC3 COSMOS",
+    "category": "轨道与任务",
+    "kind": "源码可见软件",
+    "accessModel": "source",
+    "language": "Web / Ruby / Python",
+    "license": "OpenC3 Builder’s License V2（本次核查主分支）；含用途限制，历史版本须单独核查",
+    "url": "https://github.com/OpenC3/cosmos",
+    "docsUrl": "https://docs.openc3.com/",
+    "sourceTitle": "OpenC3 官方文档及主分支 LICENSE.md",
+    "tags": [
+      "遥测",
+      "设备联试",
+      "命令与回放"
+    ],
+    "workflow": [
+      "软件集成",
+      "任务运行",
+      "验证与数据"
+    ],
+    "summary": "面向设备与系统测试的命令、遥测、脚本、日志和回放平台；源码可见不等于无使用限制。",
+    "details": "COSMOS 围绕目标、接口和遥测定义组织设备通信与测试。研究者可以记录原始遥测、查看工程参数并编写测试流程，但需要为具体协议建立配置。此次核查主分支许可证为 Builder’s License V2，含托管服务、商业分发修改及竞争用途等限制；不可根据旧版 AGPL 信息给当前版本自动贴上开源标签。",
+    "inputs": "目标 / 接口插件、命令与遥测定义、设备连接和测试脚本。",
+    "outputs": "参数视图、原始日志、回放记录、测试执行和限制检查结果。",
+    "limitations": "需区分 Core、Enterprise 和所选版本许可；脚本能够执行不等于测试需求被充分覆盖。本站未接入设备或执行任何遥控。",
+    "usageEvidence": [
+      {
+        "organization": "OpenC3",
+        "context": "官方产品资料说明设备命令与遥测、日志、脚本和回放能力；仅为功能证据。",
+        "sourceUrl": "https://openc3.com/",
+        "evidenceType": "项目文档"
+      },
+      {
+        "organization": "OpenC3",
+        "context": "主分支 LICENSE.md 标题为 OpenC3 Builder’s License V2，并列出使用限制。",
+        "sourceUrl": "https://github.com/OpenC3/cosmos/blob/main/LICENSE.md",
+        "evidenceType": "项目文档"
+      }
+    ],
+    "alternatives": [
+      "yamcs"
+    ],
+    "starterWorkflow": [
+      "固定确切版本，阅读随版本发布的 LICENSE 和部署说明。",
+      "用模拟设备验证一个命令与一个遥测包的编解码和时间戳。",
+      "保存原始日志并做回放，检查脚本结果、报警和配置版本。"
+    ],
+    "selectionQuestions": [
+      "所需功能在所选发行版中是否提供？",
+      "所选版本条款是否适用于计划的分发和部署方式？"
+    ],
+    "verifiedOn": "2026-10-26",
+    "starterWorkflowStatus": "本站研究建议；未在本站执行外部工具"
+  },
+  {
+    "id": "nasa-nos3",
+    "title": "NASA NOS3",
+    "category": "飞行动力学",
+    "kind": "开源仿真平台",
+    "accessModel": "open",
+    "language": "C / C++ / Python / Linux 环境",
+    "license": "NASA Open Source Agreement 1.3；所集成组件分别遵守其许可",
+    "url": "https://github.com/nasa/nos3",
+    "docsUrl": "https://nos3.readthedocs.io/",
+    "sourceTitle": "NASA NOS3 官方仓库与软件目录",
+    "tags": [
+      "软件联试",
+      "硬件模型",
+      "任务训练"
+    ],
+    "workflow": [
+      "软件集成",
+      "控制与任务",
+      "验证与数据"
+    ],
+    "summary": "NASA Operational Simulator for Space Systems：将飞行软件、硬件软件模型、环境仿真与地面界面组合用于集成研究。",
+    "details": "NOS3 由 NASA Katherine Johnson IV&V 团队开发，提供开发环境、多目标构建、操作者界面、动力学 / 环境仿真和航天器硬件的软件模型。NASA 软件目录将其早期工作与 STF-1 联系起来；历史架构不应被当成当前所有配置的承诺。它适合在硬件到位前研究接口与任务流程，模型保真度需要独立建立。",
+    "inputs": "飞行软件、任务配置、设备模型、环境 / 动力学设置及测试场景。",
+    "outputs": "软件在环运行记录、遥测、设备交互、集成与故障测试结果。",
+    "limitations": "不能替代真实硬件的电气特性、射频效应与精确时序验证；版本和子模块必须一起锁定。许可证并非 Apache 或 MIT。",
+    "usageEvidence": [
+      {
+        "organization": "NASA IV&V",
+        "context": "官方仓库明确列出软件开发、I&T、任务训练和 V&V 用途及其软件硬件模型；主许可为 NOSA 1.3。",
+        "sourceUrl": "https://github.com/nasa/nos3",
+        "evidenceType": "项目文档"
+      },
+      {
+        "organization": "NASA 软件目录",
+        "context": "GSC-17737-1 条目提供 SmallSat 版本背景及 STF-1 示例语境，属于历史用途证据。",
+        "sourceUrl": "https://software.nasa.gov/software/GSC-17737-1",
+        "evidenceType": "官方案例"
+      }
+    ],
+    "alternatives": [
+      "trick",
+      "nasa-42"
+    ],
+    "starterWorkflow": [
+      "固定发行标签和子模块版本，按对应文档准备环境。",
+      "运行基线任务并保存遥测、启动配置与日志。",
+      "替换一个设备模型或注入一种故障，与基线比较。"
+    ],
+    "selectionQuestions": [
+      "要验证软件接口、任务逻辑还是物理精度？",
+      "哪些硬件行为有独立的校验数据？"
+    ],
+    "verifiedOn": "2026-10-26",
+    "starterWorkflowStatus": "本站研究建议；未在本站执行外部工具"
+  },
+  {
+    "id": "ccsds-standards",
+    "title": "CCSDS · 空间数据系统标准",
+    "category": "数据与环境",
+    "kind": "公开标准",
+    "accessModel": "standard",
+    "language": "规范 / KVN / XML",
+    "license": "公开可读的 CCSDS 文档；复制与使用遵守文档版权说明",
+    "url": "https://ccsds.org/",
+    "docsUrl": "https://ccsds.org/Pubs/502x0b3e1.pdf",
+    "sourceTitle": "CCSDS Orbit Data Messages 502.0-B-3（2023，含勘误）",
+    "tags": [
+      "数据互操作",
+      "OEM",
+      "OMM"
+    ],
+    "workflow": [
+      "系统工程",
+      "软件集成",
+      "验证与数据"
+    ],
+    "summary": "以明确格式和元数据交换航天数据。轨道数据消息规定 OPM、OMM、OEM 与 OCM 的结构和语义。",
+    "details": "本条以 2023 年 4 月的 502.0-B-3 及所链接勘误版本为阅读基线：OPM 描述轨道参数，OMM 表达平均根数，OEM 表达轨道星历，OCM 提供综合轨道信息。格式中的中心、参考系、时标与协方差语义决定数据能否正确使用。需要按项目选定具体标准、版本及适用配置，不能只说“支持 CCSDS”。",
+    "inputs": "状态 / 根数 / 星历、中心与参考系、时间系统、协方差及相关元数据。",
+    "outputs": "具有指定语义与结构的交换消息，以及可验证的接口契约。",
+    "limitations": "格式符合性不是物理准确度或任务认证；还需检查单位、来源、适用时段和双方解释的一致性。这里选定阅读版本，不宣称它永远是最新版本。",
+    "usageEvidence": [
+      {
+        "organization": "CCSDS",
+        "context": "官方 502.0-B-3 文件定义四种轨道数据消息及语法、元数据和交换要求。",
+        "sourceUrl": "https://ccsds.org/Pubs/502x0b3e1.pdf",
+        "evidenceType": "公开标准"
+      }
+    ],
+    "alternatives": [
+      "ecss"
+    ],
+    "starterWorkflow": [
+      "固定标准编号、版本、勘误和项目采用的字段范围。",
+      "用最小 OEM 样例做写出 / 读回，并核对中心、时标和参考系。",
+      "测试缺失字段、错误单位和覆盖范围外查询的失败行为。"
+    ],
+    "selectionQuestions": [
+      "需要交换瞬时状态、平均根数还是时间序列？",
+      "双方实现对应哪个版本、哪些可选字段？"
+    ],
+    "verifiedOn": "2026-10-26",
+    "starterWorkflowStatus": "本站研究建议；未在本站执行外部工具"
+  },
+  {
+    "id": "satnogs",
+    "title": "SatNOGS Network / DB",
+    "category": "数据与环境",
+    "kind": "公开数据",
+    "accessModel": "data",
+    "language": "Web / REST / Python 生态",
+    "license": "观测与 API 数据：CC BY-SA；各软件和硬件仓库许可另查",
+    "url": "https://network.satnogs.org/",
+    "docsUrl": "https://docs.satnogs.org/projects/satnogs-db/en/latest/api.html",
+    "sourceTitle": "Libre Space Foundation / SatNOGS Network 与 DB 文档",
+    "tags": [
+      "地面站",
+      "公开遥测",
+      "业余卫星"
+    ],
+    "workflow": [
+      "任务运行",
+      "数据与环境",
+      "验证与数据"
+    ],
+    "summary": "分布式地面站观测网络与卫星 / 发射机数据库，适合研究接收记录、过站与遥测数据链。",
+    "details": "Network 提供公开观测结果，DB API 提供卫星与发射机信息；两者用途应分开理解。一次观测可能包含瀑布图、音频或译码结果，具体可用产品取决于接收与解码情况。研究需保留观测编号、时间、地面站和信号 / 译码质量，不应从计划观测数量直接推断有效遥测覆盖率。",
+    "inputs": "卫星 / 发射机标识、观测时间、地面站、频段和观测记录。",
+    "outputs": "公开观测产品、卫星 / 发射机元数据；可用性以各次记录为准。",
+    "limitations": "接收质量与覆盖由站点、设备和过站条件决定；公开观测不授予向卫星发射指令的权利。数据引用与再分发需保留署名和许可。",
+    "usageEvidence": [
+      {
+        "organization": "Libre Space Foundation / SatNOGS",
+        "context": "Network About 页面说明全球地面站网络、公开观测以及 CC BY-SA 数据许可。",
+        "sourceUrl": "https://network.satnogs.org/about/",
+        "evidenceType": "项目文档"
+      },
+      {
+        "organization": "SatNOGS DB",
+        "context": "API 文档说明卫星、发射机元数据和数据许可。",
+        "sourceUrl": "https://docs.satnogs.org/projects/satnogs-db/en/latest/api.html",
+        "evidenceType": "项目文档"
+      }
+    ],
+    "alternatives": [
+      "celestrak",
+      "space-track"
+    ],
+    "starterWorkflow": [
+      "选一个已完成观测，记录观测 ID、时间和地面站。",
+      "区分原始接收产品与已译码参数，核对译码器和数据质量。",
+      "用同一卫星的多次观测比较覆盖，标记无有效信号的样本。"
+    ],
+    "selectionQuestions": [
+      "研究需要轨道根数、射频观测还是工程参数？",
+      "所选卫星是否具有公开、适用的解码说明？"
+    ],
+    "verifiedOn": "2026-10-26",
+    "starterWorkflowStatus": "本站研究建议；未在本站执行外部工具"
+  },
+  {
+    "id": "pds4-tools",
+    "title": "PDS4 Tools · Python",
+    "category": "数据与环境",
+    "kind": "开源数据工具",
+    "accessModel": "open",
+    "language": "Python / NumPy",
+    "license": "BSD 风格三条款；附带组件条款详见 LICENSES",
+    "url": "https://github.com/Small-Bodies-Node/pds4_tools",
+    "docsUrl": "https://github.com/Small-Bodies-Node/pds4_tools/blob/master/README.rst",
+    "sourceTitle": "PDS Small Bodies Node / pds4_tools",
+    "tags": [
+      "PDS4",
+      "科学影像",
+      "标签与数组"
+    ],
+    "workflow": [
+      "数据与环境",
+      "验证与数据"
+    ],
+    "summary": "PDS Small Bodies Node 维护的 Python 工具，读取 PDS4 标签、数组和表格并提供显示功能。",
+    "details": "项目提供读取 API 和跨平台图形查看器，支持常见 PDS4 数据产品及元数据。正确的起点是标签、处理级别和产品文档，而不是先将数组拉伸成图片。阅读器可以帮助访问结构与数据，但任务定标、仪器几何和科学解释仍须遵照相应档案文档；PDS3 不能一概按 PDS4 处理。",
+    "inputs": "PDS4 XML 标签及其关联的数据文件。",
+    "outputs": "Python 中的数据结构、数组与标签元数据，以及交互式产品浏览。",
+    "limitations": "不是通用科学定标器或所有 PDS 格式转换器；需检查缩放、偏移、特殊常数、单位、质量标记与依赖版本。",
+    "usageEvidence": [
+      {
+        "organization": "PDS Small Bodies Node",
+        "context": "官方仓库将其定义为读取 PDS4 数据和元数据的 Python 包，并提供 API 与跨平台查看器。",
+        "sourceUrl": "https://github.com/Small-Bodies-Node/pds4_tools",
+        "evidenceType": "项目文档"
+      },
+      {
+        "organization": "PDS Small Bodies Node",
+        "context": "LICENSES 文件列出项目与附带组件的许可，使用时需逐项保留。",
+        "sourceUrl": "https://github.com/Small-Bodies-Node/pds4_tools/blob/master/LICENSES",
+        "evidenceType": "项目文档"
+      }
+    ],
+    "alternatives": [
+      "nasa-pds",
+      "ames-stereo-pipeline"
+    ],
+    "starterWorkflow": [
+      "选一个带标签、说明和二进制文件的 PDS4 样例。",
+      "核对数组形状、类型、缩放、特殊常数及单位。",
+      "单独保存科学数组、有效值掩膜和显示图的处理参数。"
+    ],
+    "selectionQuestions": [
+      "目标产品采用 PDS3 还是 PDS4？",
+      "数据已定标到什么级别，是否需要任务专用处理？"
+    ],
+    "verifiedOn": "2026-10-26",
+    "starterWorkflowStatus": "本站研究建议；未在本站执行外部工具"
+  },
+  {
+    "id": "spdf-cdaweb",
+    "title": "NASA SPDF / CDAWeb",
+    "category": "数据与环境",
+    "kind": "公开数据",
+    "accessModel": "data",
+    "language": "Web / REST / Python cdasws / CDF",
+    "license": "公开科学数据；遵循数据集引用、致谢与任务规则",
+    "url": "https://cdaweb.gsfc.nasa.gov/",
+    "docsUrl": "https://cdaweb.gsfc.nasa.gov/WebServices/REST/",
+    "sourceTitle": "NASA GSFC SPDF / CDAS 官方服务文档",
+    "tags": [
+      "日球层",
+      "空间天气",
+      "CDF"
+    ],
+    "workflow": [
+      "数据与环境",
+      "验证与数据"
+    ],
+    "summary": "多任务、多仪器空间物理数据的查询、可视化与获取服务，可用于环境研究和观测对照。",
+    "details": "CDAS REST 服务可按数据集、变量和时间范围访问数据；官方提供 cdasws 等客户端示例。CDF 是带元数据的数据格式，不能仅凭变量名判断坐标、单位或采样含义。官方档案说明部分文件应结合 master CDF 获取更完整的元数据。当前开发应参考 REST；该服务的 SOAP 接口已于 2024 年 3 月移除。",
+    "inputs": "数据集 ID、变量名、时间范围、分辨率与质量筛选策略。",
+    "outputs": "科学时间序列、元数据、CDF 文件及图表 / 子集产品。",
+    "limitations": "不同仪器的时刻、积分时间、坐标与质量标记不同；重采样和时间对齐需记录。不能直接把上游观测值当成航天器所在位置的局部环境。",
+    "usageEvidence": [
+      {
+        "organization": "NASA GSFC SPDF",
+        "context": "官方 REST 文档说明多任务数据访问、客户端及 SOAP 移除情况。",
+        "sourceUrl": "https://cdaweb.gsfc.nasa.gov/WebServices/REST/",
+        "evidenceType": "项目文档"
+      },
+      {
+        "organization": "NASA CDAWeb",
+        "context": "档案说明 master CDF 可补充和覆盖数据文件中的元数据描述。",
+        "sourceUrl": "https://cdaweb.gsfc.nasa.gov/cdaweb_anonymousftp.htm",
+        "evidenceType": "项目文档"
+      }
+    ],
+    "alternatives": [
+      "earthdata",
+      "nasa-pds"
+    ],
+    "starterWorkflow": [
+      "查明数据集 ID、仪器、变量、单位和有效时间范围。",
+      "下载一个短时段，保留数据文件和 master CDF / 元数据版本。",
+      "处理填充值与质量标记，再比较不同仪器的时间基准和采样。"
+    ],
+    "selectionQuestions": [
+      "需要原始分辨率数据还是服务重采样结果？",
+      "数据所在位置和测量坐标是否适合当前模型？"
+    ],
+    "verifiedOn": "2026-10-26",
+    "starterWorkflowStatus": "本站研究建议；未在本站执行外部工具"
+  },
+  {
+    "id": "fmpy",
+    "title": "FMPy",
+    "category": "多物理场",
+    "kind": "开源项目",
+    "summary": "Python FMU 检查与仿真工具，提供模型交换、协同仿真、命令行和图形界面。",
+    "details": "FMPy 可读取 FMU 的模型描述、变量和平台内容，并运行模型交换或协同仿真，适合跨工具模型交付检查与小型回归实验。官方仓库列出 FMI 1.0、2.0、3.0，而旧文档首页仍列 1.0、2.0；实际支持须按安装版本、FMU 类型和可选能力逐项验证。FMI 版本号本身不保证事件、状态回滚或中间更新全部可用。Model Exchange 的求解器与 Co-Simulation 的内部求解责任不同。建议先运行发行包示例，再对通信步长、输入插值及单位作独立检查。此目录未运行 FMU 实例。",
+    "tags": [
+      "FMI",
+      "FMU",
+      "协同仿真",
+      "接口检查"
+    ],
+    "language": "Python · CLI · GUI",
+    "license": "主体 BSD-2-Clause；图标、FMI 文件及第三方依赖分别适用其条款，以安装发行包为准。",
+    "accessModel": "open",
+    "url": "https://github.com/CATIA-Systems/FMPy",
+    "docsUrl": "https://fmpy.readthedocs.io/en/latest/",
+    "sourceTitle": "CATIA-Systems · FMPy README 与 LICENSE.txt",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "FMU 交付检查",
+      "跨工具仿真",
+      "接口回归"
+    ],
+    "inputs": "FMU 文件、平台二进制或可编译源码、起止时间、参数和带时间戳的输入序列；需要所用模式与可选能力相容。",
+    "outputs": "模型描述与变量信息、状态及输出时间序列、日志；结果字段与步进能力取决于 FMU 和导入器实现。",
+    "limitations": "仓库和文档首页对 FMI 支持范围存在版本差异，必须固定发行版。FMU 可包含本机代码，应按代码来源管理；未实测跨厂商兼容或硬实时执行。",
+    "alternatives": [
+      "openmodelica",
+      "fmi",
+      "ecosimpro"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "Dassault Systèmes / CATIA-Systems",
+        "context": "官方仓库提供 FMU 仿真、检查、图形界面及耦合示例；这是开发方功能与示例证据，不是具体航天任务采用证明。",
+        "sourceUrl": "https://github.com/CATIA-Systems/FMPy",
+        "evidenceType": "作者仓库与示例（非任务采用证明）"
+      }
+    ],
+    "starterWorkflow": [
+      "固定 Python 环境和 FMPy 发行版本，核对该版本 LICENSE.txt 及 FMI 能力说明。",
+      "先对官方示例 FMU 执行信息检查，保存 modelDescription.xml 中的单位、类型与能力标志。",
+      "运行不带自定义输入的基线，随后加入一条有明确单位和采样时间的输入序列。",
+      "分别扫描通信间隔与积分容差，对比独立参考及事件时刻，归档 FMU 校验和与日志。"
+    ],
+    "selectionQuestions": [
+      "需要检查现成 FMU，还是需要自己创建可导出的方程模型？",
+      "目标 FMU 的操作系统、位数和 FMI 可选能力是否均被实际安装版本支持？",
+      "是否需要复杂主算法或实时保证，而不是单个 FMU 的离线运行？"
+    ],
+    "starterWorkflowStatus": "基于官方文档设计的研究步骤；本站未安装或实测该工具。"
+  },
+  {
+    "id": "casadi",
+    "title": "CasADi",
+    "category": "设计与优化",
+    "kind": "开源项目",
+    "summary": "符号表达、自动微分和优化接口库，适合构建非线性最优控制与参数估计问题。",
+    "details": "CasADi 将用户以其表达式体系定义的方程组成计算图，提供导数、稀疏结构、积分器和非线性规划接口，也可生成部分函数的 C 代码。它是构造优化方法的工具箱，不会自动把任意现有 Python 或 C++ 仿真程序转换为可微模型。轨迹优化仍需选择直接打靶、配点等离散方式，定义缺陷、边界和路径约束，并独立检查尺度和可行性。对于已有 OpenMDAO 模型，Dymos 可能更适合统一设计和轨迹；需要快速重复求解的控制问题可再考虑 acados。外部求解器及代码部署依赖应单独核查许可。",
+    "tags": [
+      "自动微分",
+      "最优控制",
+      "非线性规划",
+      "稀疏导数"
+    ],
+    "language": "C++ · Python · MATLAB / Octave",
+    "license": "LGPL；外部优化器、线性求解器和链接依赖另行核查。",
+    "accessModel": "open",
+    "url": "https://web.casadi.org/",
+    "docsUrl": "https://web.casadi.org/docs/",
+    "sourceTitle": "CasADi · 官方用户文档",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "可微方程建模",
+      "轨迹优化",
+      "参数辨识"
+    ],
+    "inputs": "CasADi 表达式定义的状态方程、代价与约束、数值参数、变量尺度和初始猜测。",
+    "outputs": "函数与稀疏导数、积分结果、优化解及状态信息；部分函数可生成 C 代码，支持范围依赖函数和插件。",
+    "limitations": "不为任意黑箱程序自动补充导数，也不自动保证全局最优。接触、开关、查表和约束激活造成的不光滑仍需建模处理；固定库与插件版本。",
+    "alternatives": [
+      "openmdao",
+      "dymos",
+      "acados"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "CasADi 作者团队",
+        "context": "官方文档展示最优控制的单次打靶、多重打靶和直接配点实现；证明工具的建模能力，不构成某一航天公司已采用的证据。",
+        "sourceUrl": "https://web.casadi.org/docs/",
+        "evidenceType": "作者文档与算法示例"
+      }
+    ],
+    "starterWorkflow": [
+      "安装并固定 CasADi 与优化器版本，运行官方符号函数及简单非线性规划示例。",
+      "实现 ẋ=v、v̇=u 的一维模型，检查函数值、单位和自动微分结果。",
+      "采用多重打靶加入起终约束和控制边界，对变量与约束分别缩放。",
+      "独立积分所得控制，比较终端误差、段内约束及网格加密结果。"
+    ],
+    "selectionQuestions": [
+      "能否把模型改写为 CasADi 支持的表达式，而不是只保留不可微黑箱？",
+      "需要通用优化构件，还是已经包含任务阶段与连接逻辑的轨迹框架？",
+      "部署目标允许哪些求解器依赖及动态链接方式？"
+    ],
+    "starterWorkflowStatus": "基于官方文档设计的研究步骤；本站未安装或实测该工具。"
+  },
+  {
+    "id": "acados",
+    "title": "acados",
+    "category": "设计与优化",
+    "kind": "开源项目",
+    "summary": "面向重复最优控制求解的数值库，提供多重打靶、结构化 SQP 与代码生成接口。",
+    "details": "acados 使用最优控制问题的阶段结构，提供非线性模型预测控制和移动窗估计等方法所需的求解组件。高层接口可借助 CasADi 描述模型，生成求解器 C 代码，并使用结构化线性代数及二次规划组件。它适合需要频繁求解的受约束动态问题，但较低平均耗时不能直接证明目标硬件满足实时截止期限。官方仓库列有无人机和可变形机翼研究示例，这说明公开研究应用，不等于飞行安全认证。建议记录离散化、迭代策略、退出状态、约束残差和延迟分布，再决定是否进入硬件测试。",
+    "tags": [
+      "NMPC",
+      "MHE",
+      "SQP",
+      "嵌入式优化"
+    ],
+    "language": "C · Python · MATLAB / Octave",
+    "license": "BSD-2-Clause；随构建引入的 CasADi 及其他依赖适用各自许可。",
+    "accessModel": "open",
+    "url": "https://github.com/acados/acados",
+    "docsUrl": "https://docs.acados.org/",
+    "sourceTitle": "acados · 官方仓库、文档与 LICENSE",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "控制预测模型",
+      "重复最优控制",
+      "生成 C 求解器"
+    ],
+    "inputs": "状态与控制方程、阶段代价、路径及终端约束、预测时域、初始状态、参考轨迹与数值求解设置。",
+    "outputs": "控制与预测状态序列、求解状态和性能统计、按接口生成的 C 求解器与模型函数。",
+    "limitations": "需按目标问题验证可行性、热启动和提前终止行为；代码生成不保证硬实时或合格飞行软件。所用模块和依赖随提交及构建选项变化。",
+    "alternatives": [
+      "casadi",
+      "dymos",
+      "matlab-aerospace-blockset"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "acados 作者与贡献者",
+        "context": "官方仓库列出的应用包括无人机及可变形机翼的控制研究；仅据作者公开案例记录，未核实商业航天任务部署。",
+        "sourceUrl": "https://github.com/acados/acados",
+        "evidenceType": "作者列举的研究应用"
+      },
+      {
+        "organization": "acados 作者团队",
+        "context": "方法论文描述嵌入式最优控制的软件结构、数值方法和性能实验。",
+        "sourceUrl": "https://arxiv.org/abs/1910.13753",
+        "evidenceType": "作者方法论文"
+      }
+    ],
+    "starterWorkflow": [
+      "固定仓库提交、编译器和依赖，完成官方安装与最小控制示例。",
+      "建立带状态和输入约束的一维动态模型，先比较离线高精度参考。",
+      "使用多组初始状态和约束边界测试热启动、失败状态和有限迭代结果。",
+      "在目标硬件记录总闭环耗时、抖动及超时次数，验证安全降级策略后再扩展物理模型。"
+    ],
+    "selectionQuestions": [
+      "问题是否适合最优控制的阶段结构，而不是通用大规模静态设计优化？",
+      "需要多少预测步、哪些状态和约束，能否在目标硬件期限内求解？",
+      "求解失败或尚未满足约束时，控制系统如何保持可定义的行为？"
+    ],
+    "starterWorkflowStatus": "基于官方文档设计的研究步骤；本站未安装或实测该工具。"
+  },
+  {
+    "id": "pangu",
+    "title": "PANGU",
+    "category": "数据与环境",
+    "kind": "工程软件",
+    "summary": "行星表面与接近场景的传感器图像仿真，支持视觉、热红外、激光雷达和雷达研究。",
+    "details": "PANGU 面向行星着陆、表面移动和交会等场景，可使用真实或合成表面建立传感器仿真，并通过场景状态、光照及几何输入生成观测。官方入口说明可使用 SPICE 内核控制相机、太阳与天体状态，适合地形相对导航和图像算法的受控实验。图像外观逼真并不等于已准确复现某一真实相机，需另行确定反射、曝光、噪声、分辨率和地形数据。ESA 项目经批准可获相应许可，其他项目联系 STAR-Dundee 购买；这不是公开开源下载。网页展示的功能和版本需与获许可的软件包核对。",
+    "tags": [
+      "地形导航",
+      "传感器图像",
+      "行星表面",
+      "SPICE"
+    ],
+    "language": "工程应用 · 场景与接口配置",
+    "license": "许可软件；ESA 项目须申请并获批，非 ESA 项目联系 STAR-Dundee 购买，价格与条款询价。",
+    "accessModel": "commercial",
+    "url": "https://pangu.software/",
+    "docsUrl": "https://pangu.software/wiki/",
+    "sourceTitle": "PANGU · ESA 用户门户",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "表面与场景准备",
+      "传感器成像仿真",
+      "导航算法对照"
+    ],
+    "inputs": "表面模型、相机及传感器参数、轨迹与姿态、太阳和天体几何；可用 SPICE 辅助定义场景状态。",
+    "outputs": "所配置传感器的合成观测与场景参考数据；具体格式、模式及接口以许可版本文档为准。",
+    "limitations": "合成影像需要独立传感器与材质校准；功能、实时性能及输出格式须按版本和硬件确认。官方门户未给统一公开价格，未在本站实测。",
+    "alternatives": [
+      "ames-stereo-pipeline",
+      "usgs-isis",
+      "spice"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "ESA / PANGU 开发与维护方",
+        "context": "官方门户说明面向 ESA 项目的许可途径及着陆、表面移动、交会场景功能；该页面不足以逐一证明具体飞行任务采用。",
+        "sourceUrl": "https://pangu.software/",
+        "evidenceType": "官方项目入口与能力说明"
+      }
+    ],
+    "starterWorkflow": [
+      "核对项目资格与许可，保存可用版本文档、示例场景和数据使用条款。",
+      "用已知地形和相机内外参渲染静止视图，检查尺度、光照方向与坐标约定。",
+      "导入短轨迹或 SPICE 状态，输出连续观测并记录每帧真值及时间戳。",
+      "扫描高度、太阳方位和地图偏差，评估导航误差与错误匹配接受率。"
+    ],
+    "selectionQuestions": [
+      "研究需要合成传感器观测，还是主要需要处理真实行星影像？",
+      "目标项目能否取得相应许可，所需传感器模式是否包含在版本中？",
+      "是否已有足够的地形、反射和相机参数验证仿真真实性？"
+    ],
+    "starterWorkflowStatus": "基于官方文档设计的研究步骤；本站未安装或实测该工具。"
+  },
+  {
+    "id": "usgs-isis",
+    "title": "USGS ISIS",
+    "category": "数据与环境",
+    "kind": "开源项目",
+    "summary": "行星任务影像处理工具，提供仪器数据导入、校准、相机几何与地图投影。",
+    "details": "ISIS 由 USGS Astrogeology 提供，支持多代 NASA 和国际行星任务影像的处理。其重点是仪器数据与科学几何的可追溯转换，不是通用图片美化，也不是星上实时导航软件。各仪器的导入、校准和相机处理流程不同，常需要单独配置辅助数据区及 SPICE 内核；原始产品版本、标签和处理历史应一起保存。官方仓库文档指向 Unix 与 macOS 环境，Windows 项目需另行安排受支持环境。用于三维地形时可与 Ames Stereo Pipeline 配合，不能把单幅投影影像当作带独立高程的三维表面。",
+    "tags": [
+      "行星影像",
+      "相机几何",
+      "地图投影",
+      "科学校准"
+    ],
+    "language": "C++ · 命令行 · 图形工具",
+    "license": "除另有注明外为美国公有领域，并以 CC0 1.0 作全球权利放弃；第三方依赖和数据各依原条款。",
+    "accessModel": "open",
+    "url": "https://github.com/DOI-USGS/ISIS3",
+    "docsUrl": "https://isis.astrogeology.usgs.gov/",
+    "sourceTitle": "USGS · ISIS 官方文档、README 与 LICENSE.md",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "任务影像导入",
+      "辐射与几何校准",
+      "制图与地形前处理"
+    ],
+    "inputs": "受支持仪器的归档影像及标签、相应校准和任务辅助数据、SPICE 内核、目标投影定义。",
+    "outputs": "ISIS cube、校准或地图投影影像、相机几何与处理日志；可进一步交给立体处理或导出工具。",
+    "limitations": "仪器支持和校准程序依版本而异；软件与任务数据区需同时固定。文档站与仓库所示版本未必同步，安装版本不能由首页标题推断。",
+    "alternatives": [
+      "ames-stereo-pipeline",
+      "nasa-pds",
+      "pds4-tools"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "USGS Astrogeology Science Center",
+        "context": "USGS 官方文档介绍面向 NASA 与国际行星任务影像的开源处理能力，包含多种历史和现役任务仪器。该证据说明地面数据处理用途。",
+        "sourceUrl": "https://isis.astrogeology.usgs.gov/",
+        "evidenceType": "维护机构功能与任务支持文档"
+      }
+    ],
+    "starterWorkflow": [
+      "在受支持环境安装固定版本，设置 ISIS 数据区，仅下载实验所需任务辅助数据。",
+      "选择一个官方教程支持的仪器产品，保存原始标签、产品 ID 和获取日期。",
+      "按该仪器流程完成导入、相应校准、相机几何及投影，记录每条命令和核文件。",
+      "检查单位、NoData、地图投影和控制点误差，保留原始与处理后产品的对照。"
+    ],
+    "selectionQuestions": [
+      "目标任务和仪器是否被所安装版本支持？",
+      "需要辐射校准、相机模型或地图投影中的哪些环节？",
+      "能否保存辅助数据和完整命令记录，使地图产品可重新生成？"
+    ],
+    "starterWorkflowStatus": "基于官方文档设计的研究步骤；本站未安装或实测该工具。"
+  },
+  {
+    "id": "geant4",
+    "title": "Geant4",
+    "category": "数据与环境",
+    "kind": "开源项目",
+    "summary": "粒子与物质相互作用的蒙特卡洛工具包，适合辐射输运、探测器及屏蔽模型研究。",
+    "details": "Geant4 提供几何、材料、粒子输运、物理过程与评分基础，用户需要组合应用程序、粒子源及合适的物理列表。它可以计算材料中的能量沉积和次级粒子分布，但不自动提供某条轨道的环境谱，也不直接预测未给器件响应的故障率。官方高级示例中的微剂量与辐射防护模型面向空间相关研究，可作为技术入口；示例几何和参数不应被当作具体航天器的合格设计。应固定 Geant4、物理数据集、编译器和随机配置，并分别评估样本统计、生产阈值、物理模型和环境输入的影响。",
+    "tags": [
+      "蒙特卡洛",
+      "粒子输运",
+      "辐射屏蔽",
+      "剂量评分"
+    ],
+    "language": "C++ · 宏命令",
+    "license": "Geant4 Software License；公开源码与使用条款，以所用发行包许可为准，不按 MIT 或 BSD 简化标注。",
+    "accessModel": "open",
+    "url": "https://geant4.web.cern.ch/",
+    "docsUrl": "https://geant4.web.cern.ch/docs/",
+    "sourceTitle": "Geant4 Collaboration · 文档、许可及空间微剂量示例",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "几何与材料定义",
+      "粒子输运",
+      "剂量及统计评估"
+    ],
+    "inputs": "几何、材料组成与密度、粒子种类、源能谱与方向、物理列表及数据集、生产阈值、随机种子和评分规则。",
+    "outputs": "粒子轨迹、透射和次级粒子谱、能量沉积及用户定义的剂量统计；剂量率需另行进行源归一化。",
+    "limitations": "通用工具包不等同于航天辐射保证流程；应检查物理模型有效能区与材料数据。生产阈值和追踪截断不同，统计误差不包含环境与模型偏差。",
+    "alternatives": [
+      "spenvis",
+      "spdf-cdaweb"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "Geant4 Collaboration",
+        "context": "官方高级示例 exp_microdosimetry（原 Radioprotection）介绍面向空间应用的简化微剂量探测器研究；这是公开示例依据，不是某商业飞行器的认证或采用证明。",
+        "sourceUrl": "https://www.geant4.org/docs/advanced_examples_doc/example_radioprotection",
+        "evidenceType": "官方空间应用研究示例"
+      }
+    ],
+    "starterWorkflow": [
+      "固定软件和物理数据版本，编译官方基础示例并保存运行宏与随机设置。",
+      "建立平面铝屏蔽和硅评分体，检查几何重叠、材料密度与评分体质量。",
+      "采用单能质子源，比较不同屏蔽厚度、样本量和独立种子的能量沉积。",
+      "明确每初级粒子归一化，再依据独立环境谱进行加权；扫描生产阈值并报告模型局限。"
+    ],
+    "selectionQuestions": [
+      "需要详细三维输运，还是环境平台的工程级屏蔽估计已足够？",
+      "目标量是吸收剂量、粒子谱还是器件事件率，是否已有对应响应数据？",
+      "物理列表和数据集是否覆盖所需粒子、能区与材料？"
+    ],
+    "starterWorkflowStatus": "基于官方文档设计的研究步骤；本站未安装或实测该工具。"
+  },
+  {
+    "id": "nasa-gfssp",
+    "title": "NASA GFSSP",
+    "category": "多物理场",
+    "kind": "工程软件",
+    "summary": "节点与支路的热流体网络求解器，用于管路、贮箱、阀门、增压和低温瞬态分析。",
+    "details": "GFSSP 将流体节点、支路和固体导热节点组成网络，求解质量、动量、能量与物性关系，可研究压力、温度、流量和共轭传热。NASA 官方资料列出航天飞机外贮箱预冷与加注、试验贮箱自增压、低温管线等应用，构成实际机构研究依据。工具获取受到资格限制：NASA 人员与现场承包商、其他美国政府机构和符合条件的政府合同机构有不同申请途径；美国高校教育版也有功能限制，不应标为公开可下载开源软件。公开网页与手册可先用于学习建模方法；具体使用资格、版本和物性库权利需由发行方确认。",
+    "tags": [
+      "流体网络",
+      "低温流体",
+      "增压系统",
+      "压力瞬态"
+    ],
+    "language": "工程 GUI · Fortran 扩展（依版本）",
+    "license": "NASA 按资格提供；部分符合条件用户免费，完整与教育版本申请及功能不同。非通用公开下载许可。",
+    "accessModel": "restricted",
+    "url": "https://www.nasa.gov/gfssp/",
+    "docsUrl": "https://www.nasa.gov/gfssp/",
+    "sourceTitle": "NASA MSFC · GFSSP 应用、手册与使用资格",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "热流体网络建模",
+      "稳态与瞬态求解",
+      "低温系统分析"
+    ],
+    "inputs": "节点容积、边界压力与温度、管路及阀门参数、流体物性、固体热容与导热关系、初值和事件。",
+    "outputs": "节点压力温度与组分、支路质量流率、固体温度和换热历程；取决于所选模块和部件关系。",
+    "limitations": "访问权限与物性库条款需单独确认，教育版不支持完整 Fortran 用户扩展。公开手册存在多个版本；网络模型对局部三维流动、两相与波传播的适用性需具体验证。",
+    "alternatives": [
+      "espss",
+      "ecosimpro",
+      "openmodelica"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "NASA Marshall Space Flight Center",
+        "context": "官方项目页列出航天飞机外贮箱预冷和加注、MHTB 自增压、低温管线及水锤等应用，是开发机构公开的研究应用记录。",
+        "sourceUrl": "https://www.nasa.gov/gfssp/",
+        "evidenceType": "机构公开应用记录"
+      },
+      {
+        "organization": "NASA MSFC / Alok Majumdar",
+        "context": "作者论文给出网络有限体积守恒方程与 GFSSP 实现，支持节点、支路和固体传热的建模说明。",
+        "sourceUrl": "https://ntrs.nasa.gov/api/citations/20190002120/downloads/20190002120.pdf",
+        "evidenceType": "作者方法论文"
+      }
+    ],
+    "starterWorkflow": [
+      "先核对官方资格和版本；未获许可时只阅读公开手册及论文，不假设可以取得完整软件。",
+      "依据手册建立单相单管稳态基准，核实摩阻定义、压力单位和质量流量。",
+      "加入贮箱储能或慢阀门瞬态，检查质量与能量残差。",
+      "逐步增加热交换和真实物性，核对模型有效范围及时间步、节点密度敏感性。"
+    ],
+    "selectionQuestions": [
+      "项目是否具备官方要求的申请资格，是否需要完整用户扩展？",
+      "系统问题主要是一维部件网络，还是必须解析局部三维流场？",
+      "所需流体、相态和物性模型是否在获准版本及许可范围内？"
+    ],
+    "starterWorkflowStatus": "基于官方文档设计的研究步骤；本站未安装或实测该工具。"
+  },
+  {
+    "id": "dspace-scalexio",
+    "title": "dSPACE SCALEXIO",
+    "category": "飞行动力学",
+    "kind": "工程软件",
+    "summary": "模块化实时仿真硬件与软件平台，提供模型执行、输入输出和总线接口，用于硬件在环测试。",
+    "details": "SCALEXIO 将实时计算资源、输入输出和总线接口组织成测试平台，可按项目配置模型、设备接口和试验控制。其用途是在规定时间约束下向待测设备提供仿真环境并记录响应，而不是生成航天物理模型本身；动力学、传感器误差和异常逻辑仍需用户或配套工具提供。官方产品页支持平台能力判断，但本次没有取得足以证明具体商业航天任务采用的独立公开记录。选型应依据采样周期、最坏负载、接口数量和电气条件，通过目标配置试验核对期限，而不能从通用性能宣传推断实时保证。",
+    "tags": [
+      "硬件在环",
+      "实时仿真",
+      "总线接口",
+      "测试台"
+    ],
+    "language": "实时硬件 · 模型与 I/O 配置工具",
+    "license": "商业硬件及配套软件许可；模块、维护与价格按配置询价，公开页面无统一项目价格。",
+    "accessModel": "commercial",
+    "url": "https://www.dspace.com/en/ltd/home/products/hw/simulator_hardware/scalexio.cfm",
+    "docsUrl": "https://www.dspace.com/en/ltd/home/products/hw/simulator_hardware/scalexio.cfm",
+    "sourceTitle": "dSPACE · SCALEXIO 官方产品页",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "测试台配置",
+      "实时模型部署",
+      "硬件闭环与故障测试"
+    ],
+    "inputs": "可部署实时模型、采样和调度设置、I/O 与总线映射、试验场景及待测硬件信号；具体工具链由平台配置确定。",
+    "outputs": "实时接口信号、测试日志和测量记录；时间行为和模型输出必须针对实际配置检验。",
+    "limitations": "平台能力不是具体模型的实时、精度或飞行资质保证。软硬件模块、支持模型格式、驱动和总线许可需按报价与文档核对；本站未搭建实物台架。",
+    "alternatives": [
+      "trick",
+      "nasa-nos3",
+      "matlab-aerospace-blockset"
+    ],
+    "usageEvidence": [
+      {
+        "organization": "dSPACE",
+        "context": "厂商产品页描述模块化实时硬件、I/O 和总线配置及仿真测试流程；本次仅核实产品能力，没有据此声称某航天机构或任务采用。",
+        "sourceUrl": "https://www.dspace.com/en/ltd/home/products/hw/simulator_hardware/scalexio.cfm",
+        "evidenceType": "厂商能力说明（非任务采用证明）"
+      }
+    ],
+    "starterWorkflow": [
+      "整理待测设备的周期、信号、电气与总线清单，向厂商确认所需硬件和软件模块。",
+      "先部署简单动力学模型，以回环接口校验单位、量程、方向和时间戳。",
+      "接入单个待测设备，记录全链路延迟、周期耗时和超时处理行为。",
+      "逐步加入完整负载、抖动和接口故障，比较软件基线与实物闭环结果并归档配置。"
+    ],
+    "selectionQuestions": [
+      "测试目标是否需要真实电气接口，软件仿真已能覆盖哪些验证项？",
+      "硬件配置能否满足实际模型、总线与记录负载的周期期限？",
+      "预算是否包含 I/O、总线协议、维护和模型部署所需许可？"
+    ],
+    "starterWorkflowStatus": "基于官方文档设计的研究步骤；本站未安装或实测该工具。"
+  }
+]

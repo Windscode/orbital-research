@@ -1,0 +1,857 @@
+{
+  "reviewedOn": "2026-10-25",
+  "scope": "新增Luna 9、Venera 7、Mariner 4、Pioneer 10；深入复核Apollo LM、JWST、Voyager 1、神舟九号基线、天宫空间站与Starship。",
+  "editedFiles": [
+    "research/vehicles.json",
+    "research/vehicle-review-v4.json"
+  ],
+  "counts": {
+    "before": 46,
+    "after": 50,
+    "newDossiers": 4,
+    "deepReviewedExisting": 6,
+    "newStudyQuestions": 30,
+    "dataEntrypoints": 24
+  },
+  "evidencePolicy": [
+    "公开尺寸、直接测量、由观测推导的结果及教学假设分别标注；不凭图片填写真实重心、惯量、气动系数或内部CAD。",
+    "所有新增型号有三段独立任务史、至少六个系统、三个研究方法及对应未知量；公式只用于公开科研与教学模型。",
+    "代表年份表达本档案的重要事件，不强制等于型号家族首飞；网页发表日期与任务事件日期分开。",
+    "科普总览与工程资料冲突时优先引用仪器团队、NASA技术报告及明确带日期的逐项状态表，并保留冲突说明。",
+    "存在访问限制的来源在下方注明；未把JavaScript空正文、抓取超时或论文摘要说成已取得完整数据。"
+  ],
+  "dossiers": [
+    {
+      "id": "luna-9",
+      "representativeYear": 1966,
+      "changes": [
+        "新增1966年月面软着陆档案；区分转移组合体与99kg自动月面站。",
+        "形态固定为近球形自动站、四片稳定花瓣、扫描电视和天线，不配置太阳翼、现代四腿或月面发动机。",
+        "研究练习覆盖接触能量/反弹、坡面支撑域、全景图尺度歧义。",
+        "保留58cm历史尺度描述但不将其与未验证总展开包络混用；模型用归一化单位。"
+      ],
+      "evidence": [
+        {
+          "claim": "DLR记载99kg着陆站、旋转镜电视、辐射探测与温控。",
+          "url": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/89-luna-9",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "NASA图像说明记载四片弹簧展开花瓣和月面成像。",
+          "url": "https://science.nasa.gov/image-article/apod-1997-september-07-luna-9-first-soft-lander/",
+          "verification": "官方页面搜索结果核对"
+        },
+        {
+          "claim": "NASA Deep Space Chronicle列58cm近球形ALS、1966-02-03着陆及最后联系时间。",
+          "url": "https://solarsystem.nasa.gov/system/downloadable_items/165_DSC_monograph24.pdf",
+          "verification": "官方PDF搜索索引核对；大PDF抓取超出工具长度限制"
+        }
+      ],
+      "remainingLimits": [
+        "历史来源的发射整器质量、着陆秒级时刻和坐标存在差异，未拼成高精度轨迹。",
+        "摄像机精确标定、气囊参数、真实支撑形状和内部质量分布仍未知。"
+      ],
+      "model": {
+        "kind": "lander",
+        "parts": [
+          {
+            "id": "body",
+            "name": "近球形密封自动站",
+            "evidence": "公开结构",
+            "sourceUrl": "https://solarsystem.nasa.gov/system/downloadable_items/165_DSC_monograph24.pdf"
+          },
+          {
+            "id": "frame",
+            "name": "四片稳定花瓣",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/image-article/apod-1997-september-07-luna-9-first-soft-lander/"
+          },
+          {
+            "id": "instruments",
+            "name": "旋转镜扫描电视装置",
+            "evidence": "公开结构",
+            "sourceUrl": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/89-luna-9"
+          },
+          {
+            "id": "antenna",
+            "name": "通信天线与无线电链路",
+            "evidence": "公开结构",
+            "sourceUrl": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/89-luna-9"
+          },
+          {
+            "id": "avionics",
+            "name": "无线电与时序电子设备",
+            "evidence": "工程示意",
+            "sourceUrl": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/89-luna-9"
+          },
+          {
+            "id": "service",
+            "name": "电源与温度控制",
+            "evidence": "工程示意",
+            "sourceUrl": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/89-luna-9"
+          }
+        ],
+        "disclaimer": "归一化示意单位，height/diameter 不是米。模型仅表达球形自动站、稳定花瓣、天线和扫描观测装置的功能关系；花瓣不是太阳翼，没有四条现代着陆腿。缓冲阶段与内部电源热控为工程示意，不是制造CAD或精确复刻。"
+      }
+    },
+    {
+      "id": "venera-7",
+      "representativeYear": 1970,
+      "changes": [
+        "新增1970年首次另一行星表面通信档案；明确无相机。",
+        "直接温度结果与由多普勒、温度及大气模型得到的压力约束分开。",
+        "制造方设计环境150atm/540°C与约180atm破坏外压分开，不混作测量值。",
+        "研究练习覆盖热RC生存时间、大气静力积分和落地倾角/链路假设检验。"
+      ],
+      "evidence": [
+        {
+          "claim": "DLR列1970-08-17发射、12-15着陆、整器1180kg与近23分钟表面传输。",
+          "url": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/198-venera-7",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "NASA编年记录475±20°C与回放识别22分58秒资料。",
+          "url": "https://www.nasa.gov/wp-content/uploads/2018/09/beyond-earth-tagged.pdf",
+          "verification": "官方PDF搜索索引核对"
+        },
+        {
+          "claim": "制造方说明钛舱与设计/破坏压力的区别。",
+          "url": "https://www.laspace.ru/en/activities/projects/venera-7/",
+          "verification": "官方搜索索引有正文；直接打开多次超时"
+        },
+        {
+          "claim": "原始1971论文摘要说明温度、下降多普勒和Venera4/5/6资料共同约束大气剖面。",
+          "url": "https://journals.ametsoc.org/view/journals/atsc/28/2/1520-0469_1971_028_0263_slovot_2_0_co_2.xml",
+          "verification": "出版商索引摘要核对；直接全文403，未声称读取全文"
+        },
+        {
+          "claim": "PDS任务综述明确Venera7/8没有相机，地表图像属于后续型号。",
+          "url": "https://pds-atmospheres.nmsu.edu/data_and_services/atmospheres_data/VENUS_VENERA/venus.html",
+          "verification": "已打开官方页面并核对正文"
+        }
+      ],
+      "remainingLimits": [
+        "不采用未经交叉核实的舱体/减速伞精确尺寸；模型归一化。",
+        "落地翻倒是故障解释，不视作精确实测姿态；没有宣称已取得完整原始遥测。"
+      ],
+      "model": {
+        "kind": "lander",
+        "parts": [
+          {
+            "id": "body",
+            "name": "钛制耐压舱体",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.laspace.ru/en/activities/projects/venera-7/"
+          },
+          {
+            "id": "heatshield",
+            "name": "隔热与温度管理",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.laspace.ru/en/activities/projects/venera-7/"
+          },
+          {
+            "id": "instruments",
+            "name": "温度与压力相关测量设备",
+            "evidence": "公开结构",
+            "sourceUrl": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/198-venera-7"
+          },
+          {
+            "id": "frame",
+            "name": "减速伞系统",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2018/09/beyond-earth-tagged.pdf"
+          },
+          {
+            "id": "antenna",
+            "name": "无线电发射与天线",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2018/09/beyond-earth-tagged.pdf"
+          },
+          {
+            "id": "avionics",
+            "name": "时序与遥测电子设备",
+            "evidence": "工程示意",
+            "sourceUrl": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/198-venera-7"
+          },
+          {
+            "id": "service",
+            "name": "供电与服务组件",
+            "evidence": "工程示意",
+            "sourceUrl": "https://www.laspace.ru/en/activities/projects/venera-7/"
+          }
+        ],
+        "disclaimer": "height/diameter 是归一化展示规格，不是米。仅用近球形舱、外部防热、通信和减速伞连接表达功能；不含相机、现代四腿支架或月面起飞发动机。内部传感、电源及隔热布置为工程示意，不是制造CAD。"
+      }
+    },
+    {
+      "id": "mariner-4",
+      "representativeYear": 1964,
+      "changes": [
+        "新增1964发射、1965火星飞掠档案；不抄NASA某段June月份笔误。",
+        "区分21幅完整影像与第22幅部分扫描，未把22当作完整帧数量。",
+        "明确200×200×6bit为240000bit净像素推导值，并说明遥测开销未知。",
+        "增加四翼平台、成像链、姿态喷口、中途修正与仪器失效时间的研究边界。"
+      ],
+      "evidence": [
+        {
+          "claim": "NASA任务页列260.8kg、七类科学仪器、21完整帧加部分第22帧。",
+          "url": "https://science.nasa.gov/mission/mariner-4/",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "NSSDCA规格列2.89m高、6.88m展开跨度、火星距离310W、225N修正推进。",
+          "url": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "NSSDCA任务文记载200×200图像、有限地表覆盖、掩星反演及通道故障。",
+          "url": "https://nssdc.gsfc.nasa.gov/planetary/mars/mariner.html",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "NASA归档格式文档5.3.6明确每像素6bit。",
+          "url": "https://ntrs.nasa.gov/api/citations/19840026295/downloads/19840026295.pdf",
+          "verification": "官方PDF搜索索引核对；不同文档图像数量口径不沿用"
+        },
+        {
+          "claim": "原始与增强图像在目录中分别列出。",
+          "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/mission_page/MR_Mariner_4_page1.html",
+          "verification": "已打开官方页面并核对正文"
+        }
+      ],
+      "remainingLimits": [
+        "NSSDCA规格页发射时区标签与NASA表不一致，未采用未经校正的秒级时刻。",
+        "旧图像目录并非全部原始遥测；未把有限条带推断为全火星性质。"
+      ],
+      "model": {
+        "kind": "probe",
+        "parts": [
+          {
+            "id": "body",
+            "name": "八边形设备平台",
+            "evidence": "公开结构",
+            "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/mars/mariner.html"
+          },
+          {
+            "id": "solar",
+            "name": "四片展开太阳阵",
+            "evidence": "公开结构",
+            "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+          },
+          {
+            "id": "antenna",
+            "name": "高低增益通信天线",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/mission/mariner-4/"
+          },
+          {
+            "id": "instruments",
+            "name": "电视扫描与记录链",
+            "evidence": "公开结构",
+            "sourceUrl": "https://ntrs.nasa.gov/api/citations/19840026295/downloads/19840026295.pdf"
+          },
+          {
+            "id": "avionics",
+            "name": "姿态传感器与氮气喷口",
+            "evidence": "公开结构",
+            "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+          },
+          {
+            "id": "propulsion",
+            "name": "中途修正推进系统",
+            "evidence": "公开结构",
+            "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+          }
+        ],
+        "disclaimer": "归一化展示单位，height/diameter 不是米。公开总高和太阳翼跨度另见参数表；模型强调八边形平台、四片太阳阵、通信天线与扫描平台的不同功能。内部电子学、喷口尺度和线缆位置仅为工程示意，不是CAD复刻。"
+      }
+    },
+    {
+      "id": "pioneer-10",
+      "representativeYear": 1972,
+      "changes": [
+        "新增1972年发射、自旋稳定、四台RTG与无太阳翼的独立档案。",
+        "纠正NASA科普页two RTGs与工程资料冲突，采用四台、两条电源臂。",
+        "区分当地3月2日与UTC3月3日，区分1997常规支持结束、2002最后遥测、2003最后信号。",
+        "增加热反冲a=P/(mc)、自旋扫描及远距链路研究，250kg/60W明确标为教学情景。"
+      ],
+      "evidence": [
+        {
+          "claim": "原仪器团队列2.74m高增益天线、四台RTG、两条桁架及独立磁强计臂。",
+          "url": "https://space.physics.uiowa.edu/pioneer/p10.html",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "NASA Glenn电源技术资料明确每枚Pioneer有4台SNAP-19。",
+          "url": "https://ntrs.nasa.gov/api/citations/20080047411/downloads/20080047411.pdf",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "NASA历史数据书列2.9m高、258kg和4RTG；与科普摘要交叉核对。",
+          "url": "https://ntrs.nasa.gov/api/citations/19880016046/downloads/19880016046.pdf",
+          "verification": "官方PDF搜索索引核对"
+        },
+        {
+          "claim": "JPL2012报道说明历史遥测和热模型支持热反冲解释。",
+          "url": "https://www.jpl.nasa.gov/news/study-finds-heat-is-source-of-pioneer-anomaly/",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "PDS轨道集合提供数据包及1972—2000覆盖说明，归档发布于2025。",
+          "url": "https://pds.nasa.gov/ds-view/pds/viewCollection.jsp?identifier=urn:nasa:pds:p10-traj:document",
+          "verification": "已打开官方页面并核对正文"
+        }
+      ],
+      "remainingLimits": [
+        "没有把RTG热功率当作可用电功率；没有把教学热反冲公式当成完整任务解。",
+        "2.9m总体高度不包含所有长伸展臂；NASA摘要的2台RTG错误不作为模型依据。"
+      ],
+      "model": {
+        "kind": "probe",
+        "parts": [
+          {
+            "id": "body",
+            "name": "六边形设备舱",
+            "evidence": "公开结构",
+            "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+          },
+          {
+            "id": "antenna",
+            "name": "2.74 m高增益天线",
+            "evidence": "公开结构",
+            "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+          },
+          {
+            "id": "service",
+            "name": "四台SNAP-19同位素电源",
+            "evidence": "公开结构",
+            "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+          },
+          {
+            "id": "instruments",
+            "name": "成像光偏振计与科学传感器",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/mission/pioneer-10/"
+          },
+          {
+            "id": "propulsion",
+            "name": "自旋、姿态与轨迹修正推进",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.jpl.nasa.gov/news/study-finds-heat-is-source-of-pioneer-anomaly/"
+          },
+          {
+            "id": "avionics",
+            "name": "指令与遥测电子系统",
+            "evidence": "工程示意",
+            "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+          },
+          {
+            "id": "frame",
+            "name": "磁强计与电源伸展结构",
+            "evidence": "公开结构",
+            "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+          }
+        ],
+        "disclaimer": "归一化展示单位，height/diameter 不是米。模型表示碟形天线、设备舱、两臂四RTG和独立科学臂的公开结构关系；不是旅行者的三RTG布局。内部电子设备、热面和喷口尺寸为功能示意，不能作为热反冲拟合的制造级网格。"
+      }
+    },
+    {
+      "id": "apollo-lm",
+      "representativeYear": 1969,
+      "changes": [
+        "明确1968Apollo5首次无人试飞，1969为首次载人应用与登月代表年。",
+        "Apollo10尺寸基线、Apollo11 EASEP、后续ALSEP与Apollo15起月球车分别标注。",
+        "添加Lunar Data Project、NASA日志入口和Apollo15任务报告，科学数据与工程遥测分开。",
+        "与模型复核对齐：站立乘员区、多面体外罩不等于承压舱、四组16RCS；part来源指向NASA结构报告/标注图。"
+      ],
+      "evidence": [
+        {
+          "claim": "Apollo5是首次无人LM试飞。",
+          "url": "https://www.nasa.gov/mission/apollo-5/",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "PDS识别Apollo11 EASEP被动地震仪。",
+          "url": "https://pds.nasa.gov/ds-view/pds/viewContext.jsp?identifier=urn:nasa:pds:context:instrument:pse.a11e",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "NASA TN D-7084区分上下级结构、前与上舱门、热及微流星防护外罩。",
+          "url": "https://ntrs.nasa.gov/api/citations/19730010174/downloads/19730010174.pdf?attachment=true",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "NASA官方历史说明窗口和16个RCS喷口。",
+          "url": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "Apollo12标注图用于外部构型，未移植任务专属实验包。",
+          "url": "https://ntrs.nasa.gov/api/citations/19760066717/downloads/19760066717.pdf",
+          "verification": "模型代理已核验PDF第80页/印刷58a；本代理直接打开超时"
+        },
+        {
+          "claim": "Apollo15任务报告包含扩展月面操作与车辆性能。",
+          "url": "https://ntrs.nasa.gov/citations/19720021182",
+          "verification": "已打开官方页面并核对正文"
+        }
+      ],
+      "remainingLimits": [
+        "不把不同任务质量、仪器和公开尺寸合并为无版本的“标准LM”。",
+        "模型高度/直径归一化；内部控制台和扶持结构仅表示功能。"
+      ],
+      "model": {
+        "kind": "lander",
+        "parts": [
+          {
+            "id": "crew",
+            "name": "站立乘员工作区",
+            "evidence": "工程示意",
+            "sourceUrl": "https://ntrs.nasa.gov/api/citations/19730010174/downloads/19730010174.pdf?attachment=true"
+          },
+          {
+            "id": "stage-1",
+            "name": "下降级平台",
+            "evidence": "公开结构",
+            "sourceUrl": "https://ntrs.nasa.gov/api/citations/19730010174/downloads/19730010174.pdf?attachment=true"
+          },
+          {
+            "id": "stage-2",
+            "name": "上升级与防护外罩",
+            "evidence": "公开结构",
+            "sourceUrl": "https://ntrs.nasa.gov/api/citations/19730010174/downloads/19730010174.pdf?attachment=true"
+          },
+          {
+            "id": "engine",
+            "name": "下降/上升主推进与RCS",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/"
+          },
+          {
+            "id": "legs",
+            "name": "四足、前梯与缓冲支撑",
+            "evidence": "公开结构",
+            "sourceUrl": "https://ntrs.nasa.gov/api/citations/19760066717/downloads/19760066717.pdf"
+          },
+          {
+            "id": "docking",
+            "name": "上部对接接口",
+            "evidence": "公开结构",
+            "sourceUrl": "https://ntrs.nasa.gov/api/citations/19730010174/downloads/19730010174.pdf?attachment=true"
+          }
+        ],
+        "disclaimer": "height/diameter为归一化展示单位，不代表米。外形参照Apollo 12标注图与NASA结构报告，尺寸表仍明确引用Apollo 10口径；这是通用展开构型，不复刻单次任务。外罩不等于承压舱，站立工作区、金属箔、喷口安装角和内部设备为简化示意，不是制造CAD。"
+      }
+    },
+    {
+      "id": "jwst",
+      "representativeYear": 2021,
+      "changes": [
+        "补齐NIRCam、NIRSpec、MIRI、NIRISS及FGS不同职责。",
+        "明确MIRI主动制冷，不把全部仪器当成同一被动低温节点。",
+        "遮阳板公开尺度改用专门页面21.197×14.162m并用约21.2×14.2m展示。",
+        "同步18镜片、五膜、三臂次镜、单条太阳阵的part来源；新增MAST和STScI数据工作流。"
+      ],
+      "evidence": [
+        {
+          "claim": "NASA MIRI页面区分四科学仪器与FGS，说明仪器模式与不同视场。",
+          "url": "https://science.nasa.gov/mission/webb/mid-infrared-instrument-miri/",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "NASA FAQ说明近红外约39K被动冷却，MIRI约7K主动制冷设计。",
+          "url": "https://science.nasa.gov/mission/webb/faqs-full/",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "遮阳板专门页面提供五层与展开尺寸。",
+          "url": "https://science.nasa.gov/mission/webb/webbs-sunshield/",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "NASA确认三臂次镜支架展开。",
+          "url": "https://science.nasa.gov/blogs/webb/2022/01/05/secondary-mirror-deployment-confirmed/",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "SVS展示单条折页太阳阵。",
+          "url": "https://svs.gsfc.nasa.gov/13208",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "MAST官方档案入口与产品访问说明。",
+          "url": "https://archive.stsci.edu/missions-and-data/jwst",
+          "verification": "已打开官方页面并核对正文"
+        }
+      ],
+      "remainingLimits": [
+        "圆孔衍射公式仅作量级；真实分段PSF、光学面形、薄膜张力和热参数未由展示模型复原。",
+        "科学结果必须记录产品级别和校准版本，宣传合成图不是原始FITS。"
+      ],
+      "model": {
+        "kind": "telescope",
+        "parts": [
+          {
+            "id": "instruments",
+            "name": "分段主镜与科学仪器",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/mission/webb/webbs-mirrors/"
+          },
+          {
+            "id": "heatshield",
+            "name": "五层遮阳膜",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/mission/webb/webbs-sunshield/"
+          },
+          {
+            "id": "body",
+            "name": "航天器服务平台",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/asset/webb/webb-telescope-spacecraft-diagram/"
+          },
+          {
+            "id": "solar",
+            "name": "单条折页太阳阵",
+            "evidence": "公开结构",
+            "sourceUrl": "https://svs.gsfc.nasa.gov/13208"
+          },
+          {
+            "id": "antenna",
+            "name": "通信天线与热侧附件",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/asset/webb/webb-telescope-spacecraft-diagram/"
+          },
+          {
+            "id": "frame",
+            "name": "三臂次镜支架与展开塔",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/blogs/webb/2022/01/05/secondary-mirror-deployment-confirmed/"
+          }
+        ],
+        "disclaimer": "归一化展示单位，height/diameter不是米。18段主镜、三臂次镜支撑、五层遮阳膜与单条太阳阵按公开外形区分；薄膜厚度、层间距和仪器舱为便于观察的示意。未复原光学面形、张力、展开约束或真实热参数，不是厂家CAD。"
+      }
+    },
+    {
+      "id": "voyager-1",
+      "representativeYear": 1977,
+      "changes": [
+        "保留FAQ815kg含推进剂来源，但注明不是当前在轨质量。",
+        "分开原始10仪器/11调查和2026-04-17状态表；MAG/PWS开启，CRS与LECP列实际关停日期。",
+        "明确相机1990年已关闭，PWS与PLS不是同一个系统。",
+        "新增PWS频率—密度关系、光时与电力研究及NASA数据入口。"
+      ],
+      "evidence": [
+        {
+          "claim": "带2026-04-17更新日期的逐项状态表支持MAG/PWS开启和CRS/LECP关停事件。",
+          "url": "https://science.nasa.gov/mission/voyager/where-are-voyager-1-and-voyager-2-now/",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "仪器页有原始10仪器/11调查及各仪器功能；页首旧“3个开启”概述不沿用。",
+          "url": "https://science.nasa.gov/mission/voyager/instruments/",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "NASA数据目录列Voyager1 PWS 4秒频谱。",
+          "url": "https://helio.data.nasa.gov/dataset/Voyager1_PWS_ASCII_PT4S",
+          "verification": "官方目录索引核对；入口需JavaScript"
+        },
+        {
+          "claim": "仪器团队2021论文提供谱线识别、数据引用与电子密度推断语境。",
+          "url": "https://space.physics.uiowa.edu/~dag/publications/2021_Persistent_plasma_waves_in_interstellar_space_detected_by_Voyager1_NATURE.pdf",
+          "verification": "仪器团队原始论文搜索索引核对"
+        }
+      ],
+      "remainingLimits": [
+        "状态是有日期快照，不是本网站实时连接的遥测。",
+        "没有从核素半衰期推断精确任务终止日，也没有把任意谱峰当作电子等离子体频率。"
+      ],
+      "model": {
+        "kind": "probe",
+        "parts": [
+          {
+            "id": "body",
+            "name": "电子设备平台",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+          },
+          {
+            "id": "antenna",
+            "name": "高增益天线",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+          },
+          {
+            "id": "service",
+            "name": "三台 RTG 电源",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+          },
+          {
+            "id": "instruments",
+            "name": "科学伸展臂与平台",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+          },
+          {
+            "id": "propulsion",
+            "name": "姿态推进器",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+          },
+          {
+            "id": "avionics",
+            "name": "姿态与平台控制",
+            "evidence": "公开结构",
+            "sourceUrl": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+          }
+        ],
+        "disclaimer": "本模型使用归一化展示单位，height / diameter 不代表米；真实公开尺寸另列于参数表。外形、部件相对位置及内部剖面均经过简化，用于理解功能，不能视作厂家 CAD 或真实内部测量。"
+      }
+    },
+    {
+      "id": "shenzhou",
+      "representativeYear": 2012,
+      "changes": [
+        "保留2012神舟九号为参数基线，明确不是家族首飞年。",
+        "9m、2.8m、不大于8130kg只用于神九，不泛化到所有批次。",
+        "区分天宫一号与后来的三舱空间站，补2012-06-24手控对接事件。",
+        "新增三舱分离、圆轨道局部相对运动和官方事件状态机练习。"
+      ],
+      "evidence": [
+        {
+          "claim": "CNSA神九参数表明确2012任务与尺寸/质量上限。",
+          "url": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "CMSE于6月26日发布6月24日手动交会对接纪实。",
+          "url": "https://www.cmse.gov.cn/fxrw/tgyhyszjh/rwjx/201206/t20120626_23247.html",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "CMSE说明神舟少量有效载荷上下行与天舟补给/废弃物运输职责。",
+          "url": "https://www.cmse.gov.cn/xwzx/202302/t20230223_52828.html",
+          "verification": "已打开官方页面并核对正文"
+        }
+      ],
+      "remainingLimits": [
+        "新闻与参数页不是连续轨迹或工程遥测。",
+        "各舱质量、质心、分离冲量及控制增益未公开复原。"
+      ],
+      "model": {
+        "kind": "capsule",
+        "parts": [
+          {
+            "id": "body",
+            "name": "轨道舱",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+          },
+          {
+            "id": "crew",
+            "name": "返回舱",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+          },
+          {
+            "id": "service",
+            "name": "推进舱",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+          },
+          {
+            "id": "solar",
+            "name": "太阳翼",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+          },
+          {
+            "id": "docking",
+            "name": "对接机构",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+          },
+          {
+            "id": "heatshield",
+            "name": "返回热防护",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+          }
+        ],
+        "disclaimer": "本模型使用归一化展示单位，height / diameter 不代表米；真实公开尺寸另列于参数表。外形、部件相对位置及内部剖面均经过简化，用于理解功能，不能视作厂家 CAD 或真实内部测量。"
+      }
+    },
+    {
+      "id": "tiangong",
+      "representativeYear": 2021,
+      "changes": [
+        "区分2021天和发射与2022-11-03T字三舱构型完成。",
+        "明确16.6m/4.2m为天和舱尺寸，不是整个组合体包络。",
+        "补问天生命科学与梦天微重力物理/时频等实验柜职责。",
+        "加入官方2026-02-04 OEM附件入口和轨道短弧残差练习；数据平台访问限制如实写入。"
+      ],
+      "evidence": [
+        {
+          "claim": "CMSE公告明确2022-11-03梦天转位与T字构型完成。",
+          "url": "https://www.cmse.gov.cn/xwzx/202211/t20221103_51224.html",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "官方2026-02-04页面有CSS_OEM_20260204003335_0001.zip附件。",
+          "url": "https://www.cmse.gov.cn/gfgg/zgkjzgdcs/202602/t20260204_57256.html",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "中科院介绍问天四类实验设施。",
+          "url": "https://www.cas.cn/cm/202207/t20220725_4842822.shtml",
+          "verification": "已打开官方页面并核对正文"
+        },
+        {
+          "claim": "空间应用中心列出梦天八台科学实验柜及目标。",
+          "url": "https://www.csu.cas.cn/gb/zyxw/202210/t20221031_6542086.html",
+          "verification": "研究单位官方搜索索引核对；直接访问超时"
+        },
+        {
+          "claim": "CMSE友情链接指向载人航天数据共享平台。",
+          "url": "https://www.msadc.cn/main/home",
+          "verification": "官方链接已确认；平台直接访问超时，不声称已下载数据"
+        }
+      ],
+      "remainingLimits": [
+        "OEM示例并非实时位置；需逐文件读取坐标系、时标和有效期。",
+        "设施入轨、设计指标和具体科学结果/产品发布不是同一事件。"
+      ],
+      "model": {
+        "kind": "station",
+        "parts": [
+          {
+            "id": "body",
+            "name": "天和核心舱",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.cmse.gov.cn/xwzx/zhxw/202105/t20210507_47814.html"
+          },
+          {
+            "id": "instruments",
+            "name": "问天与梦天实验舱",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.cmse.gov.cn/xwzx/zhxw/202105/t20210507_47814.html"
+          },
+          {
+            "id": "solar",
+            "name": "柔性太阳翼",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.cmse.gov.cn/xwzx/zhxw/202105/t20210507_47814.html"
+          },
+          {
+            "id": "docking",
+            "name": "对接与停泊接口",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.cmse.gov.cn/xwzx/zhxw/202105/t20210507_47814.html"
+          },
+          {
+            "id": "propulsion",
+            "name": "姿态与轨道支持",
+            "evidence": "工程示意",
+            "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c10087703/content.html"
+          },
+          {
+            "id": "frame",
+            "name": "机械臂与外部设施",
+            "evidence": "工程示意",
+            "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c10087703/content.html"
+          }
+        ],
+        "disclaimer": "本模型使用归一化展示单位，height / diameter 不代表米；真实公开尺寸另列于参数表。外形、部件相对位置及内部剖面均经过简化，用于理解功能，不能视作厂家 CAD 或真实内部测量。"
+      }
+    },
+    {
+      "id": "starship",
+      "representativeYear": 2023,
+      "changes": [
+        "保留设计页124m/9m、72m一级/52m上级、33/6发动机为同一参数口径。",
+        "明确产品页100+t是厂家设计描述，不等于某次任务已交付载荷。",
+        "加入官方Flight12单次任务入口；不以2026日期假定其他未来事件已发生。",
+        "新增上升模型可辨识性、tf到N与推进剂账本、再入视频辐射标定边界。"
+      ],
+      "evidence": [
+        {
+          "claim": "SpaceX设计页面公开124m、9m、72m/52m与33/6发动机组合。",
+          "url": "https://www.spacex.com/vehicles/starship/design",
+          "verification": "官方搜索索引返回完整参数正文；直接打开为JavaScript空壳"
+        },
+        {
+          "claim": "SpaceX Flight12官方搜索结果明确2026-05-22与任务时序。",
+          "url": "https://www.spacex.com/launches/starship-flight-12",
+          "verification": "官方搜索索引核对；直接打开为JavaScript空壳"
+        }
+      ],
+      "remainingLimits": [
+        "不将尺寸页自动映射到所有试验批次或代际，不新增未经核查的现役能力断言。",
+        "视频高度/速度可能经舍入与延迟，没有把它们冒充完整实飞遥测。"
+      ],
+      "model": {
+        "kind": "rocket",
+        "parts": [
+          {
+            "id": "payload",
+            "name": "上级载荷区",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+          },
+          {
+            "id": "stage-1",
+            "name": "Super Heavy",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+          },
+          {
+            "id": "stage-2",
+            "name": "Starship上级",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+          },
+          {
+            "id": "engine",
+            "name": "Raptor发动机组",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+          },
+          {
+            "id": "tank",
+            "name": "低温贮箱",
+            "evidence": "工程示意",
+            "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+          },
+          {
+            "id": "heatshield",
+            "name": "上级热防护面",
+            "evidence": "公开结构",
+            "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+          },
+          {
+            "id": "avionics",
+            "name": "飞控与任务管理",
+            "evidence": "工程示意",
+            "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+          }
+        ],
+        "disclaimer": "整体高度与直径取自所引公开规格（米）；级间长度、内部贮箱、发动机安装和附件位置为简化布局。它是结构与功能示意，不是该型号 CAD 复刻，也不含经验证的惯量或气动数据。"
+      }
+    }
+  ],
+  "validation": {
+    "jsonParse": "passed",
+    "uniqueVehicleIds": 50,
+    "newDossierDepth": "4/4 passed: history>=3且每段>80字符、systems>=6、inference>=3、sources>=3、parts>=5",
+    "reviewedDossiersWithSpecificMethods": "10/10 have three methods",
+    "studyQuestionCount": 30,
+    "dataEntrypointCount": 24,
+    "urlSyntax": "passed for all sources/dataProducts of the 10 reviewed dossiers",
+    "modelChanges": "Only metadata edited in vehicles.json; IDs and supported kind retained. Geometry/source code owned by project_audit and root.",
+    "notRun": [
+      "No application build or GLB export by this agent; root owns final export/visual acceptance.",
+      "No claim of live reachability for every historical PDF or application requiring JavaScript."
+    ]
+  }
+}

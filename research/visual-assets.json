@@ -1,0 +1,22 @@
+{
+  "assets": [
+    {
+      "path": "public/images/earth-hero.png",
+      "type": "AI-generated editorial artwork",
+      "tool": "built-in ImageGen",
+      "generatedOn": "2026-10-25",
+      "prompt": "Use case: stylized-concept. Asset type: cinematic hero background for a sophisticated aerospace simulation research website. Create a wide 16:9, high resolution photorealistic view of Earth floating in absolute nearly black deep space. Composition: a dramatic large Earth globe occupies the right 60 percent of the image, center at 72 percent horizontal and 53 percent vertical, with the full circular silhouette visible and a little breathing room; left 40 percent remains almost pure black empty negative space for website text. Earth illuminated from upper right, dark teal blue oceans, exceptionally detailed swirling delicate white clouds, faint warm city lights on the shadowed left limb, brilliant but restrained pale cyan atmospheric rim. A subtle sun glow at the top right outer edge. Space is mostly black (#0b0e11) with extremely few tiny dim stars. Editorial NASA-photo realism, restrained sophisticated color grading, natural lighting, no fantasy nebulae, no purple, no exaggerated lens flares. No text, no diagrams, no lines, no logos, no spacecraft, no watermark. This is atmosphere and editorial artwork, not scientific data.",
+      "limitations": "Conceptual Earth image, not observation data. Orbital annotations are separately rendered SVG."
+    },
+    {
+      "path": "src/Blueprint.tsx",
+      "type": "original SVG concept schematic",
+      "limitations": "Concept schematic, not to scale; not an AerospaceSimUE screenshot."
+    },
+    {
+      "path": "public/fonts/",
+      "type": "locally hosted fonts",
+      "license": "SIL Open Font License; see font-specific OFL files and sources.json"
+    }
+  ]
+}

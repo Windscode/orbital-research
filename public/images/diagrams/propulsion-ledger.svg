@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+<title id="title">推进模型：控制体、推力与质量账本</title>
+<desc id="desc">飞行器向右为正方向。排气相对飞行器向左，速度矢量为负的排气速率乘正向单位矢量；质量流出率定义为正，飞行器质量随时间下降。推力包括动量流和出口压力差。</desc>
+<defs>
+<marker id="arrow-lime" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#d3ef83" stroke-width="2"/></marker>
+<marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#8bb6d0" stroke-width="2"/></marker>
+<marker id="arrow-muted" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L11 6 L1 11" fill="none" stroke="#839399" stroke-width="2"/></marker>
+</defs>
+<rect width="1400" height="900" fill="#10191e"/>
+<g font-family="Inter, Noto Sans SC, Microsoft YaHei, sans-serif" font-size="24" fill="#e8eee9">
+
+<text x="70" y="55" fill="#d3ef83" font-size="22" letter-spacing="3">ORBITAL / PROPULSION</text>
+<text x="70" y="115" font-size="46" font-weight="600">推力与耗质，必须使用同一本账</text>
+<text x="70" y="158" fill="#9faeb2">一维、准稳态、无外部进气的火箭喷管示意 · 不按比例</text>
+<path d="M1110 212 H1315" stroke="#839399" stroke-width="2" marker-end="url(#arrow-muted)"/>
+<text x="1110" y="195" fill="#9faeb2">正方向 +x</text>
+<rect x="420" y="280" width="885" height="275" rx="28" fill="none" stroke="#687d86" stroke-width="2" stroke-dasharray="9 9"/>
+<rect x="655" y="263" width="360" height="34" fill="#10191e"/>
+<text x="675" y="288" fill="#9faeb2">随飞行器移动的控制体</text>
+<path d="M650 315 H1065 Q1160 330 1255 410 Q1160 490 1065 505 H650" fill="#18262c" stroke="#c6d2d4" stroke-width="2.4"/>
+<path d="M650 358 H725 Q757 358 757 390 V430 Q757 462 725 462 H650 Q620 455 590 428 L430 482 V338 L590 392 Q620 365 650 358Z" fill="#1d3038" stroke="#c6d2d4" stroke-width="2.4"/>
+<path d="M760 315 V505 M1065 315 V505" fill="none" stroke="#4e636c" stroke-width="1.5"/>
+<rect x="825" y="343" width="177" height="133" rx="49" fill="#20383d" stroke="#8bb6d0" stroke-width="2"/>
+<path d="M845 400 H976 M845 416 H976 M845 432 H976" stroke="#48616a" stroke-width="1.4"/>
+<text x="914" y="384" fill="#8bb6d0" text-anchor="middle">推进剂</text>
+<path d="M825 410 H668" stroke="#8bb6d0" stroke-width="3" marker-end="url(#arrow-blue)"/>
+<text x="680" y="535" fill="#9faeb2">机上供给</text>
+<path d="M650 410 H145" stroke="#8bb6d0" stroke-width="4" marker-end="url(#arrow-blue)"/>
+<path d="M428 355 L260 340 M428 465 L260 480" stroke="#496c7d" stroke-width="2" stroke-dasharray="5 8"/>
+<line x1="430" y1="318" x2="430" y2="505" stroke="#cfb280" stroke-width="2"/>
+<text x="75" y="345" fill="#8bb6d0" font-size="29">u_rel = −vₑ eₓ</text>
+<text x="75" y="382" fill="#9faeb2">vₑ &gt; 0：排气相对速率</text>
+<text x="75" y="455" fill="#8bb6d0">ṁ &gt; 0：向外流出的质量率</text>
+<path d="M1050 375 H1290" stroke="#d3ef83" stroke-width="5" marker-end="url(#arrow-lime)"/>
+<text x="1070" y="351" fill="#d3ef83" font-size="32">推力 F →</text>
+<text x="1063" y="454" fill="#9faeb2">飞行器 m(t)</text>
+<path d="M428 485 V584 H235" fill="none" stroke="#cfb280" stroke-width="1.7"/>
+<text x="75" y="577" fill="#cfb280">出口截面 Aₑ；压力 pₑ</text>
+<text x="935" y="589" fill="#9faeb2">外界静压：pₐ</text>
+<line x1="70" y1="630" x2="1330" y2="630" stroke="#35494f" stroke-width="1.5"/>
+<text x="70" y="683" fill="#d3ef83" font-size="36">F = ṁvₑ + (pₑ − pₐ)Aₑ</text>
+<text x="795" y="683" fill="#8bb6d0" font-size="34">dm / dt = −ṁ</text>
+<text x="70" y="725" fill="#9faeb2">动量流 + 压力推力；F 为沿 +x 的推力分量</text>
+<text x="795" y="725" fill="#9faeb2">m 包含剩余推进剂；ṁ 是正的流出率</text>
+<text x="70" y="794" font-size="30">I_sp = F / (ṁg₀)</text>
+<text x="625" y="794" font-size="30">总冲量 J = ∫ F dt</text>
+<text x="70" y="855" fill="#9faeb2" font-size="22">g₀ 为标准重力加速度；推力、比冲与质量流率不能独立拼接不同工作点。</text>
+
+</g>
+</svg>

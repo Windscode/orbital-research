@@ -1,0 +1,69 @@
+{
+  "checkedOn": "2026-10-25",
+  "version": "3.0.0",
+  "environment": "Windows / Node 22.22.2 / Vite 6.4.5 / React 19 / Codex in-app browser",
+  "counts": {
+    "lessons": 38,
+    "illustratedLessons": 20,
+    "knowledgeNodes": 38,
+    "knowledgeRelations": 117,
+    "resources": 63,
+    "resourcesWithStarterWorkflows": 16,
+    "briefings": 22,
+    "vehicleDossiers": 46,
+    "downloadableResearchModels": 46,
+    "searchableCoreEntries": 169,
+    "distinctCoreSourceURLs": 304,
+    "visualLibraryAssets": 33,
+    "officialPhotographicOrMeasuredImages": 18,
+    "officialArtistConcepts": 1,
+    "originalTechnicalDiagrams": 12,
+    "newGeneratedConcepts": 2,
+    "vehicleDossiersWithOfficialImagery": 18,
+    "mediaBytes": 9733658
+  },
+  "automatedChecks": {
+    "content": "PASS: 169 unique core entries, HTTPS URL syntax, dates and required evidence fields. This is not a live check of every external link.",
+    "orbit": "PASS: 6 independent numerical groups.",
+    "expansion": "PASS: 53 checks, 46 GLBs, graph prerequisites and learning paths; 16,128 model camera views and 129,024 bounding-box corner projections.",
+    "media": "PASS: 33 files, file headers, PNG CRC, JPEG dimensions and end markers, SVG viewBox/accessibility/references, safe paths, identity, credit, license, content associations and generation prompts.",
+    "diagramReview": "12 SVGs rendered and visually inspected by the diagram author. 358 text labels checked for layout collisions. CR3BP point residuals, grid convergence example and energy balance independently recalculated.",
+    "productionBuild": "PASS: TypeScript and Vite. Vite retains a size advisory for the main content bundle and lazy Three.js bundle."
+  },
+  "browserChecks": [
+    "Earth/lunar homepage selector changes image and active state; lunar mode hides Earth orbit overlays.",
+    "Homepage editorial feature, official contact sheet and image-kind labels render correctly.",
+    "Visual library has 33 cards. Photography filter returns 18; Hayabusa search returns one relevant image.",
+    "Image dialog opens, zooms, moves to the next item and resets zoom. A one-image filtered collection disables navigation arrows.",
+    "Image dialog Escape closes only the image when opened above a dossier: two open dialogs become one, and body scroll remains locked for the reader.",
+    "JAXA image displays complete without crop, filter or overlaid annotations; credit and rights link are visible alongside it.",
+    "Related vehicle opens the matching Hayabusa2 dossier and its local photograph.",
+    "38 knowledge cards render; 20 have matched technical diagrams. The stochastic-process lesson loads its 1400px SVG and caption.",
+    "GODOT reader shows four starter steps, three selection questions and the statement that these are document-based suggestions, not local software tests.",
+    "Artemis II data briefing shows publication/event/review dates, three primary sources and three related resources.",
+    "Apollo LM photo entry opens the existing Three.js model successfully.",
+    "390px iframe: homepage, image opening, image controls, credit text and reader scrolling visually inspected.",
+    "768px iframe: image library uses two columns with complete images and wrapping text.",
+    "Desktop image page measured document scrollWidth equal to clientWidth (2021 CSS px) with no horizontal overflow.",
+    "Desktop browser log after navigation, media and 3D checks: zero warnings or errors."
+  ],
+  "contentReview": "research/content-review-v3.json",
+  "teardown": "Closed the two owned QA tabs and the reference tab. Stopped the owned Vite preview process; confirmed zero listeners on port 5173. Existing user tabs were preserved. Start-Orbital.cmd restarts the site.",
+  "imageProvenance": ["research/media-vehicles.json", "research/media-diagrams.json", "research/media-generated.json", "research/visual-assets-v3.json"],
+  "screenshots": [
+    "docs/screenshots/v3-home-moon.png",
+    "docs/screenshots/v3-home-editorial.png",
+    "docs/screenshots/v3-diagram-lightbox.png",
+    "docs/screenshots/v3-mobile-lightbox.png",
+    "docs/screenshots/v3-illustrated-lesson.png",
+    "docs/screenshots/v3-image-library.png"
+  ],
+  "boundaries": [
+    "This round audits high-impact claims, extends selected resources and adds imagery; it is not a claim of exhaustive historical coverage or a fresh live check of every archived source.",
+    "Photographs cover 18 of 46 dossiers. Rights or source gaps are retained rather than filled with misidentified third-party images.",
+    "Existing 3D models remain simplified functional research geometry, not manufacturer CAD or recovered internal layouts.",
+    "The two generated concept artworks are explicitly identified as imagined imagery and are not linked as evidence for a real vehicle.",
+    "The original AerospaceSimUE project was not modified or rerun.",
+    "Local project only; no public deployment or remote publishing."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "downloadedOn": "2026-10-25",
+  "provider": "Google Fonts",
+  "cssRequest": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400..700&family=Space+Grotesk:wght@400..700&display=swap",
+  "subset": "latin",
+  "style": "normal",
+  "requestedWeightRange": "400 700",
+  "fonts": [
+    {
+      "family": "DM Sans",
+      "file": "dm-sans-latin-wght-400-700.woff2",
+      "source": "https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2",
+      "licenseFile": "DM-Sans-OFL.txt",
+      "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/OFL.txt",
+      "license": "SIL Open Font License 1.1"
+    },
+    {
+      "family": "Space Grotesk",
+      "file": "space-grotesk-latin-wght-400-700.woff2",
+      "source": "https://fonts.gstatic.com/s/spacegrotesk/v22/V8mDoQDjQSkFtoMM3T6r8E7mPbF4Cw.woff2",
+      "licenseFile": "Space-Grotesk-OFL.txt",
+      "licenseSource": "https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/OFL.txt",
+      "license": "SIL Open Font License 1.1"
+    }
+  ]
+}

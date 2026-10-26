@@ -1,0 +1,34 @@
+[
+  {
+    "id": "concept-spacecraft-study",
+    "title": "把飞行器拆成可以理解的系统",
+    "src": "/images/spacecraft-study-v3.png",
+    "alt": "金色隔热包覆的虚构探测器在暗色环境中展开部件，可见舱板、航电设备、贮箱、天线与太阳翼。",
+    "caption": "用于建立系统组成的视觉印象。部件形状、连线和相对位置由 AI 构想，不代表任何实际型号的内部结构。",
+    "credit": "轨研 ORBITAL / ImageGen",
+    "sourceUrl": "",
+    "assetUrl": "/images/spacecraft-study-v3.png",
+    "kind": "生成概念",
+    "licenseNote": "本站通过内置 ImageGen 制作；不是任务照片、项目运行截图或工程设计图。",
+    "verifiedOn": "2026-10-25",
+    "vehicleIds": [],
+    "lessonIds": [],
+    "focus": "65% 50%"
+  },
+  {
+    "id": "concept-lunar-horizon",
+    "title": "从地球轨道，望向地月空间",
+    "src": "/images/lunar-horizon-v3.png",
+    "alt": "月球环形山与明暗交界在画面下方展开，远处地球和一颗虚构探测器构成月球轨道探索的概念场景。",
+    "caption": "月球轨道探索的生成场景，用于网页视觉叙事。天体尺度、光照与飞行器位置不作为真实观测或任务几何依据。",
+    "credit": "轨研 ORBITAL / ImageGen",
+    "sourceUrl": "",
+    "assetUrl": "/images/lunar-horizon-v3.png",
+    "kind": "生成概念",
+    "licenseNote": "本站通过内置 ImageGen 制作；非实际任务影像。",
+    "verifiedOn": "2026-10-25",
+    "vehicleIds": [],
+    "lessonIds": [],
+    "focus": "65% 50%"
+  }
+]

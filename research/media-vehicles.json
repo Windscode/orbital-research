@@ -1,0 +1,439 @@
+[
+  {
+    "id": "saturn-v-apollo11-launch",
+    "title": "Saturn V · 阿波罗 11 号升空",
+    "vehicleIds": [
+      "saturn-v"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/apollo_11_launch_-_gpn-2000-000630_1.jpg",
+    "sourceUrl": "https://www.nasa.gov/image-article/apollo-11-launches-into-history/",
+    "alt": "土星五号运载火箭在阿波罗11号任务中离开发射塔，底部喷出明亮尾焰",
+    "caption": "1969 年 7 月 16 日，阿波罗 11 号由肯尼迪航天中心 39A 发射台起飞。照片记录完整发射组合体与地面塔架，不用于读出内部贮箱、质量分布或瞬时推力。",
+    "credit": "NASA",
+    "kind": "实拍影像",
+    "src": "/images/archive/saturn-v-apollo11-launch.jpg",
+    "licenseNote": "NASA 官方媒体资料，依 NASA Images and Media 使用说明用于个人科普与研究展示；保留署名，不暗示 NASA 为本站背书。本站仅等比例缩放及网页压缩，保留完整画面。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "apollo-lm-eagle-return",
+    "title": "Apollo LM · 月面归来",
+    "vehicleIds": [
+      "apollo-lm"
+    ],
+    "assetUrl": "https://assets.science.nasa.gov/content/dam/science/psd/lunar-science/2023/08/as11_44_6642.jpg",
+    "sourceUrl": "https://science.nasa.gov/resource/eagles-return/",
+    "alt": "鹰号登月舱上升级掠过月球地平线，远处悬着半明的地球",
+    "caption": "1969 年 7 月 21 日，Michael Collins 在对接前拍下返回的 Eagle，编号 AS11-44-6642。画面只有登月舱上升级；下降级和着陆腿留在月面，不能将其误作完整登月舱。",
+    "credit": "NASA / Michael Collins",
+    "kind": "实拍影像",
+    "src": "/images/archive/apollo-lm-eagle-return.jpg",
+    "licenseNote": "NASA 官方媒体资料，依 NASA Images and Media 使用说明用于个人科普与研究展示；保留署名，不暗示 NASA 为本站背书。本站仅等比例缩放及网页压缩，保留完整画面。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "apollo-csm-lunar-orbit",
+    "title": "Apollo CSM · 月轨中的哥伦比亚",
+    "vehicleIds": [
+      "apollo-csm"
+    ],
+    "assetUrl": "https://assets.science.nasa.gov/content/dam/science/psd/lunar-science/2023/08/apollo11_csmovermoon_1200.jpg",
+    "sourceUrl": "https://science.nasa.gov/resource/apollo-11-command-and-service-modules/",
+    "alt": "阿波罗11号指令舱与服务舱组合体飞行在月球丰富海上方",
+    "caption": "1969 年 7 月 20 日，从登月舱拍摄的阿波罗 11 号指令与服务舱，背景为丰富海北部。照片可观察外部推进喷口和舱体关系，透视缩短不能直接当作精确工程尺寸。",
+    "credit": "NASA",
+    "kind": "实拍影像",
+    "src": "/images/archive/apollo-csm-lunar-orbit.jpg",
+    "licenseNote": "NASA 官方媒体资料，依 NASA Images and Media 使用说明用于个人科普与研究展示；保留署名，不暗示 NASA 为本站背书。本站仅等比例缩放及网页压缩，保留完整画面。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "hubble-servicing-2009",
+    "title": "Hubble · 最后一次维护之后",
+    "vehicleIds": [
+      "hubble"
+    ],
+    "assetUrl": "https://science.nasa.gov/wp-content/uploads/2022/05/nasa-hubble-jpeg.webp",
+    "sourceUrl": "https://science.nasa.gov/image-detail/nasa-hubble/",
+    "alt": "完成最后一次维护任务的哈勃望远镜悬在地球大气边缘上方，两侧太阳翼展开",
+    "caption": "2009 年 5 月，第四次维修任务结束后释放的哈勃望远镜。此时的太阳翼与外部设备反映维护后的构型，不能与 1990 年发射初始状态混用；内部仪器布局仍需独立资料。",
+    "credit": "NASA",
+    "kind": "实拍影像",
+    "src": "/images/archive/hubble-servicing-2009.jpg",
+    "licenseNote": "NASA 官方媒体资料，依 NASA Images and Media 使用说明用于个人科普与研究展示；保留署名，不暗示 NASA 为本站背书。本站仅等比例缩放及网页压缩，保留完整画面。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "webb-lights-out-inspection",
+    "title": "JWST · 熄灯检查",
+    "vehicleIds": [
+      "jwst"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/lightsout.jpg",
+    "sourceUrl": "https://www.nasa.gov/image-article/nasas-webb-telescope-ghostly-lights-out-inspection/",
+    "alt": "韦布望远镜金色分段主镜在暗室中被照亮，检验人员留下长曝光的模糊轨迹",
+    "caption": "NASA 于 2017 年 3 月发布的振动与声学试验后检查照片。Chris Gunn 使用长曝光与光绘照明，人员的虚影是摄影效果；这是地面光学组件检查，不是在轨状态，也不是渲染图。",
+    "credit": "NASA / Chris Gunn",
+    "kind": "实拍影像",
+    "src": "/images/archive/webb-lights-out-inspection.jpg",
+    "licenseNote": "NASA 官方媒体资料，依 NASA Images and Media 使用说明用于个人科普与研究展示；保留署名，不暗示 NASA 为本站背书。本站仅等比例缩放及网页压缩，保留完整画面。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "cassini-saturn-concept",
+    "title": "Cassini · 土星系统构想",
+    "vehicleIds": [
+      "cassini"
+    ],
+    "assetUrl": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/i/IMG004629.jpg",
+    "sourceUrl": "https://science.nasa.gov/resource/cassini-at-saturn-view-4/",
+    "alt": "官方绘制的卡西尼探测器飞越土星环，土星阴影投射在环上",
+    "caption": "NASA/JPL-Caltech 于 2012 年 8 月发布的艺术构想，表现卡西尼与土星环及行星阴影。它说明任务环境和航天器外观，不是第三架航天器拍摄的实景，也不提供精确姿态、轨道或结构测量。",
+    "credit": "NASA/JPL-Caltech",
+    "kind": "官方示意",
+    "rightsUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+    "licenseNote": "依 JPL Image Use Policy 用于科普与研究展示，保留 NASA/JPL-Caltech 署名，不暗示背书。原作是官方艺术构想；本站仅等比例缩放与压缩。",
+    "src": "/images/archive/cassini-saturn-concept.jpg",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "orion-earth-moon-2022",
+    "title": "Orion · 地月同框",
+    "vehicleIds": [
+      "orion"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/52530824918_0f808fa548_4k.jpg",
+    "sourceUrl": "https://www.nasa.gov/image-article/orion-earth-moon/",
+    "alt": "猎户座飞船太阳翼相机视野中的舱体、地球和月球",
+    "caption": "Artemis I 无人试飞期间，太阳翼上的相机拍下 Orion、地球和月球，NASA 于 2022 年 11 月 29 日发布。画面是外置相机视角，有明显透视关系；不能把相对视觉大小理解为天体尺度或完整舱段结构。",
+    "credit": "NASA",
+    "kind": "实拍影像",
+    "src": "/images/archive/orion-earth-moon-2022.jpg",
+    "licenseNote": "NASA 官方媒体资料，依 NASA Images and Media 使用说明用于个人科普与研究展示；保留署名，不暗示 NASA 为本站背书。本站仅等比例缩放及网页压缩，保留完整画面。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "sls-artemis1-liftoff",
+    "title": "SLS · Artemis I 夜间发射",
+    "vehicleIds": [
+      "sls-block-1",
+      "orion"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2024/11/52507883571-396b3c1c6c-o.jpg",
+    "sourceUrl": "https://www.nasa.gov/image-article/two-years-ago-artemis-i-liftoff/",
+    "alt": "Artemis I任务的SLS火箭在夜空中起飞，发动机尾焰照亮发射台蒸汽",
+    "caption": "2022 年 11 月 16 日美国东部时间 01:47，SLS 携无人 Orion 从 39B 升空。对应 Artemis I 的 Block 1 发射构型；火焰与蒸汽形状受曝光和环境影响，不能据照片反推发动机性能。",
+    "credit": "NASA / Joel Kowsky",
+    "kind": "实拍影像",
+    "src": "/images/archive/sls-artemis1-liftoff.jpg",
+    "licenseNote": "NASA 官方媒体资料，依 NASA Images and Media 使用说明用于个人科普与研究展示；保留署名，不暗示 NASA 为本站背书。本站仅等比例缩放及网页压缩，保留完整画面。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "iss-endeavour-docked",
+    "title": "ISS × Endeavour · 轨道会合",
+    "vehicleIds": [
+      "iss",
+      "space-shuttle"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/557343main_iss027e036700_full.jpg",
+    "sourceUrl": "https://www.nasa.gov/image-article/international-space-station-docked-space-shuttle-endeavour/",
+    "alt": "奋进号航天飞机与国际空间站对接，长桁架和多组太阳翼完整展开",
+    "caption": "2011 年 5 月 23 日，Paolo Nespoli 从离站的 Soyuz TMA-20 拍摄，影像编号 ISS027-E-036700。它记录航天飞机对接状态与当时空间站布局；不代表后续加装太阳翼、舱段后的当前构型。",
+    "credit": "NASA/ESA / Paolo Nespoli",
+    "kind": "实拍影像",
+    "rightsUrl": "https://www.esa.int/ESA_Multimedia/Terms_and_conditions_of_use_of_images_and_videos_available_on_the_esa_website",
+    "licenseNote": "NASA/ESA 联合署名影像；按 ESA 教育、编辑与信息用途条款用于本站科普研究，保留署名，不暗示官方背书。仅等比例缩放与压缩。",
+    "src": "/images/archive/iss-endeavour-docked.jpg",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "kind": "实拍影像",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain",
+    "id": "crew-dragon-crew2-window",
+    "title": "Crew Dragon · 近距离交会",
+    "src": "/images/archive/crew-dragon-crew2-window.jpg",
+    "vehicleIds": [
+      "dragon-2"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/iss065e002261.jpg",
+    "sourceUrl": "https://www.nasa.gov/image-article/view-of-spacex-crew-dragon-endeavour-approaching-station/",
+    "alt": "Crew Dragon Endeavour近距离接近空间站，鼻锥已打开并露出对接装置，背景是地球边缘",
+    "caption": "2021 年 4 月 24 日，Crew-2 的 Endeavour 接近国际空间站，鼻锥打开后露出对接装置。照片记录载人 Dragon 2 的交会阶段，任务随后与 Harmony 前向接口对接；不能由单张透视图反推舱内布局或绝对尺寸。",
+    "credit": "NASA",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "licenseNote": "NASA 官方媒体资料，依 NASA Images and Media 使用说明用于个人科普与研究展示；保留署名，不暗示 NASA 为本站背书。本站仅等比例缩放及网页压缩，保留完整画面。"
+  },
+  {
+    "id": "crew-dragon-demo2-approach",
+    "title": "Crew Dragon · 首次载人交会",
+    "vehicleIds": [
+      "dragon-2"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/dragon_turkey_unlabeled.jpg",
+    "sourceUrl": "https://www.nasa.gov/image-article/crew-dragon-approaches-international-space-station/",
+    "alt": "Crew Dragon Endeavour在土耳其海岸上空接近国际空间站",
+    "caption": "2020 年 5 月 31 日，Demo-2 的 Endeavour 接近国际空间站，背景是土耳其西南海岸。此图是载人 Dragon 2，而非早期 Dragon 1 货运舱；外形照片不能揭示内部乘员舱设备或热防护层厚度。",
+    "credit": "NASA",
+    "kind": "实拍影像",
+    "src": "/images/archive/crew-dragon-demo2-approach.jpg",
+    "licenseNote": "NASA 官方媒体资料，依 NASA Images and Media 使用说明用于个人科普与研究展示；保留署名，不暗示 NASA 为本站背书。本站仅等比例缩放及网页压缩，保留完整画面。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "new-horizons-cleanroom",
+    "title": "New Horizons · 出发前的总装",
+    "vehicleIds": [
+      "new-horizons"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/05pd2411.jpg",
+    "sourceUrl": "https://www.nasa.gov/image-article/new-horizons-spacecraft-clean-room-nasas-kennedy-space-center/",
+    "alt": "新视野号探测器在肯尼迪航天中心洁净室接受检查，侧面可见黑色放射性同位素电源",
+    "caption": "2005 年 11 月 4 日，肯尼迪航天中心的载荷危险操作设施内，新视野号为媒体展示做准备。黑色圆筒为 RTG；支架、工作人员和地面连接属于总装环境，不是飞行器在轨附件。",
+    "credit": "NASA",
+    "kind": "实拍影像",
+    "src": "/images/archive/new-horizons-cleanroom.jpg",
+    "licenseNote": "NASA 官方媒体资料，依 NASA Images and Media 使用说明用于个人科普与研究展示；保留署名，不暗示 NASA 为本站背书。本站仅等比例缩放及网页压缩，保留完整画面。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "kind": "实拍影像",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain",
+    "id": "voyager1-golden-record-installation",
+    "title": "Voyager 1 · 封存金唱片",
+    "src": "/images/archive/voyager1-golden-record-installation.jpg",
+    "vehicleIds": [
+      "voyager-1"
+    ],
+    "assetUrl": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia21/pia21740/PIA21740.jpg",
+    "sourceUrl": "https://science.nasa.gov/photojournal/voyager-installing-the-golden-record/",
+    "alt": "工程师在1977年为旅行者一号安装金唱片保护盖",
+    "caption": "1977 年，工程师为 Voyager 1 的金唱片固定保护盖，影像编号 PIA21740。它记录真实装配过程和局部设备，而非整器在轨展开状态；唱片的图像与音频内容另有权利条件，本图不包含其完整内容。",
+    "credit": "NASA/JPL-Caltech",
+    "rightsUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+    "licenseNote": "依 JPL Image Use Policy 用于科普研究展示，保留 NASA/JPL-Caltech 署名，不暗示背书。本站仅等比例缩放及压缩。"
+  },
+  {
+    "id": "voyager2-ground-1977",
+    "title": "Voyager · 双子平台的装配现场",
+    "vehicleIds": [
+      "voyager-1"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2022/08/1-voyager-2-spacecraft-1041.jpg",
+    "sourceUrl": "https://www.nasa.gov/technology/voyager-nasas-longest-lived-mission-logs-45-years-in-space/",
+    "alt": "1977年JPL工程师在洁净室准备旅行者二号探测器",
+    "caption": "1977 年 3 月 23 日，JPL 工程师准备 Voyager 2。作为旅行者一号档案的同型平台参照展示，照片本体明确是二号，不冒充一号；地面折叠状态与支撑设备不能直接等同于深空展开构型。",
+    "credit": "NASA/JPL-Caltech",
+    "kind": "实拍影像",
+    "rightsUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+    "licenseNote": "依 JPL Image Use Policy 用于个人科普研究，保留 NASA/JPL-Caltech 署名；这是一张 Voyager 2 的历史照片，只作为 Voyager 双子平台参照。",
+    "src": "/images/archive/voyager2-ground-1977.jpg",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "shuttle-discovery-ferry",
+    "title": "Discovery · 云上的返程",
+    "vehicleIds": [
+      "space-shuttle"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/125773main_image_feature_392_ys_full.jpg",
+    "sourceUrl": "https://www.nasa.gov/image-article/above-clouds/",
+    "alt": "发现号航天飞机搭载在NASA改装波音747运输机背上飞越云层",
+    "caption": "2005 年 8 月 19 日，Discovery 搭乘 NASA 的改装 747 从加州德莱顿返回佛罗里达。画面展示大气层内转场状态，尾部整流罩与承运飞机属于运输配置，不能当作入轨组合体。",
+    "credit": "NASA / Lori Losey",
+    "kind": "实拍影像",
+    "src": "/images/archive/shuttle-discovery-ferry.jpg",
+    "licenseNote": "NASA 官方媒体资料，依 NASA Images and Media 使用说明用于个人科普与研究展示；保留署名，不暗示 NASA 为本站背书。本站仅等比例缩放及网页压缩，保留完整画面。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "parker-heatshield-installation",
+    "title": "Parker · 安装热防护盾",
+    "vehicleIds": [
+      "parker-solar-probe"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2023/03/41411513760_f73452c628_o.jpg",
+    "sourceUrl": "https://www.nasa.gov/image-article/heatshield-installed-parker-solar-probe/",
+    "alt": "工程师在洁净室用吊具为帕克太阳探测器安装热防护盾",
+    "caption": "2018 年 6 月 27 日，佛罗里达 Astrotech 设施内的热防护盾安装过程。图中可见防护盾与探测器的装配关系；吊具和防护材料属于地面操作，不能据此推断近太阳飞行时的热边界条件。",
+    "credit": "NASA / Glenn Benson",
+    "kind": "实拍影像",
+    "src": "/images/archive/parker-heatshield-installation.jpg",
+    "licenseNote": "NASA 官方媒体资料，依 NASA Images and Media 使用说明用于个人科普与研究展示；保留署名，不暗示 NASA 为本站背书。本站仅等比例缩放及网页压缩，保留完整画面。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "hayabusa2-ground",
+    "title": "Hayabusa2 · 折叠状态的探测器",
+    "vehicleIds": [
+      "hayabusa2"
+    ],
+    "assetUrl": "https://www.hayabusa2.jaxa.jp/galleries/spacecraft/img/20140831_hayabusa2.jpg",
+    "sourceUrl": "https://www.hayabusa2.jaxa.jp/en/galleries/spacecraft/pages/20140831_hayabusa2.html",
+    "alt": "隼鸟二号在地面支架上展示，太阳翼折叠，舱体覆有金色隔热材料",
+    "caption": "JAXA 图库标注为 2014 年 8 月 31 日的 Hayabusa2。太阳翼处于折叠状态，红色盖板、保护罩和下方轮式支架体现地面展示阶段；照片不代表小行星取样时的完全展开状态。",
+    "credit": "Courtesy of JAXA",
+    "kind": "实拍影像",
+    "rightsUrl": "https://global.jaxa.jp/policy.html",
+    "licenseNote": "JAXA 资料按其网站条款用于非商业科学研究与教育展示，须署名。保留下载的原始文件；不得裁切、翻转、改色或叠加图文，不用于商业推广。",
+    "preserveOriginal": true,
+    "src": "/images/archive/hayabusa2-ground.jpg",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "chandrayaan3-vikram-stereo",
+    "title": "Chandrayaan-3 · 月面立体影像",
+    "vehicleIds": [
+      "chandrayaan-3"
+    ],
+    "assetUrl": "https://www.isro.gov.in/media_isro/image/index/Chandrayaan3/Ch3_lander_Right.jpg",
+    "sourceUrl": "https://www.isro.gov.in/ISRO_EN/chandrayaan3_gallery.html",
+    "alt": "ISRO发布的Vikram着陆器月面红青立体影像，着陆腿和下车坡道可见",
+    "caption": "基于 Pragyan 导航相机于 2023 年 8 月 30 日拍摄的左右视图，由 ISRO 制作的红青立体合成。需红青眼镜观察立体感；颜色编码不是月面真实颜色，也不是从照片还原的内部 CAD。",
+    "credit": "ISRO（导航相机：LEOS；立体处理：SAC）",
+    "kind": "实拍影像",
+    "rightsUrl": "https://www.isro.gov.in/Copyright_Policy.html",
+    "licenseNote": "依 ISRO Copyright Policy 可免费准确转载，须显著注明来源且不得误导。保留官方立体合成的完整原图、日期和标识；不将红青编码解释为自然色。",
+    "preserveOriginal": true,
+    "src": "/images/archive/chandrayaan3-vikram-stereo.jpg",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "zhurong-orbital-observation",
+    "title": "祝融号 · 从火星轨道确认着陆",
+    "vehicleIds": [
+      "zhurong",
+      "tianwen-1"
+    ],
+    "assetUrl": "https://static.uahirise.org/images/2021/details/cut/ESP_069665_2055-1.jpg",
+    "sourceUrl": "https://hirise.lpl.arizona.edu/ESP_069665_2055",
+    "alt": "HiRISE轨道影像中的天问一号着陆平台、喷流扰动区域和南侧祝融火星车",
+    "caption": "NASA MRO 的 HiRISE 于 2021 年 6 月 6 日成像，官方判读指出着陆平台及其南侧的祝融号。原始采样约 29.2 厘米/像素；此为官方增强色遥感局部图，颜色不等同于人眼所见，也无法解析内部机构。",
+    "credit": "NASA/JPL-Caltech/UArizona",
+    "kind": "实拍影像",
+    "rightsUrl": "https://hirise.lpl.arizona.edu/ESP_069665_2055",
+    "licenseNote": "HiRISE 页面明确声明其影像属于公有领域，并请求注明 NASA/JPL-Caltech/UArizona。保留官方发布的局部遥感图，仅等比例缩放与压缩；不是 CNSA 地面相机照片。",
+    "src": "/images/archive/zhurong-orbital-observation.jpg",
+    "verifiedOn": "2026-10-25",
+    "fit": "contain"
+  },
+  {
+    "id": "mro-high-bay-2004",
+    "title": "MRO · 总装与环境试验前的轨道器",
+    "vehicleIds": [
+      "mro"
+    ],
+    "assetUrl": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA07212.jpg",
+    "sourceUrl": "https://www.jpl.nasa.gov/images/pia07212-mars-reconnaissance-orbiter-in-high-bay/",
+    "alt": "MRO轨道器在高厅中装配，工程人员围绕主平台检查，太阳翼尚未展开",
+    "caption": "2004 年，MRO 在 Lockheed Martin 总装高厅中接受集成测试；JPL 于 2005 年 1 月 7 日发布该照片。可辨认仪器、主平台和未展开的附属结构，地面支架及保护件不属于最终在轨构型。原图为 500 × 767 像素。",
+    "credit": "NASA / JPL / Lockheed Martin",
+    "kind": "实拍影像",
+    "src": "/images/archive/mro-high-bay-2004.jpg",
+    "licenseNote": "JPL Image Use Policy 允许个人、教育与新闻用途，须保留图片指定署名；含合作方署名，因此不将其声明为本站自有或无条件公有领域。保留完整原图，用于任务资料介绍，不用于人物或机构代言。",
+    "rightsUrl": "https://www.jpl.nasa.gov/jpl-image-use-policy/",
+    "verifiedOn": "2026-10-26",
+    "fit": "contain"
+  },
+  {
+    "id": "viking-1-first-surface-image",
+    "title": "Viking 1 · 足垫与首次火星地表影像",
+    "vehicleIds": [
+      "viking-1-lander"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2020/08/viking_1_first_image_from_surface_jul_20_1976.jpg",
+    "sourceUrl": "https://www.nasa.gov/history/45-years-ago-viking-1-and-2-off-to-mars/",
+    "alt": "Viking1在火星拍摄的灰度地面图，右下角是着陆器足垫，周围散布岩石",
+    "caption": "1976 年 7 月 20 日，Viking 1 着陆后取得首批火星地表影像，画面可见一只足垫和近场岩石。适合观察足垫接触和近场尺度线索；镜头投影、扫描时序和未知地形使单幅照片不足以确定完整接触载荷。",
+    "credit": "NASA",
+    "kind": "实拍影像",
+    "src": "/images/archive/viking-1-first-surface-image.jpg",
+    "licenseNote": "NASA 官方媒体，按 Images and Media Usage Guidelines 用于个人研究与资料介绍；保留 NASA 署名及来源链接，不暗示机构背书。文件采用来源提供的完整画面，未裁切、生成补画或提升标称分辨率。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-26",
+    "fit": "contain"
+  },
+  {
+    "id": "viking-lander-components",
+    "title": "Viking Lander · 官方系统标注图",
+    "vehicleIds": [
+      "viking-1-lander"
+    ],
+    "assetUrl": "https://www.nasa.gov/wp-content/uploads/2020/08/viking_lander_schematic.jpg",
+    "sourceUrl": "https://www.nasa.gov/history/45-years-ago-viking-1-and-2-off-to-mars/",
+    "alt": "Viking着陆器的黑白系统线图，标出三条腿、两台相机、RTG、天线与采样臂",
+    "caption": "NASA 历史文章配发的 Viking 着陆器系统图，能够核对三腿、双扫描相机、采样臂、双 RTG 防风罩及通信天线的分工。图中三台末端下降发动机具有多喷嘴结构；图示位置可用于认识构型，不能直接量取制造尺寸。",
+    "credit": "NASA",
+    "kind": "官方示意",
+    "src": "/images/archive/viking-lander-components.jpg",
+    "licenseNote": "NASA 官方媒体，按 Images and Media Usage Guidelines 用于个人研究与资料介绍；保留 NASA 署名及来源链接，不暗示机构背书。文件采用来源提供的完整画面，未裁切、生成补画或提升标称分辨率。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-26",
+    "fit": "contain"
+  },
+  {
+    "id": "tiros-1-first-earth-view",
+    "title": "TIROS-1 · 电视相机记录的地球云层",
+    "vehicleIds": [
+      "tiros-1"
+    ],
+    "assetUrl": "https://assets.science.nasa.gov/content/dam/science/esd/climate/2023/12/ImageWall5_1920x1200-95.jpg",
+    "sourceUrl": "https://science.nasa.gov/resource/tv-debut/",
+    "alt": "TIROS1早期灰度电视影像，画面中有地球边缘、云层和明显扫描纹理",
+    "caption": "NASA 发布的 TIROS-1 首批地球电视影像，观测日期为 1960 年 4 月 1 日。扫描纹理和模糊边缘是历史成像链的一部分；这里保留官方展示文件，不将重采样后的像素数解释为原始传感器采样。",
+    "credit": "NASA / NASA Goddard Photo and Video",
+    "kind": "实拍影像",
+    "src": "/images/archive/tiros-1-first-earth-view.jpg",
+    "licenseNote": "NASA 官方媒体，按 Images and Media Usage Guidelines 用于个人研究与科普；保留来源和署名，不暗示 NASA 背书。下载官方 1920 × 1200 展示版本，未裁切或生成修补。",
+    "rightsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "verifiedOn": "2026-10-26",
+    "fit": "contain"
+  },
+  {
+    "id": "euclid-modules-2022",
+    "title": "Euclid · 载荷与服务模块对接完成",
+    "vehicleIds": [
+      "euclid"
+    ],
+    "assetUrl": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2022/03/euclid_with_payload_and_service_modules_connected/24016475-1-eng-GB/Euclid_with_payload_and_service_modules_connected_pillars.jpg",
+    "sourceUrl": "https://www.esa.int/ESA_Multimedia/Images/2022/03/Euclid_with_payload_and_service_modules_connected",
+    "alt": "Euclid在洁净室完成两个主要模块对接，上方是望远镜载荷，下方是包覆隔热材料的服务模块",
+    "caption": "2022 年 3 月，Euclid 在 Thales Alenia Space 完成载荷模块与服务模块对接。ESA 于 3 月 30 日发布，署名 S. Corvaja。此时组合遮阳板、太阳电池模块与高增益天线尚未安装，照片应与最终巡天构型区分。",
+    "credit": "© ESA — S. Corvaja",
+    "kind": "实拍影像",
+    "src": "/images/archive/euclid-modules-2022.jpg",
+    "licenseNote": "ESA Standard Licence：用于本个人网站的教育、编辑与信息介绍；保留 © ESA 及摄影者 S. Corvaja 署名、原始来源和条款链接。原图版权归 ESA，非 CC 或公有领域；本站代码许可证不覆盖此图。采用 ESA 可下载展示图，不裁切、不生成修补、不作商业宣传或暗示背书。",
+    "rightsUrl": "https://www.esa.int/ESA_Multimedia/Terms_and_conditions_of_use_of_images_and_videos_available_on_the_esa_website",
+    "verifiedOn": "2026-10-26",
+    "fit": "contain"
+  }
+]

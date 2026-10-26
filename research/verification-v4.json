@@ -1,0 +1,120 @@
+{
+  "checkedOn": "2026-10-25",
+  "version": "4.0.0",
+  "environment": "Windows / Node 22.22.2 / Vite 6.4.5 / React 19 / Codex in-app browser",
+  "counts": {
+    "lessons": 44,
+    "knowledgeNodes": 44,
+    "knowledgeRelations": 150,
+    "learningPaths": 9,
+    "knowledgeDomains": 8,
+    "resources": 63,
+    "briefings": 22,
+    "vehicleDossiers": 50,
+    "downloadableResearchModels": 50,
+    "searchableCoreEntries": 179,
+    "searchableEntriesIncludingImages": 212,
+    "distinctValidatedSourceURLs": 372,
+    "visualLibraryAssets": 33,
+    "reviewedConfigurationSketches": 6,
+    "vehicleStudyQuestions": 30,
+    "vehicleDataEntrypoints": 24
+  },
+  "changes": {
+    "newLessons": [
+      "fdir",
+      "ground-operations",
+      "conjunction-risk",
+      "liquid-sloshing",
+      "flexible-multibody",
+      "powered-descent"
+    ],
+    "revisedLessons": [
+      "state-estimation",
+      "propulsion-models",
+      "relative-motion",
+      "structural-dynamics"
+    ],
+    "newDossiers": [
+      "luna-9",
+      "venera-7",
+      "mariner-4",
+      "pioneer-10"
+    ],
+    "revisedDossiers": [
+      "apollo-lm",
+      "jwst",
+      "voyager-1",
+      "shenzhou",
+      "tiangong",
+      "starship"
+    ],
+    "reviewedModels": [
+      "apollo-lm",
+      "jwst",
+      "luna-9",
+      "venera-7",
+      "mariner-4",
+      "pioneer-10"
+    ]
+  },
+  "automatedChecks": {
+    "content": "PASS: 179 core records, required evidence fields, dates, 372 distinct HTTPS URL syntax checks including new data products. Does not assert live availability of every URL.",
+    "orbit": "PASS: 6 independent numerical groups.",
+    "expansion": "PASS: 57 checks, 0 failures, 0 warnings; 50/50 models; 16,956 fitted camera views and 135,648 bounding-box corner projections.",
+    "modelExport": "PASS: 50 GLB files, approximately 22.9 MiB, provenance and readable geometry verified.",
+    "media": "PASS: 33 assets, headers, dimensions, paths, source/rights fields and content associations.",
+    "navigation": "PASS: 179 deep-link roundtrips; invalid routes; saved-note validation; title ranking; NFKC normalization and multi-keyword matching; 6 multi-tab/storage-failure regression scenarios.",
+    "productionBuild": "PASS: TypeScript and Vite. Main JS 1213.48 kB / gzip 358.53 kB; lazy Three.js JS 579.39 kB / gzip 153.39 kB. Vite retains its large-chunk advisory.",
+    "finalProductionConsole": "Fresh production tab: zero warning/error entries after article navigation, JWST loading, and filtered archive-card checks."
+  },
+  "browserChecks": [
+    "Direct article URL opens the matching reader after reload. Related-article navigation and browser Back restore the prior article.",
+    "Reader chapter buttons scroll to the section; reading-position percentage updates. Desktop guide keeps actions reachable beneath a separately scrollable contents list.",
+    "390px mobile contents opens and collapses. An observed scroll offset caused by collapsing after scrolling was fixed by committing collapse before locating the heading; final screenshot shows the heading and first paragraph correctly.",
+    "Read mark and saved note persist after a reload. All temporary QA notes/read marks were restored to empty/unread.",
+    "Desktop and separate iframe browsing context synchronize saved notes in both directions. An unsaved draft survives another context update and displays a conflict message. Temporary saved notes and drafts were cleared.",
+    "Closing a reader returns to the underlying page; Back then reaches the prior page without an extra duplicate base-page step. Search-to-dossier-to-3D transition remains open after history navigation.",
+    "Search includes 212 entries; SPICE ranks NAIF SPICE first. Multi-keyword queries combine terms, content-type chips filter results, and an image search result opens the image viewer.",
+    "At 768x500 and 390x500 embedded viewports, search controls wrap, the results list scrolls to its final item, and the footer remains visible.",
+    "Knowledge page shows 44 nodes, 150 relationships, 9 paths and zero temporary saved study records; the expanded domain layouts remain within their boxes.",
+    "New dossier reader displays source-linked data entrypoints, numbered study questions, specific inference assumptions and model limitations.",
+    "Apollo LM and JWST render their reviewed external configurations; LM explosion slider, part selection, isolation and clipping respond correctly.",
+    "Luna 9, Venera 7, Mariner 4 and Pioneer 10 each load and visibly show their distinct reviewed shapes.",
+    "Fresh production preview tested separately from Vite development hot reload: new FDIR article, related article, browser Back and lazy-loaded JWST model.",
+    "Production historical lander filter returns Luna 9, Apollo LM and Venera 7; official-photo and SVG-sketch cards have aligned evidence/action rows."
+  ],
+  "auditRecords": [
+    "research/knowledge-review-v4.json",
+    "research/vehicle-review-v4.json",
+    "research/model-review-v4.json"
+  ],
+  "screenshots": [
+    "docs/screenshots/v4-reading-workspace.jpg",
+    "docs/screenshots/v4-knowledge-graph.jpg",
+    "docs/screenshots/v4-search.jpg",
+    "docs/screenshots/v4-mobile-reading.jpg",
+    "docs/screenshots/v4-mobile-chapter.jpg",
+    "docs/screenshots/v4-short-window-search.jpg",
+    "docs/screenshots/v4-apollo-lm.jpg",
+    "docs/screenshots/v4-jwst.jpg",
+    "docs/screenshots/v4-luna9.jpg",
+    "docs/screenshots/v4-venera7.jpg",
+    "docs/screenshots/v4-mariner4.jpg",
+    "docs/screenshots/v4-pioneer10.jpg",
+    "docs/screenshots/v4-historical-atlas.jpg"
+  ],
+  "developmentNotes": [
+    "Changing the persistence hook during Vite hot reload emitted a hook-order error in an already-open development page. Full reload and a fresh production context are the final verification basis.",
+    "The iframe QA tab accumulated unnamed MutationObserver errors during tooling observations. No MutationObserver is present in application or harness source; the separate production tab is checked independently."
+  ],
+  "boundaries": [
+    "50 dossiers remain a curated historical selection, not an exhaustive global vehicle census.",
+    "Model geometry and SVG previews describe public external configurations and functional groups; internal shapes, normalized units and separated positions are not recovered CAD or engineering dimensions.",
+    "New learning experiments are documented procedures and analytical exercises, not claims that a solver or flight system was run.",
+    "No new media photography or generated bitmap artwork was added this round; the 33-item image library is preserved and six code-native configuration sketches were added.",
+    "Original AerospaceSimUE source was not modified or rerun.",
+    "Local-only work; no remote publishing."
+  ],
+  "teardown": "Closed owned QA tabs 11, 12 and 13. Stopped owned development and production preview sessions; confirmed zero listeners on 5173 and 4173. Existing user tabs were preserved. Start-Orbital.cmd starts the local site."
+}

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900" role="img" aria-labelledby="frames-state-title frames-state-desc">
+<title id="frames-state-title">参考系与状态变换</title><desc id="frames-state-desc">同原点参考系A与B的坐标基、同一个位置矢量、速度变换的旋转导数项，以及地固静止测站在惯性系仍有速度的检验例。</desc>
+<defs><marker id="a-lime" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#d3ef83" stroke-width="1.5"/></marker><marker id="a-blue" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#8bb6d0" stroke-width="1.5"/></marker><marker id="a-gold" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M1 1L11 6L1 11" fill="none" stroke="#cfb280" stroke-width="1.5"/></marker><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#35505a" opacity=".35"/></pattern></defs>
+<rect width="1400" height="900" fill="#10191e"/><rect x="44" y="140" width="1312" height="700" fill="url(#grid)"/>
+<g font-family="'Microsoft YaHei','Noto Sans CJK SC',sans-serif" font-weight="400">
+<text x="56" y="48" font-size="15" fill="#8a9e9e" letter-spacing="2">ORBITAL / ENGINEERING FIELD DIAGRAM</text>
+<text x="56" y="100" font-size="38" fill="#e4e9df" >参考系与状态变换</text><text x="1344" y="45" font-size="14" fill="#d3ef83" text-anchor="end" letter-spacing="1">FRAMES-STATE</text>
+<line x1="56" y1="125" x2="1344" y2="125" stroke="#33454c" stroke-width="1" /><text x="56" y="160" font-size="22" fill="#8a9e9e" >同原点参考系 · 位置与速度必须一起转换</text>
+<rect x="760" y="195" width="584" height="420" rx="16" fill="#142128" stroke="#33454c"/>
+<text x="790" y="238" font-size="28" fill="#d3ef83" >一个位置，两个坐标表示</text>
+<text x="790" y="291" font-size="34" fill="#e4e9df" >r_B = R(t) r_A</text>
+<text x="790" y="344" font-size="30" fill="#e4e9df" >v_B = R(t) v_A + Ṙ(t) r_A</text>
+<text x="790" y="392" font-size="24" fill="#8bb6d0" >R：把 A 系分量映射到 B 系</text>
+<line x1="790" y1="416" x2="1314" y2="416" stroke="#33454c" stroke-width="2" />
+<text x="790" y="462" font-size="24" fill="#e4e9df" >速度变换必须包含坐标基的变化</text>
+<text x="790" y="507" font-size="23" fill="#cfb280" >Ṙ r_A 是旋转参考系带来的附加项</text>
+<text x="790" y="556" font-size="22" fill="#8a9e9e" >此处两参考系共用原点；平移另计</text>
+<text x="790" y="590" font-size="22" fill="#8a9e9e" >历元、轴向、单位与时间尺度一同保存</text>
+<line x1="335" y1="455" x2="670" y2="455" stroke="#8bb6d0" stroke-width="3" marker-end="url(#a-blue)"/>
+<line x1="335" y1="455" x2="335" y2="218" stroke="#8bb6d0" stroke-width="3" marker-end="url(#a-blue)"/>
+<text x="650" y="491" font-size="25" fill="#8bb6d0" >x_A</text>
+<text x="352" y="222" font-size="25" fill="#8bb6d0" >y_A</text>
+<line x1="335" y1="455" x2="612" y2="295" stroke="#d3ef83" stroke-width="3" marker-end="url(#a-lime)"/>
+<line x1="335" y1="455" x2="175" y2="178" stroke="#d3ef83" stroke-width="3" marker-end="url(#a-lime)"/>
+<text x="624" y="296" font-size="25" fill="#d3ef83" >x_B</text>
+<text x="129" y="196" font-size="25" fill="#d3ef83" >y_B</text>
+<circle cx="335" cy="455" r="60" fill="#203d4d" stroke="#8bb6d0" stroke-width="2"/>
+<path d="M278 448Q335 421 392 448M278 470Q335 495 391 470" fill="none" stroke="#8bb6d0" stroke-width="1" opacity=".35"/>
+<path d="M335 397Q296 454 335 513M335 397Q372 454 335 513" fill="none" stroke="#8bb6d0" stroke-width="1" opacity=".35"/>
+<circle cx="335" cy="455" r="5" fill="#e4e9df"/>
+<text x="274" y="552" font-size="23" fill="#8a9e9e" >O：共同原点</text>
+<line x1="335" y1="455" x2="560" y2="238" stroke="#cfb280" stroke-width="4" marker-end="url(#a-gold)"/>
+<circle cx="560" cy="238" r="7" fill="#cfb280"/>
+<text x="575" y="229" font-size="24" fill="#cfb280" >P：同一目标</text>
+<text x="454" y="323" font-size="30" fill="#cfb280" >r</text>
+<path d="M440 455A105 105 0 0 0 426 402" fill="none" stroke="#d3ef83" stroke-width="2" marker-end="url(#a-lime)"/>
+<text x="451" y="423" font-size="26" fill="#d3ef83" >θ(t)</text>
+<text x="100" y="608" font-size="24" fill="#8bb6d0" >蓝色：A 系坐标基</text>
+<text x="100" y="647" font-size="24" fill="#d3ef83" >绿色：相对 A 系旋转的 B 系坐标基</text>
+<rect x="56" y="690" width="1288" height="112" rx="16" fill="#17232a" stroke="#33454c"/>
+<text x="82" y="730" font-size="25" fill="#d3ef83" >检验例：地固静止测站</text>
+<text x="82" y="772" font-size="30" fill="#e4e9df" >v_E = 0</text>
+<line x1="338" y1="755" x2="435" y2="755" stroke="#cfb280" stroke-width="3" marker-end="url(#a-gold)"/>
+<text x="470" y="772" font-size="30" fill="#e4e9df" >v_I = ω × r_I</text>
+<text x="812" y="740" font-size="24" fill="#cfb280" >静止依赖参考系</text>
+<text x="812" y="778" font-size="24" fill="#8a9e9e" >惯性系中的测站仍随地球转动</text>
+<line x1="56" y1="835" x2="1344" y2="835" stroke="#33454c" stroke-width="1" />
+<text x="56" y="869" font-size="17" fill="#8a9e9e" >轨研 ORBITAL · 原创技术图解</text>
+<text x="1344" y="869" font-size="15" fill="#8a9e9e" text-anchor="end" letter-spacing="1">SCHEMATIC · NOT TO SCALE</text>
+</g></svg>

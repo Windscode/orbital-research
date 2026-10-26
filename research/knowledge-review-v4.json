@@ -1,0 +1,357 @@
+{
+  "version": 4,
+  "reviewedOn": "2026-10-25",
+  "scope": [
+    "research/learning.json",
+    "research/knowledge-graph.json",
+    "research/knowledge-review-v4.json"
+  ],
+  "methodology": "先审查38篇已有主题与前置关系，针对6个真实工程缺口查阅NASA/ESA/NAIF、研究机构原始文档和作者论文；搜索仅发现来源，证据取自打开后的正文/PDF。正文为独立教学综合与推导；实验为建议，未安装或实测软件。保留旧文章和图谱领域，补充精确前置边、耦合理由及学习路径。",
+  "additions": [
+    {
+      "id": "fdir",
+      "title": "故障检测、隔离与恢复：从一个报警到可持续的任务状态",
+      "gap": "既有系统工程、估计和空间环境笔记尚未把异常检测连接到隔离、恢复状态机与资源代价。",
+      "bodyParagraphs": 6,
+      "experimentSteps": 4,
+      "sourceChecks": [
+        {
+          "title": "NASA SWEHB · 9.07 Fault Detection and Response（现行页面）",
+          "url": "https://swehb.nasa.gov/spaces/SWEHBVD/pages/102695798/9.07+Fault+Detection+and+Response",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取现行网页正文；web访问间歇超时后以HTTPS读取并去除HTML核对",
+          "supports": "异常、故障与失效的区分；模式相关持续判据；安全维持和关键事件功能恢复；可持续供电及地面可指令状态。",
+          "boundary": "属于NASA软件设计指导与中心实践汇编，不宣称某一任务已按本笔记实现。"
+        },
+        {
+          "title": "NASA cFS Health and Safety · 官方 README 与功能范围",
+          "url": "https://github.com/nasa/HS",
+          "accessedOn": "2026-10-25",
+          "readMethod": "读取官方仓库 README",
+          "supports": "应用/事件监视、看门狗服务、执行计数与健康信息基础设施。",
+          "boundary": "cFS HS 的公开功能不构成完整物理故障诊断，更不是任意商业公司采用证明。"
+        },
+        {
+          "title": "NASA · Juno Safe Mode Events, 2025-04-04（发布于04-09）",
+          "url": "https://science.nasa.gov/missions/juno/nasas-juno-back-to-normal-operations-after-entering-safe-mode/",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取NASA任务报道正文",
+          "supports": "事件日期2025-04-04，发布日期2025-04-09；Juno非必要功能关闭、对地通信和恢复行为。",
+          "boundary": "辐射相关性在报道中为初步迹象，不写成已确认根因；未猜测内部阈值。"
+        }
+      ],
+      "formulaConditions": "残差检验 J=rᵀS⁻¹r；仅当 r 近似 N(0,S)、S 满秩且模型一致时，单次 J 服从 χ²_d（d 为残差维数）。响应预算：T_detect+T_isolate+T_reconfigure < T_available；各项均含调度与执行延迟，任务允许时间需由具体失效后果确定。",
+      "notClaimed": "未声称已运行本篇实验、飞行软件或硬件；未由通用工具文档推断组织采用。"
+    },
+    {
+      "id": "ground-operations",
+      "title": "地面测控与任务运行：把一条指令追踪到可验证的结果",
+      "gap": "通信链路与任务时间线已有，但未覆盖命令生命周期、确认层次、断联恢复和地面端到端验证。",
+      "bodyParagraphs": 6,
+      "experimentSteps": 4,
+      "sourceChecks": [
+        {
+          "title": "ESA · Ground Segment and Operations（架构、模拟器与系统验证）",
+          "url": "https://www.esa.int/content/view/full/456914",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取ESA网页正文",
+          "supports": "任务控制、飞行动力学、任务计划、模拟器及系统验证测试的职责关系。",
+          "boundary": "介绍通用地面段架构，不声称教学系统是ESA生产系统。"
+        },
+        {
+          "title": "ESA · Telemetry & Telecommand",
+          "url": "https://www.esa.int/Enabling_Support/Space_Engineering_Technology/Onboard_Computers_and_Data_Handling/Telemetry_Telecommand",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取ESA网页正文",
+          "supports": "遥测遥控、链路接收状态和星上数据处理的层次。",
+          "boundary": "不把链路接收确认解释为执行器成功。"
+        },
+        {
+          "title": "NASA SWEHB · 9.04 Command Receipt Acknowledgement",
+          "url": "https://swehb.nasa.gov/spaces/SWEHBVD/pages/102695795/9.04+Command+Receipt+Acknowledgement",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取现行网页正文；web访问间歇超时后以HTTPS读取并去除HTML核对",
+          "supports": "应用级正/负确认、拒绝原因、接收与执行记录及模式校验。",
+          "boundary": "实验命令和队列为教学设计，不宣称完整符合CCSDS具体服务规范。"
+        }
+      ],
+      "formulaConditions": "静态真空近似单程光时 τ≈R/c；一次请求—响应的最短时间约为 2R/c+处理延迟。缓存内部 0<B<B_max 时 dB/dt=R_generate−R_downlink；边界需显式定义阻塞、丢弃或空队列行为，速率统一为 bit/s。",
+      "notClaimed": "未声称已运行本篇实验、飞行软件或硬件；未由通用工具文档推断组织采用。"
+    },
+    {
+      "id": "conjunction-risk",
+      "title": "空间碎片与交会风险：从最近接近到有条件的碰撞概率",
+      "gap": "已有相对运动与定轨，没有协方差驱动的碰撞概率、二维近似边界、概率稀释或运行规避链。",
+      "bodyParagraphs": 6,
+      "experimentSteps": 4,
+      "sourceChecks": [
+        {
+          "title": "NASA · Conjunction Assessment and Collision Avoidance Best Practices Handbook, Rev 1（2023，附录M/N）",
+          "url": "https://www.nasa.gov/wp-content/uploads/2024/01/oce-51-nasa-spacecraft-conjunction-assessment.pdf",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取NASA PDF；重点附录M概率稀释及N计算方法",
+          "supports": "附录M概率稀释；附录N四项二维近似条件、非直线与低速例外、共同大气误差造成的相关性。明确速度大小本身不是二维方法充分判据。",
+          "boundary": "引用2023 Rev 1的技术内容，不把其任务门限扩展为全球统一规定。"
+        },
+        {
+          "title": "NASA CARA · Step 2 Close Approach Risk Assessment",
+          "url": "https://www.nasa.gov/cara/step-2-close-approach-risk-assessment/",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取NASA CARA网页正文",
+          "supports": "交会筛查只识别接近；风险含概率与后果；CARA门限为机构运行政策。",
+          "boundary": "未把页面示例速度、碎片数量或门限当作本实验输入默认值。"
+        },
+        {
+          "title": "NASA CARA Analysis Tools · 公开算法、测试数据与 Git LFS 说明",
+          "url": "https://github.com/nasa/CARA_Analysis_Tools",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取官方仓库README与DistributedMatlab目录说明",
+          "supports": "公开算法、测试数据、NOSA许可范围；2026年README提醒MAT文件由Git LFS管理。",
+          "boundary": "未下载或执行算法测试，不声称结果已与NASA工具数值一致。"
+        }
+      ],
+      "formulaConditions": "共同坐标/历元下 P_rel=P₁+P₂−P₁₂−P₁₂ᵀ；独立误差才可令 P₁₂=0。短时二维高斯近似：P_c=∫_{||z||≤R_HBR} N₂(z;μ_enc,P_enc) dz；μ_enc 为交会平面名义错失向量，P_enc 为投影协方差，R_HBR 为组合硬体半径。",
+      "notClaimed": "未声称已运行本篇实验、飞行软件或硬件；未由通用工具文档推断组织采用。"
+    },
+    {
+      "id": "liquid-sloshing",
+      "title": "液体晃动：让贮箱里的推进剂成为动力学状态",
+      "gap": "已有推力/耗质及多物理场概念，未覆盖推进剂自由表面的动力学状态和微重力模型边界。",
+      "bodyParagraphs": 6,
+      "experimentSteps": 4,
+      "sourceChecks": [
+        {
+          "title": "Southwest Research Institute · Mechanical Analogs for Fluid Slosh Dynamics（2024，原始推导）",
+          "url": "https://www2.swri.org/www2/fluid-slosh/SLOSH_Model_Derivations.pdf",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取SwRI 2024 PDF摘要、符号定义和模型结构",
+          "supports": "等效弹簧质量/摆模型的持续轴向加速度、小横向激励和忽略表面张力条件；力矩与力响应。",
+          "boundary": "不向微重力毛细主导、剧烈破碎界面直接外推；实验步骤为建议，未声称已执行。"
+        },
+        {
+          "title": "NASA · SPHERES-Slosh 实验设计与微重力验证动机（2013）",
+          "url": "https://www.nasa.gov/missions/station/slosh-experiment-designed-to-improve-rocket-safety-efficiency/",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取NASA 2013实验报道正文",
+          "supports": "SPHERES-Slosh的地面与微重力验证差异、影像和惯性观测设计。",
+          "boundary": "历史表述仅解释当时实验动机，不宣称2026年所有模型仍未验证。"
+        },
+        {
+          "title": "ESA · How Much Does Liquid Wobble When Moving in Space?（2020，研究结果）",
+          "url": "https://www.esa.int/Enabling_Support/Space_Engineering_Technology/Shaping_the_Future/How_much_does_liquid_wobble_when_moving_in_space",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取ESA 2020研究报道正文",
+          "supports": "两SPHERES与液体胶囊运动研究；某些条件下液体运动具有稳定作用。",
+          "boundary": "局部实验结果不能推出任何罐体都受益；未声称已获取原始试验数据。"
+        }
+      ],
+      "formulaConditions": "线性单模态：q̈+2ζω_n q̇+ω_n²q=−Γa_⊥，q 为相对广义位移，Γ 为参与因子；适用于小扰动、参数近似不变的已辨识模态。Bo=ρg_eff L²/σ 比较重力与毛细作用；Bo≪1 时不能沿用忽略表面张力的常重力类比。",
+      "notClaimed": "未声称已运行本篇实验、飞行软件或硬件；未由通用工具文档推断组织采用。"
+    },
+    {
+      "id": "flexible-multibody",
+      "title": "柔性多体与姿轨耦合：太阳翼运动为什么会带动整星",
+      "gap": "结构模态与六自由度已有，但缺少自由主体、附件及控制回路的双向动力学接口。",
+      "bodyParagraphs": 6,
+      "experimentSteps": 4,
+      "sourceChecks": [
+        {
+          "title": "Basilisk 2.4.0 · Hinged Rigid Body State Effector（假设与测试）",
+          "url": "https://hanspeterschaub.info/basilisk/Documentation/simulation/dynamics/HingedRigidBodies/hingedRigidBodyStateEffector.html",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取Basilisk 2.4.0模块文档，并跟读链接技术备忘录",
+          "supports": "单轴铰链、对角惯量/质心约束、状态和质量属性；守恒、恒力挠度及独立Lagrange对照。",
+          "boundary": "铰接刚体为低阶近似，不称完整有限元柔性模型；未执行模块测试。"
+        },
+        {
+          "title": "Bascom & Schaub · Modular Dynamic Modeling of Hinged Solar Panel Deployments（2022，作者论文）",
+          "url": "https://hanspeterschaub.info/Papers/Bascom2022.pdf",
+          "accessedOn": "2026-10-25",
+          "readMethod": "作者PDF网页索引可访问但正文请求间歇超时；随后HTTPS获取并在内存用pypdf读取前3页",
+          "supports": "AAS 22-725；可变参考展开角、单轴铰链、非线性平动转动耦合与back-substitution方法。",
+          "boundary": "阅读覆盖摘要、问题定义和方程起始，不宣称逐行复核全文推导或复现实验。"
+        },
+        {
+          "title": "Basilisk develop · Writing Dynamic and State Effectors（开发分支，版本相关）",
+          "url": "https://avslab.github.io/basilisk/develop/Learn/makingModules/writingEffectors.html",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取Basilisk develop官方文档",
+          "supports": "动态效应器与状态效应器区别，积分阶段计算、状态注册、质量/能量贡献和调度职责。",
+          "boundary": "访问页面明确是2.13.0b0 beta；笔记标注开发分支，未宣称其接口与2.4.0完全兼容。"
+        }
+      ],
+      "formulaConditions": "选定构形附近的小扰动模型：M q̈+C q̇+Kq=Q，q 包含主体及附件广义坐标，M 的耦合块不可任意删去。无外力矩时 dH_CM/dt=0；无外部做功、无驱动且仅有半正定黏性阻尼时 dE_mech/dt=−q̇ᵀCq̇≤0。大角度/展开全过程须使用相应非线性运动学和时变质量属性。",
+      "notClaimed": "未声称已运行本篇实验、飞行软件或硬件；未由通用工具文档推断组织采用。"
+    },
+    {
+      "id": "powered-descent",
+      "title": "动力下降与回收：让着陆轨迹满足推力、姿态和时间约束",
+      "gap": "已有再入、推进和优化，未把带发动机限制的轨迹与六自由度跟踪及接地状态连接。",
+      "bodyParagraphs": 6,
+      "experimentSteps": 4,
+      "sourceChecks": [
+        {
+          "title": "Szmuk & Açıkmeşe · Successive Convexification for 6-DoF Mars Rocket Powered Landing with Free-Final-Time（2018，作者论文）",
+          "url": "https://arxiv.org/abs/1802.03827",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取作者arXiv论文PDF摘要、问题描述与方法适用范围",
+          "supports": "最短时间六自由度自由终端时间逐次凸化；单摆动发动机、忽略气动、质量属性简化；非凸保证限制。",
+          "boundary": "不泛称所有凸化问题全局最优，不暗示特定商业回收火箭采用该实现。"
+        },
+        {
+          "title": "NASA JPL · G-FOLD / Masten Xombie 飞行试验（2013事件，2014更新）",
+          "url": "https://www.jpl.nasa.gov/news/jpl-masten-testing-new-precision-landing-software/",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取JPL报道正文并区分初始发布、更新与试验日期",
+          "supports": "Xombie/G-FOLD试验事件2013-09-20，报道页面初始2013-08-12、更新2014-01-22。",
+          "boundary": "来源只证明该试验团队和该试验，不推广到整家公司所有产品。"
+        },
+        {
+          "title": "NASA TM-20220007267 · 阿波罗11号末段轨迹重建与滤波附录（2022）",
+          "url": "https://ntrs.nasa.gov/api/citations/20220007267/downloads/NASA-TM-20220007267.pdf",
+          "accessedOn": "2026-10-25",
+          "readMethod": "直接读取NASA PDF正文、轨迹重建结论与附录A",
+          "supports": "公开图表数字化、时标估计、运动学一致重建和Kalman滤波；调参导致形式误差界统计解释受限。",
+          "boundary": "不把图表重建称为原始遥测，不声称本项目已经执行重建或下降仿真。"
+        }
+      ],
+      "formulaConditions": "简化平动：ṙ=v，v̇=g+C_IB T_B/m+F_aero/m，ṁ=−||T_B||/(I_sp g₀)；C_IB 将体轴推力转到惯性系，流率式假定相应工况的有效比冲。竖直恒净减速度基准 h_stop=v_down²/(2a_net)，仅当 a_net>0、质量/推力/重力近似不变且忽略响应延迟时适用。",
+      "notClaimed": "未声称已运行本篇实验、飞行软件或硬件；未由通用工具文档推断组织采用。"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "state-estimation",
+      "finding": "原文F未区分连续雅可比和离散状态转移，误区中“用真值直接生成估计器输入”可能误伤合法的真值→带噪观测生成。",
+      "changes": [
+        "明确真值可用于观测合成与离线评价，禁止绕过观测模型读取真值。",
+        "以Φ表示离散状态转移，说明exp(AΔt)与连续噪声积分得到Q_d。"
+      ],
+      "sourceUrls": [
+        "https://ocw.mit.edu/courses/2-160-identification-estimation-and-learning-spring-2006/52d79e15e4d3aa1add2641f941241070_lecture_5.pdf",
+        "https://ntrs.nasa.gov/api/citations/20220007267/downloads/NASA-TM-20220007267.pdf"
+      ],
+      "verification": "读取MIT原始课程PDF及NASA报告离散模型附录；连续白噪声Q_d积分为标准线性随机系统关系，与已有随机过程笔记保持一致。"
+    },
+    {
+      "id": "propulsion-models",
+      "finding": "质量流率的正负约定未明确；分离段“速度连续性”缺少无冲量前提。",
+      "changes": [
+        "定义排出流率为正、飞行器质量导数为负，补有效排气速度和标准重力加速度含义。",
+        "说明分离前局部刚体速度、分离冲量及动量交换，不再无条件强制分离速度连续。"
+      ],
+      "sourceUrls": [
+        "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/specific-impulse/",
+        "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/ideal-rocket-equation/"
+      ],
+      "verification": "读取NASA Glenn正文，以推力守恒式和量纲独立复核。网页中等效排气速度的排版/代数表达存在量纲不一致，未照抄；采用v_eq=F/ṁ_p。分离局部初值是刚体运动学和冲量守恒的教学推导，不假称公开型号参数。"
+    },
+    {
+      "id": "relative-motion",
+      "finding": "横向轴与速度方向在偏心轨道下并不相同；原长时落后直觉缺少具体初值；缺少显式速度运输项便于实现核对。",
+      "changes": [
+        "定义径向/横向/法向并限定圆参考下横向与速度对齐。",
+        "增加完整相对状态公式和有条件的正向脉冲解释。"
+      ],
+      "sourceUrls": [
+        "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/sxform_c.html",
+        "https://ocw.mit.edu/courses/16-346-astrodynamics-fall-2008/e4f0632a9f1c98f7e9b25492e1a30eb1_lec_26.pdf"
+      ],
+      "verification": "读取NAIF状态变换例子及MIT CW推导；注意MIT讲义同时列出两套轴定义，本站统一使用x径向/y横向/z轨道角动量方向。"
+    },
+    {
+      "id": "structural-dynamics",
+      "finding": "原谱描述未明确输入谱必须经传递函数映射为目标响应谱；非线性等效应力不能直接套线性谱关系。",
+      "changes": [
+        "补S_y=H S_in Hᴴ和相关激励交叉谱。",
+        "限定稳定线性系统、平稳输入、单边去均值响应谱及相应对角元；区分线性应力分量与非线性等效应力。"
+      ],
+      "sourceUrls": [
+        "https://doc.comsol.com/6.3/doc/com.comsol.help.sme/sme_ug_theory.06.055.html"
+      ],
+      "verification": "直接读取官方理论章节Transfer Function和Modal Representation；修订的是数学适用范围，不声称运行COMSOL。"
+    }
+  ],
+  "sourceCautions": [
+    {
+      "url": "https://www.nasa.gov/wp-content/uploads/2015/04/636372main_NASA-HDBK-1002_Draft.pdf",
+      "finding": "封面为2012-04-02 Draft 2，明确未批准。",
+      "action": "未列为当前规范或新增文章的规范依据，改用现行NASA软件工程手册设计指导。"
+    },
+    {
+      "url": "https://www2.swri.org/www2/fluid-slosh/slosh-dynamics.htm",
+      "finding": "机构主页提供2024机械类比推导及2025-12-10旧更新书勘误。",
+      "action": "新增笔记采用已读2024推导的假设，不从旧书未经核查搬运数值系数；勘误文件获取成功但没有用其公式支持正文。"
+    },
+    {
+      "url": "https://hanspeterschaub.info/Papers/Bascom2022.pdf",
+      "finding": "web正文请求间歇超时，普通HTTPS请求曾403。",
+      "action": "使用浏览器User-Agent的只读HTTPS请求成功，在内存读取PDF，未保留副本或修改站点资产。"
+    }
+  ],
+  "graph": {
+    "domainsRetained": 8,
+    "newNodes": 6,
+    "newPrerequisiteEdges": 19,
+    "newOtherEdges": 14,
+    "newPaths": 2,
+    "acyclicScope": "只有prerequisite边定义先修DAG；coupling与validation允许表达反馈，不能要求整个跨专业图无环。",
+    "pathPolicy": "保留7条原路径，新增2条各10节点专题路径；若先修同时出现在一条路径中必须更早，路径外先修仍由各文章明确列出。",
+    "layoutNotice": "轨道与任务8节点，控制与导航7节点，航天器系统5节点，推进与能源及结构与热控各4节点；已提醒根代理校验布局。",
+    "domainNodeCounts": {
+      "foundations": 6,
+      "orbits": 8,
+      "gnc": 7,
+      "aero": 4,
+      "propulsion": 4,
+      "structures": 4,
+      "systems": 5,
+      "methods": 6
+    }
+  },
+  "unresolved": [
+    "没有本轮新增主题的自研求解器数值运行证据；所有实验步骤明确为可复现的学习建议。",
+    "公开真实交会数据往往缺少协方差与相关性信息，因此示例要求合成事件或有完整统计口径的数据，未输出真实卫星风险结论。",
+    "真实飞行器故障阈值、贮箱晃动参数、柔性模态及回收控制实现通常不公开，未反推为确定事实。",
+    "动态开发分支文档可能变化；实际后续软件复现需要固定版本，历史案例日期保留原事件口径。"
+  ],
+  "counts": {
+    "before": {
+      "lessons": 38,
+      "nodes": 38,
+      "edges": 117,
+      "paths": 7
+    },
+    "after": {
+      "lessons": 44,
+      "nodes": 44,
+      "edges": 150,
+      "paths": 9,
+      "domains": 8
+    },
+    "added": 6,
+    "substantiveArticleCorrections": 4
+  },
+  "reviewedAt": "2026-10-25T06:12:34Z",
+  "validation": {
+    "checkedAt": "2026-10-25T06:12:34Z",
+    "checks": [
+      {
+        "command": "node scripts/check-content.mjs",
+        "result": "PASS",
+        "details": "共享工作区当前179条可搜索内容、356个不同HTTPS来源URL；只验证数据契约，不证明链接永久有效或物理准确。"
+      },
+      {
+        "command": "node scripts/check-expansion.mjs --skip-model-files",
+        "result": "PASS",
+        "details": "56项通过、0失败、0警告；知识节点覆盖、精确先修边、先修DAG及路径顺序全部通过。车辆GLB文件验证按命令显式跳过。"
+      }
+    ],
+    "newLessonMinimums": {
+      "paragraphs": 6,
+      "sources": 3,
+      "experimentSteps": 4
+    },
+    "claimBoundary": "本轮只进行了内容与结构核验，未宣称运行新增笔记提出的动力学、控制、轨迹优化或物理试验。"
+  }
+}

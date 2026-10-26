@@ -1,0 +1,49 @@
+{
+  "checkedOn": "2026-10-25",
+  "environment": "Windows / Node 22.22.2 / Vite 6.4.5 / React 19 / Three.js / Codex in-app browser",
+  "counts": {
+    "lessons": 38,
+    "knowledgeDomains": 8,
+    "knowledgeRelations": 117,
+    "learningPaths": 7,
+    "resources": 57,
+    "resourcesWithAdoptionEvidence": 8,
+    "briefings": 21,
+    "vehicles": 46,
+    "documentedParts": 277,
+    "downloadableGLBs": 46,
+    "searchableEntries": 162,
+    "distinctCoreSourceURLs": 292
+  },
+  "automatedChecks": {
+    "content": "PASS: content contract, unique IDs, HTTPS URLs, dates, inference assumptions and project boundaries.",
+    "orbit": "PASS: six independent numerical test groups.",
+    "expansion": "PASS: 52 checks covering graph/DAG/learning paths, tool fields, 46 model geometries/transforms/parts, and every GLB with provenance. Zero warnings.",
+    "camera": "PASS: separate --only-camera regression: 46 models and their isolatable groups, 3 explosion states, 4 aspect ratios, 3 orientations, 129024 bounding-box corners; max absolute NDC = 0.891015 < 1.",
+    "downloads": "PASS: all 46 local HTTP HEAD endpoints return successful status and exact file size.",
+    "exportFreshness": "PASS: all GLB modelMetadata and provenance match final vehicles.json.",
+    "production": "PASS: final TypeScript and production build. Vite emits its advisory for chunks above 500 kB: entry 1012 kB / gzip 287 kB, lazy Three.js explorer 563 kB / gzip 147 kB."
+  },
+  "browserChecks": [
+    "Desktop knowledge graph renders all 38 concepts and 8 domains; node selection, zoom, lesson opening and related-note remount verified.",
+    "Learning route highlights concepts and renders the ordered 10-step trajectory route including CR3BP.",
+    "Gmsh remains in open/research license results; Gmsh and OpenFOAM can be compared across separate keyword searches; clearing comparison removes its table.",
+    "Atlas keyword search and model entry verified for Sputnik 1, Falcon 9 and JWST.",
+    "Sputnik cutaway/explode/part metadata/isolation, Falcon tank isolation and camera focus, JWST 18-segment mirror and explosion/fit view visually checked.",
+    "390px iframe: knowledge/atlas entry/model rendering inspected. Mobile toolbar keeps labels on one line after CSS cascade correction.",
+    "Desktop browser error log returned zero errors during final representative navigation.",
+    "Fresh 390px preview tab: atlas navigation and Sputnik model opening produced zero browser error logs. A prior live-edit iframe session emitted one transient MutationObserver observation error; it did not recur in a clean tab."
+  ],
+  "limitations": [
+    "The 46 dossiers are a historically distributed selection, not a complete catalogue of every spacecraft and launch vehicle.",
+    "Every model is a normalized functional schematic; generated geometry does not establish real internal packaging, engineering dimensions, mass properties, aerodynamics or manufacturing details.",
+    "Articles and vendor cases were checked against linked primary sources; automated URL checks validate structure, not the enduring availability or truth of every external claim.",
+    "No automatic news ingestion, backend CMS or remote engineering solver is included.",
+    "AerospaceSimUE remains untouched; prior source audit is not a new execution of its full simulation."
+  ],
+  "screenshots": [
+    "docs/screenshots/knowledge-graph-v2.jpg",
+    "docs/screenshots/structure-lab-v2.jpg",
+    "docs/screenshots/structure-mobile-v2.jpg"
+  ]
+}

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc" xml:lang="zh-CN">
+  <title id="title">六自由度动力学的状态、参考系与载荷闭环</title>
+  <desc id="desc">原创刚体原理图。左侧展示质心、偏置施力点、力臂和作用力，强调力矩必须统一到质心。右侧给出恒质量刚体平动和转动方程，定义惯性系位置速度、机体系角速度及关于质心的惯量。下方展示状态、载荷与积分推进闭环，并指出变质量火箭需要一致处理质心迁移、惯量变化及动量流。</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#8bb6d0" opacity=".07"/></pattern>
+    <marker id="lime" markerWidth="13" markerHeight="13" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L11 5L0 10" fill="none" stroke="#d3ef83" stroke-width="2"/></marker>
+    <marker id="blue" markerWidth="13" markerHeight="13" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L11 5L0 10" fill="none" stroke="#8bb6d0" stroke-width="2"/></marker>
+    <marker id="gold" markerWidth="13" markerHeight="13" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L11 5L0 10" fill="none" stroke="#cfb280" stroke-width="2"/></marker>
+  </defs>
+  <rect width="1400" height="900" fill="#10191e"/><rect width="1400" height="900" fill="url(#grid)"/>
+  <g font-family="Microsoft YaHei, Noto Sans SC, Arial, sans-serif" fill="#dce6e3">
+    <text x="60" y="57" font-size="22" fill="#d3ef83" letter-spacing="2">轨研 ORBITAL / 03 · SIX-DEGREE-OF-FREEDOM DYNAMICS</text>
+    <text x="60" y="115" font-size="42" font-weight="600">力、力矩与状态，必须在同一个闭环里</text>
+    <text x="60" y="157" font-size="23" fill="#9db1b5">I 表示惯性系；B 表示机体系；CG 表示质心。图形仅表达参考点与向量关系。</text>
+    <rect x="60" y="195" width="600" height="400" rx="15" fill="#142128" stroke="#8bb6d0" stroke-opacity=".25"/>
+    <rect x="690" y="195" width="650" height="400" rx="15" fill="#152126" stroke="#d3ef83" stroke-opacity=".25"/>
+    <text x="85" y="237" font-size="24" fill="#cfb280">同一合力，不同作用点会改变力矩</text>
+    <path d="M200 350L399 294L510 410L311 467Z" fill="#24373e" stroke="#5e7a82" stroke-width="2"/>
+    <path d="M200 350L200 390L311 507L510 450V410M311 467V507" fill="#1b2b32" stroke="#5e7a82" stroke-width="2"/>
+    <path d="M350 390L515 390M350 390L279 498M350 390L350 263" fill="none" stroke="#d3ef83" stroke-width="2" marker-end="url(#lime)"/>
+    <circle cx="350" cy="390" r="10" fill="#10191e" stroke="#d3ef83" stroke-width="2.5"/><circle cx="350" cy="390" r="3" fill="#d3ef83"/>
+    <text x="313" y="364" font-size="25" fill="#d3ef83">CG</text>
+    <text x="522" y="398" font-size="25" fill="#d3ef83">x_B</text>
+    <text x="244" y="525" font-size="25" fill="#d3ef83">y_B</text>
+    <text x="366" y="281" font-size="25" fill="#d3ef83">z_B</text>
+    <path d="M360 394L455 429" fill="none" stroke="#8bb6d0" stroke-width="3" marker-end="url(#blue)"/>
+    <circle cx="460" cy="431" r="5" fill="#cfb280"/>
+    <path d="M460 431L573 319" fill="none" stroke="#cfb280" stroke-width="4" marker-end="url(#gold)"/>
+    <text x="576" y="311" font-size="28" fill="#cfb280">F_B</text>
+    <text x="476" y="461" font-size="24" fill="#cfb280">P</text>
+    <text x="368" y="491" font-size="23" fill="#8bb6d0">r_(CG→P)</text>
+    <text x="91" y="309" font-size="23" fill="#9db1b5">机体轴示意</text>
+    <text x="85" y="565" font-size="28">M_CG = M_P + r_(CG→P) × F</text>
+    <text x="720" y="241" font-size="28" fill="#d3ef83" font-weight="600">恒质量、恒惯量刚体基线</text>
+    <text x="720" y="290" font-size="24">状态 x = [r_I, v_I, q_(B→I), ω_B]</text>
+    <text x="720" y="348" font-size="31" fill="#d3ef83">ṙ_I = v_I；m v̇_I = ΣF_I</text>
+    <text x="720" y="406" font-size="27" fill="#d3ef83">I_B ω̇_B + ω_B × (I_B ω_B) = M_CG,B</text>
+    <line x1="720" y1="432" x2="1310" y2="432" stroke="#34484e"/>
+    <text x="720" y="472" font-size="24">I_B：关于质心、用机体系表示的惯量张量</text>
+    <text x="720" y="515" font-size="23" fill="#9db1b5">全部载荷换到一致轴系，全部力矩归到质心。</text>
+    <text x="720" y="557" font-size="23" fill="#cfb280">三维平动 + 三维转动 ≠ 仅六个状态数</text>
+    <g fill="#152329" stroke="#d3ef83" stroke-opacity=".3">
+      <rect x="60" y="630" width="370" height="96" rx="12"/>
+      <rect x="485" y="630" width="370" height="96" rx="12"/>
+      <rect x="910" y="630" width="430" height="96" rx="12"/>
+    </g>
+    <g text-anchor="middle">
+      <text x="245" y="669" font-size="27" fill="#d3ef83">当前状态 x(t)</text>
+      <text x="245" y="705" font-size="22" fill="#9db1b5">位置 / 速度 / 姿态 / 角速度</text>
+      <text x="670" y="669" font-size="27" fill="#d3ef83">环境与载荷计算</text>
+      <text x="670" y="705" font-size="22" fill="#9db1b5">重力 / 气动 / 推进 / 控制</text>
+      <text x="1125" y="669" font-size="27" fill="#d3ef83">积分推进 x(t + Δt)</text>
+      <text x="1125" y="705" font-size="22" fill="#9db1b5">更新状态，再计算下一时刻载荷</text>
+    </g>
+    <path d="M430 678H482M855 678H907" fill="none" stroke="#d3ef83" stroke-width="3" marker-end="url(#lime)"/>
+    <rect x="60" y="755" width="1280" height="80" rx="12" fill="#22272a" stroke="#cfb280" stroke-opacity=".35"/>
+    <text x="85" y="790" font-size="24" fill="#cfb280">变质量扩展：推进剂、质心迁移、惯量变化与动量流需要一致推导。</text>
+    <text x="85" y="822" font-size="22" fill="#a8b7b8">不能只把 m 改成 m(t)。上方刚体方程不宣称覆盖完整火箭变质量动力学。</text>
+    <text x="60" y="870" font-size="21" fill="#738b92">原理图解 · 非特定飞行器 · NOT TO SCALE</text>
+    <text x="1340" y="870" text-anchor="end" font-size="21" fill="#738b92">理论核对 / RocketPy Equations of Motion v1</text>
+  </g>
+</svg>

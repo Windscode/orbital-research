@@ -1,0 +1,417 @@
+[
+  {
+    "id": "ground-replay",
+    "code": "OPS / 01",
+    "title": "遥测生成、归档与回放",
+    "shortTitle": "地面遥测与回放",
+    "question": "同一段原始遥测经过实时处理和离线回放，为什么会得到不同的报警？",
+    "summary": "使用软件仿真、遥测字典、时间戳和归档系统，检查实时处理与离线回放的一致性。",
+    "domain": "任务运行",
+    "level": "系统集成",
+    "deliverable": "原始包样本 + 字典版本 + 回放对照表",
+    "verifiedOn": "2026-10-26",
+    "boundary": "本站提供研究方案与人工检查清单，未连接地面站、遥控系统或实际航天器。NOS3、Yamcs 与 Open MCT 的接口需要自行实现和验证。",
+    "lessonIds": [
+      "ground-operations",
+      "simulation-software",
+      "communications-link",
+      "data-provenance"
+    ],
+    "resourceIds": [
+      "nasa-nos3",
+      "yamcs",
+      "openmct",
+      "openc3-cosmos",
+      "satnogs"
+    ],
+    "vehicleIds": [
+      "iss",
+      "voyager-1"
+    ],
+    "contract": [
+      {
+        "field": "数据身份",
+        "value": "包类型 / APID 或协议标识、序号、解码字典版本、字节序、原始文件 SHA-256。",
+        "why": "同名参数可能随字典升级改变位宽、偏移或单位。"
+      },
+      {
+        "field": "时间语义",
+        "value": "分别保留产生时刻、接收时刻、时标与时间质量；说明重复包、乱序和缺包策略。",
+        "why": "接收延迟不应被误判为物理变化或设备失效。"
+      },
+      {
+        "field": "工程量",
+        "value": "原始值、定标公式、单位、有效位与报警阈值版本一起保存。",
+        "why": "只保留曲线截图，无法重新检查定标和报警逻辑。"
+      }
+    ],
+    "steps": [
+      {
+        "id": "capture",
+        "title": "生成可解释的遥测输入",
+        "detail": "从固定版本的 NOS3 示例或自建包生成器取得短时序样本；包含一个常值、一个斜坡、一个状态切换。真实观测可另选 SatNOGS，但需保留观测 ID、接收站和译码状态，不能假定每次观测都存在可用的工程参数。",
+        "output": "原始包、预期参数表、生成器版本",
+        "check": "每个预期参数都能定位到原始包中的字节或位。"
+      },
+      {
+        "id": "decode",
+        "title": "遥测字典与工程量换算",
+        "detail": "为 Yamcs 编写与样本匹配的任务数据库及数据链路配置；逐一核对符号位、字节序、缩放、单位和无效值。先验证一个包，再批量导入。OpenC3 可作为另一条处理路线，二者配置并不通用。",
+        "output": "最小字典与逐字段对照",
+        "check": "原始值、定标值与手算样例在预先约定的误差内一致。"
+      },
+      {
+        "id": "replay",
+        "title": "原始包归档与回放核对",
+        "detail": "固定字典版本，记录实时处理结果；用相同输入回放，按产生时刻、包序号和参数名连接两张表。区分重复包处理、归档粒度和实时报警状态，不能只比较两条视觉上接近的曲线。",
+        "output": "实时 / 回放差异表与缺包清单",
+        "check": "所有差异均能归因于明确的策略或缺陷，未解释项单独列出。"
+      },
+      {
+        "id": "observe",
+        "title": "异常状态与界面显示",
+        "detail": "给 Open MCT 实现对象和遥测适配层，明确历史查询与实时订阅的时间域。显示有效性、采样稀疏与数据空洞；人工注入乱序、重复、延迟和断流，检查界面是否把旧值误当新值。",
+        "output": "参数视图、事件时间线、故障注入记录",
+        "check": "断流后能看出数据已经陈旧；回放时间不会与墙钟时间混淆。"
+      }
+    ],
+    "validation": [
+      "对照链：原始包 → 解码字段 → 工程单位 → 归档记录 → 可视化采样。",
+      "至少保留一次正常、一次缺包、一次乱序与一次字典变更的结果。",
+      "报警检测时间与数据到达时间分别统计；阈值由研究场景定义，不借用未公开的任务规范。"
+    ],
+    "pitfalls": [
+      "遥测仪表盘不等于完整任务控制系统；认证、指令校验与确认链需要单独设计。",
+      "SatNOGS 的公开接收数据不构成向卫星发送指令的授权。",
+      "软件联试能暴露接口问题，不能替代射频链路、硬件时序和真实设备验证。"
+    ],
+    "sources": [
+      {
+        "title": "Yamcs：归档中的包、参数、事件与指令历史",
+        "url": "https://docs.yamcs.org/yamcs-server-manual/data-management/archive/"
+      },
+      {
+        "title": "NASA NOS3：软件联试与任务运行仿真",
+        "url": "https://github.com/nasa/nos3"
+      },
+      {
+        "title": "Open MCT：遥测适配与可视化框架",
+        "url": "https://nasa.github.io/openmct/getting-started/"
+      },
+      {
+        "title": "SatNOGS：公开观测与数据使用规则",
+        "url": "https://network.satnogs.org/about/"
+      }
+    ]
+  },
+  {
+    "id": "orbit-crosscheck",
+    "code": "DYN / 02",
+    "title": "轨道传播交叉验证",
+    "shortTitle": "轨道交叉核验",
+    "question": "两套软件都画出了合理轨道，它们计算的是同一个状态吗？",
+    "summary": "统一坐标系、时间与星历版本，分项检查接口误差、数值误差和物理模型差异。",
+    "domain": "轨道动力学",
+    "level": "数值验证",
+    "deliverable": "状态契约 + 收敛曲线 + 误差归因表",
+    "verifiedOn": "2026-10-26",
+    "boundary": "下面是本站组织的核验流程。CCSDS 规定交换格式，不能证明轨道预测准确；两个工具读取同一星历也不构成独立物理验证。",
+    "lessonIds": [
+      "frames-and-time",
+      "orbit-propagation",
+      "numerical-integration",
+      "perturbed-orbits",
+      "verification-uncertainty"
+    ],
+    "resourceIds": [
+      "gmat",
+      "orekit",
+      "spice",
+      "jpl-horizons",
+      "ccsds-standards"
+    ],
+    "vehicleIds": [
+      "cassini",
+      "new-horizons"
+    ],
+    "contract": [
+      {
+        "field": "状态定义",
+        "value": "目标和中心天体 ID、参考系、参考平面、单位、位置与速度的含义。",
+        "why": "地心与太阳系质心、天体中心与系统质心不能互换。"
+      },
+      {
+        "field": "历元与星历",
+        "value": "UTC / TDB 等明确时标、闰秒资料、星历版本、覆盖区间；记录查询请求与原始响应。",
+        "why": "相同的日期字符串不一定表示同一物理瞬间。"
+      },
+      {
+        "field": "模型设置",
+        "value": "几何状态或光行时修正、引力常数、力模型、容差、积分步长与输出插值。",
+        "why": "观测位置和动力学几何状态不是同一个比较量。"
+      }
+    ],
+    "steps": [
+      {
+        "id": "define",
+        "title": "状态向量、时刻与参考系",
+        "detail": "先选一个目标、中心和短时间窗。将 Horizons 输出类型固定为矢量，记录参考系、单位、时标及光行时选项；SPICE 侧使用对应定义。不要把赤经赤纬观测表直接当作笛卡尔动力学状态。",
+        "output": "state-contract.json 与查询原文",
+        "check": "在进行任何相减前，两端的单位、中心、时标和修正选项一致。"
+      },
+      {
+        "id": "baseline",
+        "title": "两体解析解对照",
+        "detail": "从同一初值与引力参数出发，在 GMAT 或 Orekit 中关闭非两体项，以开普勒解作为基线。比较同一时刻的位置、速度、能量和角动量漂移，再逐步收紧容差，避免把输出采样变密误认为积分更精确。",
+        "output": "误差随容差 / 步长的收敛表",
+        "check": "数值误差随设置改善而收敛，且能量与角动量检查符合该基线的守恒假设。"
+      },
+      {
+        "id": "exchange",
+        "title": "轨道交换文件校验",
+        "detail": "按已选定版本的 CCSDS ODM 规范记录 OEM 的中心、参考系、时标、插值与有效区间。先做写出 / 读回测试，再在原采样节点和中间时刻分别比较；不要用另一种软件的默认插值掩盖边界缺失。",
+        "output": "OEM 文件与往返误差表",
+        "check": "读回后的元数据与状态保持一致；覆盖区间外的请求被明确拒绝。"
+      },
+      {
+        "id": "attribute",
+        "title": "摄动模型逐项对照",
+        "detail": "加入 J2、阻力、第三体等项时分别记录力模型和参数。用惯性系分量与径向 / 沿轨 / 法向分量观察偏差；SPICE 与 Horizons 的对照需追踪是否共用星历，不能把共享数据的一致性当成独立观测证据。",
+        "output": "模型逐项开关的误差归因矩阵",
+        "check": "区分数值收敛、格式兼容与物理模型可信度，分别给出结论。"
+      }
+    ],
+    "validation": [
+      "比较历元集合必须相同，并明确插值误差预算。",
+      "本方案不给出通用的米级合格线；先根据问题、时间窗和参考数据质量定义阈值。",
+      "保留输入、程序版本、星历校验值、力模型参数与残差，才能复现结论。"
+    ],
+    "pitfalls": [
+      "TLE / OMM 中的平均轨道根数不是任意高精度积分器的瞬时开普勒初值。",
+      "J2000 名称相同不保证所有坐标约定相同，应查看具体软件定义。",
+      "真实航天器的机动和质量属性可能不公开，长期外推要单独标注假设。"
+    ],
+    "sources": [
+      {
+        "title": "JPL Horizons：时间、参考系、矢量与限制",
+        "url": "https://ssd.jpl.nasa.gov/horizons/manual.html"
+      },
+      {
+        "title": "NAIF SPICE：官方上机练习与内核说明",
+        "url": "https://naif.jpl.nasa.gov/naif/lessons.html"
+      },
+      {
+        "title": "CCSDS 502.0-B-3（2023）：Orbit Data Messages，含勘误",
+        "url": "https://ccsds.org/Pubs/502x0b3e1.pdf"
+      }
+    ]
+  },
+  {
+    "id": "attitude-fdir",
+    "code": "GNC / 03",
+    "title": "姿态闭环与故障恢复",
+    "shortTitle": "姿态控制与故障注入",
+    "question": "控制器在理想状态下有效，传感器失真或执行器受限后还能恢复吗？",
+    "summary": "建立名义闭环后加入传感器误差、执行器限制和故障状态机，评估恢复时间、控制代价与残余误差。",
+    "domain": "控制与软件",
+    "level": "闭环研究",
+    "deliverable": "名义基线 + 故障矩阵 + 恢复时间线",
+    "verifiedOn": "2026-10-26",
+    "boundary": "Basilisk 官方姿态反馈示例使用可配置的理想测量与外加控制力矩。本方案的故障、阈值和恢复设计是本站建议的扩展，未宣称已有任务验证。",
+    "lessonIds": [
+      "attitude-kinematics",
+      "attitude-control",
+      "sensors-navigation",
+      "state-estimation",
+      "fdir"
+    ],
+    "resourceIds": [
+      "basilisk",
+      "nasa-42",
+      "nasa-nos3",
+      "cfs",
+      "fprime"
+    ],
+    "vehicleIds": [
+      "hubble",
+      "jwst"
+    ],
+    "contract": [
+      {
+        "field": "姿态约定",
+        "value": "旋转方向、参考系、四元数标量顺序或 MRP 定义；角速度坐标系和单位。",
+        "why": "符号相反的四元数可以代表同一姿态，不能直接逐分量判断误差。"
+      },
+      {
+        "field": "物理约束",
+        "value": "惯量与来源、初始角速度、最大力矩、动量容量、采样周期和通信延迟。",
+        "why": "理想力矩的收敛不证明真实执行器可实现。"
+      },
+      {
+        "field": "故障语义",
+        "value": "故障发生时刻、持续时间、测量有效位、检测阈值、去抖时间和模式切换条件。",
+        "why": "恢复是有状态的过程，不是把误差降到零的一条曲线。"
+      }
+    ],
+    "steps": [
+      {
+        "id": "nominal",
+        "title": "名义闭环与坐标约定",
+        "detail": "从 Basilisk scenarioAttitudeFeedback 的固定版本开始，记录动力学、导航、跟踪误差与控制模块连接。确认 simpleNav 的默认无误差行为和外力矩执行方式；对姿态转换加入已知旋转样例，保留初始条件。",
+        "output": "名义姿态、角速度和控制力矩时序",
+        "check": "误差按选定旋转约定解释，且结果能由相同配置重复产生。"
+      },
+      {
+        "id": "limits",
+        "title": "执行器限幅与动态响应",
+        "detail": "加入力矩饱和、控制采样保持和延迟，再按需接入飞轮模型。固定控制器参数先观察约束激活时刻；分别说明功率、动量容量和轮速是否被建模，不能只添加一个限幅就称为完整飞轮。",
+        "output": "约束激活、动量与指向误差对照",
+        "check": "输出力矩不越界，控制性能变化与约束出现的时间相符。"
+      },
+      {
+        "id": "inject",
+        "title": "故障注入与状态追踪",
+        "detail": "先做传感器冻结、丢帧或常值偏置中的一种，区分真实状态与估计状态，观察检测延迟与误报。每次实验保留随机种子和无故障对照，避免同时改模型、增益与噪声后无法归因。",
+        "output": "注入事件表与检测结果",
+        "check": "故障发生、被检测、被隔离三个时间点分别记录；无故障对照不被误判。"
+      },
+      {
+        "id": "recover",
+        "title": "恢复过程与终态评价",
+        "detail": "为正常、降级和安全模式写出明确的进入 / 退出条件及滞回。统计恢复时间、最大指向偏差、约束超限和模式振荡。接入 cFS、F Prime 或 NOS3 前先约定消息时序与状态所有权，接口联试另建证据。",
+        "output": "模式时间线、失败样例与恢复指标",
+        "check": "重复相同故障得到可解释的模式序列；不可恢复情况被明确保留。"
+      }
+    ],
+    "validation": [
+      "名义、仅噪声、仅故障、故障叠加约束分别运行，避免混淆原因。",
+      "完成检查清单仅表示研究步骤已检查，不能自动给出控制器合格结论。",
+      "真实 Hubble / JWST 档案用于理解系统问题，公开资料不足以复刻其在轨控制参数。"
+    ],
+    "pitfalls": [
+      "真值导航会隐藏估计误差和可观测性问题。",
+      "检测阈值必须结合采样、噪声和误报要求；没有可通用复制的阈值。",
+      "短时指向恢复不代表能源、热控和通信约束同时得到满足。"
+    ],
+    "sources": [
+      {
+        "title": "Basilisk：scenarioAttitudeFeedback 模块与假设",
+        "url": "https://avslab.github.io/basilisk/examples/scenarioAttitudeFeedback.html"
+      },
+      {
+        "title": "NASA NOS3：软件模型与集成验证用途",
+        "url": "https://github.com/nasa/nos3"
+      },
+      {
+        "title": "NASA 42：多体航天器姿轨仿真项目",
+        "url": "https://github.com/ericstoneking/42"
+      }
+    ]
+  },
+  {
+    "id": "pds-reproduction",
+    "code": "SCI / 04",
+    "title": "科学影像定标与观测几何",
+    "shortTitle": "科学影像与数据溯源",
+    "question": "宣传图中的亮暗、颜色和尺度，能否直接成为模型的输入？",
+    "summary": "从产品标识和标签读取原始数据，检查定标与观测几何，分别保存科学处理结果和显示参数。",
+    "domain": "科学数据",
+    "level": "数据复现",
+    "deliverable": "产品清单 + 处理记录 + 图像与掩膜",
+    "verifiedOn": "2026-10-26",
+    "boundary": "不同任务、仪器和 PDS3 / PDS4 产品的处理方式不同。本方案不把阅读器当成通用科学定标器，也不假定所有历史任务都提供 PDS4。",
+    "lessonIds": [
+      "data-provenance",
+      "frames-and-time",
+      "sensors-navigation",
+      "verification-uncertainty"
+    ],
+    "resourceIds": [
+      "nasa-pds",
+      "pds4-tools",
+      "spice",
+      "ames-stereo-pipeline",
+      "spdf-cdaweb"
+    ],
+    "vehicleIds": [
+      "cassini",
+      "new-horizons",
+      "parker-solar-probe"
+    ],
+    "contract": [
+      {
+        "field": "产品身份",
+        "value": "任务、仪器、产品 ID、版本、处理级别、标签和数据文件；保存下载来源及校验值。",
+        "why": "新闻网页上的裁剪图无法替代可复现的科学产品。"
+      },
+      {
+        "field": "像素含义",
+        "value": "数据类型、维度、轴顺序、缩放与偏移、缺测值、单位和质量标记。",
+        "why": "高亮区域可能是饱和或无效值，不一定代表真实高信号。"
+      },
+      {
+        "field": "观测几何",
+        "value": "曝光时间、时间标度、仪器模型及对应 SPICE 内核版本 / 覆盖区间。",
+        "why": "外形、距离和视角必须与图像的观测时刻对应。"
+      }
+    ],
+    "steps": [
+      {
+        "id": "identify",
+        "title": "数据产品与版本识别",
+        "detail": "从 PDS 的任务 / 仪器节点查找科学产品，阅读数据集说明和处理级别。优先选择一个有明确标签和处理文档的小型样例；同时留存一张官方展示图，仅作为视觉参照，记录它的裁剪、合成或增强说明。",
+        "output": "产品 ID、标签、二进制数据与来源清单",
+        "check": "产品、仪器和版本都能从正式档案定位，图像与标签互相对应。"
+      },
+      {
+        "id": "read",
+        "title": "数组、标签与定标检查",
+        "detail": "PDS4 产品可使用 pds4_tools 读取标签与数组；先检查维度、数据类型、缩放、单位和特殊常数，再生成有效像素掩膜。对于 PDS3 产品，选择相应读取器和任务说明，不能把格式转换当成完成定标。",
+        "output": "数组统计、有效值比例与质量掩膜",
+        "check": "缺测 / 饱和值不会进入普通亮度统计；缩放与偏移只应用一次。"
+      },
+      {
+        "id": "geometry",
+        "title": "观测时刻与几何计算",
+        "detail": "按照任务文档选取适用的 SPICE 内核，记录加载顺序和覆盖区间；用观测时刻计算距离或姿态。相机模型、像素方向或畸变参数缺失时，应将结果限定为定性浏览，不反推出未经验证的尺寸。",
+        "output": "几何配置、覆盖检查与缺失参数表",
+        "check": "图像时刻落在所用内核的覆盖范围内，且目标、仪器与参考系正确。"
+      },
+      {
+        "id": "publish",
+        "title": "科学结果与显示参数保存",
+        "detail": "保存科学数组、质量掩膜与渲染图三份产物，并记录拉伸、伽马、通道组合和裁剪。若转向 CDAWeb 时间序列，另行检查 CDF / master CDF 元数据、质量标记、坐标与时间基准；不要把图像处理假设直接迁移过去。",
+        "output": "可复现处理说明与带比例 / 单位的结果图",
+        "check": "更换显示拉伸不会修改科学数组；每个图例都能回溯到对应变量和单位。"
+      }
+    ],
+    "validation": [
+      "读取成功只证明软件能解释文件，不证明定标、几何或科学解释正确。",
+      "对照档案说明核验产品级别、缺测值、单位和有效区间，保留处理失败的原因。",
+      "三维展示使用公开几何或示意模型时，不能借助真实背景影像暗示模型已达到任务级精度。"
+    ],
+    "pitfalls": [
+      "JPEG 新闻图常经裁剪、色彩增强或拼接，通常不适合直接量测。",
+      "PDS 数据并不都采用同一许可与引用方式，应遵守对应节点和产品要求。",
+      "CDAWeb 中部分数据文件的元数据需结合 master CDF，不能只凭变量名猜单位。"
+    ],
+    "sources": [
+      {
+        "title": "PDS：官方数据标准与手册索引",
+        "url": "https://pds.nasa.gov/datastandards/documents/"
+      },
+      {
+        "title": "PDS Small Bodies Node：pds4_tools",
+        "url": "https://github.com/Small-Bodies-Node/pds4_tools"
+      },
+      {
+        "title": "NAIF：SPICE 遥感与几何练习",
+        "url": "https://naif.jpl.nasa.gov/naif/lessons.html"
+      },
+      {
+        "title": "CDAWeb：数据文件与 master CDF 元数据",
+        "url": "https://cdaweb.gsfc.nasa.gov/cdaweb_anonymousftp.htm"
+      }
+    ]
+  }
+]

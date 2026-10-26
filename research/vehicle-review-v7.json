@@ -1,0 +1,218 @@
+{
+  "reviewedOn": "2026-10-26",
+  "scope": "飞行器档案、近期研究情报与车辆图像的有界扩充；不声称完成全部航天器型号史。",
+  "before": {
+    "vehicles": 50,
+    "briefings": 22,
+    "vehicleMedia": 19
+  },
+  "after": {
+    "vehicles": 56,
+    "briefings": 25,
+    "vehicleMedia": 24
+  },
+  "addedVehicleIds": [
+    "tiros-1",
+    "telstar-1",
+    "landsat-1",
+    "viking-1-lander",
+    "mro",
+    "euclid"
+  ],
+  "addedBriefingIds": [
+    "roman-science-commissioning-2026",
+    "psyche-electric-cruise-2026",
+    "euclid-comet-detection-2026"
+  ],
+  "addedMediaIds": [
+    "mro-high-bay-2004",
+    "viking-1-first-surface-image",
+    "viking-lander-components",
+    "tiros-1-first-earth-view",
+    "euclid-modules-2022"
+  ],
+  "dossierCoverage": [
+    {
+      "id": "tiros-1",
+      "publicParameters": 8,
+      "dimensions": 2,
+      "timelineEntries": 4,
+      "systems": 5,
+      "inferenceMethods": 3,
+      "studyQuestions": 3,
+      "dataEntrypoints": 3,
+      "sourceCount": 4,
+      "modelKind": "cylinder-satellite",
+      "modelPartIds": [
+        "body",
+        "antenna",
+        "instruments",
+        "service",
+        "avionics",
+        "frame"
+      ]
+    },
+    {
+      "id": "telstar-1",
+      "publicParameters": 6,
+      "dimensions": 1,
+      "timelineEntries": 4,
+      "systems": 5,
+      "inferenceMethods": 3,
+      "studyQuestions": 3,
+      "dataEntrypoints": 3,
+      "sourceCount": 5,
+      "modelKind": "sphere-satellite",
+      "modelPartIds": [
+        "body",
+        "antenna",
+        "service",
+        "avionics",
+        "instruments",
+        "frame"
+      ]
+    },
+    {
+      "id": "landsat-1",
+      "publicParameters": 8,
+      "dimensions": 2,
+      "timelineEntries": 5,
+      "systems": 5,
+      "inferenceMethods": 3,
+      "studyQuestions": 3,
+      "dataEntrypoints": 3,
+      "sourceCount": 4,
+      "modelKind": "probe",
+      "modelPartIds": [
+        "body",
+        "solar",
+        "instruments",
+        "antenna",
+        "propulsion",
+        "avionics",
+        "frame"
+      ]
+    },
+    {
+      "id": "viking-1-lander",
+      "publicParameters": 7,
+      "dimensions": 3,
+      "timelineEntries": 5,
+      "systems": 6,
+      "inferenceMethods": 3,
+      "studyQuestions": 3,
+      "dataEntrypoints": 3,
+      "sourceCount": 6,
+      "modelKind": "lander",
+      "modelPartIds": [
+        "body",
+        "legs",
+        "propulsion",
+        "tank",
+        "service",
+        "instruments",
+        "antenna",
+        "avionics",
+        "frame"
+      ]
+    },
+    {
+      "id": "mro",
+      "publicParameters": 8,
+      "dimensions": 2,
+      "timelineEntries": 5,
+      "systems": 6,
+      "inferenceMethods": 3,
+      "studyQuestions": 3,
+      "dataEntrypoints": 3,
+      "sourceCount": 7,
+      "modelKind": "probe",
+      "modelPartIds": [
+        "body",
+        "solar",
+        "antenna",
+        "instruments",
+        "propulsion",
+        "avionics",
+        "frame"
+      ]
+    },
+    {
+      "id": "euclid",
+      "publicParameters": 8,
+      "dimensions": 2,
+      "timelineEntries": 6,
+      "systems": 6,
+      "inferenceMethods": 3,
+      "studyQuestions": 3,
+      "dataEntrypoints": 4,
+      "sourceCount": 7,
+      "modelKind": "telescope",
+      "modelPartIds": [
+        "body",
+        "instruments",
+        "solar",
+        "heatshield",
+        "propulsion",
+        "antenna",
+        "avionics",
+        "frame"
+      ]
+    }
+  ],
+  "factBoundaryDecisions": [
+    {
+      "vehicleId": "tiros-1",
+      "issue": "纪念文章泛称极轨与型号表冲突",
+      "decision": "采用 WMO 的 48.4° 倾角；不套用后续 TIROS 极轨型号。"
+    },
+    {
+      "vehicleId": "telstar-1",
+      "issue": "历史目录 OCR 单位及现代同名系列混淆",
+      "decision": "采用 NASA 的 171 lb≈77.6 kg；现代 Telstar 质量、翼板与容量不回填。"
+    },
+    {
+      "vehicleId": "landsat-1",
+      "issue": "80 m 仪器分辨率、60 m 产品网格及定位精度混为一谈",
+      "decision": "分字段记录；交点地方时差异也保留，具体观测以元数据为准。"
+    },
+    {
+      "vehicleId": "viking-1-lander",
+      "issue": "NASA 质量行明显错误、轨道器与着陆器质量混用",
+      "decision": "采用 PDS 着陆后约 610 kg，禁止代替进入质量；明确 Viking 1 地震仪无数据。"
+    },
+    {
+      "vehicleId": "mro",
+      "issue": "发射质量与气动制动研究模型质量混用；在役标签覆盖停机载荷",
+      "decision": "2180 kg 为发射质量，1395 kg 为 NESC 算例；CRISM 标记已停止。"
+    },
+    {
+      "vehicleId": "euclid",
+      "issue": "数据发布计划相互不一致；近似质量分项被强行凑总和",
+      "decision": "仅确认 Q1/Q2 已发布；不写 DR1 已完成，不将约数分项补成精确质量。"
+    }
+  ],
+  "geometryContract": {
+    "status": "主代理已完成六型号专用外形，并报告 56 个 GLB 导出及 63 项几何检查通过、零警告；本代理未修改或生成几何文件。",
+    "rules": [
+      "TIROS-1 必须是扁鼓和五杆，不能直接使用 Explorer 长筒模板。",
+      "Telstar 1 是球面太阳电池与环形天线带，不得继承 Sputnik 四根长杆。",
+      "Landsat 1 是双翼平台，展开总跨度约 4 m；不借用现代 Landsat 单翼。",
+      "Viking 1 着陆后构型必须三腿、双 RTG、三台末端下降发动机；不能附上太阳翼。",
+      "MRO 是双翼、3 m 高增益天线；研究参考面积与光伏面积不混用。",
+      "Euclid 有固定太阳侧遮阳板；不套用 Hubble 双翼或 Webb 五层薄膜。",
+      "所有内视与拆分均为功能级工程示意；公开系统组成不等于精确装配坐标或制造结构。"
+    ]
+  },
+  "mediaRights": {
+    "nasa": "保留 NASA 署名，个人教育资料用途，不暗示背书。",
+    "jpl": "MRO 保留 NASA/JPL/Lockheed Martin 指定署名；按 JPL 个人与教育用途条款，不声称本站拥有版权。",
+    "esa": "Euclid 图保留 © ESA — S. Corvaja，适用 ESA Standard Licence；不能被网站代码开源许可证覆盖，也不能自动允许商业宣传。",
+    "rejected": "Telstar 展览图因分辨率不足撤下；未上采样伪装高清。"
+  },
+  "checks": {
+    "content": "车辆与情报契约检查通过至项目证据段；全站脚本因另一区域 evidence 相对路径与旧绝对路径断言不一致失败，已报告主代理。",
+    "media": "node scripts/check-media.mjs：PASS，38 个媒体资产，2026-10-26；本轮五幅图均已目视核对，Telstar 低分辨率文件已撤下。",
+    "scientific": "未声称仿真已数值验证；本轮输出为可追踪研究档案和方法设计。"
+  }
+}

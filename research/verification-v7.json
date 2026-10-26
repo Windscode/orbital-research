@@ -1,0 +1,55 @@
+{
+  "version": 7,
+  "date": "2026-10-26",
+  "scope": "网站内容、交互、模型与部署准备；不含 UE 工程构建或新仿真",
+  "content": {
+    "lessons": 50,
+    "graphNodes": 50,
+    "graphEdges": 179,
+    "learningPaths": 11,
+    "resources": 79,
+    "vehicles": 56,
+    "briefings": 25,
+    "media": 38,
+    "workflows": 4,
+    "projectTopics": 9,
+    "projectEvidence": 24
+  },
+  "checks": {
+    "contentContract": "passed: 210 articles, 454 distinct HTTPS references",
+    "projectEvidence": "passed: 24 entries, 126 valid citation references",
+    "orbit": "6 passed",
+    "modelAndGraph": "63 passed, 0 failed, 0 warnings; 56 GLB exports",
+    "modelCamera": "18,720 fitted views; 149,760 AABB projections",
+    "media": "38 assets checked with source/credit/usage metadata",
+    "navigation": "210 deep-link roundtrips, storage recovery and cross-tab cases passed",
+    "researchWorkflows": "4 plans / 16 checklist steps / 47 cross-library references passed",
+    "numerical": "9 checks passed; 45 UI configurations × 3 methods",
+    "catalog": "bootstrap consistency and shared loading/retry passed"
+  },
+  "browserChecks": {
+    "viewport": "1270 px desktop, 380 px effective mobile iframe",
+    "mobileRoutes": [
+      "home",
+      "knowledge",
+      "intelligence",
+      "resources",
+      "vehicles",
+      "lab",
+      "images",
+      "project"
+    ],
+    "mobileHorizontalOverflow": false,
+    "project": "All 6 architecture tabs, all 7 pipeline steps and evidence navigation checked",
+    "resource": "Restricted-use filter isolates NASA GFSSP; reader and license detail checked",
+    "model": "Euclid WebGL rendering, part selection and full explosion checked",
+    "console": "No warning/error in inspected new desktop tab"
+  },
+  "limitations": [
+    "Browser tests are representative UI checks, not all interaction permutations.",
+    "Geometry checks validate finite coordinates, part IDs and framing, not engineering fidelity.",
+    "Primary sources were read for the new research; some older availability reports remain historical.",
+    "Project record charts reproduce dated source records, not new test results."
+  ],
+  "mediaRights": "See THIRD_PARTY_NOTICES.md; ESA Euclid media is not public-domain and has separate terms."
+}

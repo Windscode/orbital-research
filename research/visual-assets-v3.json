@@ -1,0 +1,31 @@
+{
+  "createdOn": "2026-10-25",
+  "tool": "built-in ImageGen",
+  "assets": [
+    {
+      "path": "public/images/spacecraft-study-v3.png",
+      "prompt": "Use case: stylized-concept. Asset type: a premium editorial image for a serious aerospace simulation research website, wide landscape 16:9, high-resolution 2048x1152 or greater. Create an exceptionally detailed, plausible generic robotic planetary spacecraft in a dark spacecraft integration cleanroom, viewed at a three-quarter angle. The subject fills the right two thirds with ample dark negative space in the left quarter for an editorial heading, no words inside the image. A gold multilayer-insulation wrapped instrument bus with some panels removed to reveal orderly avionics boxes, coiled harnesses, an aluminum honeycomb deck, compact spherical propellant vessels, small thruster modules; one pale high-gain antenna dish above, one folded dark-blue solar panel to the right. A few carefully aligned panels and subsystems float a short distance from the spacecraft in an elegant restrained exploded-view concept, with no arrows or labels. The spacecraft rests over a quiet charcoal studio plinth; no humans. Photorealistic industrial product visualization with finely machined fasteners, braided wires, matte ceramic blankets, metallic foil with natural folds, realistic surfaces and restrained cinematic rim lighting. Charcoal-black and cold slate-blue environment, muted metallic gold and pale sage highlights, subtle atmosphere, very clean and sophisticated magazine art direction. Balanced image, no busy background, no HUD, no neon, no science-fiction cockpit, no weapons, no logos, no text, no watermark. This is openly an imagined engineering concept illustration, not a photograph of a named mission and not a precise blueprint."
+    },
+    {
+      "path": "public/images/lunar-horizon-v3.png",
+      "prompt": "Use case: stylized-concept. Asset type: ultra-detailed cinematic 16:9 wide website hero artwork for a sophisticated personal aerospace research observatory. A contemplative low lunar orbit perspective looking over the curved rugged cratered Moon, with a very small distant pale-blue Earth suspended above the lunar horizon in the upper-right quadrant, physically sensible small apparent Earth from lunar orbit. The near Moon's surface and its terminator occupy the lower and right 60 percent, exquisitely detailed regolith, long deep shadows in crater walls, silvery-grey terrain under low grazing sunlight, black space across the left 40 percent suitable for light editorial text. A tiny generic gold-foil spacecraft with delicate blue solar arrays and antenna dish floats near the right edge, giving scale; spacecraft should be small and secondary to landscape. Dark charcoal and cold blue palette with restrained pale-gold sunlight; strong contrast but natural highlight rolloff, immaculate cinematic photographic realism. No text or logos, no annotations, no HUD lines, no visible stars in sunlit scene, no nebulas, no science-fiction city, no astronaut, no exaggerated lens flare, no watermark. This is conceptual visualization of lunar orbital exploration, not a specific observed mission or a quantitatively precise orbit."
+    }
+  ],
+  "designReferences": [
+    {
+      "title": "NASA Eyes",
+      "url": "https://science.nasa.gov/eyes/",
+      "use": "探索入口与影像和任务的关联"
+    },
+    {
+      "title": "NASA Webb mission",
+      "url": "https://science.nasa.gov/mission/webb/",
+      "use": "任务页面的影像、事实和延伸阅读层级"
+    },
+    {
+      "title": "ESA Juice",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Juice",
+      "use": "任务事实、时间线和专题叙事的并置"
+    }
+  ]
+}

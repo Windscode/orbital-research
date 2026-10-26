@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc" xml:lang="zh-CN">
+  <title id="title">制导、导航与控制闭环的真实数据路径</title>
+  <desc id="desc">原创闭环技术图解。目标经控制器、受约束执行器进入动力学，传感器把真值转为观测，估计器利用观测和已知输入形成状态估计后反馈控制器。图中明确命令与实际输入的区别、采样延迟和仿真真值不得直接进入滤波器的边界。</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#8bb6d0" opacity=".07"/></pattern>
+    <marker id="lime" markerWidth="13" markerHeight="13" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L11 5L0 10" fill="none" stroke="#d3ef83" stroke-width="2"/></marker>
+    <marker id="blue" markerWidth="13" markerHeight="13" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L11 5L0 10" fill="none" stroke="#8bb6d0" stroke-width="2"/></marker>
+    <marker id="gold" markerWidth="13" markerHeight="13" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L11 5L0 10" fill="none" stroke="#cfb280" stroke-width="2"/></marker>
+  </defs>
+  <rect width="1400" height="900" fill="#10191e"/><rect width="1400" height="900" fill="url(#grid)"/>
+  <g font-family="Microsoft YaHei, Noto Sans SC, Arial, sans-serif" fill="#dce6e3">
+    <text x="60" y="57" font-size="22" fill="#d3ef83" letter-spacing="2">轨研 ORBITAL / 02 · GUIDANCE, NAVIGATION &amp; CONTROL</text>
+    <text x="60" y="115" font-size="42" font-weight="600">闭环里流动的是信息，不是“完美真值”</text>
+    <text x="60" y="157" font-size="23" fill="#9db1b5">命令、实际作用、观测与估计分开记录，才知道误差从哪里进入系统。</text>
+    <g fill="#152329" stroke="#d3ef83" stroke-opacity=".4">
+      <rect x="60" y="240" width="260" height="140" rx="14"/>
+      <rect x="385" y="240" width="260" height="140" rx="14"/>
+      <rect x="710" y="240" width="260" height="140" rx="14"/>
+      <rect x="1035" y="240" width="260" height="140" rx="14"/>
+    </g>
+    <g text-anchor="middle">
+      <text x="190" y="283" font-size="29" fill="#d3ef83">目标 / 制导</text>
+      <text x="190" y="329" font-size="24">期望 q_d、ω_d</text>
+      <text x="190" y="361" font-size="22" fill="#9db1b5">指向与机动要求</text>
+      <text x="515" y="283" font-size="29" fill="#d3ef83">控制器</text>
+      <text x="515" y="329" font-size="23">姿态误差 / 速率误差</text>
+      <text x="515" y="361" font-size="22" fill="#9db1b5">输出控制命令</text>
+      <text x="840" y="283" font-size="29" fill="#d3ef83">执行器</text>
+      <text x="840" y="329" font-size="23">限幅 / 延迟 / 动量</text>
+      <text x="840" y="361" font-size="22" fill="#9db1b5">返回实际作用</text>
+      <text x="1165" y="283" font-size="29" fill="#d3ef83">动力学</text>
+      <text x="1165" y="329" font-size="23">轨道 / 姿态 / 质量</text>
+      <text x="1165" y="361" font-size="22" fill="#9db1b5">推进物理状态</text>
+    </g>
+    <path d="M320 309H382M645 309H707M970 309H1032" fill="none" stroke="#d3ef83" stroke-width="3" marker-end="url(#lime)"/>
+    <text x="352" y="289" text-anchor="middle" font-size="22" fill="#d3ef83">参考</text>
+    <text x="677" y="289" text-anchor="middle" font-size="22" fill="#d3ef83">u_cmd</text>
+    <text x="1004" y="289" text-anchor="middle" font-size="22" fill="#d3ef83">u</text>
+    <path d="M1165 200V237" fill="none" stroke="#cfb280" stroke-width="3" marker-end="url(#gold)"/>
+    <text x="1165" y="189" text-anchor="middle" font-size="23" fill="#cfb280">外扰 d(t)</text>
+    <rect x="1035" y="520" width="260" height="140" rx="14" fill="#14232c" stroke="#8bb6d0" stroke-opacity=".5"/>
+    <rect x="385" y="520" width="360" height="140" rx="14" fill="#14232c" stroke="#8bb6d0" stroke-opacity=".5"/>
+    <g text-anchor="middle">
+      <text x="1165" y="565" font-size="29" fill="#8bb6d0">传感器</text>
+      <text x="1165" y="609" font-size="23">采样 / 偏置 / 噪声</text>
+      <text x="1165" y="641" font-size="22" fill="#9db1b5">含时间戳与有效性</text>
+      <text x="565" y="565" font-size="29" fill="#8bb6d0">状态估计器</text>
+      <text x="565" y="609" font-size="24">预测 → 创新 → 更新</text>
+      <text x="565" y="641" font-size="22" fill="#9db1b5">输出 x̂ 与不确定性 P</text>
+    </g>
+    <path d="M1165 380V517" fill="none" stroke="#8bb6d0" stroke-width="3" marker-end="url(#blue)"/>
+    <text x="1190" y="456" font-size="23" fill="#8bb6d0">真值 x(t)</text>
+    <path d="M1035 590H748" fill="none" stroke="#8bb6d0" stroke-width="3" marker-end="url(#blue)"/>
+    <text x="890" y="568" text-anchor="middle" font-size="24" fill="#8bb6d0">观测 y_k</text>
+    <path d="M515 520V383" fill="none" stroke="#8bb6d0" stroke-width="3" marker-end="url(#blue)"/>
+    <text x="355" y="458" font-size="23" fill="#8bb6d0">状态估计</text>
+    <circle cx="1004" cy="309" r="5" fill="#cfb280"/>
+    <path d="M1004 309V465H700V517" fill="none" stroke="#cfb280" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#gold)"/>
+    <text x="850" y="432" text-anchor="middle" font-size="22" fill="#cfb280">已知输入 u / 执行器模型</text>
+    <text x="850" y="499" text-anchor="middle" font-size="22" fill="#9db1b5">无法测得的执行器误差进入模型不确定性</text>
+    <rect x="60" y="706" width="620" height="122" rx="14" fill="#172227" stroke="#cfb280" stroke-opacity=".3"/>
+    <rect x="710" y="706" width="630" height="122" rx="14" fill="#172227" stroke="#8bb6d0" stroke-opacity=".3"/>
+    <text x="85" y="748" font-size="25" fill="#cfb280">保持评估真值与估计器隔离</text>
+    <text x="85" y="791" font-size="22">滤波器只读取观测、已知输入和自身模型。</text>
+    <text x="735" y="748" font-size="25" fill="#8bb6d0">时间契约同样属于模型</text>
+    <text x="735" y="791" font-size="23">采样 t_s → 到达 t_a → 应用 t_u</text>
+    <text x="60" y="870" font-size="21" fill="#738b92">原理图解 · 功能与因果关系 · 非特定任务架构</text>
+    <text x="1340" y="870" text-anchor="end" font-size="21" fill="#738b92">理论依据 / MIT 16.30 状态观测器</text>
+  </g>
+</svg>

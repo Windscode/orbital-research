@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc" xml:lang="zh-CN">
+  <title id="title">姿态与四元数：明确映射方向和旋转顺序</title>
+  <desc id="desc">原创技术图解。左侧以绕共同正 z 轴的平面旋转展示惯性系与机体系，右侧声明标量在前的 Hamilton 四元数将机体系分量映射到惯性系。底部说明旋转组合通常不交换，并列出单位约束和独立验证方法。</desc>
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#8bb6d0" opacity=".07"/></pattern>
+    <marker id="blue" markerWidth="13" markerHeight="13" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L11 5L0 10" fill="none" stroke="#8bb6d0" stroke-width="2"/></marker>
+    <marker id="lime" markerWidth="13" markerHeight="13" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L11 5L0 10" fill="none" stroke="#d3ef83" stroke-width="2"/></marker>
+    <marker id="gold" markerWidth="13" markerHeight="13" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0L11 5L0 10" fill="none" stroke="#cfb280" stroke-width="2"/></marker>
+  </defs>
+  <rect width="1400" height="900" fill="#10191e"/><rect width="1400" height="900" fill="url(#grid)"/>
+  <g font-family="Microsoft YaHei, Noto Sans SC, Arial, sans-serif" fill="#dce6e3">
+    <text x="60" y="57" font-size="22" fill="#d3ef83" letter-spacing="2">轨研 ORBITAL / 01 · ATTITUDE KINEMATICS</text>
+    <text x="60" y="115" font-size="42" font-weight="600">姿态不是四个数，而是一份旋转约定</text>
+    <text x="60" y="157" font-size="23" fill="#9db1b5">同一物理向量，换一组坐标分量；先声明映射，再检验运动学。</text>
+    <rect x="60" y="195" width="600" height="430" rx="15" fill="#142128" stroke="#8bb6d0" stroke-opacity=".25"/>
+    <rect x="690" y="195" width="650" height="430" rx="15" fill="#152126" stroke="#d3ef83" stroke-opacity=".25"/>
+    <text x="85" y="237" font-size="24" fill="#cfb280">绕共同 +z 轴的正向旋转 · 平面示例</text>
+    <path d="M280 470H570M280 470V267" fill="none" stroke="#8bb6d0" stroke-width="3" marker-end="url(#blue)"/>
+    <path d="M280 470H570" fill="none" stroke="#8bb6d0" stroke-width="3" marker-end="url(#blue)"/>
+    <path d="M280 470L505 340" fill="none" stroke="#d3ef83" stroke-width="3" marker-end="url(#lime)"/>
+    <path d="M280 470L165 271" fill="none" stroke="#d3ef83" stroke-width="3" marker-end="url(#lime)"/>
+    <path d="M380 470A100 100 0 0 0 366.6 420" fill="none" stroke="#cfb280" stroke-width="3" marker-end="url(#gold)"/>
+    <path d="M505 340V470M165 271H280" fill="none" stroke="#52636b" stroke-dasharray="6 8"/>
+    <circle cx="280" cy="470" r="11" fill="#10191e" stroke="#dce6e3" stroke-width="2"/><circle cx="280" cy="470" r="3.5" fill="#dce6e3"/>
+    <text x="582" y="480" font-size="28" fill="#8bb6d0">x_I</text>
+    <text x="295" y="282" font-size="28" fill="#8bb6d0">y_I</text>
+    <text x="515" y="334" font-size="28" fill="#d3ef83">x_B</text>
+    <text x="110" y="287" font-size="28" fill="#d3ef83">y_B</text>
+    <text x="388" y="426" font-size="25" fill="#cfb280">θ = +30°</text>
+    <text x="180" y="522" font-size="23">共同原点 · z_I = z_B 指向纸外</text>
+    <line x1="91" y1="570" x2="127" y2="570" stroke="#8bb6d0" stroke-width="3"/>
+    <text x="140" y="578" font-size="22" fill="#8bb6d0">惯性系 I</text>
+    <line x1="335" y1="570" x2="371" y2="570" stroke="#d3ef83" stroke-width="3"/>
+    <text x="384" y="578" font-size="22" fill="#d3ef83">机体系 B</text>
+    <text x="720" y="241" font-size="28" font-weight="600">本图的完整约定</text>
+    <text x="720" y="286" font-size="23" fill="#9db1b5">Hamilton 乘法 · 标量在前：q = [q₀, qx, qy, qz]</text>
+    <text x="720" y="330" font-size="23">q：将机体系 B 的分量映射到惯性系 I</text>
+    <text x="720" y="386" font-size="34" fill="#d3ef83">v_I = R(q) v_B</text>
+    <text x="720" y="445" font-size="34" fill="#d3ef83">q̇ = ½ q ⊗ [0, ω_B]</text>
+    <text x="720" y="487" font-size="22" fill="#9db1b5">ω_B：机体相对惯性系的角速度，机体系分量</text>
+    <line x1="720" y1="510" x2="1310" y2="510" stroke="#34484e"/>
+    <text x="720" y="548" font-size="25" fill="#cfb280">‖q‖ = 1；q 与 −q 表示同一姿态</text>
+    <text x="720" y="589" font-size="22" fill="#9db1b5">归一化修复模长，不证明角度积分正确。</text>
+    <rect x="60" y="658" width="1280" height="170" rx="15" fill="#142025" stroke="#cfb280" stroke-opacity=".3"/>
+    <text x="85" y="701" font-size="27" fill="#cfb280">旋转组合：对列向量依次作用</text>
+    <text x="85" y="752" font-size="30">先 q₁，后 q₂ → q₂ ⊗ q₁</text>
+    <text x="85" y="795" font-size="24" fill="#9db1b5">通常 q₂ ⊗ q₁ ≠ q₁ ⊗ q₂</text>
+    <line x1="665" y1="685" x2="665" y2="801" stroke="#34484e"/>
+    <text x="710" y="703" font-size="27" fill="#d3ef83">最小验收集</text>
+    <text x="710" y="751" font-size="24">基向量旋转 · 逆变换 · 组合次序</text>
+    <text x="710" y="794" font-size="24" fill="#9db1b5">匀速旋转相位误差 · 矩阵正交性</text>
+    <text x="60" y="870" font-size="21" fill="#738b92">原理图解 · 非实物 CAD · NOT TO SCALE</text>
+    <text x="1340" y="870" text-anchor="end" font-size="21" fill="#738b92">理论依据 / JPL NAIF Rotation</text>
+  </g>
+</svg>

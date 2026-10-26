@@ -1,0 +1,659 @@
+[
+  {
+    "id": "dragonfly-simulated-flight-2026",
+    "title": "Dragonfly 完成首次完整飞行场景仿真",
+    "category": "仿真方法",
+    "date": "2026-10-23",
+    "summary": "NASA 报道 Dragonfly 在 APL 的类飞行航电测试台完成迄今最全面的首次飞行场景仿真，涵盖多数系统及动作；真实飞行系统上的后续测试仍在计划中。",
+    "analysis": "这一场景把飞行软件、类飞行航电和模拟传感器输入放入实时闭环，并由 GPU 生成导航相机所见地形。它验证的是分离后寻址、转向和下降等动作之间的协同，不能称为土卫六实飞，也不能把多数系统覆盖写成全系统全部工况已经通过。报道还区分了测试台与未来真实飞行系统测试；部署机构载荷和角度试验是另一条验证链。对于研究项目，毫秒级时序、数据延迟和传感器一致性与轨迹形状同样重要。",
+    "implication": "本站研究建议：为 AerospaceSimUE 定义独立于渲染帧率的物理与控制时钟，记录相机/惯导/测距输入及控制输出。先复现正常场景，再分别引入图像延迟、测距缺失和部署初态变化；把离线算法、软件闭环与硬件连接的验证状态分开展示。",
+    "source": {
+      "title": "NASA · Dragonfly Completes First Simulated Flight",
+      "url": "https://science.nasa.gov/blogs/dragonfly/2026/10/23/nasas-dragonfly-completes-first-simulated-flight/"
+    },
+    "tags": [
+      "Dragonfly",
+      "实时闭环",
+      "硬件在环"
+    ],
+    "dateNote": "2026-10-23 是 NASA 报道发布日期；地面测试实际执行日未公开。文中的不早于 2028 年发射与 2034 年抵达均是报道时计划。",
+    "relatedResources": [
+      "basilisk",
+      "trick",
+      "fprime"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "publishedOn": "2026-10-23",
+    "eventDate": null,
+    "eventDateNote": "报道只称近期测试，未给出这次综合仿真的执行日；不可把 10 月 23 日直接标成试验发生日。"
+  },
+  {
+    "id": "roman-science-commissioning-2026",
+    "title": "Roman 进入科学调试阶段",
+    "category": "观测与标定",
+    "date": "2026-10-22",
+    "publishedOn": "2026-10-22",
+    "eventDate": null,
+    "eventDateNote": "NASA 于 10 月 22 日报道已进入科学调试，未给出正式阶段切换的独立日期。",
+    "dateNote": "正文发布日期为 2026-10-22；页面最后编辑日 10 月 23 日不是本事件发生日。",
+    "summary": "NASA 报道 Roman 完成平台与主要仪器检查，进入科学调试。团队继续用测试观测校准响应和图像质量；这不等于全部科学运行已经开始。",
+    "analysis": "调试涵盖密集星场和受尘埃影响区域的导星表现，并进一步检查图像是否因指向抖动、焦点或响应变化而产生差异。这里可借鉴的是验证顺序：先确认能够导星、曝光、转向和传输数据，再量化科学测量的稳定性。报道没有给出可直接套入仿真的完整 PSF、抖动功率谱或全部误差阈值。",
+    "implication": "研究练习：在相同天区生成固定源、可变源和指向扰动三个独立分量。记录每帧曝光中点、姿态和标定版本，用恒星残差检验观测系统变化，再判断目标是否真实变化；避免用渲染画面的锐度代替探测器与导星性能。",
+    "source": {
+      "title": "NASA · Roman Space Telescope Enters Final Commissioning Phase",
+      "url": "https://science.nasa.gov/blogs/roman/2026/10/22/nasas-roman-space-telescope-enters-final-commissioning-phase/"
+    },
+    "tags": [
+      "Roman",
+      "科学调试",
+      "PSF",
+      "指向稳定"
+    ],
+    "verifiedOn": "2026-10-26"
+  },
+  {
+    "id": "psyche-electric-cruise-2026",
+    "title": "Psyche 开始近连续电推进巡航",
+    "category": "轨道与推进",
+    "date": "2026-10-22",
+    "publishedOn": "2026-10-22",
+    "eventDate": "2026-09-28",
+    "eventDateNote": "9 月 28 日开始近连续电推进；10 月 22 日为 NASA 报道日。",
+    "dateNote": "报道给出的 2029 年夏抵达是当时计划，不是已完成事件。",
+    "summary": "Psyche 在火星借力后于 9 月 28 日开始近连续电推进。NASA 的 10 月 22 日更新说明，后续巡航同时受到太阳供电、推力占空比与反作用轮角动量管理限制。",
+    "analysis": "报道给出最高约 250 mN 推力，四台推力器每次使用一台；巡航计划接近 90% 时间推力工作。随着日距增加，太阳能下降，需要调低功率。霍尔推力器还会产生微小旋转力矩，反作用轮积累角动量后需要安排卸载。因此，持续推力模型仍然包含通信、工程操作和姿态活动引入的间断。",
+    "implication": "研究练习：先建立太阳距—可用功率—推力/比冲映射，再让轨道传播器读取带时标的推力方向和开关计划。把角动量卸载的耗时与轨迹偏差单独记录，并对功率衰减和中断时长做扫描；不把 250 mN 当成全程不变推力。",
+    "source": {
+      "title": "NASA · Psyche Heads Toward Asteroid Belt",
+      "url": "https://science.nasa.gov/blogs/psyche/2026/10/22/pedal-to-the-metal-nasas-psyche-heads-toward-asteroid-belt/"
+    },
+    "tags": [
+      "Psyche",
+      "太阳能电推进",
+      "低推力轨道",
+      "角动量管理"
+    ],
+    "verifiedOn": "2026-10-26"
+  },
+  {
+    "id": "mars-roamx-blade-2026",
+    "title": "ROAMX 火星旋翼叶片设计与试验",
+    "category": "仿真研究",
+    "date": "2026-10-20",
+    "summary": "NASA 介绍 Ames 与合作高校针对 roamx-0201 翼型开展的高保真仿真和风洞研究，讨论低密度火星环境中的阻力发散与失速表现。",
+    "analysis": "报道把翼型优化、风洞比较与未来任务性能估计连在一起，但也明确技术尚未达到火星任务应用状态，计算与试验差异仍需研究。航程估计取决于旋翼、载荷、功率和环境假设，不能把某个预测距离当成已经完成的飞行纪录，也不能把地球常规翼型表直接迁入火星。对仿真而言，关键是同时追踪低雷诺数、较高局部马赫数与边界层状态，说明比较采用的相似条件，而非只把空气密度改成火星数值。",
+    "implication": "本站研究建议：建立明确工况的二维翼型基线，用网格、时间步及转捩假设检查气动系数，再与公开试验条件下的结果对照。把翼型级改进和整机航程预测分成两层，并单独列出电源、结构和载荷假设；任何性能提升应带工况和不确定性，不能包装成实飞能力。",
+    "source": {
+      "title": "NASA · Experimental Mars Helicopter Blade Designs Target Longer Flights",
+      "url": "https://www.nasa.gov/science-research/aeronautics-research/nasa-experimental-mars-helicopter-blade-designs-target-longer-flights/"
+    },
+    "tags": [
+      "火星旋翼",
+      "气动数据库",
+      "仿真与试验"
+    ],
+    "dateNote": "NASA 正文发布日期为 2026-10-20，页脚更新为 10-21；报道指向 09-22 的论文，未将这些日期当作试验发生日。",
+    "publishedOn": "2026-10-20",
+    "sourceUpdatedOn": "2026-10-21",
+    "eventDate": null,
+    "eventDateNote": "报道未给出所有仿真与风洞试验的具体执行日期。",
+    "relatedResources": [
+      "su2",
+      "fun3d",
+      "openfoam",
+      "nasa-ntrs"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC"
+  },
+  {
+    "id": "ecosimpro-release-2026",
+    "title": "EcosimPro 版本与求解环境更新",
+    "category": "工程工具",
+    "date": "2026-10-19",
+    "summary": "EcosimPro 官方产品发布表列出 7.2.2 Service Pack，日期为 2026 年 10 月 19 日。",
+    "analysis": "发布表能证明版本及发布时间，但不能据此断言某个模型性能获得提升或所有旧项目都兼容。对于推进与热流体系统，符号处理、初始化、求解器和模型库变化均可能影响结果，升级后保持同一界面参数也不足以保证数学问题完全相同。此条关注的是版本治理：软件、组件库、编译器和求解配置应成为研究记录，而不是隐藏在个人电脑里的默认状态。",
+    "implication": "本站研究建议：保存一个稳态守恒算例、一个启停瞬态算例和一个事件切换算例作为迁移基准，比较状态、残差及守恒误差。只有读完具体版本说明并通过基准后，才将新环境用于已有结论的重算。",
+    "source": {
+      "title": "EcosimPro · Product Description / Releases",
+      "url": "https://ecosimpro.com/products/ecosimpro/"
+    },
+    "tags": [
+      "版本管理",
+      "系统仿真",
+      "可复现性"
+    ],
+    "dateNote": "采用官方 Releases 表中的版本日期，未将通用产品功能冒充该补丁新增能力。",
+    "relatedResources": [
+      "ecosimpro",
+      "espss",
+      "openmodelica"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  },
+  {
+    "id": "euclid-comet-detection-2026",
+    "title": "Euclid 发现彗星 C/2026 S1",
+    "category": "数据处理",
+    "date": "2026-10-19",
+    "publishedOn": "2026-10-19",
+    "eventDate": "2026-10-08",
+    "eventDateNote": "9 月 16—24 日采集影像，10 月 8 日由 MPC 确认；10 月 19 日为 ESA 报道日期。",
+    "dateNote": "首次发现未知彗星不等于首次拍到彗星；Euclid 之前已观测过已知目标。",
+    "summary": "ESA 公布 Euclid 发现此前未知的彗星 C/2026 S1。软件从 9 月影像中识别移动条纹，通过跨视场关联、已知天体目录核对及地面后续观测，最终得到 MPC 确认。",
+    "analysis": "目标分布在五个视场、共 16 次曝光中。Euclid 的常规策略并非持续跟踪太阳系目标，因此检测程序需要在稀疏观测与静态深空背景中关联运动轨迹。运动天体既能产生额外科学结果，也会污染星系形状测量，检测和掩膜处理应共享明确的误差记录。该彗星并不是 Comet Interceptor 的合适候选，轨道周期也仍需后续观测细化。",
+    "implication": "研究练习：在真实或模拟恒星背景中注入带速度、亮度和彗发变化的轨迹，分别统计单帧检出率、跨帧关联精确率和误报数。用未参与拟合的帧验证位置预测，再检查掩膜是否误删静态天体；仅有视觉上连贯的轨迹不足以确认新发现。",
+    "source": {
+      "title": "ESA · Euclid discovers new comet",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_discovers_new_comet"
+    },
+    "tags": [
+      "Euclid",
+      "移动天体",
+      "数据关联",
+      "巡天"
+    ],
+    "verifiedOn": "2026-10-26"
+  },
+  {
+    "id": "artemis-ii-science-data-2026",
+    "title": "Artemis II 月球科学数据与影像开放",
+    "category": "公开数据",
+    "date": "2026-10-07",
+    "summary": "NASA 于 10 月 7 日公开月球科学影像、音频、标注和任务文档；PDS 节点说明 SPICE bundle 延迟，不能把用户指南中的计划链接当作已可下载资料。",
+    "analysis": "NASA 新闻确认科学数据开放，PDS 节点进一步列出实际交付内容与 SPICE 内核延迟说明。用户指南描述了计划中的轨迹/姿态内核及引用标识，但在本次核查中其 NAIF 指定目录返回 404，因此影像可用与任务几何数据齐备必须分别判断。观测主要发生于 4 月 6 日月球飞掠，而 10 月 7 日是归档发布。即便以后取得内核，也需检查重构/预测类型、时段和相机姿态覆盖，不能把新闻配图或单一目录存在视为完整遥测可用。",
+    "implication": "本站研究建议：先按 PDS 产品标识选取少量图像和 XML 标签，整理时间、相机及处理等级，并对照音频与标注。将几何重建列为依赖内核发布和覆盖检查的后续步骤；暂用示意几何时明确标为假设，不把视觉匹配称作实飞轨迹验证。",
+    "source": {
+      "title": "NASA · Releases Artemis II Lunar Science Data, Images",
+      "url": "https://www.nasa.gov/blogs/missions/2026/10/07/nasa-releases-artemis-ii-lunar-science-data-images/"
+    },
+    "tags": [
+      "PDS",
+      "Artemis II",
+      "数据溯源"
+    ],
+    "dateNote": "采用科学归档公开日，区别于 4 月 6 日观测和 4 月 11 日 00:07 UTC 返回。",
+    "relatedResources": [
+      "nasa-pds",
+      "spice",
+      "nasa-ntrs"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "publishedOn": "2026-10-07",
+    "eventDate": "2026-10-07",
+    "eventDateNote": "事件为科学数据公开；月球飞掠观测日期为 2026-04-06。",
+    "additionalSources": [
+      {
+        "title": "PDS Geosciences · Artemis II archive availability notice",
+        "url": "https://pds-geosciences.wustl.edu/missions/artemis2/index.htm"
+      },
+      {
+        "title": "Artemis II Lunar Science Data User Guide",
+        "url": "https://assets.science.nasa.gov/content/dam/science/missions/artemis/artemis-ii-prelimsci-report-/artemis2_data_user_guide.pdf?emrc=6ac65c2316ac9"
+      }
+    ]
+  },
+  {
+    "id": "esa-space-environment-2026",
+    "title": "ESA 2026 空间环境报告",
+    "category": "空间环境",
+    "date": "2026-09-14",
+    "summary": "ESA 2026 年空间环境报告以截至 2025 年底的数据，讨论星座增长、碎片累积和处置措施的长期效果。",
+    "analysis": "报告发布日期与数据截止日期需要分开记录。它指出，即使停止新增发射，碎片碰撞仍可能推动碎片数量继续增加；因此不能只通过减少新增目标数判断长期环境是否改善。对个人研究而言，更有价值的切入点是建立可复现的情景对照：相同初始种群下比较不同处置成功率、轨道寿命和清除策略，而不是直接把新闻中的总数量当作任意高度的均匀空间密度。",
+    "implication": "研究延伸：在轨道传播案例中加入寿命与处置约束，并明确目录对象、统计模型碎片和观测不完备性之间的区别。此建议是本站分析，并非 ESA 提供的完整实施方案。",
+    "source": {
+      "title": "ESA · Space Environment Report 2026",
+      "url": "https://www.esa.int/Space_Safety/Space_Debris/ESA_Space_Environment_Report_2026"
+    },
+    "tags": [
+      "轨道碎片",
+      "不确定性",
+      "任务约束"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:55:02 UTC",
+    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。"
+  },
+  {
+    "id": "mfem-410-2026",
+    "title": "MFEM 4.10 发布与数值回归检查",
+    "category": "公开软件",
+    "date": "2026-09-01",
+    "summary": "MFEM 发布 4.10，变更记录包含复数混合双线性形式、投影选项、积分规则及 Gmsh 4.1 网格读取支持。",
+    "analysis": "这些变化影响离散和数据交换层，并不等价于新增一个现成航天求解器。尤其是投影、积分规则和网格读入，在同样连续方程下也可能改变离散结果或边界映射。研究者应检查变更是否触及自己使用的单元、积分与并行路径，而非只比较编译是否通过。官方版本说明是能力来源，新增功能的工程可信度仍依赖应用自己的基准和误差分析。",
+    "implication": "本站研究建议：选择解析热传导或弹性基准，固定网格与边界比较升级前后误差阶和守恒；另建立 Gmsh 导入检查，确认物理分组、单元阶次及边界条件未因格式改变而丢失。",
+    "source": {
+      "title": "MFEM · Version 4.10 CHANGELOG",
+      "url": "https://github.com/mfem/mfem/blob/v4.10/CHANGELOG"
+    },
+    "tags": [
+      "有限元",
+      "高阶方法",
+      "回归验证"
+    ],
+    "dateNote": "官方变更记录明确标注 2026-09-01 发布。",
+    "relatedResources": [
+      "mfem",
+      "gmsh",
+      "petsc"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  },
+  {
+    "id": "dealii-980-2026",
+    "title": "deal.II 9.8 并行数据接口更新",
+    "category": "公开软件",
+    "date": "2026-08-09",
+    "summary": "deal.II 发布 9.8.0，官方变更文档列明 Gmsh 初始化和并行向量等兼容性调整。",
+    "analysis": "版本说明指出部分 Gmsh API 读写流程需要显式初始化，并修正了带 ghost 元素的并行向量修改规则。此类变化表明并行代码能运行并不保证各进程看到一致数据；旧程序依赖的偶然行为可能在升级后暴露。研究者若只盯求解器公式，容易漏掉网格接口和数据同步带来的错误。对自研航天数值程序，软件工程语义与离散理论必须一起审查。",
+    "implication": "本站研究建议：使用同一个小算例比较串行与不同进程数的误差和守恒，并在升级前检查不兼容项。对共享、拥有和幽灵自由度分别标明读写规则，使并行结果差异能够追到数据流。",
+    "source": {
+      "title": "deal.II · Changes between 9.7.1 and 9.8.0",
+      "url": "https://dealii.org/developer/doxygen/deal.II/changes_between_9_7_1_and_9_8_0.html"
+    },
+    "tags": [
+      "并行计算",
+      "有限元",
+      "数据一致性"
+    ],
+    "dateNote": "发布日期来自 deal.II 官方首页新闻；具体变更依据官方 9.8.0 文档。",
+    "additionalSources": [
+      {
+        "title": "deal.II · Official News",
+        "url": "https://dealii.org/"
+      }
+    ],
+    "relatedResources": [
+      "dealii",
+      "gmsh",
+      "petsc"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  },
+  {
+    "id": "openfoam14-2026",
+    "title": "OpenFOAM 14 单位与初始化机制更新",
+    "category": "公开软件",
+    "date": "2026-07-14",
+    "summary": "OpenFOAM Foundation 发布 14，新增场函数初始化、标准化单位支持，并调整若干流动及燃烧求解流程。",
+    "analysis": "对气动数据库建设，单位和初边值错误通常比求解器精度更容易造成数量级偏差。此次发布把单位作为输入参数的标准能力，并增加场函数与边界初始化方式，值得借鉴为研究管线的显式配置。发布也包含物理与数值实现变化，因此旧字典能读取不代表新旧结果必然相同；Foundation 的版本号也不能与另一发行体系的日期版本直接对应。",
+    "implication": "本站研究建议：为每套气动扫描保存发行来源、补丁、网格、单位与边界配置；升级后先跑固定参考工况，比较载荷、质量通量和热流，再重新生成数据库。新燃烧功能应先查适用模型，不能直接外推到火箭全包线。",
+    "source": {
+      "title": "OpenFOAM Foundation · OpenFOAM 14 Released",
+      "url": "https://openfoam.org/release/14/"
+    },
+    "tags": [
+      "CFD",
+      "单位体系",
+      "数据库"
+    ],
+    "dateNote": "官方主版本发布日期；后续补丁有独立版本日期。",
+    "relatedResources": [
+      "openfoam",
+      "su2",
+      "gmsh"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  },
+  {
+    "id": "esa-amat-2026",
+    "title": "ESA 介绍大气飞行任务分析工具 AMAT",
+    "category": "工程工具",
+    "date": "2026-07-13",
+    "summary": "ESA 介绍 Advanced Mission Analysis Tools，将近地到深空的复杂轨迹设计组织为更灵活的任务分析环境。",
+    "analysis": "这篇机构介绍展示了从轨迹设计到导航分析的工作流整合：统一格式与接口让研究能够跨人员、跨阶段延续。官方明确说明 AMAT 作为 MIDAS 组成部分按 ESA Community Licence 提供，因此获取资格和使用权应阅读具体许可，不能等同于任意用户可无条件使用。工具建立在 GODOT 基础设施上，也提醒研究者应区分共享基础设施下的结果重现和采用完全独立实现的交叉验证。",
+    "implication": "本站研究建议：将场景配置、求解器设置、星历版本和结果比较分离；保存可复现运行记录，使改换传播器后仍能审查方案差异。先复现开放工具中的同一任务，再比较界面与流程设计。",
+    "source": {
+      "title": "ESA · AMAT: charting ESA’s path through the Solar System",
+      "url": "https://www.esa.int/Enabling_Support/Operations/AMAT_charting_ESA_s_path_through_the_Solar_System"
+    },
+    "tags": [
+      "任务分析",
+      "轨迹设计",
+      "研究工作流"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:55:02 UTC",
+    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。"
+  },
+  {
+    "id": "celestrak-catalog-format-2026",
+    "title": "CelesTrak 六位卫星编号与数据格式迁移",
+    "category": "公开数据",
+    "date": "2026-07-11",
+    "summary": "CelesTrak 页面公告五位目录号于 2026 年 7 月 11 日用尽，新目标需使用能够容纳更长编号的 GP 数据格式。",
+    "analysis": "这不是只把文本字段加长：现有读取器可能把目录号、两位年份和固定列宽写进解析逻辑。CelesTrak 同时说明 GP 默认返回格式已改为 CSV，依赖未显式指定格式的客户端可能收到与预期不同的内容。OMM、JSON 或 CSV 改善表示能力，但 GP 仍是与 SGP4 相配的平均根数，格式迁移不会自动提升轨道精度或将其变成瞬时状态。",
+    "implication": "本站研究建议：显式指定返回格式，使用可容纳长编号的数据类型，保存原始响应、历元和抓取时间；加入旧编号、新编号、缺字段与过期数据测试，并按官方更新节奏缓存，避免每次页面刷新都请求同一数据。",
+    "source": {
+      "title": "CelesTrak · A New Way to Obtain GP Data",
+      "url": "https://celestrak.org/NORAD/documentation/gp-data-formats.php"
+    },
+    "tags": [
+      "GP",
+      "OMM",
+      "数据接口"
+    ],
+    "dateNote": "采用页面公告中的事件日期；正文更新时间和站点公告日期不同，不能混用。",
+    "relatedResources": [
+      "celestrak",
+      "space-track",
+      "orekit"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  },
+  {
+    "id": "bepicolombo-rehearsal-2026",
+    "title": "BepiColombo 任务运行与故障演练",
+    "category": "仿真方法",
+    "date": "2026-07-10",
+    "summary": "ESA / JAXA 团队在继续执行巡航任务的同时，开展水星到达阶段的操作仿真与跨团队演练。",
+    "analysis": "报道中的仿真包含分离流程、时序协调、准备状态判定和异常处理；其中一次异常情景迫使团队中止并重新安排分离。它说明系统级仿真的验收目标不应只是一条平滑轨迹，还包括事件顺序、故障可见性和恢复操作。文中列出的后续到达计划是当时计划，本站不将其自动标记为已完成事件。",
+    "implication": "本站研究建议：为 AerospaceSimUE 增加可回放的事件日志与失败场景，例如传感器失效、事件超时、动作被禁止及恢复分支；每个场景同时检查物理状态和状态机一致性。",
+    "source": {
+      "title": "ESA · Training while flying: Inside BepiColombo's arrival simulations",
+      "url": "https://www.esa.int/Enabling_Support/Operations/Training_while_flying_Inside_BepiColombo_s_arrival_simulations"
+    },
+    "tags": [
+      "系统仿真",
+      "故障注入",
+      "任务状态机"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:55:02 UTC",
+    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。"
+  },
+  {
+    "id": "artemis-ii-return-2026",
+    "title": "Artemis II 返回与再入验证资料",
+    "category": "地月任务",
+    "date": "2026-04-10",
+    "summary": "NASA 宣布 Artemis II 四名航天员完成约 10 天绕月飞行并返回地球；该新闻稿随后更新了任务总里程口径。",
+    "analysis": "完成任务是一条明确的外部证据，但它并不提供复现飞行所需的完整状态历元、机动向量、力模型和导航协方差。将最远距离或总飞行里程作为唯一拟合目标，会得到许多不唯一的轨迹。研究时应先区分几何事件复现、轨道动力学验证与真实任务重建这三种不同目标。",
+    "implication": "本站研究建议：用公开星历验证地月相对几何，再建立带明确初值的教学转移案例；若无完整遥测，不把数值相似描述为对实飞任务的精确复现。",
+    "source": {
+      "title": "NASA · NASA Welcomes Record-Setting Artemis II Moonfarers Back to Earth",
+      "url": "https://www.nasa.gov/news-release/nasa-welcomes-record-setting-artemis-ii-moonfarers-back-to-earth/"
+    },
+    "tags": [
+      "Artemis II",
+      "地月轨道",
+      "验证证据"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 05:39:21 UTC",
+    "dateNote": "新闻首发为 2026-04-10；溅落为 4 月 10 日 PDT / 4 月 11 日 UTC；来源于 5 月 7 日修订总飞行里程。",
+    "publishedOn": "2026-04-10",
+    "sourceUpdatedOn": "2026-05-07",
+    "eventDate": "2026-04-11",
+    "eventDateTime": "2026-04-11T00:07:00Z",
+    "eventDateNote": "溅落为 2026-04-10 17:07 PDT，即 2026-04-11 00:07 UTC；NASA 新闻按美国当地日标注 4 月 10 日。",
+    "additionalSources": [
+      {
+        "title": "PDS Artemis II mission chronology (UTC)",
+        "url": "https://pds-geosciences.wustl.edu/missions/artemis2/index.htm"
+      }
+    ]
+  },
+  {
+    "id": "hera-dsm-2026",
+    "title": "Hera 深空机动与有限推力建模",
+    "category": "轨道动力学",
+    "date": "2026-03-17",
+    "summary": "ESA 报道 Hera 完成深空机动：约四周内分三次主要点火及一次小修正，总速度改变量 367 m/s，消耗约 123 kg 推进剂。",
+    "analysis": "把这段任务简化为单次瞬时速度增量，可以支持早期方案分析，但会丢失点火时刻、有限推力方向、质量变化及中间测轨修正的作用。总速度增量与总推进剂消耗是约束，不足以唯一反推出发动机性能或完整控制指令。",
+    "implication": "本站研究建议：在同一初始状态和同一总速度增量下，对比单次脉冲、分次脉冲和有限推力三种教学模型，记录末端位置偏差与剩余质量；对公开总量的吻合只作为一致性检查。",
+    "source": {
+      "title": "ESA · Hera on course for asteroid rendezvous",
+      "url": "https://www.esa.int/Space_Safety/Hera/Hera_on_course_for_asteroid_rendezvous"
+    },
+    "tags": [
+      "有限推力",
+      "深空导航",
+      "模型保真度"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:55:02 UTC",
+    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。"
+  },
+  {
+    "id": "spenvis-4614-2026",
+    "title": "SPENVIS 4.6.14 输入边界修正",
+    "category": "空间环境",
+    "date": "2026-03-05",
+    "summary": "SPENVIS 4.6.14 调整 NeQuick 的太阳活动输入范围与默认值，并修改 DTMB78 的一个输入参数定义。",
+    "analysis": "官方更新说明将 NeQuick 月均 F10.7 范围与模型有效范围对齐，并调整 DTMB78 输入。这样的更新看似只是界面字段，实际上会改变可运行条件和模型解释。使用环境服务时只保存结果图不够，还应保存输入定义、默认值、模型版本及运行日期；否则同一名称的算例在服务更新后可能已不是同一个问题。环境模型也仍是统计或经验表示，不能替代任务实测。",
+    "implication": "本站研究建议：把太阳与地磁活动参数作为有单位、有时间统计口径的显式输入，禁止静默采用新默认值。比较版本时保存原始配置与输出，并用模型适用范围标记超域场景，而不是继续给出看似精确的数值。",
+    "source": {
+      "title": "SPENVIS · Version Announcements",
+      "url": "https://spenvis.oma.be/announcement.php"
+    },
+    "tags": [
+      "SPENVIS",
+      "适用域",
+      "环境输入"
+    ],
+    "dateNote": "发布日期由 SPENVIS 官方首页确认；更新内容来自公告页。",
+    "additionalSources": [
+      {
+        "title": "SPENVIS · Current Version",
+        "url": "https://www.spenvis.oma.be/"
+      }
+    ],
+    "relatedResources": [
+      "spenvis",
+      "earthdata"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  },
+  {
+    "id": "ariane64-debut-2026",
+    "title": "Ariane 64 首飞与四助推器构型",
+    "category": "运载系统",
+    "date": "2026-02-12",
+    "summary": "Ariane 6 四助推器构型首次飞行，使用长整流罩，将 32 颗 Amazon Leo 卫星送入轨道。",
+    "analysis": "此次飞行同时涉及助推器数量和整流罩构型变化。新增推力不仅改变加速度，也改变质量分布、气动干扰、分离事件和载荷环境。因此 A64 不能仅由 A62 的总推力乘二得到，其公开运力差异也不构成这种线性缩放的证明。",
+    "implication": "本站研究建议：用同一部件模型实例化 A62 / A64，分别保存结构、推进、气动和事件配置；通过质量收支、分离前后状态与载荷包络做可重复的构型回归检查。",
+    "source": {
+      "title": "ESA · First Ariane 6 with four boosters launched",
+      "url": "https://www.esa.int/ESA_Multimedia/Images/2026/02/First_Ariane_6_with_four_boosters_launched"
+    },
+    "tags": [
+      "Ariane 64",
+      "构型管理",
+      "多级动力学"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:55:02 UTC",
+    "dateNote": "采用官方报道发布日期；涉及任务计划时保留报道当时语境。"
+  },
+  {
+    "id": "nisar-science-phase-2025",
+    "title": "NISAR 进入科学阶段与仪器定标",
+    "category": "地球观测",
+    "date": "2025-11-28",
+    "summary": "ISRO 发布 NISAR 科学阶段介绍，回顾大型反射面展开及 S 波段数据定标、成像参数调整。",
+    "analysis": "文章将天线展开与科学数据定标分开说明：机械部署成功只是任务链的一环，成像还依赖指向、载荷配置和参考目标。它提到使用角反射器及雨林数据进行定标，说明漂亮的首幅图像背后需要可解释的观测模型和独立参考。对仿真研究，载荷性能不应只由轨道覆盖率决定，还应考虑姿态误差、观测几何与数据处理链如何影响最终产品。",
+    "implication": "本站研究建议：将大型展开结构状态、姿态指向与载荷观测条件拆成可验证模块；构建合成观测时保留几何、噪声和定标参数，并把定标样本与验证样本分开，避免在同一数据上同时拟合和宣称验证。",
+    "source": {
+      "title": "ISRO · NISAR Mission enters Science Phase",
+      "url": "https://www.isro.gov.in/NISAR_Mission_Science_Phase.html"
+    },
+    "tags": [
+      "NISAR",
+      "展开机构",
+      "定标"
+    ],
+    "dateNote": "采用官方报道发布日期；展开与首批成像发生于更早的 2025 年 8 月。",
+    "relatedResources": [
+      "spice",
+      "earthdata",
+      "ansys-stk"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  },
+  {
+    "id": "proba3-eclipse-2025",
+    "title": "Proba-3 人造日食与编队导航",
+    "category": "轨道动力学",
+    "date": "2025-06-16",
+    "summary": "ESA 发布 Proba-3 首批日冕图像，展示双星精密编队形成遮光几何的任务效果。",
+    "analysis": "两个平台需要同时满足相对位置与太阳方向对齐，单看各自绝对轨道误差无法判断遮光是否成功。官方介绍的约 150 米间距、遮光盘和接收孔径将动力学、姿态、相对导航与光学目标连接起来。报道还区分地面监督下的自主编队和未来更完整的自主运行，因此不能把一次成功图像等同于所有工况都已验证。任务结果也为日冕数值模型提供新的对照资料。",
+    "implication": "本站研究建议：建立双星相对运动与太阳几何教学场景，分离沿视线和横向误差，并以孔径是否位于阴影内作为任务指标。逐项加入测量噪声、控制延迟和微扰，展示误差如何传递到观测可用时长。",
+    "source": {
+      "title": "ESA · Proba-3’s first artificial solar eclipse",
+      "url": "https://www.esa.int/Enabling_Support/Space_Engineering_Technology/Proba-3_s_first_artificial_solar_eclipse"
+    },
+    "tags": [
+      "编队飞行",
+      "相对导航",
+      "载荷几何"
+    ],
+    "dateNote": "图像公开日期；报道同时回顾此前编队测试。",
+    "relatedResources": [
+      "basilisk",
+      "nasa-42",
+      "spice"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  },
+  {
+    "id": "blue-ghost-landing-2025",
+    "title": "Blue Ghost 月面着陆与接触稳定性",
+    "category": "商业航天",
+    "date": "2025-03-02",
+    "summary": "Firefly 宣布 Blue Ghost Mission 1 在月面实现直立稳定软着陆，并确认地面指令与通信。",
+    "analysis": "公司公告说明着陆发生在目标区域内，缓冲支腿稳定了着陆器，并通过惯性读数确认姿态。对于研究，目标位置、触地速度、角速度、支腿行程及最终稳定姿态是不同验收量，不能只用落点距离代替整体着陆成功。公开结果也不足以反推出唯一的支腿刚度或阻尼；这些参数受地形、土壤与载荷分配共同影响，应作为假设区间处理。",
+    "implication": "本站研究建议：在月面着陆案例中同时记录触地状态、接触力、姿态和能量变化，扫描坡度与地面等效刚度。把公告确认的结果作为外部约束，把接触模型参数清楚标为教学或估计值。",
+    "source": {
+      "title": "Firefly Aerospace · Blue Ghost Lunar Landing Announcement",
+      "url": "https://investors.fireflyspace.com/news-releases/news-release-details/firefly-aerospace-becomes-first-commercial-company-successfully"
+    },
+    "tags": [
+      "月面着陆",
+      "商业任务",
+      "接触动力学"
+    ],
+    "dateNote": "官方着陆公告日；公告中的后续月面运行计划不在本条中当作已完成事实。",
+    "relatedResources": [
+      "nasa-42",
+      "basilisk",
+      "abaqus"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  },
+  {
+    "id": "spadex-docking-2025",
+    "title": "SpaDeX 对接与交会阶段切换",
+    "category": "交会与对接",
+    "date": "2025-01-16",
+    "summary": "ISRO 确认 SDX-01 与 SDX-02 于 2025 年 1 月 16 日完成在轨对接。",
+    "analysis": "对接结果提供了明确任务里程碑，但简短公告不包含完整相对轨迹、接触参数或控制律，不能据此宣称能够精确复现实飞。研究上应区分远距离交会、近距离相对导航、末端接触和组合体控制：各阶段关注的状态和约束不同，接触后系统质量、惯量和约束拓扑也发生变化。仅让两个可视化模型位置重合，会遗漏速度与姿态窗口及机械捕获过程。",
+    "implication": "本站研究建议：建立带阶段状态机的双星教学算例，分别设定接近、保持、退出和捕获条件。验证接触前后线动量、角动量与质量惯量更新，并将传感器失效或接近超限作为可回退的测试分支。",
+    "source": {
+      "title": "ISRO · Successful Docking of SPADEX Satellites",
+      "url": "https://www.isro.gov.in/spadex_docking.html"
+    },
+    "tags": [
+      "SpaDeX",
+      "相对运动",
+      "状态机"
+    ],
+    "dateNote": "官方确认的对接事件日期；公告为简要视频说明，未声称提供完整工程数据。",
+    "relatedResources": [
+      "basilisk",
+      "nasa-42",
+      "fprime"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  },
+  {
+    "id": "change6-return-2024",
+    "title": "嫦娥六号返回与跳跃式再入",
+    "category": "深空与再入",
+    "date": "2024-06-25",
+    "summary": "国家航天局确认嫦娥六号返回器着陆，任务实现月球背面采样返回，并介绍两次进入大气层的返回过程。",
+    "analysis": "公告给出分离、首次再入、跳出大气、再次再入与开伞等事件顺序，适合定义返回任务的分阶段逻辑。公开的近似高度和速度并不构成完整导航初值与气动数据库，因此只能约束教学模型的一致性。跳跃式再入涉及升力方向、能量分配和热载荷历史，单一常数阻力或只拟合最终落点，会掩盖不同轨迹之间的峰值载荷和总热量差异。",
+    "implication": "本站研究建议：用公开事件建立可追踪时间轴，再分别评估再入走廊、峰值动压、过载和热流积分。对缺失的升阻比与质量分布给出参数范围，展示不同假设能否同时满足多个约束，而非仅匹配一个落点。",
+    "source": {
+      "title": "国家航天局 · 嫦娥六号任务圆满成功",
+      "url": "https://www.cnsa.gov.cn/n6758823/n6758844/n10518102/n10518147/c10565180/content.html"
+    },
+    "tags": [
+      "嫦娥六号",
+      "跳跃式再入",
+      "事件模型"
+    ],
+    "dateNote": "采用官方返回及新闻发布日期；不将新闻近似数字当作高精度遥测。",
+    "relatedResources": [
+      "tudat",
+      "matlab-aerospace-blockset",
+      "nasa-ntrs"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  },
+  {
+    "id": "h3-tf2-2024",
+    "title": "H3 第二次试飞与任务事件记录",
+    "category": "运载系统",
+    "date": "2024-02-17",
+    "summary": "JAXA 确认 H3 试验二号机按计划飞行，并分别报告入轨、载荷分离相关信号及二级受控再入。",
+    "analysis": "官方通报对不同事件使用不同证据表述：确认某载荷分离、发出另一载荷分离信号、以及依据二级数据确认后续动作，并非完全相同的观测层级。仿真若把所有事件都写成一个成功布尔值，就失去审查过程。运载器研究还应追踪末级任务末段与处置，而不是载荷入轨后立即终止；分离时序和剩余推进剂会影响后续轨迹和环境风险。",
+    "implication": "本站研究建议：在任务日志区分指令发出、机构动作、遥测确认和外部观测，给每个事件标明证据类型。将末级处置加入场景，分别验收入轨误差、载荷状态、剩余质量和处置结果。",
+    "source": {
+      "title": "JAXA · Launch Result of H3 Launch Vehicle test flight No.2",
+      "url": "https://global.jaxa.jp/press/2024/02/20240217-1_e.html"
+    },
+    "tags": [
+      "H3",
+      "事件证据",
+      "末级处置"
+    ],
+    "dateNote": "官方发射结果日期，时间基准为 JST。",
+    "relatedResources": [
+      "gmat",
+      "trick",
+      "capella"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  },
+  {
+    "id": "slim-landing-analysis-2024",
+    "title": "SLIM 精确着陆与最终姿态分析",
+    "category": "仿真方法",
+    "date": "2024-01-25",
+    "summary": "JAXA 发布 SLIM 着陆分析，分别讨论图像匹配精度、末段发动机异常、着陆姿态和电源影响。",
+    "analysis": "报告将避障前的导航精度与最终落点、落地姿态分开评价，并说明末段异常如何传递到姿态与太阳能发电。研究上不能把导航算法达到目标理解为整个着陆链条已达到全部目标，也不能只凭最终状态反推异常发生的唯一原因。文档中的分析时间和后续恢复展望属于当时证据，应保留历史语境；完整可信度需要动力学、执行器、接触和电源模型共同约束。",
+    "implication": "本站研究建议：设计导航正常但末段推力不足的故障案例，分别记录定位误差、接触状态、落地姿态与光照供电条件。用独立验收指标展示局部成功和系统后果，避免一个总分掩盖关键失效链。",
+    "source": {
+      "title": "JAXA / ISAS · SLIM Results from the Moon Landing",
+      "url": "https://global.jaxa.jp/press/2024/01/file/jaxa_doc01_20240125_e.pdf"
+    },
+    "tags": [
+      "SLIM",
+      "故障传播",
+      "系统验证"
+    ],
+    "dateNote": "技术通报日期；着陆发生于 2024 年 1 月 20 日 JST。",
+    "relatedResources": [
+      "basilisk",
+      "nasa-42",
+      "thermal-desktop"
+    ],
+    "verifiedOn": "2026-10-25",
+    "accessedAt": "2026-10-25 04:53:32 UTC"
+  }
+]

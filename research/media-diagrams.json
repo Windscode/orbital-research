@@ -1,0 +1,216 @@
+[
+  {
+    "id": "diagram-reference-frames",
+    "title": "参考系与状态变换",
+    "src": "/images/diagrams/reference-frames.svg",
+    "alt": "两个同原点旋转坐标系表达同一位置矢量，配有位置变换、含旋转矩阵导数的速度变换和地面站示例。",
+    "caption": "坐标变换要同时声明参考系、时间和映射方向。旋转参考系的状态变换包含 Ṙr 项；仅旋转速度分量不能完整表达同一物理状态。",
+    "sourceUrl": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/sxform_c.html",
+    "lessonIds": [
+      "frames-and-time",
+      "sensors-navigation",
+      "orbit-determination"
+    ],
+    "focus": "50% 50%",
+    "credit": "轨研 ORBITAL · 原创技术图解",
+    "assetUrl": "/images/diagrams/reference-frames.svg",
+    "kind": "原理图解",
+    "licenseNote": "本站原创矢量图；示意不按比例",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "id": "diagram-two-body-orbit",
+    "title": "二体轨道：几何不等于时间",
+    "src": "/images/diagrams/two-body-orbit.svg",
+    "alt": "中心天体位于椭圆焦点，标出近远地点半径、半长轴与沿切线的速度，并说明平均近点角经开普勒方程得到状态的过程。",
+    "caption": "无推力两体椭圆的几何由半长轴与偏心率给出，时间推进则从平均近点角求解开普勒方程；近地点速度高于远地点。",
+    "sourceUrl": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/conics_c.html",
+    "lessonIds": [
+      "orbit-propagation",
+      "interplanetary-transfers"
+    ],
+    "focus": "50% 50%",
+    "credit": "轨研 ORBITAL · 原创技术图解",
+    "assetUrl": "/images/diagrams/two-body-orbit.svg",
+    "kind": "原理图解",
+    "licenseNote": "本站原创矢量图；示意不按比例",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "id": "diagram-attitude-quaternion",
+    "title": "姿态与四元数：先声明旋转约定",
+    "src": "/images/diagrams/attitude-quaternion.svg",
+    "alt": "惯性系与机体系绕共同正 z 轴旋转的示意，配有 Hamilton 四元数机体到惯性映射、姿态微分方程、单位约束和非交换旋转组合说明。",
+    "caption": "用一个平面旋转说明坐标映射，并明确标量在前的 Hamilton 约定、角速度表示系及旋转组合次序。归一化只能恢复单位约束，不能代替相位与运动学验证。",
+    "sourceUrl": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/req/rotation.html",
+    "lessonIds": [
+      "attitude-kinematics"
+    ],
+    "focus": "50% 50%",
+    "credit": "轨研 ORBITAL · 原创技术图解",
+    "assetUrl": "/images/diagrams/attitude-quaternion.svg",
+    "kind": "原理图解",
+    "licenseNote": "本站原创矢量图；示意不按比例",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "id": "diagram-gnc-loop",
+    "title": "导航与控制闭环：真值、观测和估计分开流动",
+    "src": "/images/diagrams/gnc-loop.svg",
+    "alt": "目标、控制器、受约束执行器和动力学构成前向路径，传感器与估计器构成反馈路径；图中区分控制命令、实际输入、观测、状态估计及采样时序。",
+    "caption": "闭环反馈使用状态估计，而不是直接读取仿真真值。执行器限幅、延迟与动量约束进入实际作用；估计器结合观测、已知输入和自身模型，并保留时间戳与有效性。",
+    "sourceUrl": "https://ocw.mit.edu/courses/16-30-feedback-control-systems-fall-2010/f6de7a51bb043db1d6d3cc7c362b7393_MIT16_30F10_lec14.pdf",
+    "lessonIds": [
+      "attitude-control",
+      "state-estimation",
+      "sensors-navigation"
+    ],
+    "focus": "50% 50%",
+    "credit": "轨研 ORBITAL · 原创技术图解",
+    "assetUrl": "/images/diagrams/gnc-loop.svg",
+    "kind": "原理图解",
+    "licenseNote": "本站原创矢量图；示意不按比例",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "id": "diagram-propulsion-ledger",
+    "title": "推力与耗质的同一本账",
+    "src": "/images/diagrams/propulsion-ledger.svg",
+    "alt": "火箭向右为正方向、排气相对向左的控制体示意，连接推力公式、正质量流出率与飞行器质量下降关系。",
+    "caption": "一维准稳态火箭喷管：相对排气矢量 u_rel = −vₑeₓ，质量流出率 ṁ 定义为正；推力由动量流与出口压力差组成。",
+    "sourceUrl": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/specific-impulse/",
+    "lessonIds": [
+      "propulsion-models"
+    ],
+    "focus": "50% 50%",
+    "credit": "轨研 ORBITAL · 原创技术图解",
+    "assetUrl": "/images/diagrams/propulsion-ledger.svg",
+    "kind": "原理图解",
+    "licenseNote": "本站原创矢量图；示意不按比例",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "id": "diagram-six-dof-coupling",
+    "title": "六自由度耦合：统一坐标、状态与力矩参考点",
+    "src": "/images/diagrams/six-dof-coupling.svg",
+    "alt": "通用刚体上的质心、偏置施力点、力臂和作用力，与恒质量刚体平动转动方程、状态定义、载荷计算和积分推进流程并列展示。",
+    "caption": "以恒质量、恒惯量刚体建立基线：平动使用惯性系，转动量用机体系表示，惯量和力矩均关于质心。变质量火箭还需一致处理质心迁移、惯量变化和动量流。",
+    "sourceUrl": "https://docs.rocketpy.org/en/latest/technical/equations_of_motion_v1.html",
+    "lessonIds": [
+      "six-dof"
+    ],
+    "focus": "50% 50%",
+    "credit": "轨研 ORBITAL · 原创技术图解",
+    "assetUrl": "/images/diagrams/six-dof-coupling.svg",
+    "kind": "原理图解",
+    "licenseNote": "本站原创矢量图；示意不按比例",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "id": "diagram-thermal-network",
+    "title": "三节点热网络：储热、导热与辐射",
+    "src": "/images/diagrams/thermal-network.svg",
+    "alt": "电子设备、电池和散热面通过热导连接，设备耗散、加热器和环境吸收热作为输入，散热面对等效环境辐射；下方给出节点能量方程和单位约定。",
+    "caption": "集中参数节点保存温度与热容量，连接表示可反向的导热。图内明确辐射温度使用 K、热导使用 W/K、热容量使用 J/K，并注明简化灰体辐射的几何假设与背景辐射去重要求。",
+    "sourceUrl": "https://www.nasa.gov/smallsat-institute/sst-soa/thermal-control/",
+    "lessonIds": [
+      "thermal-control"
+    ],
+    "focus": "50% 50%",
+    "credit": "轨研 ORBITAL · 原创技术图解",
+    "assetUrl": "/images/diagrams/thermal-network.svg",
+    "kind": "原理图解",
+    "licenseNote": "本站原创矢量图；示意不按比例",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "id": "diagram-grid-convergence",
+    "title": "三网格收敛与数值连续极限",
+    "src": "/images/diagrams/grid-convergence.svg",
+    "alt": "合成函数 f(h)=1+0.02h² 的三档网格结果及连续极限，标出二阶收敛和细网格 GCI 约 2.45%。",
+    "caption": "合成教学数据：h=1、2、4 对应 f=1.020、1.080、1.320；观测阶 p=2，三网格安全因子取 1.25。展示数值收敛，不代表实测或物理确认。",
+    "sourceUrl": "https://www.grc.nasa.gov/www/wind/valid/tutorial/spatconv.html",
+    "lessonIds": [
+      "cfd-verification"
+    ],
+    "focus": "50% 50%",
+    "credit": "轨研 ORBITAL · 原创技术图解",
+    "assetUrl": "/images/diagrams/grid-convergence.svg",
+    "kind": "原理图解",
+    "licenseNote": "本站原创矢量图；示意不按比例",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "id": "diagram-cr3bp-points",
+    "title": "地月 CR3BP：五个平动点",
+    "src": "/images/diagrams/cr3bp-points.svg",
+    "alt": "地月圆型限制性三体旋转质心系中，地球和月球位于横轴，三个共线点与两个三角点标出稳定性条件、质量比和雅可比常数。",
+    "caption": "五个平动点是在旋转坐标系中保持固定的位置。图按地月质量比表达几何关系，区分共线点线性不稳定与三角点的质量比稳定条件，不能把平动点理解为零引力点。",
+    "sourceUrl": "https://ssd-api.jpl.nasa.gov/doc/periodic_orbits.html",
+    "lessonIds": [
+      "cr3bp-libration",
+      "perturbed-orbits"
+    ],
+    "focus": "50% 50%",
+    "credit": "轨研 ORBITAL · 原创技术图解",
+    "assetUrl": "/images/diagrams/cr3bp-points.svg",
+    "kind": "原理图解",
+    "licenseNote": "本站原创矢量图；示意不按比例",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "id": "diagram-verification-chain",
+    "title": "模型可信度与证据追踪链",
+    "src": "/images/diagrams/verification-chain.svg",
+    "alt": "数学模型、数值实现和预测输出组成计算链，分别连接实现验证、校准数据、独立物理确认数据以及贯穿全过程的溯源记录。",
+    "caption": "Verification 检查实现与数值误差，Calibration 调整参数，Validation 对照独立参考；未覆盖机制要记录，并用于限定允许使用域。",
+    "sourceUrl": "https://standards.nasa.gov/sites/default/files/standards/NASA/B/1/NASA-STD-7009B-Final-3-5-2024.pdf",
+    "lessonIds": [
+      "verification-uncertainty",
+      "data-provenance"
+    ],
+    "focus": "50% 50%",
+    "credit": "轨研 ORBITAL · 原创技术图解",
+    "assetUrl": "/images/diagrams/verification-chain.svg",
+    "kind": "原理图解",
+    "licenseNote": "本站原创矢量图；示意不按比例",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "id": "diagram-mission-energy",
+    "title": "日照与食影中的任务能量时序",
+    "src": "/images/diagrams/mission-energy.svg",
+    "alt": "96 分钟教学周期的发电、任务负载和电池储能曲线；60 分钟日照后进入 36 分钟食影，电池能量从 100 瓦时变为 106.7 瓦时。",
+    "caption": "合成任务序列：日照发电 180 W，基础负载 100 W，20–40 min 增加 40 W；理想效率下净充入 66.7 Wh、食影放出 60 Wh，整周期增加 6.7 Wh。",
+    "sourceUrl": "https://www.nasa.gov/smallsat-institute/sst-soa/power-subsystems/",
+    "lessonIds": [
+      "mission-architecture",
+      "power-systems"
+    ],
+    "focus": "50% 50%",
+    "credit": "轨研 ORBITAL · 原创技术图解",
+    "assetUrl": "/images/diagrams/mission-energy.svg",
+    "kind": "原理图解",
+    "licenseNote": "本站原创矢量图；示意不按比例",
+    "verifiedOn": "2026-10-25"
+  },
+  {
+    "id": "diagram-stochastic-noise",
+    "title": "过程噪声：从谱强度到协方差",
+    "src": "/images/diagrams/stochastic-noise.svg",
+    "alt": "连续白噪声加速度的谱强度转换为位置速度状态的离散协方差矩阵，并以合成散点对比保留相关项和丢弃相关项的不同结构。",
+    "caption": "谱强度不是某一步的方差；连续激励经状态转移积分得到离散过程噪声协方差。位置与速度受同一次激励影响，独立抽样会丢失非对角相关项。",
+    "sourceUrl": "https://ocw.mit.edu/courses/16-322-stochastic-estimation-and-control-fall-2004/48d542a8047bccf2243cf32a393f8143_lecture23.pdf",
+    "lessonIds": [
+      "probability-processes",
+      "state-estimation",
+      "uncertainty-quantification"
+    ],
+    "focus": "50% 50%",
+    "credit": "轨研 ORBITAL · 原创技术图解",
+    "assetUrl": "/images/diagrams/stochastic-noise.svg",
+    "kind": "原理图解",
+    "licenseNote": "本站原创矢量图；示意不按比例",
+    "verifiedOn": "2026-10-25"
+  }
+]

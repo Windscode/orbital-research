@@ -1,0 +1,350 @@
+{
+  "reviewedOn": "2026-10-26",
+  "method": "在线检索与阅读官方机构、标准组织、作者仓库和方法论文；记录依据范围，未安装或运行这些工程工具。",
+  "sources": [
+    {
+      "id": "fmi-spec-301",
+      "title": "FMI 3.0.1 specification",
+      "url": "https://fmi-standard.org/docs/3.0.1/",
+      "usedBy": [
+        "fmi-cosimulation"
+      ],
+      "scope": "模式、通信与可选能力的规范依据；版本 3.0.1，未把规范定义等同于任意实现均支持。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "fmi-cs-api",
+      "title": "FMI Co-Simulation API source",
+      "url": "https://github.com/modelica/fmi-standard/blob/main/docs/4_2_co-simulation_api.adoc",
+      "usedBy": [
+        "fmi-cosimulation"
+      ],
+      "scope": "提前返回及成功时间语义的官方源文档；main 可能变化，使用时固定版本。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "fmpy-repo",
+      "title": "FMPy official repository",
+      "url": "https://github.com/CATIA-Systems/FMPy",
+      "usedBy": [
+        "fmpy",
+        "fmi-cosimulation"
+      ],
+      "scope": "README 说明 FMI 1/2/3、模型交换和协同仿真及示例；不是跨厂商实测报告。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "fmpy-docs",
+      "title": "FMPy documentation",
+      "url": "https://fmpy.readthedocs.io/en/latest/",
+      "usedBy": [
+        "fmpy"
+      ],
+      "scope": "文档首页的 FMI 与许可表述有滞后，已与仓库许可证和 README 区分。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "fmpy-license",
+      "title": "FMPy LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/CATIA-Systems/FMPy/main/LICENSE.txt",
+      "usedBy": [
+        "fmpy"
+      ],
+      "scope": "主体 BSD-2-Clause，图标和第三方组件分别列条款；当前 main，不替代安装版本许可。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "gds",
+      "title": "Goddard Dynamic Simulator",
+      "url": "https://etd.gsfc.nasa.gov/capabilities/capabilities-listing/goddard-dynamic-simulator-gds/",
+      "usedBy": [
+        "real-time-hil"
+      ],
+      "scope": "NASA 真实接口闭环能力与设施用途，不能外推个人台架实时性能。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "nasa-nos",
+      "title": "NASA Enabling Technology / Operational Simulator",
+      "url": "https://www.nasa.gov/enabling-technology/",
+      "usedBy": [
+        "real-time-hil"
+      ],
+      "scope": "CPU 与设备软件模型的官方说明，用于区分仿真层级。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "scalexio",
+      "title": "dSPACE SCALEXIO",
+      "url": "https://www.dspace.com/en/ltd/home/products/hw/simulator_hardware/scalexio.cfm",
+      "usedBy": [
+        "dspace-scalexio",
+        "real-time-hil"
+      ],
+      "scope": "厂商能力说明，无本次核实的航天任务部署记录或统一价格。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "jpl-trn",
+      "title": "Mars 2020 Terrain Relative Navigation",
+      "url": "https://robotics.jpl.nasa.gov/what-we-do/flight-projects/mars-2020-rover/terrain-relative-navigation/",
+      "usedBy": [
+        "terrain-relative-navigation"
+      ],
+      "scope": "JPL 公开飞行项目说明；区分地图定位和安全落点选择，不迁移性能数字到其他平台。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "nasa-trn-basics",
+      "title": "Terrain Relative Navigation Basics",
+      "url": "https://ntrs.nasa.gov/api/citations/20210010726/downloads/TRN_Basics_LSICWorkshop_March2%20%28002%29.pptx.pdf",
+      "usedBy": [
+        "terrain-relative-navigation"
+      ],
+      "scope": "官方技术演示资料，支持地图、相机几何与先验关系。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "pangu",
+      "title": "PANGU ESA User Portal",
+      "url": "https://pangu.software/",
+      "usedBy": [
+        "pangu",
+        "terrain-relative-navigation"
+      ],
+      "scope": "能力与获取许可说明；没有给出统一公开报价。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "pangu-wiki",
+      "title": "PANGU Wiki",
+      "url": "https://pangu.software/wiki/Main_Page",
+      "usedBy": [
+        "pangu"
+      ],
+      "scope": "官方入口跳转后的公开帮助导航；详细模式与接口仍需使用版本的用户手册。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "isis-docs",
+      "title": "USGS ISIS Application Manuals",
+      "url": "https://isis.astrogeology.usgs.gov/",
+      "usedBy": [
+        "usgs-isis",
+        "terrain-relative-navigation"
+      ],
+      "scope": "工具及任务仪器处理能力；动态入口重定向版本，不以页面标题断言安装版本。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "isis-repo",
+      "title": "DOI-USGS ISIS3 repository",
+      "url": "https://github.com/DOI-USGS/ISIS3",
+      "usedBy": [
+        "usgs-isis"
+      ],
+      "scope": "支持环境、数据区、安装与任务处理用途；版本引用与文档站可能不同步。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "isis-license",
+      "title": "ISIS LICENSE.md",
+      "url": "https://raw.githubusercontent.com/DOI-USGS/ISIS3/dev/LICENSE.md",
+      "usedBy": [
+        "usgs-isis"
+      ],
+      "scope": "美国公有领域与 CC0 1.0，另有注明的材料与第三方依赖不自动被覆盖。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "casadi-docs",
+      "title": "CasADi Documentation",
+      "url": "https://web.casadi.org/docs/",
+      "usedBy": [
+        "casadi",
+        "trajectory-transcription"
+      ],
+      "scope": "AD、数值优化、直接法与 LGPL；不支持任意黑箱代码的透明自动微分。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "dymos-transcriptions",
+      "title": "Dymos Transcriptions",
+      "url": "https://openmdao.github.io/dymos/getting_started/transcriptions.html",
+      "usedBy": [
+        "trajectory-transcription"
+      ],
+      "scope": "打靶与配点的离散定义及文档用法；本文练习参数为本站设计，未声称已运行。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "acados-docs",
+      "title": "acados Documentation",
+      "url": "https://docs.acados.org/",
+      "usedBy": [
+        "acados",
+        "trajectory-transcription"
+      ],
+      "scope": "结构化最优控制、模型接口和代码生成能力，不提供特定硬件期限保证。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "acados-repo",
+      "title": "acados official repository",
+      "url": "https://github.com/acados/acados",
+      "usedBy": [
+        "acados"
+      ],
+      "scope": "作者列举研究应用，包括无人机及可变形机翼；未扩展为商业航天部署。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "acados-license",
+      "title": "acados LICENSE",
+      "url": "https://raw.githubusercontent.com/acados/acados/main/LICENSE",
+      "usedBy": [
+        "acados"
+      ],
+      "scope": "主项目 BSD-2-Clause；依赖单独核对。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "acados-paper",
+      "title": "acados: a modular open-source framework for fast embedded optimal control",
+      "url": "https://arxiv.org/abs/1910.13753",
+      "usedBy": [
+        "acados"
+      ],
+      "scope": "作者预印本方法与实验依据；不把论文性能作为本地设备测量。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "gfssp",
+      "title": "NASA GFSSP",
+      "url": "https://www.nasa.gov/gfssp/",
+      "usedBy": [
+        "nasa-gfssp",
+        "feed-system-transients"
+      ],
+      "scope": "官方网络模型、应用资料与获取资格；页面更新时间 2024-04-17，本次访问不改变原文发布时间。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "gfssp-fv",
+      "title": "A Finite Volume Procedure for Thermo-Fluid System Analysis in a Flow Network",
+      "url": "https://ntrs.nasa.gov/api/citations/20190002120/downloads/20190002120.pdf",
+      "usedBy": [
+        "nasa-gfssp",
+        "feed-system-transients"
+      ],
+      "scope": "作者网络有限体积方法论文；并非任意用户模型的验证报告。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "gfssp-implementation",
+      "title": "GFSSP conservation and transport implementation",
+      "url": "https://ntrs.nasa.gov/api/citations/20200000048/downloads/20200000048.pdf",
+      "usedBy": [
+        "feed-system-transients"
+      ],
+      "scope": "节点质量能量、支路动量与固体导热的实现说明。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "geant4-docs",
+      "title": "Geant4 Documentation",
+      "url": "https://geant4.web.cern.ch/docs/",
+      "usedBy": [
+        "geant4",
+        "radiation-transport"
+      ],
+      "scope": "官方工具与物理文档导航；正式使用应固定发行版本和数据集。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "geant4-cuts",
+      "title": "Production Threshold versus Tracking Cut",
+      "url": "https://geant4.web.cern.ch/documentation/dev/bfad_html/ForApplicationDevelopers/TrackingAndPhysics/thresholdVScut.html",
+      "usedBy": [
+        "radiation-transport"
+      ],
+      "scope": "次级产生阈值、默认追踪及用户限制之间的区别；页面标注 11.4，dev 入口可能更新。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "geant4-license",
+      "title": "Geant4 Software License",
+      "url": "https://geant4.web.cern.ch//download/license.html",
+      "usedBy": [
+        "geant4"
+      ],
+      "scope": "由官方旧许可地址跳转至此，不简化标注为 MIT/BSD。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "geant4-space-example",
+      "title": "Geant4 advanced example radioprotection / exp_microdosimetry",
+      "url": "https://www.geant4.org/docs/advanced_examples_doc/example_radioprotection",
+      "usedBy": [
+        "geant4"
+      ],
+      "scope": "面向空间应用的简化探测器示例；不是任务认证或完整环境输入。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "nasa-radiation",
+      "title": "NASA JSC Radiation",
+      "url": "https://www.nasa.gov/reference/jsc-radiation/",
+      "usedBy": [
+        "radiation-transport"
+      ],
+      "scope": "环境来源和电子学效应分类；不提供此处实验的器件响应截面。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    },
+    {
+      "id": "nasa-shielding",
+      "title": "NASA Radiation Analysis and Shielding Design",
+      "url": "https://ddtrb.larc.nasa.gov/radiation/",
+      "usedBy": [
+        "radiation-transport"
+      ],
+      "scope": "外部与次级环境以及系统级屏蔽分析背景。",
+      "checkedOn": "2026-10-26",
+      "sourceType": "primary"
+    }
+  ],
+  "limitations": [
+    "网页可更新或重定向；本记录不是未来链接可用性保证。",
+    "标准、文档、仓库 main/dev 及实际发行包不完全等同；正式复现必须固定版本。",
+    "实验参数与验收流程由本站设计，未将建议步骤描述为已完成的验证。"
+  ]
+}

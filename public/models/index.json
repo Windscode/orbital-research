@@ -1,0 +1,1890 @@
+{
+  "generatedOn": "2026-10-25",
+  "count": 56,
+  "models": [
+    {
+      "id": "falcon-9",
+      "name": "Falcon 9",
+      "kind": "rocket",
+      "file": "/models/falcon-9.glb",
+      "bytes": 768620,
+      "groups": [
+        "stage-1",
+        "tank",
+        "engine",
+        "stage-2",
+        "propulsion",
+        "fairing",
+        "payload",
+        "avionics",
+        "legs"
+      ],
+      "sources": [
+        {
+          "title": "SpaceX · Falcon 9 公开规格",
+          "url": "https://www.spacex.com/vehicles/falcon-9/"
+        },
+        {
+          "title": "SpaceX · Falcon User's Guide（文件版 2025-05-09）",
+          "url": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "electron",
+      "name": "Electron",
+      "kind": "rocket",
+      "file": "/models/electron.glb",
+      "bytes": 705032,
+      "groups": [
+        "stage-1",
+        "tank",
+        "engine",
+        "stage-2",
+        "propulsion",
+        "fairing",
+        "payload",
+        "avionics",
+        "stage-3"
+      ],
+      "sources": [
+        {
+          "title": "Rocket Lab · Electron 产品页",
+          "url": "https://rocketlabcorp.com/launch/electron/"
+        },
+        {
+          "title": "Electron Payload User Guide · Version 8.0 · September 2025",
+          "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+        },
+        {
+          "title": "Rocket Lab · 2025 Form 10-K（SEC 公司披露）",
+          "url": "https://www.sec.gov/Archives/edgar/data/1819994/000181999426000013/rklb-20251231.htm"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "ariane-6",
+      "name": "Ariane 6",
+      "kind": "rocket",
+      "file": "/models/ariane-6.glb",
+      "bytes": 665732,
+      "groups": [
+        "stage-1",
+        "tank",
+        "engine",
+        "stage-2",
+        "propulsion",
+        "fairing",
+        "payload",
+        "avionics",
+        "boosters"
+      ],
+      "sources": [
+        {
+          "title": "ESA · Ariane 6 Overview",
+          "url": "https://www.esa.int/Enabling_Support/Space_Transportation/Launch_vehicles/Ariane_6_overview"
+        },
+        {
+          "title": "CNES / Centre Spatial Guyanais · Ariane 6 技术规格",
+          "url": "https://centrespatialguyanais.cnes.fr/fr/ariane-6"
+        },
+        {
+          "title": "ESA · First Ariane 6 with four boosters launched · 2026-02-12",
+          "url": "https://www.esa.int/ESA_Multimedia/Images/2026/02/First_Ariane_6_with_four_boosters_launched"
+        },
+        {
+          "title": "Ariane 6 User's Manual · Issue 2 Revision 0 · March 2021（历史基线）",
+          "url": "https://www.ariane.group/app/uploads/sites/4/2024/10/Mua-6_Issue-2_Revision-0_March-2021.pdf"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "sls-block-1",
+      "name": "SLS Block 1",
+      "kind": "rocket",
+      "file": "/models/sls-block-1.glb",
+      "bytes": 661992,
+      "groups": [
+        "stage-1",
+        "tank",
+        "engine",
+        "stage-2",
+        "propulsion",
+        "fairing",
+        "payload",
+        "avionics",
+        "boosters"
+      ],
+      "sources": [
+        {
+          "title": "NASA · SLS Reference Guide 2022（历史构型参考）",
+          "url": "https://www.nasa.gov/wp-content/uploads/2022/03/sls_reference_guide_2022_web.pdf"
+        },
+        {
+          "title": "NASA · Space Launch System 参考页（注意历史计划表述）",
+          "url": "https://www.nasa.gov/reference/space-launch-system/"
+        },
+        {
+          "title": "NASA · SLS 最大推力量级",
+          "url": "https://www.nasa.gov/directorates/esdmd/space-launch-system-ftdku/"
+        },
+        {
+          "title": "NASA · Artemis II 返回地球 · 2026-04-10",
+          "url": "https://www.nasa.gov/news-release/nasa-welcomes-record-setting-artemis-ii-moonfarers-back-to-earth/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "sputnik-1",
+      "name": "Sputnik 1 · 人造卫星一号",
+      "kind": "sphere-satellite",
+      "file": "/models/sputnik-1.glb",
+      "bytes": 195444,
+      "groups": [
+        "body",
+        "antenna",
+        "avionics",
+        "service",
+        "instruments",
+        "frame"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Sputnik 1 · 人造卫星一号",
+          "url": "https://www.nasa.gov/history/sputnik/14.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Sputnik 1 · 人造卫星一号",
+          "url": "https://www.nasa.gov/wp-content/uploads/static/history/sputnik.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "explorer-1",
+      "name": "Explorer 1 · 探险者一号",
+      "kind": "cylinder-satellite",
+      "file": "/models/explorer-1.glb",
+      "bytes": 153216,
+      "groups": [
+        "body",
+        "antenna",
+        "avionics",
+        "instruments",
+        "frame",
+        "service"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Explorer 1 · 探险者一号",
+          "url": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Explorer 1 · 探险者一号",
+          "url": "https://www.jpl.nasa.gov/missions/explorer-1/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "vostok-1",
+      "name": "Vostok 1 · 东方一号",
+      "kind": "capsule",
+      "file": "/models/vostok-1.glb",
+      "bytes": 428000,
+      "groups": [
+        "body",
+        "crew",
+        "heatshield",
+        "service",
+        "tank",
+        "propulsion",
+        "avionics",
+        "instruments"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Vostok 1 · 东方一号",
+          "url": "https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Vostok 1 · 东方一号",
+          "url": "https://collection.sciencemuseumgroup.org.uk/objects/co39911/vostok-1-capsule-1961"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "mercury",
+      "name": "Mercury · 水星飞船",
+      "kind": "capsule",
+      "file": "/models/mercury.glb",
+      "bytes": 387268,
+      "groups": [
+        "body",
+        "crew",
+        "heatshield",
+        "service",
+        "tank",
+        "propulsion",
+        "avionics",
+        "instruments"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Mercury · 水星飞船",
+          "url": "https://www.nasa.gov/image-article/mercury-spacecraft/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Mercury · 水星飞船",
+          "url": "https://www.nasa.gov/project-mercury/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini · 双子座飞船",
+      "kind": "capsule",
+      "file": "/models/gemini.glb",
+      "bytes": 441636,
+      "groups": [
+        "body",
+        "crew",
+        "heatshield",
+        "service",
+        "tank",
+        "propulsion",
+        "avionics",
+        "docking"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Gemini · 双子座飞船",
+          "url": "https://www.nasa.gov/gemini/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Gemini · 双子座飞船",
+          "url": "https://www.nasa.gov/mission/gemini-iii/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "apollo-csm",
+      "name": "Apollo CSM · 阿波罗指令服务舱",
+      "kind": "apollo",
+      "file": "/models/apollo-csm.glb",
+      "bytes": 901248,
+      "groups": [
+        "body",
+        "crew",
+        "heatshield",
+        "service",
+        "tank",
+        "propulsion",
+        "avionics",
+        "docking",
+        "antenna"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Apollo CSM · 阿波罗指令服务舱",
+          "url": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Apollo CSM · 阿波罗指令服务舱",
+          "url": "https://science.nasa.gov/resource/apollo-11-command-and-service-modules/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "apollo-lm",
+      "name": "Apollo LM · 阿波罗登月舱",
+      "kind": "lander",
+      "file": "/models/apollo-lm.glb",
+      "bytes": 406160,
+      "groups": [
+        "stage-1",
+        "stage-2",
+        "docking",
+        "legs",
+        "engine",
+        "crew"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Apollo LM · 阿波罗登月舱",
+          "url": "https://solarsystem.nasa.gov/system/downloadable_items/2919_Apollo_10.pdf"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Apollo LM · 阿波罗登月舱",
+          "url": "https://ntrs.nasa.gov/api/citations/20190031985/downloads/20190031985_rev1.pdf"
+        },
+        {
+          "title": "NASA · Apollo 5 首次无人登月舱试飞",
+          "url": "https://www.nasa.gov/mission/apollo-5/"
+        },
+        {
+          "title": "NASA PDS · Apollo 11 EASEP 被动地震实验",
+          "url": "https://pds.nasa.gov/ds-view/pds/viewContext.jsp?identifier=urn:nasa:pds:context:instrument:pse.a11e"
+        },
+        {
+          "title": "NASA · 月面日志与飞行日志入口",
+          "url": "https://www.nasa.gov/history/alsj-and-afj/"
+        },
+        {
+          "title": "NASA NSSDCA · Lunar Data Project",
+          "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_data/"
+        },
+        {
+          "title": "NASA NTRS · Apollo 15 Mission Report",
+          "url": "https://ntrs.nasa.gov/citations/19720021182"
+        },
+        {
+          "title": "NASA TN D-7084 · Lunar Module Structural Subsystem，1973",
+          "url": "https://ntrs.nasa.gov/api/citations/19730010174/downloads/19730010174.pdf?attachment=true"
+        },
+        {
+          "title": "NASA · 登月舱窗口、推进与舱段设计",
+          "url": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/"
+        },
+        {
+          "title": "NASA · Apollo 12 Press Kit 整机标注图",
+          "url": "https://ntrs.nasa.gov/api/citations/19760066717/downloads/19760066717.pdf"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "saturn-v",
+      "name": "Saturn V · 土星五号",
+      "kind": "rocket",
+      "file": "/models/saturn-v.glb",
+      "bytes": 638216,
+      "groups": [
+        "stage-1",
+        "tank",
+        "engine",
+        "stage-2",
+        "propulsion",
+        "stage-3",
+        "fairing",
+        "payload",
+        "avionics"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Saturn V · 土星五号",
+          "url": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-saturn-v-grades-5-8/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Saturn V · 土星五号",
+          "url": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4407-etuv4.pdf"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "soyuz",
+      "name": "Soyuz · 联盟飞船",
+      "kind": "capsule",
+      "file": "/models/soyuz.glb",
+      "bytes": 622188,
+      "groups": [
+        "body",
+        "crew",
+        "heatshield",
+        "service",
+        "tank",
+        "propulsion",
+        "avionics",
+        "docking",
+        "solar"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Soyuz · 联盟飞船",
+          "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Soyuz · 联盟飞船",
+          "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/PromISSe/Facts_about_the_Soyuz"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "space-shuttle",
+      "name": "Space Shuttle · 航天飞机轨道器",
+      "kind": "shuttle",
+      "file": "/models/space-shuttle.glb",
+      "bytes": 174196,
+      "groups": [
+        "body",
+        "frame",
+        "payload",
+        "crew",
+        "heatshield",
+        "engine",
+        "avionics",
+        "propulsion"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Space Shuttle · 航天飞机轨道器",
+          "url": "https://www.nasa.gov/reference/the-space-shuttle/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Space Shuttle · 航天飞机轨道器",
+          "url": "https://www.nasa.gov/space-shuttle/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "mir",
+      "name": "Mir · 和平号空间站",
+      "kind": "station",
+      "file": "/models/mir.glb",
+      "bytes": 502488,
+      "groups": [
+        "body",
+        "frame",
+        "solar",
+        "docking",
+        "avionics",
+        "crew",
+        "instruments",
+        "antenna",
+        "propulsion"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Mir · 和平号空间站",
+          "url": "https://www.nasa.gov/history/35-years-ago-launch-of-mir-space-stations-first-module/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Mir · 和平号空间站",
+          "url": "https://www.nasa.gov/history/SP-4225/mir/mir.htm"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "iss",
+      "name": "ISS · 国际空间站",
+      "kind": "station",
+      "file": "/models/iss.glb",
+      "bytes": 524512,
+      "groups": [
+        "body",
+        "frame",
+        "solar",
+        "docking",
+        "avionics",
+        "crew",
+        "instruments",
+        "antenna"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · ISS · 国际空间站",
+          "url": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · ISS · 国际空间站",
+          "url": "https://www.nasa.gov/reference/international-space-station/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "hubble",
+      "name": "Hubble · 哈勃空间望远镜",
+      "kind": "telescope",
+      "file": "/models/hubble.glb",
+      "bytes": 298256,
+      "groups": [
+        "body",
+        "instruments",
+        "solar",
+        "avionics",
+        "antenna",
+        "propulsion",
+        "frame"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Hubble · 哈勃空间望远镜",
+          "url": "https://science.nasa.gov/mission/hubble/overview/about-hubble/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Hubble · 哈勃空间望远镜",
+          "url": "https://science.nasa.gov/mission/hubble/observatory/design/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "jwst",
+      "name": "JWST · 詹姆斯·韦布空间望远镜",
+      "kind": "telescope",
+      "file": "/models/jwst.glb",
+      "bytes": 407264,
+      "groups": [
+        "instruments",
+        "frame",
+        "heatshield",
+        "body",
+        "solar",
+        "antenna"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · JWST · 詹姆斯·韦布空间望远镜",
+          "url": "https://science.nasa.gov/mission/webb/webbs-mirrors/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · JWST · 詹姆斯·韦布空间望远镜",
+          "url": "https://science.nasa.gov/blogs/webb/2021/12/30/webb-ready-for-sunshield-deployment-and-cooldown/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · JWST · 詹姆斯·韦布空间望远镜",
+          "url": "https://science.nasa.gov/mission/webb/faqs-full/"
+        },
+        {
+          "title": "NASA · MIRI与科学仪器分工",
+          "url": "https://science.nasa.gov/mission/webb/mid-infrared-instrument-miri/"
+        },
+        {
+          "title": "STScI MAST · JWST科学数据",
+          "url": "https://archive.stsci.edu/missions-and-data/jwst"
+        },
+        {
+          "title": "STScI · JWST数据访问文档",
+          "url": "https://jwst-docs.stsci.edu/accessing-jwst-data"
+        },
+        {
+          "title": "NASA · Webb五层遮阳板与公开包络",
+          "url": "https://science.nasa.gov/mission/webb/webbs-sunshield/"
+        },
+        {
+          "title": "NASA · 2022-01-05次镜展开确认",
+          "url": "https://science.nasa.gov/blogs/webb/2022/01/05/secondary-mirror-deployment-confirmed/"
+        },
+        {
+          "title": "NASA · Webb平台与科学仪器标注图",
+          "url": "https://science.nasa.gov/asset/webb/webb-telescope-spacecraft-diagram/"
+        },
+        {
+          "title": "NASA SVS · 单条折页太阳阵",
+          "url": "https://svs.gsfc.nasa.gov/13208"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "voyager-1",
+      "name": "Voyager 1 · 旅行者一号",
+      "kind": "probe",
+      "file": "/models/voyager-1.glb",
+      "bytes": 348476,
+      "groups": [
+        "body",
+        "tank",
+        "avionics",
+        "antenna",
+        "propulsion",
+        "instruments",
+        "frame",
+        "service"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Voyager 1 · 旅行者一号",
+          "url": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Voyager 1 · 旅行者一号",
+          "url": "https://science.nasa.gov/mission/voyager/instruments/"
+        },
+        {
+          "title": "NASA · 带日期的Voyager仪器状态表",
+          "url": "https://science.nasa.gov/mission/voyager/where-are-voyager-1-and-voyager-2-now/"
+        },
+        {
+          "title": "NASA Helio Data · Voyager1 PWS",
+          "url": "https://helio.data.nasa.gov/dataset/Voyager1_PWS_ASCII_PT4S"
+        },
+        {
+          "title": "Voyager PWS团队 · 2021年原始研究",
+          "url": "https://space.physics.uiowa.edu/~dag/publications/2021_Persistent_plasma_waves_in_interstellar_space_detected_by_Voyager1_NATURE.pdf"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "cassini",
+      "name": "Cassini–Huygens · 卡西尼—惠更斯",
+      "kind": "probe",
+      "file": "/models/cassini.glb",
+      "bytes": 359796,
+      "groups": [
+        "body",
+        "tank",
+        "avionics",
+        "antenna",
+        "propulsion",
+        "instruments",
+        "frame",
+        "service",
+        "payload"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Cassini–Huygens · 卡西尼—惠更斯",
+          "url": "https://science.nasa.gov/mission/cassini/quick-facts/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Cassini–Huygens · 卡西尼—惠更斯",
+          "url": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "galileo",
+      "name": "Galileo · 伽利略号",
+      "kind": "probe",
+      "file": "/models/galileo.glb",
+      "bytes": 323428,
+      "groups": [
+        "body",
+        "tank",
+        "avionics",
+        "antenna",
+        "propulsion",
+        "instruments",
+        "frame",
+        "service",
+        "payload"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Galileo · 伽利略号",
+          "url": "https://science.nasa.gov/mission/galileo/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Galileo · 伽利略号",
+          "url": "https://www.jpl.nasa.gov/news/press_kits/gllarpk.pdf"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "new-horizons",
+      "name": "New Horizons · 新视野号",
+      "kind": "probe",
+      "file": "/models/new-horizons.glb",
+      "bytes": 275452,
+      "groups": [
+        "body",
+        "tank",
+        "avionics",
+        "antenna",
+        "propulsion",
+        "instruments",
+        "frame",
+        "service"
+      ],
+      "sources": [
+        {
+          "title": "NASA · New Horizons任务档案",
+          "url": "https://science.nasa.gov/mission/new-horizons/"
+        },
+        {
+          "title": "NASA / APL · New Horizons发射新闻资料（2005）",
+          "url": "https://www.nasa.gov/wp-content/uploads/2015/03/139889main_presskit12_05.pdf"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "parker-solar-probe",
+      "name": "Parker Solar Probe · 帕克太阳探测器",
+      "kind": "probe",
+      "file": "/models/parker-solar-probe.glb",
+      "bytes": 324712,
+      "groups": [
+        "body",
+        "tank",
+        "avionics",
+        "antenna",
+        "propulsion",
+        "instruments",
+        "frame",
+        "solar",
+        "heatshield"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Parker Solar Probe · 帕克太阳探测器",
+          "url": "https://science.nasa.gov/mission/parker-solar-probe/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Parker Solar Probe · 帕克太阳探测器",
+          "url": "https://www.nasa.gov/missions/parker-solar-probe/traveling-to-the-sun-why-wont-parker-solar-probe-melt/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "rosetta",
+      "name": "Rosetta · 罗塞塔号",
+      "kind": "probe",
+      "file": "/models/rosetta.glb",
+      "bytes": 327168,
+      "groups": [
+        "body",
+        "tank",
+        "avionics",
+        "antenna",
+        "propulsion",
+        "instruments",
+        "frame",
+        "solar",
+        "payload"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Rosetta · 罗塞塔号",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Rosetta · 罗塞塔号",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/Frequently_asked_questions"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "bepicolombo",
+      "name": "BepiColombo · 贝皮科伦坡",
+      "kind": "probe",
+      "file": "/models/bepicolombo.glb",
+      "bytes": 387856,
+      "groups": [
+        "body",
+        "tank",
+        "avionics",
+        "antenna",
+        "propulsion",
+        "instruments",
+        "frame",
+        "solar",
+        "service",
+        "heatshield",
+        "payload"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · BepiColombo · 贝皮科伦坡",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/BepiColombo_factsheet"
+        },
+        {
+          "title": "官方历史 / 结构补充 · BepiColombo · 贝皮科伦坡",
+          "url": "https://www.esa.int/Enabling_Support/Operations/Training_while_flying_Inside_BepiColombo_s_arrival_simulations"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "juice",
+      "name": "JUICE · 木星冰卫星探测器",
+      "kind": "probe",
+      "file": "/models/juice.glb",
+      "bytes": 301192,
+      "groups": [
+        "body",
+        "tank",
+        "avionics",
+        "antenna",
+        "propulsion",
+        "instruments",
+        "frame",
+        "solar"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · JUICE · 木星冰卫星探测器",
+          "url": "https://juice.stp.isas.jaxa.jp/spacecraft_en/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · JUICE · 木星冰卫星探测器",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/Juice"
+        },
+        {
+          "title": "官方历史 / 结构补充 · JUICE · 木星冰卫星探测器",
+          "url": "https://www.cosmos.esa.int/web/juice/payload"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "dragon-2",
+      "name": "Crew Dragon",
+      "kind": "capsule",
+      "file": "/models/dragon-2.glb",
+      "bytes": 550672,
+      "groups": [
+        "body",
+        "crew",
+        "heatshield",
+        "service",
+        "tank",
+        "propulsion",
+        "avionics",
+        "docking"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Crew Dragon",
+          "url": "https://www.spacex.com/vehicles/dragon/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Crew Dragon",
+          "url": "https://www.nasa.gov/news-release/nasa-astronauts-launch-from-america-in-historic-test-flight-of-spacex-crew-dragon/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "starliner",
+      "name": "CST-100 Starliner",
+      "kind": "capsule",
+      "file": "/models/starliner.glb",
+      "bytes": 442096,
+      "groups": [
+        "body",
+        "crew",
+        "heatshield",
+        "service",
+        "tank",
+        "propulsion",
+        "avionics",
+        "docking"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · CST-100 Starliner",
+          "url": "https://www.boeing.com/space/starliner/launch/archive.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · CST-100 Starliner",
+          "url": "https://www.nasa.gov/blogs/commercialcrew/2024/06/01/nasas-boeing-crew-flight-test-hatch-closed-whats-inside-starliner-2/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · CST-100 Starliner",
+          "url": "https://www.nasa.gov/blogs/spacestation/2024/09/07/starliner-lands-in-new-mexico/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "orion",
+      "name": "Orion",
+      "kind": "capsule",
+      "file": "/models/orion.glb",
+      "bytes": 624188,
+      "groups": [
+        "body",
+        "crew",
+        "heatshield",
+        "service",
+        "tank",
+        "propulsion",
+        "avionics",
+        "docking",
+        "solar"
+      ],
+      "sources": [
+        {
+          "title": "NASA · Orion Overview",
+          "url": "https://www.nasa.gov/humans-in-space/orion-spacecraft/orion-overview/"
+        },
+        {
+          "title": "NASA · Crew Module",
+          "url": "https://www.nasa.gov/reference/crew-module/"
+        },
+        {
+          "title": "NASA · Orion By the Numbers（2026）",
+          "url": "https://www.nasa.gov/wp-content/uploads/2026/01/orion-by-the-numbers-2026b.pdf"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "starship",
+      "name": "Starship / Super Heavy",
+      "kind": "rocket",
+      "file": "/models/starship.glb",
+      "bytes": 1161644,
+      "groups": [
+        "stage-1",
+        "tank",
+        "engine",
+        "stage-2",
+        "propulsion",
+        "fairing",
+        "payload",
+        "avionics",
+        "heatshield"
+      ],
+      "sources": [
+        {
+          "title": "SpaceX · Starship Design",
+          "url": "https://www.spacex.com/vehicles/starship/design"
+        },
+        {
+          "title": "SpaceX · Reusability / Starship飞行开发更新",
+          "url": "https://www.spacex.com/updates/reusability"
+        },
+        {
+          "title": "SpaceX · Starship Flight 12官方任务页面",
+          "url": "https://www.spacex.com/launches/starship-flight-12"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "falcon-heavy",
+      "name": "Falcon Heavy",
+      "kind": "rocket",
+      "file": "/models/falcon-heavy.glb",
+      "bytes": 748596,
+      "groups": [
+        "stage-1",
+        "tank",
+        "engine",
+        "stage-2",
+        "propulsion",
+        "fairing",
+        "payload",
+        "avionics",
+        "boosters"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Falcon Heavy",
+          "url": "https://www.spacex.com/vehicles/falcon-heavy/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Falcon Heavy",
+          "url": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "new-glenn",
+      "name": "New Glenn",
+      "kind": "rocket",
+      "file": "/models/new-glenn.glb",
+      "bytes": 728760,
+      "groups": [
+        "stage-1",
+        "tank",
+        "engine",
+        "stage-2",
+        "propulsion",
+        "fairing",
+        "payload",
+        "avionics",
+        "legs"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · New Glenn",
+          "url": "https://www.blueorigin.com/new-glenn"
+        },
+        {
+          "title": "官方历史 / 结构补充 · New Glenn",
+          "url": "https://www.blueorigin.com/news/new-glenn-ng-1-mission"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "shenzhou",
+      "name": "神舟 · 以神舟九号为参数基线",
+      "kind": "capsule",
+      "file": "/models/shenzhou.glb",
+      "bytes": 622192,
+      "groups": [
+        "body",
+        "crew",
+        "heatshield",
+        "service",
+        "tank",
+        "propulsion",
+        "avionics",
+        "docking",
+        "solar"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · 神舟 · 以神舟九号为参数基线",
+          "url": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · 神舟 · 以神舟九号为参数基线",
+          "url": "https://www.cmse.gov.cn/xwzx/202302/t20230223_52828.html"
+        },
+        {
+          "title": "CMSE · 2012年首次手控交会对接",
+          "url": "https://www.cmse.gov.cn/fxrw/tgyhyszjh/rwjx/201206/t20120626_23247.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "tianzhou",
+      "name": "天舟一号",
+      "kind": "cylinder-satellite",
+      "file": "/models/tianzhou.glb",
+      "bytes": 283020,
+      "groups": [
+        "body",
+        "payload",
+        "service",
+        "docking",
+        "solar",
+        "tank",
+        "avionics"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · 天舟一号",
+          "url": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · 天舟一号",
+          "url": "https://en.cmse.gov.cn/news/201709/t20170925_44584.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "tiangong",
+      "name": "天宫空间站",
+      "kind": "station",
+      "file": "/models/tiangong.glb",
+      "bytes": 479384,
+      "groups": [
+        "body",
+        "frame",
+        "solar",
+        "docking",
+        "avionics",
+        "crew",
+        "instruments",
+        "antenna",
+        "propulsion"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · 天宫空间站",
+          "url": "https://www.cmse.gov.cn/xwzx/zhxw/202105/t20210507_47814.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · 天宫空间站",
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c10087703/content.html"
+        },
+        {
+          "title": "CMSE · 2022年11月3日T字构型组装完成",
+          "url": "https://www.cmse.gov.cn/xwzx/202211/t20221103_51224.html"
+        },
+        {
+          "title": "CMSE · 2026-02-04官方轨道参数",
+          "url": "https://www.cmse.gov.cn/gfgg/zgkjzgdcs/202602/t20260204_57256.html"
+        },
+        {
+          "title": "中科院空间应用中心 · 梦天实验设施",
+          "url": "https://www.csu.cas.cn/gb/zyxw/202210/t20221031_6542086.html"
+        },
+        {
+          "title": "中国科学院 · 问天四类科学实验柜",
+          "url": "https://www.cas.cn/cm/202207/t20220725_4842822.shtml"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "tianwen-1",
+      "name": "天问一号 · 环绕器",
+      "kind": "probe",
+      "file": "/models/tianwen-1.glb",
+      "bytes": 301228,
+      "groups": [
+        "body",
+        "tank",
+        "avionics",
+        "antenna",
+        "propulsion",
+        "instruments",
+        "frame",
+        "solar"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · 天问一号 · 环绕器",
+          "url": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · 天问一号 · 环绕器",
+          "url": "https://www.cnsa.gov.cn/n6758824/n6759009/n6760412/c6840460/content.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "zhurong",
+      "name": "祝融号",
+      "kind": "rover",
+      "file": "/models/zhurong.glb",
+      "bytes": 696260,
+      "groups": [
+        "body",
+        "tank",
+        "frame",
+        "wheels",
+        "instruments",
+        "propulsion",
+        "avionics",
+        "antenna",
+        "solar"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · 祝融号",
+          "url": "https://www.cnsa.gov.cn/n6759533/c6812046/content.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · 祝融号",
+          "url": "https://www.cnsa.gov.cn/n6758824/n6759009/n6760412/n6760413/c6840433/content.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "change-3",
+      "name": "嫦娥三号 · 着陆器",
+      "kind": "lander",
+      "file": "/models/change-3.glb",
+      "bytes": 662588,
+      "groups": [
+        "body",
+        "tank",
+        "frame",
+        "legs",
+        "instruments",
+        "propulsion",
+        "avionics",
+        "antenna",
+        "solar",
+        "payload"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · 嫦娥三号 · 着陆器",
+          "url": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759013/c6794310/content.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · 嫦娥三号 · 着陆器",
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6770734/content.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "change-5",
+      "name": "嫦娥五号",
+      "kind": "lander",
+      "file": "/models/change-5.glb",
+      "bytes": 647448,
+      "groups": [
+        "body",
+        "tank",
+        "frame",
+        "legs",
+        "instruments",
+        "propulsion",
+        "avionics",
+        "antenna",
+        "solar",
+        "stage-2",
+        "docking",
+        "heatshield"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · 嫦娥五号",
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810873/content.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · 嫦娥五号",
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6840839/content.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · 嫦娥五号",
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6811425/content.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "change-6",
+      "name": "嫦娥六号",
+      "kind": "lander",
+      "file": "/models/change-6.glb",
+      "bytes": 623920,
+      "groups": [
+        "body",
+        "tank",
+        "frame",
+        "legs",
+        "instruments",
+        "propulsion",
+        "avionics",
+        "antenna",
+        "solar",
+        "stage-2",
+        "docking"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · 嫦娥六号",
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758844/n10518102/n10518147/c10565180/content.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · 嫦娥六号",
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c10567320/content.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · 嫦娥六号",
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758844/n10518102/n10518157/c10569593/content.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "long-march-5",
+      "name": "长征五号",
+      "kind": "rocket",
+      "file": "/models/long-march-5.glb",
+      "bytes": 685144,
+      "groups": [
+        "stage-1",
+        "tank",
+        "engine",
+        "stage-2",
+        "propulsion",
+        "fairing",
+        "payload",
+        "avionics",
+        "boosters"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · 长征五号",
+          "url": "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · 长征五号",
+          "url": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759011/c6794064/content.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "hayabusa2",
+      "name": "Hayabusa2 · 隼鸟二号",
+      "kind": "probe",
+      "file": "/models/hayabusa2.glb",
+      "bytes": 327012,
+      "groups": [
+        "body",
+        "tank",
+        "avionics",
+        "antenna",
+        "propulsion",
+        "instruments",
+        "frame",
+        "solar",
+        "payload"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Hayabusa2 · 隼鸟二号",
+          "url": "https://darts.isas.jaxa.jp/en/missions/hayabusa2"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Hayabusa2 · 隼鸟二号",
+          "url": "https://www.isas.jaxa.jp/missions/spacecraft/current/hayabusa2"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "slim",
+      "name": "SLIM",
+      "kind": "lander",
+      "file": "/models/slim.glb",
+      "bytes": 545288,
+      "groups": [
+        "body",
+        "tank",
+        "frame",
+        "legs",
+        "instruments",
+        "propulsion",
+        "avionics",
+        "antenna",
+        "solar"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · SLIM",
+          "url": "https://www.isas.jaxa.jp/home/slim/SLIM/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · SLIM",
+          "url": "https://global.jaxa.jp/about/president/presslec/202409.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · SLIM",
+          "url": "https://global.jaxa.jp/press/2024/01/file/jaxa_doc01_20240125_e.pdf"
+        },
+        {
+          "title": "官方历史 / 结构补充 · SLIM",
+          "url": "https://global.jaxa.jp/projects/result.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "h3",
+      "name": "H3 · 24L 构型示意",
+      "kind": "rocket",
+      "file": "/models/h3.glb",
+      "bytes": 685280,
+      "groups": [
+        "stage-1",
+        "tank",
+        "engine",
+        "stage-2",
+        "propulsion",
+        "fairing",
+        "payload",
+        "avionics",
+        "boosters"
+      ],
+      "sources": [
+        {
+          "title": "MHI Technical Review · Continued Evolution of H3（2025）",
+          "url": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+        },
+        {
+          "title": "MHI · Launch Vehicles",
+          "url": "https://www.mhi.com/business/products-services/space-defense/launch-service/launch-vehicles"
+        },
+        {
+          "title": "JAXA · 2024年3月总裁记者会",
+          "url": "https://global.jaxa.jp/about/president/presslec/202403.html"
+        },
+        {
+          "title": "JAXA · Launch Records",
+          "url": "https://global.jaxa.jp/projects/result.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "chandrayaan-3",
+      "name": "Chandrayaan-3 · Vikram",
+      "kind": "lander",
+      "file": "/models/chandrayaan-3.glb",
+      "bytes": 677300,
+      "groups": [
+        "body",
+        "tank",
+        "frame",
+        "legs",
+        "instruments",
+        "propulsion",
+        "avionics",
+        "antenna",
+        "solar",
+        "payload"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Chandrayaan-3 · Vikram",
+          "url": "https://www.isro.gov.in/Chandrayaan3_Details.html"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Chandrayaan-3 · Vikram",
+          "url": "https://pradan.issdc.gov.in/ch3/"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Chandrayaan-3 · Vikram",
+          "url": "https://www.isro.gov.in/media_isro/pdf/Missions/LVM3/LVM3M4_Chandrayaan3_brochure.pdf"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "mangalyaan",
+      "name": "Mars Orbiter Mission · Mangalyaan",
+      "kind": "probe",
+      "file": "/models/mangalyaan.glb",
+      "bytes": 301248,
+      "groups": [
+        "body",
+        "tank",
+        "avionics",
+        "antenna",
+        "propulsion",
+        "instruments",
+        "frame",
+        "solar"
+      ],
+      "sources": [
+        {
+          "title": "官方任务 / 技术资料 · Mars Orbiter Mission · Mangalyaan",
+          "url": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+        },
+        {
+          "title": "官方历史 / 结构补充 · Mars Orbiter Mission · Mangalyaan",
+          "url": "https://www.issdc.gov.in/marsmission.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "luna-9",
+      "name": "Luna 9 · 月球九号",
+      "kind": "lander",
+      "file": "/models/luna-9.glb",
+      "bytes": 143076,
+      "groups": [
+        "body",
+        "frame",
+        "antenna",
+        "instruments",
+        "avionics",
+        "service"
+      ],
+      "sources": [
+        {
+          "title": "DLR · Luna 9 任务档案",
+          "url": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/89-luna-9"
+        },
+        {
+          "title": "NASA · Deep Space Chronicle，Luna 9 条目",
+          "url": "https://solarsystem.nasa.gov/system/downloadable_items/165_DSC_monograph24.pdf"
+        },
+        {
+          "title": "NASA · Luna 9: First Soft Lander",
+          "url": "https://science.nasa.gov/image-article/apod-1997-september-07-luna-9-first-soft-lander/"
+        },
+        {
+          "title": "NASA NSSDCA · 苏联月球任务目录",
+          "url": "https://nssdc.gsfc.nasa.gov/planetary/lunar/lunarussr.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "venera-7",
+      "name": "Venera 7 · 金星七号",
+      "kind": "lander",
+      "file": "/models/venera-7.glb",
+      "bytes": 106556,
+      "groups": [
+        "body",
+        "heatshield",
+        "frame",
+        "service",
+        "antenna",
+        "instruments",
+        "avionics"
+      ],
+      "sources": [
+        {
+          "title": "DLR · Venera 7 任务档案",
+          "url": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/198-venera-7"
+        },
+        {
+          "title": "NPO Lavochkin · Venera 7 制造方项目史",
+          "url": "https://www.laspace.ru/en/activities/projects/venera-7/"
+        },
+        {
+          "title": "NASA · Beyond Earth，Venera 7 条目",
+          "url": "https://www.nasa.gov/wp-content/uploads/2018/09/beyond-earth-tagged.pdf"
+        },
+        {
+          "title": "NASA PDS Atmospheres · Venera 任务与文献",
+          "url": "https://pds-atmospheres.nmsu.edu/data_and_services/atmospheres_data/VENUS_VENERA/venus.html"
+        },
+        {
+          "title": "Avduevskii 等 · 1971 年着陆与大气测量原始研究",
+          "url": "https://journals.ametsoc.org/view/journals/atsc/28/2/1520-0469_1971_028_0263_slovot_2_0_co_2.xml"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "mariner-4",
+      "name": "Mariner 4 · 水手四号",
+      "kind": "probe",
+      "file": "/models/mariner-4.glb",
+      "bytes": 201376,
+      "groups": [
+        "body",
+        "solar",
+        "propulsion",
+        "antenna",
+        "instruments",
+        "avionics"
+      ],
+      "sources": [
+        {
+          "title": "NASA · Mariner 4 任务与科学仪器",
+          "url": "https://science.nasa.gov/mission/mariner-4/"
+        },
+        {
+          "title": "NASA NSSDCA · Mariner 4 规格",
+          "url": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+        },
+        {
+          "title": "NASA NSSDCA · Mariner 火星任务与掩星实验",
+          "url": "https://nssdc.gsfc.nasa.gov/planetary/mars/mariner.html"
+        },
+        {
+          "title": "NASA NTRS · 早期行星图像格式，5.3.6 节",
+          "url": "https://ntrs.nasa.gov/api/citations/19840026295/downloads/19840026295.pdf"
+        },
+        {
+          "title": "NASA NSSDCA · Mariner 4 图像目录",
+          "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/mission_page/MR_Mariner_4_page1.html"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "pioneer-10",
+      "name": "Pioneer 10 · 先驱者十号",
+      "kind": "probe",
+      "file": "/models/pioneer-10.glb",
+      "bytes": 195516,
+      "groups": [
+        "body",
+        "antenna",
+        "service",
+        "instruments",
+        "propulsion",
+        "avionics",
+        "frame"
+      ],
+      "sources": [
+        {
+          "title": "NASA · Pioneer 10 任务概览",
+          "url": "https://science.nasa.gov/mission/pioneer-10/"
+        },
+        {
+          "title": "University of Iowa · Pioneer 10 仪器团队工程说明",
+          "url": "https://space.physics.uiowa.edu/pioneer/p10.html"
+        },
+        {
+          "title": "NASA NTRS · SNAP-19 与空间放射性同位素电源资料",
+          "url": "https://ntrs.nasa.gov/api/citations/20080047411/downloads/20080047411.pdf"
+        },
+        {
+          "title": "NASA Historical Data Book · Pioneer 10 Characteristics",
+          "url": "https://ntrs.nasa.gov/api/citations/19880016046/downloads/19880016046.pdf"
+        },
+        {
+          "title": "NASA JPL · 先驱者异常的热反冲解释，2012",
+          "url": "https://www.jpl.nasa.gov/news/study-finds-heat-is-source-of-pioneer-anomaly/"
+        },
+        {
+          "title": "Smithsonian NASM · Pioneer 10/11 实物与电源布置",
+          "url": "https://airandspace.si.edu/stories/editorial/jupiter-and-beyond-pioneer-10-and-11"
+        },
+        {
+          "title": "NASA PDS · Pioneer 10 轨道产品文档集合",
+          "url": "https://pds.nasa.gov/ds-view/pds/viewCollection.jsp?identifier=urn:nasa:pds:p10-traj:document"
+        },
+        {
+          "title": "NASA NSSDCA历史目录 · Pioneer 10发射日期",
+          "url": "https://ntrs.nasa.gov/api/citations/19900020099/downloads/19900020099.pdf"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "tiros-1",
+      "name": "TIROS-1",
+      "kind": "cylinder-satellite",
+      "file": "/models/tiros-1.glb",
+      "bytes": 280460,
+      "groups": [
+        "body",
+        "service",
+        "antenna",
+        "instruments",
+        "avionics",
+        "frame"
+      ],
+      "sources": [
+        {
+          "title": "NASA · TIROS 项目与 TIROS-1 系统",
+          "url": "https://science.nasa.gov/mission/tiros/"
+        },
+        {
+          "title": "WMO OSCAR · TIROS-1 轨道与寿命",
+          "url": "https://space.oscar.wmo.int/satellites/view/tiros_1"
+        },
+        {
+          "title": "NASA NTRS · TIROS I final meteorological satellite report",
+          "url": "https://ntrs.nasa.gov/citations/19640007992"
+        },
+        {
+          "title": "NOAA NESDIS · TIROS-1 数据与地面站",
+          "url": "https://www.nesdis.noaa.gov/news/celebrating-the-worlds-first-meteorological-satellite-tiros-1"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "telstar-1",
+      "name": "Telstar 1",
+      "kind": "sphere-satellite",
+      "file": "/models/telstar-1.glb",
+      "bytes": 348992,
+      "groups": [
+        "body",
+        "service",
+        "antenna",
+        "avionics",
+        "instruments",
+        "frame"
+      ],
+      "sources": [
+        {
+          "title": "NASA · Telstar 与跨洋电视历史",
+          "url": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/"
+        },
+        {
+          "title": "Bell Labs 原始论文 · The spacecraft antennas（NTRS）",
+          "url": "https://ntrs.nasa.gov/citations/19640000965"
+        },
+        {
+          "title": "Bell Labs 原始论文 · The ground transmitter and receiver（NTRS）",
+          "url": "https://ntrs.nasa.gov/citations/19640000971"
+        },
+        {
+          "title": "NASA · 1958—1964 卫星通信史",
+          "url": "https://ntrs.nasa.gov/citations/19660004987"
+        },
+        {
+          "title": "NASA · 主要发射任务历史汇编",
+          "url": "https://ntrs.nasa.gov/citations/19800019885"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "landsat-1",
+      "name": "Landsat 1 / ERTS-1",
+      "kind": "probe",
+      "file": "/models/landsat-1.glb",
+      "bytes": 349396,
+      "groups": [
+        "body",
+        "solar",
+        "instruments",
+        "antenna",
+        "propulsion",
+        "avionics",
+        "frame"
+      ],
+      "sources": [
+        {
+          "title": "NASA · Landsat 1",
+          "url": "https://science.nasa.gov/mission/landsat-1/"
+        },
+        {
+          "title": "USGS · Landsat 1 历史构型",
+          "url": "https://www.usgs.gov/landsat-missions/landsat-1"
+        },
+        {
+          "title": "NASA · MSS 仪器与波段",
+          "url": "https://science.nasa.gov/mission/landsat/mss/"
+        },
+        {
+          "title": "USGS · MSS Collection 2 Level-1",
+          "url": "https://www.usgs.gov/centers/eros/science/usgs-eros-archive-landsat-archives-landsat-1-5-multispectral-scanner"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "viking-1-lander",
+      "name": "Viking 1 Lander",
+      "kind": "lander",
+      "file": "/models/viking-1-lander.glb",
+      "bytes": 501660,
+      "groups": [
+        "body",
+        "legs",
+        "service",
+        "instruments",
+        "propulsion",
+        "tank",
+        "avionics",
+        "antenna",
+        "frame"
+      ],
+      "sources": [
+        {
+          "title": "NASA · Viking 1 任务时间线",
+          "url": "https://science.nasa.gov/mission/viking-1/"
+        },
+        {
+          "title": "NASA · Viking 飞行器与科学系统",
+          "url": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+        },
+        {
+          "title": "PDS · Viking Lander EDR 图像档案说明",
+          "url": "https://planetarydata.jpl.nasa.gov/w10n/viking_lander/vl_0002/document/volinfo.htm"
+        },
+        {
+          "title": "NASA · Viking 进入、着陆与实验历史",
+          "url": "https://www.nasa.gov/history/45-years-ago-viking-1-and-2-off-to-mars/"
+        },
+        {
+          "title": "PDS Atmospheres · Viking Lander 气象",
+          "url": "https://atmos.nmsu.edu/data_and_services/atmospheres_data/MARS/viking/viking_lander.html"
+        },
+        {
+          "title": "PDS · Viking 1 着陆器上下文",
+          "url": "https://pds.nasa.gov/ds-view/pds/viewContext.jsp?identifier=urn%3Anasa%3Apds%3Acontext%3Ainstrument_host%3Aspacecraft.vl1&version=1.2"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "mro",
+      "name": "Mars Reconnaissance Orbiter",
+      "kind": "probe",
+      "file": "/models/mro.glb",
+      "bytes": 358444,
+      "groups": [
+        "body",
+        "solar",
+        "antenna",
+        "instruments",
+        "propulsion",
+        "avionics",
+        "frame"
+      ],
+      "sources": [
+        {
+          "title": "NASA · MRO 任务与状态",
+          "url": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/"
+        },
+        {
+          "title": "NASA/JPL · MRO launch press kit",
+          "url": "https://science.nasa.gov/wp-content/uploads/2024/03/44746_mro-launch.pdf"
+        },
+        {
+          "title": "NASA · MRO science instruments",
+          "url": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/science-instruments/"
+        },
+        {
+          "title": "NASA NESC · Autonomous Aerobraking Phase 1",
+          "url": "https://ntrs.nasa.gov/citations/20120001988"
+        },
+        {
+          "title": "APL · CRISM 运行历史",
+          "url": "https://www.jhuapl.edu/destinations/instruments/crism"
+        },
+        {
+          "title": "PDS · MRO SPICE archive",
+          "url": "https://pds.nasa.gov/ds-view/pds/viewDataset.jsp?dsid=MRO-M-SPICE-6-V1.0"
+        },
+        {
+          "title": "PDS Geosciences · MRO 数据目录",
+          "url": "https://pds-geosciences.wustl.edu/missions/mro/"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    },
+    {
+      "id": "euclid",
+      "name": "Euclid",
+      "kind": "telescope",
+      "file": "/models/euclid.glb",
+      "bytes": 327996,
+      "groups": [
+        "body",
+        "instruments",
+        "heatshield",
+        "solar",
+        "propulsion",
+        "avionics",
+        "antenna",
+        "frame"
+      ],
+      "sources": [
+        {
+          "title": "ESA · Euclid overview",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_overview"
+        },
+        {
+          "title": "ESA · VIS 与 NISP 仪器",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_s_instruments"
+        },
+        {
+          "title": "ESA · Euclid 太阳电池与遮阳板安装",
+          "url": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Euclid_gains_solar_power_and_protection"
+        },
+        {
+          "title": "ESA · Euclid 在轨调试",
+          "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Follow_Euclid_s_first_months_in_space"
+        },
+        {
+          "title": "Euclid Consortium · Q2 发布与数据说明",
+          "url": "https://www.euclid-ec.org/science/q2/"
+        },
+        {
+          "title": "Euclid 团队论文 · Structural-thermal-optical performance",
+          "url": "https://doi.org/10.1051/0004-6361/202557524"
+        },
+        {
+          "title": "NASA/IPAC · Euclid data release timeline",
+          "url": "https://euclid.caltech.edu/page/data-release-timeline"
+        }
+      ],
+      "classification": "研究示意模型，非制造CAD"
+    }
+  ]
+}

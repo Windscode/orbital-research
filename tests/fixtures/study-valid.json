@@ -1,0 +1,22 @@
+{
+  "format": "orbital-study",
+  "version": 1,
+  "exportedAt": "2026-10-26T00:00:00.000Z",
+  "entries": {
+    "frames-and-time": {
+      "completed": true,
+      "note": "恢复测试：应保留已有笔记。",
+      "updatedAt": "2026-10-26T00:00:00.000Z"
+    },
+    "workflow-ground-replay-capture": {
+      "completed": true,
+      "note": "",
+      "updatedAt": "2026-10-26T00:00:00.000Z"
+    },
+    "future-unknown": {
+      "completed": true,
+      "note": "恢复测试：应保留已有笔记。",
+      "updatedAt": "2026-10-26T00:00:00.000Z"
+    }
+  }
+}

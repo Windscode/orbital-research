@@ -1,0 +1,14 @@
+node_modules/
+dist/
+*.log
+public/**/.preview/
+test-results/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+*.local
+tests/screenshots/
+docs/screenshots/*
+!docs/screenshots/v7-*.jpg
+.DS_Store

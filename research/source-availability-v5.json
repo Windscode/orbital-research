@@ -1,0 +1,220 @@
+{
+  "checkedOn": "2026-10-26",
+  "method": "HTTP GET headers followed by body cancellation; 12-second timeout; reachability only, not content verification",
+  "checks": [
+    {
+      "url": "https://github.com/yamcs/yamcs",
+      "status": 200,
+      "finalUrl": "https://github.com/yamcs/yamcs",
+      "reachable": true
+    },
+    {
+      "url": "https://docs.yamcs.org/yamcs-server-manual/",
+      "status": 200,
+      "finalUrl": "https://docs.yamcs.org/yamcs-server-manual/",
+      "reachable": true
+    },
+    {
+      "url": "https://docs.yamcs.org/yamcs-server-manual/data-management/archive/",
+      "status": 200,
+      "finalUrl": "https://docs.yamcs.org/yamcs-server-manual/data-management/archive/",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/nasa/openmct",
+      "status": 200,
+      "finalUrl": "https://github.com/nasa/openmct",
+      "reachable": true
+    },
+    {
+      "url": "https://nasa.github.io/openmct/documentation/",
+      "status": 200,
+      "finalUrl": "https://nasa.github.io/openmct/documentation/",
+      "reachable": true
+    },
+    {
+      "url": "https://nasa.github.io/openmct/",
+      "status": 200,
+      "finalUrl": "https://nasa.github.io/openmct/",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/nasa/openmct/blob/master/LICENSE.md",
+      "status": 200,
+      "finalUrl": "https://github.com/nasa/openmct/blob/master/LICENSE.md",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/OpenC3/cosmos",
+      "status": 200,
+      "finalUrl": "https://github.com/OpenC3/cosmos",
+      "reachable": true
+    },
+    {
+      "url": "https://docs.openc3.com/",
+      "status": 200,
+      "finalUrl": "https://docs.openc3.com/",
+      "reachable": true
+    },
+    {
+      "url": "https://openc3.com/",
+      "status": 200,
+      "finalUrl": "https://openc3.com/",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/OpenC3/cosmos/blob/main/LICENSE.md",
+      "status": 200,
+      "finalUrl": "https://github.com/OpenC3/cosmos/blob/main/LICENSE.md",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/nasa/nos3",
+      "status": 200,
+      "finalUrl": "https://github.com/nasa/nos3",
+      "reachable": true
+    },
+    {
+      "url": "https://nos3.readthedocs.io/",
+      "status": 200,
+      "finalUrl": "https://nos3.readthedocs.io/en/latest/",
+      "reachable": true
+    },
+    {
+      "url": "https://software.nasa.gov/software/GSC-17737-1",
+      "status": 200,
+      "finalUrl": "https://software.nasa.gov/software/GSC-17737-1",
+      "reachable": true
+    },
+    {
+      "url": "https://ccsds.org/",
+      "status": 200,
+      "finalUrl": "https://ccsds.org/",
+      "reachable": true
+    },
+    {
+      "url": "https://ccsds.org/Pubs/502x0b3e1.pdf",
+      "status": 200,
+      "finalUrl": "https://ccsds.org/Pubs/502x0b3e1.pdf",
+      "reachable": true
+    },
+    {
+      "url": "https://network.satnogs.org/",
+      "status": 200,
+      "finalUrl": "https://network.satnogs.org/",
+      "reachable": true
+    },
+    {
+      "url": "https://docs.satnogs.org/projects/satnogs-db/en/latest/api.html",
+      "status": 200,
+      "finalUrl": "https://docs.satnogs.org/projects/satnogs-db/en/latest/api.html",
+      "reachable": true
+    },
+    {
+      "url": "https://network.satnogs.org/about/",
+      "status": 200,
+      "finalUrl": "https://network.satnogs.org/about/",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/Small-Bodies-Node/pds4_tools",
+      "status": 200,
+      "finalUrl": "https://github.com/Small-Bodies-Node/pds4_tools",
+      "reachable": true
+    },
+    {
+      "url": "https://pds-smallbodies.astro.umd.edu/tools/pds4_tools_info/python_pds4_tools.html",
+      "status": 403,
+      "finalUrl": "https://pds-smallbodies.astro.umd.edu/tools/pds4_tools_info/python_pds4_tools.html",
+      "reachable": false
+    },
+    {
+      "url": "https://github.com/Small-Bodies-Node/pds4_tools/blob/master/LICENSES",
+      "status": 200,
+      "finalUrl": "https://github.com/Small-Bodies-Node/pds4_tools/blob/master/LICENSES",
+      "reachable": true
+    },
+    {
+      "url": "https://cdaweb.gsfc.nasa.gov/",
+      "status": null,
+      "reachable": null,
+      "reason": "TypeError"
+    },
+    {
+      "url": "https://cdaweb.gsfc.nasa.gov/WebServices/REST/",
+      "status": null,
+      "reachable": null,
+      "reason": "TypeError"
+    },
+    {
+      "url": "https://cdaweb.gsfc.nasa.gov/cdaweb_anonymousftp.htm",
+      "status": null,
+      "reachable": null,
+      "reason": "TypeError"
+    },
+    {
+      "url": "https://nasa.github.io/openmct/getting-started/",
+      "status": 200,
+      "finalUrl": "https://nasa.github.io/openmct/getting-started/",
+      "reachable": true
+    },
+    {
+      "url": "https://ssd.jpl.nasa.gov/horizons/manual.html",
+      "status": 200,
+      "finalUrl": "https://ssd.jpl.nasa.gov/horizons/manual.html",
+      "reachable": true
+    },
+    {
+      "url": "https://naif.jpl.nasa.gov/naif/lessons.html",
+      "status": 200,
+      "finalUrl": "https://naif.jpl.nasa.gov/naif/lessons.html",
+      "reachable": true
+    },
+    {
+      "url": "https://avslab.github.io/basilisk/examples/scenarioAttitudeFeedback.html",
+      "status": 200,
+      "finalUrl": "https://avslab.github.io/basilisk/examples/scenarioAttitudeFeedback.html",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/ericstoneking/42",
+      "status": 200,
+      "finalUrl": "https://github.com/ericstoneking/42",
+      "reachable": true
+    },
+    {
+      "url": "https://pds.nasa.gov/datastandards/documents/dph/v1/PDS4_DataProvidersHandbook_1.22.0.pdf",
+      "status": 404,
+      "finalUrl": "https://pds.nasa.gov/datastandards/documents/dph/v1/PDS4_DataProvidersHandbook_1.22.0.pdf",
+      "reachable": false
+    },
+    {
+      "url": "https://pds.nasa.gov/datastandards/documents/",
+      "status": 200,
+      "finalUrl": "https://pds.nasa.gov/datastandards/documents/",
+      "reachable": true
+    },
+    {
+      "url": "https://github.com/Small-Bodies-Node/pds4_tools/blob/master/README.rst",
+      "status": 200,
+      "finalUrl": "https://github.com/Small-Bodies-Node/pds4_tools/blob/master/README.rst",
+      "reachable": true
+    }
+  ],
+  "corrections": [
+    {
+      "from": "https://pds.nasa.gov/datastandards/documents/dph/v1/PDS4_DataProvidersHandbook_1.22.0.pdf",
+      "to": "https://pds.nasa.gov/datastandards/documents/",
+      "reason": "Direct link returned 404; replaced with official document index"
+    },
+    {
+      "from": "https://pds-smallbodies.astro.umd.edu/tools/pds4_tools_info/python_pds4_tools.html",
+      "to": "https://github.com/Small-Bodies-Node/pds4_tools/blob/master/README.rst",
+      "reason": "403/timeout from portal; official repository README provides documentation index"
+    }
+  ],
+  "crossChannelVerification": {
+    "url": "https://cdaweb.gsfc.nasa.gov/WebServices/REST/",
+    "method": "Web browsing tool successfully read official documentation; local Node request failed. Not classified as a dead link."
+  }
+}
