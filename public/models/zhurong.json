@@ -1,0 +1,93 @@
+{
+  "vehicleId": "zhurong",
+  "name": "祝融号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "zhurong",
+    "configuration": "巡视工作构型 · 四片蝶形太阳翼展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "将通用两翼巡视器替换为四翼蝶形构型，增加近八边形顶板与双集热窗。",
+      "补出六轮悬架、前部相机桅杆、后部定向天线和雷达杆件。"
+    ],
+    "features": [
+      {
+        "title": "四片蝶形太阳翼",
+        "detail": "研制方说明祝融采用蝶形四展太阳翼。模型按四个独立翼面表达展开状态，翼形和电池片排列仍简化。",
+        "partId": "solar",
+        "sourceUrl": "https://www.spacechina.com/n25/n2014789/n2014809/c3255819/content.html"
+      },
+      {
+        "title": "前桅杆与后天线",
+        "detail": "公开构型说明将感知桅杆置于前部，定向通信天线置于后部；模型以此区分行进观察与通信方向。",
+        "partId": "antenna",
+        "sourceUrl": "https://www.cast.cn/news/7123"
+      },
+      {
+        "title": "双集热窗与舱体",
+        "detail": "顶板上集热窗与保温措施服务火星昼夜热环境；内部电子设备位于舱体中，模型只显示功能体积。",
+        "partId": "body",
+        "sourceUrl": "https://www.cast.cn/news/7123"
+      }
+    ],
+    "uncertainties": [
+      "悬架铰点、轮纹、土壤接触参数和太阳翼铰链角未由照片定量辨识。",
+      "无线电和科学仪器的真实视场、遮挡及电缆路径没有从外观推定。"
+    ],
+    "sources": [
+      {
+        "title": "中国空间技术研究院 · 祝融号构型设计",
+        "url": "https://www.cast.cn/news/7123"
+      },
+      {
+        "title": "中国航天科技集团 · 祝融号四展太阳翼与集热器",
+        "url": "https://www.spacechina.com/n25/n2014789/n2014809/c3255819/content.html"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "巡视器车体",
+      "description": "容纳支持系统与仪器，内部设备采用功能示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6759533/c6812046/content.html"
+    },
+    {
+      "id": "wheels",
+      "name": "轮系与悬架",
+      "description": "在不平整地表移动，接触刚度和摩擦系数待设定。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6759533/c6812046/content.html"
+    },
+    {
+      "id": "solar",
+      "name": "展开太阳翼",
+      "description": "提供表面任务能源，面积与片数在模型中简化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6759533/c6812046/content.html"
+    },
+    {
+      "id": "antenna",
+      "name": "通信天线",
+      "description": "与环绕器配合完成中继链路。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6759533/c6812046/content.html"
+    },
+    {
+      "id": "instruments",
+      "name": "相机与科学仪器",
+      "description": "地形、多光谱、成分、雷达及环境测量功能。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6759533/c6812046/content.html"
+    },
+    {
+      "id": "frame",
+      "name": "桅杆与外部支撑",
+      "description": "支撑感知设备，真实结构刚度未由图像推断。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6759533/c6812046/content.html"
+    }
+  ]
+}

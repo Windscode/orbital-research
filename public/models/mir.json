@@ -1,0 +1,93 @@
+{
+  "vehicleId": "mir",
+  "name": "Mir · 和平号空间站",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "mir",
+    "configuration": "Mir 扩展舱段构型示意 · 核心舱、Kvant-1 与四个径向模块",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "移除类似 ISS 的横贯桁架，重建核心舱、转移节点和径向模块。",
+      "将太阳翼附着于具体模块，并加入航天飞机对接舱与内部乘员支持体积。"
+    ],
+    "features": [
+      {
+        "title": "核心舱与转移节点",
+        "detail": "Mir 的核心舱包含居住和控制区域，多方向接口允许专用实验模块与来访飞船接入。",
+        "partId": "body",
+        "sourceUrl": "https://www.esa.int/About_Us/Corporate_news/Mir_FAQs_-_Facts_and_history"
+      },
+      {
+        "title": "径向科学模块",
+        "detail": "Kvant-2、Kristall、Spektr 和 Priroda 在转移节点周围形成三维分支；Kvant-1 位于核心舱轴向后部。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.nasa.gov/history/SP-4225/diagrams/mir/mir-diagram.htm"
+      },
+      {
+        "title": "模块附属太阳翼",
+        "detail": "Mir 的电源翼面分布在多个模块上。这里保留各模块的安装关系，但不重建每次改装后的翼面组合。",
+        "partId": "solar",
+        "sourceUrl": "https://www.nasa.gov/history/SP-4225/diagrams/mir/mir-diagram.htm"
+      }
+    ],
+    "uncertainties": [
+      "几何是扩展阶段的概念组合，不对应精确历史日期；太阳翼曾随任务改装。",
+      "径向模块的外部设备、接头和内部压力结构未按制造图复刻。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Mir 舱段与结构图集",
+        "url": "https://www.nasa.gov/history/SP-4225/diagrams/mir/mir-diagram.htm"
+      },
+      {
+        "title": "ESA · Mir 事实与历史",
+        "url": "https://www.esa.int/About_Us/Corporate_news/Mir_FAQs_-_Facts_and_history"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "核心舱",
+      "description": "提供生活空间及指令控制。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/history/35-years-ago-launch-of-mir-space-stations-first-module/"
+    },
+    {
+      "id": "docking",
+      "name": "多向连接节点",
+      "description": "支持扩展模块与来访飞船对接。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/history/35-years-ago-launch-of-mir-space-stations-first-module/"
+    },
+    {
+      "id": "instruments",
+      "name": "科学模块",
+      "description": "扩展实验与观测能力；这里聚合表达不同模块。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/history/35-years-ago-launch-of-mir-space-stations-first-module/"
+    },
+    {
+      "id": "solar",
+      "name": "太阳翼组",
+      "description": "提供长期在轨电源，不代表单一历史日期的精确数量。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/history/35-years-ago-launch-of-mir-space-stations-first-module/"
+    },
+    {
+      "id": "propulsion",
+      "name": "轨道与姿态执行系统",
+      "description": "支持轨道保持与姿态管理。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/history/35-years-ago-launch-of-mir-space-stations-first-module/"
+    },
+    {
+      "id": "crew",
+      "name": "乘员支持区域",
+      "description": "提供生活与环境保障。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/history/35-years-ago-launch-of-mir-space-stations-first-module/"
+    }
+  ]
+}

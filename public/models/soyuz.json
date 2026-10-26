@@ -1,0 +1,89 @@
+{
+  "vehicleId": "soyuz",
+  "name": "Soyuz · 联盟飞船",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "soyuz",
+    "configuration": "现代联盟三舱组合；双太阳翼展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "区分球形轨道舱、钟形返回舱和仪器推进舱",
+      "对接装置、太阳翼与主喷口归入相应功能组"
+    ],
+    "features": [
+      {
+        "title": "三舱排列",
+        "detail": "从前到后为轨道舱、返回舱、服务舱；仅中间的返回舱回到地面。",
+        "partId": "body",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+      },
+      {
+        "title": "双翼供电",
+        "detail": "两翼从服务舱展开，不将光伏板安装在返回舱上。",
+        "partId": "solar",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+      },
+      {
+        "title": "对接端",
+        "detail": "对接装置在轨道舱前端，乘员返回舱不是最前面的球舱。",
+        "partId": "docking",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+      }
+    ],
+    "uncertainties": [
+      "联盟各代型号传感器、对接装置与太阳翼细节并不完全相同。",
+      "太阳翼面板分缝和座椅几何只服务结构辨认。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Soyuz 三舱结构",
+        "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "轨道舱",
+      "description": "提供额外在轨活动空间与前部对接区域。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+    },
+    {
+      "id": "crew",
+      "name": "返回舱",
+      "description": "乘员返回地球的压力舱。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+    },
+    {
+      "id": "service",
+      "name": "仪器推进舱",
+      "description": "承载在轨设备、推进和太阳翼连接结构。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+    },
+    {
+      "id": "solar",
+      "name": "双侧太阳翼",
+      "description": "为在轨工作供电，展开长度按可视化简化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+    },
+    {
+      "id": "docking",
+      "name": "对接装置",
+      "description": "支持空间站接近和机械连接。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+    },
+    {
+      "id": "propulsion",
+      "name": "轨道与姿态推进",
+      "description": "承担轨道机动、制动与姿态调整。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+    }
+  ]
+}

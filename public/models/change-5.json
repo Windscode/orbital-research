@@ -1,0 +1,100 @@
+{
+  "vehicleId": "change-5",
+  "name": "嫦娥五号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "change-5",
+    "configuration": "着陆器—上升器采样构型；地球返回器作为独立对象并列展示",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "拆分着陆平台与上升器，补出表取机械臂、钻具和样品交接接口。",
+      "将返回器热盾保持在模型右侧独立位置，避免错误地安装在月面着陆器上。"
+    ],
+    "features": [
+      {
+        "title": "表取与钻取",
+        "detail": "月面采样同时采用机械臂表取和钻具钻取；两种机构在模型中分开表示，末端工具形状为功能示意。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c6810708/content.html"
+      },
+      {
+        "title": "样品进入上升器",
+        "detail": "月面样品密封后保存在上升器携带的装置中，随后进入月轨交会流程。模型提供独立上升器和样品转移接口。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c6810708/content.html"
+      },
+      {
+        "title": "返回器单独展示",
+        "detail": "地球返回器在月轨与上升器完成样品转移后参与返回。并列对象仅说明热防护用途，不属于月面装配状态。",
+        "partId": "heatshield",
+        "sourceUrl": "https://wap.sasac.gov.cn/n2588025/n2641616/c16253063/content.html"
+      }
+    ],
+    "uncertainties": [
+      "月面组合体与旁侧返回器不是同一时刻的真实场景。",
+      "采样臂关节、钻孔深度、载荷质量与内部容器位置均不是实测重建。"
+    ],
+    "sources": [
+      {
+        "title": "国家航天局 · 嫦娥五号采样与封装",
+        "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6810708/content.html"
+      },
+      {
+        "title": "国资委 · 嫦娥五号机构释放与任务阶段",
+        "url": "https://wap.sasac.gov.cn/n2588025/n2641616/c16253063/content.html"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "月面着陆平台",
+      "description": "支撑采样及上升器起飞，三维仅显示主任务部分构型。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810873/content.html"
+    },
+    {
+      "id": "stage-2",
+      "name": "上升器",
+      "description": "携样品从月面起飞并参与月轨交会。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810873/content.html"
+    },
+    {
+      "id": "legs",
+      "name": "着陆支腿",
+      "description": "提供月面接地支撑，内部缓冲结构未知。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810873/content.html"
+    },
+    {
+      "id": "instruments",
+      "name": "采样与测量系统",
+      "description": "执行采样和现场测量，工具细节为功能示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810873/content.html"
+    },
+    {
+      "id": "docking",
+      "name": "交会与样品转移接口",
+      "description": "连接上升器与轨道器返回器组合体。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810873/content.html"
+    },
+    {
+      "id": "heatshield",
+      "name": "返回器热防护",
+      "description": "地球返回阶段使用，非着陆器本体热盾。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810873/content.html"
+    },
+    {
+      "id": "solar",
+      "name": "能源系统",
+      "description": "为不同飞行阶段提供电力，模型布局简化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810873/content.html"
+    }
+  ]
+}

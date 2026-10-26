@@ -1,0 +1,93 @@
+{
+  "vehicleId": "mariner-4",
+  "name": "Mariner 4 · 水手四号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "mariner-4",
+    "configuration": "四片太阳阵展开的历史飞掠构型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核并保留八边形平台和四片阵列的专属模型",
+      "补充推进、姿控与有效展开尺寸的引用"
+    ],
+    "features": [
+      {
+        "title": "八边形平台与四翼",
+        "detail": "保留早期行星探测器的四片径向太阳阵，避免退回现代双翼模板。",
+        "partId": "body",
+        "sourceUrl": "https://science.nasa.gov/mission/mariner-4/"
+      },
+      {
+        "title": "太阳能供电",
+        "detail": "历史规格列出 6.3 m² 总太阳阵面积；模型网格不逐片复刻 28,224 个电池。",
+        "partId": "solar",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+      },
+      {
+        "title": "中途修正与姿控",
+        "detail": "225 N 肼推进和 12 个氮气喷口是不同系统，不能由一只尾喷管代表全部。",
+        "partId": "propulsion",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+      }
+    ],
+    "uncertainties": [
+      "轨道修正发动机与姿控细喷口的安装细节仍为简化。",
+      "总高度与展开宽度需分别读取，不能只用主体尺寸代替。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Mariner 4",
+        "url": "https://science.nasa.gov/mission/mariner-4/"
+      },
+      {
+        "title": "NASA NSSDCA · Mariner 4 规格",
+        "url": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "八边形设备平台",
+      "description": "承载通信、控制、能源和科学设备；内部机箱只作功能分组。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/mars/mariner.html"
+    },
+    {
+      "id": "solar",
+      "name": "四片展开太阳阵",
+      "description": "支持巡航与飞掠供电，展开跨度与平台宽度需区分。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+    },
+    {
+      "id": "antenna",
+      "name": "高低增益通信天线",
+      "description": "支持地面指令、遥测以及存储图像回传。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/mariner-4/"
+    },
+    {
+      "id": "instruments",
+      "name": "电视扫描与记录链",
+      "description": "采样、暂存并分时回传火星图像；6bit量化限制灰度分辨能力。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://ntrs.nasa.gov/api/citations/19840026295/downloads/19840026295.pdf"
+    },
+    {
+      "id": "avionics",
+      "name": "姿态传感器与氮气喷口",
+      "description": "历史规格列出12个氮气喷口、陀螺及恒星/太阳等传感器。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+    },
+    {
+      "id": "propulsion",
+      "name": "中途修正推进系统",
+      "description": "单组元肼推进用于轨迹修正；所引规格给出225 N推力。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "vehicleId": "ariane-6",
+  "name": "Ariane 6",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "ariane-6",
+    "configuration": "Ariane 64 · 四枚 P120C · 20 m 长整流罩基线",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "明确选用 Ariane 64，保留四助推器，不把 A62 与 A64 混成同一构型。",
+      "按 5.4 m 芯级与 3.4 m 助推器直径关系重做外形。",
+      "增加 Vulcain、Vinci、固体装药示意以及不同尺度的低温贮箱。"
+    ],
+    "features": [
+      {
+        "title": "四枚 P120C",
+        "detail": "A64 采用四枚固体助推器，A62 为两枚。这里显示前者，助推器内的实体颜色只表示装药区，不表达药柱燃面。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/Ariane_6_what_s_it_made_of"
+      },
+      {
+        "title": "Vulcain 2.1 芯级",
+        "detail": "单台低温发动机位于主级底部。主级与助推器分别承担推进功能，拆分时可看出两者连接关系。",
+        "partId": "engine",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/The_engines_of_Ariane_6"
+      },
+      {
+        "title": "Vinci 上面级",
+        "detail": "上面级使用可再启动 Vinci；本模型增加独立喷管和氢氧容器，未以主级圆柱缩小代替全部系统。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/The_engines_of_Ariane_6"
+      },
+      {
+        "title": "长整流罩",
+        "detail": "采用 ESA 所列 20 m 长罩，对应约 62 m 整箭包络。短罩与其他任务构型不在当前装配状态中。",
+        "partId": "fairing",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/Ariane_6_what_s_it_made_of"
+      }
+    ],
+    "uncertainties": [
+      "采用公开基础构型；后续增强版助推器与任务特定载荷适配器没有并入。",
+      "低温贮箱分界、绝热厚度、APU 和增压管路尚未获得足够几何约束。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Ariane 6: what's it made of?",
+        "url": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/Ariane_6_what_s_it_made_of"
+      },
+      {
+        "title": "ESA · The engines of Ariane 6",
+        "url": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/The_engines_of_Ariane_6"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "fairing",
+      "name": "载荷整流罩",
+      "description": "5.4米直径载荷包络；长度按具体任务选型。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Launch_vehicles/Ariane_6_overview"
+    },
+    {
+      "id": "stage-1",
+      "name": "液体主级",
+      "description": "Vulcain 2.1使用液氧液氢，承担主上升段。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Launch_vehicles/Ariane_6_overview"
+    },
+    {
+      "id": "stage-2",
+      "name": "上面级",
+      "description": "Vinci支持重新点火，实现多阶段部署任务。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Launch_vehicles/Ariane_6_overview"
+    },
+    {
+      "id": "boosters",
+      "name": "P120C助推器",
+      "description": "A62两枚、A64四枚；当前模型展示四枚配置。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Launch_vehicles/Ariane_6_overview"
+    },
+    {
+      "id": "engine",
+      "name": "Vulcain 2.1",
+      "description": "芯级单台发动机；不含固体助推器发动机计数。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Launch_vehicles/Ariane_6_overview"
+    },
+    {
+      "id": "tank",
+      "name": "低温贮箱",
+      "description": "液氢液氧箱体内部比例为工程示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Launch_vehicles/Ariane_6_overview"
+    }
+  ]
+}

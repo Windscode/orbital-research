@@ -1,0 +1,89 @@
+{
+  "vehicleId": "change-3",
+  "name": "嫦娥三号 · 着陆器",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "change-3",
+    "configuration": "着陆器与顶置玉兔部署示意 · 太阳翼和转移坡道展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重建四支腿切角平台，加入顶置巡视器、转移坡道与双太阳翼。",
+      "去除通用长桅杆探测车外形，科学载荷按月面着陆器部署。"
+    ],
+    "features": [
+      {
+        "title": "巡视器与转移坡道",
+        "detail": "玉兔通过转移机构从着陆器抵达月面。模型把顶置巡视器与坡道作为独立部件组，便于观察部署路径。",
+        "partId": "payload",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c6770734/content.html"
+      },
+      {
+        "title": "四点月面支撑",
+        "detail": "着陆支腿与平台在模型中分开，可拆分观察接地支撑和下降喷口的相对位置。",
+        "partId": "legs",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c6770734/content.html"
+      },
+      {
+        "title": "下降与分离构型",
+        "detail": "着陆与巡视器释放是不同阶段。模型展示的是便于解释部署的组合，不复原分离过程中的每个机构姿态。",
+        "partId": "body",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c6770734/content.html"
+      }
+    ],
+    "uncertainties": [
+      "玉兔在坡道展开时的位置用于说明任务关系，不是某帧真实影像的完整复刻。",
+      "支腿缓冲材料、内部箱体及设备精确安装位置未重建。"
+    ],
+    "sources": [
+      {
+        "title": "国家航天局 · 嫦娥三号两器分离与玉兔部署",
+        "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6770734/content.html"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "着陆器平台",
+      "description": "承载下降系统与月面科学设备。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759013/c6794310/content.html"
+    },
+    {
+      "id": "legs",
+      "name": "着陆支腿",
+      "description": "承担触地支撑；刚度和阻尼仅可设为工程假设。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759013/c6794310/content.html"
+    },
+    {
+      "id": "propulsion",
+      "name": "下降推进系统",
+      "description": "用于受控下降与落点接近，喷流与地面耦合未建模。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759013/c6794310/content.html"
+    },
+    {
+      "id": "solar",
+      "name": "太阳翼",
+      "description": "为月面作业供电，展开比例简化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759013/c6794310/content.html"
+    },
+    {
+      "id": "payload",
+      "name": "玉兔部署区",
+      "description": "顶置巡视器与转移坡道的功能区域。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759013/c6794310/content.html"
+    },
+    {
+      "id": "instruments",
+      "name": "四类科学仪器",
+      "description": "开展地形、天文和极紫外观测。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759013/c6794310/content.html"
+    }
+  ]
+}

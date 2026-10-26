@@ -1,0 +1,93 @@
+{
+  "vehicleId": "tianwen-1",
+  "name": "天问一号 · 环绕器",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "tianwen-1",
+    "configuration": "着陆巡视器分离后的环绕器示意",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "六面平台、双翼与侧向大天线形成独立轮廓",
+      "相机、雷达和磁场测量臂从通用仪器箱中分开"
+    ],
+    "features": [
+      {
+        "title": "环绕器与着陆任务分离",
+        "detail": "本模型只显示环绕器，祝融号和进入舱不再附在其上。",
+        "partId": "body",
+        "sourceUrl": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+      },
+      {
+        "title": "多目标指向",
+        "detail": "太阳翼对日、高增益天线对地、中继链路对巡视器是不同指向需求。",
+        "partId": "antenna",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758968/n6758973/c6811445/content.html"
+      },
+      {
+        "title": "七类环绕载荷",
+        "detail": "相机、光谱、雷达和粒子磁场仪器分工不同，不能用模型中的可见孔径计数科学仪器总数。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+      }
+    ],
+    "uncertainties": [
+      "雷达臂和磁强计臂外伸位置为辨认关系，未读取安装矩阵。",
+      "本图不显示真实观测时刻的太阳翼、天线转角。"
+    ],
+    "sources": [
+      {
+        "title": "国家空间科学数据中心 · 天问一号科学仪器",
+        "url": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+      },
+      {
+        "title": "CNSA · 天问一号多目标指向控制",
+        "url": "https://www.cnsa.gov.cn/n6758968/n6758973/c6811445/content.html"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "环绕器总线",
+      "description": "容纳航电及支持系统，内部布局未公开复刻。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+    },
+    {
+      "id": "solar",
+      "name": "太阳翼",
+      "description": "为火星轨道工作供电，展开几何归一化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+    },
+    {
+      "id": "antenna",
+      "name": "深空与中继通信",
+      "description": "支持对地数据传输及巡视器中继任务。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+    },
+    {
+      "id": "instruments",
+      "name": "七类科学载荷",
+      "description": "开展形貌、成分、场与粒子等环绕探测。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+    },
+    {
+      "id": "propulsion",
+      "name": "轨道机动系统",
+      "description": "支持深空修正、火星捕获和轨道调整。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+    },
+    {
+      "id": "avionics",
+      "name": "自主飞行管理",
+      "description": "管理长时延条件下的事件与状态，算法为未知边界。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+    }
+  ]
+}

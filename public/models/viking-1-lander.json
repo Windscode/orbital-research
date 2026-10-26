@@ -1,0 +1,110 @@
+{
+  "vehicleId": "viking-1-lander",
+  "name": "Viking 1 Lander",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "viking-1-lander",
+    "configuration": "Viking 1 火星着陆后构型 · 六边平台、三腿和双 RTG",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "保留已有三腿六边平台、两台 RTG、双扫描相机与取样机械臂。",
+      "补充原始结构说明与内部实验舱边界，不为着陆器添加太阳翼。"
+    ],
+    "features": [
+      {
+        "title": "三腿六边平台",
+        "detail": "NASA 描述六边铝基座，三条支腿连接短边。模型按这一拓扑表达支撑，足垫尺寸和杆件角度仍简化。",
+        "partId": "legs",
+        "sourceUrl": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+      },
+      {
+        "title": "双 RTG 电源",
+        "detail": "两台同位素热电发生器位于平台两侧并配有防风结构。模型使用双散热组件，而不是太阳电池翼。",
+        "partId": "service",
+        "sourceUrl": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+      },
+      {
+        "title": "双相机和取样臂",
+        "detail": "两台圆柱扫描相机与取样臂配合观察和采集表面样品；内部生命探测实验包只以功能空间显示。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+      }
+    ],
+    "uncertainties": [
+      "不根据官方页面存在冲突的质量换算反推质量或惯量。",
+      "RTG 防风罩、内部实验装置和喷口细节未按完整工程图复原。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Viking 着陆器结构与科学系统",
+        "url": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "六角设备平台",
+      "description": "依公开平台构型表达；高度为展示比例，不是实测总高度。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+    },
+    {
+      "id": "legs",
+      "name": "三条着陆腿",
+      "description": "三点支承及足垫；吸能器行程和关节细节未复原。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+    },
+    {
+      "id": "propulsion",
+      "name": "三台末端下降发动机",
+      "description": "按发动机分组，不以多喷嘴数量虚增发动机台数。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/history/45-years-ago-viking-1-and-2-off-to-mars/"
+    },
+    {
+      "id": "tank",
+      "name": "推进剂储箱",
+      "description": "两只末端下降推进剂储箱按官方示意图表达，内部结构未知。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/history/45-years-ago-viking-1-and-2-off-to-mars/"
+    },
+    {
+      "id": "service",
+      "name": "两台 RTG 与防风罩",
+      "description": "侧置电源与罩体，散热翅片和内部材料仅示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+    },
+    {
+      "id": "instruments",
+      "name": "相机、采样臂与实验入口",
+      "description": "双扫描相机、机械臂和气象杆的功能构型；不复刻实验腔内部。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://planetarydata.jpl.nasa.gov/w10n/viking_lander/vl_0002/document/volinfo.htm"
+    },
+    {
+      "id": "antenna",
+      "name": "直传与中继天线",
+      "description": "S 波段高增益、低增益与 UHF 中继天线。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://pds.nasa.gov/ds-view/pds/viewContext.jsp?identifier=urn%3Anasa%3Apds%3Acontext%3Ainstrument_host%3Aspacecraft.vl1&version=1.2"
+    },
+    {
+      "id": "avionics",
+      "name": "控制与记录设备",
+      "description": "功能块，不声称是飞行件真实安装位置。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://pds.nasa.gov/ds-view/pds/viewContext.jsp?identifier=urn%3Anasa%3Apds%3Acontext%3Ainstrument_host%3Aspacecraft.vl1&version=1.2"
+    },
+    {
+      "id": "frame",
+      "name": "平台承力结构",
+      "description": "示意主平台支撑，不提供可用于强度校核的厚度与材料。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+    }
+  ]
+}

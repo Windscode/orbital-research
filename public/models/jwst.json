@@ -1,0 +1,93 @@
+{
+  "vehicleId": "jwst",
+  "name": "JWST · 詹姆斯·韦布空间望远镜",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "jwst",
+    "configuration": "完全展开观测构型；冷热侧分开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核并保留 18 镜片与五层遮阳膜的专属模型",
+      "补充镜面、热控与支承的逐项资料入口"
+    ],
+    "features": [
+      {
+        "title": "18 块分段镜",
+        "detail": "18 块六角镜片组成主镜；色彩提示金镀层，不能推导真实光学面形。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/webb/webbs-mirrors/"
+      },
+      {
+        "title": "五层遮阳膜",
+        "detail": "层间隔与边缘可在拆分中辨识；厚度和间距为展示而夸大。",
+        "partId": "heatshield",
+        "sourceUrl": "https://science.nasa.gov/mission/webb/webbs-sunshield/"
+      },
+      {
+        "title": "独立的次镜支撑",
+        "detail": "次镜在外伸支架末端，与主镜背板及展开塔形成不同结构层次。",
+        "partId": "frame",
+        "sourceUrl": "https://science.nasa.gov/mission/webb/webbs-mirrors/"
+      }
+    ],
+    "uncertainties": [
+      "显示的是展开后的结构，不包含折叠运动学与锁止状态。",
+      "膜张力、镜片位姿和科学仪器光学处方未建模。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Webb 的镜面系统",
+        "url": "https://science.nasa.gov/mission/webb/webbs-mirrors/"
+      },
+      {
+        "title": "NASA · Webb 五层遮阳膜",
+        "url": "https://science.nasa.gov/mission/webb/webbs-sunshield/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "instruments",
+      "name": "分段主镜与科学仪器",
+      "description": "18块六角镜片共同聚光，后方仪器模块开展观测；科学载荷详见系统表。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/webb/webbs-mirrors/"
+    },
+    {
+      "id": "heatshield",
+      "name": "五层遮阳膜",
+      "description": "五层风筝形薄膜形成冷热侧；画面厚度和间距夸大以便辨识，不是实际薄膜尺寸。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/webb/webbs-sunshield/"
+    },
+    {
+      "id": "body",
+      "name": "航天器服务平台",
+      "description": "位于遮阳膜热侧，承担通信、供电、推进和姿态服务；内部安装位置为示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/asset/webb/webb-telescope-spacecraft-diagram/"
+    },
+    {
+      "id": "solar",
+      "name": "单条折页太阳阵",
+      "description": "独立太阳阵为平台供电，与主镜分开；不是对称双翼构型。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://svs.gsfc.nasa.gov/13208"
+    },
+    {
+      "id": "antenna",
+      "name": "通信天线与热侧附件",
+      "description": "负责指令、遥测和科学数据传输，精密馈源和指向机构未复刻。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/asset/webb/webb-telescope-spacecraft-diagram/"
+    },
+    {
+      "id": "frame",
+      "name": "三臂次镜支架与展开塔",
+      "description": "三条支臂支撑次镜，背板与展开塔连接光学冷侧和平台热侧；不宣称光学处方或机构公差。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/blogs/webb/2022/01/05/secondary-mirror-deployment-confirmed/"
+    }
+  ]
+}

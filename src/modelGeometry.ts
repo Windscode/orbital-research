@@ -1,5 +1,8 @@
 import * as THREE from 'three';
 import type { Vehicle, VehicleModel } from './types';
+import {buildRocketModel} from './rocketModels';
+import {buildSpacecraftModel} from './spacecraftModels';
+import {buildSurfaceModel} from './surfaceModels';
 
 export interface PartGroup { id:string; group:THREE.Group; base:THREE.Vector3; direction:THREE.Vector3 }
 export interface BuiltModel { root:THREE.Group; parts:PartGroup[]; meshes:THREE.Mesh[]; materials:THREE.MeshStandardMaterial[] }
@@ -21,11 +24,11 @@ export function buildVehicleModel(vehicle:Vehicle, clip:THREE.Plane):BuiltModel 
     parts.push({id,group:g,base:g.position.clone(),direction});return g;
   }
   function material(color:string,external=false) {
-    const mat=new THREE.MeshStandardMaterial({color,roughness:color===GOLD?.48:.4,metalness:color===BLUE?.3:.62,side:THREE.DoubleSide,clippingPlanes:[],emissive:'#000000'});
+    const mat=new THREE.MeshStandardMaterial({color,roughness:color===GOLD?.48:color===BLUE?.32:.58,metalness:color===GOLD?.72:color===SILVER?.52:.16,side:THREE.DoubleSide,clippingPlanes:[],emissive:'#000000'});
     mat.userData.external=external;mat.userData.original=new THREE.Color(color);materials.push(mat);return mat;
   }
   function mesh(g:THREE.Group,geo:THREE.BufferGeometry,color:string,pos:[number,number,number]=[0,0,0],external=false) {
-    geo.normalizeNormals();const m=new THREE.Mesh(geo,material(color,external));m.position.set(...pos);m.userData.partId=g.name;g.add(m);meshes.push(m);return m;
+    geo.normalizeNormals();const m=new THREE.Mesh(geo,material(color,external));m.position.set(...pos);m.userData.partId=g.name;m.userData.layer=external?'shell':['tank','avionics','crew','payload'].includes(g.name)?'internal':'equipment';g.add(m);meshes.push(m);return m;
   }
   function box(g:THREE.Group,s:[number,number,number],p:[number,number,number],color=DARK,external=false){return mesh(g,new THREE.BoxGeometry(...s),color,p,external);}
   function cylinder(g:THREE.Group,r:number,h:number,p:[number,number,number],color=SILVER,rt=r,external=false){return mesh(g,new THREE.CylinderGeometry(rt,r,h,48,1,false),color,p,external);}
@@ -33,14 +36,16 @@ export function buildVehicleModel(vehicle:Vehicle, clip:THREE.Plane):BuiltModel 
   function rod(g:THREE.Group,a:THREE.Vector3,b:THREE.Vector3,r=.025,color=SILVER){const v=b.clone().sub(a);const m=cylinder(g,r,v.length(),a.clone().add(b).multiplyScalar(.5).toArray() as [number,number,number],color);m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),v.normalize());return m;}
   function ring(g:THREE.Group,r:number,y:number,color=DARK){const m=mesh(g,new THREE.TorusGeometry(r,.023,8,48),color,[0,y,0]);m.rotation.x=Math.PI/2;return m;}
   function electronics(g:THREE.Group,y=0,count=6,r=.45){for(let i=0;i<count;i++){let a=i*Math.PI*2/count;box(g,[.23,.18,.2],[Math.cos(a)*r,y,Math.sin(a)*r],i%2?GOLD:GREEN);}}
-  function engine(g:THREE.Group,r:number,y:number,x=0,z=0){const points=[new THREE.Vector2(r*.28,0),new THREE.Vector2(r*.2,-r*.3),new THREE.Vector2(r*.38,-r*.75),new THREE.Vector2(r,-r*1.7)];mesh(g,new THREE.LatheGeometry(points,40),DARK,[x,y,z]);cylinder(g,r*.3,r*.3,[x,y+r*.1,z],GOLD);}
+  function engine(g:THREE.Group,r:number,y:number,x=0,z=0){const points=[[.28,0],[.22,-.18],[.20,-.3],[.25,-.5],[.38,-.8],[.6,-1.18],[.8,-1.48],[1,-1.7]].map(([a,b])=>new THREE.Vector2(r*a,r*b));mesh(g,new THREE.LatheGeometry(points,32),DARK,[x,y,z]);cylinder(g,r*.3,r*.3,[x,y+r*.1,z],GOLD);const lip=mesh(g,new THREE.TorusGeometry(r,r*.025,6,32),SILVER,[x,y-r*1.7,z]);lip.rotation.x=Math.PI/2;}
   function solar(g:THREE.Group,x:number,y:number,w:number,h:number,axis='x'){
-    const panel=box(g,[w,.045,h],[x,y,0],BLUE);panel.rotation.z=axis==='y'?Math.PI/2:0;
-    for(let i=0;i<=8;i++)box(g,[.011,.052,h],[x-w/2+w*i/8,y,0],'#547b97');
-    for(let i=0;i<=4;i++)box(g,[w,.052,.009],[x,y,-h/2+h*i/4],'#547b97');
+    const panel=box(g,[w,.045,h],[x,y,0],BLUE,true);
+    const back=box(g,[w,.01,h],[x,y-.029,0],SILVER,true);panel.attach(back);
+    for(let i=0;i<=8;i++)panel.attach(box(g,[.011,.052,h],[x-w/2+w*i/8,y,0],'#547b97',true));
+    for(let i=0;i<=4;i++)panel.attach(box(g,[w,.052,.009],[x,y,-h/2+h*i/4],'#547b97',true));
+    panel.rotation.z=axis==='y'?Math.PI/2:0;
     return panel;
   }
-  function antenna(g:THREE.Group,y:number,r=.65,x=0){const profile=[];for(let i=0;i<=16;i++){const t=i/16;profile.push(new THREE.Vector2(t*r,.24*t*t));}mesh(g,new THREE.LatheGeometry(profile,48),SILVER,[x,y,0]);rod(g,new THREE.Vector3(x,y,0),new THREE.Vector3(x,y+.48,0),.025);sphere(g,.055,[x,y+.5,0],GOLD);}
+  function antenna(g:THREE.Group,y:number,r=.65,x=0){const profile=[];for(let i=0;i<=16;i++){const t=i/16;profile.push(new THREE.Vector2(t*r,r*.37*t*t));}mesh(g,new THREE.LatheGeometry(profile,40),SILVER,[x,y,0],true);for(let i=0;i<3;i++){const a=i*Math.PI*2/3;rod(g,new THREE.Vector3(x+Math.cos(a)*r*.87,y+r*.28,Math.sin(a)*r*.87),new THREE.Vector3(x,y+r*.72,0),r*.012);}sphere(g,r*.07,[x,y+r*.74,0],GOLD,true);}
 
   // Low-poly details are used only by the two reviewed external configurations.
   // All dimensions below are display units; facets and insulation are schematic.
@@ -68,7 +73,11 @@ export function buildVehicleModel(vehicle:Vehicle, clip:THREE.Plane):BuiltModel 
   }
 
   const id=vehicle.id.toLowerCase(),kind=model.kind;
-  if(id==='tiros-1'){
+  const context={vehicle,model,available,group,mesh,box,cylinder,sphere,rod,ring,electronics,engine,solar,antenna,detailRod,face,loft,SILVER,DARK,GOLD,BLUE,GREEN};
+  const reviewed=buildRocketModel(context)||buildSpacecraftModel(context)||buildSurfaceModel(context);
+  if(reviewed){
+    // Individual, source-reviewed configurations are built in separate modules.
+  }else if(id==='tiros-1'){
     // NASA TIROS: 18-sided flat drum. Exterior ratio follows 42 × 19 inches;
     // camera/electronics placement and antenna lengths remain schematic.
     const r=1.2,h=2*r*model.height/model.diameter;
@@ -463,6 +472,7 @@ export function buildVehicleModel(vehicle:Vehicle, clip:THREE.Plane):BuiltModel 
   }
   // Model-specific functional assemblies. Their placement remains illustrative.
   const has=(partId:string)=>parts.some(p=>p.id===partId);
+  if(!reviewed){
   if(id==='electron'&&available.has('stage-3')&&!has('stage-3')){const kick=group('stage-3',new THREE.Vector3(0,1.8,0));cylinder(kick,.19,.18,[0,2.97,0],DARK);engine(kick,.09,2.87);}
   if(id==='starship'){
     const heat=group('heatshield',new THREE.Vector3(0,1,1.4)),r=model.diameter/model.height*4;
@@ -513,6 +523,7 @@ export function buildVehicleModel(vehicle:Vehicle, clip:THREE.Plane):BuiltModel 
       else if(id.includes('bepi')){cylinder(payload,.55,.8,[0,1.25,0],SILVER,.55,true);}
       else{box(payload,[.5,.45,.45],[.8,-.2,0],DARK,true);for(const sign of [-1,1])rod(payload,new THREE.Vector3(.8,-.4,0),new THREE.Vector3(.8+sign*.4,-.65,sign*.3),.02);}
     }
+  }
   }
   // Every visible part maps to a documented dossier item; fallback is explicitly
   // classified as an illustrative structural grouping by the viewer.

@@ -1,0 +1,97 @@
+{
+  "vehicleId": "iss",
+  "name": "ISS · 国际空间站",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "iss",
+    "configuration": "2011 年主要总装构型示意 · 八组传统太阳翼；不表示当前 iROSA 改装状态",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "区分加压舱段、综合桁架、太阳翼和热控散热器，取消等距重复舱段。",
+      "按八组传统翼面组织中央桅杆和双电池毯，补出 Kibo、Columbus、Cupola 等位置关系。"
+    ],
+    "features": [
+      {
+        "title": "综合桁架",
+        "detail": "横向主桁架为太阳阵列、散热器和外部载荷提供安装基础；它与中央加压舱段并非同一结构。",
+        "partId": "frame",
+        "sourceUrl": "https://www.nasa.gov/international-space-station/integrated-truss-structure/"
+      },
+      {
+        "title": "八组传统太阳翼",
+        "detail": "电源系统采用八组主太阳翼。模型固定为早期总装参考构型；后续 iROSA 增强阵列没有混入这个历史状态。",
+        "partId": "solar",
+        "sourceUrl": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
+      },
+      {
+        "title": "中央实验舱群",
+        "detail": "轴向舱段与横向实验舱组成可通行的加压空间；模型用不同长度和接口方向区分实验舱、节点舱和气闸。",
+        "partId": "body",
+        "sourceUrl": "https://www.nasa.gov/international-space-station/international-space-station-assembly-elements/"
+      }
+    ],
+    "uncertainties": [
+      "未包含来访飞船及每个外部实验装置，不代表某一天的完整驻留清单。",
+      "机械臂与散热器角度用于阅读结构关系；舱段距离和阵列角度不是测绘值。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · 国际空间站总装构件",
+        "url": "https://www.nasa.gov/international-space-station/international-space-station-assembly-elements/"
+      },
+      {
+        "title": "NASA · 国际空间站综合桁架结构",
+        "url": "https://www.nasa.gov/international-space-station/integrated-truss-structure/"
+      },
+      {
+        "title": "NASA · 国际空间站尺寸与电源阵列",
+        "url": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "加压舱段群",
+      "description": "提供生活、科研与通行空间。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
+    },
+    {
+      "id": "frame",
+      "name": "主桁架",
+      "description": "连接大型外部设备和电源结构。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
+    },
+    {
+      "id": "solar",
+      "name": "太阳电池阵列",
+      "description": "为平台供电；新旧阵列在真实构型中共存。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
+    },
+    {
+      "id": "docking",
+      "name": "对接与停泊接口",
+      "description": "连接载人、补给与实验相关航天器。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
+    },
+    {
+      "id": "instruments",
+      "name": "舱内外科学设施",
+      "description": "承载微重力与地球空间环境实验。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
+    },
+    {
+      "id": "crew",
+      "name": "环境控制与生命保障",
+      "description": "维持乘员工作环境，内部布局作功能示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
+    }
+  ]
+}

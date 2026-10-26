@@ -1,0 +1,89 @@
+{
+  "vehicleId": "tianzhou",
+  "name": "天舟一号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "tianzhou",
+    "configuration": "天舟一号两舱构型；展开太阳翼与前端对接",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重做较粗货物舱和较窄推进舱的长度关系",
+      "加入货架功能块、补加储罐与前端对接口"
+    ],
+    "features": [
+      {
+        "title": "两舱结构",
+        "detail": "货物舱与推进舱构成主体，总长 10.6 m、最大直径 3.35 m 的口径来自一号资料。",
+        "partId": "payload",
+        "sourceUrl": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+      },
+      {
+        "title": "展开太阳翼",
+        "detail": "一号展开宽度约 14.9 m，模型突出翼展与舱体之间的尺度差异。",
+        "partId": "solar",
+        "sourceUrl": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+      },
+      {
+        "title": "推进剂补加功能",
+        "detail": "储罐分组提示补加任务；载货与补加接口的功能不能混成普通乘员舱。",
+        "partId": "tank",
+        "sourceUrl": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+      }
+    ],
+    "uncertainties": [
+      "型号迭代后的货舱布局和有效装载能力不能直接继承一号数值。",
+      "储罐、货架及阀门系统是功能级示意，未还原真实容量与布置。"
+    ],
+    "sources": [
+      {
+        "title": "CMSE · 天舟一号两舱布局及展开尺寸",
+        "url": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "payload",
+      "name": "货物舱",
+      "description": "运输补给物资与应用载荷，舱内货架布局为示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+    },
+    {
+      "id": "service",
+      "name": "推进舱",
+      "description": "提供轨道机动与任务资源支持。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+    },
+    {
+      "id": "solar",
+      "name": "两侧太阳翼",
+      "description": "在独立及组合飞行阶段供电。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+    },
+    {
+      "id": "docking",
+      "name": "主动对接机构",
+      "description": "与目标飞行器建立机械及资源连接。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+    },
+    {
+      "id": "tank",
+      "name": "补加与自身推进资源",
+      "description": "资源流转功能公开，内部管路和箱体布置为工程示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+    },
+    {
+      "id": "avionics",
+      "name": "交会测量与航电",
+      "description": "协调相对导航、通信与任务事件。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "vehicleId": "electron",
+  "name": "Electron",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "electron",
+    "configuration": "Electron · 双级主火箭 + Curie Kick Stage · V8 用户指南包络",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "改成黑色细长复合材料箭体与白色标准整流罩。",
+      "保留一级九台、二级一台 Rutherford，增加可单独查看的 Curie 末级。",
+      "区分第二级电源包、内贮箱和整流罩中的载荷安装平台。"
+    ],
+    "features": [
+      {
+        "title": "18 m 主体与 1.2 m 罩体",
+        "detail": "V8 指南给出总长 18 m、最大直径 1.2 m，标准整流罩长 2.5 m；外壳以此包络组织。",
+        "partId": "fairing",
+        "sourceUrl": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      },
+      {
+        "title": "Rutherford 推进组件",
+        "detail": "一级九台发动机与二级单台扩大喷管分别显示。发动机为电泵供给，电源盒只是功能位置标记。",
+        "partId": "engine",
+        "sourceUrl": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      },
+      {
+        "title": "独立 Kick Stage",
+        "detail": "末级含 Curie 发动机、容器和载荷接口。它位于整流罩内，不被当作拉长的第二级箭筒。",
+        "partId": "stage-3",
+        "sourceUrl": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      },
+      {
+        "title": "复合材料外壳与内部贮箱",
+        "detail": "深色外壳用于区分复合材料箭体；剖视显示两级贮箱。未把材质外观当成真实壁厚或铺层。",
+        "partId": "tank",
+        "sourceUrl": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      }
+    ],
+    "uncertainties": [
+      "电池数量、管路、共底结构和具体任务载荷配置未按制造图还原。",
+      "Kick Stage 是本次选定构型，不能与所有 Photon 航天器版本等同。"
+    ],
+    "sources": [
+      {
+        "title": "Rocket Lab · Electron Payload User Guide v8.0，September 2025",
+        "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "fairing",
+      "name": "载荷整流罩",
+      "description": "保护小卫星及其分离装置，具体接口见用户指南。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://rocketlabcorp.com/launch/electron/"
+    },
+    {
+      "id": "stage-1",
+      "name": "碳复合材料一级",
+      "description": "安装九台Rutherford发动机及推进剂贮箱。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://rocketlabcorp.com/launch/electron/"
+    },
+    {
+      "id": "stage-2",
+      "name": "真空二级",
+      "description": "使用真空Rutherford发动机继续加速。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://rocketlabcorp.com/launch/electron/"
+    },
+    {
+      "id": "stage-3",
+      "name": "Kick Stage",
+      "description": "任务相关的轨道部署级；并非所有分析都须将其视为连续上升级。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://rocketlabcorp.com/launch/electron/"
+    },
+    {
+      "id": "engine",
+      "name": "电动泵发动机",
+      "description": "电动泵推进令电能与推进质量耦合。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://rocketlabcorp.com/launch/electron/"
+    },
+    {
+      "id": "tank",
+      "name": "贮箱与电源区",
+      "description": "内部位置简化；电池和贮箱的尺寸不能由外形唯一确定。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://rocketlabcorp.com/launch/electron/"
+    }
+  ]
+}

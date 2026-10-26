@@ -1,0 +1,89 @@
+{
+  "vehicleId": "galileo",
+  "name": "Galileo · 伽利略号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "galileo",
+    "configuration": "高增益天线展开失败后、进入探测器释放前的组合示意",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "高增益天线改为不完全张开的伞骨形态",
+      "区分双自旋平台、两台 RTG 和底部大气探测器"
+    ],
+    "features": [
+      {
+        "title": "未完全展开的天线",
+        "detail": "1991 年高增益天线卡滞，随后以低增益链路维持任务；模型不再默认正常张开的大抛物面。",
+        "partId": "antenna",
+        "sourceUrl": "https://www.jpl.nasa.gov/news/press_kits/gllarpk.pdf"
+      },
+      {
+        "title": "两台 RTG",
+        "detail": "两台电源位于侧向支架上，与 Voyager 三台串列布局不同。",
+        "partId": "service",
+        "sourceUrl": "https://www.jpl.nasa.gov/news/press_kits/gllarpk.pdf"
+      },
+      {
+        "title": "大气进入探测器",
+        "detail": "底部小型进入体是独立探测器；结构组合的时间边界必须说明。",
+        "partId": "payload",
+        "sourceUrl": "https://www.jpl.nasa.gov/news/press_kits/gllarpk.pdf"
+      }
+    ],
+    "uncertainties": [
+      "伞骨开度来自故障形态的简化表达，不复原每根杆的遥测估计角度。",
+      "本构型不等同于 1995 年探测器释放后或木星轨道器最终状态。"
+    ],
+    "sources": [
+      {
+        "title": "NASA/JPL · Galileo 1995 抵达新闻资料，天线故障与结构图",
+        "url": "https://www.jpl.nasa.gov/news/press_kits/gllarpk.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "轨道器平台",
+      "description": "支撑木星长期观测。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/galileo/"
+    },
+    {
+      "id": "antenna",
+      "name": "伞状高增益天线",
+      "description": "设计展开形态示意；真实任务未完全展开。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/mission/galileo/"
+    },
+    {
+      "id": "service",
+      "name": "放射性同位素电源",
+      "description": "支持远离太阳的供电。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/galileo/"
+    },
+    {
+      "id": "payload",
+      "name": "大气进入探测器",
+      "description": "进入木星大气进行现场测量。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/galileo/"
+    },
+    {
+      "id": "instruments",
+      "name": "遥感与环境载荷",
+      "description": "调查木星及卫星系统。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/galileo/"
+    },
+    {
+      "id": "propulsion",
+      "name": "机动与姿控系统",
+      "description": "支持轨道和姿态变化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/galileo/"
+    }
+  ]
+}

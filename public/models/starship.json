@@ -1,0 +1,107 @@
+{
+  "vehicleId": "starship",
+  "name": "Starship / Super Heavy",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "starship",
+    "configuration": "Starship V3 / Super Heavy · 124 m 公开设计包络",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "按 V3 公开更新，将 Super Heavy 栅格舵改为三面，并改成一体式热分离段。",
+      "增加 33 台助推级发动机、上面级三台海平面与三台真空发动机的分组。",
+      "重做不锈钢箭体、四块飞船襟翼、迎风面防热层与尖拱头部。"
+    ],
+    "features": [
+      {
+        "title": "V3 三面栅格舵",
+        "detail": "SpaceX 2026 年 5 月更新说明，Super Heavy V3 从四面栅格舵改为三面，尺寸增大并下移。当前模型选择这一版本。",
+        "partId": "stage-1",
+        "sourceUrl": "https://www.spacex.com/updates/reusability"
+      },
+      {
+        "title": "一体式热分离段",
+        "detail": "V3 更新将此前的一次性保护级间段改成一体式热分离结构。图中保留顶部开口关系，开窗尺寸为示意。",
+        "partId": "stage-1",
+        "sourceUrl": "https://www.spacex.com/updates/reusability"
+      },
+      {
+        "title": "两级发动机布局",
+        "detail": "助推级 33 台按中央与外围组织；飞船三台海平面 Raptor 和三台大喷管 RVac 独立显示。",
+        "partId": "engine",
+        "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+      },
+      {
+        "title": "飞船襟翼与迎风面",
+        "detail": "四块襟翼归属飞船级，深色防热层只覆盖迎风侧及头部相应扇区，不再用整圈黑色外壳代替。",
+        "partId": "heatshield",
+        "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+      }
+    ],
+    "uncertainties": [
+      "Starship 仍在迭代；此模型绑定公开 V3 包络，不将其他版本的高度、舵面与发动机配置混用。",
+      "热防护瓦数量、储罐隔板、头部小贮箱和载荷安装架未获得逐项尺寸依据；模型不代表具体飞行序号。"
+    ],
+    "sources": [
+      {
+        "title": "SpaceX · Starship Design；公开 V3 参数",
+        "url": "https://www.spacex.com/vehicles/starship/design"
+      },
+      {
+        "title": "SpaceX · Introducing Starship V3，2026-05-12",
+        "url": "https://www.spacex.com/updates/reusability"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "payload",
+      "name": "上级载荷区",
+      "description": "具体舱门与载荷布局依任务版本变化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+    },
+    {
+      "id": "stage-1",
+      "name": "Super Heavy",
+      "description": "大型液氧甲烷助推级，公开设计为33台发动机。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+    },
+    {
+      "id": "stage-2",
+      "name": "Starship上级",
+      "description": "兼具推进、运输和返回功能。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+    },
+    {
+      "id": "engine",
+      "name": "Raptor发动机组",
+      "description": "下级与上级版本不同，喷管阵列为示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+    },
+    {
+      "id": "tank",
+      "name": "低温贮箱",
+      "description": "推进剂隔舱、箱底与剩余量均未按真实CAD还原。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+    },
+    {
+      "id": "heatshield",
+      "name": "上级热防护面",
+      "description": "表面热防护与气动襟翼关联返回姿态；细节依试验版本。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+    },
+    {
+      "id": "avionics",
+      "name": "飞控与任务管理",
+      "description": "用抽象控制接口表达，真实软件与控制增益未知。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "vehicleId": "vostok-1",
+  "name": "Vostok 1 · 东方一号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "vostok-1",
+    "configuration": "返回舱与设备舱连接的在轨组合",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "用球形返回舱、双锥设备区和连接支架替换通用锥舱",
+      "补充舷窗、舱口与制动系统位置关系"
+    ],
+    "features": [
+      {
+        "title": "球形返回舱",
+        "detail": "球形密封舱与下方设备舱分开建组；只返回球舱。",
+        "partId": "crew",
+        "sourceUrl": "https://www.technik-museum.de/en/discover/exhibits/vostok-1-spaceship/"
+      },
+      {
+        "title": "设备舱分离",
+        "detail": "设备舱和返回舱的接口在拆分视图中可见；实际飞行曾因连线未断出现分离异常。",
+        "partId": "service",
+        "sourceUrl": "https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1"
+      },
+      {
+        "title": "制动与再入",
+        "detail": "制动推进分组位于设备段，返回后与返回舱分离，不能与着陆缓冲功能混为一谈。",
+        "partId": "propulsion",
+        "sourceUrl": "https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1"
+      }
+    ],
+    "uncertainties": [
+      "本模型没有重演 1961 年分离异常。",
+      "舱内座椅、气瓶及热防护层厚度是功能示意。"
+    ],
+    "sources": [
+      {
+        "title": "Technik Museum · Vostok 两舱结构",
+        "url": "https://www.technik-museum.de/en/discover/exhibits/vostok-1-spaceship/"
+      },
+      {
+        "title": "ESA · Vostok 1 飞行与舱段分离",
+        "url": "https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "crew",
+      "name": "球形返回舱",
+      "description": "提供单人乘员空间和再入压力边界。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1"
+    },
+    {
+      "id": "heatshield",
+      "name": "再入热防护层",
+      "description": "保护返回舱，材质分层与厚度在模型中不作精确复刻。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1"
+    },
+    {
+      "id": "service",
+      "name": "设备舱",
+      "description": "承担飞船在轨支持与设备安装。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1"
+    },
+    {
+      "id": "propulsion",
+      "name": "制动推进系统",
+      "description": "在返回前改变轨道，使返回舱进入大气。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1"
+    },
+    {
+      "id": "avionics",
+      "name": "姿态与时序控制",
+      "description": "协调制动、舱段分离与回收流程。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1"
+    }
+  ]
+}

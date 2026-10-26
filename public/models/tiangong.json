@@ -1,0 +1,97 @@
+{
+  "vehicleId": "tiangong",
+  "name": "天宫空间站",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "tiangong",
+    "configuration": "2022 年三舱 T 字基本构型 · 保留天和原始太阳翼位置",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重建天和轴向核心与问天、梦天两侧实验舱，取消 ISS 式横贯桁架。",
+      "在实验舱远端布置两对大太阳翼，并补出对接方向、机械臂和外部设备平台。"
+    ],
+    "features": [
+      {
+        "title": "三舱 T 字连接",
+        "detail": "天和为主轴，问天和梦天连接在节点舱的两侧。该结构为左右实验舱提供近似对称的布局。",
+        "partId": "body",
+        "sourceUrl": "https://www.cmse.gov.cn/xwzx/202211/t20221107_51360.html"
+      },
+      {
+        "title": "实验舱远端太阳翼",
+        "detail": "两实验舱的太阳翼安装在 T 字横向远端，配合对日定向机构降低相互遮挡；示意角度不代表实际在轨姿态。",
+        "partId": "solar",
+        "sourceUrl": "https://www.cmse.gov.cn/xwzx/202211/t20221107_51357.html"
+      },
+      {
+        "title": "在轨操作机构",
+        "detail": "大小机械臂支持外部操作；模型以关节和杆件表达其功能链，不推断实际驱动器参数。",
+        "partId": "frame",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c10087703/content.html"
+      }
+    ],
+    "uncertainties": [
+      "固定展示 2022 年基本构型，未混合后续天和太阳翼转移及来访飞船。",
+      "太阳翼面积、内部设备和推进器安装坐标没有逐件图纸约束。"
+    ],
+    "sources": [
+      {
+        "title": "中国载人航天 · 三舱 T 字构型与实验舱布置",
+        "url": "https://www.cmse.gov.cn/xwzx/202211/t20221107_51360.html"
+      },
+      {
+        "title": "中国载人航天 · 柔性太阳翼与对日定向机构",
+        "url": "https://www.cmse.gov.cn/xwzx/202211/t20221107_51357.html"
+      },
+      {
+        "title": "国家航天局 · 天宫空间站的设计与应用前景",
+        "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c10087703/content.html"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "天和核心舱",
+      "description": "空间站管理控制中心，承载生活与部分实验功能。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cmse.gov.cn/xwzx/zhxw/202105/t20210507_47814.html"
+    },
+    {
+      "id": "instruments",
+      "name": "问天与梦天实验舱",
+      "description": "提供科学实验和相应支持能力。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cmse.gov.cn/xwzx/zhxw/202105/t20210507_47814.html"
+    },
+    {
+      "id": "solar",
+      "name": "柔性太阳翼",
+      "description": "提供长期任务能源，模型未复刻每块电池片。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cmse.gov.cn/xwzx/zhxw/202105/t20210507_47814.html"
+    },
+    {
+      "id": "docking",
+      "name": "对接与停泊接口",
+      "description": "连接实验舱、神舟及天舟等飞行器。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cmse.gov.cn/xwzx/zhxw/202105/t20210507_47814.html"
+    },
+    {
+      "id": "propulsion",
+      "name": "姿态与轨道支持",
+      "description": "公开功能包含喷气控制、控制力矩陀螺及电推进；位置简化。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c10087703/content.html"
+    },
+    {
+      "id": "frame",
+      "name": "机械臂与外部设施",
+      "description": "支持在轨操作，关节与附件仅按功能示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c10087703/content.html"
+    }
+  ]
+}

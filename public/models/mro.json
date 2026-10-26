@@ -1,0 +1,101 @@
+{
+  "vehicleId": "mro",
+  "name": "Mars Reconnaissance Orbiter",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "mro",
+    "configuration": "双翼、通信反射面与雷达臂展开的轨道器",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核专属双太阳翼、主天线和仪器面",
+      "补充 SHARAD 展开长度及电子箱与天线的区别"
+    ],
+    "features": [
+      {
+        "title": "SHARAD 双管天线",
+        "detail": "约 10 m 天线由两根约 5 m 可折叠管组成，独立于雷达电子箱。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/science-instruments/"
+      },
+      {
+        "title": "通信反射面",
+        "detail": "JPL 给出 3 m 偏置抛物面主反射镜、椭球副反射器与馈源；可见口径与太阳翼跨度不是同一尺寸。",
+        "partId": "antenna",
+        "sourceUrl": "https://descanso.jpl.nasa.gov/DPSummary/MRO_092106.pdf"
+      },
+      {
+        "title": "对地光学与雷达",
+        "detail": "HiRISE 等成像载荷与 SHARAD 探测机制不同；本图保留各功能包络。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/science-instruments/"
+      }
+    ],
+    "uncertainties": [
+      "科学载荷完整显示，不代表全部仪器当前同时工作。",
+      "机内箱体、散热面和推进分组只表达系统功能。",
+      "保留模型的天线馈源仍为简化，未复原偏置光路及副反射器。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · MRO 科学仪器",
+        "url": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/science-instruments/"
+      },
+      {
+        "title": "NASA/JPL DESCANSO · MRO 通信系统设计",
+        "url": "https://descanso.jpl.nasa.gov/DPSummary/MRO_092106.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "轨道器平台",
+      "description": "设备平台与隔热外表的功能包络。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2024/03/44746_mro-launch.pdf"
+    },
+    {
+      "id": "solar",
+      "name": "双太阳翼",
+      "description": "两翼构型与约 13.6 m 总跨度；光伏有效面积不能由展示网格直接计数。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2024/03/44746_mro-launch.pdf"
+    },
+    {
+      "id": "antenna",
+      "name": "高增益天线",
+      "description": "3 m 口径外观；波束和反射面精度未建模。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2024/03/44746_mro-launch.pdf"
+    },
+    {
+      "id": "instruments",
+      "name": "六类科学载荷",
+      "description": "分区显示成像、光谱、辐射计与雷达功能，不代表同时工作的实时状态。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/science-instruments/"
+    },
+    {
+      "id": "propulsion",
+      "name": "轨道与姿态推进",
+      "description": "喷口布局只作为功能示意，不以默认喷口数宣称真实发动机总数。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2024/03/44746_mro-launch.pdf"
+    },
+    {
+      "id": "avionics",
+      "name": "数据与姿态电子学",
+      "description": "机内功能块而非真实线路板复原。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2024/03/44746_mro-launch.pdf"
+    },
+    {
+      "id": "frame",
+      "name": "承力与仪器安装区",
+      "description": "未提供材料、连接刚度及真实模态参数。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/wp-content/uploads/2024/03/44746_mro-launch.pdf"
+    }
+  ]
+}

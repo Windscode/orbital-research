@@ -1,0 +1,97 @@
+{
+  "vehicleId": "starliner",
+  "name": "CST-100 Starliner",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "starliner",
+    "configuration": "乘员舱与服务舱连接的在轨构型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "改为较宽而短的锥舱和扁服务舱",
+      "补充服务舱底面太阳电池与侧向推进器功能区"
+    ],
+    "features": [
+      {
+        "title": "两舱组合",
+        "detail": "上部乘员舱返回地面，下部服务舱提供在轨服务；没有大型展开太阳翼。",
+        "partId": "crew",
+        "sourceUrl": "https://www.asc-csa.gc.ca/eng/vehicles/the-atlas-v-rocket-and-the-cst-100-starliner-spacecraft.asp"
+      },
+      {
+        "title": "服务舱电源",
+        "detail": "太阳电池位于服务舱下部，模型用底面光伏板区分 Dragon 的侧面布置。",
+        "partId": "service",
+        "sourceUrl": "https://www.boeing.com/content/dam/microsites/static/space/starliner/launch/documents/Starliner_Notebook.pdf"
+      },
+      {
+        "title": "分开的推进系统",
+        "detail": "乘员舱与服务舱有不同的姿控组件；显示喷口只是功能群，不冒充完整发动机数量。",
+        "partId": "propulsion",
+        "sourceUrl": "https://www.boeing.com/space/starliner"
+      }
+    ],
+    "uncertainties": [
+      "未按 CFT 后续修改恢复密封件、阀门和喷口详细结构。",
+      "本示意不推导认证状态，也不把舱体外观当成可靠性证据。"
+    ],
+    "sources": [
+      {
+        "title": "CSA · Starliner 乘员舱与服务舱",
+        "url": "https://www.asc-csa.gc.ca/eng/vehicles/the-atlas-v-rocket-and-the-cst-100-starliner-spacecraft.asp"
+      },
+      {
+        "title": "Boeing · Starliner 舱段和推进规格",
+        "url": "https://www.boeing.com/space/starliner"
+      },
+      {
+        "title": "Boeing · Starliner Reporter’s Notebook 总体图",
+        "url": "https://www.boeing.com/content/dam/microsites/static/space/starliner/launch/documents/Starliner_Notebook.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "crew",
+      "name": "乘员舱",
+      "description": "容纳乘员并返回地面，展示CFT两人任务语境。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.boeing.com/space/starliner/launch/archive.html"
+    },
+    {
+      "id": "service",
+      "name": "服务舱",
+      "description": "提供轨道阶段推进及资源，返回前分离。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.boeing.com/space/starliner/launch/archive.html"
+    },
+    {
+      "id": "heatshield",
+      "name": "热防护组件",
+      "description": "承担再入气动加热防护，剖面厚度为示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.boeing.com/space/starliner/launch/archive.html"
+    },
+    {
+      "id": "docking",
+      "name": "对接机构",
+      "description": "用于近站接近与机械连接。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.boeing.com/space/starliner/launch/archive.html"
+    },
+    {
+      "id": "propulsion",
+      "name": "姿轨控系统",
+      "description": "服务舱及返回舱在各自阶段提供姿态控制。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.boeing.com/space/starliner/launch/archive.html"
+    },
+    {
+      "id": "avionics",
+      "name": "飞控与监测设备",
+      "description": "状态估计、故障检测和事件管理的功能分区。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.boeing.com/space/starliner/launch/archive.html"
+    }
+  ]
+}

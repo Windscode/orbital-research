@@ -1,0 +1,103 @@
+{
+  "vehicleId": "falcon-9",
+  "name": "Falcon 9",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "falcon-9",
+    "configuration": "Falcon 9 Block 5 · 标准整流罩 · 支腿与栅格舵收拢示意",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "按照细长双级箭体重做轮廓，区分黑色级间段与直径更大的整流罩。",
+      "一级九机按中央一台、外围八台组织；二级增加单台真空喷管。",
+      "增加收拢支腿、栅格舵格栅、两级贮箱与航电环。"
+    ],
+    "features": [
+      {
+        "title": "标准整流罩",
+        "detail": "采用 5.2 m 外径、13.2 m 总高的公开包络；下部过渡与弧形头部按示意曲面构造。它不是延长整流罩，也不是 Dragon 构型。",
+        "partId": "fairing",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "两级推进布局",
+        "detail": "区分一级九台 Merlin 与二级单台真空发动机。发动机安装空间、外管路及喷管形状为观察功能而简化。",
+        "partId": "engine",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "回收附件",
+        "detail": "显示一级四条收拢支腿及四面收拢栅格舵；这张装配图不把着陆展开状态与在箭整流罩混在一起。",
+        "partId": "legs",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "贮箱与级间段",
+        "detail": "剖切后可分别识别两级推进剂容器。颜色只用于辨认，液位、隔板位置与容积不能从网格反推。",
+        "partId": "tank",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      }
+    ],
+    "uncertainties": [
+      "几何沿用档案 70 m 高度与 3.7 m 芯级直径，级间段、喷管和贮箱纵向位置没有逐项图纸约束。",
+      "网格表现标准运载构型；任务特定的整流罩、热防护、回收方案和载荷需要另建版本。"
+    ],
+    "sources": [
+      {
+        "title": "SpaceX · Falcon User's Guide，2025-05-09；§2、§4.1",
+        "url": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "fairing",
+      "name": "整流罩",
+      "description": "保护载荷穿越大气层；内部可用包络见用户指南。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-9/"
+    },
+    {
+      "id": "stage-1",
+      "name": "一级箭体",
+      "description": "容纳液氧与RP-1推进剂，承担初始上升及任务指定的返回段。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-9/"
+    },
+    {
+      "id": "stage-2",
+      "name": "二级箭体",
+      "description": "单台真空优化Merlin执行入轨与后续机动。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-9/"
+    },
+    {
+      "id": "engine",
+      "name": "Merlin 发动机组",
+      "description": "一级九台发动机；此处喷管位置是结构示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-9/"
+    },
+    {
+      "id": "tank",
+      "name": "推进剂贮箱",
+      "description": "内部液氧与煤油容量和分舱位置未按CAD复刻。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-9/"
+    },
+    {
+      "id": "avionics",
+      "name": "制导航电",
+      "description": "承担状态估计、事件管理及发动机指令，实飞控制律未公开。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-9/"
+    },
+    {
+      "id": "legs",
+      "name": "着陆支腿",
+      "description": "一级回收构型的着陆支撑附件。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-9/"
+    }
+  ]
+}

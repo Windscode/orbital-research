@@ -1,0 +1,96 @@
+{
+  "vehicleId": "pioneer-10",
+  "name": "Pioneer 10 · 先驱者十号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "pioneer-10",
+    "configuration": "自旋稳定的远日探测构型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核并保留两支架四台 RTG 与独立磁强计长臂",
+      "补充天线、自旋轴和姿控喷口的资料关联"
+    ],
+    "features": [
+      {
+        "title": "四台 RTG",
+        "detail": "四台电源安装在两条外伸支架末端，不是 Voyager 三台串列布局。",
+        "partId": "service",
+        "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+      },
+      {
+        "title": "2.74 m 天线",
+        "detail": "高增益反射面的轴向与自旋轴平行，反射面指向决定对地链路。",
+        "partId": "antenna",
+        "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+      },
+      {
+        "title": "独立磁强计臂",
+        "detail": "磁场传感器用长臂远离主体及电源，不能和 RTG 支架合并。",
+        "partId": "frame",
+        "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+      }
+    ],
+    "uncertainties": [
+      "天线真实反射面误差与自旋动力学不由本图给出。",
+      "支架杆件、磁强计臂长度和力学连接为教学简化。"
+    ],
+    "sources": [
+      {
+        "title": "University of Iowa · Pioneer 10 结构与仪器",
+        "url": "https://space.physics.uiowa.edu/pioneer/p10.html"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "六边形设备舱",
+      "description": "在天线后方集中承载工程设备；不公开复原真实舱内机箱。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+    },
+    {
+      "id": "antenna",
+      "name": "2.74 m高增益天线",
+      "description": "支持远日通信；其朝向与自旋轴共同影响地面链路。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+    },
+    {
+      "id": "service",
+      "name": "四台SNAP-19同位素电源",
+      "description": "两对电源经两条外伸支架布置，提供长期电力并向外辐射热量。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+    },
+    {
+      "id": "instruments",
+      "name": "成像光偏振计与科学传感器",
+      "description": "通过扫描获取图像和偏振信息，并与粒子、等离子体等观测互补。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/pioneer-10/"
+    },
+    {
+      "id": "propulsion",
+      "name": "自旋、姿态与轨迹修正推进",
+      "description": "维护自旋与天线指向并实施轨迹修正；不是三轴连续对地姿态模板。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.jpl.nasa.gov/news/study-finds-heat-is-source-of-pioneer-anomaly/"
+    },
+    {
+      "id": "avionics",
+      "name": "指令与遥测电子系统",
+      "description": "协调测量、有限指令存储和数据传输，内部位置为示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+    },
+    {
+      "id": "frame",
+      "name": "磁强计与电源伸展结构",
+      "description": "将磁场传感器与电源远离主体，降低测量干扰并安排热几何。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+    }
+  ]
+}

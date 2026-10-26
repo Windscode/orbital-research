@@ -1,0 +1,2417 @@
+[
+  {
+    "id": "falcon-9",
+    "configuration": "Falcon 9 Block 5 · 标准整流罩 · 支腿与栅格舵收拢示意",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "按照细长双级箭体重做轮廓，区分黑色级间段与直径更大的整流罩。",
+      "一级九机按中央一台、外围八台组织；二级增加单台真空喷管。",
+      "增加收拢支腿、栅格舵格栅、两级贮箱与航电环。"
+    ],
+    "features": [
+      {
+        "title": "标准整流罩",
+        "detail": "采用 5.2 m 外径、13.2 m 总高的公开包络；下部过渡与弧形头部按示意曲面构造。它不是延长整流罩，也不是 Dragon 构型。",
+        "partId": "fairing",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "两级推进布局",
+        "detail": "区分一级九台 Merlin 与二级单台真空发动机。发动机安装空间、外管路及喷管形状为观察功能而简化。",
+        "partId": "engine",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "回收附件",
+        "detail": "显示一级四条收拢支腿及四面收拢栅格舵；这张装配图不把着陆展开状态与在箭整流罩混在一起。",
+        "partId": "legs",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "贮箱与级间段",
+        "detail": "剖切后可分别识别两级推进剂容器。颜色只用于辨认，液位、隔板位置与容积不能从网格反推。",
+        "partId": "tank",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      }
+    ],
+    "uncertainties": [
+      "几何沿用档案 70 m 高度与 3.7 m 芯级直径，级间段、喷管和贮箱纵向位置没有逐项图纸约束。",
+      "网格表现标准运载构型；任务特定的整流罩、热防护、回收方案和载荷需要另建版本。"
+    ],
+    "sources": [
+      {
+        "title": "SpaceX · Falcon User's Guide，2025-05-09；§2、§4.1",
+        "url": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      }
+    ]
+  },
+  {
+    "id": "falcon-heavy",
+    "configuration": "Falcon Heavy · 三芯级 · 标准整流罩功能示意",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "两侧助推器改成完整 Falcon 芯级，增加各自九台发动机、圆钝头锥和回收附件。",
+      "一级发动机总数改为 27 台，同时保持中央芯级与上面级的层级关系。",
+      "增加助推器连接结构、三芯级贮箱及独立上面级真空喷管。"
+    ],
+    "features": [
+      {
+        "title": "三芯级而非小型助推器",
+        "detail": "中央芯级与两侧助推器使用同一尺寸量级。三组九机布局共同组成 27 台一级发动机；助推器不再画成通用固体助推器。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "上面级与整流罩",
+        "detail": "用户指南说明其上面级和整流罩与 Falcon 9 共用。本图选择标准整流罩，不代表所有任务均采用该高度包络。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "助推器与芯级接口",
+        "detail": "侧芯级有头锥、连接段、收拢支腿及栅格舵。连接点位置和杆件截面仅表达连接关系。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "分开的推进剂系统",
+        "detail": "三组一级贮箱在剖视与拆分时独立可辨。没有加入未经证实的跨芯级推进剂输送系统。",
+        "partId": "tank",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      }
+    ],
+    "uncertainties": [
+      "侧芯级是否回收、中央芯级是否安装回收附件取决于任务，本模型不是某次发射的逐件复刻。",
+      "侧芯级连接刚度、内部加强结构与质量分布未公开完整数据。"
+    ],
+    "sources": [
+      {
+        "title": "SpaceX · Falcon User's Guide；Falcon Heavy 概述与发动机布局图",
+        "url": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      }
+    ]
+  },
+  {
+    "id": "electron",
+    "configuration": "Electron · 双级主火箭 + Curie Kick Stage · V8 用户指南包络",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "改成黑色细长复合材料箭体与白色标准整流罩。",
+      "保留一级九台、二级一台 Rutherford，增加可单独查看的 Curie 末级。",
+      "区分第二级电源包、内贮箱和整流罩中的载荷安装平台。"
+    ],
+    "features": [
+      {
+        "title": "18 m 主体与 1.2 m 罩体",
+        "detail": "V8 指南给出总长 18 m、最大直径 1.2 m，标准整流罩长 2.5 m；外壳以此包络组织。",
+        "partId": "fairing",
+        "sourceUrl": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      },
+      {
+        "title": "Rutherford 推进组件",
+        "detail": "一级九台发动机与二级单台扩大喷管分别显示。发动机为电泵供给，电源盒只是功能位置标记。",
+        "partId": "engine",
+        "sourceUrl": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      },
+      {
+        "title": "独立 Kick Stage",
+        "detail": "末级含 Curie 发动机、容器和载荷接口。它位于整流罩内，不被当作拉长的第二级箭筒。",
+        "partId": "stage-3",
+        "sourceUrl": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      },
+      {
+        "title": "复合材料外壳与内部贮箱",
+        "detail": "深色外壳用于区分复合材料箭体；剖视显示两级贮箱。未把材质外观当成真实壁厚或铺层。",
+        "partId": "tank",
+        "sourceUrl": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      }
+    ],
+    "uncertainties": [
+      "电池数量、管路、共底结构和具体任务载荷配置未按制造图还原。",
+      "Kick Stage 是本次选定构型，不能与所有 Photon 航天器版本等同。"
+    ],
+    "sources": [
+      {
+        "title": "Rocket Lab · Electron Payload User Guide v8.0，September 2025",
+        "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      }
+    ]
+  },
+  {
+    "id": "ariane-6",
+    "configuration": "Ariane 64 · 四枚 P120C · 20 m 长整流罩基线",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "明确选用 Ariane 64，保留四助推器，不把 A62 与 A64 混成同一构型。",
+      "按 5.4 m 芯级与 3.4 m 助推器直径关系重做外形。",
+      "增加 Vulcain、Vinci、固体装药示意以及不同尺度的低温贮箱。"
+    ],
+    "features": [
+      {
+        "title": "四枚 P120C",
+        "detail": "A64 采用四枚固体助推器，A62 为两枚。这里显示前者，助推器内的实体颜色只表示装药区，不表达药柱燃面。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/Ariane_6_what_s_it_made_of"
+      },
+      {
+        "title": "Vulcain 2.1 芯级",
+        "detail": "单台低温发动机位于主级底部。主级与助推器分别承担推进功能，拆分时可看出两者连接关系。",
+        "partId": "engine",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/The_engines_of_Ariane_6"
+      },
+      {
+        "title": "Vinci 上面级",
+        "detail": "上面级使用可再启动 Vinci；本模型增加独立喷管和氢氧容器，未以主级圆柱缩小代替全部系统。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/The_engines_of_Ariane_6"
+      },
+      {
+        "title": "长整流罩",
+        "detail": "采用 ESA 所列 20 m 长罩，对应约 62 m 整箭包络。短罩与其他任务构型不在当前装配状态中。",
+        "partId": "fairing",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/Ariane_6_what_s_it_made_of"
+      }
+    ],
+    "uncertainties": [
+      "采用公开基础构型；后续增强版助推器与任务特定载荷适配器没有并入。",
+      "低温贮箱分界、绝热厚度、APU 和增压管路尚未获得足够几何约束。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Ariane 6: what's it made of?",
+        "url": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/Ariane_6_what_s_it_made_of"
+      },
+      {
+        "title": "ESA · The engines of Ariane 6",
+        "url": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/The_engines_of_Ariane_6"
+      }
+    ]
+  },
+  {
+    "id": "sls-block-1",
+    "configuration": "SLS Block 1 · ICPS + Orion 发射组合体",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重做橙色芯级、双固体助推器、收径适配段、ICPS、Orion 与逃逸塔的层级。",
+      "区分四台 RS-25 与 ICPS 的单台 RL10。",
+      "补充五段式助推器环带、芯级氢氧贮箱和外部管路。"
+    ],
+    "features": [
+      {
+        "title": "橙色芯级",
+        "detail": "NASA 给出芯级约 64.6 m 长、8.4 m 直径。图中保留大直径主级与前部氧箱、后部氢箱的关系。",
+        "partId": "stage-1",
+        "sourceUrl": "https://www.nasa.gov/reference/sls-space-launch-system-core-stage/"
+      },
+      {
+        "title": "四台 RS-25",
+        "detail": "四喷管沿发动机段分布，区别于五机的 Saturn V 或单机芯级。喷管轮廓和安装角度为示意。",
+        "partId": "engine",
+        "sourceUrl": "https://www.nasa.gov/reference/sls-space-launch-system-core-stage/"
+      },
+      {
+        "title": "五段固体助推器",
+        "detail": "两侧助推器分别显示五段式壳体关系、头锥与喷管；可单独观察，不以两个缩小液体芯级替代。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.nasa.gov/reference/sls-space-launch-system-solid-rocket-booster/"
+      },
+      {
+        "title": "ICPS 与 Orion",
+        "detail": "Block 1 使用较窄的 ICPS 和过渡适配结构；上方是 Orion 服务舱、乘员舱与发射中止系统的组合示意。",
+        "partId": "payload",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/03/sls-reference-guide-2022-v2-508-0.pdf"
+      }
+    ],
+    "uncertainties": [
+      "这是 Block 1 历史构型参考，不把其他 Block 或后续计划中的上面级混入。",
+      "Orion 罩体、适配器厚度和内部安装结构未按飞行件 CAD 复刻。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · SLS Core Stage",
+        "url": "https://www.nasa.gov/reference/sls-space-launch-system-core-stage/"
+      },
+      {
+        "title": "NASA · SLS Solid Rocket Booster",
+        "url": "https://www.nasa.gov/reference/sls-space-launch-system-solid-rocket-booster/"
+      },
+      {
+        "title": "NASA · SLS Reference Guide 2022",
+        "url": "https://www.nasa.gov/wp-content/uploads/2022/03/sls-reference-guide-2022-v2-508-0.pdf"
+      }
+    ]
+  },
+  {
+    "id": "saturn-v",
+    "configuration": "Saturn V / Apollo · S-IC、S-II、S-IVB 三级发射组合",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重做三级长度关系、S-IVB 收径段与 Apollo 飞船组合体，去掉通用载荷整流罩。",
+      "一级五台 F-1、二级五台 J-2、三级单台 J-2 分别显示。",
+      "增加一级尾翼、外壳识别色块、波纹裙段、仪器环与三组内部贮箱。"
+    ],
+    "features": [
+      {
+        "title": "不同直径的三级",
+        "detail": "NASA 历史数据列出前两级约 10.1 m 直径、S-IVB 约 6.6 m。三级不再显示为等宽小圆柱。",
+        "partId": "stage-3",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "5 / 5 / 1 发动机",
+        "detail": "各级发动机数量分别为五、五、一。两组五机采用中央与外围分布，剖视与拆分可辨认二级发动机。",
+        "partId": "engine",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "Apollo 飞船组合",
+        "detail": "顶端组织为登月舱适配段、服务舱、指令舱与逃逸系统，不采用现代通信卫星的圆钝整流罩。",
+        "partId": "payload",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "仪器环",
+        "detail": "S-IVB 上方的窄环单独归入航电组件，帮助分辨火箭制导仪器单元与上方飞船。",
+        "partId": "avionics",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      }
+    ],
+    "uncertainties": [
+      "黑白色块用于识别 Saturn V 谱系，不表示某一架 SA 序列号的精确涂装。",
+      "级间接头、共底、隔热层和贮箱长度是经过简化的显示几何，不能推导容积或质量。"
+    ],
+    "sources": [
+      {
+        "title": "NASA Historical Data Book Vol. II · Table 1-67",
+        "url": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      }
+    ]
+  },
+  {
+    "id": "starship",
+    "configuration": "Starship V3 / Super Heavy · 124 m 公开设计包络",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "按 V3 公开更新，将 Super Heavy 栅格舵改为三面，并改成一体式热分离段。",
+      "增加 33 台助推级发动机、上面级三台海平面与三台真空发动机的分组。",
+      "重做不锈钢箭体、四块飞船襟翼、迎风面防热层与尖拱头部。"
+    ],
+    "features": [
+      {
+        "title": "V3 三面栅格舵",
+        "detail": "SpaceX 2026 年 5 月更新说明，Super Heavy V3 从四面栅格舵改为三面，尺寸增大并下移。当前模型选择这一版本。",
+        "partId": "stage-1",
+        "sourceUrl": "https://www.spacex.com/updates/reusability"
+      },
+      {
+        "title": "一体式热分离段",
+        "detail": "V3 更新将此前的一次性保护级间段改成一体式热分离结构。图中保留顶部开口关系，开窗尺寸为示意。",
+        "partId": "stage-1",
+        "sourceUrl": "https://www.spacex.com/updates/reusability"
+      },
+      {
+        "title": "两级发动机布局",
+        "detail": "助推级 33 台按中央与外围组织；飞船三台海平面 Raptor 和三台大喷管 RVac 独立显示。",
+        "partId": "engine",
+        "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+      },
+      {
+        "title": "飞船襟翼与迎风面",
+        "detail": "四块襟翼归属飞船级，深色防热层只覆盖迎风侧及头部相应扇区，不再用整圈黑色外壳代替。",
+        "partId": "heatshield",
+        "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+      }
+    ],
+    "uncertainties": [
+      "Starship 仍在迭代；此模型绑定公开 V3 包络，不将其他版本的高度、舵面与发动机配置混用。",
+      "热防护瓦数量、储罐隔板、头部小贮箱和载荷安装架未获得逐项尺寸依据；模型不代表具体飞行序号。"
+    ],
+    "sources": [
+      {
+        "title": "SpaceX · Starship Design；公开 V3 参数",
+        "url": "https://www.spacex.com/vehicles/starship/design"
+      },
+      {
+        "title": "SpaceX · Introducing Starship V3，2026-05-12",
+        "url": "https://www.spacex.com/updates/reusability"
+      }
+    ]
+  },
+  {
+    "id": "new-glenn",
+    "configuration": "New Glenn · 七台 BE-4 / 双 BE-3U 基本型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "单独重做七米直径两级箭体，增加蓝色尾段、前部控制面和后部边条。",
+      "一级七台 BE-4 与二级双 BE-3U 分开建模。",
+      "着陆支撑从通用四腿改成六个收拢支腿位置。"
+    ],
+    "features": [
+      {
+        "title": "七台 BE-4",
+        "detail": "所选基本型一级采用七台 BE-4，六外一内的布局仅表达数量与空间关系。它不是官网另列的 9×4 后续版本。",
+        "partId": "engine",
+        "sourceUrl": "https://www.blueorigin.com/new-glenn"
+      },
+      {
+        "title": "双 BE-3U 上面级",
+        "detail": "氢氧上面级有两台真空发动机，剖切后能看到与一级不同的贮箱尺度与双喷管。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.blueorigin.com/new-glenn"
+      },
+      {
+        "title": "四控制面与六支腿",
+        "detail": "厂家列出四个气动控制面和六个液压支腿。控制面、边条、收拢支腿在模型中分开表达。",
+        "partId": "legs",
+        "sourceUrl": "https://www.blueorigin.com/new-glenn"
+      },
+      {
+        "title": "七米整流罩",
+        "detail": "采用七米外径的宽整流罩，延续基本型约 98 m 高度量级。载荷设备与可用内部包络不由该网格定义。",
+        "partId": "fairing",
+        "sourceUrl": "https://www.blueorigin.com/new-glenn"
+      }
+    ],
+    "uncertainties": [
+      "官网同时介绍后续 9×4 版本；本模型明确保持七台 / 双台基本型，参数不能跨版本拼接。",
+      "控制面铰接、边条轮廓、支腿机构、级间长度和贮箱比例均为功能级示意。"
+    ],
+    "sources": [
+      {
+        "title": "Blue Origin · New Glenn 基本型产品说明",
+        "url": "https://www.blueorigin.com/new-glenn"
+      }
+    ]
+  },
+  {
+    "id": "long-march-5",
+    "configuration": "长征五号 · 两级芯级与四枚液体助推器 · 56.97 m 基线",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "按 5 m 芯级、3.35 m 助推器的比例重做宽体构型。",
+      "助推器改成双喷管液体组件，不再用单喷管固体助推器代替。",
+      "增加两级芯级、四助推器的推进剂分组与连接结构。"
+    ],
+    "features": [
+      {
+        "title": "两级芯级与四助推器",
+        "detail": "火箭院公布芯一、芯二级直径均为 5 m，助推器为 3.35 m。当前模型保留第二级，区别于长征五号 B。",
+        "partId": "stage-2",
+        "sourceUrl": "https://calt.spacechina.com/n482/n498/c4956/content.html"
+      },
+      {
+        "title": "三型发动机",
+        "detail": "助推器使用 YF-100，芯一级使用 YF-77，芯二级使用 YF-75D。模型将助推器双喷管与芯级喷管分别显示。",
+        "partId": "engine",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758968/n6758973/c6808556/content.html"
+      },
+      {
+        "title": "液体助推器内部",
+        "detail": "四枚助推器可见成对推进剂贮箱，与芯级氢氧贮箱用不同相对体积区分。具体分舱和容积未按实物标定。",
+        "partId": "tank",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759011/c6794064/content.html"
+      },
+      {
+        "title": "基线整流罩",
+        "detail": "采用 56.97 m 整箭与约 5.2 m 罩体的常见基线；不使用长征五号 B 的超长空间站舱段罩。",
+        "partId": "fairing",
+        "sourceUrl": "https://calt.spacechina.com/n482/n498/c4956/content.html"
+      }
+    ],
+    "uncertainties": [
+      "部分官方科普页面使用近似尺寸；本模型沿用火箭院列出的 56.97 m 基线，而非某次任务精确构型。",
+      "发动机喷管形状、液体管路和承力接头为示意；转发资料仅用于功能交叉核对，不提供制造几何。"
+    ],
+    "sources": [
+      {
+        "title": "中国运载火箭技术研究院 · 长征五号，2023-10-24（官方检索缓存可读，直连超时）",
+        "url": "https://calt.spacechina.com/n482/n498/c4956/content.html"
+      },
+      {
+        "title": "国家航天局 · 长征五号产品说明，2017-08-02",
+        "url": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759011/c6794064/content.html"
+      },
+      {
+        "title": "国家航天局转载 · 数说长五，2019-12-30（功能交叉核对）",
+        "url": "https://www.cnsa.gov.cn/n6758968/n6758973/c6808556/content.html"
+      }
+    ]
+  },
+  {
+    "id": "h3",
+    "configuration": "H3-24L · 两台 LE-9、四枚 SRB-3、长整流罩",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "明确 24L 构型的发动机、助推器与整流罩组合。",
+      "重做绝热色主级、白色上面级、长整流罩和四枚短固体助推器。",
+      "增加上面级单喷管与分开的氢氧贮箱。"
+    ],
+    "features": [
+      {
+        "title": "24L 命名的含义",
+        "detail": "MHI 说明数字依次表示主级发动机和固体助推器数量，字母表示整流罩规格；24L 因而是两台主机、四枚助推器、长罩。",
+        "partId": "stage-1",
+        "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+      },
+      {
+        "title": "四枚 SRB-3",
+        "detail": "短固体助推器与细长芯级形成不同尺度，不套用长征五号的宽大液体助推器。内部装药不模拟燃烧孔形。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+      },
+      {
+        "title": "长整流罩",
+        "detail": "选择 63 m 级整箭包络与 5.2 m L 罩；不将 57 m 短罩或 5.4 m W 罩拼入同一模型。",
+        "partId": "fairing",
+        "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+      },
+      {
+        "title": "两级低温推进",
+        "detail": "两台 LE-9 与上面级单台 LE-5B-3 的喷管分属各级。贮箱颜色表示功能，绝热结构和内部设备位置为研究示意。",
+        "partId": "engine",
+        "sourceUrl": "https://www.mhi.com/business/products-services/space-defense/launch-service/launch-vehicles"
+      }
+    ],
+    "uncertainties": [
+      "该模型固定 24L，不代表 H3-30S、22L 或24W；每种构型须保留各自版本。",
+      "一级绝热色块、助推器连接位置和箱体比例未从制造图逐项测量。"
+    ],
+    "sources": [
+      {
+        "title": "MHI Technical Review Vol.62 No.4 · Continued Evolution of H3，2025",
+        "url": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+      },
+      {
+        "title": "MHI · Launch Vehicles",
+        "url": "https://www.mhi.com/business/products-services/space-defense/launch-service/launch-vehicles"
+      }
+    ]
+  },
+  {
+    "id": "sputnik-1",
+    "configuration": "在轨展开构型；球壳与四根拖曳天线",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "增加两半球接缝、连接点和成对长短杆天线",
+      "内部无线电、电池与环境测量分组可分别检查"
+    ],
+    "features": [
+      {
+        "title": "球形压力边界",
+        "detail": "外壳保留金属球体轮廓与赤道接缝。壳厚和密封结构不由外形反算。",
+        "partId": "body",
+        "sourceUrl": "https://www.nasa.gov/history/sputnik/sputorig.html"
+      },
+      {
+        "title": "四杆无线电天线",
+        "detail": "四根杆向同一侧张开，按两对表达；并非 Telstar 的环带天线。",
+        "partId": "antenna",
+        "sourceUrl": "https://www.nasa.gov/history/sputnik/sputorig.html"
+      },
+      {
+        "title": "有限能源的无线电卫星",
+        "detail": "电池为无线电发射供能；内部功能块用于解释能源与通信关系，不代表独立科学载荷。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/history/65-years-ago-sputnik-ushers-in-the-space-age/"
+      }
+    ],
+    "uncertainties": [
+      "天线相对球体尺寸用于辨认，不是杆件制造尺寸。",
+      "内部电池数量、支架形状和设备位置未按实物复刻。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Sputnik 的历史与外形",
+        "url": "https://www.nasa.gov/history/sputnik/sputorig.html"
+      },
+      {
+        "title": "NASA · Sputnik 发射与电池寿命",
+        "url": "https://www.nasa.gov/history/65-years-ago-sputnik-ushers-in-the-space-age/"
+      }
+    ]
+  },
+  {
+    "id": "explorer-1",
+    "configuration": "完整卫星细长构型；不含运载火箭",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "按 NASA 203 cm / 15.9 cm 修正约 12.8:1 的细长比例",
+      "细分黑白表面带、科学仪器与电池堆叠分区"
+    ],
+    "features": [
+      {
+        "title": "长径比",
+        "detail": "NASA 给出的长度 203 cm、直径 15.9 cm 约为 12.8:1；替换原先过粗的圆筒。",
+        "partId": "body",
+        "sourceUrl": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+      },
+      {
+        "title": "宇宙射线与微流星体",
+        "detail": "仪器组区分计数器和小型测量单元；外壳形状不能推导出探测效率。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+      },
+      {
+        "title": "电池供电",
+        "detail": "采用内部电池分组，不添加太阳电池翼；电池耗尽与卫星坠落是不同事件。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+      }
+    ],
+    "uncertainties": [
+      "外部测温涂层只作黑白分区，未还原逐条热控图纸。",
+      "卫星总长度口径与推进级是否计入需要保持一致。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Explorer 1 尺寸与科学载荷",
+        "url": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+      }
+    ]
+  },
+  {
+    "id": "vostok-1",
+    "configuration": "返回舱与设备舱连接的在轨组合",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "用球形返回舱、双锥设备区和连接支架替换通用锥舱",
+      "补充舷窗、舱口与制动系统位置关系"
+    ],
+    "features": [
+      {
+        "title": "球形返回舱",
+        "detail": "球形密封舱与下方设备舱分开建组；只返回球舱。",
+        "partId": "crew",
+        "sourceUrl": "https://www.technik-museum.de/en/discover/exhibits/vostok-1-spaceship/"
+      },
+      {
+        "title": "设备舱分离",
+        "detail": "设备舱和返回舱的接口在拆分视图中可见；实际飞行曾因连线未断出现分离异常。",
+        "partId": "service",
+        "sourceUrl": "https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1"
+      },
+      {
+        "title": "制动与再入",
+        "detail": "制动推进分组位于设备段，返回后与返回舱分离，不能与着陆缓冲功能混为一谈。",
+        "partId": "propulsion",
+        "sourceUrl": "https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1"
+      }
+    ],
+    "uncertainties": [
+      "本模型没有重演 1961 年分离异常。",
+      "舱内座椅、气瓶及热防护层厚度是功能示意。"
+    ],
+    "sources": [
+      {
+        "title": "Technik Museum · Vostok 两舱结构",
+        "url": "https://www.technik-museum.de/en/discover/exhibits/vostok-1-spaceship/"
+      },
+      {
+        "title": "ESA · Vostok 1 飞行与舱段分离",
+        "url": "https://www.esa.int/About_Us/50_years_of_ESA/50_years_of_humans_in_space/The_flight_of_Vostok_1"
+      }
+    ]
+  },
+  {
+    "id": "mercury",
+    "configuration": "轨道飞行构型；逃逸塔已分离",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "取消类似现代飞船的通用长服务舱",
+      "增加锥体蒙皮分区、顶部回收圆筒和底部制动包"
+    ],
+    "features": [
+      {
+        "title": "锥舱与回收段",
+        "detail": "乘员锥舱上接窄圆筒；本构型不显示发射阶段使用的逃逸塔。",
+        "partId": "crew",
+        "sourceUrl": "https://www.nasa.gov/image-article/mercury-spacecraft/"
+      },
+      {
+        "title": "钝底热盾",
+        "detail": "热盾独立位于乘员舱宽底，剖视时可检查与压力舱的关系。",
+        "partId": "heatshield",
+        "sourceUrl": "https://www.nasa.gov/image-article/mercury-spacecraft/"
+      },
+      {
+        "title": "制动包",
+        "detail": "底部包件含用于减速的制动火箭；示意突出三只逆向火箭，不等同于完整六火箭包。",
+        "partId": "propulsion",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4319.pdf"
+      }
+    ],
+    "uncertainties": [
+      "制动包也包含分离火箭，本模型未逐喷口还原。",
+      "回收圆筒内的降落伞折叠、绳索与弹射件未建模。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Mercury 舱体与热盾",
+        "url": "https://www.nasa.gov/image-article/mercury-spacecraft/"
+      },
+      {
+        "title": "NASA SP-4319 · Mercury 制动火箭包",
+        "url": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4319.pdf"
+      }
+    ]
+  },
+  {
+    "id": "gemini",
+    "configuration": "交会飞行构型；再入舱与适配器连接",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "区别双子座的细长乘员舱与宽设备适配段",
+      "增加前部交会区、双人座位和适配段热控条带"
+    ],
+    "features": [
+      {
+        "title": "双人再入舱",
+        "detail": "细长锥舱内为两名乘员；舱外窗口及座椅数量与 Mercury 区分。",
+        "partId": "crew",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "设备适配段",
+        "detail": "适配器含设备段与制动段，并在返回前分离；不把它当成可返回乘员舱。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "交会与回收前端",
+        "detail": "前端窄段用于交会、姿态控制和回收相关设备，独立于宽底热盾。",
+        "partId": "docking",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      }
+    ],
+    "uncertainties": [
+      "不同 Gemini 任务的设备与实验配置不同，本图为总体构型。",
+      "对接目标的捕获机构没有按 Agena 细节复刻。"
+    ],
+    "sources": [
+      {
+        "title": "NASA Historical Data Book · Gemini 总体与舱段",
+        "url": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      }
+    ]
+  },
+  {
+    "id": "apollo-csm",
+    "configuration": "Apollo 11 型指令服务舱组合；无逃逸塔与登月舱",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重做 CM 锥体、SM 圆筒与大喷管的相对比例",
+      "补充服务舱散热分区、四组姿控附件和四面高增益天线"
+    ],
+    "features": [
+      {
+        "title": "CM / SM 分界",
+        "detail": "锥形 CM 与圆筒 SM 分组，热盾位于两者之间；返回时仅 CM 再入。",
+        "partId": "crew",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+      },
+      {
+        "title": "推进与服务设备",
+        "detail": "SPS 喷管位于服务舱尾部，推进剂功能块位于服务舱内部。",
+        "partId": "propulsion",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+      },
+      {
+        "title": "对接与通信附件",
+        "detail": "前部对接探针和侧后方天线组件按公开照片表达，不把它们做成对称太阳翼。",
+        "partId": "antenna",
+        "sourceUrl": "https://science.nasa.gov/resource/apollo-11-command-and-service-modules/"
+      }
+    ],
+    "uncertainties": [
+      "Apollo 各 Block 与任务设备存在差异，照片约束只用于总体外观。",
+      "SM 扇区分配、管路及热盾真实叠层没有逐项还原。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Apollo CM / SM 总体构型",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+      },
+      {
+        "title": "NASA · Apollo 11 指令服务舱照片",
+        "url": "https://science.nasa.gov/resource/apollo-11-command-and-service-modules/"
+      }
+    ]
+  },
+  {
+    "id": "soyuz",
+    "configuration": "现代联盟三舱组合；双太阳翼展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "区分球形轨道舱、钟形返回舱和仪器推进舱",
+      "对接装置、太阳翼与主喷口归入相应功能组"
+    ],
+    "features": [
+      {
+        "title": "三舱排列",
+        "detail": "从前到后为轨道舱、返回舱、服务舱；仅中间的返回舱回到地面。",
+        "partId": "body",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+      },
+      {
+        "title": "双翼供电",
+        "detail": "两翼从服务舱展开，不将光伏板安装在返回舱上。",
+        "partId": "solar",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+      },
+      {
+        "title": "对接端",
+        "detail": "对接装置在轨道舱前端，乘员返回舱不是最前面的球舱。",
+        "partId": "docking",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+      }
+    ],
+    "uncertainties": [
+      "联盟各代型号传感器、对接装置与太阳翼细节并不完全相同。",
+      "太阳翼面板分缝和座椅几何只服务结构辨认。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Soyuz 三舱结构",
+        "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/The_Russian_Soyuz_spacecraft"
+      }
+    ]
+  },
+  {
+    "id": "hubble",
+    "configuration": "在轨观测构型；孔径门打开，双侧太阳翼展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "改为开放的光学筒口与铰接孔径门",
+      "增加主次镜、仪器后舱、支撑杆与双天线"
+    ],
+    "features": [
+      {
+        "title": "Cassegrain 光路",
+        "detail": "主镜接收光并反射至次镜，再经主镜中心区域进入后方科学仪器。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/"
+      },
+      {
+        "title": "可维护的仪器平台",
+        "detail": "光学筒与较宽的后部设备区域分开表达，内部框架可以独立显示。",
+        "partId": "body",
+        "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/"
+      },
+      {
+        "title": "隔热外罩与框架",
+        "detail": "外部铝壳与隔热包覆负责环境隔离；内部支架不由外罩直接代替。",
+        "partId": "frame",
+        "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/"
+      }
+    ],
+    "uncertainties": [
+      "太阳阵采用服务任务后常见的刚性面板外观，不复原早期卷式太阳阵。",
+      "镜片曲率、真实光学焦距和光机变形不由该网格表达。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Hubble 光学与机械设计",
+        "url": "https://science.nasa.gov/mission/hubble/observatory/design/"
+      }
+    ]
+  },
+  {
+    "id": "jwst",
+    "configuration": "完全展开观测构型；冷热侧分开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核并保留 18 镜片与五层遮阳膜的专属模型",
+      "补充镜面、热控与支承的逐项资料入口"
+    ],
+    "features": [
+      {
+        "title": "18 块分段镜",
+        "detail": "18 块六角镜片组成主镜；色彩提示金镀层，不能推导真实光学面形。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/webb/webbs-mirrors/"
+      },
+      {
+        "title": "五层遮阳膜",
+        "detail": "层间隔与边缘可在拆分中辨识；厚度和间距为展示而夸大。",
+        "partId": "heatshield",
+        "sourceUrl": "https://science.nasa.gov/mission/webb/webbs-sunshield/"
+      },
+      {
+        "title": "独立的次镜支撑",
+        "detail": "次镜在外伸支架末端，与主镜背板及展开塔形成不同结构层次。",
+        "partId": "frame",
+        "sourceUrl": "https://science.nasa.gov/mission/webb/webbs-mirrors/"
+      }
+    ],
+    "uncertainties": [
+      "显示的是展开后的结构，不包含折叠运动学与锁止状态。",
+      "膜张力、镜片位姿和科学仪器光学处方未建模。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Webb 的镜面系统",
+        "url": "https://science.nasa.gov/mission/webb/webbs-mirrors/"
+      },
+      {
+        "title": "NASA · Webb 五层遮阳膜",
+        "url": "https://science.nasa.gov/mission/webb/webbs-sunshield/"
+      }
+    ]
+  },
+  {
+    "id": "voyager-1",
+    "configuration": "历史行星探测硬件构型；仪器展示不代表当前开机状态",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "替换圆筒探测器模板为十边形平台和大口径天线",
+      "三台 RTG 沿同一支臂串列，科学扫描平台与磁强计臂分开"
+    ],
+    "features": [
+      {
+        "title": "十边形设备平台",
+        "detail": "NASA 将平台描述为十边形盒体，各边容纳电子设备舱。",
+        "partId": "body",
+        "sourceUrl": "https://science.nasa.gov/mission/voyager/spacecraft/"
+      },
+      {
+        "title": "三台串列 RTG",
+        "detail": "三台电源在一条展开臂上首尾排列，避免做成三根独立竖筒。",
+        "partId": "service",
+        "sourceUrl": "https://science.nasa.gov/mission/voyager/spacecraft/"
+      },
+      {
+        "title": "天线与扫描平台",
+        "detail": "3.7 m 高增益天线和侧向扫描平台是不同部件；科学臂与远伸磁强计臂分别表达。",
+        "partId": "antenna",
+        "sourceUrl": "https://science.nasa.gov/mission/voyager/spacecraft/"
+      }
+    ],
+    "uncertainties": [
+      "磁强计臂长度为显示比例，未恢复实际柔性和格架杆件尺寸。",
+      "历史成像载荷仍显示在模型中，不宣称其目前工作。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Voyager 平台、天线及三台 RTG",
+        "url": "https://science.nasa.gov/mission/voyager/spacecraft/"
+      }
+    ]
+  },
+  {
+    "id": "cassini",
+    "configuration": "Cassini–Huygens 分离前组合体",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "增加高柱状平台、顶置天线与底部三台 RTG",
+      "Huygens 放在平台侧面，保留遥感托盘和外伸磁强计臂"
+    ],
+    "features": [
+      {
+        "title": "轨道器与着陆探测器",
+        "detail": "Huygens 是附在轨道器侧面的独立探测器，分离后进入 Titan。",
+        "partId": "payload",
+        "sourceUrl": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+      },
+      {
+        "title": "三台同位素电源",
+        "detail": "三台 RTG 支撑远日运行，模型没有太阳电池翼。",
+        "partId": "service",
+        "sourceUrl": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+      },
+      {
+        "title": "通信与科学载荷",
+        "detail": "高增益天线位于平台上方，侧部遥感设备与外伸科学臂独立。",
+        "partId": "antenna",
+        "sourceUrl": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+      }
+    ],
+    "uncertainties": [
+      "本组合不代表 Huygens 分离后的 Cassini 外观。",
+      "仪器托盘、热控百叶与两个主发动机的包络均是简化形状。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Cassini 轨道器与 Huygens",
+        "url": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+      }
+    ]
+  },
+  {
+    "id": "galileo",
+    "configuration": "高增益天线展开失败后、进入探测器释放前的组合示意",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "高增益天线改为不完全张开的伞骨形态",
+      "区分双自旋平台、两台 RTG 和底部大气探测器"
+    ],
+    "features": [
+      {
+        "title": "未完全展开的天线",
+        "detail": "1991 年高增益天线卡滞，随后以低增益链路维持任务；模型不再默认正常张开的大抛物面。",
+        "partId": "antenna",
+        "sourceUrl": "https://www.jpl.nasa.gov/news/press_kits/gllarpk.pdf"
+      },
+      {
+        "title": "两台 RTG",
+        "detail": "两台电源位于侧向支架上，与 Voyager 三台串列布局不同。",
+        "partId": "service",
+        "sourceUrl": "https://www.jpl.nasa.gov/news/press_kits/gllarpk.pdf"
+      },
+      {
+        "title": "大气进入探测器",
+        "detail": "底部小型进入体是独立探测器；结构组合的时间边界必须说明。",
+        "partId": "payload",
+        "sourceUrl": "https://www.jpl.nasa.gov/news/press_kits/gllarpk.pdf"
+      }
+    ],
+    "uncertainties": [
+      "伞骨开度来自故障形态的简化表达，不复原每根杆的遥测估计角度。",
+      "本构型不等同于 1995 年探测器释放后或木星轨道器最终状态。"
+    ],
+    "sources": [
+      {
+        "title": "NASA/JPL · Galileo 1995 抵达新闻资料，天线故障与结构图",
+        "url": "https://www.jpl.nasa.gov/news/press_kits/gllarpk.pdf"
+      }
+    ]
+  },
+  {
+    "id": "new-horizons",
+    "configuration": "巡航 / 飞掠硬件构型；单台 RTG",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "以非对称楔形设备平台替换通用圆筒",
+      "增加单侧 RTG、顶置天线和侧向仪器孔径"
+    ],
+    "features": [
+      {
+        "title": "紧凑非对称平台",
+        "detail": "机体与同轴天线在空间上紧凑组合；外包络采用公开构型示意。",
+        "partId": "body",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2015/03/139889main_presskit12_05.pdf"
+      },
+      {
+        "title": "单台 RTG",
+        "detail": "任务只用一台同位素电源，不能套用 Voyager 的三台或 Galileo 的两台。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2015/03/139889main_presskit12_05.pdf"
+      },
+      {
+        "title": "七仪器任务",
+        "detail": "相机与粒子仪器孔径以功能分区表示；LORRI 等不能用统一小圆盘代替。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2015/03/139889main_presskit12_05.pdf"
+      }
+    ],
+    "uncertainties": [
+      "相机孔径、焦距和光轴安装角没有按标定文件复原。",
+      "机体内部储罐与电子机箱位置属于工程示意。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · New Horizons 2005 发射新闻资料",
+        "url": "https://www.nasa.gov/wp-content/uploads/2015/03/139889main_presskit12_05.pdf"
+      }
+    ]
+  },
+  {
+    "id": "parker-solar-probe",
+    "configuration": "近近日点的太阳阵收拢示意；热盾面朝太阳",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "突出宽热盾、小型背阴平台与收拢的太阳阵",
+      "将外露场探针、尾部磁场测量臂和受保护设备分开"
+    ],
+    "features": [
+      {
+        "title": "热防护罩",
+        "detail": "白色迎日面与背阴平台分离；公开 TPS 约 2.4 m 口径、115 mm 厚。",
+        "partId": "heatshield",
+        "sourceUrl": "https://www.nasa.gov/missions/parker-solar-probe/traveling-to-the-sun-why-wont-parker-solar-probe-melt/"
+      },
+      {
+        "title": "太阳阵收拢",
+        "detail": "靠近太阳时，大部分太阳阵藏入热盾阴影，不能固定画成完全展开的大双翼。",
+        "partId": "solar",
+        "sourceUrl": "https://www.nasa.gov/missions/parker-solar-probe/traveling-to-the-sun-why-wont-parker-solar-probe-melt/"
+      },
+      {
+        "title": "外露测量",
+        "detail": "部分测量需要伸出热盾阴影；受保护平台与外露探测端必须分别理解。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.nasa.gov/missions/parker-solar-probe/traveling-to-the-sun-why-wont-parker-solar-probe-melt/"
+      }
+    ],
+    "uncertainties": [
+      "展示收拢关系，不是特定轨道时刻的关节角与阴影求解结果。",
+      "水冷回路、真实热流和仪器耐温参数没有由外形反推。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Parker 热盾与太阳阵冷却",
+        "url": "https://www.nasa.gov/missions/parker-solar-probe/traveling-to-the-sun-why-wont-parker-solar-probe-melt/"
+      }
+    ]
+  },
+  {
+    "id": "rosetta",
+    "configuration": "Philae 分离前；两条五片太阳翼展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "以方箱平台和十片长太阳阵替换通用短双翼",
+      "高增益天线与 Philae 放在相对两面"
+    ],
+    "features": [
+      {
+        "title": "相对面的天线与 Philae",
+        "detail": "ESA 明确天线在平台一侧、着陆器在相反侧；模型按这一关系组织。",
+        "partId": "payload",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+      },
+      {
+        "title": "五片一翼",
+        "detail": "每翼五片、两翼总跨度约 32 m，强调深空太阳能平台的巨大翼展。",
+        "partId": "solar",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+      },
+      {
+        "title": "载荷与平台分层",
+        "detail": "科学仪器位于平台上方，服务设备位于下部，避免一个无分区的圆柱替代。",
+        "partId": "body",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+      }
+    ],
+    "uncertainties": [
+      "显示 Philae 尚未分离的外观，不代表彗星表面状态。",
+      "翼片尺寸、展开铰链和着陆器折叠腿均经简化。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Rosetta 平台、太阳翼和 Philae 布局",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+      }
+    ]
+  },
+  {
+    "id": "bepicolombo",
+    "configuration": "历史巡航组合体：MTM、MPO、MOSIF 与 Mio；非当前实时装配状态",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "将单体探测器拆成四层任务组件",
+      "加入 MTM 长太阳翼、离子推进端面与 Mio 周围遮阳结构"
+    ],
+    "features": [
+      {
+        "title": "四层堆叠",
+        "detail": "自下向上是 MTM、MPO、MOSIF 与 Mio；MOSIF 不属于另一个独立轨道器。",
+        "partId": "payload",
+        "sourceUrl": "https://www.esa.int/ESA_Multimedia/Images/2017/04/BepiColombo_exploded_view"
+      },
+      {
+        "title": "电推进运输模块",
+        "detail": "MTM 在巡航阶段提供太阳电推进，不能将它的太阳翼归入 Mio 本体。",
+        "partId": "service",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/Mercury_Transfer_Module"
+      },
+      {
+        "title": "不同轨道器",
+        "detail": "MPO 与 Mio 是功能与构型不同的科学航天器，巡航时组合运输。",
+        "partId": "body",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/BepiColombo_factsheet"
+      }
+    ],
+    "uncertainties": [
+      "这是可研究层间接口的历史巡航配置，不能用来表示当日飞行状态。",
+      "MOSIF 开口和 Mio 遮挡程度为观察而简化，未建立真实热辐射模型。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · BepiColombo 组合体分解图",
+        "url": "https://www.esa.int/ESA_Multimedia/Images/2017/04/BepiColombo_exploded_view"
+      },
+      {
+        "title": "ESA · Mercury Transfer Module",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/Mercury_Transfer_Module"
+      },
+      {
+        "title": "ESA · BepiColombo 巡航组合体规格",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/BepiColombo_factsheet"
+      }
+    ]
+  },
+  {
+    "id": "juice",
+    "configuration": "太阳阵及科学伸展臂展开构型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "两翼各五片，改成十字形太阳阵",
+      "区分高增益天线、长科学臂与侧向仪器包"
+    ],
+    "features": [
+      {
+        "title": "十片十字形太阳阵",
+        "detail": "每翼五片构成十字形，两翼总面积约 85 m²；不再套用普通矩形双翼。",
+        "partId": "solar",
+        "sourceUrl": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Juice_solar_array_deployment_test"
+      },
+      {
+        "title": "通信与供电尺度",
+        "detail": "2.5 m 高增益天线和面向木星距离的太阳阵分别承担通信与供能。",
+        "partId": "antenna",
+        "sourceUrl": "https://juice.stp.isas.jaxa.jp/spacecraft_en/"
+      },
+      {
+        "title": "远伸场测量",
+        "detail": "10.6 m 磁强计臂把传感器送离平台磁场干扰；外段两只传感器相距约 3 m。模型保留外伸安装关系。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.esa.int/ESA_Multimedia/Images/2023/04/Juice_s_first_taste_of_science_from_space"
+      }
+    ],
+    "uncertainties": [
+      "长臂尺寸为归一化展示，不能计算真实惯量与模态。",
+      "每个探针和雷达展开机构的铰链、线缆与锁定状态未逐项建模。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Juice 太阳阵展开试验",
+        "url": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Juice_solar_array_deployment_test"
+      },
+      {
+        "title": "JAXA · JUICE 平台与科学载荷",
+        "url": "https://juice.stp.isas.jaxa.jp/spacecraft_en/"
+      },
+      {
+        "title": "ESA · Juice 磁强计臂展开与首批数据",
+        "url": "https://www.esa.int/ESA_Multimedia/Images/2023/04/Juice_s_first_taste_of_science_from_space"
+      }
+    ]
+  },
+  {
+    "id": "dragon-2",
+    "configuration": "Crew Dragon 近距交会构型；鼻锥打开、货舱连接",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重做圆弧锥舱与长圆筒货舱",
+      "增加半侧太阳电池、尾翼、侧部推进器和打开鼻锥"
+    ],
+    "features": [
+      {
+        "title": "密封舱与非密封货舱",
+        "detail": "下方 trunk 属于非密封货物与结构支持区，返回大气前分离。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/commercial-crew-program-press-kit/"
+      },
+      {
+        "title": "货舱表面供电",
+        "detail": "太阳电池覆盖货舱的一半外表面，不采用 Dragon 1 的可展开双太阳翼。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/commercial-crew-program-press-kit/"
+      },
+      {
+        "title": "对接端与逃逸推进",
+        "detail": "对接端在打开的鼻锥下；侧部推进器是载人型重要特征，不与货运型混用。",
+        "partId": "docking",
+        "sourceUrl": "https://www.nasa.gov/commercial-crew-program-press-kit/"
+      }
+    ],
+    "uncertainties": [
+      "本图明确选择 Crew Dragon，不代表 Cargo Dragon 的尾翼和推进配置。",
+      "喷口口径、乘员座椅间距和货舱有效容积并非 CAD 参数。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Commercial Crew Press Kit / Crew Dragon",
+        "url": "https://www.nasa.gov/commercial-crew-program-press-kit/"
+      }
+    ]
+  },
+  {
+    "id": "starliner",
+    "configuration": "乘员舱与服务舱连接的在轨构型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "改为较宽而短的锥舱和扁服务舱",
+      "补充服务舱底面太阳电池与侧向推进器功能区"
+    ],
+    "features": [
+      {
+        "title": "两舱组合",
+        "detail": "上部乘员舱返回地面，下部服务舱提供在轨服务；没有大型展开太阳翼。",
+        "partId": "crew",
+        "sourceUrl": "https://www.asc-csa.gc.ca/eng/vehicles/the-atlas-v-rocket-and-the-cst-100-starliner-spacecraft.asp"
+      },
+      {
+        "title": "服务舱电源",
+        "detail": "太阳电池位于服务舱下部，模型用底面光伏板区分 Dragon 的侧面布置。",
+        "partId": "service",
+        "sourceUrl": "https://www.boeing.com/content/dam/microsites/static/space/starliner/launch/documents/Starliner_Notebook.pdf"
+      },
+      {
+        "title": "分开的推进系统",
+        "detail": "乘员舱与服务舱有不同的姿控组件；显示喷口只是功能群，不冒充完整发动机数量。",
+        "partId": "propulsion",
+        "sourceUrl": "https://www.boeing.com/space/starliner"
+      }
+    ],
+    "uncertainties": [
+      "未按 CFT 后续修改恢复密封件、阀门和喷口详细结构。",
+      "本示意不推导认证状态，也不把舱体外观当成可靠性证据。"
+    ],
+    "sources": [
+      {
+        "title": "CSA · Starliner 乘员舱与服务舱",
+        "url": "https://www.asc-csa.gc.ca/eng/vehicles/the-atlas-v-rocket-and-the-cst-100-starliner-spacecraft.asp"
+      },
+      {
+        "title": "Boeing · Starliner 舱段和推进规格",
+        "url": "https://www.boeing.com/space/starliner"
+      },
+      {
+        "title": "Boeing · Starliner Reporter’s Notebook 总体图",
+        "url": "https://www.boeing.com/content/dam/microsites/static/space/starliner/launch/documents/Starliner_Notebook.pdf"
+      }
+    ]
+  },
+  {
+    "id": "orion",
+    "configuration": "乘员舱与欧洲服务舱结构研究构型；四翼展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "宽底乘员舱、独立热盾和服务舱分层",
+      "改为 X 形四条三片太阳翼"
+    ],
+    "features": [
+      {
+        "title": "四翼三片布局",
+        "detail": "欧洲服务舱有四条太阳翼，每翼三片，区别于双翼飞船。",
+        "partId": "solar",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/Orion/European_Service_Module_Power"
+      },
+      {
+        "title": "宽底热盾",
+        "detail": "乘员舱底部热盾独立建组，热盾下方服务舱不是返回舱的一部分。",
+        "partId": "heatshield",
+        "sourceUrl": "https://www.nasa.gov/reference/crew-module/"
+      },
+      {
+        "title": "舱门与前端",
+        "detail": "侧舱门、顶部接口与压力舱分别表达；顶部附件不代表所有 Artemis 任务完全相同。",
+        "partId": "crew",
+        "sourceUrl": "https://www.nasa.gov/reference/crew-module/"
+      }
+    ],
+    "uncertainties": [
+      "对接端为系统研究示意，特定任务的安装状态需查任务资料。",
+      "热盾格块、内骨架、推进剂储箱和服务舱包覆没有制造级尺寸。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Orion 欧洲服务舱电源",
+        "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/Orion/European_Service_Module_Power"
+      },
+      {
+        "title": "NASA · Orion 乘员舱、热盾与舱门",
+        "url": "https://www.nasa.gov/reference/crew-module/"
+      }
+    ]
+  },
+  {
+    "id": "shenzhou",
+    "configuration": "神舟九号以后对接型三舱关系；不含早期轨道舱太阳翼",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "圆桶轨道舱与钟形返回舱分开",
+      "太阳翼安装在推进舱，前端突出对接区"
+    ],
+    "features": [
+      {
+        "title": "圆桶轨道舱",
+        "detail": "神舟轨道舱是圆桶形，与联盟的近球形轨道舱有明显外形差异。",
+        "partId": "body",
+        "sourceUrl": "https://www.cmse.gov.cn/art/2015/9/9/art_944_20615.html"
+      },
+      {
+        "title": "中段返回舱",
+        "detail": "钟形返回舱是乘员上升与返回地面的主要舱段，不能和最前方轨道舱混用。",
+        "partId": "crew",
+        "sourceUrl": "https://www.cmse.gov.cn/art/2015/9/9/art_944_20615.html"
+      },
+      {
+        "title": "对接型任务边界",
+        "detail": "本档案参考神舟九号总体资料；早期独立留轨版本的太阳翼配置不同。",
+        "partId": "docking",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+      }
+    ],
+    "uncertainties": [
+      "结构说明页同时介绍过早期留轨构型，不能把其双对太阳翼直接套入对接型。",
+      "舱体尺寸按视觉归一化，设备与管线安装位置未公开复原。"
+    ],
+    "sources": [
+      {
+        "title": "CMSE · 神舟飞船舱段与系统组成",
+        "url": "https://www.cmse.gov.cn/art/2015/9/9/art_944_20615.html"
+      },
+      {
+        "title": "CNSA · 神舟九号总体规格",
+        "url": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+      }
+    ]
+  },
+  {
+    "id": "tianzhou",
+    "configuration": "天舟一号两舱构型；展开太阳翼与前端对接",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重做较粗货物舱和较窄推进舱的长度关系",
+      "加入货架功能块、补加储罐与前端对接口"
+    ],
+    "features": [
+      {
+        "title": "两舱结构",
+        "detail": "货物舱与推进舱构成主体，总长 10.6 m、最大直径 3.35 m 的口径来自一号资料。",
+        "partId": "payload",
+        "sourceUrl": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+      },
+      {
+        "title": "展开太阳翼",
+        "detail": "一号展开宽度约 14.9 m，模型突出翼展与舱体之间的尺度差异。",
+        "partId": "solar",
+        "sourceUrl": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+      },
+      {
+        "title": "推进剂补加功能",
+        "detail": "储罐分组提示补加任务；载货与补加接口的功能不能混成普通乘员舱。",
+        "partId": "tank",
+        "sourceUrl": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+      }
+    ],
+    "uncertainties": [
+      "型号迭代后的货舱布局和有效装载能力不能直接继承一号数值。",
+      "储罐、货架及阀门系统是功能级示意，未还原真实容量与布置。"
+    ],
+    "sources": [
+      {
+        "title": "CMSE · 天舟一号两舱布局及展开尺寸",
+        "url": "https://www.cmse.gov.cn/xwzx/yzjz/201702/t20170214_45078.html"
+      }
+    ]
+  },
+  {
+    "id": "tianwen-1",
+    "configuration": "着陆巡视器分离后的环绕器示意",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "六面平台、双翼与侧向大天线形成独立轮廓",
+      "相机、雷达和磁场测量臂从通用仪器箱中分开"
+    ],
+    "features": [
+      {
+        "title": "环绕器与着陆任务分离",
+        "detail": "本模型只显示环绕器，祝融号和进入舱不再附在其上。",
+        "partId": "body",
+        "sourceUrl": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+      },
+      {
+        "title": "多目标指向",
+        "detail": "太阳翼对日、高增益天线对地、中继链路对巡视器是不同指向需求。",
+        "partId": "antenna",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758968/n6758973/c6811445/content.html"
+      },
+      {
+        "title": "七类环绕载荷",
+        "detail": "相机、光谱、雷达和粒子磁场仪器分工不同，不能用模型中的可见孔径计数科学仪器总数。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+      }
+    ],
+    "uncertainties": [
+      "雷达臂和磁强计臂外伸位置为辨认关系，未读取安装矩阵。",
+      "本图不显示真实观测时刻的太阳翼、天线转角。"
+    ],
+    "sources": [
+      {
+        "title": "国家空间科学数据中心 · 天问一号科学仪器",
+        "url": "https://www.nssdc.ac.cn/nssdc_zh/html/task/tianwen1.html"
+      },
+      {
+        "title": "CNSA · 天问一号多目标指向控制",
+        "url": "https://www.cnsa.gov.cn/n6758968/n6758973/c6811445/content.html"
+      }
+    ]
+  },
+  {
+    "id": "hayabusa2",
+    "configuration": "采样任务硬件构型；太阳翼与采样喇叭展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "将单一抛物面换为两块平面高增益天线",
+      "新增采样喇叭、侧面离子发动机组与返回舱"
+    ],
+    "features": [
+      {
+        "title": "平面高增益天线",
+        "detail": "X 波段与 Ka 波段天线是平面阵列，不能沿用初代 Hayabusa 的单个抛物面。",
+        "partId": "antenna",
+        "sourceUrl": "https://www.nec.com/en/global/techrep/journal/g21/n01/210130.html"
+      },
+      {
+        "title": "上下表面分工",
+        "detail": "顶部太阳阵与通信面面向日地，底部采样喇叭及部分载荷面向小行星。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.nec.com/en/global/techrep/journal/g21/n01/210130.html"
+      },
+      {
+        "title": "返回样品与离子推进",
+        "detail": "采样喇叭、返回舱和离子推进组有不同任务功能，分组独立。",
+        "partId": "payload",
+        "sourceUrl": "https://www.isas.jaxa.jp/visit/pdf/en/Hayabusa2_1_2.pdf"
+      }
+    ],
+    "uncertainties": [
+      "图中采样喇叭未建模弹性波纹段及弹丸机构。",
+      "返航、释放返回舱之后的外观与此构型不同。"
+    ],
+    "sources": [
+      {
+        "title": "NEC · Hayabusa2 系统设计与运行结果",
+        "url": "https://www.nec.com/en/global/techrep/journal/g21/n01/210130.html"
+      },
+      {
+        "title": "JAXA · Hayabusa2 结构标注图",
+        "url": "https://www.isas.jaxa.jp/visit/pdf/en/Hayabusa2_1_2.pdf"
+      }
+    ]
+  },
+  {
+    "id": "mangalyaan",
+    "configuration": "MOM 环火星构型；单侧三片太阳翼",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "纠正通用探测器代码强制生成至少两翼的问题",
+      "采用单侧三片翼、改进 I-1K 箱体与主发动机"
+    ],
+    "features": [
+      {
+        "title": "单翼三片",
+        "detail": "ISRO/URSC 明确为 Single Solar Array，三片各 1.8 m × 1.4 m；不应绘制成对称双翼。",
+        "partId": "solar",
+        "sourceUrl": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+      },
+      {
+        "title": "改进 I-1K 平台",
+        "detail": "主体采用铝与 CFRP 夹层结构的改进平台，外形不应套用圆柱深空探测器。",
+        "partId": "body",
+        "sourceUrl": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+      },
+      {
+        "title": "主发动机与姿控",
+        "detail": "440 N 主发动机、八个推力器和四个反作用轮分担不同控制功能。",
+        "partId": "propulsion",
+        "sourceUrl": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+      }
+    ],
+    "uncertainties": [
+      "模型未逐一表达八个真实喷口；喷口与内部电子学只作功能包络。",
+      "公开在轨发电指标不能直接作为恒定功率输入。"
+    ],
+    "sources": [
+      {
+        "title": "ISRO/URSC · MOM 电源与推进配置",
+        "url": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+      }
+    ]
+  },
+  {
+    "id": "mariner-4",
+    "configuration": "四片太阳阵展开的历史飞掠构型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核并保留八边形平台和四片阵列的专属模型",
+      "补充推进、姿控与有效展开尺寸的引用"
+    ],
+    "features": [
+      {
+        "title": "八边形平台与四翼",
+        "detail": "保留早期行星探测器的四片径向太阳阵，避免退回现代双翼模板。",
+        "partId": "body",
+        "sourceUrl": "https://science.nasa.gov/mission/mariner-4/"
+      },
+      {
+        "title": "太阳能供电",
+        "detail": "历史规格列出 6.3 m² 总太阳阵面积；模型网格不逐片复刻 28,224 个电池。",
+        "partId": "solar",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+      },
+      {
+        "title": "中途修正与姿控",
+        "detail": "225 N 肼推进和 12 个氮气喷口是不同系统，不能由一只尾喷管代表全部。",
+        "partId": "propulsion",
+        "sourceUrl": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+      }
+    ],
+    "uncertainties": [
+      "轨道修正发动机与姿控细喷口的安装细节仍为简化。",
+      "总高度与展开宽度需分别读取，不能只用主体尺寸代替。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Mariner 4",
+        "url": "https://science.nasa.gov/mission/mariner-4/"
+      },
+      {
+        "title": "NASA NSSDCA · Mariner 4 规格",
+        "url": "https://nssdc.gsfc.nasa.gov/planetary/mars/m4spec.html"
+      }
+    ]
+  },
+  {
+    "id": "pioneer-10",
+    "configuration": "自旋稳定的远日探测构型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核并保留两支架四台 RTG 与独立磁强计长臂",
+      "补充天线、自旋轴和姿控喷口的资料关联"
+    ],
+    "features": [
+      {
+        "title": "四台 RTG",
+        "detail": "四台电源安装在两条外伸支架末端，不是 Voyager 三台串列布局。",
+        "partId": "service",
+        "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+      },
+      {
+        "title": "2.74 m 天线",
+        "detail": "高增益反射面的轴向与自旋轴平行，反射面指向决定对地链路。",
+        "partId": "antenna",
+        "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+      },
+      {
+        "title": "独立磁强计臂",
+        "detail": "磁场传感器用长臂远离主体及电源，不能和 RTG 支架合并。",
+        "partId": "frame",
+        "sourceUrl": "https://space.physics.uiowa.edu/pioneer/p10.html"
+      }
+    ],
+    "uncertainties": [
+      "天线真实反射面误差与自旋动力学不由本图给出。",
+      "支架杆件、磁强计臂长度和力学连接为教学简化。"
+    ],
+    "sources": [
+      {
+        "title": "University of Iowa · Pioneer 10 结构与仪器",
+        "url": "https://space.physics.uiowa.edu/pioneer/p10.html"
+      }
+    ]
+  },
+  {
+    "id": "tiros-1",
+    "configuration": "自旋稳定气象卫星；摄像机位于底部",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核扁鼓、五杆天线与双相机布局",
+      "将电源、相机和设备支撑的阅读入口分开"
+    ],
+    "features": [
+      {
+        "title": "扁鼓比例",
+        "detail": "公开直径 42 in、高 19 in，不能画成细长 Explorer 式卫星。",
+        "partId": "body",
+        "sourceUrl": "https://science.nasa.gov/mission/tiros/"
+      },
+      {
+        "title": "四发一收天线",
+        "detail": "底部四杆发射、顶部一杆接收，与 Sputnik 的四根同侧长杆区分。",
+        "partId": "antenna",
+        "sourceUrl": "https://science.nasa.gov/mission/tiros/"
+      },
+      {
+        "title": "双相机与记录器",
+        "detail": "两台不同分辨率相机各配记录器，只有朝向地球且条件合适时采集影像。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/tiros/"
+      }
+    ],
+    "uncertainties": [
+      "内部相机轴线、镜组和记录器尺寸没有工程图约束。",
+      "太阳电池网格用于纹理辨认，不是 9,200 片实物电池的逐片还原。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · TIROS-1 相机、电源与天线",
+        "url": "https://science.nasa.gov/mission/tiros/"
+      }
+    ]
+  },
+  {
+    "id": "telstar-1",
+    "configuration": "球形通信卫星；环形天线与体装太阳电池",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核球体、电池覆盖与环带天线的专属构型",
+      "增加天线原始论文作为结构研究入口"
+    ],
+    "features": [
+      {
+        "title": "34.5 in 球体",
+        "detail": "NASA 报道的球体直径与 171 lb 质量属于不同物理量，不应混写单位。",
+        "partId": "body",
+        "sourceUrl": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/"
+      },
+      {
+        "title": "体装电池",
+        "detail": "太阳电池铺在球体表面，不安装展开翼。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/"
+      },
+      {
+        "title": "环形微波天线",
+        "detail": "收发天线阵列形成赤道区域环带，不使用 Sputnik 式四长杆。",
+        "partId": "antenna",
+        "sourceUrl": "https://ntrs.nasa.gov/citations/19640000965"
+      }
+    ],
+    "uncertainties": [
+      "球面分面、太阳电池单元尺寸和天线馈电网络没有逐项复原。",
+      "中继与辐射仪器内部机架仍是功能块。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Telstar 1 球体、太阳电池与质量",
+        "url": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/"
+      },
+      {
+        "title": "Bell Labs / NASA NTRS · The spacecraft antennas",
+        "url": "https://ntrs.nasa.gov/citations/19640000965"
+      }
+    ]
+  },
+  {
+    "id": "landsat-1",
+    "configuration": "早期陆地观测构型；双翼、MSS 与 RBV",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核 Nimbus 衍生平台与对地仪器组合",
+      "记录 NASA 与既有资料关于姿控推进工质的口径差异"
+    ],
+    "features": [
+      {
+        "title": "Nimbus 衍生平台",
+        "detail": "NASA 说明其为 Nimbus 4 改型，三轴姿控平台与对地载荷相互区分。",
+        "partId": "body",
+        "sourceUrl": "https://science.nasa.gov/mission/landsat-1/"
+      },
+      {
+        "title": "MSS 与三相机 RBV",
+        "detail": "MSS 扫描和 RBV 三台相机是不同采样机制，模型保留分开的仪器区域。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/landsat-1/"
+      },
+      {
+        "title": "反作用轮与姿控",
+        "detail": "NASA 页面列出四个反作用轮及 freon gas 推进；既有肼系统说法需要继续核对。",
+        "partId": "avionics",
+        "sourceUrl": "https://science.nasa.gov/mission/landsat-1/"
+      }
+    ],
+    "uncertainties": [
+      "USGS 旧构型页本次抓取超时，保留已有引用而不声称重新读到正文。",
+      "姿控工质资料存在差异；模型喷口数量和贮箱形状不能作为鉴定依据。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Landsat 1 仪器与姿控平台",
+        "url": "https://science.nasa.gov/mission/landsat-1/"
+      },
+      {
+        "title": "USGS · Landsat 1 历史构型（本次抓取超时，保留既有档案来源）",
+        "url": "https://www.usgs.gov/landsat-missions/landsat-1"
+      }
+    ]
+  },
+  {
+    "id": "mro",
+    "configuration": "双翼、通信反射面与雷达臂展开的轨道器",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核专属双太阳翼、主天线和仪器面",
+      "补充 SHARAD 展开长度及电子箱与天线的区别"
+    ],
+    "features": [
+      {
+        "title": "SHARAD 双管天线",
+        "detail": "约 10 m 天线由两根约 5 m 可折叠管组成，独立于雷达电子箱。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/science-instruments/"
+      },
+      {
+        "title": "通信反射面",
+        "detail": "JPL 给出 3 m 偏置抛物面主反射镜、椭球副反射器与馈源；可见口径与太阳翼跨度不是同一尺寸。",
+        "partId": "antenna",
+        "sourceUrl": "https://descanso.jpl.nasa.gov/DPSummary/MRO_092106.pdf"
+      },
+      {
+        "title": "对地光学与雷达",
+        "detail": "HiRISE 等成像载荷与 SHARAD 探测机制不同；本图保留各功能包络。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/science-instruments/"
+      }
+    ],
+    "uncertainties": [
+      "科学载荷完整显示，不代表全部仪器当前同时工作。",
+      "机内箱体、散热面和推进分组只表达系统功能。",
+      "保留模型的天线馈源仍为简化，未复原偏置光路及副反射器。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · MRO 科学仪器",
+        "url": "https://science.nasa.gov/mission/mars-reconnaissance-orbiter/science-instruments/"
+      },
+      {
+        "title": "NASA/JPL DESCANSO · MRO 通信系统设计",
+        "url": "https://descanso.jpl.nasa.gov/DPSummary/MRO_092106.pdf"
+      }
+    ]
+  },
+  {
+    "id": "euclid",
+    "configuration": "固定遮阳板与单望远镜观测构型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核固定太阳电池遮阳板，保留无展开双翼的构型",
+      "补充单光路到 VIS / NISP 的仪器关系"
+    ],
+    "features": [
+      {
+        "title": "1.2 m 望远镜",
+        "detail": "单望远镜收光后经分色部件送往 VIS 和 NISP，不是两台独立外置望远镜。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_s_instruments"
+      },
+      {
+        "title": "组合遮阳供电板",
+        "detail": "固定组合模块同时遮挡太阳并供电，区别于 Webb 的五层展开薄膜。",
+        "partId": "heatshield",
+        "sourceUrl": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Euclid_gains_solar_power_and_protection"
+      },
+      {
+        "title": "平台与载荷模块",
+        "detail": "服务模块支撑仪器载荷，太阳电池位于组合遮阳结构的太阳侧。",
+        "partId": "solar",
+        "sourceUrl": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Euclid_gains_solar_power_and_protection"
+      }
+    ],
+    "uncertainties": [
+      "主镜曲率、分色光路和探测器阵列没有按光学处方复原。",
+      "板件厚度、散热涂层与连接刚度不由展示模型给出。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Euclid 望远镜与仪器",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_s_instruments"
+      },
+      {
+        "title": "ESA · Euclid 太阳电池遮阳板安装",
+        "url": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Euclid_gains_solar_power_and_protection"
+      }
+    ]
+  },
+  {
+    "id": "space-shuttle",
+    "configuration": "轨道器在轨构型 · 货舱门打开；不包含外贮箱和助推器",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "以水平轨道器替换纵置圆筒，补出机头、双三角翼、垂尾和机腹热防护。",
+      "打开货舱并分离两扇舱门、货舱底板和示例载荷；尾部保留三台主发动机及两侧 OMS/RCS 舱。"
+    ],
+    "features": [
+      {
+        "title": "三台主发动机",
+        "detail": "尾部三台主发动机用于上升；真空机动由两侧 OMS/RCS 舱承担。模型将两种推进系统分组，避免把主发动机当作在轨变轨发动机。",
+        "partId": "engine",
+        "sourceUrl": "https://www.nasa.gov/reference/the-space-shuttle/"
+      },
+      {
+        "title": "开放货舱",
+        "detail": "货舱布置于机体中段，舱门开启后能够查看载荷区。这里的载荷箱为功能占位，不对应某次飞行任务。",
+        "partId": "payload",
+        "sourceUrl": "https://www.nasa.gov/reference/the-space-shuttle/"
+      },
+      {
+        "title": "双三角翼与垂尾",
+        "detail": "轨道器具有机翼升降副翼和垂直尾翼方向舵/减速板，模型补出主要控制面边界。",
+        "partId": "frame",
+        "sourceUrl": "https://www.nasa.gov/centers-and-facilities/langley/the-aeronautics-of-the-space-shuttle/"
+      }
+    ],
+    "uncertainties": [
+      "模型未重建隔热瓦数量、机翼厚度分布与精确气动外形。",
+      "舱内设备和载荷是示意体，不是某一架轨道器的舱内 CAD。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Space Shuttle 轨道器结构与尺寸",
+        "url": "https://www.nasa.gov/reference/the-space-shuttle/"
+      },
+      {
+        "title": "NASA · 航天飞机气动控制面",
+        "url": "https://www.nasa.gov/centers-and-facilities/langley/the-aeronautics-of-the-space-shuttle/"
+      }
+    ]
+  },
+  {
+    "id": "iss",
+    "configuration": "2011 年主要总装构型示意 · 八组传统太阳翼；不表示当前 iROSA 改装状态",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "区分加压舱段、综合桁架、太阳翼和热控散热器，取消等距重复舱段。",
+      "按八组传统翼面组织中央桅杆和双电池毯，补出 Kibo、Columbus、Cupola 等位置关系。"
+    ],
+    "features": [
+      {
+        "title": "综合桁架",
+        "detail": "横向主桁架为太阳阵列、散热器和外部载荷提供安装基础；它与中央加压舱段并非同一结构。",
+        "partId": "frame",
+        "sourceUrl": "https://www.nasa.gov/international-space-station/integrated-truss-structure/"
+      },
+      {
+        "title": "八组传统太阳翼",
+        "detail": "电源系统采用八组主太阳翼。模型固定为早期总装参考构型；后续 iROSA 增强阵列没有混入这个历史状态。",
+        "partId": "solar",
+        "sourceUrl": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
+      },
+      {
+        "title": "中央实验舱群",
+        "detail": "轴向舱段与横向实验舱组成可通行的加压空间；模型用不同长度和接口方向区分实验舱、节点舱和气闸。",
+        "partId": "body",
+        "sourceUrl": "https://www.nasa.gov/international-space-station/international-space-station-assembly-elements/"
+      }
+    ],
+    "uncertainties": [
+      "未包含来访飞船及每个外部实验装置，不代表某一天的完整驻留清单。",
+      "机械臂与散热器角度用于阅读结构关系；舱段距离和阵列角度不是测绘值。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · 国际空间站总装构件",
+        "url": "https://www.nasa.gov/international-space-station/international-space-station-assembly-elements/"
+      },
+      {
+        "title": "NASA · 国际空间站综合桁架结构",
+        "url": "https://www.nasa.gov/international-space-station/integrated-truss-structure/"
+      },
+      {
+        "title": "NASA · 国际空间站尺寸与电源阵列",
+        "url": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
+      }
+    ]
+  },
+  {
+    "id": "mir",
+    "configuration": "Mir 扩展舱段构型示意 · 核心舱、Kvant-1 与四个径向模块",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "移除类似 ISS 的横贯桁架，重建核心舱、转移节点和径向模块。",
+      "将太阳翼附着于具体模块，并加入航天飞机对接舱与内部乘员支持体积。"
+    ],
+    "features": [
+      {
+        "title": "核心舱与转移节点",
+        "detail": "Mir 的核心舱包含居住和控制区域，多方向接口允许专用实验模块与来访飞船接入。",
+        "partId": "body",
+        "sourceUrl": "https://www.esa.int/About_Us/Corporate_news/Mir_FAQs_-_Facts_and_history"
+      },
+      {
+        "title": "径向科学模块",
+        "detail": "Kvant-2、Kristall、Spektr 和 Priroda 在转移节点周围形成三维分支；Kvant-1 位于核心舱轴向后部。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.nasa.gov/history/SP-4225/diagrams/mir/mir-diagram.htm"
+      },
+      {
+        "title": "模块附属太阳翼",
+        "detail": "Mir 的电源翼面分布在多个模块上。这里保留各模块的安装关系，但不重建每次改装后的翼面组合。",
+        "partId": "solar",
+        "sourceUrl": "https://www.nasa.gov/history/SP-4225/diagrams/mir/mir-diagram.htm"
+      }
+    ],
+    "uncertainties": [
+      "几何是扩展阶段的概念组合，不对应精确历史日期；太阳翼曾随任务改装。",
+      "径向模块的外部设备、接头和内部压力结构未按制造图复刻。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Mir 舱段与结构图集",
+        "url": "https://www.nasa.gov/history/SP-4225/diagrams/mir/mir-diagram.htm"
+      },
+      {
+        "title": "ESA · Mir 事实与历史",
+        "url": "https://www.esa.int/About_Us/Corporate_news/Mir_FAQs_-_Facts_and_history"
+      }
+    ]
+  },
+  {
+    "id": "tiangong",
+    "configuration": "2022 年三舱 T 字基本构型 · 保留天和原始太阳翼位置",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重建天和轴向核心与问天、梦天两侧实验舱，取消 ISS 式横贯桁架。",
+      "在实验舱远端布置两对大太阳翼，并补出对接方向、机械臂和外部设备平台。"
+    ],
+    "features": [
+      {
+        "title": "三舱 T 字连接",
+        "detail": "天和为主轴，问天和梦天连接在节点舱的两侧。该结构为左右实验舱提供近似对称的布局。",
+        "partId": "body",
+        "sourceUrl": "https://www.cmse.gov.cn/xwzx/202211/t20221107_51360.html"
+      },
+      {
+        "title": "实验舱远端太阳翼",
+        "detail": "两实验舱的太阳翼安装在 T 字横向远端，配合对日定向机构降低相互遮挡；示意角度不代表实际在轨姿态。",
+        "partId": "solar",
+        "sourceUrl": "https://www.cmse.gov.cn/xwzx/202211/t20221107_51357.html"
+      },
+      {
+        "title": "在轨操作机构",
+        "detail": "大小机械臂支持外部操作；模型以关节和杆件表达其功能链，不推断实际驱动器参数。",
+        "partId": "frame",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c10087703/content.html"
+      }
+    ],
+    "uncertainties": [
+      "固定展示 2022 年基本构型，未混合后续天和太阳翼转移及来访飞船。",
+      "太阳翼面积、内部设备和推进器安装坐标没有逐件图纸约束。"
+    ],
+    "sources": [
+      {
+        "title": "中国载人航天 · 三舱 T 字构型与实验舱布置",
+        "url": "https://www.cmse.gov.cn/xwzx/202211/t20221107_51360.html"
+      },
+      {
+        "title": "中国载人航天 · 柔性太阳翼与对日定向机构",
+        "url": "https://www.cmse.gov.cn/xwzx/202211/t20221107_51357.html"
+      },
+      {
+        "title": "国家航天局 · 天宫空间站的设计与应用前景",
+        "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c10087703/content.html"
+      }
+    ]
+  },
+  {
+    "id": "zhurong",
+    "configuration": "巡视工作构型 · 四片蝶形太阳翼展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "将通用两翼巡视器替换为四翼蝶形构型，增加近八边形顶板与双集热窗。",
+      "补出六轮悬架、前部相机桅杆、后部定向天线和雷达杆件。"
+    ],
+    "features": [
+      {
+        "title": "四片蝶形太阳翼",
+        "detail": "研制方说明祝融采用蝶形四展太阳翼。模型按四个独立翼面表达展开状态，翼形和电池片排列仍简化。",
+        "partId": "solar",
+        "sourceUrl": "https://www.spacechina.com/n25/n2014789/n2014809/c3255819/content.html"
+      },
+      {
+        "title": "前桅杆与后天线",
+        "detail": "公开构型说明将感知桅杆置于前部，定向通信天线置于后部；模型以此区分行进观察与通信方向。",
+        "partId": "antenna",
+        "sourceUrl": "https://www.cast.cn/news/7123"
+      },
+      {
+        "title": "双集热窗与舱体",
+        "detail": "顶板上集热窗与保温措施服务火星昼夜热环境；内部电子设备位于舱体中，模型只显示功能体积。",
+        "partId": "body",
+        "sourceUrl": "https://www.cast.cn/news/7123"
+      }
+    ],
+    "uncertainties": [
+      "悬架铰点、轮纹、土壤接触参数和太阳翼铰链角未由照片定量辨识。",
+      "无线电和科学仪器的真实视场、遮挡及电缆路径没有从外观推定。"
+    ],
+    "sources": [
+      {
+        "title": "中国空间技术研究院 · 祝融号构型设计",
+        "url": "https://www.cast.cn/news/7123"
+      },
+      {
+        "title": "中国航天科技集团 · 祝融号四展太阳翼与集热器",
+        "url": "https://www.spacechina.com/n25/n2014789/n2014809/c3255819/content.html"
+      }
+    ]
+  },
+  {
+    "id": "change-3",
+    "configuration": "着陆器与顶置玉兔部署示意 · 太阳翼和转移坡道展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重建四支腿切角平台，加入顶置巡视器、转移坡道与双太阳翼。",
+      "去除通用长桅杆探测车外形，科学载荷按月面着陆器部署。"
+    ],
+    "features": [
+      {
+        "title": "巡视器与转移坡道",
+        "detail": "玉兔通过转移机构从着陆器抵达月面。模型把顶置巡视器与坡道作为独立部件组，便于观察部署路径。",
+        "partId": "payload",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c6770734/content.html"
+      },
+      {
+        "title": "四点月面支撑",
+        "detail": "着陆支腿与平台在模型中分开，可拆分观察接地支撑和下降喷口的相对位置。",
+        "partId": "legs",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c6770734/content.html"
+      },
+      {
+        "title": "下降与分离构型",
+        "detail": "着陆与巡视器释放是不同阶段。模型展示的是便于解释部署的组合，不复原分离过程中的每个机构姿态。",
+        "partId": "body",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c6770734/content.html"
+      }
+    ],
+    "uncertainties": [
+      "玉兔在坡道展开时的位置用于说明任务关系，不是某帧真实影像的完整复刻。",
+      "支腿缓冲材料、内部箱体及设备精确安装位置未重建。"
+    ],
+    "sources": [
+      {
+        "title": "国家航天局 · 嫦娥三号两器分离与玉兔部署",
+        "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6770734/content.html"
+      }
+    ]
+  },
+  {
+    "id": "change-5",
+    "configuration": "着陆器—上升器采样构型；地球返回器作为独立对象并列展示",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "拆分着陆平台与上升器，补出表取机械臂、钻具和样品交接接口。",
+      "将返回器热盾保持在模型右侧独立位置，避免错误地安装在月面着陆器上。"
+    ],
+    "features": [
+      {
+        "title": "表取与钻取",
+        "detail": "月面采样同时采用机械臂表取和钻具钻取；两种机构在模型中分开表示，末端工具形状为功能示意。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c6810708/content.html"
+      },
+      {
+        "title": "样品进入上升器",
+        "detail": "月面样品密封后保存在上升器携带的装置中，随后进入月轨交会流程。模型提供独立上升器和样品转移接口。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c6810708/content.html"
+      },
+      {
+        "title": "返回器单独展示",
+        "detail": "地球返回器在月轨与上升器完成样品转移后参与返回。并列对象仅说明热防护用途，不属于月面装配状态。",
+        "partId": "heatshield",
+        "sourceUrl": "https://wap.sasac.gov.cn/n2588025/n2641616/c16253063/content.html"
+      }
+    ],
+    "uncertainties": [
+      "月面组合体与旁侧返回器不是同一时刻的真实场景。",
+      "采样臂关节、钻孔深度、载荷质量与内部容器位置均不是实测重建。"
+    ],
+    "sources": [
+      {
+        "title": "国家航天局 · 嫦娥五号采样与封装",
+        "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6810708/content.html"
+      },
+      {
+        "title": "国资委 · 嫦娥五号机构释放与任务阶段",
+        "url": "https://wap.sasac.gov.cn/n2588025/n2641616/c16253063/content.html"
+      }
+    ]
+  },
+  {
+    "id": "change-6",
+    "configuration": "月背着陆—上升组合体 · 采样机构、通信与科学载荷示意",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "采用独立上升器、双太阳翼及四腿平台，补入机械臂、钻具和交会接口。",
+      "增加中继通信天线以及 NILS 等国际载荷功能外包络，区别于嫦娥五号并列返回器展示。"
+    ],
+    "features": [
+      {
+        "title": "采样与科学设备",
+        "detail": "继承的相机、矿物光谱与月壤结构探测设备为采样环境提供观测。模型将采样机构与仪器包分别命名。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.cas.cn/cm/202406/t20240603_5016504.shtml"
+      },
+      {
+        "title": "NILS 载荷",
+        "detail": "NILS 用于月表负离子和电子相关测量。显示的设备包仅表示其在着陆器上的功能存在，不是探头内部光学或电场结构。",
+        "partId": "instruments",
+        "sourceUrl": "https://nssc.cas.cn/xwdt2015/xwsd2015/202406/t20240607_7186465.html"
+      },
+      {
+        "title": "上升与样品接口",
+        "detail": "着陆器留在月面，上升器携样品进入交会阶段。模型把上升器和样品接口独立分组，避免理解为整体着陆器返回地球。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.cas.cn/cm/202406/t20240603_5016504.shtml"
+      }
+    ],
+    "uncertainties": [
+      "中继天线姿态、各国际载荷的精确安装坐标和内部布置仍属示意。",
+      "模型不含鹊桥二号、轨道器和地球返回器，不能将其视为整项任务的完整飞行组合体。"
+    ],
+    "sources": [
+      {
+        "title": "中科院国家空间科学中心 · 嫦娥六号 NILS 科学载荷",
+        "url": "https://nssc.cas.cn/xwdt2015/xwsd2015/202406/t20240607_7186465.html"
+      },
+      {
+        "title": "中国科学院 · 嫦娥六号继承载荷与国际载荷",
+        "url": "https://www.cas.cn/cm/202406/t20240603_5016504.shtml"
+      }
+    ]
+  },
+  {
+    "id": "slim",
+    "configuration": "设计的下降接近姿态 · 非 2024 年触地后的倒置状态",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "将通用四腿平台改为紧凑渐缩本体、五个非对称吸能接触点和本体电池阵。",
+      "补出双主喷口、底部导航相机与侧部 MBC 功能包。"
+    ],
+    "features": [
+      {
+        "title": "一主四辅接触结构",
+        "detail": "JAXA 描述一个主脚与四个辅助脚，服务先主脚接触再旋转落稳的两阶段着陆。模型使用五个吸能垫，去除常规四长腿外形。",
+        "partId": "legs",
+        "sourceUrl": "https://www.isas.jaxa.jp/feature/forefront/191226.html"
+      },
+      {
+        "title": "下降传感器布置区域",
+        "detail": "下降一侧需要容纳主发动机、姿控、导航相机、雷达和高度计。此处显示这些功能区域，未重建完整传感器数量与视场。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.isas.jaxa.jp/feature/forefront/191226.html"
+      },
+      {
+        "title": "设计姿态与实飞姿态",
+        "detail": "2024 年实际触地姿态偏离设计预期。默认模型展示硬件的设计下降方向；实飞结果应结合 JAXA 着陆分析阅读。",
+        "partId": "body",
+        "sourceUrl": "https://global.jaxa.jp/press/2024/01/file/jaxa_doc01_20240125_e.pdf"
+      }
+    ],
+    "uncertainties": [
+      "没有重建真实月面坡度、发动机异常或触地后的倒置姿态。",
+      "吸能垫内部金属晶格、压溃曲线和轻量贮箱结构仅作功能占位。"
+    ],
+    "sources": [
+      {
+        "title": "JAXA/ISAS · SLIM 两阶段着陆与五个接触机构",
+        "url": "https://www.isas.jaxa.jp/feature/forefront/191226.html"
+      },
+      {
+        "title": "JAXA · SLIM 2024 年 1 月着陆结果说明",
+        "url": "https://global.jaxa.jp/press/2024/01/file/jaxa_doc01_20240125_e.pdf"
+      },
+      {
+        "title": "JAXA DARTS · SLIM 任务资料",
+        "url": "https://darts.isas.jaxa.jp/en/missions/slim"
+      }
+    ]
+  },
+  {
+    "id": "chandrayaan-3",
+    "configuration": "Vikram 月面部署构型 · 侧面电池阵与 Pragyan 坡道展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重建切角平台、四腿与四台下降发动机，取消通用双外伸太阳翼。",
+      "补出侧面电池阵、探针功能包、双轨坡道和小型六轮 Pragyan。"
+    ],
+    "features": [
+      {
+        "title": "四台下降发动机",
+        "detail": "四台可节流主发动机与八个姿控喷口分别表示；不能用主喷口外观估计实际阀门响应和节流精度。",
+        "partId": "propulsion",
+        "sourceUrl": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3_Details.html"
+      },
+      {
+        "title": "巡视器部署坡道",
+        "detail": "Pragyan 由着陆器携带并通过坡道驶向月面。模型把坡道与巡视器放在同一功能分组，突出两者的部署关系。",
+        "partId": "payload",
+        "sourceUrl": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3_Details.html"
+      },
+      {
+        "title": "月面科学与导航",
+        "detail": "温度、等离子体与地震观测载荷具有不同任务；模型用传感器包和探针辅助说明，不把所有设备画成相机。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3_Details.html"
+      }
+    ],
+    "uncertainties": [
+      "示意巡视器已沿坡道移动，场景不严格对应某一时刻。",
+      "各面电池片面积、推进器安装角和传感器视场未逐项测量。"
+    ],
+    "sources": [
+      {
+        "title": "ISRO · Chandrayaan-3 结构、推进与载荷",
+        "url": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3_Details.html"
+      },
+      {
+        "title": "ISRO · Chandrayaan-3 官方任务手册",
+        "url": "https://www.isro.gov.in/media_isro/pdf/Missions/LVM3/LVM3M4_Chandrayaan3_brochure.pdf"
+      }
+    ]
+  },
+  {
+    "id": "apollo-lm",
+    "configuration": "Apollo 登月舱月面展开构型 · 下降级与上升级保留",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "保留已有的切角下降级、多面体上升级、四足前梯、双三角窗和十六个 RCS 喷口。",
+      "补充构型阅读依据，区分乘员工作区、下降/上升推进及顶置对接界面。"
+    ],
+    "features": [
+      {
+        "title": "分离的上升与下降级",
+        "detail": "下降发动机负责减速着陆，上升级携乘员重新进入月轨交会。爆炸分解可以观察两级接口，但不重建分离机构。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/"
+      },
+      {
+        "title": "三角窗与前舱门",
+        "detail": "三角形前窗用于着陆观察，前舱门服务出入月面；顶置观察窗支持交会。",
+        "partId": "crew",
+        "sourceUrl": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/"
+      },
+      {
+        "title": "四组姿态喷口",
+        "detail": "上升级配置四组、每组四个 RCS 喷口。模型保留十六喷口的功能拓扑，喷管安装角未按制造图复刻。",
+        "partId": "engine",
+        "sourceUrl": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/"
+      }
+    ],
+    "uncertainties": [
+      "多个 Apollo 任务具有设备与载荷差异，模型不代表某次任务的完整月面载荷。",
+      "舱内控制台、登月后的支腿压缩量和防护材料厚度保持示意。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · 登月舱窗口、舱门与推进系统",
+        "url": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/"
+      }
+    ]
+  },
+  {
+    "id": "luna-9",
+    "configuration": "月面稳定构型 · 四瓣外壳打开，自动站与下降级分离",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "保留球形自动站、四个稳定瓣、细杆天线及扫描相机。",
+      "重新核对着陆状态，避免将稳定瓣误读为太阳翼或长支腿。"
+    ],
+    "features": [
+      {
+        "title": "四瓣稳定结构",
+        "detail": "落月后的四瓣结构展开以稳定自动站，不是太阳电池翼。模型中的瓣面与球形仪器舱可以分别查看。",
+        "partId": "frame",
+        "sourceUrl": "https://www.dvidshub.net/image/717905/luna-9"
+      },
+      {
+        "title": "扫描电视相机",
+        "detail": "电视装置通过可转动镜面扫描月面。模型标出相机柱、扫描头和镜面，而非现代双目相机桅杆。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.dvidshub.net/image/717905/luna-9"
+      },
+      {
+        "title": "自动站与下降级分开",
+        "detail": "球形自动站在落月前与飞行部分分离。本模型仅保留月面自动站，不将巡航结构附在其下方。",
+        "partId": "body",
+        "sourceUrl": "https://apod.nasa.gov/apod/ap960825.html"
+      }
+    ],
+    "uncertainties": [
+      "瓣面曲率、弹簧机构、天线长度和内部设备未由尺寸图逐项约束。",
+      "抛出、气囊缓冲与翻滚过程没有在静态模型中复现。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Luna 9 舱体、四瓣稳定结构和相机",
+        "url": "https://www.dvidshub.net/image/717905/luna-9"
+      },
+      {
+        "title": "NASA APOD · Luna 9 着陆与四瓣展开",
+        "url": "https://apod.nasa.gov/apod/ap960825.html"
+      }
+    ]
+  },
+  {
+    "id": "venera-7",
+    "configuration": "Venera 7 返回信号用下降舱 · 球形压力容器与隔热外包络",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "保留第一代球形舱体、热包络和上部降落伞连接区域。",
+      "不添加后期 Venera 着陆器的环形着陆架、大盘气动减速器或相机。"
+    ],
+    "features": [
+      {
+        "title": "球形钛合金压力容器",
+        "detail": "NASA 极端环境报告说明 Venera 7 使用球形钛合金压力容器；这一特征与后期图像常见的 Venera 9/10 构型不同。",
+        "partId": "body",
+        "sourceUrl": "https://solarsystem.nasa.gov/system/downloadable_items/159_Technology_Reports_-EE-Report_FINAL_20072.pdf"
+      },
+      {
+        "title": "压力与热防护分层",
+        "detail": "外部热防护包络和内部承压壳体承担不同作用。剖切提供分层关系，不能据此读出真实厚度或热阻。",
+        "partId": "heatshield",
+        "sourceUrl": "https://solarsystem.nasa.gov/system/downloadable_items/159_Technology_Reports_-EE-Report_FINAL_20072.pdf"
+      },
+      {
+        "title": "蓄热和任务持续时间",
+        "detail": "下降前预冷与热控制帮助延长有限表面工作时间。模型里的蓄热装置和电源块仅表达功能，不输出热性能。",
+        "partId": "service",
+        "sourceUrl": "https://solarsystem.nasa.gov/system/downloadable_items/159_Technology_Reports_-EE-Report_FINAL_20072.pdf"
+      }
+    ],
+    "uncertainties": [
+      "实飞发生伞降异常并侧倒，静态模型未重建触地状态。",
+      "未推断压力壳壁厚、隔热配方或材料强度。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · 极端环境技术报告：Venera 7 压力舱",
+        "url": "https://solarsystem.nasa.gov/system/downloadable_items/159_Technology_Reports_-EE-Report_FINAL_20072.pdf"
+      }
+    ]
+  },
+  {
+    "id": "viking-1-lander",
+    "configuration": "Viking 1 火星着陆后构型 · 六边平台、三腿和双 RTG",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "保留已有三腿六边平台、两台 RTG、双扫描相机与取样机械臂。",
+      "补充原始结构说明与内部实验舱边界，不为着陆器添加太阳翼。"
+    ],
+    "features": [
+      {
+        "title": "三腿六边平台",
+        "detail": "NASA 描述六边铝基座，三条支腿连接短边。模型按这一拓扑表达支撑，足垫尺寸和杆件角度仍简化。",
+        "partId": "legs",
+        "sourceUrl": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+      },
+      {
+        "title": "双 RTG 电源",
+        "detail": "两台同位素热电发生器位于平台两侧并配有防风结构。模型使用双散热组件，而不是太阳电池翼。",
+        "partId": "service",
+        "sourceUrl": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+      },
+      {
+        "title": "双相机和取样臂",
+        "detail": "两台圆柱扫描相机与取样臂配合观察和采集表面样品；内部生命探测实验包只以功能空间显示。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+      }
+    ],
+    "uncertainties": [
+      "不根据官方页面存在冲突的质量换算反推质量或惯量。",
+      "RTG 防风罩、内部实验装置和喷口细节未按完整工程图复原。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Viking 着陆器结构与科学系统",
+        "url": "https://science.nasa.gov/mission/viking/spacecraft-and-science/"
+      }
+    ]
+  }
+]

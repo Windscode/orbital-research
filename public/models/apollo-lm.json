@@ -1,0 +1,89 @@
+{
+  "vehicleId": "apollo-lm",
+  "name": "Apollo LM · 阿波罗登月舱",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "apollo-lm",
+    "configuration": "Apollo 登月舱月面展开构型 · 下降级与上升级保留",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "保留已有的切角下降级、多面体上升级、四足前梯、双三角窗和十六个 RCS 喷口。",
+      "补充构型阅读依据，区分乘员工作区、下降/上升推进及顶置对接界面。"
+    ],
+    "features": [
+      {
+        "title": "分离的上升与下降级",
+        "detail": "下降发动机负责减速着陆，上升级携乘员重新进入月轨交会。爆炸分解可以观察两级接口，但不重建分离机构。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/"
+      },
+      {
+        "title": "三角窗与前舱门",
+        "detail": "三角形前窗用于着陆观察，前舱门服务出入月面；顶置观察窗支持交会。",
+        "partId": "crew",
+        "sourceUrl": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/"
+      },
+      {
+        "title": "四组姿态喷口",
+        "detail": "上升级配置四组、每组四个 RCS 喷口。模型保留十六喷口的功能拓扑，喷管安装角未按制造图复刻。",
+        "partId": "engine",
+        "sourceUrl": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/"
+      }
+    ],
+    "uncertainties": [
+      "多个 Apollo 任务具有设备与载荷差异，模型不代表某次任务的完整月面载荷。",
+      "舱内控制台、登月后的支腿压缩量和防护材料厚度保持示意。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · 登月舱窗口、舱门与推进系统",
+        "url": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "crew",
+      "name": "站立乘员工作区",
+      "description": "两名航天员在前部站立操作；控制台和扶持结构为功能占位，不是舱内CAD。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://ntrs.nasa.gov/api/citations/19730010174/downloads/19730010174.pdf?attachment=true"
+    },
+    {
+      "id": "stage-1",
+      "name": "下降级平台",
+      "description": "切角外包络覆盖下降级结构，承载推进、四足和月面设备；不把外部隔热罩当作完整承力结构。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://ntrs.nasa.gov/api/citations/19730010174/downloads/19730010174.pdf?attachment=true"
+    },
+    {
+      "id": "stage-2",
+      "name": "上升级与防护外罩",
+      "description": "多面体防护外罩围绕乘员舱与设备；双三角前窗、前EVA舱门和上部接口共同服务月面及交会操作。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://ntrs.nasa.gov/api/citations/19730010174/downloads/19730010174.pdf?attachment=true"
+    },
+    {
+      "id": "engine",
+      "name": "下降/上升主推进与RCS",
+      "description": "分别表示下降和上升主推进；四组四联RCS共十六喷口负责姿态控制，安装角为简化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/history/apollos-lunar-module-bridged-technological-leap-to-the-moon/"
+    },
+    {
+      "id": "legs",
+      "name": "四足、前梯与缓冲支撑",
+      "description": "四条着陆腿及圆足垫支撑下降级，前侧梯子连接EVA平台和月面；不复刻着陆后的真实压缩量。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://ntrs.nasa.gov/api/citations/19760066717/downloads/19760066717.pdf"
+    },
+    {
+      "id": "docking",
+      "name": "上部对接接口",
+      "description": "与指令服务舱连接并转移乘员；对接结构、上部舱门和观察窗口的精确尺寸未由模型复原。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://ntrs.nasa.gov/api/citations/19730010174/downloads/19730010174.pdf?attachment=true"
+    }
+  ]
+}

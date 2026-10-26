@@ -1,0 +1,89 @@
+{
+  "vehicleId": "parker-solar-probe",
+  "name": "Parker Solar Probe · 帕克太阳探测器",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "parker-solar-probe",
+    "configuration": "近近日点的太阳阵收拢示意；热盾面朝太阳",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "突出宽热盾、小型背阴平台与收拢的太阳阵",
+      "将外露场探针、尾部磁场测量臂和受保护设备分开"
+    ],
+    "features": [
+      {
+        "title": "热防护罩",
+        "detail": "白色迎日面与背阴平台分离；公开 TPS 约 2.4 m 口径、115 mm 厚。",
+        "partId": "heatshield",
+        "sourceUrl": "https://www.nasa.gov/missions/parker-solar-probe/traveling-to-the-sun-why-wont-parker-solar-probe-melt/"
+      },
+      {
+        "title": "太阳阵收拢",
+        "detail": "靠近太阳时，大部分太阳阵藏入热盾阴影，不能固定画成完全展开的大双翼。",
+        "partId": "solar",
+        "sourceUrl": "https://www.nasa.gov/missions/parker-solar-probe/traveling-to-the-sun-why-wont-parker-solar-probe-melt/"
+      },
+      {
+        "title": "外露测量",
+        "detail": "部分测量需要伸出热盾阴影；受保护平台与外露探测端必须分别理解。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.nasa.gov/missions/parker-solar-probe/traveling-to-the-sun-why-wont-parker-solar-probe-melt/"
+      }
+    ],
+    "uncertainties": [
+      "展示收拢关系，不是特定轨道时刻的关节角与阴影求解结果。",
+      "水冷回路、真实热流和仪器耐温参数没有由外形反推。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Parker 热盾与太阳阵冷却",
+        "url": "https://www.nasa.gov/missions/parker-solar-probe/traveling-to-the-sun-why-wont-parker-solar-probe-melt/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "heatshield",
+      "name": "前向隔热盾",
+      "description": "遮挡强太阳辐射并保护主体。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/parker-solar-probe/"
+    },
+    {
+      "id": "body",
+      "name": "受保护平台",
+      "description": "容纳主要设备与计算单元。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/parker-solar-probe/"
+    },
+    {
+      "id": "solar",
+      "name": "太阳电池组件",
+      "description": "提供能源，其暴露和热控受任务约束。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/parker-solar-probe/"
+    },
+    {
+      "id": "instruments",
+      "name": "太阳风与场测量载荷",
+      "description": "直接或遥感测量近太阳环境。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/parker-solar-probe/"
+    },
+    {
+      "id": "antenna",
+      "name": "通信天线",
+      "description": "支持远程数据与指令链路。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/parker-solar-probe/"
+    },
+    {
+      "id": "avionics",
+      "name": "自主姿态保护",
+      "description": "帮助维持热盾指向，内部实现仅作功能示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/mission/parker-solar-probe/"
+    }
+  ]
+}

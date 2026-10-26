@@ -1,0 +1,93 @@
+{
+  "vehicleId": "telstar-1",
+  "name": "Telstar 1",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "telstar-1",
+    "configuration": "球形通信卫星；环形天线与体装太阳电池",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核球体、电池覆盖与环带天线的专属构型",
+      "增加天线原始论文作为结构研究入口"
+    ],
+    "features": [
+      {
+        "title": "34.5 in 球体",
+        "detail": "NASA 报道的球体直径与 171 lb 质量属于不同物理量，不应混写单位。",
+        "partId": "body",
+        "sourceUrl": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/"
+      },
+      {
+        "title": "体装电池",
+        "detail": "太阳电池铺在球体表面，不安装展开翼。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/"
+      },
+      {
+        "title": "环形微波天线",
+        "detail": "收发天线阵列形成赤道区域环带，不使用 Sputnik 式四长杆。",
+        "partId": "antenna",
+        "sourceUrl": "https://ntrs.nasa.gov/citations/19640000965"
+      }
+    ],
+    "uncertainties": [
+      "球面分面、太阳电池单元尺寸和天线馈电网络没有逐项复原。",
+      "中继与辐射仪器内部机架仍是功能块。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Telstar 1 球体、太阳电池与质量",
+        "url": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/"
+      },
+      {
+        "title": "Bell Labs / NASA NTRS · The spacecraft antennas",
+        "url": "https://ntrs.nasa.gov/citations/19640000965"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "球形主体",
+      "description": "直径采用 34.5 in；表面分面只用于辨认。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/"
+    },
+    {
+      "id": "antenna",
+      "name": "环形微波天线带",
+      "description": "对应约 6 GHz 与 4 GHz 的收发阵列；不是 Sputnik 式四长杆。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://ntrs.nasa.gov/citations/19640000965"
+    },
+    {
+      "id": "service",
+      "name": "表面太阳电池与储能",
+      "description": "球面电池覆盖及电池功能块；单元数与接线不按图复原。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/"
+    },
+    {
+      "id": "avionics",
+      "name": "中继与遥控电子学",
+      "description": "接收、频率转换、放大和指令功能区。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://ntrs.nasa.gov/citations/19640000971"
+    },
+    {
+      "id": "instruments",
+      "name": "辐射监测功能区",
+      "description": "表达环境测量任务，不声明探测器准确安装位置。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://ntrs.nasa.gov/citations/19800019885"
+    },
+    {
+      "id": "frame",
+      "name": "内部设备支撑",
+      "description": "示意球壳内的支撑关系；非真实承力结构。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/"
+    }
+  ]
+}

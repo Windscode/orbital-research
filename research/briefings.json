@@ -1,5 +1,62 @@
 [
   {
+    "id": "swift-science-mission-end-2026",
+    "title": "Swift 完成最后一次科学观测，档案继续开放",
+    "category": "任务运行",
+    "date": "2026-10-23",
+    "publishedOn": "2026-10-23",
+    "eventDate": "2026-10-20",
+    "eventDateNote": "最后一次观测发生于 10 月 20 日；10 月 23 日发布任务结束报道。再入在报道时仍为预期事件。",
+    "verifiedOn": "2026-10-26",
+    "summary": "NASA 报道 Swift 于 10 月 20 日完成最后一次观测。较低轨道上的大气阻力已影响稳定指向；任务结束后，多波段观测档案仍可用于研究。",
+    "analysis": "这项进展展示了轨道衰减与观测姿态之间的耦合：轨道仍然存在，并不意味着平台还能满足指向稳定要求。对低轨任务进行寿命仿真时，可把阻力摄动、姿态扰动力矩、执行器裕量与观测质量分开记录，再明确失效判据。原文没有公开完整控制时序，因此不能由结束日期反推出姿态控制器参数。",
+    "implication": "可自建一组明确标注为教学情景的大气密度与迎风面积变化，研究何时失去观测裕量。使用 Swift 的真实科学档案时，应保留观测标识、曝光区间、数据质量和定标版本；这些科学产品不等同于完整工程遥测。",
+    "source": {
+      "title": "NASA Science · Swift Mission Ends, Leaves Behind Scientific Bonanza，2026-10-23",
+      "url": "https://science.nasa.gov/missions/swift/nasas-swift-mission-ends/"
+    },
+    "tags": [
+      "Swift",
+      "任务结束",
+      "轨道衰减",
+      "姿态稳定",
+      "科学档案"
+    ],
+    "relatedResources": [
+      "orekit",
+      "tudat",
+      "nasa-ntrs"
+    ]
+  },
+  {
+    "id": "artemis-iii-orbital-demonstration-2026",
+    "title": "Artemis III 公布近地轨道交会与对接试验方案",
+    "category": "任务架构",
+    "date": "2026-10-23",
+    "publishedOn": "2026-10-23",
+    "eventDate": null,
+    "eventDateNote": "这是 2027 年任务的计划说明，发布日期不代表试验已经执行。",
+    "verifiedOn": "2026-10-26",
+    "summary": "NASA 公布 Artemis III 的近地轨道试验安排：Orion 将先后与 Blue Moon 和 Starship 试验飞行器进行交会、对接及系统联试，任务仍处于计划阶段。",
+    "analysis": "原文将两个对接对象分开安排，分别涉及舱内评估及组合体联试，不能把它们视为同一种构型。研究可从分段任务状态机入手，区分自由飞行、接近、接触、组合体和分离阶段；每次结构连接都需要更新坐标变换、约束与质量属性。轨道窗口、热环境和通信覆盖会同时限制操作顺序，单独优化一次交会并不能代替整段任务规划。",
+    "implication": "本站建议的练习是构建两套公开构型的低阶交会场景，比较对接口方向、接近走廊和组合体惯量变化。初始轨道、接触参数和控制律应自行明确为教学假设；计划文本不能证明具体算法、容差或任务验证结果。",
+    "source": {
+      "title": "NASA · Artemis III Mission to Test Future Moon Lander Operations，2026-10-23",
+      "url": "https://www.nasa.gov/missions/artemis/nasas-artemis-iii-mission-to-test-future-moon-lander-operations/"
+    },
+    "tags": [
+      "Artemis III",
+      "任务计划",
+      "交会对接",
+      "组合体动力学"
+    ],
+    "relatedResources": [
+      "basilisk",
+      "gmat",
+      "spice"
+    ]
+  },
+  {
     "id": "dragonfly-simulated-flight-2026",
     "title": "Dragonfly 完成首次完整飞行场景仿真",
     "category": "仿真方法",

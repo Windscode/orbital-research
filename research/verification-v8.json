@@ -1,0 +1,78 @@
+{
+  "version": 8,
+  "date": "2026-10-26",
+  "scope": "构型资料、56 型展示模型、三维工作台、知识与工具扩展；未运行 UE 仿真",
+  "content": {
+    "lessons": 53,
+    "graphNodes": 53,
+    "graphEdges": 190,
+    "learningPaths": 12,
+    "resources": 84,
+    "vehicles": 56,
+    "briefings": 27,
+    "archiveMedia": 38,
+    "modelPreviews": 56,
+    "modelPreviewBytes": 706122,
+    "modelRecords": 56,
+    "sourceLinkedModelFeatures": 178,
+    "workflows": 5,
+    "workflowSteps": 20
+  },
+  "geometry": {
+    "specializedReplacements": 44,
+    "retainedSpecializedModels": 12,
+    "retainedIds": ["tiros-1", "telstar-1", "landsat-1", "mro", "euclid", "jwst", "mariner-4", "pioneer-10", "apollo-lm", "luna-9", "venera-7", "viking-1-lander"],
+    "commonUpdates": "材质、发动机喷口、太阳翼细分、天线支架、结构轮廓、部件分层与观察功能",
+    "meshes": 6630,
+    "vertices": 1025666,
+    "physicalScaleKnown": false,
+    "glbFiles": 56,
+    "staticReview": "从同源几何生成四张联系表，逐型检查 56 幅投影；缩略图采用简化曲面细分。"
+  },
+  "checks": {
+    "npmTest": "passed",
+    "contentContract": "220 searchable entries, 520 distinct HTTPS source URLs; structural check only",
+    "projectEvidence": "24 evidence entries, 126 citations, 4 historical/scoped validation records",
+    "orbit": "6 passed",
+    "modelAndGraph": "63 passed, 0 failed, 0 warnings",
+    "legacyFraming": "14,472 fitted views and 115,776 bounding-box corner projections",
+    "newModelViewer": "289,440 perspective/orthographic corner projections across 56 whole models and their parts, 3 aspect ratios, 3 explosion levels and 5 directions; section axes/reversal and visibility checks passed",
+    "modelExports": "56 JSON records match current research and part metadata; 56 WebP signatures checked; 56 GLB containers and provenance checked",
+    "researchWorkflows": "5 workflows, 20 steps, 60 cross-library references; archive recovery cases passed",
+    "media": "38 archive assets with attribution and usage metadata passed",
+    "navigation": "220 article deep-link roundtrips and storage/recovery scenarios passed",
+    "numerical": "9 checks passed; 45 interface configurations across 3 methods",
+    "catalog": "homepage subset consistency and deferred loading/retry passed",
+    "build": "TypeScript and Vite production build passed",
+    "initialJavaScriptBytes": 381969,
+    "initialGzipBytes": 120820,
+    "initialBudgetBytes": 450000
+  },
+  "browserChecks": {
+    "desktop": "1280 × 720 viewport: model previews, source tabs, part location and isolation, hidden parts, orthographic camera, XYZ section controls, explosion and reset inspected",
+    "modelsInspectedInWebGL": ["sputnik-1", "voyager-1", "iss", "falcon-heavy", "zhurong"],
+    "mobileRoutes": ["home", "knowledge", "resources", "intelligence", "vehicles", "lab", "images", "project"],
+    "mobileViewport": "390 px iframe, 380 px content where the scrollbar occupies space",
+    "mobileModel": "祝融：模型、剖切轴与截面位置、来源面板可操作，无横向溢出",
+    "tabletModel": "768 px iframe：祝融双栏布局、重置与资料面板可用，无横向溢出",
+    "newContent": "构型重建专题的深链接、章节、参考资料与研究方案关联导航已检查",
+    "snapshotDownload": "Saved and visually inspected voyager-1-research-view.png (91,618 bytes)",
+    "recordEndpoint": "Voyager model JSON returned valid vehicle ID, 3 features, 6 parts and physicalScaleKnown=false",
+    "console": "No warnings/errors in the inspected desktop model tab"
+  },
+  "researchNotes": [
+    "Landsat 1 attitude-control description corrected to Freon using NASA Science; exact nozzle geometry remains uncertain.",
+    "ISS uses the 2011 main assembly configuration, not the current iROSA arrangement.",
+    "Galileo depicts the failed high-gain-antenna deployment; SLIM depicts the designed descent/landing pose, not its final inverted surface pose.",
+    "Starship uses the publicly described V3 configuration; dimensions and later revisions are version dependent.",
+    "New lessons and tools draw on NASA, Khronos, OpenCV, NAIF, MeshLab, ParaView, OCCT and CGAL primary documentation; the research workflow is this site's proposed method.",
+    "The two new NASA briefings distinguish publication date, event date and planned operations."
+  ],
+  "limitations": [
+    "The collection remains a selection of 56 vehicles, not a complete global spaceflight catalog.",
+    "Finite geometry and framing checks do not certify dimensional or historical accuracy.",
+    "Models use normalized display coordinates and functional internal approximations. Section cuts are not capped solids; these meshes are not ready for mass-property, CFD or FEA calculations.",
+    "Browser checks cover representative interactions rather than every model and every state combination.",
+    "No original UE project code or assets were copied into this public website; project validation remains a record of the prior read-only review."
+  ]
+}

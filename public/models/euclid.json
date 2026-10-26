@@ -1,0 +1,107 @@
+{
+  "vehicleId": "euclid",
+  "name": "Euclid",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "euclid",
+    "configuration": "固定遮阳板与单望远镜观测构型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核固定太阳电池遮阳板，保留无展开双翼的构型",
+      "补充单光路到 VIS / NISP 的仪器关系"
+    ],
+    "features": [
+      {
+        "title": "1.2 m 望远镜",
+        "detail": "单望远镜收光后经分色部件送往 VIS 和 NISP，不是两台独立外置望远镜。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_s_instruments"
+      },
+      {
+        "title": "组合遮阳供电板",
+        "detail": "固定组合模块同时遮挡太阳并供电，区别于 Webb 的五层展开薄膜。",
+        "partId": "heatshield",
+        "sourceUrl": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Euclid_gains_solar_power_and_protection"
+      },
+      {
+        "title": "平台与载荷模块",
+        "detail": "服务模块支撑仪器载荷，太阳电池位于组合遮阳结构的太阳侧。",
+        "partId": "solar",
+        "sourceUrl": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Euclid_gains_solar_power_and_protection"
+      }
+    ],
+    "uncertainties": [
+      "主镜曲率、分色光路和探测器阵列没有按光学处方复原。",
+      "板件厚度、散热涂层与连接刚度不由展示模型给出。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Euclid 望远镜与仪器",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_s_instruments"
+      },
+      {
+        "title": "ESA · Euclid 太阳电池遮阳板安装",
+        "url": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Euclid_gains_solar_power_and_protection"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "载荷与服务模块",
+      "description": "两个主要模块的功能分区；机内安装与外罩厚度是示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_overview"
+    },
+    {
+      "id": "instruments",
+      "name": "1.2 m 望远镜、VIS 与 NISP",
+      "description": "单主镜和两条观测通道的功能表示，不复原光学处方。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_s_instruments"
+    },
+    {
+      "id": "solar",
+      "name": "太阳侧电池板",
+      "description": "固定遮阳板上的太阳电池面，不使用左右双伸展翼。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Euclid_gains_solar_power_and_protection"
+    },
+    {
+      "id": "heatshield",
+      "name": "固定遮阳结构",
+      "description": "保护载荷的单侧组合遮阳板；不是可展开五层薄膜。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Euclid_gains_solar_power_and_protection"
+    },
+    {
+      "id": "propulsion",
+      "name": "精细指向与轨道控制",
+      "description": "冷气及轨道控制功能区；喷口的比例与具体安装仅示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Follow_Euclid_s_first_months_in_space"
+    },
+    {
+      "id": "antenna",
+      "name": "通信天线",
+      "description": "通信分区；不反推真实波束、馈源和回转机构参数。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_overview"
+    },
+    {
+      "id": "avionics",
+      "name": "服务电子学",
+      "description": "数据处理、供电与测控功能块，非真实内部布局。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_overview"
+    },
+    {
+      "id": "frame",
+      "name": "载荷支撑结构",
+      "description": "只表示光学和平台之间的支承关系，不提供真实热变形刚度。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://doi.org/10.1051/0004-6361/202557524"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "vehicleId": "slim",
+  "name": "SLIM",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "slim",
+    "configuration": "设计的下降接近姿态 · 非 2024 年触地后的倒置状态",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "将通用四腿平台改为紧凑渐缩本体、五个非对称吸能接触点和本体电池阵。",
+      "补出双主喷口、底部导航相机与侧部 MBC 功能包。"
+    ],
+    "features": [
+      {
+        "title": "一主四辅接触结构",
+        "detail": "JAXA 描述一个主脚与四个辅助脚，服务先主脚接触再旋转落稳的两阶段着陆。模型使用五个吸能垫，去除常规四长腿外形。",
+        "partId": "legs",
+        "sourceUrl": "https://www.isas.jaxa.jp/feature/forefront/191226.html"
+      },
+      {
+        "title": "下降传感器布置区域",
+        "detail": "下降一侧需要容纳主发动机、姿控、导航相机、雷达和高度计。此处显示这些功能区域，未重建完整传感器数量与视场。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.isas.jaxa.jp/feature/forefront/191226.html"
+      },
+      {
+        "title": "设计姿态与实飞姿态",
+        "detail": "2024 年实际触地姿态偏离设计预期。默认模型展示硬件的设计下降方向；实飞结果应结合 JAXA 着陆分析阅读。",
+        "partId": "body",
+        "sourceUrl": "https://global.jaxa.jp/press/2024/01/file/jaxa_doc01_20240125_e.pdf"
+      }
+    ],
+    "uncertainties": [
+      "没有重建真实月面坡度、发动机异常或触地后的倒置姿态。",
+      "吸能垫内部金属晶格、压溃曲线和轻量贮箱结构仅作功能占位。"
+    ],
+    "sources": [
+      {
+        "title": "JAXA/ISAS · SLIM 两阶段着陆与五个接触机构",
+        "url": "https://www.isas.jaxa.jp/feature/forefront/191226.html"
+      },
+      {
+        "title": "JAXA · SLIM 2024 年 1 月着陆结果说明",
+        "url": "https://global.jaxa.jp/press/2024/01/file/jaxa_doc01_20240125_e.pdf"
+      },
+      {
+        "title": "JAXA DARTS · SLIM 任务资料",
+        "url": "https://darts.isas.jaxa.jp/en/missions/slim"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "轻量着陆器本体",
+      "description": "将小型化与精准着陆功能组合，外形归一化展示。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.isas.jaxa.jp/home/slim/SLIM/"
+    },
+    {
+      "id": "legs",
+      "name": "着陆接触结构",
+      "description": "表达预定接地与姿态变化过程，不模拟真实制造结构。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.isas.jaxa.jp/home/slim/SLIM/"
+    },
+    {
+      "id": "propulsion",
+      "name": "下降推进系统",
+      "description": "执行月面接近和下降阶段机动。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.isas.jaxa.jp/home/slim/SLIM/"
+    },
+    {
+      "id": "instruments",
+      "name": "导航相机与MBC",
+      "description": "视觉导航与多波段岩石观测各有用途。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.isas.jaxa.jp/home/slim/SLIM/"
+    },
+    {
+      "id": "solar",
+      "name": "本体太阳电池",
+      "description": "本体附着式能源表面，solarPanels=0表示无外伸翼板。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.isas.jaxa.jp/home/slim/SLIM/"
+    },
+    {
+      "id": "avionics",
+      "name": "导航与能源管理",
+      "description": "协调下降事件、数据保全及低功耗状态。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.isas.jaxa.jp/home/slim/SLIM/"
+    }
+  ]
+}

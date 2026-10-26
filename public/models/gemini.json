@@ -1,0 +1,89 @@
+{
+  "vehicleId": "gemini",
+  "name": "Gemini · 双子座飞船",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "gemini",
+    "configuration": "交会飞行构型；再入舱与适配器连接",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "区别双子座的细长乘员舱与宽设备适配段",
+      "增加前部交会区、双人座位和适配段热控条带"
+    ],
+    "features": [
+      {
+        "title": "双人再入舱",
+        "detail": "细长锥舱内为两名乘员；舱外窗口及座椅数量与 Mercury 区分。",
+        "partId": "crew",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "设备适配段",
+        "detail": "适配器含设备段与制动段，并在返回前分离；不把它当成可返回乘员舱。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "交会与回收前端",
+        "detail": "前端窄段用于交会、姿态控制和回收相关设备，独立于宽底热盾。",
+        "partId": "docking",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      }
+    ],
+    "uncertainties": [
+      "不同 Gemini 任务的设备与实验配置不同，本图为总体构型。",
+      "对接目标的捕获机构没有按 Agena 细节复刻。"
+    ],
+    "sources": [
+      {
+        "title": "NASA Historical Data Book · Gemini 总体与舱段",
+        "url": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "crew",
+      "name": "双人乘员舱",
+      "description": "提供两名航天员操作与返回空间。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/gemini/"
+    },
+    {
+      "id": "service",
+      "name": "设备适配段",
+      "description": "安装飞船在轨支持设备，内部位置作示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/gemini/"
+    },
+    {
+      "id": "propulsion",
+      "name": "轨道机动系统",
+      "description": "改变飞船轨道以支持交会。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/gemini/"
+    },
+    {
+      "id": "docking",
+      "name": "前部交会对接区域",
+      "description": "与目标飞行器建立机械连接的接口区域。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/gemini/"
+    },
+    {
+      "id": "heatshield",
+      "name": "返回热防护",
+      "description": "在返回大气时保护乘员舱。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/gemini/"
+    },
+    {
+      "id": "avionics",
+      "name": "飞行计算与测量",
+      "description": "支撑相对导航和飞行监视。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/gemini/"
+    }
+  ]
+}

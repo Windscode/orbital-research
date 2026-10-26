@@ -1,0 +1,86 @@
+{
+  "vehicleId": "sputnik-1",
+  "name": "Sputnik 1 · 人造卫星一号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "sputnik-1",
+    "configuration": "在轨展开构型；球壳与四根拖曳天线",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "增加两半球接缝、连接点和成对长短杆天线",
+      "内部无线电、电池与环境测量分组可分别检查"
+    ],
+    "features": [
+      {
+        "title": "球形压力边界",
+        "detail": "外壳保留金属球体轮廓与赤道接缝。壳厚和密封结构不由外形反算。",
+        "partId": "body",
+        "sourceUrl": "https://www.nasa.gov/history/sputnik/sputorig.html"
+      },
+      {
+        "title": "四杆无线电天线",
+        "detail": "四根杆向同一侧张开，按两对表达；并非 Telstar 的环带天线。",
+        "partId": "antenna",
+        "sourceUrl": "https://www.nasa.gov/history/sputnik/sputorig.html"
+      },
+      {
+        "title": "有限能源的无线电卫星",
+        "detail": "电池为无线电发射供能；内部功能块用于解释能源与通信关系，不代表独立科学载荷。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/history/65-years-ago-sputnik-ushers-in-the-space-age/"
+      }
+    ],
+    "uncertainties": [
+      "天线相对球体尺寸用于辨认，不是杆件制造尺寸。",
+      "内部电池数量、支架形状和设备位置未按实物复刻。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Sputnik 的历史与外形",
+        "url": "https://www.nasa.gov/history/sputnik/sputorig.html"
+      },
+      {
+        "title": "NASA · Sputnik 发射与电池寿命",
+        "url": "https://www.nasa.gov/history/65-years-ago-sputnik-ushers-in-the-space-age/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "金属球形壳体",
+      "description": "提供设备封装与承力边界；壁厚与内部支撑不由外观反推。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/history/sputnik/14.html"
+    },
+    {
+      "id": "antenna",
+      "name": "四根无线电天线",
+      "description": "外伸导体向地面辐射跟踪信号，展示长度按可读性简化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/history/sputnik/14.html"
+    },
+    {
+      "id": "avionics",
+      "name": "无线电与测控电子设备",
+      "description": "产生遥测信号，内部机架位置仅作功能示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/history/sputnik/14.html"
+    },
+    {
+      "id": "instruments",
+      "name": "环境状态测量",
+      "description": "以温度及压力相关状态支持在轨运行判断，传感器位置不作精确还原。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/history/sputnik/14.html"
+    },
+    {
+      "id": "service",
+      "name": "化学电源与热管理",
+      "description": "支持有限时间的无线电工作；此处用集总能源与热容表达。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/history/sputnik/14.html"
+    }
+  ]
+}

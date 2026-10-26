@@ -1,0 +1,89 @@
+{
+  "vehicleId": "voyager-1",
+  "name": "Voyager 1 · 旅行者一号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "voyager-1",
+    "configuration": "历史行星探测硬件构型；仪器展示不代表当前开机状态",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "替换圆筒探测器模板为十边形平台和大口径天线",
+      "三台 RTG 沿同一支臂串列，科学扫描平台与磁强计臂分开"
+    ],
+    "features": [
+      {
+        "title": "十边形设备平台",
+        "detail": "NASA 将平台描述为十边形盒体，各边容纳电子设备舱。",
+        "partId": "body",
+        "sourceUrl": "https://science.nasa.gov/mission/voyager/spacecraft/"
+      },
+      {
+        "title": "三台串列 RTG",
+        "detail": "三台电源在一条展开臂上首尾排列，避免做成三根独立竖筒。",
+        "partId": "service",
+        "sourceUrl": "https://science.nasa.gov/mission/voyager/spacecraft/"
+      },
+      {
+        "title": "天线与扫描平台",
+        "detail": "3.7 m 高增益天线和侧向扫描平台是不同部件；科学臂与远伸磁强计臂分别表达。",
+        "partId": "antenna",
+        "sourceUrl": "https://science.nasa.gov/mission/voyager/spacecraft/"
+      }
+    ],
+    "uncertainties": [
+      "磁强计臂长度为显示比例，未恢复实际柔性和格架杆件尺寸。",
+      "历史成像载荷仍显示在模型中，不宣称其目前工作。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Voyager 平台、天线及三台 RTG",
+        "url": "https://science.nasa.gov/mission/voyager/spacecraft/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "电子设备平台",
+      "description": "承载计算、通信和工程设备。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+    },
+    {
+      "id": "antenna",
+      "name": "高增益天线",
+      "description": "在远距离保持对地通信链路。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+    },
+    {
+      "id": "service",
+      "name": "三台 RTG 电源",
+      "description": "将放射性衰变热转换为电能，不使用太阳翼。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+    },
+    {
+      "id": "instruments",
+      "name": "科学伸展臂与平台",
+      "description": "承载粒子、磁场和历史成像相关仪器。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+    },
+    {
+      "id": "propulsion",
+      "name": "姿态推进器",
+      "description": "保持指向并执行姿态调整。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+    },
+    {
+      "id": "avionics",
+      "name": "姿态与平台控制",
+      "description": "协调指向及仪器平台动作。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+    }
+  ]
+}

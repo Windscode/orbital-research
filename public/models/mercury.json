@@ -1,0 +1,86 @@
+{
+  "vehicleId": "mercury",
+  "name": "Mercury · 水星飞船",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "mercury",
+    "configuration": "轨道飞行构型；逃逸塔已分离",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "取消类似现代飞船的通用长服务舱",
+      "增加锥体蒙皮分区、顶部回收圆筒和底部制动包"
+    ],
+    "features": [
+      {
+        "title": "锥舱与回收段",
+        "detail": "乘员锥舱上接窄圆筒；本构型不显示发射阶段使用的逃逸塔。",
+        "partId": "crew",
+        "sourceUrl": "https://www.nasa.gov/image-article/mercury-spacecraft/"
+      },
+      {
+        "title": "钝底热盾",
+        "detail": "热盾独立位于乘员舱宽底，剖视时可检查与压力舱的关系。",
+        "partId": "heatshield",
+        "sourceUrl": "https://www.nasa.gov/image-article/mercury-spacecraft/"
+      },
+      {
+        "title": "制动包",
+        "detail": "底部包件含用于减速的制动火箭；示意突出三只逆向火箭，不等同于完整六火箭包。",
+        "partId": "propulsion",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4319.pdf"
+      }
+    ],
+    "uncertainties": [
+      "制动包也包含分离火箭，本模型未逐喷口还原。",
+      "回收圆筒内的降落伞折叠、绳索与弹射件未建模。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Mercury 舱体与热盾",
+        "url": "https://www.nasa.gov/image-article/mercury-spacecraft/"
+      },
+      {
+        "title": "NASA SP-4319 · Mercury 制动火箭包",
+        "url": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4319.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "crew",
+      "name": "单人压力舱",
+      "description": "乘员在有限空间内完成整个飞行任务。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/image-article/mercury-spacecraft/"
+    },
+    {
+      "id": "heatshield",
+      "name": "钝底烧蚀热盾",
+      "description": "主要再入迎风防护面。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/image-article/mercury-spacecraft/"
+    },
+    {
+      "id": "propulsion",
+      "name": "制动火箭组件",
+      "description": "为轨道返回提供制动能力，装置仅作功能位置示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/image-article/mercury-spacecraft/"
+    },
+    {
+      "id": "avionics",
+      "name": "飞行监测与姿态控制",
+      "description": "支持飞船姿态和任务状态监视。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/image-article/mercury-spacecraft/"
+    },
+    {
+      "id": "service",
+      "name": "降落伞与回收设备",
+      "description": "完成大气减速后的着水回收。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/image-article/mercury-spacecraft/"
+    }
+  ]
+}

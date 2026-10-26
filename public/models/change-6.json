@@ -1,0 +1,100 @@
+{
+  "vehicleId": "change-6",
+  "name": "嫦娥六号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "change-6",
+    "configuration": "月背着陆—上升组合体 · 采样机构、通信与科学载荷示意",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "采用独立上升器、双太阳翼及四腿平台，补入机械臂、钻具和交会接口。",
+      "增加中继通信天线以及 NILS 等国际载荷功能外包络，区别于嫦娥五号并列返回器展示。"
+    ],
+    "features": [
+      {
+        "title": "采样与科学设备",
+        "detail": "继承的相机、矿物光谱与月壤结构探测设备为采样环境提供观测。模型将采样机构与仪器包分别命名。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.cas.cn/cm/202406/t20240603_5016504.shtml"
+      },
+      {
+        "title": "NILS 载荷",
+        "detail": "NILS 用于月表负离子和电子相关测量。显示的设备包仅表示其在着陆器上的功能存在，不是探头内部光学或电场结构。",
+        "partId": "instruments",
+        "sourceUrl": "https://nssc.cas.cn/xwdt2015/xwsd2015/202406/t20240607_7186465.html"
+      },
+      {
+        "title": "上升与样品接口",
+        "detail": "着陆器留在月面，上升器携样品进入交会阶段。模型把上升器和样品接口独立分组，避免理解为整体着陆器返回地球。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.cas.cn/cm/202406/t20240603_5016504.shtml"
+      }
+    ],
+    "uncertainties": [
+      "中继天线姿态、各国际载荷的精确安装坐标和内部布置仍属示意。",
+      "模型不含鹊桥二号、轨道器和地球返回器，不能将其视为整项任务的完整飞行组合体。"
+    ],
+    "sources": [
+      {
+        "title": "中科院国家空间科学中心 · 嫦娥六号 NILS 科学载荷",
+        "url": "https://nssc.cas.cn/xwdt2015/xwsd2015/202406/t20240607_7186465.html"
+      },
+      {
+        "title": "中国科学院 · 嫦娥六号继承载荷与国际载荷",
+        "url": "https://www.cas.cn/cm/202406/t20240603_5016504.shtml"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "月背着陆平台",
+      "description": "承担采样与月面科学任务，布局为功能示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n10518102/n10518147/c10565180/content.html"
+    },
+    {
+      "id": "stage-2",
+      "name": "上升器",
+      "description": "携样品进入月球轨道并参与交会。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n10518102/n10518147/c10565180/content.html"
+    },
+    {
+      "id": "legs",
+      "name": "着陆支腿",
+      "description": "支撑月面作业，接触参数不由外观推定。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n10518102/n10518147/c10565180/content.html"
+    },
+    {
+      "id": "instruments",
+      "name": "采样与科学载荷",
+      "description": "实施月背采样和相关测量。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n10518102/n10518147/c10565180/content.html"
+    },
+    {
+      "id": "antenna",
+      "name": "对地与中继通信",
+      "description": "通过地面站及中继星实现任务测控。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n10518102/n10518157/c10569593/content.html"
+    },
+    {
+      "id": "docking",
+      "name": "样品转移接口",
+      "description": "支持月轨交会与样品交接。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n10518102/n10518147/c10565180/content.html"
+    },
+    {
+      "id": "solar",
+      "name": "太阳能资源",
+      "description": "配合月面和在轨作业，模型翼面数量及位置简化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n10518102/n10518147/c10565180/content.html"
+    }
+  ]
+}

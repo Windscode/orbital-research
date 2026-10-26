@@ -1,0 +1,93 @@
+{
+  "vehicleId": "chandrayaan-3",
+  "name": "Chandrayaan-3 · Vikram",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "chandrayaan-3",
+    "configuration": "Vikram 月面部署构型 · 侧面电池阵与 Pragyan 坡道展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重建切角平台、四腿与四台下降发动机，取消通用双外伸太阳翼。",
+      "补出侧面电池阵、探针功能包、双轨坡道和小型六轮 Pragyan。"
+    ],
+    "features": [
+      {
+        "title": "四台下降发动机",
+        "detail": "四台可节流主发动机与八个姿控喷口分别表示；不能用主喷口外观估计实际阀门响应和节流精度。",
+        "partId": "propulsion",
+        "sourceUrl": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3_Details.html"
+      },
+      {
+        "title": "巡视器部署坡道",
+        "detail": "Pragyan 由着陆器携带并通过坡道驶向月面。模型把坡道与巡视器放在同一功能分组，突出两者的部署关系。",
+        "partId": "payload",
+        "sourceUrl": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3_Details.html"
+      },
+      {
+        "title": "月面科学与导航",
+        "detail": "温度、等离子体与地震观测载荷具有不同任务；模型用传感器包和探针辅助说明，不把所有设备画成相机。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3_Details.html"
+      }
+    ],
+    "uncertainties": [
+      "示意巡视器已沿坡道移动，场景不严格对应某一时刻。",
+      "各面电池片面积、推进器安装角和传感器视场未逐项测量。"
+    ],
+    "sources": [
+      {
+        "title": "ISRO · Chandrayaan-3 结构、推进与载荷",
+        "url": "https://www.isro.gov.in/ISRO_EN/Chandrayaan3_Details.html"
+      },
+      {
+        "title": "ISRO · Chandrayaan-3 官方任务手册",
+        "url": "https://www.isro.gov.in/media_isro/pdf/Missions/LVM3/LVM3M4_Chandrayaan3_brochure.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "Vikram着陆器",
+      "description": "承载下降推进、航电和科学载荷。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.isro.gov.in/Chandrayaan3_Details.html"
+    },
+    {
+      "id": "legs",
+      "name": "着陆支腿",
+      "description": "接地设计与坡度条件见官方任务资料。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.isro.gov.in/Chandrayaan3_Details.html"
+    },
+    {
+      "id": "propulsion",
+      "name": "可节流下降发动机",
+      "description": "四台800 N发动机，另有姿控推进器。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.isro.gov.in/Chandrayaan3_Details.html"
+    },
+    {
+      "id": "instruments",
+      "name": "导航与科学载荷",
+      "description": "高度、速度与视觉感知配合，科学载荷包含热、等离子体及地震测量。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.isro.gov.in/Chandrayaan3_Details.html"
+    },
+    {
+      "id": "payload",
+      "name": "Pragyan巡视器与坡道",
+      "description": "26 kg巡视器从着陆器部署，通信经着陆器。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.isro.gov.in/Chandrayaan3_Details.html"
+    },
+    {
+      "id": "solar",
+      "name": "太阳能资源",
+      "description": "提供一个月昼的表面活动能源，面积与姿态不按CAD复刻。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.isro.gov.in/Chandrayaan3_Details.html"
+    }
+  ]
+}

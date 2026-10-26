@@ -1,0 +1,93 @@
+{
+  "vehicleId": "apollo-csm",
+  "name": "Apollo CSM · 阿波罗指令服务舱",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "apollo-csm",
+    "configuration": "Apollo 11 型指令服务舱组合；无逃逸塔与登月舱",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重做 CM 锥体、SM 圆筒与大喷管的相对比例",
+      "补充服务舱散热分区、四组姿控附件和四面高增益天线"
+    ],
+    "features": [
+      {
+        "title": "CM / SM 分界",
+        "detail": "锥形 CM 与圆筒 SM 分组，热盾位于两者之间；返回时仅 CM 再入。",
+        "partId": "crew",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+      },
+      {
+        "title": "推进与服务设备",
+        "detail": "SPS 喷管位于服务舱尾部，推进剂功能块位于服务舱内部。",
+        "partId": "propulsion",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+      },
+      {
+        "title": "对接与通信附件",
+        "detail": "前部对接探针和侧后方天线组件按公开照片表达，不把它们做成对称太阳翼。",
+        "partId": "antenna",
+        "sourceUrl": "https://science.nasa.gov/resource/apollo-11-command-and-service-modules/"
+      }
+    ],
+    "uncertainties": [
+      "Apollo 各 Block 与任务设备存在差异，照片约束只用于总体外观。",
+      "SM 扇区分配、管路及热盾真实叠层没有逐项还原。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Apollo CM / SM 总体构型",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+      },
+      {
+        "title": "NASA · Apollo 11 指令服务舱照片",
+        "url": "https://science.nasa.gov/resource/apollo-11-command-and-service-modules/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "crew",
+      "name": "指令舱 CM",
+      "description": "容纳乘员，并作为地球再入返回舱。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+    },
+    {
+      "id": "service",
+      "name": "服务舱 SM",
+      "description": "承载推进、供电和主要消耗品。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+    },
+    {
+      "id": "propulsion",
+      "name": "服务推进系统",
+      "description": "支持月球轨道进入及返回等轨道机动。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+    },
+    {
+      "id": "heatshield",
+      "name": "指令舱热盾",
+      "description": "返回时的主要热防护结构。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+    },
+    {
+      "id": "docking",
+      "name": "探针与对接接口",
+      "description": "支持与登月舱组合飞行。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+    },
+    {
+      "id": "antenna",
+      "name": "通信天线",
+      "description": "支持地月链路，位置按公开照片简化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+    }
+  ]
+}

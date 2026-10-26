@@ -1,0 +1,103 @@
+{
+  "vehicleId": "saturn-v",
+  "name": "Saturn V · 土星五号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "saturn-v",
+    "configuration": "Saturn V / Apollo · S-IC、S-II、S-IVB 三级发射组合",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重做三级长度关系、S-IVB 收径段与 Apollo 飞船组合体，去掉通用载荷整流罩。",
+      "一级五台 F-1、二级五台 J-2、三级单台 J-2 分别显示。",
+      "增加一级尾翼、外壳识别色块、波纹裙段、仪器环与三组内部贮箱。"
+    ],
+    "features": [
+      {
+        "title": "不同直径的三级",
+        "detail": "NASA 历史数据列出前两级约 10.1 m 直径、S-IVB 约 6.6 m。三级不再显示为等宽小圆柱。",
+        "partId": "stage-3",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "5 / 5 / 1 发动机",
+        "detail": "各级发动机数量分别为五、五、一。两组五机采用中央与外围分布，剖视与拆分可辨认二级发动机。",
+        "partId": "engine",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "Apollo 飞船组合",
+        "detail": "顶端组织为登月舱适配段、服务舱、指令舱与逃逸系统，不采用现代通信卫星的圆钝整流罩。",
+        "partId": "payload",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "仪器环",
+        "detail": "S-IVB 上方的窄环单独归入航电组件，帮助分辨火箭制导仪器单元与上方飞船。",
+        "partId": "avionics",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      }
+    ],
+    "uncertainties": [
+      "黑白色块用于识别 Saturn V 谱系，不表示某一架 SA 序列号的精确涂装。",
+      "级间接头、共底、隔热层和贮箱长度是经过简化的显示几何，不能推导容积或质量。"
+    ],
+    "sources": [
+      {
+        "title": "NASA Historical Data Book Vol. II · Table 1-67",
+        "url": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "payload",
+      "name": "阿波罗载荷组合",
+      "description": "包含载人飞船与登月任务所需设备。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-saturn-v-grades-5-8/"
+    },
+    {
+      "id": "stage-1",
+      "name": "S-IC 一级",
+      "description": "五台 F-1 提供起飞主推力。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-saturn-v-grades-5-8/"
+    },
+    {
+      "id": "stage-2",
+      "name": "S-II 二级",
+      "description": "五台 J-2 执行中段氢氧推进。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-saturn-v-grades-5-8/"
+    },
+    {
+      "id": "stage-3",
+      "name": "S-IVB 三级",
+      "description": "单台 J-2 支持入轨与地月转移阶段。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-saturn-v-grades-5-8/"
+    },
+    {
+      "id": "engine",
+      "name": "一级发动机组",
+      "description": "展示五发动机布局，喷管细节简化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-saturn-v-grades-5-8/"
+    },
+    {
+      "id": "tank",
+      "name": "推进剂贮箱",
+      "description": "各级分别储存推进剂，内部容积和壁厚为示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-saturn-v-grades-5-8/"
+    },
+    {
+      "id": "avionics",
+      "name": "仪器舱",
+      "description": "承载制导、控制与测量设备。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/learning-resources/for-kids-and-students/what-was-the-saturn-v-grades-5-8/"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "vehicleId": "long-march-5",
+  "name": "长征五号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "long-march-5",
+    "configuration": "长征五号 · 两级芯级与四枚液体助推器 · 56.97 m 基线",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "按 5 m 芯级、3.35 m 助推器的比例重做宽体构型。",
+      "助推器改成双喷管液体组件，不再用单喷管固体助推器代替。",
+      "增加两级芯级、四助推器的推进剂分组与连接结构。"
+    ],
+    "features": [
+      {
+        "title": "两级芯级与四助推器",
+        "detail": "火箭院公布芯一、芯二级直径均为 5 m，助推器为 3.35 m。当前模型保留第二级，区别于长征五号 B。",
+        "partId": "stage-2",
+        "sourceUrl": "https://calt.spacechina.com/n482/n498/c4956/content.html"
+      },
+      {
+        "title": "三型发动机",
+        "detail": "助推器使用 YF-100，芯一级使用 YF-77，芯二级使用 YF-75D。模型将助推器双喷管与芯级喷管分别显示。",
+        "partId": "engine",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758968/n6758973/c6808556/content.html"
+      },
+      {
+        "title": "液体助推器内部",
+        "detail": "四枚助推器可见成对推进剂贮箱，与芯级氢氧贮箱用不同相对体积区分。具体分舱和容积未按实物标定。",
+        "partId": "tank",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759011/c6794064/content.html"
+      },
+      {
+        "title": "基线整流罩",
+        "detail": "采用 56.97 m 整箭与约 5.2 m 罩体的常见基线；不使用长征五号 B 的超长空间站舱段罩。",
+        "partId": "fairing",
+        "sourceUrl": "https://calt.spacechina.com/n482/n498/c4956/content.html"
+      }
+    ],
+    "uncertainties": [
+      "部分官方科普页面使用近似尺寸；本模型沿用火箭院列出的 56.97 m 基线，而非某次任务精确构型。",
+      "发动机喷管形状、液体管路和承力接头为示意；转发资料仅用于功能交叉核对，不提供制造几何。"
+    ],
+    "sources": [
+      {
+        "title": "中国运载火箭技术研究院 · 长征五号，2023-10-24（官方检索缓存可读，直连超时）",
+        "url": "https://calt.spacechina.com/n482/n498/c4956/content.html"
+      },
+      {
+        "title": "国家航天局 · 长征五号产品说明，2017-08-02",
+        "url": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759011/c6794064/content.html"
+      },
+      {
+        "title": "国家航天局转载 · 数说长五，2019-12-30（功能交叉核对）",
+        "url": "https://www.cnsa.gov.cn/n6758968/n6758973/c6808556/content.html"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "fairing",
+      "name": "载荷整流罩",
+      "description": "保护上面级载荷，长度因任务配置可能变化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html"
+    },
+    {
+      "id": "stage-1",
+      "name": "五米氢氧芯一级",
+      "description": "两台氢氧发动机与低温贮箱。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html"
+    },
+    {
+      "id": "stage-2",
+      "name": "氢氧芯二级",
+      "description": "两台膨胀循环氢氧发动机支持后续轨道运输。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html"
+    },
+    {
+      "id": "boosters",
+      "name": "四枚煤油助推器",
+      "description": "每枚两台液氧煤油发动机；与芯级并联推进。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html"
+    },
+    {
+      "id": "engine",
+      "name": "芯级发动机组",
+      "description": "模型engineCount为芯一级两台，不含八台助推发动机。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html"
+    },
+    {
+      "id": "tank",
+      "name": "分体系低温贮箱",
+      "description": "氢氧和煤油体系分别管理，箱底及管路为工程示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.spacechina.com/n25/n146/n238/n12985/c1043765/content.html"
+    }
+  ]
+}

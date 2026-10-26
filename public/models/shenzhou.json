@@ -1,0 +1,93 @@
+{
+  "vehicleId": "shenzhou",
+  "name": "神舟 · 以神舟九号为参数基线",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "shenzhou",
+    "configuration": "神舟九号以后对接型三舱关系；不含早期轨道舱太阳翼",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "圆桶轨道舱与钟形返回舱分开",
+      "太阳翼安装在推进舱，前端突出对接区"
+    ],
+    "features": [
+      {
+        "title": "圆桶轨道舱",
+        "detail": "神舟轨道舱是圆桶形，与联盟的近球形轨道舱有明显外形差异。",
+        "partId": "body",
+        "sourceUrl": "https://www.cmse.gov.cn/art/2015/9/9/art_944_20615.html"
+      },
+      {
+        "title": "中段返回舱",
+        "detail": "钟形返回舱是乘员上升与返回地面的主要舱段，不能和最前方轨道舱混用。",
+        "partId": "crew",
+        "sourceUrl": "https://www.cmse.gov.cn/art/2015/9/9/art_944_20615.html"
+      },
+      {
+        "title": "对接型任务边界",
+        "detail": "本档案参考神舟九号总体资料；早期独立留轨版本的太阳翼配置不同。",
+        "partId": "docking",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+      }
+    ],
+    "uncertainties": [
+      "结构说明页同时介绍过早期留轨构型，不能把其双对太阳翼直接套入对接型。",
+      "舱体尺寸按视觉归一化，设备与管线安装位置未公开复原。"
+    ],
+    "sources": [
+      {
+        "title": "CMSE · 神舟飞船舱段与系统组成",
+        "url": "https://www.cmse.gov.cn/art/2015/9/9/art_944_20615.html"
+      },
+      {
+        "title": "CNSA · 神舟九号总体规格",
+        "url": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "轨道舱",
+      "description": "提供在轨工作空间与前端接口，具体内部配置随任务变化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+    },
+    {
+      "id": "crew",
+      "name": "返回舱",
+      "description": "三名航天员返回地面的舱段。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+    },
+    {
+      "id": "service",
+      "name": "推进舱",
+      "description": "承担能源与轨道推进支持。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+    },
+    {
+      "id": "solar",
+      "name": "太阳翼",
+      "description": "供给在轨电能；本模型展示推进舱太阳翼示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+    },
+    {
+      "id": "docking",
+      "name": "对接机构",
+      "description": "用于示例任务与天宫一号的交会连接。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+    },
+    {
+      "id": "heatshield",
+      "name": "返回热防护",
+      "description": "保障返回舱穿越大气层，厚度和材料分区未复刻。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759014/c6794318/content.html"
+    }
+  ]
+}

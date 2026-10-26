@@ -1,0 +1,89 @@
+{
+  "vehicleId": "cassini",
+  "name": "Cassini–Huygens · 卡西尼—惠更斯",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "cassini",
+    "configuration": "Cassini–Huygens 分离前组合体",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "增加高柱状平台、顶置天线与底部三台 RTG",
+      "Huygens 放在平台侧面，保留遥感托盘和外伸磁强计臂"
+    ],
+    "features": [
+      {
+        "title": "轨道器与着陆探测器",
+        "detail": "Huygens 是附在轨道器侧面的独立探测器，分离后进入 Titan。",
+        "partId": "payload",
+        "sourceUrl": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+      },
+      {
+        "title": "三台同位素电源",
+        "detail": "三台 RTG 支撑远日运行，模型没有太阳电池翼。",
+        "partId": "service",
+        "sourceUrl": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+      },
+      {
+        "title": "通信与科学载荷",
+        "detail": "高增益天线位于平台上方，侧部遥感设备与外伸科学臂独立。",
+        "partId": "antenna",
+        "sourceUrl": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+      }
+    ],
+    "uncertainties": [
+      "本组合不代表 Huygens 分离后的 Cassini 外观。",
+      "仪器托盘、热控百叶与两个主发动机的包络均是简化形状。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Cassini 轨道器与 Huygens",
+        "url": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "轨道器平台",
+      "description": "承载设备和科学仪器。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/cassini/quick-facts/"
+    },
+    {
+      "id": "antenna",
+      "name": "高增益天线",
+      "description": "支持深空通信与相关无线电科学。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/cassini/quick-facts/"
+    },
+    {
+      "id": "service",
+      "name": "RTG 电源组",
+      "description": "支持土星距离下的长期供电。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/cassini/quick-facts/"
+    },
+    {
+      "id": "propulsion",
+      "name": "主推进与姿控",
+      "description": "执行轨道机动和姿态调整。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/cassini/quick-facts/"
+    },
+    {
+      "id": "payload",
+      "name": "惠更斯探测器",
+      "description": "随轨道器运输并释放至土卫六任务。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/cassini/quick-facts/"
+    },
+    {
+      "id": "instruments",
+      "name": "土星科学载荷",
+      "description": "开展遥感及空间环境测量。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/cassini/quick-facts/"
+    }
+  ]
+}

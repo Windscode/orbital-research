@@ -1,0 +1,490 @@
+[
+  {
+    "id": "falcon-9",
+    "configuration": "Falcon 9 Block 5 · 标准整流罩 · 支腿与栅格舵收拢示意",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "按照细长双级箭体重做轮廓，区分黑色级间段与直径更大的整流罩。",
+      "一级九机按中央一台、外围八台组织；二级增加单台真空喷管。",
+      "增加收拢支腿、栅格舵格栅、两级贮箱与航电环。"
+    ],
+    "features": [
+      {
+        "title": "标准整流罩",
+        "detail": "采用 5.2 m 外径、13.2 m 总高的公开包络；下部过渡与弧形头部按示意曲面构造。它不是延长整流罩，也不是 Dragon 构型。",
+        "partId": "fairing",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "两级推进布局",
+        "detail": "区分一级九台 Merlin 与二级单台真空发动机。发动机安装空间、外管路及喷管形状为观察功能而简化。",
+        "partId": "engine",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "回收附件",
+        "detail": "显示一级四条收拢支腿及四面收拢栅格舵；这张装配图不把着陆展开状态与在箭整流罩混在一起。",
+        "partId": "legs",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "贮箱与级间段",
+        "detail": "剖切后可分别识别两级推进剂容器。颜色只用于辨认，液位、隔板位置与容积不能从网格反推。",
+        "partId": "tank",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      }
+    ],
+    "uncertainties": [
+      "几何沿用档案 70 m 高度与 3.7 m 芯级直径，级间段、喷管和贮箱纵向位置没有逐项图纸约束。",
+      "网格表现标准运载构型；任务特定的整流罩、热防护、回收方案和载荷需要另建版本。"
+    ],
+    "sources": [
+      {
+        "title": "SpaceX · Falcon User's Guide，2025-05-09；§2、§4.1",
+        "url": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      }
+    ]
+  },
+  {
+    "id": "falcon-heavy",
+    "configuration": "Falcon Heavy · 三芯级 · 标准整流罩功能示意",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "两侧助推器改成完整 Falcon 芯级，增加各自九台发动机、圆钝头锥和回收附件。",
+      "一级发动机总数改为 27 台，同时保持中央芯级与上面级的层级关系。",
+      "增加助推器连接结构、三芯级贮箱及独立上面级真空喷管。"
+    ],
+    "features": [
+      {
+        "title": "三芯级而非小型助推器",
+        "detail": "中央芯级与两侧助推器使用同一尺寸量级。三组九机布局共同组成 27 台一级发动机；助推器不再画成通用固体助推器。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "上面级与整流罩",
+        "detail": "用户指南说明其上面级和整流罩与 Falcon 9 共用。本图选择标准整流罩，不代表所有任务均采用该高度包络。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "助推器与芯级接口",
+        "detail": "侧芯级有头锥、连接段、收拢支腿及栅格舵。连接点位置和杆件截面仅表达连接关系。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "分开的推进剂系统",
+        "detail": "三组一级贮箱在剖视与拆分时独立可辨。没有加入未经证实的跨芯级推进剂输送系统。",
+        "partId": "tank",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      }
+    ],
+    "uncertainties": [
+      "侧芯级是否回收、中央芯级是否安装回收附件取决于任务，本模型不是某次发射的逐件复刻。",
+      "侧芯级连接刚度、内部加强结构与质量分布未公开完整数据。"
+    ],
+    "sources": [
+      {
+        "title": "SpaceX · Falcon User's Guide；Falcon Heavy 概述与发动机布局图",
+        "url": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      }
+    ]
+  },
+  {
+    "id": "electron",
+    "configuration": "Electron · 双级主火箭 + Curie Kick Stage · V8 用户指南包络",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "改成黑色细长复合材料箭体与白色标准整流罩。",
+      "保留一级九台、二级一台 Rutherford，增加可单独查看的 Curie 末级。",
+      "区分第二级电源包、内贮箱和整流罩中的载荷安装平台。"
+    ],
+    "features": [
+      {
+        "title": "18 m 主体与 1.2 m 罩体",
+        "detail": "V8 指南给出总长 18 m、最大直径 1.2 m，标准整流罩长 2.5 m；外壳以此包络组织。",
+        "partId": "fairing",
+        "sourceUrl": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      },
+      {
+        "title": "Rutherford 推进组件",
+        "detail": "一级九台发动机与二级单台扩大喷管分别显示。发动机为电泵供给，电源盒只是功能位置标记。",
+        "partId": "engine",
+        "sourceUrl": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      },
+      {
+        "title": "独立 Kick Stage",
+        "detail": "末级含 Curie 发动机、容器和载荷接口。它位于整流罩内，不被当作拉长的第二级箭筒。",
+        "partId": "stage-3",
+        "sourceUrl": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      },
+      {
+        "title": "复合材料外壳与内部贮箱",
+        "detail": "深色外壳用于区分复合材料箭体；剖视显示两级贮箱。未把材质外观当成真实壁厚或铺层。",
+        "partId": "tank",
+        "sourceUrl": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      }
+    ],
+    "uncertainties": [
+      "电池数量、管路、共底结构和具体任务载荷配置未按制造图还原。",
+      "Kick Stage 是本次选定构型，不能与所有 Photon 航天器版本等同。"
+    ],
+    "sources": [
+      {
+        "title": "Rocket Lab · Electron Payload User Guide v8.0，September 2025",
+        "url": "https://rocketlabcorp.com/assets/Rocket-Lab-Electron-Payload-User-Guide-8.0.pdf"
+      }
+    ]
+  },
+  {
+    "id": "ariane-6",
+    "configuration": "Ariane 64 · 四枚 P120C · 20 m 长整流罩基线",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "明确选用 Ariane 64，保留四助推器，不把 A62 与 A64 混成同一构型。",
+      "按 5.4 m 芯级与 3.4 m 助推器直径关系重做外形。",
+      "增加 Vulcain、Vinci、固体装药示意以及不同尺度的低温贮箱。"
+    ],
+    "features": [
+      {
+        "title": "四枚 P120C",
+        "detail": "A64 采用四枚固体助推器，A62 为两枚。这里显示前者，助推器内的实体颜色只表示装药区，不表达药柱燃面。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/Ariane_6_what_s_it_made_of"
+      },
+      {
+        "title": "Vulcain 2.1 芯级",
+        "detail": "单台低温发动机位于主级底部。主级与助推器分别承担推进功能，拆分时可看出两者连接关系。",
+        "partId": "engine",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/The_engines_of_Ariane_6"
+      },
+      {
+        "title": "Vinci 上面级",
+        "detail": "上面级使用可再启动 Vinci；本模型增加独立喷管和氢氧容器，未以主级圆柱缩小代替全部系统。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/The_engines_of_Ariane_6"
+      },
+      {
+        "title": "长整流罩",
+        "detail": "采用 ESA 所列 20 m 长罩，对应约 62 m 整箭包络。短罩与其他任务构型不在当前装配状态中。",
+        "partId": "fairing",
+        "sourceUrl": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/Ariane_6_what_s_it_made_of"
+      }
+    ],
+    "uncertainties": [
+      "采用公开基础构型；后续增强版助推器与任务特定载荷适配器没有并入。",
+      "低温贮箱分界、绝热厚度、APU 和增压管路尚未获得足够几何约束。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Ariane 6: what's it made of?",
+        "url": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/Ariane_6_what_s_it_made_of"
+      },
+      {
+        "title": "ESA · The engines of Ariane 6",
+        "url": "https://www.esa.int/Enabling_Support/Space_Transportation/Ariane/The_engines_of_Ariane_6"
+      }
+    ]
+  },
+  {
+    "id": "sls-block-1",
+    "configuration": "SLS Block 1 · ICPS + Orion 发射组合体",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重做橙色芯级、双固体助推器、收径适配段、ICPS、Orion 与逃逸塔的层级。",
+      "区分四台 RS-25 与 ICPS 的单台 RL10。",
+      "补充五段式助推器环带、芯级氢氧贮箱和外部管路。"
+    ],
+    "features": [
+      {
+        "title": "橙色芯级",
+        "detail": "NASA 给出芯级约 64.6 m 长、8.4 m 直径。图中保留大直径主级与前部氧箱、后部氢箱的关系。",
+        "partId": "stage-1",
+        "sourceUrl": "https://www.nasa.gov/reference/sls-space-launch-system-core-stage/"
+      },
+      {
+        "title": "四台 RS-25",
+        "detail": "四喷管沿发动机段分布，区别于五机的 Saturn V 或单机芯级。喷管轮廓和安装角度为示意。",
+        "partId": "engine",
+        "sourceUrl": "https://www.nasa.gov/reference/sls-space-launch-system-core-stage/"
+      },
+      {
+        "title": "五段固体助推器",
+        "detail": "两侧助推器分别显示五段式壳体关系、头锥与喷管；可单独观察，不以两个缩小液体芯级替代。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.nasa.gov/reference/sls-space-launch-system-solid-rocket-booster/"
+      },
+      {
+        "title": "ICPS 与 Orion",
+        "detail": "Block 1 使用较窄的 ICPS 和过渡适配结构；上方是 Orion 服务舱、乘员舱与发射中止系统的组合示意。",
+        "partId": "payload",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/03/sls-reference-guide-2022-v2-508-0.pdf"
+      }
+    ],
+    "uncertainties": [
+      "这是 Block 1 历史构型参考，不把其他 Block 或后续计划中的上面级混入。",
+      "Orion 罩体、适配器厚度和内部安装结构未按飞行件 CAD 复刻。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · SLS Core Stage",
+        "url": "https://www.nasa.gov/reference/sls-space-launch-system-core-stage/"
+      },
+      {
+        "title": "NASA · SLS Solid Rocket Booster",
+        "url": "https://www.nasa.gov/reference/sls-space-launch-system-solid-rocket-booster/"
+      },
+      {
+        "title": "NASA · SLS Reference Guide 2022",
+        "url": "https://www.nasa.gov/wp-content/uploads/2022/03/sls-reference-guide-2022-v2-508-0.pdf"
+      }
+    ]
+  },
+  {
+    "id": "saturn-v",
+    "configuration": "Saturn V / Apollo · S-IC、S-II、S-IVB 三级发射组合",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重做三级长度关系、S-IVB 收径段与 Apollo 飞船组合体，去掉通用载荷整流罩。",
+      "一级五台 F-1、二级五台 J-2、三级单台 J-2 分别显示。",
+      "增加一级尾翼、外壳识别色块、波纹裙段、仪器环与三组内部贮箱。"
+    ],
+    "features": [
+      {
+        "title": "不同直径的三级",
+        "detail": "NASA 历史数据列出前两级约 10.1 m 直径、S-IVB 约 6.6 m。三级不再显示为等宽小圆柱。",
+        "partId": "stage-3",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "5 / 5 / 1 发动机",
+        "detail": "各级发动机数量分别为五、五、一。两组五机采用中央与外围分布，剖视与拆分可辨认二级发动机。",
+        "partId": "engine",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "Apollo 飞船组合",
+        "detail": "顶端组织为登月舱适配段、服务舱、指令舱与逃逸系统，不采用现代通信卫星的圆钝整流罩。",
+        "partId": "payload",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      },
+      {
+        "title": "仪器环",
+        "detail": "S-IVB 上方的窄环单独归入航电组件，帮助分辨火箭制导仪器单元与上方飞船。",
+        "partId": "avionics",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      }
+    ],
+    "uncertainties": [
+      "黑白色块用于识别 Saturn V 谱系，不表示某一架 SA 序列号的精确涂装。",
+      "级间接头、共底、隔热层和贮箱长度是经过简化的显示几何，不能推导容积或质量。"
+    ],
+    "sources": [
+      {
+        "title": "NASA Historical Data Book Vol. II · Table 1-67",
+        "url": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4012v2.pdf"
+      }
+    ]
+  },
+  {
+    "id": "starship",
+    "configuration": "Starship V3 / Super Heavy · 124 m 公开设计包络",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "按 V3 公开更新，将 Super Heavy 栅格舵改为三面，并改成一体式热分离段。",
+      "增加 33 台助推级发动机、上面级三台海平面与三台真空发动机的分组。",
+      "重做不锈钢箭体、四块飞船襟翼、迎风面防热层与尖拱头部。"
+    ],
+    "features": [
+      {
+        "title": "V3 三面栅格舵",
+        "detail": "SpaceX 2026 年 5 月更新说明，Super Heavy V3 从四面栅格舵改为三面，尺寸增大并下移。当前模型选择这一版本。",
+        "partId": "stage-1",
+        "sourceUrl": "https://www.spacex.com/updates/reusability"
+      },
+      {
+        "title": "一体式热分离段",
+        "detail": "V3 更新将此前的一次性保护级间段改成一体式热分离结构。图中保留顶部开口关系，开窗尺寸为示意。",
+        "partId": "stage-1",
+        "sourceUrl": "https://www.spacex.com/updates/reusability"
+      },
+      {
+        "title": "两级发动机布局",
+        "detail": "助推级 33 台按中央与外围组织；飞船三台海平面 Raptor 和三台大喷管 RVac 独立显示。",
+        "partId": "engine",
+        "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+      },
+      {
+        "title": "飞船襟翼与迎风面",
+        "detail": "四块襟翼归属飞船级，深色防热层只覆盖迎风侧及头部相应扇区，不再用整圈黑色外壳代替。",
+        "partId": "heatshield",
+        "sourceUrl": "https://www.spacex.com/vehicles/starship/design"
+      }
+    ],
+    "uncertainties": [
+      "Starship 仍在迭代；此模型绑定公开 V3 包络，不将其他版本的高度、舵面与发动机配置混用。",
+      "热防护瓦数量、储罐隔板、头部小贮箱和载荷安装架未获得逐项尺寸依据；模型不代表具体飞行序号。"
+    ],
+    "sources": [
+      {
+        "title": "SpaceX · Starship Design；公开 V3 参数",
+        "url": "https://www.spacex.com/vehicles/starship/design"
+      },
+      {
+        "title": "SpaceX · Introducing Starship V3，2026-05-12",
+        "url": "https://www.spacex.com/updates/reusability"
+      }
+    ]
+  },
+  {
+    "id": "new-glenn",
+    "configuration": "New Glenn · 七台 BE-4 / 双 BE-3U 基本型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "单独重做七米直径两级箭体，增加蓝色尾段、前部控制面和后部边条。",
+      "一级七台 BE-4 与二级双 BE-3U 分开建模。",
+      "着陆支撑从通用四腿改成六个收拢支腿位置。"
+    ],
+    "features": [
+      {
+        "title": "七台 BE-4",
+        "detail": "所选基本型一级采用七台 BE-4，六外一内的布局仅表达数量与空间关系。它不是官网另列的 9×4 后续版本。",
+        "partId": "engine",
+        "sourceUrl": "https://www.blueorigin.com/new-glenn"
+      },
+      {
+        "title": "双 BE-3U 上面级",
+        "detail": "氢氧上面级有两台真空发动机，剖切后能看到与一级不同的贮箱尺度与双喷管。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.blueorigin.com/new-glenn"
+      },
+      {
+        "title": "四控制面与六支腿",
+        "detail": "厂家列出四个气动控制面和六个液压支腿。控制面、边条、收拢支腿在模型中分开表达。",
+        "partId": "legs",
+        "sourceUrl": "https://www.blueorigin.com/new-glenn"
+      },
+      {
+        "title": "七米整流罩",
+        "detail": "采用七米外径的宽整流罩，延续基本型约 98 m 高度量级。载荷设备与可用内部包络不由该网格定义。",
+        "partId": "fairing",
+        "sourceUrl": "https://www.blueorigin.com/new-glenn"
+      }
+    ],
+    "uncertainties": [
+      "官网同时介绍后续 9×4 版本；本模型明确保持七台 / 双台基本型，参数不能跨版本拼接。",
+      "控制面铰接、边条轮廓、支腿机构、级间长度和贮箱比例均为功能级示意。"
+    ],
+    "sources": [
+      {
+        "title": "Blue Origin · New Glenn 基本型产品说明",
+        "url": "https://www.blueorigin.com/new-glenn"
+      }
+    ]
+  },
+  {
+    "id": "long-march-5",
+    "configuration": "长征五号 · 两级芯级与四枚液体助推器 · 56.97 m 基线",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "按 5 m 芯级、3.35 m 助推器的比例重做宽体构型。",
+      "助推器改成双喷管液体组件，不再用单喷管固体助推器代替。",
+      "增加两级芯级、四助推器的推进剂分组与连接结构。"
+    ],
+    "features": [
+      {
+        "title": "两级芯级与四助推器",
+        "detail": "火箭院公布芯一、芯二级直径均为 5 m，助推器为 3.35 m。当前模型保留第二级，区别于长征五号 B。",
+        "partId": "stage-2",
+        "sourceUrl": "https://calt.spacechina.com/n482/n498/c4956/content.html"
+      },
+      {
+        "title": "三型发动机",
+        "detail": "助推器使用 YF-100，芯一级使用 YF-77，芯二级使用 YF-75D。模型将助推器双喷管与芯级喷管分别显示。",
+        "partId": "engine",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758968/n6758973/c6808556/content.html"
+      },
+      {
+        "title": "液体助推器内部",
+        "detail": "四枚助推器可见成对推进剂贮箱，与芯级氢氧贮箱用不同相对体积区分。具体分舱和容积未按实物标定。",
+        "partId": "tank",
+        "sourceUrl": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759011/c6794064/content.html"
+      },
+      {
+        "title": "基线整流罩",
+        "detail": "采用 56.97 m 整箭与约 5.2 m 罩体的常见基线；不使用长征五号 B 的超长空间站舱段罩。",
+        "partId": "fairing",
+        "sourceUrl": "https://calt.spacechina.com/n482/n498/c4956/content.html"
+      }
+    ],
+    "uncertainties": [
+      "部分官方科普页面使用近似尺寸；本模型沿用火箭院列出的 56.97 m 基线，而非某次任务精确构型。",
+      "发动机喷管形状、液体管路和承力接头为示意；转发资料仅用于功能交叉核对，不提供制造几何。"
+    ],
+    "sources": [
+      {
+        "title": "中国运载火箭技术研究院 · 长征五号，2023-10-24（官方检索缓存可读，直连超时）",
+        "url": "https://calt.spacechina.com/n482/n498/c4956/content.html"
+      },
+      {
+        "title": "国家航天局 · 长征五号产品说明，2017-08-02",
+        "url": "https://www.cnsa.gov.cn/n6758824/n6759008/n6759011/c6794064/content.html"
+      },
+      {
+        "title": "国家航天局转载 · 数说长五，2019-12-30（功能交叉核对）",
+        "url": "https://www.cnsa.gov.cn/n6758968/n6758973/c6808556/content.html"
+      }
+    ]
+  },
+  {
+    "id": "h3",
+    "configuration": "H3-24L · 两台 LE-9、四枚 SRB-3、长整流罩",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "明确 24L 构型的发动机、助推器与整流罩组合。",
+      "重做绝热色主级、白色上面级、长整流罩和四枚短固体助推器。",
+      "增加上面级单喷管与分开的氢氧贮箱。"
+    ],
+    "features": [
+      {
+        "title": "24L 命名的含义",
+        "detail": "MHI 说明数字依次表示主级发动机和固体助推器数量，字母表示整流罩规格；24L 因而是两台主机、四枚助推器、长罩。",
+        "partId": "stage-1",
+        "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+      },
+      {
+        "title": "四枚 SRB-3",
+        "detail": "短固体助推器与细长芯级形成不同尺度，不套用长征五号的宽大液体助推器。内部装药不模拟燃烧孔形。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+      },
+      {
+        "title": "长整流罩",
+        "detail": "选择 63 m 级整箭包络与 5.2 m L 罩；不将 57 m 短罩或 5.4 m W 罩拼入同一模型。",
+        "partId": "fairing",
+        "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+      },
+      {
+        "title": "两级低温推进",
+        "detail": "两台 LE-9 与上面级单台 LE-5B-3 的喷管分属各级。贮箱颜色表示功能，绝热结构和内部设备位置为研究示意。",
+        "partId": "engine",
+        "sourceUrl": "https://www.mhi.com/business/products-services/space-defense/launch-service/launch-vehicles"
+      }
+    ],
+    "uncertainties": [
+      "该模型固定 24L，不代表 H3-30S、22L 或24W；每种构型须保留各自版本。",
+      "一级绝热色块、助推器连接位置和箱体比例未从制造图逐项测量。"
+    ],
+    "sources": [
+      {
+        "title": "MHI Technical Review Vol.62 No.4 · Continued Evolution of H3，2025",
+        "url": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+      },
+      {
+        "title": "MHI · Launch Vehicles",
+        "url": "https://www.mhi.com/business/products-services/space-defense/launch-service/launch-vehicles"
+      }
+    ]
+  }
+]

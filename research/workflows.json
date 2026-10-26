@@ -413,5 +413,124 @@
         "url": "https://cdaweb.gsfc.nasa.gov/cdaweb_anonymousftp.htm"
       }
     ]
+  },
+  {
+    "id": "shape-reconstruction",
+    "code": "GEO / 07",
+    "title": "公开资料到可检查的三维模型",
+    "shortTitle": "外形重建与几何检查",
+    "question": "怎样判断一个看起来像真的三维模型，究竟有哪些部分得到公开证据支持？",
+    "summary": "以任务构型和已知尺寸约束外形，记录遮挡与尺度不确定性，再检查组件关系、网格缺陷及质量属性的适用边界。",
+    "domain": "工程方法",
+    "level": "几何与数据验证",
+    "deliverable": "证据索引 + 参数化外形 + 坐标说明 + 几何检查报告",
+    "verifiedOn": "2026-10-26",
+    "boundary": "本站提出的个人研究流程；工具之间需要自行编写或配置接口。展示模型不代表制造 CAD、实测内部结构或已验证的求解网格，流程未替用户执行真实飞行器重建。",
+    "lessonIds": [
+      "geometry-reconstruction",
+      "mass-properties",
+      "mesh-validity",
+      "data-provenance"
+    ],
+    "resourceIds": [
+      "nasa-3d-resources",
+      "meshlab",
+      "paraview",
+      "opencascade",
+      "cgal",
+      "gmsh"
+    ],
+    "vehicleIds": [
+      "tiros-1",
+      "zhurong",
+      "iss"
+    ],
+    "contract": [
+      {
+        "field": "构型与证据",
+        "value": "型号、任务阶段、装配或部署状态、图像日期、原始链接与文件版本。",
+        "why": "不同年代、不同姿态或不同任务的照片不能直接拼成同一装配体。"
+      },
+      {
+        "field": "几何与坐标",
+        "value": "长度单位、坐标轴、原点、组件局部变换、已知尺寸与未知范围。",
+        "why": "可显示的模型仍可能比例错误；坐标错误还会传播到装配、质量与惯量计算。"
+      },
+      {
+        "field": "用途与误差",
+        "value": "分别声明展示、体积估计或求解预处理用途，以及轮廓、尺寸和拓扑的检查方法。",
+        "why": "外形相似、闭合表面和数值收敛分别回答不同问题，不能相互替代。"
+      }
+    ],
+    "steps": [
+      {
+        "id": "evidence",
+        "title": "选定构型与尺寸依据",
+        "detail": "以 TIROS-1 等结构较简单的档案开始，或明确祝融号的展开状态；从官方资料记录公开尺寸、不同方向照片和时间信息。已有官方三维资产也要核对构型与单位，保留原文件，列出相互矛盾或无法确认的细节。",
+        "output": "带来源与日期的证据表、目标构型说明",
+        "check": "每项主尺寸可定位到来源；没有把概念图当作实测图。"
+      },
+      {
+        "id": "reconstruct",
+        "title": "先拟合主体，再拆分附件",
+        "detail": "先用规则实体和公开尺度建立主体，用多个视角限制相机姿态与轮廓，再加入翼板、支架和天线。为每个部件写明装配关系、局部坐标和证据等级；遮挡区域保留参数区间，独立返回舱或部署机构不凭视觉效果错误连接。",
+        "output": "可调整外形、部件树、坐标与不确定性表",
+        "check": "一张未参与拟合的照片仍能解释主体轮廓和接口位置。"
+      },
+      {
+        "id": "inspect",
+        "title": "检查网格与质量计算边界",
+        "detail": "在 MeshLab 中观察缺陷，按需要用 CGAL 编写边界、自交和退化面检查；涉及体积时可用 OCCT 规则体或封闭实体进行独立对照。几何量与质量台账分开处理，未知材料和密度不以默认值悄悄补齐，修复前后保留差异记录。",
+        "output": "缺陷清单、修复记录、几何量对照",
+        "check": "真实孔口与薄壁没有被误删；体积、质量和惯量使用不同定义。"
+      },
+      {
+        "id": "handover",
+        "title": "重新导入并交付检查记录",
+        "detail": "导出模型后在独立查看工具中重新打开，复核尺寸、轴向、组件名称与部署状态；用 ParaView 等工具审查适合其数据管线的截面或计算结果。若继续求解，再经 Gmsh 等工具建立计算网格，单独设计边界条件和网格收敛研究。",
+        "output": "模型文件、检查截图、参数台账与后续计算要求",
+        "check": "说明哪些结论已有证据，哪些仍是估计；不把成功显示写成求解已验证。"
+      }
+    ],
+    "validation": [
+      "用未参与拟合的视角复核轮廓与附件方向，并记录相机未知造成的残余差异。",
+      "导出再导入后核对至少一个已知长度、轴向、组件数量和局部装配变换。",
+      "分别列出开口、非流形、自交、退化面和方向问题；需要实体积分时另核对闭合与空腔。",
+      "质量属性先通过规则体或质点解析算例，再进行单位、旋转不变性和不确定性检查。",
+      "若进入数值求解，另外报告计算域、边界条件、关注量与系统网格加密结果。"
+    ],
+    "pitfalls": [
+      "把不同年代的空间站、展开前后的太阳翼或真实着陆姿态混成同一构型。",
+      "由一张斜拍照片的像素比例推断所有深度上的真实尺寸。",
+      "把归一化展示模型按米导入求解器，或把几何体积直接填入质量字段。",
+      "自动补洞误封喷口，简化误删薄板，双面材质掩盖法向错误。",
+      "为缺少公开资料的内部部件补出精细结构，却没有标注为假设。"
+    ],
+    "sources": [
+      {
+        "title": "OpenCV：针孔相机、内参与坐标变换",
+        "url": "https://docs.opencv.org/5.0/main_modules/calib.html"
+      },
+      {
+        "title": "Khronos：glTF 2.0 规范",
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html"
+      },
+      {
+        "title": "NASA 3D Resources",
+        "url": "https://science.nasa.gov/3d-resources/"
+      },
+      {
+        "title": "OCCT BRepGProp：体积、质心与惯性属性及输入条件",
+        "url": "https://occt3d.com/dev/doc/refman/html/class_b_rep_g_prop.html"
+      },
+      {
+        "title": "CGAL Polygon Mesh Processing 用户手册",
+        "url": "https://doc.cgal.org/latest/Polygon_mesh_processing/index.html"
+      },
+      {
+        "title": "NASA-STD-7009：模型与仿真标准",
+        "url": "https://standards.nasa.gov/standard/nasa/nasa-std-7009"
+      }
+    ]
   }
 ]

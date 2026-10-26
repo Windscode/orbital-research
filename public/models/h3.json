@@ -1,0 +1,100 @@
+{
+  "vehicleId": "h3",
+  "name": "H3 · 24L 构型示意",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "h3",
+    "configuration": "H3-24L · 两台 LE-9、四枚 SRB-3、长整流罩",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "明确 24L 构型的发动机、助推器与整流罩组合。",
+      "重做绝热色主级、白色上面级、长整流罩和四枚短固体助推器。",
+      "增加上面级单喷管与分开的氢氧贮箱。"
+    ],
+    "features": [
+      {
+        "title": "24L 命名的含义",
+        "detail": "MHI 说明数字依次表示主级发动机和固体助推器数量，字母表示整流罩规格；24L 因而是两台主机、四枚助推器、长罩。",
+        "partId": "stage-1",
+        "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+      },
+      {
+        "title": "四枚 SRB-3",
+        "detail": "短固体助推器与细长芯级形成不同尺度，不套用长征五号的宽大液体助推器。内部装药不模拟燃烧孔形。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+      },
+      {
+        "title": "长整流罩",
+        "detail": "选择 63 m 级整箭包络与 5.2 m L 罩；不将 57 m 短罩或 5.4 m W 罩拼入同一模型。",
+        "partId": "fairing",
+        "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+      },
+      {
+        "title": "两级低温推进",
+        "detail": "两台 LE-9 与上面级单台 LE-5B-3 的喷管分属各级。贮箱颜色表示功能，绝热结构和内部设备位置为研究示意。",
+        "partId": "engine",
+        "sourceUrl": "https://www.mhi.com/business/products-services/space-defense/launch-service/launch-vehicles"
+      }
+    ],
+    "uncertainties": [
+      "该模型固定 24L，不代表 H3-30S、22L 或24W；每种构型须保留各自版本。",
+      "一级绝热色块、助推器连接位置和箱体比例未从制造图逐项测量。"
+    ],
+    "sources": [
+      {
+        "title": "MHI Technical Review Vol.62 No.4 · Continued Evolution of H3，2025",
+        "url": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+      },
+      {
+        "title": "MHI · Launch Vehicles",
+        "url": "https://www.mhi.com/business/products-services/space-defense/launch-service/launch-vehicles"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "fairing",
+      "name": "L型长整流罩",
+      "description": "本模型选择长整流罩；短整流罩对应不同总高。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+    },
+    {
+      "id": "stage-1",
+      "name": "氢氧一级",
+      "description": "本构型使用两台LE-9；三发动机构型单独定义。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+    },
+    {
+      "id": "stage-2",
+      "name": "氢氧二级",
+      "description": "LE-5B-3执行后续推进。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+    },
+    {
+      "id": "boosters",
+      "name": "四枚SRB-3",
+      "description": "24L构型的固体助推器，零或两枚属于其他配置。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+    },
+    {
+      "id": "engine",
+      "name": "LE-9发动机组",
+      "description": "芯级两台发动机，具体推力条件见任务手册。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+    },
+    {
+      "id": "tank",
+      "name": "低温贮箱",
+      "description": "液氧与液氢分舱，内部管路及箱底为工程示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.mhi.com/technology/review/pdf/e624/e624120.pdf"
+    }
+  ]
+}

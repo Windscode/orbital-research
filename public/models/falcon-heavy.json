@@ -1,0 +1,96 @@
+{
+  "vehicleId": "falcon-heavy",
+  "name": "Falcon Heavy",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "falcon-heavy",
+    "configuration": "Falcon Heavy · 三芯级 · 标准整流罩功能示意",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "两侧助推器改成完整 Falcon 芯级，增加各自九台发动机、圆钝头锥和回收附件。",
+      "一级发动机总数改为 27 台，同时保持中央芯级与上面级的层级关系。",
+      "增加助推器连接结构、三芯级贮箱及独立上面级真空喷管。"
+    ],
+    "features": [
+      {
+        "title": "三芯级而非小型助推器",
+        "detail": "中央芯级与两侧助推器使用同一尺寸量级。三组九机布局共同组成 27 台一级发动机；助推器不再画成通用固体助推器。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "上面级与整流罩",
+        "detail": "用户指南说明其上面级和整流罩与 Falcon 9 共用。本图选择标准整流罩，不代表所有任务均采用该高度包络。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "助推器与芯级接口",
+        "detail": "侧芯级有头锥、连接段、收拢支腿及栅格舵。连接点位置和杆件截面仅表达连接关系。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      },
+      {
+        "title": "分开的推进剂系统",
+        "detail": "三组一级贮箱在剖视与拆分时独立可辨。没有加入未经证实的跨芯级推进剂输送系统。",
+        "partId": "tank",
+        "sourceUrl": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      }
+    ],
+    "uncertainties": [
+      "侧芯级是否回收、中央芯级是否安装回收附件取决于任务，本模型不是某次发射的逐件复刻。",
+      "侧芯级连接刚度、内部加强结构与质量分布未公开完整数据。"
+    ],
+    "sources": [
+      {
+        "title": "SpaceX · Falcon User's Guide；Falcon Heavy 概述与发动机布局图",
+        "url": "https://www.spacex.com/assets/media/falcon-users-guide-2025-05-09.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "fairing",
+      "name": "载荷整流罩",
+      "description": "保护上面级顶部载荷，接口与环境见用户指南。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-heavy/"
+    },
+    {
+      "id": "stage-1",
+      "name": "中央芯级",
+      "description": "在侧芯级分离后继续推进，任务状态独立管理。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-heavy/"
+    },
+    {
+      "id": "boosters",
+      "name": "两枚侧芯级",
+      "description": "与中央芯级并联工作，按任务配置分离并回收或消耗。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-heavy/"
+    },
+    {
+      "id": "stage-2",
+      "name": "上面级",
+      "description": "真空Merlin完成轨道运输。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-heavy/"
+    },
+    {
+      "id": "engine",
+      "name": "27台Merlin",
+      "description": "三个芯级合计27台；模型engineCount为单芯级9台，侧芯级各自配置。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-heavy/"
+    },
+    {
+      "id": "tank",
+      "name": "各芯级贮箱",
+      "description": "液氧与RP-1质量账本分别管理，内部结构为工程示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.spacex.com/vehicles/falcon-heavy/"
+    }
+  ]
+}

@@ -3780,5 +3780,272 @@
       "预算是否包含 I/O、总线协议、维护和模型部署所需许可？"
     ],
     "starterWorkflowStatus": "基于官方文档设计的研究步骤；本站未安装或实测该工具。"
+  },
+  {
+    "id": "nasa-3d-resources",
+    "title": "NASA 3D Resources",
+    "category": "数据与环境",
+    "kind": "公开数据",
+    "summary": "NASA 任务三维资产与可打印模型入口，适合结构讲解、外形参考和展示素材筛选。",
+    "details": "官方资源页集中提供任务相关三维模型，并链接镜像仓库；其中部分面向三维打印。资源的用途、格式与细节程度需逐项检查，不能由 NASA 来源推断其具有制造级尺寸、公差或内部结构。本站建议将它作为有来源的参考资产入口，下载后保留任务名称、文件版本、署名和原始说明。",
+    "tags": [
+      "三维模型",
+      "任务资产",
+      "形状参考"
+    ],
+    "language": "英文",
+    "license": "免费获取；依 NASA 媒体使用指南及各资产的署名、第三方权利说明使用",
+    "accessModel": "data",
+    "url": "https://science.nasa.gov/3d-resources/",
+    "docsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "sourceTitle": "NASA 官方资源与媒体使用指南",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "筛选任务与构型",
+      "核对原始说明与使用条件",
+      "导入并检查单位和组件",
+      "保留原始资产与修改记录"
+    ],
+    "inputs": "任务名称、目标构型、所需文件格式与用途。",
+    "outputs": "官方发布的三维资产及其原始说明；具体格式和可打印性依条目而定。",
+    "limitations": "公开发布不等于工程验证；可能缺少厚度、材料、惯量、部署机构和真实比例。第三方素材与机构标识需单独核对使用条件。",
+    "usageEvidence": [
+      {
+        "organization": "NASA",
+        "context": "官方发布任务三维资源的能力与获取入口；不据此声称具体模型被用于工程仿真。",
+        "sourceUrl": "https://science.nasa.gov/3d-resources/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "alternatives": [
+      "nasa-pds",
+      "spice",
+      "nasa-ntrs"
+    ],
+    "starterWorkflow": [
+      "选择一个与档案构型一致的资产并记录来源。",
+      "检查包围盒与已知公开尺寸，标明比例能否确认。",
+      "保留原件，另存展示版本，记录删除、补画和材质修改。"
+    ],
+    "starterWorkflowStatus": "本站建议的入门流程，尚未替用户下载或验证任意资产。",
+    "selectionQuestions": [
+      "目标是展示、打印还是数值计算？",
+      "原始文件是否说明构型、单位和作者？",
+      "所需内部结构是否真的包含在公开资产中？"
+    ]
+  },
+  {
+    "id": "meshlab",
+    "title": "MeshLab",
+    "category": "设计与优化",
+    "kind": "开源项目",
+    "summary": "三角网格的检查、清理、修复与格式转换工具，适合对公开模型进行可视化预处理。",
+    "details": "MeshLab 官方介绍覆盖编辑、清理、修复、检查、渲染、纹理与转换等网格处理任务。它适合观察部件连通性、处理冗余面片并比较修复前后外形。本站建议先保留原始模型，再在副本上逐项处理；自动修复结果仍需人工确认真实孔口、薄壁和分区标记是否保留。",
+    "tags": [
+      "网格处理",
+      "三维重建",
+      "几何修复"
+    ],
+    "language": "英文 / C++",
+    "license": "GPL-3.0（以所用版本及附带依赖许可为准）",
+    "accessModel": "open",
+    "url": "https://www.meshlab.net/",
+    "docsUrl": "https://www.meshlab.net/",
+    "sourceTitle": "MeshLab 官方网站",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "导入并观察网格",
+      "记录连通分量与缺陷",
+      "在副本上清理和简化",
+      "比较形状并重新导出"
+    ],
+    "inputs": "扫描或建模得到的三角网格；导入格式取决于版本与插件。",
+    "outputs": "处理后的网格、法向或纹理相关结果及转换文件，依操作而定。",
+    "limitations": "三角网格修复不会恢复未观测的真实工程细节，也不能自动给出制造参数或适用于特定求解器的计算网格。",
+    "usageEvidence": [
+      {
+        "organization": "MeshLab 项目",
+        "context": "官方说明网格处理能力和 GPL 3.0 许可；这里不把功能说明当作商业航天采用案例。",
+        "sourceUrl": "https://www.meshlab.net/",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "alternatives": [
+      "cgal",
+      "freecad",
+      "gmsh"
+    ],
+    "starterWorkflow": [
+      "导入副本，记录初始面数、连通分量、尺寸和可见缺陷。",
+      "每次只处理一类缺陷，保留参数与中间版本。",
+      "检查小开口和薄结构，导出后重新导入核对外形与尺寸。"
+    ],
+    "starterWorkflowStatus": "本站建议的人工检查流程，具体滤镜参数需按输入资产验证。",
+    "selectionQuestions": [
+      "需要处理的是三角网格还是参数化实体？",
+      "简化容差会不会删除天线、薄板和孔口？",
+      "处理后是否仍能对应原来的组件与来源？"
+    ]
+  },
+  {
+    "id": "paraview",
+    "title": "ParaView",
+    "category": "多物理场",
+    "kind": "开源项目",
+    "summary": "科学数据的管线式可视化与后处理平台，可检查切片、等值面、数据属性及时间序列。",
+    "details": "ParaView 的数据管线连接数据源、过滤器和显示结果，过滤器的可用性取决于输入数据类型。其文档明确区分切割、切片、等值与数据重采样等操作。本站建议将它用于审查仿真输出中的单位、点数据与单元数据以及时间变化；结果的可信度仍由上游模型、求解过程和验证证据决定。",
+    "tags": [
+      "后处理",
+      "科学可视化",
+      "数据管线"
+    ],
+    "language": "英文 / C++ / Python",
+    "license": "BSD-3-Clause；附带第三方组件另有许可",
+    "accessModel": "open",
+    "url": "https://www.paraview.org/",
+    "docsUrl": "https://docs.paraview.org/en/latest/UsersGuide/filteringData.html",
+    "sourceTitle": "ParaView 用户手册与许可页",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "加载数据与检查属性",
+      "建立切片或等值管线",
+      "比较不同网格和时刻",
+      "保存状态与可重复输出"
+    ],
+    "inputs": "支持格式的网格与标量、向量、张量或时间序列数据；实际读取器决定支持范围。",
+    "outputs": "可视化视图、过滤结果和可保存的处理状态；输出格式依管线与写出器而定。",
+    "limitations": "后处理不能纠正上游的错误单位、边界条件或未收敛解。不同数据位置和重采样方式可能改变所观察的极值与分布。",
+    "usageEvidence": [
+      {
+        "organization": "ParaView 项目",
+        "context": "官方用户手册说明过滤和数据管线能力；未将此说明扩展成某航天企业采用证明。",
+        "sourceUrl": "https://docs.paraview.org/en/latest/UsersGuide/filteringData.html",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "alternatives": [
+      "gmsh",
+      "meshlab",
+      "openvsp"
+    ],
+    "starterWorkflow": [
+      "读取一份小数据集，确认坐标单位、时间索引与点/单元属性。",
+      "建立一个截面和一个积分或曲线观察量，记录过滤器参数。",
+      "用相同管线比较两次计算，保留数据版本和状态文件。"
+    ],
+    "starterWorkflowStatus": "本站建议的后处理练习，不包含预先完成的求解结果。",
+    "selectionQuestions": [
+      "关注量位于点、单元还是整体积分层面？",
+      "比较数据是否采用相同坐标、单位和时间定义？",
+      "显示范围与重采样是否掩盖了真实差异？"
+    ]
+  },
+  {
+    "id": "opencascade",
+    "title": "Open CASCADE Technology",
+    "category": "设计与优化",
+    "kind": "开源项目",
+    "summary": "面向曲面、实体、CAD 数据交换与几何属性计算的 C++ 建模内核。",
+    "details": "OCCT 提供边界表示的曲面与实体建模、数据交换、几何修复及可视化接口，官方文档包含 STEP、IGES 等交换能力。它是开发库，需要调用方组织输入检查和应用逻辑。本站建议先从规则实体与文件往返转换开始，再处理复杂装配；体积属性计算必须满足封闭、方向一致等输入条件。",
+    "tags": [
+      "CAD内核",
+      "边界表示",
+      "几何属性",
+      "STEP"
+    ],
+    "language": "英文 / C++",
+    "license": "LGPL-2.1 附加例外；另有商业授权，商业组件及依赖需分别核对",
+    "accessModel": "open",
+    "url": "https://occt3d.com/open-cascade-technology/",
+    "docsUrl": "https://occt3d.com/dev/doc/overview/html/index.html",
+    "sourceTitle": "OCCT 官方开发文档与 BRepGProp API",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "读取或建立几何",
+      "检查拓扑与几何有效性",
+      "计算属性或进行修改",
+      "导出并检查往返误差"
+    ],
+    "inputs": "边界表示实体、曲面、曲线或支持格式的 CAD 数据；具体能力依组件。",
+    "outputs": "建模结果、交换文件与几何属性；密度、材料和工程语义需由应用提供。",
+    "limitations": "内核不自动补齐未知结构或真实材料。单位密度积分得到的 Mass 可能是体积，不能直接作为千克质量；几何有效性仍需独立检查。",
+    "usageEvidence": [
+      {
+        "organization": "Open Cascade",
+        "context": "官方文档支持建模内核与属性计算能力；此处没有为某型号的设计软件作采用背书。",
+        "sourceUrl": "https://occt3d.com/dev/doc/overview/html/index.html",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "alternatives": [
+      "freecad",
+      "cgal",
+      "gmsh"
+    ],
+    "starterWorkflow": [
+      "用已知尺寸建立箱体，核对体积与解析结果。",
+      "导出再导入，检查单位、装配变换和拓扑是否一致。",
+      "为多组件分别设置质量或密度，验证质心与完整惯量汇总。"
+    ],
+    "starterWorkflowStatus": "本站建议的开发练习，未提供可替代设计审查的自动修复保证。",
+    "selectionQuestions": [
+      "需要参数化曲面与实体，还是只需处理显示网格？",
+      "输入的单位、装配坐标与密度能否追溯？",
+      "所需接口属于开源核心还是单独授权组件？"
+    ]
+  },
+  {
+    "id": "cgal",
+    "title": "CGAL",
+    "category": "设计与优化",
+    "kind": "开源项目",
+    "summary": "计算几何算法库，可程序化检查网格连接、相交、法向和表面距离。",
+    "details": "CGAL 的多边形网格处理文档提供相交检测、连通分量、法向和距离等算法，修复、重网格和布尔操作在当前文档中另有专门软件包。不同算法对输入概念和几何条件有明确要求。本站建议用它构建可重复的检查报告，逐项输出问题位置，而不是把多个谓词压成一个笼统的“模型有效”结果。",
+    "tags": [
+      "计算几何",
+      "网格验证",
+      "C++",
+      "几何算法"
+    ],
+    "language": "英文 / C++",
+    "license": "按软件包采用 GPL-3.0-or-later 或 LGPL-3.0-or-later；另有商业授权",
+    "accessModel": "open",
+    "url": "https://www.cgal.org/",
+    "docsUrl": "https://doc.cgal.org/latest/Polygon_mesh_processing/index.html",
+    "sourceTitle": "CGAL 官方手册与许可页",
+    "verifiedOn": "2026-10-26",
+    "workflow": [
+      "选择满足输入要求的数据结构",
+      "运行独立几何与拓扑检查",
+      "记录缺陷与修复操作",
+      "比较处理前后的几何量"
+    ],
+    "inputs": "点、曲线、多边形网格等符合所选算法概念的数据；每个软件包的前提条件不同。",
+    "outputs": "几何判定、缺陷位置、距离与处理后的几何数据，取决于调用的算法。",
+    "limitations": "流形连接不排除几何自交；算法的数值与输入条件需要逐项遵守。几何检查不能替代材料建模、边界定义或求解收敛分析。",
+    "usageEvidence": [
+      {
+        "organization": "CGAL 项目",
+        "context": "官方手册说明多边形处理和算法前提；不据此声称某航天公司已采用整套工具。",
+        "sourceUrl": "https://doc.cgal.org/latest/Polygon_mesh_processing/index.html",
+        "evidenceType": "项目文档（非采用证明）"
+      }
+    ],
+    "alternatives": [
+      "meshlab",
+      "opencascade",
+      "gmsh"
+    ],
+    "starterWorkflow": [
+      "准备一个正常网格和含已知缺陷的副本，明确预期判定。",
+      "分别运行边界、非流形、自交和退化检查并保存问题索引。",
+      "对修复前后比较关键截面与尺寸，复查真实孔口和薄壁。"
+    ],
+    "starterWorkflowStatus": "本站建议的验证程序设计，具体 API 与许可需对照所用包和版本。",
+    "selectionQuestions": [
+      "需要验证的是连接关系、几何相交还是物理实体？",
+      "调用算法是否允许开放曲面或退化输入？",
+      "选用的软件包许可是否适合当前分发方式？"
+    ]
   }
 ]

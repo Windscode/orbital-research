@@ -1,0 +1,97 @@
+{
+  "vehicleId": "juice",
+  "name": "JUICE · 木星冰卫星探测器",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "juice",
+    "configuration": "太阳阵及科学伸展臂展开构型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "两翼各五片，改成十字形太阳阵",
+      "区分高增益天线、长科学臂与侧向仪器包"
+    ],
+    "features": [
+      {
+        "title": "十片十字形太阳阵",
+        "detail": "每翼五片构成十字形，两翼总面积约 85 m²；不再套用普通矩形双翼。",
+        "partId": "solar",
+        "sourceUrl": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Juice_solar_array_deployment_test"
+      },
+      {
+        "title": "通信与供电尺度",
+        "detail": "2.5 m 高增益天线和面向木星距离的太阳阵分别承担通信与供能。",
+        "partId": "antenna",
+        "sourceUrl": "https://juice.stp.isas.jaxa.jp/spacecraft_en/"
+      },
+      {
+        "title": "远伸场测量",
+        "detail": "10.6 m 磁强计臂把传感器送离平台磁场干扰；外段两只传感器相距约 3 m。模型保留外伸安装关系。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.esa.int/ESA_Multimedia/Images/2023/04/Juice_s_first_taste_of_science_from_space"
+      }
+    ],
+    "uncertainties": [
+      "长臂尺寸为归一化展示，不能计算真实惯量与模态。",
+      "每个探针和雷达展开机构的铰链、线缆与锁定状态未逐项建模。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Juice 太阳阵展开试验",
+        "url": "https://www.esa.int/ESA_Multimedia/Videos/2022/06/Juice_solar_array_deployment_test"
+      },
+      {
+        "title": "JAXA · JUICE 平台与科学载荷",
+        "url": "https://juice.stp.isas.jaxa.jp/spacecraft_en/"
+      },
+      {
+        "title": "ESA · Juice 磁强计臂展开与首批数据",
+        "url": "https://www.esa.int/ESA_Multimedia/Images/2023/04/Juice_s_first_taste_of_science_from_space"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "航天器平台",
+      "description": "承载工程服务与载荷。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://juice.stp.isas.jaxa.jp/spacecraft_en/"
+    },
+    {
+      "id": "solar",
+      "name": "双侧大型太阳翼",
+      "description": "在木星距离维持有限电力。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://juice.stp.isas.jaxa.jp/spacecraft_en/"
+    },
+    {
+      "id": "antenna",
+      "name": "高增益天线",
+      "description": "支持深空通信与无线电科学。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://juice.stp.isas.jaxa.jp/spacecraft_en/"
+    },
+    {
+      "id": "instruments",
+      "name": "冰卫星与空间环境仪器",
+      "description": "包括遥感、雷达及原位测量功能。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://juice.stp.isas.jaxa.jp/spacecraft_en/"
+    },
+    {
+      "id": "propulsion",
+      "name": "轨道机动系统",
+      "description": "支持转移与目标系统内机动。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://juice.stp.isas.jaxa.jp/spacecraft_en/"
+    },
+    {
+      "id": "frame",
+      "name": "科学伸展结构",
+      "description": "将部分传感器远离平台干扰。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://juice.stp.isas.jaxa.jp/spacecraft_en/"
+    }
+  ]
+}

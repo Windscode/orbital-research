@@ -1,0 +1,89 @@
+{
+  "vehicleId": "mangalyaan",
+  "name": "Mars Orbiter Mission · Mangalyaan",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "mangalyaan",
+    "configuration": "MOM 环火星构型；单侧三片太阳翼",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "纠正通用探测器代码强制生成至少两翼的问题",
+      "采用单侧三片翼、改进 I-1K 箱体与主发动机"
+    ],
+    "features": [
+      {
+        "title": "单翼三片",
+        "detail": "ISRO/URSC 明确为 Single Solar Array，三片各 1.8 m × 1.4 m；不应绘制成对称双翼。",
+        "partId": "solar",
+        "sourceUrl": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+      },
+      {
+        "title": "改进 I-1K 平台",
+        "detail": "主体采用铝与 CFRP 夹层结构的改进平台，外形不应套用圆柱深空探测器。",
+        "partId": "body",
+        "sourceUrl": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+      },
+      {
+        "title": "主发动机与姿控",
+        "detail": "440 N 主发动机、八个推力器和四个反作用轮分担不同控制功能。",
+        "partId": "propulsion",
+        "sourceUrl": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+      }
+    ],
+    "uncertainties": [
+      "模型未逐一表达八个真实喷口；喷口与内部电子学只作功能包络。",
+      "公开在轨发电指标不能直接作为恒定功率输入。"
+    ],
+    "sources": [
+      {
+        "title": "ISRO/URSC · MOM 电源与推进配置",
+        "url": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "改进I-1K总线",
+      "description": "铝与复合材料夹层结构提供平台支持。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+    },
+    {
+      "id": "solar",
+      "name": "单侧三片太阳翼",
+      "description": "单片1.8×1.4米，模型以单翼简化表示。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+    },
+    {
+      "id": "antenna",
+      "name": "高低增益通信天线",
+      "description": "支持不同阶段深空测控，模型只突出主天线。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+    },
+    {
+      "id": "propulsion",
+      "name": "440 N主发动机与姿控",
+      "description": "双组元系统用于主要机动与姿态支持。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+    },
+    {
+      "id": "instruments",
+      "name": "火星科学载荷",
+      "description": "开展火星及其环境观测，精确视场需载荷资料。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+    },
+    {
+      "id": "avionics",
+      "name": "姿控与轨控电子设备",
+      "description": "反作用轮、星敏感器等参与状态控制；机柜布局为工程示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.ursc.gov.in/interplanetary/html/mars.jsp"
+    }
+  ]
+}

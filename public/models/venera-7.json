@@ -1,0 +1,96 @@
+{
+  "vehicleId": "venera-7",
+  "name": "Venera 7 · 金星七号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "venera-7",
+    "configuration": "Venera 7 返回信号用下降舱 · 球形压力容器与隔热外包络",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "保留第一代球形舱体、热包络和上部降落伞连接区域。",
+      "不添加后期 Venera 着陆器的环形着陆架、大盘气动减速器或相机。"
+    ],
+    "features": [
+      {
+        "title": "球形钛合金压力容器",
+        "detail": "NASA 极端环境报告说明 Venera 7 使用球形钛合金压力容器；这一特征与后期图像常见的 Venera 9/10 构型不同。",
+        "partId": "body",
+        "sourceUrl": "https://solarsystem.nasa.gov/system/downloadable_items/159_Technology_Reports_-EE-Report_FINAL_20072.pdf"
+      },
+      {
+        "title": "压力与热防护分层",
+        "detail": "外部热防护包络和内部承压壳体承担不同作用。剖切提供分层关系，不能据此读出真实厚度或热阻。",
+        "partId": "heatshield",
+        "sourceUrl": "https://solarsystem.nasa.gov/system/downloadable_items/159_Technology_Reports_-EE-Report_FINAL_20072.pdf"
+      },
+      {
+        "title": "蓄热和任务持续时间",
+        "detail": "下降前预冷与热控制帮助延长有限表面工作时间。模型里的蓄热装置和电源块仅表达功能，不输出热性能。",
+        "partId": "service",
+        "sourceUrl": "https://solarsystem.nasa.gov/system/downloadable_items/159_Technology_Reports_-EE-Report_FINAL_20072.pdf"
+      }
+    ],
+    "uncertainties": [
+      "实飞发生伞降异常并侧倒，静态模型未重建触地状态。",
+      "未推断压力壳壁厚、隔热配方或材料强度。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · 极端环境技术报告：Venera 7 压力舱",
+        "url": "https://solarsystem.nasa.gov/system/downloadable_items/159_Technology_Reports_-EE-Report_FINAL_20072.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "钛制耐压舱体",
+      "description": "采用耐外压的着陆舱结构；壁厚和加强件细节不由外观反推。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.laspace.ru/en/activities/projects/venera-7/"
+    },
+    {
+      "id": "heatshield",
+      "name": "隔热与温度管理",
+      "description": "延缓外部高温对电子设备的影响；内部热容与隔热层仅作工程示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.laspace.ru/en/activities/projects/venera-7/"
+    },
+    {
+      "id": "instruments",
+      "name": "温度与压力相关测量设备",
+      "description": "记录下降与表面环境；区分仪器存在、有效观测和后处理推断。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/198-venera-7"
+    },
+    {
+      "id": "frame",
+      "name": "减速伞系统",
+      "description": "参与稠密大气中的下降减速；不把设计伞形等同于全程正常展开。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2018/09/beyond-earth-tagged.pdf"
+    },
+    {
+      "id": "antenna",
+      "name": "无线电发射与天线",
+      "description": "传输下降及表面资料；落地姿态可能降低链路增益。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2018/09/beyond-earth-tagged.pdf"
+    },
+    {
+      "id": "avionics",
+      "name": "时序与遥测电子设备",
+      "description": "组织测量和传输；仅表示功能，不声明电路或内部安装位置。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/198-venera-7"
+    },
+    {
+      "id": "service",
+      "name": "供电与服务组件",
+      "description": "在有限任务窗口支持测量、通信和热控；不配置太阳翼。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.laspace.ru/en/activities/projects/venera-7/"
+    }
+  ]
+}

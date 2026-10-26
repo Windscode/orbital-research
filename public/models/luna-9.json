@@ -1,0 +1,93 @@
+{
+  "vehicleId": "luna-9",
+  "name": "Luna 9 · 月球九号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "luna-9",
+    "configuration": "月面稳定构型 · 四瓣外壳打开，自动站与下降级分离",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "保留球形自动站、四个稳定瓣、细杆天线及扫描相机。",
+      "重新核对着陆状态，避免将稳定瓣误读为太阳翼或长支腿。"
+    ],
+    "features": [
+      {
+        "title": "四瓣稳定结构",
+        "detail": "落月后的四瓣结构展开以稳定自动站，不是太阳电池翼。模型中的瓣面与球形仪器舱可以分别查看。",
+        "partId": "frame",
+        "sourceUrl": "https://www.dvidshub.net/image/717905/luna-9"
+      },
+      {
+        "title": "扫描电视相机",
+        "detail": "电视装置通过可转动镜面扫描月面。模型标出相机柱、扫描头和镜面，而非现代双目相机桅杆。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.dvidshub.net/image/717905/luna-9"
+      },
+      {
+        "title": "自动站与下降级分开",
+        "detail": "球形自动站在落月前与飞行部分分离。本模型仅保留月面自动站，不将巡航结构附在其下方。",
+        "partId": "body",
+        "sourceUrl": "https://apod.nasa.gov/apod/ap960825.html"
+      }
+    ],
+    "uncertainties": [
+      "瓣面曲率、弹簧机构、天线长度和内部设备未由尺寸图逐项约束。",
+      "抛出、气囊缓冲与翻滚过程没有在静态模型中复现。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Luna 9 舱体、四瓣稳定结构和相机",
+        "url": "https://www.dvidshub.net/image/717905/luna-9"
+      },
+      {
+        "title": "NASA APOD · Luna 9 着陆与四瓣展开",
+        "url": "https://apod.nasa.gov/apod/ap960825.html"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "近球形密封自动站",
+      "description": "承载月面通信、电视与环境观测设备；不包含全部转移和下降系统。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://solarsystem.nasa.gov/system/downloadable_items/165_DSC_monograph24.pdf"
+    },
+    {
+      "id": "frame",
+      "name": "四片稳定花瓣",
+      "description": "着陆后外翻并扩大支撑范围；不发电。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/image-article/apod-1997-september-07-luna-9-first-soft-lander/"
+    },
+    {
+      "id": "instruments",
+      "name": "旋转镜扫描电视装置",
+      "description": "以扫描与拼接形成月面全景；不是现代数字全景相机。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/89-luna-9"
+    },
+    {
+      "id": "antenna",
+      "name": "通信天线与无线电链路",
+      "description": "向地面传回图像和测量信息，杆状天线布局只作外形示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/89-luna-9"
+    },
+    {
+      "id": "avionics",
+      "name": "无线电与时序电子设备",
+      "description": "表示通信与测量时序的内部功能分组；位置和电路布局未公开复原。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/89-luna-9"
+    },
+    {
+      "id": "service",
+      "name": "电源与温度控制",
+      "description": "为有限月面工作时段提供电力和热环境；内部组件位置不公开复原。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://raumfahrtmissionen.dlr.de/missionen-von-a-bis-z/89-luna-9"
+    }
+  ]
+}

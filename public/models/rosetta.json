@@ -1,0 +1,89 @@
+{
+  "vehicleId": "rosetta",
+  "name": "Rosetta · 罗塞塔号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "rosetta",
+    "configuration": "Philae 分离前；两条五片太阳翼展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "以方箱平台和十片长太阳阵替换通用短双翼",
+      "高增益天线与 Philae 放在相对两面"
+    ],
+    "features": [
+      {
+        "title": "相对面的天线与 Philae",
+        "detail": "ESA 明确天线在平台一侧、着陆器在相反侧；模型按这一关系组织。",
+        "partId": "payload",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+      },
+      {
+        "title": "五片一翼",
+        "detail": "每翼五片、两翼总跨度约 32 m，强调深空太阳能平台的巨大翼展。",
+        "partId": "solar",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+      },
+      {
+        "title": "载荷与平台分层",
+        "detail": "科学仪器位于平台上方，服务设备位于下部，避免一个无分区的圆柱替代。",
+        "partId": "body",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+      }
+    ],
+    "uncertainties": [
+      "显示 Philae 尚未分离的外观，不代表彗星表面状态。",
+      "翼片尺寸、展开铰链和着陆器折叠腿均经简化。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Rosetta 平台、太阳翼和 Philae 布局",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "箱形平台",
+      "description": "上部承载科学仪器，下部提供平台服务。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+    },
+    {
+      "id": "solar",
+      "name": "大型双太阳翼",
+      "description": "支持远日距离供电并可调整指向。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+    },
+    {
+      "id": "antenna",
+      "name": "可转向高增益天线",
+      "description": "维持对地通信。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+    },
+    {
+      "id": "payload",
+      "name": "Philae 着陆器接口",
+      "description": "在巡航与伴飞阶段携带子探测器。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+    },
+    {
+      "id": "propulsion",
+      "name": "推进器组",
+      "description": "支持轨迹与姿态控制。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+    },
+    {
+      "id": "instruments",
+      "name": "彗星观测载荷",
+      "description": "测量表面、尘埃与气体环境。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/Rosetta/The_Rosetta_orbiter"
+    }
+  ]
+}

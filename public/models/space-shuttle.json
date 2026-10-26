@@ -1,0 +1,93 @@
+{
+  "vehicleId": "space-shuttle",
+  "name": "Space Shuttle · 航天飞机轨道器",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "space-shuttle",
+    "configuration": "轨道器在轨构型 · 货舱门打开；不包含外贮箱和助推器",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "以水平轨道器替换纵置圆筒，补出机头、双三角翼、垂尾和机腹热防护。",
+      "打开货舱并分离两扇舱门、货舱底板和示例载荷；尾部保留三台主发动机及两侧 OMS/RCS 舱。"
+    ],
+    "features": [
+      {
+        "title": "三台主发动机",
+        "detail": "尾部三台主发动机用于上升；真空机动由两侧 OMS/RCS 舱承担。模型将两种推进系统分组，避免把主发动机当作在轨变轨发动机。",
+        "partId": "engine",
+        "sourceUrl": "https://www.nasa.gov/reference/the-space-shuttle/"
+      },
+      {
+        "title": "开放货舱",
+        "detail": "货舱布置于机体中段，舱门开启后能够查看载荷区。这里的载荷箱为功能占位，不对应某次飞行任务。",
+        "partId": "payload",
+        "sourceUrl": "https://www.nasa.gov/reference/the-space-shuttle/"
+      },
+      {
+        "title": "双三角翼与垂尾",
+        "detail": "轨道器具有机翼升降副翼和垂直尾翼方向舵/减速板，模型补出主要控制面边界。",
+        "partId": "frame",
+        "sourceUrl": "https://www.nasa.gov/centers-and-facilities/langley/the-aeronautics-of-the-space-shuttle/"
+      }
+    ],
+    "uncertainties": [
+      "模型未重建隔热瓦数量、机翼厚度分布与精确气动外形。",
+      "舱内设备和载荷是示意体，不是某一架轨道器的舱内 CAD。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Space Shuttle 轨道器结构与尺寸",
+        "url": "https://www.nasa.gov/reference/the-space-shuttle/"
+      },
+      {
+        "title": "NASA · 航天飞机气动控制面",
+        "url": "https://www.nasa.gov/centers-and-facilities/langley/the-aeronautics-of-the-space-shuttle/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "crew",
+      "name": "前机身乘员舱",
+      "description": "提供驾驶、生活与任务操作空间。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/reference/the-space-shuttle/"
+    },
+    {
+      "id": "payload",
+      "name": "中部货舱",
+      "description": "装载卫星、实验设施或空间站组件。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/reference/the-space-shuttle/"
+    },
+    {
+      "id": "engine",
+      "name": "尾部主发动机",
+      "description": "上升阶段使用外贮箱供给的推进剂。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/reference/the-space-shuttle/"
+    },
+    {
+      "id": "propulsion",
+      "name": "轨道机动与姿控",
+      "description": "负责真空中的轨道修正与姿态控制。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/reference/the-space-shuttle/"
+    },
+    {
+      "id": "heatshield",
+      "name": "机腹与翼前缘热防护",
+      "description": "抵御再入热环境；材料分区仅为说明。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/reference/the-space-shuttle/"
+    },
+    {
+      "id": "frame",
+      "name": "机翼与承力机身",
+      "description": "提供有翼再入与跑道着陆所需的结构和气动布局。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/reference/the-space-shuttle/"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "vehicleId": "orion",
+  "name": "Orion",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "orion",
+    "configuration": "乘员舱与欧洲服务舱结构研究构型；四翼展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "宽底乘员舱、独立热盾和服务舱分层",
+      "改为 X 形四条三片太阳翼"
+    ],
+    "features": [
+      {
+        "title": "四翼三片布局",
+        "detail": "欧洲服务舱有四条太阳翼，每翼三片，区别于双翼飞船。",
+        "partId": "solar",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/Orion/European_Service_Module_Power"
+      },
+      {
+        "title": "宽底热盾",
+        "detail": "乘员舱底部热盾独立建组，热盾下方服务舱不是返回舱的一部分。",
+        "partId": "heatshield",
+        "sourceUrl": "https://www.nasa.gov/reference/crew-module/"
+      },
+      {
+        "title": "舱门与前端",
+        "detail": "侧舱门、顶部接口与压力舱分别表达；顶部附件不代表所有 Artemis 任务完全相同。",
+        "partId": "crew",
+        "sourceUrl": "https://www.nasa.gov/reference/crew-module/"
+      }
+    ],
+    "uncertainties": [
+      "对接端为系统研究示意，特定任务的安装状态需查任务资料。",
+      "热盾格块、内骨架、推进剂储箱和服务舱包覆没有制造级尺寸。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · Orion 欧洲服务舱电源",
+        "url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/Orion/European_Service_Module_Power"
+      },
+      {
+        "title": "NASA · Orion 乘员舱、热盾与舱门",
+        "url": "https://www.nasa.gov/reference/crew-module/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "crew",
+      "name": "乘员舱",
+      "description": "四人深空任务的生活与控制空间。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/humans-in-space/orion-spacecraft/orion-overview/"
+    },
+    {
+      "id": "service",
+      "name": "欧洲服务舱",
+      "description": "提供电力、推进、热控及乘员消耗品。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/humans-in-space/orion-spacecraft/orion-overview/"
+    },
+    {
+      "id": "solar",
+      "name": "四组太阳翼",
+      "description": "向服务舱供电；展开位置在图中归一化。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/humans-in-space/orion-spacecraft/orion-overview/"
+    },
+    {
+      "id": "heatshield",
+      "name": "返回热盾",
+      "description": "保护乘员舱高速再入，内部层厚未复刻。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/humans-in-space/orion-spacecraft/orion-overview/"
+    },
+    {
+      "id": "propulsion",
+      "name": "主推进与姿控",
+      "description": "承担深空机动和姿态控制。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/humans-in-space/orion-spacecraft/orion-overview/"
+    },
+    {
+      "id": "docking",
+      "name": "顶部连接区",
+      "description": "用于任务相关对接和舱口通行，细节为结构示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/humans-in-space/orion-spacecraft/orion-overview/"
+    }
+  ]
+}

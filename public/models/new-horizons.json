@@ -1,0 +1,89 @@
+{
+  "vehicleId": "new-horizons",
+  "name": "New Horizons · 新视野号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "new-horizons",
+    "configuration": "巡航 / 飞掠硬件构型；单台 RTG",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "以非对称楔形设备平台替换通用圆筒",
+      "增加单侧 RTG、顶置天线和侧向仪器孔径"
+    ],
+    "features": [
+      {
+        "title": "紧凑非对称平台",
+        "detail": "机体与同轴天线在空间上紧凑组合；外包络采用公开构型示意。",
+        "partId": "body",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2015/03/139889main_presskit12_05.pdf"
+      },
+      {
+        "title": "单台 RTG",
+        "detail": "任务只用一台同位素电源，不能套用 Voyager 的三台或 Galileo 的两台。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2015/03/139889main_presskit12_05.pdf"
+      },
+      {
+        "title": "七仪器任务",
+        "detail": "相机与粒子仪器孔径以功能分区表示；LORRI 等不能用统一小圆盘代替。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2015/03/139889main_presskit12_05.pdf"
+      }
+    ],
+    "uncertainties": [
+      "相机孔径、焦距和光轴安装角没有按标定文件复原。",
+      "机体内部储罐与电子机箱位置属于工程示意。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · New Horizons 2005 发射新闻资料",
+        "url": "https://www.nasa.gov/wp-content/uploads/2015/03/139889main_presskit12_05.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "紧凑航天器平台",
+      "description": "承载计算和任务设备。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/new-horizons/"
+    },
+    {
+      "id": "antenna",
+      "name": "高增益通信天线",
+      "description": "支持远距离科学数据下行。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/new-horizons/"
+    },
+    {
+      "id": "service",
+      "name": "RTG 电源",
+      "description": "在外太阳系提供电能。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/new-horizons/"
+    },
+    {
+      "id": "instruments",
+      "name": "成像与光谱载荷",
+      "description": "在飞掠窗口内完成多种观测。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/new-horizons/"
+    },
+    {
+      "id": "propulsion",
+      "name": "姿态与轨迹修正",
+      "description": "支持目标跟踪和转移修正。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/new-horizons/"
+    },
+    {
+      "id": "avionics",
+      "name": "自主序列与数据存储",
+      "description": "按计划完成观测并保存待下传数据。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/mission/new-horizons/"
+    }
+  ]
+}

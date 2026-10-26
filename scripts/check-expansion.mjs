@@ -2,8 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createRequire } from 'node:module';
-import ts from 'typescript';
+import {loadTypeScript} from './load-typescript.mjs';
 import * as THREE from 'three';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -134,13 +133,7 @@ await test('all engineering resources expose the expanded selection fields', () 
   }
 });
 
-const geometrySource = await readFile(path.join(root, 'src', 'modelGeometry.ts'), 'utf8');
-const compiled = ts.transpileModule(geometrySource, {
-  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
-}).outputText;
-const module = { exports: {} };
-new Function('require', 'module', 'exports', compiled)(createRequire(import.meta.url), module, module.exports);
-const { buildVehicleModel, cameraFrame } = module.exports;
+const { buildVehicleModel, cameraFrame } = loadTypeScript(path.join(root,'src','modelGeometry.ts'));
 let framedModels = 0, framedViews = 0, projectedCorners = 0, largestScreenCoordinate = 0;
 await test(cameraTestLabel, () => {
   assert.equal(typeof cameraFrame, 'function', 'cameraFrame export is missing');

@@ -1,0 +1,89 @@
+{
+  "vehicleId": "dragon-2",
+  "name": "Crew Dragon",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "dragon-2",
+    "configuration": "Crew Dragon 近距交会构型；鼻锥打开、货舱连接",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重做圆弧锥舱与长圆筒货舱",
+      "增加半侧太阳电池、尾翼、侧部推进器和打开鼻锥"
+    ],
+    "features": [
+      {
+        "title": "密封舱与非密封货舱",
+        "detail": "下方 trunk 属于非密封货物与结构支持区，返回大气前分离。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/commercial-crew-program-press-kit/"
+      },
+      {
+        "title": "货舱表面供电",
+        "detail": "太阳电池覆盖货舱的一半外表面，不采用 Dragon 1 的可展开双太阳翼。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/commercial-crew-program-press-kit/"
+      },
+      {
+        "title": "对接端与逃逸推进",
+        "detail": "对接端在打开的鼻锥下；侧部推进器是载人型重要特征，不与货运型混用。",
+        "partId": "docking",
+        "sourceUrl": "https://www.nasa.gov/commercial-crew-program-press-kit/"
+      }
+    ],
+    "uncertainties": [
+      "本图明确选择 Crew Dragon，不代表 Cargo Dragon 的尾翼和推进配置。",
+      "喷口口径、乘员座椅间距和货舱有效容积并非 CAD 参数。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Commercial Crew Press Kit / Crew Dragon",
+        "url": "https://www.nasa.gov/commercial-crew-program-press-kit/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "crew",
+      "name": "加压乘员舱",
+      "description": "容纳乘员与加压货物；模型座位仅表示四人任务示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/dragon/"
+    },
+    {
+      "id": "service",
+      "name": "Trunk非加压货舱",
+      "description": "位于返回舱后方，承担非加压货物及部分资源功能。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/dragon/"
+    },
+    {
+      "id": "heatshield",
+      "name": "再入热防护",
+      "description": "保护可返回舱，材料厚度与分区不按真实制造数据绘制。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/dragon/"
+    },
+    {
+      "id": "docking",
+      "name": "顶部对接机构",
+      "description": "用于与国际空间站对接，鼻锥按阶段打开。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/dragon/"
+    },
+    {
+      "id": "propulsion",
+      "name": "Draco推进器",
+      "description": "轨道姿态与平移控制；具体推力方向组合需专门资料。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.spacex.com/vehicles/dragon/"
+    },
+    {
+      "id": "avionics",
+      "name": "航电与自主交会",
+      "description": "感知相对状态并管理飞行事件，内部机柜为工程示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.spacex.com/vehicles/dragon/"
+    }
+  ]
+}

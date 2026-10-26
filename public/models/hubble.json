@@ -1,0 +1,89 @@
+{
+  "vehicleId": "hubble",
+  "name": "Hubble · 哈勃空间望远镜",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "hubble",
+    "configuration": "在轨观测构型；孔径门打开，双侧太阳翼展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "改为开放的光学筒口与铰接孔径门",
+      "增加主次镜、仪器后舱、支撑杆与双天线"
+    ],
+    "features": [
+      {
+        "title": "Cassegrain 光路",
+        "detail": "主镜接收光并反射至次镜，再经主镜中心区域进入后方科学仪器。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/"
+      },
+      {
+        "title": "可维护的仪器平台",
+        "detail": "光学筒与较宽的后部设备区域分开表达，内部框架可以独立显示。",
+        "partId": "body",
+        "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/"
+      },
+      {
+        "title": "隔热外罩与框架",
+        "detail": "外部铝壳与隔热包覆负责环境隔离；内部支架不由外罩直接代替。",
+        "partId": "frame",
+        "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/"
+      }
+    ],
+    "uncertainties": [
+      "太阳阵采用服务任务后常见的刚性面板外观，不复原早期卷式太阳阵。",
+      "镜片曲率、真实光学焦距和光机变形不由该网格表达。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Hubble 光学与机械设计",
+        "url": "https://science.nasa.gov/mission/hubble/observatory/design/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "光学筒与仪器舱",
+      "description": "支撑光学元件和科学设备。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/hubble/overview/about-hubble/"
+    },
+    {
+      "id": "instruments",
+      "name": "主次镜与科学仪器",
+      "description": "将入射光转换为图像与光谱。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/hubble/overview/about-hubble/"
+    },
+    {
+      "id": "solar",
+      "name": "双太阳翼",
+      "description": "提供在轨供电。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/hubble/overview/about-hubble/"
+    },
+    {
+      "id": "antenna",
+      "name": "通信天线",
+      "description": "通过中继和地面链路传回观测数据。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/hubble/overview/about-hubble/"
+    },
+    {
+      "id": "avionics",
+      "name": "指向传感与控制",
+      "description": "协同传感器、反作用轮和磁力矩器稳定视轴。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/hubble/overview/about-hubble/"
+    },
+    {
+      "id": "frame",
+      "name": "光学支撑结构",
+      "description": "限制温度变化导致的相对变形。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/hubble/overview/about-hubble/"
+    }
+  ]
+}

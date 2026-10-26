@@ -1,0 +1,104 @@
+{
+  "vehicleId": "sls-block-1",
+  "name": "SLS Block 1",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "sls-block-1",
+    "configuration": "SLS Block 1 · ICPS + Orion 发射组合体",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "重做橙色芯级、双固体助推器、收径适配段、ICPS、Orion 与逃逸塔的层级。",
+      "区分四台 RS-25 与 ICPS 的单台 RL10。",
+      "补充五段式助推器环带、芯级氢氧贮箱和外部管路。"
+    ],
+    "features": [
+      {
+        "title": "橙色芯级",
+        "detail": "NASA 给出芯级约 64.6 m 长、8.4 m 直径。图中保留大直径主级与前部氧箱、后部氢箱的关系。",
+        "partId": "stage-1",
+        "sourceUrl": "https://www.nasa.gov/reference/sls-space-launch-system-core-stage/"
+      },
+      {
+        "title": "四台 RS-25",
+        "detail": "四喷管沿发动机段分布，区别于五机的 Saturn V 或单机芯级。喷管轮廓和安装角度为示意。",
+        "partId": "engine",
+        "sourceUrl": "https://www.nasa.gov/reference/sls-space-launch-system-core-stage/"
+      },
+      {
+        "title": "五段固体助推器",
+        "detail": "两侧助推器分别显示五段式壳体关系、头锥与喷管；可单独观察，不以两个缩小液体芯级替代。",
+        "partId": "boosters",
+        "sourceUrl": "https://www.nasa.gov/reference/sls-space-launch-system-solid-rocket-booster/"
+      },
+      {
+        "title": "ICPS 与 Orion",
+        "detail": "Block 1 使用较窄的 ICPS 和过渡适配结构；上方是 Orion 服务舱、乘员舱与发射中止系统的组合示意。",
+        "partId": "payload",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/03/sls-reference-guide-2022-v2-508-0.pdf"
+      }
+    ],
+    "uncertainties": [
+      "这是 Block 1 历史构型参考，不把其他 Block 或后续计划中的上面级混入。",
+      "Orion 罩体、适配器厚度和内部安装结构未按飞行件 CAD 复刻。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · SLS Core Stage",
+        "url": "https://www.nasa.gov/reference/sls-space-launch-system-core-stage/"
+      },
+      {
+        "title": "NASA · SLS Solid Rocket Booster",
+        "url": "https://www.nasa.gov/reference/sls-space-launch-system-solid-rocket-booster/"
+      },
+      {
+        "title": "NASA · SLS Reference Guide 2022",
+        "url": "https://www.nasa.gov/wp-content/uploads/2022/03/sls-reference-guide-2022-v2-508-0.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "payload",
+      "name": "Orion与适配器",
+      "description": "位于顶部的载人飞船及连接结构，图形不代表本体内部布局。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/03/sls_reference_guide_2022_web.pdf"
+    },
+    {
+      "id": "stage-1",
+      "name": "液体芯级",
+      "description": "8.4米级芯级承载液氧液氢及四台RS-25。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/03/sls_reference_guide_2022_web.pdf"
+    },
+    {
+      "id": "stage-2",
+      "name": "ICPS上面级",
+      "description": "Block 1临时低温推进级承担后续轨道机动。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/03/sls_reference_guide_2022_web.pdf"
+    },
+    {
+      "id": "boosters",
+      "name": "五段式固体助推器",
+      "description": "两枚助推器与芯级并联工作，随后分离。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/03/sls_reference_guide_2022_web.pdf"
+    },
+    {
+      "id": "engine",
+      "name": "RS-25发动机组",
+      "description": "芯级四台液体发动机，模型不含完整管路。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/03/sls_reference_guide_2022_web.pdf"
+    },
+    {
+      "id": "tank",
+      "name": "低温贮箱",
+      "description": "液氢与液氧贮箱轴向排列，箱底和细节为工程示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/wp-content/uploads/2022/03/sls_reference_guide_2022_web.pdf"
+    }
+  ]
+}

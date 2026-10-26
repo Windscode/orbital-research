@@ -349,6 +349,24 @@
       "label": "辐射输运与剂量",
       "domain": "systems",
       "level": 3
+    },
+    {
+      "id": "geometry-reconstruction",
+      "label": "公开图像与构型重建",
+      "domain": "methods",
+      "level": 3
+    },
+    {
+      "id": "mass-properties",
+      "label": "组合质量与惯量",
+      "domain": "structures",
+      "level": 3
+    },
+    {
+      "id": "mesh-validity",
+      "label": "网格拓扑与几何检查",
+      "domain": "methods",
+      "level": 3
     }
   ],
   "edges": [
@@ -1425,6 +1443,72 @@
       "to": "fdir",
       "type": "coupling",
       "reason": "辐射粒子输运结果需经器件响应模型才能形成单粒子故障注入率。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "geometry-reconstruction",
+      "type": "prerequisite",
+      "reason": "向量空间、矩阵分解与条件数提供公开图像与构型重建所需的建模约定与检查方法。"
+    },
+    {
+      "from": "frames-and-time",
+      "to": "geometry-reconstruction",
+      "type": "prerequisite",
+      "reason": "参考坐标系、时间尺度与状态变换提供公开图像与构型重建所需的建模约定与检查方法。"
+    },
+    {
+      "from": "data-provenance",
+      "to": "geometry-reconstruction",
+      "type": "prerequisite",
+      "reason": "数据来源、处理记录与版本管理提供公开图像与构型重建所需的建模约定与检查方法。"
+    },
+    {
+      "from": "vectors-matrices",
+      "to": "mass-properties",
+      "type": "prerequisite",
+      "reason": "向量空间、矩阵分解与条件数提供组合质量与惯量所需的建模约定与检查方法。"
+    },
+    {
+      "from": "six-dof",
+      "to": "mass-properties",
+      "type": "prerequisite",
+      "reason": "六自由度刚体与变质量动力学提供组合质量与惯量所需的建模约定与检查方法。"
+    },
+    {
+      "from": "finite-elements",
+      "to": "mesh-validity",
+      "type": "prerequisite",
+      "reason": "结构有限元、边界条件与网格收敛提供网格拓扑与几何检查所需的建模约定与检查方法。"
+    },
+    {
+      "from": "verification-uncertainty",
+      "to": "mesh-validity",
+      "type": "prerequisite",
+      "reason": "模型验证、确认与适用范围提供网格拓扑与几何检查所需的建模约定与检查方法。"
+    },
+    {
+      "from": "geometry-reconstruction",
+      "to": "mass-properties",
+      "type": "coupling",
+      "reason": "外形约束不确定尺寸，质量属性还需要独立质量、密度与位置假设。"
+    },
+    {
+      "from": "geometry-reconstruction",
+      "to": "mesh-validity",
+      "type": "validation",
+      "reason": "构型重建完成后还需检查法向、自交、闭合边界与输出用途。"
+    },
+    {
+      "from": "mass-properties",
+      "to": "uncertainty-quantification",
+      "type": "coupling",
+      "reason": "设备质量、坐标与几何误差会共同传播到质心和惯量张量。"
+    },
+    {
+      "from": "mesh-validity",
+      "to": "cfd-verification",
+      "type": "validation",
+      "reason": "拓扑有效不能替代离散精度与力系数的网格收敛验证。"
     }
   ],
   "paths": [
@@ -1605,6 +1689,22 @@
         "trajectory-transcription",
         "terrain-relative-navigation",
         "powered-descent"
+      ]
+    },
+    {
+      "id": "geometry-to-analysis",
+      "title": "构型、质量属性与网格检查",
+      "description": "公开资料重建、组合惯量和网格适用性；区分可视化资产与分析输入。",
+      "nodeIds": [
+        "vectors-matrices",
+        "frames-and-time",
+        "data-provenance",
+        "geometry-reconstruction",
+        "six-dof",
+        "mass-properties",
+        "finite-elements",
+        "verification-uncertainty",
+        "mesh-validity"
       ]
     }
   ]

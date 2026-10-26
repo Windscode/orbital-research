@@ -204,6 +204,8 @@ DM Sans 与 Space Grotesk 的拉丁字体以 SIL Open Font License 1.1 分发，
 
 research/media-diagrams.json 记录根据公开理论绘制的 SVG 技术图解。research/media-generated.json 记录生成概念图和提示说明；它们不是真实任务照片或型号内部结构证据。
 
+public/models/ 下的 56 份 GLB 与 56 幅 WebP 构型预览由本站参数化几何代码生成，未复制 NASA 或其他机构提供的三维网格。WebP 是同一几何的静态投影，供档案索引使用；原始资料、所选构型与近似范围见同名 JSON 和 research/model-research-v8.json。这些图不是实拍、官方工程图或实测 CAD，不应以相关机构名义传播。
+
 ## 软件依赖
 
-React、Vite、TypeScript、Three.js、Lucide 等依赖保留各自包中的许可。准确版本见 package-lock.json；安装后可在相应 node_modules 包中查阅许可文本。
+React、Vite、TypeScript、Three.js、Lucide 等依赖保留各自包中的许可。构建阶段使用 sharp（Apache-2.0）转换模型预览图。准确版本见 package-lock.json；安装后可在相应 node_modules 包中查阅许可文本。

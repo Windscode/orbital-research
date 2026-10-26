@@ -1,0 +1,89 @@
+{
+  "vehicleId": "tiros-1",
+  "name": "TIROS-1",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "tiros-1",
+    "configuration": "自旋稳定气象卫星；摄像机位于底部",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核扁鼓、五杆天线与双相机布局",
+      "将电源、相机和设备支撑的阅读入口分开"
+    ],
+    "features": [
+      {
+        "title": "扁鼓比例",
+        "detail": "公开直径 42 in、高 19 in，不能画成细长 Explorer 式卫星。",
+        "partId": "body",
+        "sourceUrl": "https://science.nasa.gov/mission/tiros/"
+      },
+      {
+        "title": "四发一收天线",
+        "detail": "底部四杆发射、顶部一杆接收，与 Sputnik 的四根同侧长杆区分。",
+        "partId": "antenna",
+        "sourceUrl": "https://science.nasa.gov/mission/tiros/"
+      },
+      {
+        "title": "双相机与记录器",
+        "detail": "两台不同分辨率相机各配记录器，只有朝向地球且条件合适时采集影像。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/tiros/"
+      }
+    ],
+    "uncertainties": [
+      "内部相机轴线、镜组和记录器尺寸没有工程图约束。",
+      "太阳电池网格用于纹理辨认，不是 9,200 片实物电池的逐片还原。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · TIROS-1 相机、电源与天线",
+        "url": "https://science.nasa.gov/mission/tiros/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "扁鼓外壳",
+      "description": "按照公开高度与直径表达扁鼓包络；面板细节不作为制造尺寸。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/tiros/"
+    },
+    {
+      "id": "antenna",
+      "name": "五根杆天线",
+      "description": "四根底部发射天线和一根顶部接收天线；杆长仅示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://science.nasa.gov/mission/tiros/"
+    },
+    {
+      "id": "instruments",
+      "name": "两台电视相机",
+      "description": "宽、窄视场相机的功能位置；镜组和精确安装参数未复原。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/mission/tiros/"
+    },
+    {
+      "id": "service",
+      "name": "太阳电池与蓄电池",
+      "description": "表面电池和机内储能分区；网格不逐片复刻 9,200 片电池。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/mission/tiros/"
+    },
+    {
+      "id": "avionics",
+      "name": "记录与控制设备",
+      "description": "双记录器和遥测功能块，位置、尺寸是示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/mission/tiros/"
+    },
+    {
+      "id": "frame",
+      "name": "底板与承力区",
+      "description": "底板连接外壳和设备；不包含真实安装孔及加固件。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/mission/tiros/"
+    }
+  ]
+}

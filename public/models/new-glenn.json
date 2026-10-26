@@ -1,0 +1,96 @@
+{
+  "vehicleId": "new-glenn",
+  "name": "New Glenn",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "new-glenn",
+    "configuration": "New Glenn · 七台 BE-4 / 双 BE-3U 基本型",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "单独重做七米直径两级箭体，增加蓝色尾段、前部控制面和后部边条。",
+      "一级七台 BE-4 与二级双 BE-3U 分开建模。",
+      "着陆支撑从通用四腿改成六个收拢支腿位置。"
+    ],
+    "features": [
+      {
+        "title": "七台 BE-4",
+        "detail": "所选基本型一级采用七台 BE-4，六外一内的布局仅表达数量与空间关系。它不是官网另列的 9×4 后续版本。",
+        "partId": "engine",
+        "sourceUrl": "https://www.blueorigin.com/new-glenn"
+      },
+      {
+        "title": "双 BE-3U 上面级",
+        "detail": "氢氧上面级有两台真空发动机，剖切后能看到与一级不同的贮箱尺度与双喷管。",
+        "partId": "stage-2",
+        "sourceUrl": "https://www.blueorigin.com/new-glenn"
+      },
+      {
+        "title": "四控制面与六支腿",
+        "detail": "厂家列出四个气动控制面和六个液压支腿。控制面、边条、收拢支腿在模型中分开表达。",
+        "partId": "legs",
+        "sourceUrl": "https://www.blueorigin.com/new-glenn"
+      },
+      {
+        "title": "七米整流罩",
+        "detail": "采用七米外径的宽整流罩，延续基本型约 98 m 高度量级。载荷设备与可用内部包络不由该网格定义。",
+        "partId": "fairing",
+        "sourceUrl": "https://www.blueorigin.com/new-glenn"
+      }
+    ],
+    "uncertainties": [
+      "官网同时介绍后续 9×4 版本；本模型明确保持七台 / 双台基本型，参数不能跨版本拼接。",
+      "控制面铰接、边条轮廓、支腿机构、级间长度和贮箱比例均为功能级示意。"
+    ],
+    "sources": [
+      {
+        "title": "Blue Origin · New Glenn 基本型产品说明",
+        "url": "https://www.blueorigin.com/new-glenn"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "fairing",
+      "name": "七米级整流罩",
+      "description": "提供大型载荷包络，具体可用空间需任务接口资料。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.blueorigin.com/new-glenn"
+    },
+    {
+      "id": "stage-1",
+      "name": "甲烷一级",
+      "description": "七台BE-4驱动，带回收相关控制与着陆附件。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.blueorigin.com/new-glenn"
+    },
+    {
+      "id": "stage-2",
+      "name": "氢氧上面级",
+      "description": "两台BE-3U承担后续轨道机动。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.blueorigin.com/new-glenn"
+    },
+    {
+      "id": "engine",
+      "name": "BE-4发动机组",
+      "description": "一级七台发动机，喷管几何仅示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.blueorigin.com/new-glenn"
+    },
+    {
+      "id": "tank",
+      "name": "双推进剂体系贮箱",
+      "description": "一级甲烷液氧、二级氢氧，内部布局归一化。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.blueorigin.com/new-glenn"
+    },
+    {
+      "id": "legs",
+      "name": "着陆支撑结构",
+      "description": "与助推级回收设计相关，尺寸与机构未按CAD复刻。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.blueorigin.com/new-glenn"
+    }
+  ]
+}

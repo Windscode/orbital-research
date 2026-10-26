@@ -1,0 +1,82 @@
+{
+  "vehicleId": "explorer-1",
+  "name": "Explorer 1 · 探险者一号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "explorer-1",
+    "configuration": "完整卫星细长构型；不含运载火箭",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "按 NASA 203 cm / 15.9 cm 修正约 12.8:1 的细长比例",
+      "细分黑白表面带、科学仪器与电池堆叠分区"
+    ],
+    "features": [
+      {
+        "title": "长径比",
+        "detail": "NASA 给出的长度 203 cm、直径 15.9 cm 约为 12.8:1；替换原先过粗的圆筒。",
+        "partId": "body",
+        "sourceUrl": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+      },
+      {
+        "title": "宇宙射线与微流星体",
+        "detail": "仪器组区分计数器和小型测量单元；外壳形状不能推导出探测效率。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+      },
+      {
+        "title": "电池供电",
+        "detail": "采用内部电池分组，不添加太阳电池翼；电池耗尽与卫星坠落是不同事件。",
+        "partId": "service",
+        "sourceUrl": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+      }
+    ],
+    "uncertainties": [
+      "外部测温涂层只作黑白分区，未还原逐条热控图纸。",
+      "卫星总长度口径与推进级是否计入需要保持一致。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Explorer 1 尺寸与科学载荷",
+        "url": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "细长卫星主体",
+      "description": "承载实验仪器、电子设备与电源。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+    },
+    {
+      "id": "instruments",
+      "name": "宇宙射线探测器",
+      "description": "记录粒子计数；响应饱和是解释数据的重要边界。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+    },
+    {
+      "id": "antenna",
+      "name": "无线电天线",
+      "description": "连接卫星遥测与地面接收站。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+    },
+    {
+      "id": "avionics",
+      "name": "遥测电子单元",
+      "description": "将实验和状态信息编码发送，内部布局作示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+    },
+    {
+      "id": "service",
+      "name": "电池能源单元",
+      "description": "提供有限的在轨工作能源，不安装太阳翼。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.nasa.gov/missions/explorer/explorer-1-fast-facts/"
+    }
+  ]
+}

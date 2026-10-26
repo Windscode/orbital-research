@@ -1,0 +1,100 @@
+{
+  "vehicleId": "landsat-1",
+  "name": "Landsat 1 / ERTS-1",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "landsat-1",
+    "configuration": "早期陆地观测构型；双翼、MSS 与 RBV",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "复核 Nimbus 衍生平台与对地仪器组合",
+      "记录 NASA 与既有资料关于姿控推进工质的口径差异"
+    ],
+    "features": [
+      {
+        "title": "Nimbus 衍生平台",
+        "detail": "NASA 说明其为 Nimbus 4 改型，三轴姿控平台与对地载荷相互区分。",
+        "partId": "body",
+        "sourceUrl": "https://science.nasa.gov/mission/landsat-1/"
+      },
+      {
+        "title": "MSS 与三相机 RBV",
+        "detail": "MSS 扫描和 RBV 三台相机是不同采样机制，模型保留分开的仪器区域。",
+        "partId": "instruments",
+        "sourceUrl": "https://science.nasa.gov/mission/landsat-1/"
+      },
+      {
+        "title": "反作用轮与姿控",
+        "detail": "NASA 页面列出四个反作用轮及 freon gas 推进；既有肼系统说法需要继续核对。",
+        "partId": "avionics",
+        "sourceUrl": "https://science.nasa.gov/mission/landsat-1/"
+      }
+    ],
+    "uncertainties": [
+      "USGS 旧构型页本次抓取超时，保留已有引用而不声称重新读到正文。",
+      "姿控工质资料存在差异；模型喷口数量和贮箱形状不能作为鉴定依据。"
+    ],
+    "sources": [
+      {
+        "title": "NASA · Landsat 1 仪器与姿控平台",
+        "url": "https://science.nasa.gov/mission/landsat-1/"
+      },
+      {
+        "title": "USGS · Landsat 1 历史构型（本次抓取超时，保留既有档案来源）",
+        "url": "https://www.usgs.gov/landsat-missions/landsat-1"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "卫星平台",
+      "description": "依据公开总体包络示意早期陆地观测平台。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.usgs.gov/landsat-missions/landsat-1"
+    },
+    {
+      "id": "solar",
+      "name": "双太阳翼",
+      "description": "展开端到端约 4 m；面板网格与铰链细节为示意。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.usgs.gov/landsat-missions/landsat-1"
+    },
+    {
+      "id": "instruments",
+      "name": "MSS 与 RBV",
+      "description": "分别表示扫描仪和相机，不将仪器孔径反推为焦距。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/mission/landsat-1/"
+    },
+    {
+      "id": "antenna",
+      "name": "通信天线",
+      "description": "S 波段与 VHF 功能示意，尺寸和波束并未复原。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.usgs.gov/landsat-missions/landsat-1"
+    },
+    {
+      "id": "propulsion",
+      "name": "姿控气体推进功能区",
+      "description": "NASA 任务页面记载以地平仪、太阳传感器和 freon 气体推进系统实现三轴稳定。此处喷口数量、方向和贮罐位置未由安装图验证。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://science.nasa.gov/mission/landsat-1/"
+    },
+    {
+      "id": "avionics",
+      "name": "姿态与数据电子学",
+      "description": "反作用轮、控制和数据处理功能区。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.usgs.gov/landsat-missions/landsat-1"
+    },
+    {
+      "id": "frame",
+      "name": "设备承载结构",
+      "description": "仅作相对布局与拆分演示。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://www.usgs.gov/landsat-missions/landsat-1"
+    }
+  ]
+}

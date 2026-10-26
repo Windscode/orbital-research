@@ -1,0 +1,93 @@
+{
+  "vehicleId": "hayabusa2",
+  "name": "Hayabusa2 · 隼鸟二号",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "hayabusa2",
+    "configuration": "采样任务硬件构型；太阳翼与采样喇叭展开",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "将单一抛物面换为两块平面高增益天线",
+      "新增采样喇叭、侧面离子发动机组与返回舱"
+    ],
+    "features": [
+      {
+        "title": "平面高增益天线",
+        "detail": "X 波段与 Ka 波段天线是平面阵列，不能沿用初代 Hayabusa 的单个抛物面。",
+        "partId": "antenna",
+        "sourceUrl": "https://www.nec.com/en/global/techrep/journal/g21/n01/210130.html"
+      },
+      {
+        "title": "上下表面分工",
+        "detail": "顶部太阳阵与通信面面向日地，底部采样喇叭及部分载荷面向小行星。",
+        "partId": "instruments",
+        "sourceUrl": "https://www.nec.com/en/global/techrep/journal/g21/n01/210130.html"
+      },
+      {
+        "title": "返回样品与离子推进",
+        "detail": "采样喇叭、返回舱和离子推进组有不同任务功能，分组独立。",
+        "partId": "payload",
+        "sourceUrl": "https://www.isas.jaxa.jp/visit/pdf/en/Hayabusa2_1_2.pdf"
+      }
+    ],
+    "uncertainties": [
+      "图中采样喇叭未建模弹性波纹段及弹丸机构。",
+      "返航、释放返回舱之后的外观与此构型不同。"
+    ],
+    "sources": [
+      {
+        "title": "NEC · Hayabusa2 系统设计与运行结果",
+        "url": "https://www.nec.com/en/global/techrep/journal/g21/n01/210130.html"
+      },
+      {
+        "title": "JAXA · Hayabusa2 结构标注图",
+        "url": "https://www.isas.jaxa.jp/visit/pdf/en/Hayabusa2_1_2.pdf"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "探测器总线",
+      "description": "容纳支持系统与样品返回接口。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://darts.isas.jaxa.jp/en/missions/hayabusa2"
+    },
+    {
+      "id": "solar",
+      "name": "两侧太阳翼",
+      "description": "为长期巡航与近旁作业供电。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://darts.isas.jaxa.jp/en/missions/hayabusa2"
+    },
+    {
+      "id": "antenna",
+      "name": "通信天线",
+      "description": "支持深空测控与科学数据回传。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://darts.isas.jaxa.jp/en/missions/hayabusa2"
+    },
+    {
+      "id": "propulsion",
+      "name": "离子推进及姿控",
+      "description": "离子推进用于巡航，近旁操作需要相应姿控与机动能力。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://darts.isas.jaxa.jp/en/missions/hayabusa2"
+    },
+    {
+      "id": "instruments",
+      "name": "光学导航与科学载荷",
+      "description": "相机、红外等载荷用于地形和成分研究。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://darts.isas.jaxa.jp/en/missions/hayabusa2"
+    },
+    {
+      "id": "payload",
+      "name": "采样与返回组件",
+      "description": "连接采样功能与独立返回舱，内部容器布局为示意。",
+      "evidence": "工程示意",
+      "sourceUrl": "https://darts.isas.jaxa.jp/en/missions/hayabusa2"
+    }
+  ]
+}

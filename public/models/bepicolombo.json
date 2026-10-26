@@ -1,0 +1,97 @@
+{
+  "vehicleId": "bepicolombo",
+  "name": "BepiColombo · 贝皮科伦坡",
+  "classification": "研究示意模型，非制造CAD",
+  "physicalScaleKnown": false,
+  "review": {
+    "id": "bepicolombo",
+    "configuration": "历史巡航组合体：MTM、MPO、MOSIF 与 Mio；非当前实时装配状态",
+    "reviewedOn": "2026-10-26",
+    "changes": [
+      "将单体探测器拆成四层任务组件",
+      "加入 MTM 长太阳翼、离子推进端面与 Mio 周围遮阳结构"
+    ],
+    "features": [
+      {
+        "title": "四层堆叠",
+        "detail": "自下向上是 MTM、MPO、MOSIF 与 Mio；MOSIF 不属于另一个独立轨道器。",
+        "partId": "payload",
+        "sourceUrl": "https://www.esa.int/ESA_Multimedia/Images/2017/04/BepiColombo_exploded_view"
+      },
+      {
+        "title": "电推进运输模块",
+        "detail": "MTM 在巡航阶段提供太阳电推进，不能将它的太阳翼归入 Mio 本体。",
+        "partId": "service",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/Mercury_Transfer_Module"
+      },
+      {
+        "title": "不同轨道器",
+        "detail": "MPO 与 Mio 是功能与构型不同的科学航天器，巡航时组合运输。",
+        "partId": "body",
+        "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/BepiColombo_factsheet"
+      }
+    ],
+    "uncertainties": [
+      "这是可研究层间接口的历史巡航配置，不能用来表示当日飞行状态。",
+      "MOSIF 开口和 Mio 遮挡程度为观察而简化，未建立真实热辐射模型。"
+    ],
+    "sources": [
+      {
+        "title": "ESA · BepiColombo 组合体分解图",
+        "url": "https://www.esa.int/ESA_Multimedia/Images/2017/04/BepiColombo_exploded_view"
+      },
+      {
+        "title": "ESA · Mercury Transfer Module",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/Mercury_Transfer_Module"
+      },
+      {
+        "title": "ESA · BepiColombo 巡航组合体规格",
+        "url": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/BepiColombo_factsheet"
+      }
+    ]
+  },
+  "parts": [
+    {
+      "id": "body",
+      "name": "MPO 行星轨道器",
+      "description": "承担水星表面与内部相关观测。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/BepiColombo_factsheet"
+    },
+    {
+      "id": "payload",
+      "name": "Mio 磁层轨道器",
+      "description": "承担水星空间环境研究。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/BepiColombo_factsheet"
+    },
+    {
+      "id": "service",
+      "name": "MTM 转移模块",
+      "description": "在巡航阶段提供运输支持。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/BepiColombo_factsheet"
+    },
+    {
+      "id": "solar",
+      "name": "转移模块太阳翼",
+      "description": "为巡航组合体提供能源。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/BepiColombo_factsheet"
+    },
+    {
+      "id": "heatshield",
+      "name": "遮热与接口结构",
+      "description": "在巡航阶段保护相关科学轨道器。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/BepiColombo_factsheet"
+    },
+    {
+      "id": "propulsion",
+      "name": "巡航推进系统",
+      "description": "支持长途转移，展示为功能单元。",
+      "evidence": "公开结构",
+      "sourceUrl": "https://www.esa.int/Science_Exploration/Space_Science/BepiColombo/BepiColombo_factsheet"
+    }
+  ]
+}

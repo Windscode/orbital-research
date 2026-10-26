@@ -1,0 +1,692 @@
+{
+  "lessons": [
+    {
+      "id": "geometry-reconstruction",
+      "title": "从公开图像重建飞行器外形",
+      "category": "工程方法",
+      "level": "进阶",
+      "readTime": 22,
+      "summary": "先确定任务构型，再用公开尺寸和多视角资料约束几何；把镜头透视、遮挡和未知内部结构保留在误差记录中。",
+      "body": [
+        "重建之前先写清对象身份：具体型号、任务、装配日期与部署状态。空间站不同年份的舱段和太阳翼并不相同，着陆器下降姿态也可能不同于最终停稳姿态。把尺寸表、工程图、实物照片和概念效果图分开编号，并给每项建模决定标出对应证据。本文采用的是适合个人研究的整理办法，目标是得到可检查的外形近似，而不是把公开资料补画成未经证实的制造图。",
+        "正投影图中的长度比例，只有在图纸未被拉伸、视图与尺寸标注一致时才可直接使用；普通照片还包含透视与镜头畸变。针孔模型把空间点先变换到相机坐标，再投影到图像平面，近处部件会显得更大。用一个已知直径标定整张斜拍照片，会把深度差误当尺寸差。应优先选同一平面或相近深度的参照，记录焦距是否已知，并用另一视角检验尺度是否仍然成立。",
+        "建模时可先拟合主体轮廓、舱段接口和展开翼根，再处理支架、天线与仪器包。对被遮挡的区域，分别保留最小包络、最大包络和当前采用值，避免只保存一个看似精确的数字。对称性是待验证的假设：通信天线、推进器和散热器常常并不左右对称。若两个视角无法由同一模型解释，应先检查照片是否属于同一构型，以及透视和相机姿态是否处理正确，再增加几何细节。",
+        "组件层级应服务于解释真实关系：舱体作为主体，太阳翼挂在转轴下，机械臂按关节顺序组织，已分离的返回舱另设展示节点。每个部件同时保存局部坐标、装配变换、几何来源和可信程度。颜色与纹理只表达表面外观，不自动代表材料牌号或厚度。即使使用规定米制坐标的交换格式，也必须核对导出的实际尺寸；本站归一化展示模型不能仅凭文件扩展名就被当作米制工程模型。",
+        "验收可采用一张未参与拟合的照片：固定近似相机位置，比较轮廓、关键接口和展开方向，而不是凭材质效果判断相似。再检查已知长度、组件数量和部署状态，并列出无法解释的偏差。建议交付证据索引、参数表、三视图截图与模型版本，让后来者能够重新调整假设。若任务转为碰撞、气动或热分析，应重新建立适合该计算的几何与边界条件，外观吻合本身并不完成这些验证。"
+      ],
+      "formula": "s·p = K·[R | t]·P；同一正投影视图中的尺度：k = 已知实长 / 对应像素长度",
+      "pitfall": "把概念图、不同任务年代的照片和展开前后的尺寸混用；将照片中看不见的结构画得很细，却未标明它只是推测。",
+      "exercise": "选择 TIROS-1 或祝融号，整理至少两个不同方向的官方图像和一个公开尺寸。建立主体与附件的参数表，保留一个未参与拟合的视角检查轮廓，并给三项未知尺寸记录范围。",
+      "sources": [
+        {
+          "title": "OpenCV：针孔相机、内参与坐标变换",
+          "url": "https://docs.opencv.org/5.0/main_modules/calib.html"
+        },
+        {
+          "title": "Khronos：glTF 2.0 规范",
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html"
+        },
+        {
+          "title": "NASA 3D Resources",
+          "url": "https://science.nasa.gov/3d-resources/"
+        },
+        {
+          "title": "NAIF DSK Required Reading：形状、坐标系与覆盖范围",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/req/dsk.html"
+        }
+      ],
+      "prerequisites": [
+        "vectors-matrices",
+        "frames-and-time",
+        "data-provenance"
+      ],
+      "related": [
+        "mass-properties",
+        "mesh-validity",
+        "verification-uncertainty"
+      ],
+      "objectives": [
+        "区分正投影视图与透视图的尺度含义",
+        "为型号、年代、部署状态与几何参数建立证据对应",
+        "用保留视角检查重建误差并标注未知区域"
+      ],
+      "applications": [
+        "飞行器档案中的结构讲解与分解展示",
+        "基于公开资料的外形参数估计",
+        "为后续碰撞几何或计算域建模准备可追溯输入"
+      ],
+      "steps": [
+        {
+          "title": "确定构型与可用证据",
+          "detail": "固定任务和部署状态，逐项记录图像来源、日期、尺寸定义和遮挡区域；先剔除不属于同一构型的资料。"
+        },
+        {
+          "title": "约束主体与附件",
+          "detail": "用公开长度建立尺度，用多视角约束主体轮廓；附件独立建模，未知厚度和背面结构以范围而非精确值记录。"
+        },
+        {
+          "title": "检查坐标与独立视角",
+          "detail": "记录单位、轴向、原点和局部变换；重新导入导出文件并检查已知长度，用保留图像检验轮廓误差。"
+        }
+      ]
+    },
+    {
+      "id": "mass-properties",
+      "title": "组合体的质量、质心与惯量",
+      "category": "结构与热控",
+      "level": "进阶",
+      "readTime": 24,
+      "summary": "把公开质量、组件分配与坐标变换分开记录，用完整惯性张量汇总组合体，并检查单位、重叠体积和推进剂状态。",
+      "body": [
+        "外形只能约束占据空间，不能直接给出质量分布。相同外轮廓可以是薄壳、实心体或内部有设备的舱体，其惯量差别很大。先建立组件台账：质量数值、来源、干重或湿重定义、适用任务阶段、局部质心和估计区间分别保存。公开总质量与根据照片分配的组件质量属于不同证据等级；若用总质量校准估计分配，也应记录校准方式，避免把所有组件都写成实测数据。",
+        "组合质心是各组件质心按质量加权的平均值。汇总惯量时，先把各组件关于自身质心的惯性张量旋转到统一坐标系，再用平行轴定理移到组合质心，最后求和。完整张量包含三个主对角项和三个独立非对角项，不能在未经验证的对称假设下全部清零。还要写清惯性积的符号约定：有些资料列出正的积分惯性积，而动力学矩阵在对应非对角位置使用其负值。",
+        "可以先用自设的两个质点验证计算代码：每个质量一千克，分别放在横轴正负一米处，组合质心在原点，绕横轴惯量为零，绕另外两轴均为二千克平方米。这只是程序校验例，不是航天器的物理模型。随后给每个组件增加自身有限尺寸惯量，检查张量对称性、特征值和主轴方向；整体平移不应改变关于自身质心的主惯量，整体旋转也不应改变这些特征值。",
+        "单位错误往往比几何简化更严重。质量不变而所有长度放大一千倍，惯量会放大一百万倍；若同时假定密度不变并按实体缩放，质量也随体积改变，惯量按长度的五次方变化。几何内核返回的属性还需核对定义：单位密度的体积积分不等于真实质量。薄板应用厚度和密度或面密度描述，重复外壳与相互重叠的实体若直接相加，会把同一部分物质重复计入。",
+        "质量属性应随构型变化保存，而不是成为飞行器永久不变的三个数字。推进剂消耗、太阳翼转动和载荷释放都会改变质心或惯量；液体晃动则超出单一刚体参数的表达能力。研究时可分别扰动组件质量、安装位置和未知厚度，观察控制响应对这些假设的敏感程度。最后交付参数、坐标约定和不确定性范围，并把解析算例、独立计算与可获得的测量证据分开列出。"
+      ],
+      "formula": "M = Σmᵢ；rC = Σ(mᵢrᵢ)/M；IC = Σ[Rᵢ Iᵢ,c Rᵢᵀ + mᵢ((dᵢ·dᵢ)E − dᵢdᵢᵀ)]，dᵢ = rᵢ − rC",
+      "pitfall": "把 CAD 的单位密度体积当作千克质量；混用毫米与米；只平移惯量却忘记旋转局部坐标系；把湿重与干重混合成同一质量台账。",
+      "exercise": "自设一个箱形主体与两块可转动薄板，公开给定尺寸和假设质量。计算折叠与展开两种构型的质心、完整惯量矩阵和主惯量，再把一块薄板的质量增加百分之十，解释结果变化。",
+      "sources": [
+        {
+          "title": "NASA/TM-20220013375：航天器操纵品质设计要求，刚体惯量与平行轴关系",
+          "url": "https://ntrs.nasa.gov/api/citations/20220013375/downloads/20220013375.pdf?attachment=true"
+        },
+        {
+          "title": "OCCT BRepGProp：体积、质心与惯性属性及输入条件",
+          "url": "https://occt3d.com/dev/doc/refman/html/class_b_rep_g_prop.html"
+        },
+        {
+          "title": "MIT OCW：Parallel Axis Theorem",
+          "url": "https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/resources/parallel-axis-theorem/"
+        }
+      ],
+      "prerequisites": [
+        "vectors-matrices",
+        "six-dof"
+      ],
+      "related": [
+        "geometry-reconstruction",
+        "structural-dynamics",
+        "uncertainty-quantification"
+      ],
+      "objectives": [
+        "在统一坐标系下汇总组合体质心与完整惯性张量",
+        "区分几何体积、假设密度和真实质量来源",
+        "通过解析算例、单位检查与参数扰动验证计算"
+      ],
+      "applications": [
+        "六自由度仿真的刚体参数准备",
+        "展开附件对姿态响应的影响分析",
+        "质量未知时的参数范围与敏感性研究"
+      ],
+      "steps": [
+        {
+          "title": "整理质量与构型台账",
+          "detail": "逐个组件登记质量来源、干湿状态、局部坐标和未知区间；用公开总质量进行一致性核对，但保留分配假设。"
+        },
+        {
+          "title": "变换并汇总张量",
+          "detail": "在同一长度和质量单位下旋转局部惯量，使用平行轴关系移到组合质心，保留非对角项及其符号约定。"
+        },
+        {
+          "title": "运行解析与扰动检查",
+          "detail": "先用质点和规则体算例核对，再检查旋转不变性、主惯量与组件质量变化；对部署和燃料状态分别保存结果。"
+        }
+      ]
+    },
+    {
+      "id": "mesh-validity",
+      "title": "模型网格何时适合计算",
+      "category": "工程方法",
+      "level": "进阶",
+      "readTime": 23,
+      "summary": "把视觉表面、闭合实体与求解网格分别检查；从流形性、自交和法向开始，直到计算域、边界标签与网格收敛。",
+      "body": [
+        "网页模型、三维打印模型和数值求解网格面向不同用途。网页可以用没有厚度的双面薄片表现太阳翼，也可以让几个封闭几何体相互穿插；这些选择在视觉讲解中可能足够，却不保证能够计算体积、质量或流场。开始检查前应写清用途与允许的简化：是展示接口位置、求实体体积，还是求某个载荷下的温度或应力。验收条件必须围绕这个用途建立，而不是只统计三角面数量。",
+        "拓扑检查需要区分几个独立问题。边界边说明表面存在开口，但开放曲面本身未必错误；非流形边或顶点可能使内外关系不明确；重复面与退化面会妨碍后续运算。即使网格满足流形连接规则，仍然可能发生几何自交。对于需要表示实体体积的模型，还应检查闭合性、各连通分量的方向，以及嵌套壳层是否正确表达空腔，不能把“没有洞”当作全部有效性结论。",
+        "法向、三角形绕序和坐标变换要一起检查。渲染器的双面材质可能隐藏背面方向错误，负尺度变换也可能改变三角形的有效朝向。顶点坐标应有限，近重合点的合并容差需与几何尺度一致，否则小间隙和薄壁会被误删。修复前后保存部件编号和边界标签，记录删面、补洞和焊接操作；只看修复后的光滑表面，难以发现某个真实开口已经被算法自动封死。",
+        "重新划分三角面可以改善单元形状或减小文件，但不自动增加对真实物体的了解。可比较修复前后的包围盒、体积、关键截面与表面距离，尤其关注喷口、接缝和翼根等薄小特征；距离检查也要说明采样方式和容差。若原始模型的背面或内部完全来自假设，继续加密只会更精细地描述这个假设。几何误差应与离散误差分开记录，不能让大量面片掩盖证据不足。",
+        "进入求解器之前，还需要定义实体域或流体域、材料、边界条件和适当的体网格或壳网格。网格质量指标应遵循所用求解器及离散方法，而不是套用一个通用阈值。建议固定物理模型和边界条件，对至少三套系统加密的网格比较预先选定的量，如整体热流、位移或阻力，同时检查迭代误差；这个过程是后续研究方案，本站的交互展示与剖切功能本身没有完成求解验证。"
+      ],
+      "formula": "几何误差与离散误差分别记录；网格研究示例量：ΔQᵢ = |Qᵢ₊₁ − Qᵢ|，同时报告特征网格尺度和迭代残差",
+      "pitfall": "以“双面显示正常”代替法向检查；自动补洞后把真实喷口封闭；把更高面数、较小表面距离或一次求解成功当作计算结果已收敛。",
+      "exercise": "从自建的封闭箱体复制三份，分别引入开口、重复面和相交薄片，记录哪些问题只影响外观、哪些影响体积计算。修复后重新导入文件，核对体积、部件标识与真实开口是否被保留。",
+      "sources": [
+        {
+          "title": "CGAL Polygon Mesh Processing 用户手册",
+          "url": "https://doc.cgal.org/latest/Polygon_mesh_processing/index.html"
+        },
+        {
+          "title": "OCCT BRepGProp：体积、质心与惯性属性及输入条件",
+          "url": "https://occt3d.com/dev/doc/refman/html/class_b_rep_g_prop.html"
+        },
+        {
+          "title": "Khronos：glTF 2.0 规范",
+          "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html"
+        },
+        {
+          "title": "ParaView User's Guide：Filtering Data",
+          "url": "https://docs.paraview.org/en/latest/UsersGuide/filteringData.html"
+        },
+        {
+          "title": "NASA-STD-7009：模型与仿真标准",
+          "url": "https://standards.nasa.gov/standard/nasa/nasa-std-7009"
+        }
+      ],
+      "prerequisites": [
+        "finite-elements",
+        "verification-uncertainty"
+      ],
+      "related": [
+        "geometry-reconstruction",
+        "mass-properties",
+        "cfd-verification"
+      ],
+      "objectives": [
+        "分别检查边界、流形连接、自交、退化面和法向",
+        "理解显示网格与物理计算域的差异",
+        "为几何修复和后续网格研究设计可重复检查"
+      ],
+      "applications": [
+        "公开三维资源导入前的质量检查",
+        "质量属性与体积计算的输入检查",
+        "结构、热与流场模型的几何预处理"
+      ],
+      "steps": [
+        {
+          "title": "确定用途和几何检查项",
+          "detail": "写明展示、体积积分或求解用途，分别统计连通分量、开口、非流形结构、自交与退化面，不将不同问题合并成一个通过状态。"
+        },
+        {
+          "title": "保留语义地修复",
+          "detail": "先复制原始模型，再按部件修复并记录容差；核对真实孔口、薄壁、法向、材料分区与边界标签没有被静默改变。"
+        },
+        {
+          "title": "准备计算域和收敛检查",
+          "detail": "为选定求解器生成合适网格，明确材料与边界条件；用固定关注量比较系统加密的多个网格，并单独控制迭代误差。"
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "nasa-3d-resources",
+      "title": "NASA 3D Resources",
+      "category": "数据与环境",
+      "kind": "公开数据",
+      "summary": "NASA 任务三维资产与可打印模型入口，适合结构讲解、外形参考和展示素材筛选。",
+      "details": "官方资源页集中提供任务相关三维模型，并链接镜像仓库；其中部分面向三维打印。资源的用途、格式与细节程度需逐项检查，不能由 NASA 来源推断其具有制造级尺寸、公差或内部结构。本站建议将它作为有来源的参考资产入口，下载后保留任务名称、文件版本、署名和原始说明。",
+      "tags": [
+        "三维模型",
+        "任务资产",
+        "形状参考"
+      ],
+      "language": "英文",
+      "license": "免费获取；依 NASA 媒体使用指南及各资产的署名、第三方权利说明使用",
+      "accessModel": "data",
+      "url": "https://science.nasa.gov/3d-resources/",
+      "docsUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "sourceTitle": "NASA 官方资源与媒体使用指南",
+      "verifiedOn": "2026-10-26",
+      "workflow": [
+        "筛选任务与构型",
+        "核对原始说明与使用条件",
+        "导入并检查单位和组件",
+        "保留原始资产与修改记录"
+      ],
+      "inputs": "任务名称、目标构型、所需文件格式与用途。",
+      "outputs": "官方发布的三维资产及其原始说明；具体格式和可打印性依条目而定。",
+      "limitations": "公开发布不等于工程验证；可能缺少厚度、材料、惯量、部署机构和真实比例。第三方素材与机构标识需单独核对使用条件。",
+      "usageEvidence": [
+        {
+          "organization": "NASA",
+          "context": "官方发布任务三维资源的能力与获取入口；不据此声称具体模型被用于工程仿真。",
+          "sourceUrl": "https://science.nasa.gov/3d-resources/",
+          "evidenceType": "项目文档（非采用证明）"
+        }
+      ],
+      "alternatives": [
+        "nasa-pds",
+        "spice",
+        "nasa-ntrs"
+      ],
+      "starterWorkflow": [
+        "选择一个与档案构型一致的资产并记录来源。",
+        "检查包围盒与已知公开尺寸，标明比例能否确认。",
+        "保留原件，另存展示版本，记录删除、补画和材质修改。"
+      ],
+      "starterWorkflowStatus": "本站建议的入门流程，尚未替用户下载或验证任意资产。",
+      "selectionQuestions": [
+        "目标是展示、打印还是数值计算？",
+        "原始文件是否说明构型、单位和作者？",
+        "所需内部结构是否真的包含在公开资产中？"
+      ]
+    },
+    {
+      "id": "meshlab",
+      "title": "MeshLab",
+      "category": "设计与优化",
+      "kind": "开源项目",
+      "summary": "三角网格的检查、清理、修复与格式转换工具，适合对公开模型进行可视化预处理。",
+      "details": "MeshLab 官方介绍覆盖编辑、清理、修复、检查、渲染、纹理与转换等网格处理任务。它适合观察部件连通性、处理冗余面片并比较修复前后外形。本站建议先保留原始模型，再在副本上逐项处理；自动修复结果仍需人工确认真实孔口、薄壁和分区标记是否保留。",
+      "tags": [
+        "网格处理",
+        "三维重建",
+        "几何修复"
+      ],
+      "language": "英文 / C++",
+      "license": "GPL-3.0（以所用版本及附带依赖许可为准）",
+      "accessModel": "open",
+      "url": "https://www.meshlab.net/",
+      "docsUrl": "https://www.meshlab.net/",
+      "sourceTitle": "MeshLab 官方网站",
+      "verifiedOn": "2026-10-26",
+      "workflow": [
+        "导入并观察网格",
+        "记录连通分量与缺陷",
+        "在副本上清理和简化",
+        "比较形状并重新导出"
+      ],
+      "inputs": "扫描或建模得到的三角网格；导入格式取决于版本与插件。",
+      "outputs": "处理后的网格、法向或纹理相关结果及转换文件，依操作而定。",
+      "limitations": "三角网格修复不会恢复未观测的真实工程细节，也不能自动给出制造参数或适用于特定求解器的计算网格。",
+      "usageEvidence": [
+        {
+          "organization": "MeshLab 项目",
+          "context": "官方说明网格处理能力和 GPL 3.0 许可；这里不把功能说明当作商业航天采用案例。",
+          "sourceUrl": "https://www.meshlab.net/",
+          "evidenceType": "项目文档（非采用证明）"
+        }
+      ],
+      "alternatives": [
+        "cgal",
+        "freecad",
+        "gmsh"
+      ],
+      "starterWorkflow": [
+        "导入副本，记录初始面数、连通分量、尺寸和可见缺陷。",
+        "每次只处理一类缺陷，保留参数与中间版本。",
+        "检查小开口和薄结构，导出后重新导入核对外形与尺寸。"
+      ],
+      "starterWorkflowStatus": "本站建议的人工检查流程，具体滤镜参数需按输入资产验证。",
+      "selectionQuestions": [
+        "需要处理的是三角网格还是参数化实体？",
+        "简化容差会不会删除天线、薄板和孔口？",
+        "处理后是否仍能对应原来的组件与来源？"
+      ]
+    },
+    {
+      "id": "paraview",
+      "title": "ParaView",
+      "category": "多物理场",
+      "kind": "开源项目",
+      "summary": "科学数据的管线式可视化与后处理平台，可检查切片、等值面、数据属性及时间序列。",
+      "details": "ParaView 的数据管线连接数据源、过滤器和显示结果，过滤器的可用性取决于输入数据类型。其文档明确区分切割、切片、等值与数据重采样等操作。本站建议将它用于审查仿真输出中的单位、点数据与单元数据以及时间变化；结果的可信度仍由上游模型、求解过程和验证证据决定。",
+      "tags": [
+        "后处理",
+        "科学可视化",
+        "数据管线"
+      ],
+      "language": "英文 / C++ / Python",
+      "license": "BSD-3-Clause；附带第三方组件另有许可",
+      "accessModel": "open",
+      "url": "https://www.paraview.org/",
+      "docsUrl": "https://docs.paraview.org/en/latest/UsersGuide/filteringData.html",
+      "sourceTitle": "ParaView 用户手册与许可页",
+      "verifiedOn": "2026-10-26",
+      "workflow": [
+        "加载数据与检查属性",
+        "建立切片或等值管线",
+        "比较不同网格和时刻",
+        "保存状态与可重复输出"
+      ],
+      "inputs": "支持格式的网格与标量、向量、张量或时间序列数据；实际读取器决定支持范围。",
+      "outputs": "可视化视图、过滤结果和可保存的处理状态；输出格式依管线与写出器而定。",
+      "limitations": "后处理不能纠正上游的错误单位、边界条件或未收敛解。不同数据位置和重采样方式可能改变所观察的极值与分布。",
+      "usageEvidence": [
+        {
+          "organization": "ParaView 项目",
+          "context": "官方用户手册说明过滤和数据管线能力；未将此说明扩展成某航天企业采用证明。",
+          "sourceUrl": "https://docs.paraview.org/en/latest/UsersGuide/filteringData.html",
+          "evidenceType": "项目文档（非采用证明）"
+        }
+      ],
+      "alternatives": [
+        "gmsh",
+        "meshlab",
+        "openvsp"
+      ],
+      "starterWorkflow": [
+        "读取一份小数据集，确认坐标单位、时间索引与点/单元属性。",
+        "建立一个截面和一个积分或曲线观察量，记录过滤器参数。",
+        "用相同管线比较两次计算，保留数据版本和状态文件。"
+      ],
+      "starterWorkflowStatus": "本站建议的后处理练习，不包含预先完成的求解结果。",
+      "selectionQuestions": [
+        "关注量位于点、单元还是整体积分层面？",
+        "比较数据是否采用相同坐标、单位和时间定义？",
+        "显示范围与重采样是否掩盖了真实差异？"
+      ]
+    },
+    {
+      "id": "opencascade",
+      "title": "Open CASCADE Technology",
+      "category": "设计与优化",
+      "kind": "开源项目",
+      "summary": "面向曲面、实体、CAD 数据交换与几何属性计算的 C++ 建模内核。",
+      "details": "OCCT 提供边界表示的曲面与实体建模、数据交换、几何修复及可视化接口，官方文档包含 STEP、IGES 等交换能力。它是开发库，需要调用方组织输入检查和应用逻辑。本站建议先从规则实体与文件往返转换开始，再处理复杂装配；体积属性计算必须满足封闭、方向一致等输入条件。",
+      "tags": [
+        "CAD内核",
+        "边界表示",
+        "几何属性",
+        "STEP"
+      ],
+      "language": "英文 / C++",
+      "license": "LGPL-2.1 附加例外；另有商业授权，商业组件及依赖需分别核对",
+      "accessModel": "open",
+      "url": "https://occt3d.com/open-cascade-technology/",
+      "docsUrl": "https://occt3d.com/dev/doc/overview/html/index.html",
+      "sourceTitle": "OCCT 官方开发文档与 BRepGProp API",
+      "verifiedOn": "2026-10-26",
+      "workflow": [
+        "读取或建立几何",
+        "检查拓扑与几何有效性",
+        "计算属性或进行修改",
+        "导出并检查往返误差"
+      ],
+      "inputs": "边界表示实体、曲面、曲线或支持格式的 CAD 数据；具体能力依组件。",
+      "outputs": "建模结果、交换文件与几何属性；密度、材料和工程语义需由应用提供。",
+      "limitations": "内核不自动补齐未知结构或真实材料。单位密度积分得到的 Mass 可能是体积，不能直接作为千克质量；几何有效性仍需独立检查。",
+      "usageEvidence": [
+        {
+          "organization": "Open Cascade",
+          "context": "官方文档支持建模内核与属性计算能力；此处没有为某型号的设计软件作采用背书。",
+          "sourceUrl": "https://occt3d.com/dev/doc/overview/html/index.html",
+          "evidenceType": "项目文档（非采用证明）"
+        }
+      ],
+      "alternatives": [
+        "freecad",
+        "cgal",
+        "gmsh"
+      ],
+      "starterWorkflow": [
+        "用已知尺寸建立箱体，核对体积与解析结果。",
+        "导出再导入，检查单位、装配变换和拓扑是否一致。",
+        "为多组件分别设置质量或密度，验证质心与完整惯量汇总。"
+      ],
+      "starterWorkflowStatus": "本站建议的开发练习，未提供可替代设计审查的自动修复保证。",
+      "selectionQuestions": [
+        "需要参数化曲面与实体，还是只需处理显示网格？",
+        "输入的单位、装配坐标与密度能否追溯？",
+        "所需接口属于开源核心还是单独授权组件？"
+      ]
+    },
+    {
+      "id": "cgal",
+      "title": "CGAL",
+      "category": "设计与优化",
+      "kind": "开源项目",
+      "summary": "计算几何算法库，可程序化检查网格连接、相交、法向和表面距离。",
+      "details": "CGAL 的多边形网格处理文档提供相交检测、连通分量、法向和距离等算法，修复、重网格和布尔操作在当前文档中另有专门软件包。不同算法对输入概念和几何条件有明确要求。本站建议用它构建可重复的检查报告，逐项输出问题位置，而不是把多个谓词压成一个笼统的“模型有效”结果。",
+      "tags": [
+        "计算几何",
+        "网格验证",
+        "C++",
+        "几何算法"
+      ],
+      "language": "英文 / C++",
+      "license": "按软件包采用 GPL-3.0-or-later 或 LGPL-3.0-or-later；另有商业授权",
+      "accessModel": "open",
+      "url": "https://www.cgal.org/",
+      "docsUrl": "https://doc.cgal.org/latest/Polygon_mesh_processing/index.html",
+      "sourceTitle": "CGAL 官方手册与许可页",
+      "verifiedOn": "2026-10-26",
+      "workflow": [
+        "选择满足输入要求的数据结构",
+        "运行独立几何与拓扑检查",
+        "记录缺陷与修复操作",
+        "比较处理前后的几何量"
+      ],
+      "inputs": "点、曲线、多边形网格等符合所选算法概念的数据；每个软件包的前提条件不同。",
+      "outputs": "几何判定、缺陷位置、距离与处理后的几何数据，取决于调用的算法。",
+      "limitations": "流形连接不排除几何自交；算法的数值与输入条件需要逐项遵守。几何检查不能替代材料建模、边界定义或求解收敛分析。",
+      "usageEvidence": [
+        {
+          "organization": "CGAL 项目",
+          "context": "官方手册说明多边形处理和算法前提；不据此声称某航天公司已采用整套工具。",
+          "sourceUrl": "https://doc.cgal.org/latest/Polygon_mesh_processing/index.html",
+          "evidenceType": "项目文档（非采用证明）"
+        }
+      ],
+      "alternatives": [
+        "meshlab",
+        "opencascade",
+        "gmsh"
+      ],
+      "starterWorkflow": [
+        "准备一个正常网格和含已知缺陷的副本，明确预期判定。",
+        "分别运行边界、非流形、自交和退化检查并保存问题索引。",
+        "对修复前后比较关键截面与尺寸，复查真实孔口和薄壁。"
+      ],
+      "starterWorkflowStatus": "本站建议的验证程序设计，具体 API 与许可需对照所用包和版本。",
+      "selectionQuestions": [
+        "需要验证的是连接关系、几何相交还是物理实体？",
+        "调用算法是否允许开放曲面或退化输入？",
+        "选用的软件包许可是否适合当前分发方式？"
+      ]
+    }
+  ],
+  "workflow": {
+    "id": "shape-reconstruction",
+    "code": "GEO / 07",
+    "title": "公开资料到可检查的三维模型",
+    "shortTitle": "外形重建与几何检查",
+    "question": "怎样判断一个看起来像真的三维模型，究竟有哪些部分得到公开证据支持？",
+    "summary": "以任务构型和已知尺寸约束外形，记录遮挡与尺度不确定性，再检查组件关系、网格缺陷及质量属性的适用边界。",
+    "domain": "工程方法",
+    "level": "几何与数据验证",
+    "deliverable": "证据索引 + 参数化外形 + 坐标说明 + 几何检查报告",
+    "verifiedOn": "2026-10-26",
+    "boundary": "本站提出的个人研究流程；工具之间需要自行编写或配置接口。展示模型不代表制造 CAD、实测内部结构或已验证的求解网格，流程未替用户执行真实飞行器重建。",
+    "lessonIds": [
+      "geometry-reconstruction",
+      "mass-properties",
+      "mesh-validity",
+      "data-provenance"
+    ],
+    "resourceIds": [
+      "nasa-3d-resources",
+      "meshlab",
+      "paraview",
+      "opencascade",
+      "cgal",
+      "gmsh"
+    ],
+    "vehicleIds": [
+      "tiros-1",
+      "zhurong",
+      "iss"
+    ],
+    "contract": [
+      {
+        "field": "构型与证据",
+        "value": "型号、任务阶段、装配或部署状态、图像日期、原始链接与文件版本。",
+        "why": "不同年代、不同姿态或不同任务的照片不能直接拼成同一装配体。"
+      },
+      {
+        "field": "几何与坐标",
+        "value": "长度单位、坐标轴、原点、组件局部变换、已知尺寸与未知范围。",
+        "why": "可显示的模型仍可能比例错误；坐标错误还会传播到装配、质量与惯量计算。"
+      },
+      {
+        "field": "用途与误差",
+        "value": "分别声明展示、体积估计或求解预处理用途，以及轮廓、尺寸和拓扑的检查方法。",
+        "why": "外形相似、闭合表面和数值收敛分别回答不同问题，不能相互替代。"
+      }
+    ],
+    "steps": [
+      {
+        "id": "evidence",
+        "title": "选定构型与尺寸依据",
+        "detail": "以 TIROS-1 等结构较简单的档案开始，或明确祝融号的展开状态；从官方资料记录公开尺寸、不同方向照片和时间信息。已有官方三维资产也要核对构型与单位，保留原文件，列出相互矛盾或无法确认的细节。",
+        "output": "带来源与日期的证据表、目标构型说明",
+        "check": "每项主尺寸可定位到来源；没有把概念图当作实测图。"
+      },
+      {
+        "id": "reconstruct",
+        "title": "先拟合主体，再拆分附件",
+        "detail": "先用规则实体和公开尺度建立主体，用多个视角限制相机姿态与轮廓，再加入翼板、支架和天线。为每个部件写明装配关系、局部坐标和证据等级；遮挡区域保留参数区间，独立返回舱或部署机构不凭视觉效果错误连接。",
+        "output": "可调整外形、部件树、坐标与不确定性表",
+        "check": "一张未参与拟合的照片仍能解释主体轮廓和接口位置。"
+      },
+      {
+        "id": "inspect",
+        "title": "检查网格与质量计算边界",
+        "detail": "在 MeshLab 中观察缺陷，按需要用 CGAL 编写边界、自交和退化面检查；涉及体积时可用 OCCT 规则体或封闭实体进行独立对照。几何量与质量台账分开处理，未知材料和密度不以默认值悄悄补齐，修复前后保留差异记录。",
+        "output": "缺陷清单、修复记录、几何量对照",
+        "check": "真实孔口与薄壁没有被误删；体积、质量和惯量使用不同定义。"
+      },
+      {
+        "id": "handover",
+        "title": "重新导入并交付检查记录",
+        "detail": "导出模型后在独立查看工具中重新打开，复核尺寸、轴向、组件名称与部署状态；用 ParaView 等工具审查适合其数据管线的截面或计算结果。若继续求解，再经 Gmsh 等工具建立计算网格，单独设计边界条件和网格收敛研究。",
+        "output": "模型文件、检查截图、参数台账与后续计算要求",
+        "check": "说明哪些结论已有证据，哪些仍是估计；不把成功显示写成求解已验证。"
+      }
+    ],
+    "validation": [
+      "用未参与拟合的视角复核轮廓与附件方向，并记录相机未知造成的残余差异。",
+      "导出再导入后核对至少一个已知长度、轴向、组件数量和局部装配变换。",
+      "分别列出开口、非流形、自交、退化面和方向问题；需要实体积分时另核对闭合与空腔。",
+      "质量属性先通过规则体或质点解析算例，再进行单位、旋转不变性和不确定性检查。",
+      "若进入数值求解，另外报告计算域、边界条件、关注量与系统网格加密结果。"
+    ],
+    "pitfalls": [
+      "把不同年代的空间站、展开前后的太阳翼或真实着陆姿态混成同一构型。",
+      "由一张斜拍照片的像素比例推断所有深度上的真实尺寸。",
+      "把归一化展示模型按米导入求解器，或把几何体积直接填入质量字段。",
+      "自动补洞误封喷口，简化误删薄板，双面材质掩盖法向错误。",
+      "为缺少公开资料的内部部件补出精细结构，却没有标注为假设。"
+    ],
+    "sources": [
+      {
+        "title": "OpenCV：针孔相机、内参与坐标变换",
+        "url": "https://docs.opencv.org/5.0/main_modules/calib.html"
+      },
+      {
+        "title": "Khronos：glTF 2.0 规范",
+        "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html"
+      },
+      {
+        "title": "NASA 3D Resources",
+        "url": "https://science.nasa.gov/3d-resources/"
+      },
+      {
+        "title": "OCCT BRepGProp：体积、质心与惯性属性及输入条件",
+        "url": "https://occt3d.com/dev/doc/refman/html/class_b_rep_g_prop.html"
+      },
+      {
+        "title": "CGAL Polygon Mesh Processing 用户手册",
+        "url": "https://doc.cgal.org/latest/Polygon_mesh_processing/index.html"
+      },
+      {
+        "title": "NASA-STD-7009：模型与仿真标准",
+        "url": "https://standards.nasa.gov/standard/nasa/nasa-std-7009"
+      }
+    ]
+  },
+  "researchSources": [
+    {
+      "title": "OpenCV：针孔相机、内参与坐标变换",
+      "url": "https://docs.opencv.org/5.0/main_modules/calib.html",
+      "checkedOn": "2026-10-26",
+      "notes": "核对针孔投影、内参及世界到相机坐标变换；多视角验收和证据表是本站提出的方法。"
+    },
+    {
+      "title": "Khronos：glTF 2.0 规范",
+      "url": "https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html",
+      "checkedOn": "2026-10-26",
+      "notes": "核对单位、坐标系和三角形绕序；格式规定不证明具体资产真实比例正确。"
+    },
+    {
+      "title": "NASA 3D Resources",
+      "url": "https://science.nasa.gov/3d-resources/",
+      "checkedOn": "2026-10-26",
+      "notes": "确认官方任务三维资产与部分可打印模型入口，不推断其为制造 CAD。"
+    },
+    {
+      "title": "NASA Images and Media Usage Guidelines",
+      "url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "checkedOn": "2026-10-26",
+      "notes": "核对教育信息用途、署名及第三方素材说明；不将机构标识视为普通可自由使用素材。"
+    },
+    {
+      "title": "NASA/TM-20220013375：航天器操纵品质设计要求，刚体惯量与平行轴关系",
+      "url": "https://ntrs.nasa.gov/api/citations/20220013375/downloads/20220013375.pdf?attachment=true",
+      "checkedOn": "2026-10-26",
+      "notes": "核对刚体惯量矩阵与组合体平行轴关系；该文档标题为操纵品质设计要求，不误称质量属性手册。"
+    },
+    {
+      "title": "OCCT BRepGProp：体积、质心与惯性属性及输入条件",
+      "url": "https://occt3d.com/dev/doc/refman/html/class_b_rep_g_prop.html",
+      "checkedOn": "2026-10-26",
+      "notes": "核对 VolumeProperties 的单位密度、有限闭合实体及方向一致前提。"
+    },
+    {
+      "title": "MIT OCW：Parallel Axis Theorem",
+      "url": "https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/resources/parallel-axis-theorem/",
+      "checkedOn": "2026-10-26",
+      "notes": "核对平行轴教学资料；文中质点例和薄板练习为本站自设算例。"
+    },
+    {
+      "title": "CGAL Polygon Mesh Processing 用户手册",
+      "url": "https://doc.cgal.org/latest/Polygon_mesh_processing/index.html",
+      "checkedOn": "2026-10-26",
+      "notes": "核对流形定义不排除自交；当前文档区分核心处理、修复、重网格与布尔包。"
+    },
+    {
+      "title": "CGAL Licensing",
+      "url": "https://www.cgal.org/license.html",
+      "checkedOn": "2026-10-26",
+      "notes": "核对按包 GPL/LGPL 与商业授权并存，避免统一标为宽松许可。"
+    },
+    {
+      "title": "MeshLab：功能、源码与 GPL 3.0 许可",
+      "url": "https://www.meshlab.net/",
+      "checkedOn": "2026-10-26",
+      "notes": "官网明确 GPL 3.0；核对网格编辑、清理、修复和转换能力。"
+    },
+    {
+      "title": "ParaView User's Guide：Filtering Data",
+      "url": "https://docs.paraview.org/en/latest/UsersGuide/filteringData.html",
+      "checkedOn": "2026-10-26",
+      "notes": "核对管线、数据类型与过滤器关系；后处理不等于求解与验证。"
+    },
+    {
+      "title": "ParaView License",
+      "url": "https://www.paraview.org/license/",
+      "checkedOn": "2026-10-26",
+      "notes": "核对 BSD 3-Clause 及第三方组件许可。"
+    },
+    {
+      "title": "Open CASCADE Technology 开发文档与许可",
+      "url": "https://occt3d.com/dev/doc/overview/html/index.html",
+      "checkedOn": "2026-10-26",
+      "notes": "原开发站点跳转到 OCCT3D；核对 C++ 建模内核与 LGPL 2.1 附加例外。"
+    },
+    {
+      "title": "NASA-STD-7009：模型与仿真标准",
+      "url": "https://standards.nasa.gov/standard/nasa/nasa-std-7009",
+      "checkedOn": "2026-10-26",
+      "notes": "确认 NASA-STD-7009 为模型仿真标准入口；本站流程未声称获得 NASA 符合性认证。"
+    },
+    {
+      "title": "NAIF DSK Required Reading：形状、坐标系与覆盖范围",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/req/dsk.html",
+      "checkedOn": "2026-10-26",
+      "notes": "核对形状数据、坐标系和覆盖范围概念；不将天体形状数据当作飞行器制造数据。"
+    }
+  ]
+}
