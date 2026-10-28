@@ -1,0 +1,585 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-28",
+  "scope": "只读代表性内容抽查、官方来源检索与独立小算例；未修改 src/research 正式文件，未运行外部工程软件或下载任务原始科学数据。",
+  "inventoryFindings": {
+    "resources": 88,
+    "identicalDisclaimerEvidenceEntries": 52,
+    "resourcesWithoutStarterWorkflow": 47,
+    "vehicles": 56,
+    "vehiclesSharingSameDynamicsAssumption": 36,
+    "vehiclesSharingSameMassAssumption": 36,
+    "interpretation": "这些数字描述内容结构与模板重复，不代表相应条目全部错误；没有对全部条目逐项文献复核。"
+  },
+  "sampledLocalIds": {
+    "learning": [
+      "frames-and-time",
+      "state-estimation",
+      "orbit-data-messages",
+      "communications-link",
+      "conjunction-risk",
+      "mass-properties"
+    ],
+    "library": [
+      "gmat",
+      "spice",
+      "thermal-desktop",
+      "openfoam",
+      "fun3d",
+      "espss",
+      "cfs",
+      "fprime",
+      "nasa-gfssp",
+      "pymsis",
+      "basilisk",
+      "freeflyer",
+      "openmodelica"
+    ],
+    "vehicles": [
+      "sputnik-1",
+      "jwst",
+      "voyager-1",
+      "starship",
+      "sls-block-1",
+      "h3"
+    ],
+    "briefings": [
+      "roman-science-commissioning-2026",
+      "swift-science-mission-end-2026",
+      "euclid-comet-detection-2026"
+    ],
+    "intelligenceSources": [
+      "nasa-ntrs"
+    ]
+  },
+  "confirmedWithoutChange": [
+    {
+      "id": "roman-science-commissioning-2026",
+      "result": "已读 NASA 2026-10-22 原文；进入科学调试而非全面科学运行的区分及发布日期正确。",
+      "url": "https://science.nasa.gov/blogs/roman/2026/10/22/nasas-roman-space-telescope-enters-final-commissioning-phase/"
+    },
+    {
+      "id": "swift-science-mission-end-2026",
+      "result": "已读 NASA 2026-10-23 原文（10月26日更新）；最后观测10月20日，文中高度低于275km，终止科学观测的表述正确。",
+      "url": "https://science.nasa.gov/missions/swift/nasas-swift-mission-ends/"
+    },
+    {
+      "id": "euclid-comet-detection-2026",
+      "result": "已读 ESA 原文；9月16–24日影像、5视场16曝光、10月8日MPC确认、10月19日报道均对应。",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Euclid/Euclid_discovers_new_comet"
+    }
+  ],
+  "patchGroups": [
+    {
+      "id": "gmat-operational-evidence",
+      "reason": "原采用证据仅重复免责声明，遗漏可核查的任务使用史；上手建议缺少可手算输入和通过条件。",
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "gmat",
+          "field": "usageEvidence",
+          "newValue": [
+            {
+              "organization": "NASA GSFC / TESS",
+              "context": "GMAT 团队 2018 年发布说明确认，TESS 从提案到运行阶段都将 GMAT 用作主要任务设计与机动规划工具。这是带日期的任务采用记录，不表示当前任意发行包或个人脚本已经过任务认证。",
+              "sourceUrl": "https://gmat.atlassian.net/wiki/spaces/GW/blog/2018/05/19/380273219/Announcing%2BRelease%2Bof%2BGMAT%2BR2018a",
+              "evidenceType": "官方任务资料"
+            },
+            {
+              "organization": "NASA GSFC Flight Dynamics Facility / ACE",
+              "context": "ACE 机动规划认证论文记录了需求、差距分析、并行影子运行、测试就绪和运行就绪审查；2013 年完成 ORR。它解释了研究代码进入任务运行需要哪些独立检查。",
+              "sourceUrl": "https://ntrs.nasa.gov/citations/20190029601",
+              "evidenceType": "官方任务资料"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "gmat",
+          "field": "starterWorkflow",
+          "newValue": [
+            "建立一个地心惯性坐标系中的合成圆轨道：r=(7000,0,0) km，v=(0,√(μ/7000),0) km/s。读取并保存当前力模型的 μ；若取 398600.4418 km³/s²，速度为 7.54605329 km/s，周期为 5828.516638 s。",
+            "力模型只保留地球点质量，关闭大气阻力、太阳光压与第三体。将历元及时间系统写入脚本；保存积分器、容差和输出采样间隔。输出采样间隔不等于积分器内部步长。",
+            "在约 0、T/4、T/2、3T/4、T 五个共同历元导出位置、速度。与 r=(7000cos(nt),7000sin(nt),0)、v=(-7000n sin(nt),7000n cos(nt),0) 比较，同时计算比机械能和角动量误差。",
+            "把积分容差收紧一档重跑，比较最大位置误差和终点闭合误差；然后单独加入一个 J2 项观察升交点漂移。二体参考只能验证二体配置，不能当作 J2 场景的真值。"
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "gmat",
+          "field": "starterWorkflowStatus",
+          "newValue": "上述合成基准的解析数值已独立计算；GMAT 操作步骤依据文档整理，本站未运行外部 GMAT。"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "gmat",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "cfs-commercial-example",
+      "reason": "原文没有给出商业任务采用案例；启动成功与可飞行状态有区分，但还缺命令/遥测实际操作及公开版和政府版的边界。",
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "cfs",
+          "field": "usageEvidence",
+          "newValue": [
+            {
+              "organization": "Intuitive Machines / Odysseus",
+              "context": "NASA Goddard 的具名报道说明 Odysseus 使用 cFS，任务团队利用了软件重新加载与重新初始化能力。此证据限定于该飞行器的工程化实现；公开 Demo Bundle 不是 Odysseus 的完整飞行软件发行包。",
+              "sourceUrl": "https://etd.gsfc.nasa.gov/etd-featured-stories/intuitive-machines-marks-a-new-lunar-era-with-help-from-nasas-core-flight-system/",
+              "evidenceType": "官方任务资料"
+            }
+          ]
+        },
+        {
+          "op": "add",
+          "file": "research/library.json",
+          "id": "cfs",
+          "field": "starterWorkflow",
+          "newValue": [
+            "先选择一个明确 tag 并记录各子模块提交；不要把默认开发分支等同于稳定版。阅读该 tag 的 README，核对主机工具链与平台支持包。",
+            "官方当前开发文档给出的 Linux 主机构建目标为 make native_std.prep、make native_std.install，测试目标为 make native_std.runtest。旧版命令可能不同，应跟随所选 tag 的说明。",
+            "从安装后的运行目录启动 core-cpu1，确认执行服务进入 OPERATIONAL；保存启动事件及应用加载清单。这个状态只说明演示执行环境启动。",
+            "用官方 cFS-GroundSystem 启用遥测，再发送一条 NOOP。检查命令计数器只增一次，并保存发送包、事件和遥测回执的时刻。字段与报文 ID 按所选版本定义读取。",
+            "增加一条长度或命令码错误的测试报文，确认错误计数、事件及原状态的处理符合接口约定。随后再接入带时间戳的合成传感器消息，不让应用直接读取动力学真值。"
+          ]
+        },
+        {
+          "op": "add",
+          "file": "research/library.json",
+          "id": "cfs",
+          "field": "starterWorkflowStatus",
+          "newValue": "根据 NASA 公开 Demo Bundle 文档编写；本站未安装或运行 cFS，命令/遥测试验尚未执行。"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "cfs",
+          "field": "limitations",
+          "newValue": "公开 Demo Bundle 包含演示应用，不能原样上飞行器。NASA 当前另提供受限的 cFS Gov 发行体系；其能力及认证材料不能自动归入 Apache-2.0 公开包。动力学、设备驱动、消息时序和具体任务验证仍由使用方负责。"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "cfs",
+          "field": "docsUrl",
+          "newValue": "https://github.com/nasa/cFS#build-and-run-quick-start"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "cfs",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "thermal-desktop-test-correlation",
+      "reason": "以真实热真空试验相关案例替换泛泛产品介绍；给出可量化建模练习与未实测边界。",
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "thermal-desktop",
+          "field": "usageEvidence",
+          "newValue": [
+            {
+              "organization": "NASA MSFC / MMPACT 地面机械臂",
+              "context": "TFAWS 2024 论文以 44 个热电偶测量关联 Thermal Desktop 模型。除一个疑似异常测点外，关联后温差在 ±5°C 内；论文也明确只有一个稳态工况，不能据此证明所有瞬态和月面工况。",
+              "sourceUrl": "https://tfaws.nasa.gov/wp-content/uploads/TFAWS2024-ID-06_Paper.pdf",
+              "evidenceType": "官方任务资料"
+            }
+          ]
+        },
+        {
+          "op": "add",
+          "file": "research/library.json",
+          "id": "thermal-desktop",
+          "field": "starterWorkflow",
+          "newValue": [
+            "先做两热容解析基准：C₁=100 J/K、C₂=300 J/K，初温 300 K 与 260 K，以 G=2 W/K 连接；关闭外部热源和辐射。平衡温度应为 270 K，温差时间常数应为 37.5 s。",
+            "在工具中建立两个热节点和一个导热连接，检查输入是热容量 J/K 还是比热 J/(kg·K)，连接是 W/K 还是面接触系数。若输入的是面系数，应先乘接触面积。",
+            "导出温度及连接热流到同一张时间表。比较解析解、两侧交换热量和 C₁(T₁−300)+C₂(T₂−260)；后者在该绝热例中应为零。再缩短输出间隔与求解步长，分别检查两者影响。",
+            "转入试验相关时，分别保留加热器功率、环境温度、接触和辐射参数。先解释残差的空间分布，再调整有物理依据的参数；用另一稳态或受控瞬态留作验证，避免所有数据同时参与拟合。"
+          ]
+        },
+        {
+          "op": "add",
+          "file": "research/library.json",
+          "id": "thermal-desktop",
+          "field": "starterWorkflowStatus",
+          "newValue": "解析参考值已独立计算；商业软件配置步骤为研究建议，本站未执行 Thermal Desktop 或 SINDA 求解。"
+        },
+        {
+          "op": "add",
+          "file": "research/library.json",
+          "id": "thermal-desktop",
+          "field": "selectionQuestions",
+          "newValue": [
+            "研究需要节点热网络、轨道辐射，还是必须解析局部三维温度梯度？",
+            "接触系数、表面性质、功耗和环境边界分别有多少独立测量，是否足以识别待调参数？",
+            "是否有未参与关联的工况；误差是单点最大值、全部测点 RMS，还是整个时间历程误差？"
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "thermal-desktop",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "voyager-data-product-mismatch",
+      "reason": "现条目把 4 秒 PWS 频谱入口与弱窄带论文复现衔接得过于含混。16 通道频谱分析器与宽带波形是不同产品，后者才支持论文的细频谱。",
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "voyager-1",
+          "field": "inference/0",
+          "newValue": {
+            "parameter": "从宽带谱线估计电子密度",
+            "method": "先分清数据链：16 通道频谱分析器最快每 4 s 返回一谱；2021 年弱窄带研究使用的是 28,800 samples/s、每段约 48 s 的波形。对波形去除坏段和供电干扰，再做频谱、三天分箱和谱线关联。教学验算：若已确认电子等离子体谱线为 3000 Hz，nₑ=(f/8980)²≈0.111607 cm⁻³；若频率区间为 2980–3020 Hz，对应密度为 0.110123–0.113100 cm⁻³。",
+            "assumptions": "该频率区间是自设例子，未从真实 Voyager 数据提取。真实处理必须保存波形采样率、窗长、频率分辨率、坏段掩膜和谱线判别方法；4 秒产品的时间分辨率不能替代宽带频率分辨率。",
+            "uncertainty": "谱线身份、低信噪比、自动增益和遥测错误会影响推断。论文的噪声基线校正后谱强是相对量，不能当绝对电场强度；插值跨越缺测区间也不是新增观测。"
+          }
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "voyager-1",
+          "field": "dataProducts",
+          "newValue": [
+            {
+              "name": "NASA Helio Data · PWS 4 秒频谱产品入口",
+              "url": "https://helio.data.nasa.gov/dataset/Voyager1_PWS_ASCII_PT4S",
+              "description": "16 通道频谱分析器产品发现入口。先读通道频率、带宽和覆盖期；不要把时间采样间隔当作细频谱分辨率。入口正文需 JavaScript，本轮未下载数据。"
+            },
+            {
+              "name": "NASA · Voyager位置与逐项仪器状态",
+              "url": "https://science.nasa.gov/mission/voyager/where-are-voyager-1-and-voyager-2-now/",
+              "description": "官方动态状态表。站内仅保留标注日期的快照，实时距离应从此入口重新获取。"
+            },
+            {
+              "name": "PWS团队 · 星际等离子体波研究",
+              "url": "https://space.physics.uiowa.edu/~dag/publications/2021_Persistent_plasma_waves_in_interstellar_space_detected_by_Voyager1_NATURE.pdf",
+              "description": "2021年原始研究及数据引用；用于理解谱线识别和密度推断限制，不能把单个亮谱峰自动等同于密度。"
+            },
+            {
+              "name": "2021 弱窄带研究引用的 PDS 数据集 DOI",
+              "url": "https://doi.org/10.17189/1519903",
+              "description": "原论文 Data availability 指向此归档；用于追踪宽带波形及处理说明。本轮从论文核对 DOI，归档落地页未成功打开，尚未下载或复现数据。"
+            },
+            {
+              "name": "University of Iowa · PWS 仪器与两类数据链",
+              "url": "https://space.physics.uiowa.edu/plasma-wave/plasma-wave/voyager/instdesc.html",
+              "description": "区分 16 通道分析器与宽带波形接收机，含采样、定标和数据传输说明。"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "voyager-1",
+          "field": "sources",
+          "newValue": [
+            {
+              "title": "官方任务 / 技术资料 · Voyager 1 · 旅行者一号",
+              "url": "https://science.nasa.gov/mission/voyager/frequently-asked-questions/"
+            },
+            {
+              "title": "官方历史 / 结构补充 · Voyager 1 · 旅行者一号",
+              "url": "https://science.nasa.gov/mission/voyager/instruments/"
+            },
+            {
+              "title": "NASA · 带日期的Voyager仪器状态表",
+              "url": "https://science.nasa.gov/mission/voyager/where-are-voyager-1-and-voyager-2-now/"
+            },
+            {
+              "title": "NASA Helio Data · Voyager1 PWS",
+              "url": "https://helio.data.nasa.gov/dataset/Voyager1_PWS_ASCII_PT4S"
+            },
+            {
+              "title": "Voyager PWS团队 · 2021年原始研究",
+              "url": "https://space.physics.uiowa.edu/~dag/publications/2021_Persistent_plasma_waves_in_interstellar_space_detected_by_Voyager1_NATURE.pdf"
+            },
+            {
+              "title": "NASA · Voyager 平台、天线及三台 RTG",
+              "url": "https://science.nasa.gov/mission/voyager/spacecraft/"
+            },
+            {
+              "title": "University of Iowa · Voyager PWS Instrument Description",
+              "url": "https://space.physics.uiowa.edu/plasma-wave/plasma-wave/voyager/instdesc.html"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "voyager-1",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "jwst-psf-and-thermal-identifiability",
+      "reason": "把只有名词的推断进一步落实为成像尺度、像元采样、可拟合量及热模型的不可辨识性。",
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "jwst",
+          "field": "inference/0",
+          "newValue": {
+            "parameter": "点扩散函数与探测器采样",
+            "method": "先做量级检查：D=6.5 m、λ=2 μm 时，λ/D≈0.0635角秒，对 0.031角秒/像素的短波通道约为 2.05 像素。1.22λ/D≈0.0774角秒是理想圆孔第一暗环半径，不能当 FWHM。随后用 STPSF 固定探测器、滤光片、视场位置、源光谱和波前图，生成过采样 PSF 并积分到像元；对公开恒星数据拟合通量、背景、亚像元位置和附加抖动，比较径向轮廓与包围能量。",
+            "assumptions": "λ/D 仅是尺度检查，不是 18 段真实孔径的精确 PSF。短波与长波像元尺度不同；需要记录 OPD 数据身份及观测历元，不能把预发射模型自动当当日飞行波前。",
+            "uncertainty": "单幅欠采样图像中的散焦、抖动、源扩展和像元响应可相互混淆；多滤光片、多视场及抖动采样有助于约束，但一次拟合不能唯一恢复每片主镜的活塞/倾斜。宣传合成图不适合做此定量拟合。"
+          }
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "jwst",
+          "field": "inference/1",
+          "newValue": {
+            "parameter": "冷热端分离的热网络",
+            "method": "分别建平台、遮阳板、镜面、近红外仪器和 MIRI 节点，使用 Cᵢ·dTᵢ/dt=ΣGᵢⱼ(Tⱼ−Tᵢ)+ΣQrad,ij+Pᵢ−Qcool,i。NASA 说明中的冷侧约 40 K、MIRI 约 7 K 可作尺度对照，不能当所有节点同时精确等于该温度。对公开降温时序拟合有效热容、接触导热与辐射耦合；MIRI 必须另列主动制冷项，并记录制冷开启事件。",
+            "assumptions": "节点热容、视因子、表面性质和制冷曲线是待估参数。只有终态温度而没有功耗和边界信息时，不能同时识别所有导热与辐射系数；温度四次方必须使用 kelvin。",
+            "uncertainty": "不同参数组合可给出相同稳态。应保留多组可行解，用未参与拟合的降温阶段检验；几何遮蔽图不能直接转换为精确的多层热交换网络。"
+          }
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "jwst",
+          "field": "sources",
+          "newValue": [
+            {
+              "title": "官方任务 / 技术资料 · JWST · 詹姆斯·韦布空间望远镜",
+              "url": "https://science.nasa.gov/mission/webb/webbs-mirrors/"
+            },
+            {
+              "title": "官方历史 / 结构补充 · JWST · 詹姆斯·韦布空间望远镜",
+              "url": "https://science.nasa.gov/blogs/webb/2021/12/30/webb-ready-for-sunshield-deployment-and-cooldown/"
+            },
+            {
+              "title": "官方历史 / 结构补充 · JWST · 詹姆斯·韦布空间望远镜",
+              "url": "https://science.nasa.gov/mission/webb/faqs-full/"
+            },
+            {
+              "title": "NASA · MIRI与科学仪器分工",
+              "url": "https://science.nasa.gov/mission/webb/mid-infrared-instrument-miri/"
+            },
+            {
+              "title": "STScI MAST · JWST科学数据",
+              "url": "https://archive.stsci.edu/missions-and-data/jwst"
+            },
+            {
+              "title": "STScI · JWST数据访问文档",
+              "url": "https://jwst-docs.stsci.edu/accessing-jwst-data"
+            },
+            {
+              "title": "NASA · Webb五层遮阳板与公开包络",
+              "url": "https://science.nasa.gov/mission/webb/webbs-sunshield/"
+            },
+            {
+              "title": "NASA · 2022-01-05次镜展开确认",
+              "url": "https://science.nasa.gov/blogs/webb/2022/01/05/secondary-mirror-deployment-confirmed/"
+            },
+            {
+              "title": "NASA · Webb平台与科学仪器标注图",
+              "url": "https://science.nasa.gov/asset/webb/webb-telescope-spacecraft-diagram/"
+            },
+            {
+              "title": "NASA SVS · 单条折页太阳阵",
+              "url": "https://svs.gsfc.nasa.gov/13208"
+            },
+            {
+              "title": "STScI · NIRCam PSF、波长与像元采样",
+              "url": "https://jwst-docs.stsci.edu/jwst-near-infrared-camera/nircam-performance/nircam-point-spread-functions"
+            },
+            {
+              "title": "STPSF · 仪器模型与 OPD 选择",
+              "url": "https://stpsf.readthedocs.io/en/stable/jwst.html"
+            },
+            {
+              "title": "NASA · Webb 冷热端及主动制冷",
+              "url": "https://science.nasa.gov/mission/webb/science-overview/science-explainers/how-does-webb-stay-cold/"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "jwst",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "sls-separation-and-state-consistency",
+      "reason": "补充分离事件的实际建模对象、参考时序与观测限制，防止把助推器工作时间当分离触发条件，或用总体能量连续性错误验证变质量分离。",
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "sls-block-1",
+          "field": "inference/0",
+          "newValue": {
+            "parameter": "固液推进叠加与助推器分离",
+            "method": "按两枚 SRB 与四台 RS-25 分别建立推力、质量消耗和尾焰衰减时序。NASA 助推器页给出的 126 s 工作时长，与 2022 指南约 T+132 s 的分离参考时刻不是同一个事件。AAS 25-122 将压力判据、芯级节流、喷管回零、连接释放和分离电机列入多体模型；研究模型应把两侧助推器各建为一个六自由度刚体，输出最近间隙、相对姿态和分离后速度。",
+            "assumptions": "参考时序不是任意任务的固定实飞遥测。未公开的尾段推力曲线、分离冲量、安装误差和局部气动力只能作为假设区间；分离电机、芯级继续推力与气动力分别记账。",
+            "uncertainty": "仅由视频中的投影间隙不能同时识别三维初始速度、分离冲量和气动力。论文也说明 Artemis I 夜间影像限制了定量对照。应同时输出相机投影误差和三维模型假设，不能把“没有碰撞”的动画当作安全性验证。"
+          }
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "sls-block-1",
+          "field": "inference/1",
+          "newValue": {
+            "parameter": "上升段与轨道段的状态交接",
+            "method": "在关机与分离边界保存同一历元、参考系下的位置、速度、姿态、质量及部件身份。无分离冲量的理想模型应保持每个新刚体质心状态的一致性；若存在分离冲量，明确成对线/角冲量，再检查包含全部分离体的动量账目和外力冲量。随后仅对无推力、无分离的地球二体传播段检查比机械能守恒，最后再加入太阳和月球引力。",
+            "assumptions": "各刚体质心一般不同；从组合体质心换算到部件质心必须保留 ω×r 速度项。相同坐标原点、时间尺度和单位只是必要条件，不能把一个六维状态原样复制给全部分离体。",
+            "uncertainty": "分离可能释放储能且伴随质量拓扑变化，不能要求保留下来的上面级总机械能跨事件守恒；新闻中的最远距离或总里程也不能确定唯一实飞状态及机动计划。"
+          }
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "sls-block-1",
+          "field": "sources",
+          "newValue": [
+            {
+              "title": "NASA · SLS Reference Guide 2022（历史构型参考）",
+              "url": "https://www.nasa.gov/wp-content/uploads/2022/03/sls_reference_guide_2022_web.pdf"
+            },
+            {
+              "title": "NASA · Space Launch System 参考页（注意历史计划表述）",
+              "url": "https://www.nasa.gov/reference/space-launch-system/"
+            },
+            {
+              "title": "NASA · SLS 最大推力量级",
+              "url": "https://www.nasa.gov/directorates/esdmd/space-launch-system-ftdku/"
+            },
+            {
+              "title": "NASA · Artemis II 返回地球 · 2026-04-10",
+              "url": "https://www.nasa.gov/news-release/nasa-welcomes-record-setting-artemis-ii-moonfarers-back-to-earth/"
+            },
+            {
+              "title": "NASA · SLS Core Stage",
+              "url": "https://www.nasa.gov/reference/sls-space-launch-system-core-stage/"
+            },
+            {
+              "title": "NASA · SLS Solid Rocket Booster",
+              "url": "https://www.nasa.gov/reference/sls-space-launch-system-solid-rocket-booster/"
+            },
+            {
+              "title": "NASA · SLS Reference Guide 2022",
+              "url": "https://www.nasa.gov/wp-content/uploads/2022/03/sls-reference-guide-2022-v2-508-0.pdf"
+            },
+            {
+              "title": "NASA / AAS 25-122 · SLS 助推器分离动力学、间隙及 Artemis I 对照",
+              "url": "https://ntrs.nasa.gov/api/citations/20240016417/downloads/AAS_GNC_2025_SLS_Booster_Separation_1.pdf?attachment=true"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "sls-block-1",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "communications-calculable-budget",
+      "reason": "原条目列出公式却缺完整数值账本；增加自设参数及距离、速率缩放的可核对答案。",
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "communications-link",
+          "field": "body",
+          "newValue": [
+            "链路预算要从统一参考面开始：发射机输出、馈线后的天线端口以及等效全向辐射功率不是同一个量。增益、损耗和功率在分贝域相加前必须检查定义与单位，接收噪声温度也要与所使用的参考面一致。把每一项保留为独立账目，比直接输入一个无法追溯的总损耗更容易发现符号、重复扣除或频率工况不一致的问题。",
+            "自由空间路径损耗描述理想传播几何，但实际链路还包含大气、雨衰、极化、设备和指向损失。较大的天线增益往往伴随较窄波束，因此姿态误差可能抵消理论增益。比较不同频段时要说明保持的是相同天线增益还是相同物理口径，这两种比较产生不同结果；不能仅凭频率更高或更低就断言整个任务链路一定更好。",
+            "一个完整的教学预算采用以下自设输入：频率 8.4 GHz、距离 1亿 km、发射机 20 W、发射馈线损耗 2 dB、发射增益 35 dBi、接收增益 65 dBi、其余损耗 2 dB、同一接收参考面的系统噪声温度 100 K、信息速率 1000 bit/s。它不代表 DSN 某站或任何真实任务。先把 20 W 换成 13.0103 dBW，得到 EIRP=46.0103 dBW；自由空间损耗为 270.9334 dB，接收功率为 −161.9231 dBW。用 N₀=kT、k=1.380649×10⁻²³ J/K，得到 N₀=−208.5992 dBW/Hz，C/N₀=46.6761 dB-Hz，E_b/N₀=16.6761 dB。尚未选择编码门限与实现损失，因此这个数还不是链路余量。",
+            "地面站可见性、最低仰角、天线指向与任务排程共同限定通信窗口。窗口内的距离和仰角变化会影响速率或余量，窗口之外产生的数据则进入缓存。对传感器数据任务，应该积分实际可用净速率，扣除协议或调度开销并追踪缓存积压；最大瞬时速率很高并不意味着每天都能下传足够数据。",
+            "验证可以先在真空、固定距离和理想指向条件下复现自由空间缩放规律，再加入仰角损耗、天线图与指向误差。把距离加倍时的接收功率变化、数据率加倍时的每比特余量变化作为单位测试，再用一条完整过站弧段核对累计数据量。公开地面系统文档用于理解方法与参考面，不意味着该站已向个人研究任务提供接入或资源承诺。",
+            "保持所有其他输入不变，距离加倍使路径损耗增加 6.0206 dB，信息速率加倍使 E_b/N₀ 再下降 3.0103 dB；两者同时改变后得到 7.6452 dB。这个检查能暴露常见的 10log 与 20log 混用。若再计算 600 s 窗口、净信息速率恒定 1000 bit/s 的下传量，结果为 600000 bit，即十进制 75000 byte；只有在这个速率已扣除编码和协议开销时，才可记为业务数据量。实际过站需对随时间变化的净速率积分，并记录不可用区段。"
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "communications-link",
+          "field": "exercise",
+          "newValue": "逐项复核本课 8.4 GHz 合成预算，然后分别把距离和速率加倍，核验 6.0206 dB 与 3.0103 dB 的变化。最后加入自定的编码门限、实现损失和时变通信窗口，明确哪些量来自假设、哪些来自所选地面站文件。"
+        }
+      ],
+      "numericCheck": {
+        "kind": "independent Python arithmetic, not external link simulation",
+        "frequencyHz": 8400000000,
+        "rangeM": 100000000000,
+        "transmitPowerW": 20,
+        "txLossDb": 2,
+        "txGainDbi": 35,
+        "rxGainDbi": 65,
+        "otherLossDb": 2,
+        "noiseTemperatureK": 100,
+        "informationBitrateBps": 1000,
+        "pathLossDb": 270.933368943121,
+        "receivedPowerDbw": -161.92306898648118,
+        "noisePsdDbwHz": -208.59916717321767,
+        "cn0DbHz": 46.67609818673648,
+        "ebN0Db": 16.67609818673648,
+        "doubleRangeAndRateEbN0Db": 7.6451983168170425
+      }
+    }
+  ],
+  "additionalObservations": [
+    {
+      "id": "ntrs-dates",
+      "note": "NTRS 20190029601 元数据列 2019 获取/出版，但会议为 AIAA Space 2014、DOI亦2014；历史事件为2013 ORR。来源库宜要求区分会议/原文日期、归档获取日期、网页最后更新，避免按编号或抓取日期冒充新研究。",
+      "url": "https://ntrs.nasa.gov/citations/20190029601"
+    },
+    {
+      "id": "neo-surveyor-sunshade-2026",
+      "note": "可选最新专题情报：10月26日 NASA 报道太阳电池阵列与遮阳结构集成/测试，6m高、底部2.4m、两板夹角23.5°、864片电池、最多2kW。适合解释热控/能源/姿态耦合，但未提供可识别效率和接触热阻的完整数据。发布日不同于1月安装、3月环试、5月交付的事件时间。",
+      "url": "https://science.nasa.gov/blogs/neo-surveyor/2026/10/26/sunshade-for-nasas-neo-surveyor-mission-ready-for-its-day-in-sun/"
+    }
+  ],
+  "unverifiedRemainder": "未逐条复核余下课程、全部88工具的工业采用范围、所有56型全部公开参数及3D几何；本轮不应整体刷新这些条目的 verifiedOn。工具步骤按公开文档与合成模型编写，GMAT/cFS/Thermal Desktop 实际运行仍未完成。",
+  "accessLimits": [
+    "Voyager Helio Data 入口仅返回 JavaScript 壳，未读到动态元数据；PDS DOI 从论文核对但落地页本轮访问失败。",
+    "TFAWS Dragonfly AT-01 PDF重复超时，因此选用可完整读取的 MMPACT ID-06论文，不采用未读正文的定量说法。"
+  ],
+  "independentArithmetic": {
+    "circularSpeedKmS": 7.546053290107541,
+    "circularPeriodS": 5828.516637686015,
+    "plasmaDensityCm3": 0.1116065892530295,
+    "plasmaDensityIntervalCm3": [
+      0.11012346168917812,
+      0.11309963740259227
+    ],
+    "lambdaOverDArcsec": 0.0634660942298758,
+    "airyFirstZeroRadiusArcsec": 0.07742863496044847
+  }
+}

@@ -8,7 +8,7 @@
     "latestStatusRecordBase": "558efeaa + retained working tree",
     "latestStatusSections": "1.317–1.320",
     "statement": "本轮只读网站现有项目资料、UE 工程当前台账、活动路线、指定实现与部分测试断言；没有修改 UE 工程，没有运行编译、测试或新仿真。源码 HEAD 是读取时的身份，不是历史验证输入身份。新增案例中的通过记录均转述有日期的项目台账，未独立重读这些新记录的原始运行日志。",
-    "publicPathPolicy": "实现位置均相对 UE5 工作区，仅用于说明与本地核查；不公开私人绝对路径、不复制源代码、不分发大型资产。",
+    "publicPathPolicy": "本历史审查的公开副本已于2026-10-28去除实现目录与源码位置；历史技术结论仍按原审查日期解释。",
     "websiteFilesReviewed": [
       "research/project-deep-dive.json",
       "research/project-deep-dive-sources.json",
@@ -214,28 +214,6 @@
         "thermal-interface-code",
         "thermal-interface-tests",
         "thermal-interface-history"
-      ],
-      "sourceLocations": [
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_runtime.h",
-          "line": 148,
-          "symbol": "ObcCellBoardThermalInterface / ObcElectricalWindowWork"
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/assembly_power_network_runtime.cpp",
-          "line": 589,
-          "symbol": "thermal_interfaces forwarding"
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_window.cpp",
-          "line": 254,
-          "symbol": "StepObcInputProtectionWindow"
-        },
-        {
-          "path": "AerospaceSimUE/StandaloneSimCore/obc_mcu_validation.cpp",
-          "line": 2251,
-          "symbol": "Support pointwise exchange assertions"
-        }
       ]
     },
     {
@@ -336,23 +314,6 @@
       "newEvidenceIds": [
         "coulomb-field-code",
         "coulomb-field-history"
-      ],
-      "sourceLocations": [
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/structures/spatial_hyperelastic_solid.h",
-          "line": 162,
-          "symbol": "SpatialCoulombFrictionInput / SpatialCoulombIterationControl"
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/structures/spatial_coulomb_contact.cpp",
-          "line": 42,
-          "symbol": "BuildCoulombContactDynamicCandidate"
-        },
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23521,
-          "symbol": "§1.320"
-        }
       ]
     },
     {
@@ -447,28 +408,6 @@
       "newEvidenceIds": [
         "feed-geometry-code",
         "feed-geometry-history"
-      ],
-      "sourceLocations": [
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/feed_network_runtime.cpp",
-          "line": 109,
-          "symbol": "LoadFeedNetworkGeometryCsv"
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/feed_network_runtime.cpp",
-          "line": 176,
-          "symbol": "EvaluateFeedNetworkPressureDrop"
-        },
-        {
-          "path": "AerospaceSimUE/StandaloneSimCore/m4_canonical_propulsion_feed_smoke.cpp",
-          "line": 196,
-          "symbol": "FEED_NETWORK_GEOMETRY_INVALID assertion"
-        },
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23481,
-          "symbol": "§1.319"
-        }
       ]
     },
     {
@@ -568,23 +507,6 @@
       "newEvidenceIds": [
         "foundation-code",
         "foundation-history"
-      ],
-      "sourceLocations": [
-        {
-          "path": "AerospaceSimUE/Tools/Authoring/generate_launch_foundation_material.py",
-          "line": 1,
-          "symbol": "reference design / continuous_moments / facility v5"
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/interaction/launch_material_fields.cpp",
-          "line": 17,
-          "symbol": "LaunchConstraintRuntime::CompileSupportMaterialFields"
-        },
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23420,
-          "symbol": "§1.318"
-        }
       ]
     }
   ],
@@ -822,27 +744,13 @@
       "detail": "ObcCellBoardThermalInterface 保存原两域表面 trace、来源/几何身份与逐点 ∫h dA。原窗口累积电芯向板的实际逐点热量，并在板侧使用反向载荷；完整温场、电路和电芯状态共同迭代。真实安装几何和接触导热本构仍由上游提供。",
       "sources": [
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_runtime.h",
-          "line": 148,
-          "endLine": 164,
           "symbol": "ObcCellBoardThermalInterface"
         },
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_runtime.h",
-          "line": 230,
-          "endLine": 240,
           "symbol": "ObcElectricalWindowWork"
         },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_window.cpp",
-          "line": 254,
-          "endLine": 294
-        },
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23352,
-          "endLine": 23382
-        }
+        {},
+        {}
       ]
     },
     {
@@ -852,9 +760,6 @@
       "detail": "已读断言比较逐点反向载荷、无接口同源候选的两侧显热变化，并注入第 5 次边界调用失败。测试意图是检查共同状态不被部分推进及重试一致性；本轮未执行。",
       "sources": [
         {
-          "path": "AerospaceSimUE/StandaloneSimCore/obc_mcu_validation.cpp",
-          "line": 2251,
-          "endLine": 2276,
           "symbol": "Support exchange and late-boundary refusal assertions"
         }
       ]
@@ -865,11 +770,7 @@
       "status": "recorded",
       "detail": "STATUS §1.317 记录独立四面体矩阵对照与原 Support 0.125 µs OFF 准备态：电芯 299 K、板 299.5 K、接口热约 −1.87487e−8 J，并检查实际显热与失败重试。本轮只读台账及部分断言，未重读原运行日志或重跑；不代表真实安装或整板启动。",
       "sources": [
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23352,
-          "endLine": 23418
-        }
+        {}
       ]
     },
     {
@@ -878,15 +779,8 @@
       "status": "implemented",
       "detail": "显式逐点摩擦输入触发增广返回映射，每轮调用原动态法向候选。原迹及转置将两侧力传回全部 H1 自由度；力、滑移与功缺陷分别检查。耗散和数值余差未自动写入温场；这不是实际夹持机构的已接管响应。",
       "sources": [
+        {},
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/structures/spatial_hyperelastic_solid.h",
-          "line": 162,
-          "endLine": 179
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/structures/spatial_coulomb_contact.cpp",
-          "line": 31,
-          "endLine": 190,
           "symbol": "BuildCoulombContactDynamicCandidate"
         }
       ]
@@ -897,11 +791,7 @@
       "status": "recorded",
       "detail": "STATUS §1.320 记录 P1/P2 制造解、滑动/自由切向粘着、零摩擦对照、分离与续算。输入为 558efeaa 加本包及保留工作树；不宣称纯 HEAD 或全 UE 套件通过。本轮未读取该批独立原始运行日志或重跑，实际发射台共同历史与热反馈仍缺。",
       "sources": [
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23521,
-          "endLine": 23597
-        }
+        {}
       ]
     },
     {
@@ -911,15 +801,9 @@
       "detail": "LoadFeedNetworkGeometryCsv 要求已给数值完整解析、有限且满足几何范围，并联数为正整数、启用值明确；任何选中非法行整体抛错并给出文件/行/字段。压降计算保留管段近似，活动段数值失败使整个串联结果无效；可选字段与无匹配行为仍按原约定保留。",
       "sources": [
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/feed_network_runtime.cpp",
-          "line": 43,
-          "endLine": 173,
           "symbol": "strict selected-row loading"
         },
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/feed_network_runtime.cpp",
-          "line": 176,
-          "endLine": 264,
           "symbol": "EvaluateFeedNetworkPressureDrop"
         }
       ]
@@ -930,11 +814,7 @@
       "status": "recorded",
       "detail": "STATUS §1.319 记录两段 CSV 的独立压降对照、五套原资产、同一原推进消费者及非法追加行拒绝；首次摘要负例未真正改值的失败与修复也保留。只支持输入完整性和既有管段范围，不支持完整流体热力学。本轮未重读该批原始日志或重跑。",
       "sources": [
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23481,
-          "endLine": 23519
-        }
+        {}
       ]
     },
     {
@@ -943,20 +823,9 @@
       "status": "implemented",
       "detail": "生成器明确 24×24×2 m、半径 5 m 贯穿孔的参考混凝土平台，复用原夹持材料。原材料场入口识别 v4/v5，核对完整来源、位姿和全部材料定义后才编译热/结构域；不会自行推断锚固或虚构材料连接。",
       "sources": [
+        {},
+        {},
         {
-          "path": "AerospaceSimUE/Tools/Authoring/generate_launch_foundation_material.py",
-          "line": 1,
-          "endLine": 37
-        },
-        {
-          "path": "AerospaceSimUE/Tools/Authoring/generate_launch_foundation_material.py",
-          "line": 128,
-          "endLine": 163
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/interaction/launch_material_fields.cpp",
-          "line": 17,
-          "endLine": 91,
           "symbol": "CompileSupportMaterialFields"
         }
       ]
@@ -967,11 +836,7 @@
       "status": "recorded",
       "detail": "STATUS §1.318 记录原 32 件夹持材料加完整参考平台、解析质量矩求精、原 package—Bridge—尾段消费者及 16640 自由度平台制造温场。地面质量不计入飞行器，塔架仍为 primitive，真实锚固/地基/驱动与共同受载历史未齐。本轮仅核查台账，未读该批原始日志或重跑。",
       "sources": [
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23420,
-          "endLine": 23479
-        }
+        {}
       ]
     }
   ],

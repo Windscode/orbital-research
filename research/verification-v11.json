@@ -1,0 +1,53 @@
+{
+  "version": "11.0.0",
+  "reviewedOn": "2026-10-28",
+  "scope": "内容结构与可用性审查；代表性技术条目深入复核；未逐一复核全部外部网页。",
+  "changes": {
+    "workedExamples": 3,
+    "technicalStories": 3,
+    "substantiveCatalogGroups": 7,
+    "catalogFieldUpdates": 29,
+    "publicProjectSourceLocations": "removed from current data, UI, exports and generated bundles",
+    "ueTestsExecuted": false,
+    "ueBuildExecuted": false
+  },
+  "checks": {
+    "fullTestSuite": "passed",
+    "typescriptBuild": "passed",
+    "initialJavaScriptBytes": 388706,
+    "initialJavaScriptBudgetBytes": 450000,
+    "pythonCrossChecks": 7,
+    "actualBrowserExportRecalculation": "passed",
+    "actualProjectExportPrivacy": "passed",
+    "responsiveRoutes": [
+      "home",
+      "research?view=examples",
+      "research?view=routes",
+      "resources",
+      "project"
+    ],
+    "responsiveWidths": [
+      390,
+      768,
+      1440
+    ],
+    "horizontalOverflow": false,
+    "browserInteractions": [
+      "Euler neutral stability preset",
+      "radiation boundary presets and selected-angle marker",
+      "mass offset and inertia response",
+      "mobile parameter disclosure",
+      "lesson to calculation navigation",
+      "global search",
+      "JSON download",
+      "project history tabs"
+    ]
+  },
+  "limits": [
+    "网页算例为独立简化参考问题；不等于UE完整求解器或任务实测。",
+    "个人项目数值来自既有记录，本轮未重跑。",
+    "目录仍有45项未提供上手流程，卡片标为资源索引。",
+    "三维模型本轮未重新制作；公开质量分布与显示几何的区别在惯量算例中说明。",
+    "已清理当前版本公开项目位置字段，未改写历史Git提交。"
+  ]
+}

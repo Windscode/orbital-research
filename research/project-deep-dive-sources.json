@@ -3,176 +3,144 @@
   "reviewedAt": "2026-10-26",
   "sourceScope": "local-workspace-audit",
   "sourceRoot": "UE5 workspace",
-  "auditMethod": "只读源码、头文件、构建配置、当前路线与历史运行记录；未修改 UE 工程，未构建或运行新测试。所有路径相对 UE5 工作区。",
+  "auditMethod": "只读源码、头文件、构建配置、当前路线与历史运行记录；未修改 UE 工程，未构建或运行新测试。所有",
   "instructionsRead": [
     "AGENTS.md",
     "AGENT_RULES.md"
   ],
   "priorityOrder": [
-    "docs/execution/STATUS.md 的当前结论与日期化条目",
-    "docs/execution/ACTIVE_EXECUTION_ROUTE.md 的 2026-10-26 当前调度",
+    "项目设计与验证记录 的当前结论与日期化条目",
+    "项目设计与验证记录 的 2026-10-26 当前调度",
     "实际头文件、实现与测试断言",
     "README 仅作历史对照"
   ],
   "readInventory": [
     {
-      "path": "AerospaceSimUE/StandaloneSimCore/CMakeLists.txt",
       "readMode": "编译来源与测试注册",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/AerospaceSimUE.uproject",
       "readMode": "配置字段",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/typed_ports.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/quantity.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/time_types.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/runtime.cpp",
       "readMode": "指定函数实现和相关断言",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/event_definition.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/event_definition.cpp",
       "readMode": "指定函数实现和相关断言",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/numerics/integrator_service.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/numerics/integrator_service.cpp",
       "readMode": "指定函数实现和相关断言",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/numerics/integrator_policy.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/flight/flight_dynamics_6dof.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/flight/flight_dynamics_6dof.cpp",
       "readMode": "指定函数实现和相关断言",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/assembly/spatial_density_moments.cpp",
       "readMode": "指定函数实现和相关断言",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/propulsion_runtime.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/propulsion_runtime.cpp",
       "readMode": "指定函数实现和相关断言",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/environment/environment_runtime.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/environment/environment_runtime.cpp",
       "readMode": "指定函数实现和相关断言",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/aero/axisymmetric_low_speed_body.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/thermal/spatial_solid_conduction.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/thermal/material_surface_irradiation.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "docs/execution/STATUS.md",
       "readMode": "当前摘要与 §§1.312、1.313、1.316 等指定章节",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/mission/support_spatial_circuit_runtime.cpp",
       "readMode": "指定函数实现和相关断言",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimBridge/Public/AerospaceSimSubsystem.h",
       "readMode": "接口及相关语义说明",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimBridge/Private/AerospaceSimSubsystem.cpp",
       "readMode": "指定函数实现和相关断言",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/Source/AerospaceSimUE/Private/AerospaceTelemetryReplayActor.cpp",
       "readMode": "指定函数实现和相关断言",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "AerospaceSimUE/StandaloneSimCore/simcore_integrator_service_contract_smoke.cpp",
       "readMode": "指定函数实现和相关断言",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": ".codex_tmp/surface_exchange_20261026/mutual_radiation.log",
       "readMode": "完整原始文件",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": ".codex_tmp/surface_exchange_20261026/mutual_radiation_result.json",
       "readMode": "完整原始文件",
       "scope": "已实际读取；并非全工程逐文件审计"
     },
     {
-      "path": "docs/execution/ACTIVE_EXECUTION_ROUTE.md",
       "readMode": "当前头部调度、表格及历史暂停对照",
       "scope": "已实际读取；并非全工程逐文件审计"
     }
   ],
   "supplementalReads": [
     {
-      "path": "AerospaceSimUE/README.md",
       "purpose": "核对历史说明与当前配置差异，README UE 5.7 已过时。"
     },
     {
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/assembly/spatial_density_moments.h",
       "purpose": "核对密度场积分适用域与非目标。"
     }
   ],
@@ -202,7 +170,6 @@
     {
       "id": "radiation-history",
       "recordType": "direct-log",
-      "path": ".codex_tmp/surface_exchange_20261026/mutual_radiation.log",
       "resultPath": ".codex_tmp/surface_exchange_20261026/mutual_radiation_result.json",
       "date": "2026-10-26",
       "sourceIdentity": "84a4fa5c + 保留工作树（STATUS §1.312）",
@@ -211,7 +178,6 @@
     {
       "id": "contact-history",
       "recordType": "project-status-ledger",
-      "path": "docs/execution/STATUS.md",
       "section": "1.313",
       "date": "2026-10-26",
       "sourceIdentity": "5534d58b + 保留工作树",
@@ -220,7 +186,6 @@
     {
       "id": "ground-history",
       "recordType": "project-status-ledger",
-      "path": "docs/execution/STATUS.md",
       "section": "1.316",
       "date": "2026-10-26",
       "sourceIdentity": "90fa6ebd + 保留工作树",
@@ -257,5 +222,6 @@
       ]
     }
   ],
-  "publicationBoundary": "仅发布提炼的工程说明、通用方程、少量历史数字与相对路径索引；不复制 UE 工程源码、资产、凭据、私人绝对路径或大型验证产物。证据路径是本地工程索引，不承诺可在网站仓库下载。"
+  "publicationBoundary": "公开版本仅保留工程说明、通用方程、带日期的历史数值与具名实现说明。不发布个人项目目录、源码位置、行号、工程资产或原始运行文件。",
+  "privacyRevisedOn": "2026-10-28"
 }

@@ -1,7 +1,7 @@
 {
   "name": "AerospaceSimUE",
   "subtitle": "共享 C++20 物理内核的航天与多物理场仿真研究工程",
-  "summary": "AerospaceSimUE 将 Unreal Engine 的编辑、交互与回放接到独立 C++20 SimCore。当前实现覆盖实体装配、变质量六自由度、多物理场、完整空间温场和电芯—电路板共同候选。2026-10-26 读取源树 HEAD 2c390170，最新台账 §§1.317–1.320 补充条件双温域换热、完整材料库仑粘滑、供液 CSV 入口和 33 件地面材料。正式连续地月任务仍未闭合；本次仅只读核查，未构建或运行 UE 仿真。",
+  "summary": "个人航天仿真研究工程。Unreal Engine 负责装配、交互与回放，共享 C++ 内核计算运动、材料场和子系统状态。当前研究集中在三个问题：实体与推进剂分布如何改变飞行动力学，电芯与电路板怎样共同交换能量，以及接触机构怎样传递载荷。 工程已有空间材料、变质量动力学、电热与接触求解能力及有界验证；连续地月任务、真实安装边界和默认载体的完整耦合尚未完成。",
   "engine": "Unreal Engine 5.8（以当前 .uproject 的 EngineAssociation 为准）；C++20 SimCore；UE 与 CMake 独立宿主编译同一套核心源码。",
   "architecture": [
     {
@@ -74,56 +74,47 @@
   "evidence": [
     {
       "title": "当前事实基线 · 2026-10-26",
-      "body": "2026-10-26 最新台账 §§1.317–1.320 基于 558efeaa 加保留工作树；读取时源树 HEAD 为 2c390170。已有 5978 件车辆冷态来源、33 件地面材料、条件双温域换热和完整材料摩擦的局部进展；head 边界、真实安装/供电、双介质流动与默认消费者仍未闭合。正式连续地月任务仍为 V1/V2 Partial、V3 有界、V4 未准入。",
-      "path": "docs/execution/STATUS.md",
+      "body": "2026-10-28 复核：地面材料89件；完整单相液体场已进入级库存与质量属性有界验证。连续地月任务、实际安装边界与默认载体完整耦合仍未完成。",
       "sourceScope": "local-workspace-audit"
     },
     {
       "title": "活动研究路线与开放问题",
       "body": "10 月 26 日当前 route 已恢复按真实依赖开展必要验证，不自动恢复整板、120 s 与整车旧队列。条件跨域换热已有局部实现；真实安装热界面、28 V/F1 供回、地面锚固/驱动与实际共同消费者仍须补齐。",
-      "path": "docs/execution/ACTIVE_EXECUTION_ROUTE.md",
       "sourceScope": "local-workspace-audit"
     },
     {
       "title": "引擎配置",
       "body": "当前工程配置的 EngineAssociation 为 5.8；根 README 仍写 UE 5.7，应视为滞后的说明，而非网站的版本依据。",
-      "path": "AerospaceSimUE/AerospaceSimUE.uproject",
       "sourceScope": "local-workspace-audit"
     },
     {
       "title": "同源核心与独立测试宿主",
       "body": "CMake 将 SIMCORE_ROOT 指向插件内 AerospaceSimCore，并以 C++20 编译该源树。StandaloneSimCore 是构建和测试宿主，不是另一份需要双向同步的物理实现。",
-      "path": "AerospaceSimUE/StandaloneSimCore/CMakeLists.txt",
       "sourceScope": "local-workspace-audit"
     },
     {
       "title": "正式、诊断与历史入口的源码边界",
       "body": "AerospaceSimSubsystem.h 明确区分有界 M1、M4 初始接受态/分级诊断及显式选择的历史探索路径，并提供异步启动、取消和轮询。此接口比旧插件 README 的脚手架说明更能反映当前能力。",
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimBridge/Public/AerospaceSimSubsystem.h",
       "sourceScope": "local-workspace-audit"
     },
     {
       "title": "空间热接口与完整材料状态",
       "body": "接口包含材料域、具名外表面、接触、空间温度、完整材料积分、SDIRK 阶段热源、电损耗及候选状态。声明和局部验证不能替代完整车辆的边界条件与收敛证据。",
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/thermal/spatial_solid_conduction.h",
       "sourceScope": "local-workspace-audit"
     },
     {
       "title": "外部工具的适用域",
       "body": "外部验证说明保留 SU2 / Gmsh 的工况、网格、收敛、原始输入身份与独立比较限制；Euler、RANS、3D 扇区诊断及源码修复各自保持资格边界。",
-      "path": "AerospaceSimUE/Tools/ExternalValidation/README.md",
       "sourceScope": "local-workspace-audit"
     },
     {
       "title": "数据与代码许可证分开追踪",
       "body": "依赖账本包含 ERFA、MFEM 与相关数值实现的来源、许可证及采用范围。模型代码许可、观测数据许可和独立求解器输出分别核查，不能因为接口开源就推定全部数据可再分发。",
-      "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/ThirdParty/LICENSES.md",
       "sourceScope": "local-workspace-audit"
     },
     {
       "title": "历史轨迹快照 · 仅作方法案例",
       "body": "保留的 earth_orbit_lunar 验证摘要包含事件链、轨迹与专业量，但属于其当时的模型和输入。它不能证明当前正式 M4 全程通过，也不能把到达月球距离门槛解释为进入月球轨道或完成着陆。",
-      "path": "AerospaceSimUE/validation_artifacts/latest_runtime_validation/earth_orbit_lunar_validation_summary.json",
       "sourceScope": "local-workspace-audit"
     }
   ],
@@ -162,9 +153,8 @@
       "body": "在 UE 界面显示任务阶段、事件、状态来源和误差记录；把原始遥测、演示压缩与真实尺度视图分开，并允许检查所用坐标、时间和模型范围。"
     }
   ],
-  "localPath": "AerospaceSimUE",
   "reviewedAt": "2026-10-26",
-  "sourceScope": "local-workspace-audit",
+  "sourceScope": "implementation-and-historical-records",
   "sourceRoot": "UE5 workspace",
   "deepDiveFile": "research/project-deep-dive.json"
 }

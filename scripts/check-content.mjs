@@ -6,7 +6,7 @@ import path from 'node:path';
 // This checks the published content contract. It does not claim live-link or
 // scientific peer review: the primary sources and numerical checks are separate.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const snapshot = process.env.CONTENT_AS_OF || '2026-10-26';
+const snapshot = process.env.CONTENT_AS_OF || '2026-10-28';
 const data = Object.fromEntries(await Promise.all(['library', 'learning', 'vehicles', 'briefings', 'project-audit'].map(async name => [name, JSON.parse(await readFile(path.join(root, 'research', `${name}.json`), 'utf8'))])));
 const ids = new Set();
 const urls = new Set();
@@ -94,12 +94,9 @@ for (const b of array(data.briefings, 'briefings')) {
   source(b.source, `${b.id}.source`);
 }
 const project = data['project-audit'];
-fields(project, ['name', 'subtitle', 'summary', 'engine', 'localPath', 'sourceScope'], 'project');
-assert.equal(project.sourceScope, 'local-workspace-audit', 'Project evidence describes a local audit, not publicly hosted source code');
-function relativeEvidencePath(value) {
-  assert.ok(!/^(?:[A-Za-z]:|[\\/])/.test(value) && !value.split(/[\\/]/).includes('..'), 'Public evidence must use a safe workspace-relative path');
-}
-relativeEvidencePath(project.localPath);
+fields(project, ['name', 'subtitle', 'summary', 'engine', 'sourceScope'], 'project');
+assert.equal(project.sourceScope, 'implementation-and-historical-records');
+assert.ok(!('localPath' in project), 'Private workspace identity must not appear in public project data');
 for (const section of ['architecture', 'capabilities', 'evidence', 'researchDirections']) {
   const titles = new Set();
   array(project[section], `project.${section}`).forEach((item, i) => {
@@ -107,7 +104,7 @@ for (const section of ['architecture', 'capabilities', 'evidence', 'researchDire
     assert.ok(!titles.has(item.title), `project.${section}: duplicate title`);
     titles.add(item.title);
     if (section === 'capabilities') text(item.status, `project.${section}[${i}].status`);
-    if (section === 'evidence') relativeEvidencePath(text(item.path, `project.${section}[${i}].path`));
+    if (section === 'evidence') assert.ok(!('path' in item), 'No private source locations in public records');
   });
 }
 stringArray(project.limitations, 'project.limitations');

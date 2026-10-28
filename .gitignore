@@ -16,3 +16,5 @@ docs/screenshots/*
 
 !docs/screenshots/v9-*.jpg
 !docs/screenshots/v10-*.jpg
+
+!docs/screenshots/v11-*.jpg

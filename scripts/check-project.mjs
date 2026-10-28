@@ -5,11 +5,10 @@ const statuses=new Set(['implemented','test-code','recorded','planned','not-foun
 assert.equal(report.schemaVersion,1);
 const ids=new Set(report.evidence.map(e=>e.id));
 assert.equal(ids.size,report.evidence.length,'Evidence IDs must be unique');
-const safePath=p=>typeof p==='string'&&!/^(?:[a-z]:|[\\/])/i.test(p)&&!p.split(/[\\/]/).includes('..');
 for(const e of report.evidence){
  assert.ok(statuses.has(e.status),`${e.id}: unlabelled evidence status`);
- assert.ok(e.sources.length,`${e.id}: missing evidence source`);
- for(const s of e.sources){assert.ok(safePath(s.path),`${e.id}: public source index must not expose a machine path`);assert.ok(Number.isInteger(s.line)&&s.line>0);assert.ok(!s.endLine||s.endLine>=s.line);}
+ assert.ok(e.title&&e.detail,`${e.id}: missing public implementation description`);
+ for(const s of e.sources||[])assert.ok(!('path' in s)&&!('line' in s)&&!('endLine' in s),`${e.id}: private source locations must not ship`);
 }
 let references=0;
 function walk(value){if(!value||typeof value!=='object')return;if('evidenceIds' in value){for(const id of value.evidenceIds){assert.ok(ids.has(id),`Missing cited evidence ${id}`);references++;}}for(const v of Object.values(value))walk(v);}

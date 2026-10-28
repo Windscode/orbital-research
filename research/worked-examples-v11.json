@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-28",
+  "cases": [
+    {
+      "id": "thermal-contact",
+      "scope": "教学设定。C1、C2、G 与初温不对应 AerospaceSimUE 的电芯或电路板标定值。",
+      "units": {
+        "c1": "J/K",
+        "c2": "J/K",
+        "t1": "K",
+        "t2": "K",
+        "g": "W/K",
+        "duration": "s",
+        "dt": "s"
+      },
+      "dataIdentity": "教学设定。C1、C2、G 与初温不对应 AerospaceSimUE 的电芯或电路板标定值。",
+      "assumptions": [
+        "两物体各自内部等温，热容量恒定。",
+        "界面总导热 G 恒定；不含接触面积变化、压力相关导热、辐射、内热源和外部散热。",
+        "两侧在同一时刻计算同一份传热功率，一减一加。",
+        "本例验证集中参数两节点模型；不能替代完整空间温场或 UE 耦合实现的验证。"
+      ],
+      "nextStep": "转入空间离散前，检查物体内部温差是否可忽略，例如用 Bi=hL/k 估计集中参数近似的合理性。随后再用网格与时间求精验证完整温场。",
+      "sources": [
+        {
+          "title": "Modelica 4.1.0 — HeatCapacitor 与 ThermalConductor",
+          "url": "https://doc.modelica.org/Modelica%204.1.0/Resources/helpDymola/Modelica_Thermal_HeatTransfer_Components.html"
+        },
+        {
+          "title": "Modelica — TwoMasses 官方示例",
+          "url": "https://doc.modelica.org/om/Modelica.Thermal.HeatTransfer.Examples.TwoMasses.html"
+        }
+      ],
+      "toolTransfer": [
+        {
+          "title": "OpenModelica + Modelica Standard Library",
+          "setup": "放置两个HeatCapacitor，C分别100/300 J/K，T(start=300/260, fixed=true)。 通过ThermalConductor(G=2 W/K)连接；不加环境或外热源。 仿真0–150 s，输出两温、导热功率与两侧储能变化；用本页解析函数在输出时刻求误差。 记录求解器和容差。自适应DASSL输出间隔不是积分步长，不应把numberOfIntervals换算成步长后与本站固定步Euler声称同配置。",
+          "check": "T1(150)=270.549469 K、T2(150)=269.816844 K；误差取决于求解设置。",
+          "url": "https://doc.modelica.org/Modelica%204.1.0/Resources/helpDymola/Modelica_Thermal_HeatTransfer_Components.html"
+        }
+      ],
+      "derivation": [
+        {
+          "title": "先写两侧能量方程",
+          "equation": "C₁ dT₁/dt = −G(T₁−T₂)；C₂ dT₂/dt = +G(T₁−T₂)",
+          "detail": "把两条储热方程相加，界面功率抵消，得到 C₁T₁+C₂T₂ 不随时间改变。最终两温相等时，温度等于按热容量加权的初温；直接取 280 K 的算术平均会错，因为两侧热容量不同。"
+        },
+        {
+          "title": "求温差的时间常数",
+          "equation": "τ = [G(1/C₁+1/C₂)]⁻¹；ΔT(t)=ΔT₀ exp(−t/τ)",
+          "detail": "把两条温度导数相减，得到 dΔT/dt=−G(1/C₁+1/C₂)ΔT。常系数一阶方程给出指数衰减。这里 τ=37.5 s，不是任一侧单独的 C/G。"
+        },
+        {
+          "title": "恢复每一侧的温度",
+          "equation": "T₁=T̄+C₂ΔT/(C₁+C₂)；T₂=T̄−C₁ΔT/(C₁+C₂)",
+          "detail": "由加权平均温度和温差联立恢复两条温度曲线。初温代入应分别还原 300 K 与 260 K；t→∞ 时两条曲线趋于270 K。"
+        },
+        {
+          "title": "检查离散时间推进",
+          "equation": "ΔT[n+1]=(1−h/τ)ΔT[n]；稳定衰减要求 0<h<2τ",
+          "detail": "Euler 使用区间起点的同一份热流更新两侧，所以总能量可以保持不变。但 h=75 s 时放大因子为−1，默认初始温差每步变号且幅值不变；h>75 s 则发散。守恒、状态误差与步长收敛需要分别检查。G=0 时没有换热，τ为无穷大。"
+        }
+      ]
+    },
+    {
+      "id": "radiative-balance",
+      "scope": "单面等温板教学模型。光学参数和边界不是某种飞行器的实测工况；静态平衡不能代替轨道周期瞬态温度。",
+      "units": {
+        "area": "m²",
+        "power": "W",
+        "alpha": "1",
+        "epsilon": "1",
+        "solar": "W/m²",
+        "cosine": "1",
+        "albedo": "W/m²",
+        "earthView": "1",
+        "earthIR": "W/m²"
+      },
+      "dataIdentity": "S=1361 W/m² 来自 NASA 地球资料。Eₑ=234 W/m² 取自 2018 NASA Ames 标准的全球年平均名义值，属于教学边界，未宣称为当前任务设计极值。其余参数均为自设；σ使用所列 NIST 数值。",
+      "assumptions": [
+        "前面为不透明漫射灰体；红外吸收率按 Kirchhoff 假设等于 ε，太阳短波吸收率单独为 α。",
+        "背面绝热；前面向完整半球发射热辐射。地球覆盖的方向通过F_E E_IR作为入射辐射单列，其余方向近似0 K。",
+        "没有相邻航天器表面遮挡、互辐射、导热路径、气体对流和电功率向外输出。P表示实际留在板上的耗散功率。",
+        "太阳照射系数 μ=max(0,cosθ)且未被遮挡；若进入食，直射太阳项置0。",
+        "q_alb为已经投影到此面的入射反照通量，不能再乘F_E，也不等于全球Bond反照率乘太阳常数。",
+        "F_E和q_alb由读者指定；网页不根据轨道、地面反照分布和姿态重建它们。"
+      ],
+      "nextStep": "真实轨道热分析需先求每个面的时变日照、食、遮挡、地球视因子和反照入射；再添加热容、接触导热、涂层退化与温控逻辑。恒定边界的平衡解不能取代瞬态热循环。",
+      "sources": [
+        {
+          "title": "NASA Small Spacecraft State of the Art — 7.0 Thermal Control",
+          "url": "https://www.nasa.gov/smallsat-institute/sst-soa/thermal-control/"
+        },
+        {
+          "title": "NASA NSSDC — Earth Fact Sheet",
+          "url": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html"
+        },
+        {
+          "title": "NASA Ames ARC-STD-8070.1，2018，§3.4.3.1.3",
+          "url": "https://www.nasa.gov/sites/default/files/atoms/files/std8070.1.pdf"
+        },
+        {
+          "title": "NIST 2022 CODATA — Stefan–Boltzmann constant",
+          "url": "https://physics.nist.gov/cuu/Constants/Table/allascii.txt"
+        }
+      ],
+      "toolTransfer": [
+        {
+          "title": "Ansys Thermal Desktop / SINDA / RadCAD",
+          "setup": "先用单热节点/单面、指定α/ε和内部功率复现理想50W案例。 固定边界例分别核对太阳吸收、反照吸收、地球IR吸收与出射功率，而不只对最终温度。 再引入轨道、姿态、遮挡和几何视因子，输出每个面的时变入射功率；此时与静态算例不同的边界应单独列明。 进入瞬态时加入热容量、接触导热和热控制，检查周期收敛、时间分辨率与光学参数假设。",
+          "check": "固定边界应匹配92.452 W输入和317.721166 K平衡；真实几何任务应重新计算边界。",
+          "url": "https://ansyshelp.ansys.com/public/views/secured/corp/v251/en/ai_sinfo/td_intro.html"
+        }
+      ],
+      "derivation": [
+        {
+          "title": "把入射通量转换为吸收功率",
+          "equation": "P☉=αASμ；Pₐ=αAqₐ；Pₑ=εAFₑEₑ",
+          "detail": "先算功率：直射太阳27.22 W，反照4 W，地球红外11.232 W，加上50 W内部耗散，共92.452 W。不能把W/m²直接与W相加。"
+        },
+        {
+          "title": "用全半球出射求平衡",
+          "equation": "T=[(P+P☉+Pₐ+Pₑ)/(εσA)]¼",
+          "detail": "稳态不储热，出射功率等于总输入。用εσA=9.0725990704×10⁻⁹ W/K⁴除总输入，再开四次方，得到317.721166 K（44.571166 °C）。 地球方向的红外已列在输入中；出射项不能再乘 (1−Fₑ)。"
+        },
+        {
+          "title": "区分边界变化与计算误差",
+          "equation": "α→2α 与 ε→ε/2 的效果不同",
+          "detail": "把所有外热流关闭，只留50 W，得到272.464278 K。完全正对太阳但没有反照和地球红外时得到327.554663 K。三者是不同边界，不是误差。 在参考边界下仅把α从0.2变为0.4，温度升至341.692083 K；仅把ε从0.8降到0.4，温度升至371.962811 K，同时地球IR吸收也减半。做ε扫描时不能只改出射项而保持IR吸收不变。"
+        }
+      ]
+    },
+    {
+      "id": "mass-distribution",
+      "scope": "公开质量/直径加三种教学质量分布；不是 Sputnik 1 实测惯量。",
+      "units": {
+        "mass": "kg",
+        "radius": "m",
+        "fraction": "1",
+        "offset": "m",
+        "torque": "N·m"
+      },
+      "dataIdentity": "NASA 历史资料给出总质量83.6 kg和球体直径58 cm；另述电源占51 kg及2.4/2.9 m外伸天线。公开材料没有给出整体惯性张量。集中质量占比、位置和外力矩都是本站的教学设定。",
+      "assumptions": [
+        "将整个83.6 kg分别假想为半径0.29 m的均匀实心球、均匀薄球壳，先绕过球心的任一直径求惯量。",
+        "这两个模型故意忽略内部设备、电池、真实壳厚、天线与安装位置，不能称为Sputnik实际惯量，也不能称为其可信上下界。",
+        "第三种模型把 fM 分成两个位于 x=±d 的质量点，其余质量留在均匀薄球壳；整体质心不变。",
+        "对角张量由模型的对称性得到。绕 y 轴的 α=N/I 仅描述初始静止时的瞬时角加速度；一般旋转需要完整 Euler 方程。"
+      ],
+      "nextStep": "为每个子部件记录质量、质心位置、局部惯量与姿态；公开事实与自行假设分别标记。 先转换各部件惯量到共同坐标方向，再用平行轴定理移至整体质心，最后求和。 改变不确定的部件位置/质量进行敏感性分析，输出假设范围；不要把精确到很多小数的算术结果当成实测精度。 如果只有三角网格，先检查它是否封闭、有体积、尺度正确及每件密度，再谈质量积分。显示用GLB不能直接作为真实质量分布。",
+      "sources": [
+        {
+          "title": "NASA History — Sputnik and the Dawn of the Space Age",
+          "url": "https://www.nasa.gov/wp-content/uploads/static/history/sputnik.html"
+        },
+        {
+          "title": "NASA History / Asif Siddiqi — Korolev, Sputnik, and the International Geophysical Year",
+          "url": "https://www.nasa.gov/history/sputnik/siddiqi.html"
+        },
+        {
+          "title": "MIT OCW 8.01L — Rotational inertia and parallel axis theorem",
+          "url": "https://www.ocw.mit.edu/courses/8-01l-physics-i-classical-mechanics-fall-2005/478b22ecde599466413770ed68da0fcb_lec27.pdf"
+        },
+        {
+          "title": "Shinsuke Kawai — Moments of Inertia, Thin spherical shell",
+          "url": "https://www2.yukawa.kyoto-u.ac.jp/~shinsuke.kawai/docs/TeachingMaterial/Moment_of_Inertia.pdf"
+        }
+      ],
+      "toolTransfer": [
+        {
+          "title": "FreeCAD 质量属性与 CenterOfMass 宏",
+          "setup": "建立直径580mm实心球；指定均匀密度使总质量83.6kg。 验证中心惯量换算成kg·m²后为2.812304；不要把几何惯量MatrixOfInertia当成已经乘密度的质量惯量。 建立另一有实际有限厚度的球壳，保持外半径与总质量；随着厚度趋近0，惯量才趋向薄壳公式。 移动参考轴100mm时检查只有垂直于偏置方向的对角项增加0.836kg·m²。多材料装配逐件用密度后合成。",
+          "check": "实心球解析值和薄壳极限是CAD积分检查对象；真实Sputnik模型需要额外分部质量资料。",
+          "url": "https://github.com/FreeCAD/FreeCAD-macros/blob/master/Information/CenterOfMass.FCMacro"
+        }
+      ],
+      "derivation": [
+        {
+          "title": "从公开尺寸得到两个理想模型",
+          "equation": "I实心=2MR²/5；I薄壳=2MR²/3",
+          "detail": "外观尺寸给出r=0.29 m。m r²=7.03076 kg·m²，乘实心球系数0.4得到2.812304 kg·m²；乘薄球壳系数2/3得到4.687173333 kg·m²。相同外形和质量产生约1.667倍的差异，差异来自质量分布假设。"
+        },
+        {
+          "title": "合成对置内部质量的惯量",
+          "equation": "Iₓₓ=(1−f)·2MR²/3；Iᵧᵧ=Izz=Iₓₓ+fMd²",
+          "detail": "沿 x 轴移动的两个质量点不增加 Iₓₓ，绕 y、z 轴的贡献各为 fMd²。这里改变的是内部质量分布，不是把整个参考轴移走。"
+        },
+        {
+          "title": "用同一力矩比较初始响应",
+          "equation": "N = I·dω/dt + ω×(Iω)；ω=0 时 αᵧ=Nᵧ/Iᵧᵧ",
+          "detail": "默认球壳与集中质量模型 Iₓₓ=3.51538、Iᵧᵧ=Izz=3.98563 kg·m²；0.01 N·m 力矩产生约 0.002509 rad/s² 初始角加速度。显示的小数是算术精度，不是公开参数的测量精度。"
+        }
+      ]
+    }
+  ]
+}

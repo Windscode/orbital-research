@@ -99,7 +99,7 @@
       "url": "https://software.nasa.gov/software/GSC-19640-1",
       "docsUrl": "https://gmat.atlassian.net/wiki/",
       "sourceTitle": "NASA Software Catalog · General Mission Analysis Tool",
-      "verifiedOn": "2026-10-25",
+      "verifiedOn": "2026-10-28",
       "workflow": [
         "任务设计",
         "轨道传播",
@@ -115,25 +115,31 @@
       ],
       "usageEvidence": [
         {
-          "organization": "NASA",
-          "context": "官方产品或项目文档用于核实能力与适用边界；此项不构成特定任务或机构采用证明。",
-          "sourceUrl": "https://software.nasa.gov/software/GSC-19640-1",
-          "evidenceType": "项目文档（非采用证明）"
+          "organization": "NASA GSFC / TESS",
+          "context": "GMAT 团队 2018 年发布说明确认，TESS 从提案到运行阶段都将 GMAT 用作主要任务设计与机动规划工具。这是带日期的任务采用记录，不表示当前任意发行包或个人脚本已经过任务认证。",
+          "sourceUrl": "https://gmat.atlassian.net/wiki/spaces/GW/blog/2018/05/19/380273219/Announcing%2BRelease%2Bof%2BGMAT%2BR2018a",
+          "evidenceType": "官方任务资料"
+        },
+        {
+          "organization": "NASA GSFC Flight Dynamics Facility / ACE",
+          "context": "ACE 机动规划认证论文记录了需求、差距分析、并行影子运行、测试就绪和运行就绪审查；2013 年完成 ORR。它解释了研究代码进入任务运行需要哪些独立检查。",
+          "sourceUrl": "https://ntrs.nasa.gov/citations/20190029601",
+          "evidenceType": "官方任务资料"
         }
       ],
       "accessedAt": "2026-10-25 04:43:24 UTC",
       "starterWorkflow": [
-        "保存发行版与脚本，显式设置历元、坐标系、初始状态和点质量重力。",
-        "传播一个轨道周期，导出位置速度并检查能量、角动量及周期。",
-        "逐项增加 J2、第三体或大气，记录每次只改变一个模型后的差异。",
-        "加入一次脉冲机动和明确的事件终止条件，与解析近似或独立传播器对照。"
+        "建立一个地心惯性坐标系中的合成圆轨道：r=(7000,0,0) km，v=(0,√(μ/7000),0) km/s。读取并保存当前力模型的 μ；若取 398600.4418 km³/s²，速度为 7.54605329 km/s，周期为 5828.516638 s。",
+        "力模型只保留地球点质量，关闭大气阻力、太阳光压与第三体。将历元及时间系统写入脚本；保存积分器、容差和输出采样间隔。输出采样间隔不等于积分器内部步长。",
+        "在约 0、T/4、T/2、3T/4、T 五个共同历元导出位置、速度。与 r=(7000cos(nt),7000sin(nt),0)、v=(-7000n sin(nt),7000n cos(nt),0) 比较，同时计算比机械能和角动量误差。",
+        "把积分容差收紧一档重跑，比较最大位置误差和终点闭合误差；然后单独加入一个 J2 项观察升交点漂移。二体参考只能验证二体配置，不能当作 J2 场景的真值。"
       ],
       "selectionQuestions": [
         "更需要图形化任务序列还是可嵌入应用的计算库？",
         "计划使用的环境和机动模型是否由所选发行版支持？",
         "能否完整记录脚本与辅助数据，使别人重跑同一任务？"
       ],
-      "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+      "starterWorkflowStatus": "上述合成基准的解析数值已独立计算；GMAT 操作步骤依据文档整理，本站未运行外部 GMAT。"
     },
     {
       "id": "basilisk",

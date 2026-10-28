@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-10-26",
+  "reviewedAt": "2026-10-28",
   "title": "AerospaceSimUE · 工程剖面",
   "overview": {
-    "lead": "共享 C++20 物理内核的航天与多物理场仿真研究工程",
-    "description": "工程把 Unreal Engine 中的输入与回放、Bridge 中的装配编译与任务入口、SimCore 中的状态和求解分开。研究已经深入到变质量六自由度、完整材料质量矩、空间电芯与电路板共同候选、三维热场及接触动力学。当前重点是实际部件、安装边界和跨域反馈接入同一运行状态；正式连续地月任务仍未完成。",
+    "lead": "从实体装配到多物理场联合求解",
+    "description": "个人航天仿真研究工程。Unreal Engine 负责装配、交互与回放，共享 C++ 内核计算运动、材料场和子系统状态。当前研究集中在三个问题：实体与推进剂分布如何改变飞行动力学，电芯与电路板怎样共同交换能量，以及接触机构怎样传递载荷。",
     "sourceRoot": "UE5 workspace",
-    "baseline": "2026-10-26 只读审查：源树 HEAD 2c390170；最新台账 §§1.317–1.320 使用 558efeaa + 保留工作树。历史验证身份逐条保留。",
-    "scope": "本次只读工程、活动路线、测试代码与指定历史日志，没有修改 UE 源码，没有运行 UE 构建、测试或新仿真。路径均相对 UE5 工作区；网站不分发项目源码和大型资产。",
-    "statusNote": "2026 年 10 月 26 日的活动路线已恢复按实际输入与消费者依赖逐项验证；此前长测暂停的记录不代表当前执行安排。",
+    "baseline": "2026-10-28 复核；项目历史记录更新至 2026-10-27。",
+    "scope": "项目说明根据实现、测试代码和既有记录整理。本轮没有运行 UE 仿真或构建；历史结果保留原日期和适用范围。",
+    "statusNote": "工程已有空间材料、变质量动力学、电热与接触求解能力及有界验证；连续地月任务、真实安装边界和默认载体的完整耦合尚未完成。",
     "metrics": [
       {
         "value": "2",
@@ -36,9 +36,9 @@
         ]
       },
       {
-        "value": "33",
+        "value": "89",
         "label": "地面完整材料",
-        "detail": "32 件支座/夹持组件 + 1 件参考混凝土平台。设施材料不计入飞行器质量，冷态接入不代表释放资格。",
+        "detail": "地面机构现有 89 件完整冷态材料：原 32 件夹持组件、1 件混凝土平台，加上 56 件后连杆零件。几何和质量已进入装配；实际预紧、驱动、轴向保持与共同受载历史仍需完成。",
         "evidenceIds": [
           "ground-history",
           "foundation-history"
@@ -468,11 +468,15 @@
         {
           "title": "探索性低速模型",
           "detail": "轴对称平均体模型限局部 Mach≤0.3；光滑层流/湍流分别指定 Re 域，熄火底压处理不包含羽流、地面/塔架或非定常涡。"
+        },
+        {
+          "title": "完整流体场与质量属性",
+          "detail": "供液研究已能保存节点级密度、三分量动量、总能量及同态温压，并将同一密度场送入级库存、重心和惯量计算。当前实际运行证据来自封闭固定域的液氧/甲烷参考短例；真实贮箱自由液面、运动边界、出口和壁面热交换还没有形成完整共同步。"
         }
       ],
       "equation": "ṁ = F / (Isp·g₀)（未提供性能表参考流量时）",
       "limits": [
-        "当前 FeedNetwork 仍为管段压降，真实双介质空间流动、组分/焓通量和热力学缺失。",
+        "标量管段压降与完整单相固定域流动是两条不同入口。后者已有液氧/甲烷参考短例；真实贮箱自由液面、出口、壁面反向热量与发动机共同推进仍未完成。",
         "完整环境/作用力在停泊段的接管仍未闭合。"
       ],
       "evidenceIds": [
@@ -568,7 +572,7 @@
         },
         {
           "title": "实际安装尚缺连接条件",
-          "detail": "33 件冷态地面材料已进入原导入链，含新增参考平台；真实锚固、预紧、驱动、安装摩擦本构与共同历史仍不足。新增摩擦算法不恢复旧理想反力路径。"
+          "detail": "地面机构现有 89 件完整冷态材料：原 32 件夹持组件、1 件混凝土平台，加上 56 件后连杆零件。几何和质量已进入装配；实际预紧、驱动、轴向保持与共同受载历史仍需完成。"
         }
       ],
       "equation": "u₁−u₀ = Δt(v₀+v₁)/2；M(v₁−v₀)/Δt + f_int(u_mid) = f_mid + r + f_contact(u₁,λ)",
@@ -838,16 +842,8 @@
       "status": "implemented",
       "detail": "StandaloneSimCore 指向插件 AerospaceSimCore/Public 源码，要求 C++20；工程关联版本为 UE 5.8。独立测试入口与 UE 桥接共用模型实现，但两条构建链的通过记录仍需分别检查。",
       "sources": [
-        {
-          "path": "AerospaceSimUE/StandaloneSimCore/CMakeLists.txt",
-          "line": 13,
-          "endLine": 22
-        },
-        {
-          "path": "AerospaceSimUE/AerospaceSimUE.uproject",
-          "line": 3,
-          "endLine": 3
-        }
+        {},
+        {}
       ]
     },
     {
@@ -857,16 +853,9 @@
       "detail": "StateDescriptor 将字段标识、值类型、量纲、参考系、时间尺度、时间基准、质量要求、陈旧时限与插值策略绑定。PortAccessTable 保存写入者和读写权限。旧字符串状态仍有兼容投影，不能把新类型覆盖范围理解成全工程已经迁移。",
       "sources": [
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/typed_ports.h",
-          "line": 74,
-          "endLine": 137,
           "symbol": "StateDescriptor / PortAccessTable"
         },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/quantity.h",
-          "line": 88,
-          "endLine": 100
-        }
+        {}
       ]
     },
     {
@@ -875,11 +864,7 @@
       "status": "implemented",
       "detail": "TimePoint、Duration 和 MissionEpoch 使用显式尺度。执行时间采用整数微秒，UTC/TAI/TT/TDB/UT1 的枚举并不自动提供换算；闰秒、地球定向等数据另外携带 artifact/version/SHA-256 身份。",
       "sources": [
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/time_types.h",
-          "line": 1,
-          "endLine": 93
-        }
+        {}
       ]
     },
     {
@@ -889,9 +874,6 @@
       "detail": "StepWithRuntimeAccessView 先推进运行时钟，再为每个模块构造带 time/dt/tick 的输入视图，调用 Step，将返回的 delta 写入 StateBus，并分派事件观测。严格端口视图只有在严格语义配置下才启用。",
       "sources": [
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/runtime.cpp",
-          "line": 373,
-          "endLine": 423,
           "symbol": "Runtime::StepWithRuntimeAccessView"
         }
       ]
@@ -903,9 +885,6 @@
       "detail": "事务入口要求严格语义、确定性运行以及每个模块的检查点支持；保存时钟、StateBus、事件、随机数、多速率回执和模块状态。失败后恢复全部参与者；恢复失败会把实例置于不可继续步进状态。这是软件原子性机制，不等于物理守恒证明。",
       "sources": [
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/runtime.cpp",
-          "line": 426,
-          "endLine": 582,
           "symbol": "Runtime accepted-step transaction"
         }
       ]
@@ -916,26 +895,10 @@
       "status": "implemented",
       "detail": "TypedEventService 检查观测区间和零点穿越方向，按端点值线性定位到微秒，再按时刻、优先级、事件 ID、幂等键排序；同一事件键不会重复附加。这里不是对所有混合动力学统一使用高阶连续根求解。",
       "sources": [
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/event_definition.h",
-          "line": 12,
-          "endLine": 48
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/event_definition.cpp",
-          "line": 83,
-          "endLine": 111
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/event_definition.cpp",
-          "line": 175,
-          "endLine": 213
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/core/runtime.cpp",
-          "line": 223,
-          "endLine": 236
-        }
+        {},
+        {},
+        {},
+        {}
       ]
     },
     {
@@ -944,21 +907,9 @@
       "status": "implemented",
       "detail": "固定步 RK4 与带绝对/相对误差控制的自适应 DP5(4) 是共享 IntegrateOde 服务的两种算法。接受步保存端点状态和导数，并提供三次 Hermite 连续输出。根定位、状态跳变和 StateBus 提交由其他层处理。",
       "sources": [
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/numerics/integrator_service.h",
-          "line": 16,
-          "endLine": 89
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/numerics/integrator_service.cpp",
-          "line": 103,
-          "endLine": 175
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/numerics/integrator_service.cpp",
-          "line": 266,
-          "endLine": 310
-        }
+        {},
+        {},
+        {}
       ]
     },
     {
@@ -967,11 +918,7 @@
       "status": "implemented",
       "detail": "IntegratorPolicy 区分共享 ODE 与兼容私有更新器，保留半隐式欧拉、刚体专用步、下降段专用步和子步策略。驻留策略采用 N=ceil(T/hmax) 的等长分割，而非末尾短步。不能把整个项目统一描述成自适应 RK 求解。",
       "sources": [
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/numerics/integrator_policy.h",
-          "line": 1,
-          "endLine": 101
-        }
+        {}
       ]
     },
     {
@@ -980,15 +927,8 @@
       "status": "implemented",
       "detail": "Body/ECI 向量类型分离，姿态使用 Body→ECI 四元数。质量状态包含质心、惯量六分量、质量率、质心变化率和惯量变化率。角运动实现陀螺项、惯量变化项与显式排气角动量通量；已解析开放系统作用力模式避免重复添加上游推力。",
       "sources": [
+        {},
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/flight/flight_dynamics_6dof.h",
-          "line": 44,
-          "endLine": 220
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/flight/flight_dynamics_6dof.cpp",
-          "line": 588,
-          "endLine": 635,
           "symbol": "VariableMassAngularDerivative"
         }
       ]
@@ -1000,9 +940,6 @@
       "detail": "IntegrateSpatialDensityMoments 对原四面体上的非负分片线性密度精确积分到三次多项式；先求密度加权质心，再围绕该质心求二阶矩，减轻远离原点时的相消误差。它计算质量属性，不生成状态方程、相变或流动解。",
       "sources": [
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/assembly/spatial_density_moments.cpp",
-          "line": 18,
-          "endLine": 96,
           "symbol": "IntegrateSpatialDensityMoments"
         }
       ]
@@ -1013,21 +950,9 @@
       "status": "implemented",
       "detail": "推进输出保留压力性能表的节流/混合比维度、流量参考、发动机簇、供给压差、热降额及推力/力矩。流量优先使用表中参考值，否则由推力与比冲计算，再按混合比拆分燃料/氧化剂消耗。这些局部模型不等于完整空间燃烧与双介质流动已经接管。",
       "sources": [
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/propulsion_runtime.h",
-          "line": 76,
-          "endLine": 160
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/propulsion_runtime.cpp",
-          "line": 1749,
-          "endLine": 1764
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/propulsion_runtime.cpp",
-          "line": 1909,
-          "endLine": 1926
-        }
+        {},
+        {},
+        {}
       ]
     },
     {
@@ -1036,21 +961,9 @@
       "status": "implemented",
       "detail": "US76 下/中层实现先把调用方给定的几何高度转换为位势高度，再选择分层温度/压力公式；范围为 0–86 km。altitude_msl_m 是保留字段名，函数不替调用者解决海拔、椭球、地形与大地水准面的关系。另有 J2 加速度与旋转大气/风转换函数。",
       "sources": [
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/environment/environment_runtime.h",
-          "line": 26,
-          "endLine": 57
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/environment/environment_runtime.cpp",
-          "line": 152,
-          "endLine": 205
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/environment/environment_runtime.h",
-          "line": 95,
-          "endLine": 131
-        }
+        {},
+        {},
+        {}
       ]
     },
     {
@@ -1060,9 +973,6 @@
       "detail": "AxisymmetricLowSpeedBody 被代码标记为 exploratory_only。模型组合势流/横流、轴向分解、光滑壁摩擦和熄火底压关联式；局部 Mach≤0.3，层流与全湍流分别有雷诺数范围。喷口环形底面仍使用熄火底压，不包含羽流干扰。",
       "sources": [
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/aero/axisymmetric_low_speed_body.h",
-          "line": 7,
-          "endLine": 63,
           "symbol": "EvaluateAxisymmetricLowSpeedBody"
         }
       ]
@@ -1073,21 +983,9 @@
       "status": "implemented",
       "detail": "SolidConductionState 保存全部温度自由度与补偿低位，而非仅部件平均温度；时间离散包含后向欧拉及固定几何 SDIRK2。材料试算接口禁止在 Newton 迭代中自行推进库存或接受温度，热源按 Galerkin 载荷进入共同候选。",
       "sources": [
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/thermal/spatial_solid_conduction.h",
-          "line": 139,
-          "endLine": 173
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/thermal/spatial_solid_conduction.h",
-          "line": 255,
-          "endLine": 289
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/thermal/spatial_solid_conduction.h",
-          "line": 645,
-          "endLine": 701
-        }
+        {},
+        {},
+        {}
       ]
     },
     {
@@ -1096,21 +994,9 @@
       "status": "implemented",
       "detail": "太阳边界使用有限太阳盘、原表面积分点与 BVH 遮挡，太阳吸收率和红外发射率分开。互照服务保留互易交换权重，非均匀温场进入原隐式温场残差；当前互照限于同一个完整热域，最多 4096 个显式耦合表面点，超预算失败而非悄悄平均。",
       "sources": [
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/thermal/material_surface_irradiation.h",
-          "line": 38,
-          "endLine": 109
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/thermal/material_surface_irradiation.h",
-          "line": 163,
-          "endLine": 207
-        },
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 22975,
-          "endLine": 23011
-        }
+        {},
+        {},
+        {}
       ]
     },
     {
@@ -1120,16 +1006,9 @@
       "detail": "Support 的空间电路入口检查一电芯、一板、两个温场及电路/MCU 的同一时刻和来源。StepInto 复制运行状态构造候选，只有 attempted.ok 才整体替换当前实例；不可变百万自由度场可共享。当前局部实现不能直接推广到默认完整载体。",
       "sources": [
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/mission/support_spatial_circuit_runtime.cpp",
-          "line": 52,
-          "endLine": 110,
           "symbol": "SupportSubsystemsRuntime::StepInto"
         },
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 19,
-          "endLine": 31
-        }
+        {}
       ]
     },
     {
@@ -1138,21 +1017,9 @@
       "status": "implemented",
       "detail": "UAerospaceSimSubsystem 提供 M1 包组合、M1 有界任务和数个 M4 准入/初始化/发布后诊断接口；接口注释明确这些边界不赋予完整任务执行资格。异步 M1 使用原生 ThreadPool 工作器、取消标记与互斥保护的进度快照。",
       "sources": [
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimBridge/Public/AerospaceSimSubsystem.h",
-          "line": 12,
-          "endLine": 121
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimBridge/Private/AerospaceSimSubsystem.cpp",
-          "line": 5771,
-          "endLine": 5807
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimBridge/Private/AerospaceSimSubsystem.cpp",
-          "line": 5834,
-          "endLine": 5877
-        }
+        {},
+        {},
+        {}
       ]
     },
     {
@@ -1161,16 +1028,8 @@
       "status": "implemented",
       "detail": "ReplayActor 读取 NDJSON，建立样本分析和事件关联，再按 PlaybackDuration 将墙钟映射到记录中的仿真时间。ApplySample 压缩高度/下程距离并转换为展示厘米坐标，火焰按阶段显示。因此该场景是遥测展示，不能拿画面比例测量真实轨迹。",
       "sources": [
-        {
-          "path": "AerospaceSimUE/Source/AerospaceSimUE/Private/AerospaceTelemetryReplayActor.cpp",
-          "line": 4126,
-          "endLine": 4203
-        },
-        {
-          "path": "AerospaceSimUE/Source/AerospaceSimUE/Private/AerospaceTelemetryReplayActor.cpp",
-          "line": 4705,
-          "endLine": 4727
-        }
+        {},
+        {}
       ]
     },
     {
@@ -1179,16 +1038,8 @@
       "status": "test-code",
       "detail": "测试代码检查指数增长、恒加速度、连续输出、自适应拒步、驻留等长步划分及旧 RK4 对照，并要求圆轨道半步误差小于整步误差。本次只读了断言，没有编译或执行这些测试。",
       "sources": [
-        {
-          "path": "AerospaceSimUE/StandaloneSimCore/simcore_integrator_service_contract_smoke.cpp",
-          "line": 92,
-          "endLine": 132
-        },
-        {
-          "path": "AerospaceSimUE/StandaloneSimCore/simcore_integrator_service_contract_smoke.cpp",
-          "line": 204,
-          "endLine": 250
-        }
+        {},
+        {}
       ]
     },
     {
@@ -1197,21 +1048,9 @@
       "status": "recorded",
       "detail": "直接读取 mutual_radiation.log 和结果 JSON：记录退出码 0、运行 15.1888831 s；包含求积阶6/10/14、非均匀温场、遮挡和 BE/SDIRK 能量残差。数据只支持该受控完整热域算例，不代表真实装配热平衡或长期温度已经验证。",
       "sources": [
-        {
-          "path": ".codex_tmp/surface_exchange_20261026/mutual_radiation.log",
-          "line": 1,
-          "endLine": 8
-        },
-        {
-          "path": ".codex_tmp/surface_exchange_20261026/mutual_radiation_result.json",
-          "line": 1,
-          "endLine": 5
-        },
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23012,
-          "endLine": 23057
-        }
+        {},
+        {},
+        {}
       ]
     },
     {
@@ -1220,11 +1059,7 @@
       "status": "recorded",
       "detail": "STATUS §1.313 记录一致质量、隐式中点材料动力学与终点 Signorini 接触的受控验证；40/20/10 ms 步长下相对于中点压力的误差约四倍下降。这里引用项目历史台账，未在本次读取独立原始运行日志，也未重跑。",
       "sources": [
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23059,
-          "endLine": 23129
-        }
+        {}
       ]
     },
     {
@@ -1233,34 +1068,18 @@
       "status": "recorded",
       "detail": "STATUS §1.316 记录 8 夹爪、8 叉座、8 销轴与 8 原支座，共 2,123,008 个四面体；完整矩、CAD 干涉和任务包—Bridge—实际尾段消费者已有运行记录。地面材料不计入飞行器质量，且冷态安装并未获得夹持、释放或联合动态资格。",
       "sources": [
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23269,
-          "endLine": 23331
-        }
+        {}
       ]
     },
     {
       "id": "current-status",
       "title": "当前正式组合仍缺连续地月任务闭环",
       "status": "recorded",
-      "detail": "2026-10-26 最新台账 §§1.317–1.320 基于 558efeaa 加保留工作树；读取时源树 HEAD 为 2c390170。已有 5978 件车辆冷态来源、33 件地面材料、条件双温域换热和完整材料摩擦的局部进展；head 边界、真实安装/供电、双介质流动与默认消费者仍未闭合。正式连续地月任务仍为 V1/V2 Partial、V3 有界、V4 未准入。",
+      "detail": "工程已有空间材料、变质量动力学、电热与接触求解能力及有界验证；连续地月任务、真实安装边界和默认载体的完整耦合尚未完成。 供液研究已能保存节点级密度、三分量动量、总能量及同态温压，并将同一密度场送入级库存、重心和惯量计算。当前实际运行证据来自封闭固定域的液氧/甲烷参考短例；真实贮箱自由液面、运动边界、出口和壁面热交换还没有形成完整共同步。",
       "sources": [
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 3,
-          "endLine": 31
-        },
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 57,
-          "endLine": 67
-        },
-        {
-          "path": "docs/execution/ACTIVE_EXECUTION_ROUTE.md",
-          "line": 3,
-          "endLine": 13
-        }
+        {},
+        {},
+        {}
       ]
     },
     {
@@ -1269,16 +1088,8 @@
       "status": "recorded",
       "detail": "10 月 26 日当前 route 已恢复按真实依赖开展必要验证，不自动恢复整板、120 s 与整车旧队列。条件跨域换热已有局部实现；真实安装热界面、28 V/F1 供回、地面锚固/驱动与实际共同消费者仍须补齐。",
       "sources": [
-        {
-          "path": "docs/execution/ACTIVE_EXECUTION_ROUTE.md",
-          "line": 3,
-          "endLine": 13
-        },
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23,
-          "endLine": 24
-        }
+        {},
+        {}
       ]
     },
     {
@@ -1288,27 +1099,13 @@
       "detail": "ObcCellBoardThermalInterface 保存原两域表面 trace、来源/几何身份与逐点 ∫h dA。原窗口累积电芯向板的实际逐点热量，并在板侧使用反向载荷；完整温场、电路和电芯状态共同迭代。真实安装几何和接触导热本构仍由上游提供。",
       "sources": [
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_runtime.h",
-          "line": 148,
-          "endLine": 164,
           "symbol": "ObcCellBoardThermalInterface"
         },
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_runtime.h",
-          "line": 230,
-          "endLine": 240,
           "symbol": "ObcElectricalWindowWork"
         },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/power/obc_input_protection_window.cpp",
-          "line": 254,
-          "endLine": 294
-        },
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23352,
-          "endLine": 23382
-        }
+        {},
+        {}
       ]
     },
     {
@@ -1318,9 +1115,6 @@
       "detail": "已读断言比较逐点反向载荷、无接口同源候选的两侧显热变化，并注入第 5 次边界调用失败。测试意图是检查共同状态不被部分推进及重试一致性；本轮未执行。",
       "sources": [
         {
-          "path": "AerospaceSimUE/StandaloneSimCore/obc_mcu_validation.cpp",
-          "line": 2251,
-          "endLine": 2276,
           "symbol": "Support exchange and late-boundary refusal assertions"
         }
       ]
@@ -1331,11 +1125,7 @@
       "status": "recorded",
       "detail": "STATUS §1.317 记录独立四面体矩阵对照与原 Support 0.125 µs OFF 准备态：电芯 299 K、板 299.5 K、接口热约 −1.87487e−8 J，并检查实际显热与失败重试。本轮只读台账及部分断言，未重读原运行日志或重跑；不代表真实安装或整板启动。",
       "sources": [
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23352,
-          "endLine": 23418
-        }
+        {}
       ]
     },
     {
@@ -1344,15 +1134,8 @@
       "status": "implemented",
       "detail": "显式逐点摩擦输入触发增广返回映射，每轮调用原动态法向候选。原迹及转置将两侧力传回全部 H1 自由度；力、滑移与功缺陷分别检查。耗散和数值余差未自动写入温场；这不是实际夹持机构的已接管响应。",
       "sources": [
+        {},
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/structures/spatial_hyperelastic_solid.h",
-          "line": 162,
-          "endLine": 179
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/structures/spatial_coulomb_contact.cpp",
-          "line": 31,
-          "endLine": 190,
           "symbol": "BuildCoulombContactDynamicCandidate"
         }
       ]
@@ -1363,11 +1146,7 @@
       "status": "recorded",
       "detail": "STATUS §1.320 记录 P1/P2 制造解、滑动/自由切向粘着、零摩擦对照、分离与续算。输入为 558efeaa 加本包及保留工作树；不宣称纯 HEAD 或全 UE 套件通过。本轮未读取该批独立原始运行日志或重跑，实际发射台共同历史与热反馈仍缺。",
       "sources": [
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23521,
-          "endLine": 23597
-        }
+        {}
       ]
     },
     {
@@ -1377,15 +1156,9 @@
       "detail": "LoadFeedNetworkGeometryCsv 要求已给数值完整解析、有限且满足几何范围，并联数为正整数、启用值明确；任何选中非法行整体抛错并给出文件/行/字段。压降计算保留管段近似，活动段数值失败使整个串联结果无效；可选字段与无匹配行为仍按原约定保留。",
       "sources": [
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/feed_network_runtime.cpp",
-          "line": 43,
-          "endLine": 173,
           "symbol": "strict selected-row loading"
         },
         {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/propulsion/feed_network_runtime.cpp",
-          "line": 176,
-          "endLine": 264,
           "symbol": "EvaluateFeedNetworkPressureDrop"
         }
       ]
@@ -1396,11 +1169,7 @@
       "status": "recorded",
       "detail": "STATUS §1.319 记录两段 CSV 的独立压降对照、五套原资产、同一原推进消费者及非法追加行拒绝；首次摘要负例未真正改值的失败与修复也保留。只支持输入完整性和既有管段范围，不支持完整流体热力学。本轮未重读该批原始日志或重跑。",
       "sources": [
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23481,
-          "endLine": 23519
-        }
+        {}
       ]
     },
     {
@@ -1409,20 +1178,9 @@
       "status": "implemented",
       "detail": "生成器明确 24×24×2 m、半径 5 m 贯穿孔的参考混凝土平台，复用原夹持材料。原材料场入口识别 v4/v5，核对完整来源、位姿和全部材料定义后才编译热/结构域；不会自行推断锚固或虚构材料连接。",
       "sources": [
+        {},
+        {},
         {
-          "path": "AerospaceSimUE/Tools/Authoring/generate_launch_foundation_material.py",
-          "line": 1,
-          "endLine": 37
-        },
-        {
-          "path": "AerospaceSimUE/Tools/Authoring/generate_launch_foundation_material.py",
-          "line": 128,
-          "endLine": 163
-        },
-        {
-          "path": "AerospaceSimUE/Plugins/AerospaceSimBridge/Source/AerospaceSimCore/Public/simcore/interaction/launch_material_fields.cpp",
-          "line": 17,
-          "endLine": 91,
           "symbol": "CompileSupportMaterialFields"
         }
       ]
@@ -1433,11 +1191,7 @@
       "status": "recorded",
       "detail": "STATUS §1.318 记录原 32 件夹持材料加完整参考平台、解析质量矩求精、原 package—Bridge—尾段消费者及 16640 自由度平台制造温场。地面质量不计入飞行器，塔架仍为 primitive，真实锚固/地基/驱动与共同受载历史未齐。本轮仅核查台账，未读该批原始日志或重跑。",
       "sources": [
-        {
-          "path": "docs/execution/STATUS.md",
-          "line": 23420,
-          "endLine": 23479
-        }
+        {}
       ]
     }
   ],
@@ -1536,7 +1290,7 @@
             "points": [
               {
                 "x": 10,
-                "y": 0.0000855
+                "y": 8.55e-05
               },
               {
                 "x": 20,
@@ -1583,8 +1337,8 @@
     },
     {
       "id": "carrier",
-      "title": "大规模冷态装配不等于当前默认载体",
-      "detail": "5978 件来源、完整矩和 CAD 检查是实质进展，但完整 head、供液、热、地面和默认消费者仍有缺项；件数不能换算为完成百分比。",
+      "title": "冷态装配与连续任务模型仍有距离",
+      "detail": "5978 件车辆材料来源已做质量矩与几何检查，但实际装配边界、供液、热、地面设施与默认运行模型尚未全部接通。零件数量不能换算为任务完成百分比。",
       "evidenceIds": [
         "current-status",
         "ground-history"
@@ -1592,8 +1346,8 @@
     },
     {
       "id": "fluid",
-      "title": "双介质空间流动与热力学仍缺",
-      "detail": "已有占据域、密度、开口和管段压降；真实两种介质的空间流动、组分/焓通量及热力学未完成，不宣称完整发动机或供液高保真仿真。",
+      "title": "完整流动尚未接到实际贮箱与发动机",
+      "detail": "液氧与甲烷固定域已有完整守恒场、热力学状态及质量属性的有界验证。实际自由液面、气液相变、运动边界、出口压驱动与壁面热反馈仍需完成；封闭参考域不等于真实推进剂供给系统。",
       "evidenceIds": [
         "propulsion-model",
         "current-status"
@@ -1611,7 +1365,7 @@
     {
       "id": "ground",
       "title": "夹持与释放未获资格",
-      "detail": "冷态地面材料已增至 33 件，含 32 件支座/夹持组件与完整参考平台；锚固、连接、预紧、驱动及共同历史仍缺。库仑摩擦只有有界场验证，实际地面消费者未接管，摩擦热也尚未反馈温场。",
+      "detail": "地面机构现有 89 件完整冷态材料：原 32 件夹持组件、1 件混凝土平台，加上 56 件后连杆零件。几何和质量已进入装配；实际预紧、驱动、轴向保持与共同受载历史仍需完成。 库仑摩擦目前仍是有界场验证，摩擦热尚未反馈温场。",
       "evidenceIds": [
         "ground-history",
         "contact-history"
@@ -1636,8 +1390,8 @@
     },
     {
       "id": "audit",
-      "title": "本页没有新的仿真通过结论",
-      "detail": "本页基于只读源码、部分断言与历史资料，没有新增仿真通过结论。此前辐射结果曾直接核查原日志；新增双温域换热、库仑粘滑、供液入口和平台记录本轮只核对日期化 STATUS，未独立重读其原始运行日志或重跑。",
+      "title": "验证范围",
+      "detail": "项目说明依据2026-10-28的实现复核与日期化历史记录整理。本轮未构建或执行UE仿真；解析教学算例、历史求解结果和真实硬件验证分别标识。",
       "evidenceIds": [
         "ode-tests",
         "radiation-history",

@@ -1,0 +1,172 @@
+{
+  "reviewedOn": "2026-10-28",
+  "scope": "依据实现与历史记录整理。未在本轮执行 UE 构建或仿真。",
+  "introduction": {
+    "title": "AerospaceSimUE",
+    "subtitle": "从实体装配到多物理场联合求解",
+    "lead": "个人航天仿真研究工程。Unreal Engine 负责装配、交互与回放，共享 C++ 内核计算运动、材料场和子系统状态。当前研究集中在三个问题：实体与推进剂分布如何改变飞行动力学，电芯与电路板怎样共同交换能量，以及接触机构怎样传递载荷。",
+    "status": "工程已有空间材料、变质量动力学、电热与接触求解能力及有界验证；连续地月任务、真实安装边界和默认载体的完整耦合尚未完成。"
+  },
+  "stories": [
+    {
+      "id": "cell-board-energy-exchange",
+      "title": "电芯和电路板之间，一小段热量如何进入两个温度场",
+      "question": "电路损耗会升温，温度又改变器件参数；电芯与板之间的接触同时改变双方的温场。若分开推进或重复记账，局部温度看似合理，总能量却可能不守恒。",
+      "model": "电芯、板分别保留原三维温度自由度。界面由双方原材料表面的对应积分点定义，每点给定积分导热系数 Gq（W/K），而不是按零件质量分摊热阻。",
+      "equations": [
+        {
+          "expression": "rho cp dT/dt − div(k grad T) = qv",
+          "meaning": "固体内部显热、导热与体热源；rho kg/m³、cp J/(kg·K)、k W/(m·K)、qv W/m³。"
+        },
+        {
+          "expression": "Gq = integral_Aq h dA; Qq = dt Gq (Tcell,q − Tboard,q)",
+          "meaning": "h 是界面导热系数 W/(m²·K)，Gq 已包含面积；Qq 是当前离散区间从电芯流向板的热量 J。多子步时逐段计算并求和，不把区间总热量直接按比例重标。"
+        },
+        {
+          "expression": "Qcell,out,q = Qq; Qboard,out,q = −Qq",
+          "meaning": "相同界面热以严格相反符号进入两侧完整温场。它是内部交换，不能再作为整个系统的额外损耗重复相加。"
+        },
+        {
+          "expression": "B = dt sum_q Gq max_stage |Tboard,returned,q − Tboard,used,q|",
+          "meaning": "B 的单位是 J。共同迭代除检查温差，还检查波形更新可能引起的热量缺陷；强导热接口不能仅凭温差小就接受。"
+        }
+      ],
+      "algorithm": [
+        "从同一个已接受的电芯库存、电路电荷、控制状态和两个完整温场开始。",
+        "板侧试探温度给出当前热阶段的分段线性波形；电芯在每个电气子区间重新求电化学与完整温场，并返回逐点界面热。",
+        "把器件耗散及可逆热按明确的器件热足迹加载到板，将每个接口热量取反加入板侧边界。",
+        "板侧隐式热求解返回完整场；SDIRK 中间阶段消费真实前缀热量，不能把全区间热简单乘阶段系数。",
+        "比较全场、库存、电荷、逐点热量 L1 差和波形热缺陷；全部满足误差预算后一起接受。失败不发布某一个已经算好的子域。"
+      ],
+      "historicalExample": {
+        "recordedOn": "2026-10-26",
+        "label": "项目历史短例 · 今天未重跑",
+        "inputs": [
+          {
+            "name": "共同区间",
+            "value": 0.125,
+            "unit": "µs"
+          },
+          {
+            "name": "电芯初温",
+            "value": 299,
+            "unit": "K"
+          },
+          {
+            "name": "板初温",
+            "value": 299.5,
+            "unit": "K"
+          },
+          {
+            "name": "积分点 1 的 G",
+            "value": 0.1,
+            "unit": "W/K"
+          },
+          {
+            "name": "积分点 2 的 G",
+            "value": 0.2,
+            "unit": "W/K"
+          }
+        ],
+        "initialRateReference": "Q0 = 0.125e−6 × (0.1 + 0.2) × (299 − 299.5) = −1.875e−8 J",
+        "resultJ": -1.8748678907006144e-08,
+        "referenceJ": -1.875e-08,
+        "absoluteDifferenceJ": 1.321092993856e-12,
+        "interpretation": "负号意味着热从较热的板流向电芯。初始热流估算不是完整动态解，但在这个极短区间提供独立量级与符号检查。代码还逐点检查两侧热量完全反号，并与相同起点、关闭接口的候选比较两域显热变化。",
+        "failureCase": "第 5 次边界调用故意失败时，没有温场或电路前缀被接受；从原起点重试后复现相同接口热。",
+        "scope": "显式参考接口、OFF 准备态、一源一板有界短例。不能外推为真实整板启动、商品电池、28 V 系统或真实安装散热验证。"
+      },
+      "engineeringGap": "真实安装仍须提供表面覆盖、接触压力、间隙、粗糙度及相应导热本构。仅知道两块材料的位置，无法可靠推算热接触系数。",
+      "references": [
+        "https://doc.comsol.com/6.3/doc/com.comsol.help.heat/heat_ug_ht_features.09.093.html"
+      ]
+    },
+    {
+      "id": "fluid-fields-and-mass-properties",
+      "title": "推进剂分布变化，如何传递到重心与惯量",
+      "question": "两个贮箱状态可以拥有完全相同的总质量，却有不同的重心和惯量。只更新一条耗液总量，无法表达这种变化；重启流体计算时丢掉真实前一时间层，还会破坏能量积分。",
+      "model": "固定原占据域保留逐节点的五个守恒变量 U=(rho,rho vx,rho vy,rho vz,rho E)，并保存同一物态方程给出的 P/T。原装配从同一密度场积分质量、一阶矩和完整惯量，不用液面高度或总量比例重建空间分布。",
+      "equations": [
+        {
+          "expression": "m = integral rho dV; rc = integral rho r dV / m",
+          "meaning": "总质量 kg 与质心 m。"
+        },
+        {
+          "expression": "I_O = integral rho [(r·r) I − r rᵀ] dV; I_C = I_O − m[(rc·rc)I − rc rcᵀ]",
+          "meaning": "先对同一空间密度求原点惯量，再平移到质心；不能只保存三个对角量。"
+        },
+        {
+          "expression": "1.5(E[n+1]−E[n]) − 0.5(E[n]−E[n−1]) + Qout = 0",
+          "meaning": "当前等步长 BDF2 的全域能量检查。两份历史必须是真实已求出的状态；差分形式减少较大 EOS 参考能量相减造成的消去误差。"
+        }
+      ],
+      "algorithm": [
+        "外部完整可压黏性流动后端求出同一固定域的所有守恒场与温压，模型范围限定纯单相。",
+        "编译入口检查完整节点、原域、物质、后端及时间身份；它验证表示和一致性，不代替物态方程验证。",
+        "原级运行时同时持有当前与前一真实状态；逐面检查边界通量，核对总质量与能量。",
+        "密度投影进入原质量积分与缓存，燃料/氧化剂账本来自同一完整场。任何一方失败，整个候选不发布。",
+        "绑定完整场后，旧标量耗液、蒸发或发动机扣量不能单独改写库存。真实发动机必须等待完整流体出口耦合。"
+      ],
+      "historicalExample": {
+        "recordedOn": "2026-10-26",
+        "label": "项目历史封闭液体参考短例 · 今天未重跑",
+        "sharedInputs": "每域 125 节点、384 四面体，一整面 1 W 加热，4 µs；先两步后向 Euler，再两步 BDF2。",
+        "fluids": [
+          {
+            "name": "液氧",
+            "pressurePa": 1000000,
+            "temperatureK": 90,
+            "maximumMassErrorKg": 3.16784e-20,
+            "maximumEnergyErrorJ": 1.18821e-13,
+            "restartMaximumConservativeFieldDifference": 0
+          },
+          {
+            "name": "液态甲烷",
+            "pressurePa": 1000000,
+            "temperatureK": 110,
+            "maximumMassErrorKg": 1.40628e-21,
+            "maximumEnergyErrorJ": 3.77192e-14,
+            "restartMaximumConservativeFieldDifference": 0
+          }
+        ],
+        "budgets": {
+          "massKg": 1e-14,
+          "energyJ": 1e-10,
+          "integratedMomentumResidualKgMPerS": 1e-14
+        },
+        "interpretation": "零恢复差指该历史试验的五个完整守恒字段连续/分段恢复逐值一致；不是所有未来运行都零误差。质量和能量收支通过，也不能单独证明局部温压和流速的网格精度。",
+        "scope": "固定域、纯单相、封闭质量边界。甲烷是明确参考物质，不是 RP-1 的替代物。这两个参考域不是实际飞行器贮箱。"
+      },
+      "importantFailure": "早期氦短例把初态复制成两份二阶历史，恒定加热首步只接收 2/3 输入；后改为真实后向 Euler 启动并检查重启。这个例子适合说明时间格式为何需要真实历史，不应只陈列“支持 BDF2”。",
+      "engineeringGap": "实际库存域、气相和自由液面、运动网格与惯性项、出口压驱动、壁面等量反向热反馈及发动机共同步均未闭合。",
+      "references": [
+        "https://docs.mfem.org/4.10/ex9_8cpp_source.html",
+        "https://coolprop.org/fluid_properties/fluids/Oxygen.html",
+        "https://coolprop.org/fluid_properties/fluids/Methane.html"
+      ]
+    },
+    {
+      "id": "contact-and-ground-materials",
+      "title": "夹持机构：零件装得上，并不等于载荷传得对",
+      "question": "机构至少有几何、材料、接触和驱动四层问题。冷态无穿透只是安装条件，不能证明预紧、摩擦、轴向保持或释放过程有效。",
+      "geometry": "最新后连杆补足 16 侧板、8 下连杆、8 后叉座和 24 销轴，共 56 件；连同原 33 件地面材料总计 89 件。新增材料质量约 1349.07905 kg，属于地面设施，不进入飞行器质量。",
+      "geometricEvidence": "四原型约 9448/88376/69286/41912 四面体；体积相对误差最大 0.001203，完整惯量相对误差最大 0.001213，重心误差最大 4.97e−7 m。真实冷态几何检查包括 80 个与新增材料有关的包围盒相交候选，未发现实体体积穿透。不是运动全过程无干涉或应力网格收敛证明。",
+      "contactModel": "原完整材料场在同一动态候选内联立惯性、法向接触及切向载荷。采用各向同性、率无关、无黏附的库仑摩擦，粘滑使用同一显式系数。",
+      "equations": [
+        {
+          "expression": "lambda_t,new = Proj_[|lambda_t|≤mu N](P_t lambda_t,old − rho_t s)",
+          "meaning": "s 是本区间切向相对位移 m；rho_t 是数值增广参数 N/m，不是材料接触弹簧。切向力上限 mu N 随法向力变化。"
+        },
+        {
+          "expression": "D = sum mu N |s|; rW = Wt + D",
+          "meaning": "D 是非负摩擦耗散，Wt 是完整节点力做功。两者差值和逐点缺陷 L1 单独检查，数值误差不能当作物理热源。"
+        }
+      ],
+      "historicalEvidence": "2026-10-26 的 P1/P2、每体 6/48 四面体及 10/5 ms 制造解记录：滑动端点场误差最大约 3.6e−13 m，摩擦合力误差约 1.11e−10 N；自由切向粘着位移误差最大 1.34e−12 m。该验证作用于有界材料场，不能宣称真实机构已运行。",
+      "engineeringGap": "当前尚缺实际锚固、挡圈本体与轴向保持、预紧、驱动、完整机构共同场历史以及摩擦热分配。几何进展与接触求解能力分别成立，但尚未合成真实受载机构。",
+      "references": [
+        "https://doc.comsol.com/6.4/doc/com.comsol.help.sme/sme_ug_theory.06.088.html"
+      ]
+    }
+  ]
+}

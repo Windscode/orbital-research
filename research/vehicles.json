@@ -805,16 +805,16 @@
     ],
     "inference": [
       {
-        "parameter": "固体与液体推进叠加 · 分部件积分",
-        "method": "分别描述固体助推器推力曲线和 RS-25 节流曲线，按组件积分推进剂消耗，再求总质量、推力和力矩。优先检查总冲量、燃烧时间和质量收支是否一致，避免用最大推力乘总时长估算速度增量。",
-        "assumptions": "没有可靠公开时序时使用具名教学曲线，峰值、积分和持续时间均作为单独约束。",
-        "uncertainty": "最大推力并非起飞推力或平均推力。喷管环境修正、启动瞬态和节流会影响真实曲线。"
+        "parameter": "固液推进叠加与助推器分离",
+        "method": "按两枚 SRB 与四台 RS-25 分别建立推力、质量消耗和尾焰衰减时序。NASA 助推器页给出的 126 s 工作时长，与 2022 指南约 T+132 s 的分离参考时刻不是同一个事件。AAS 25-122 将压力判据、芯级节流、喷管回零、连接释放和分离电机列入多体模型；研究模型应把两侧助推器各建为一个六自由度刚体，输出最近间隙、相对姿态和分离后速度。",
+        "assumptions": "参考时序不是任意任务的固定实飞遥测。未公开的尾段推力曲线、分离冲量、安装误差和局部气动力只能作为假设区间；分离电机、芯级继续推力与气动力分别记账。",
+        "uncertainty": "仅由视频中的投影间隙不能同时识别三维初始速度、分离冲量和气动力。论文也说明 Artemis I 夜间影像限制了定量对照。应同时输出相机投影误差和三维模型假设，不能把“没有碰撞”的动画当作安全性验证。"
       },
       {
-        "parameter": "从上升段到地月轨道 · 状态交接",
-        "method": "把芯级关机、分离、ICPS 工作和地月转移作为独立事件，交接时保存同一历元下的惯性位置、速度、质量及姿态。先在地球二体模型检查能量连续性，再用月球和太阳引力比较转移偏差。",
-        "assumptions": "所有模型使用一致的时间尺度、中心天体、坐标系和引力常数；发布案例应冻结星历版本。",
-        "uncertainty": "仅凭任务新闻中的最远距离或总里程，无法重建唯一的实飞状态矢量与机动计划。"
+        "parameter": "上升段与轨道段的状态交接",
+        "method": "在关机与分离边界保存同一历元、参考系下的位置、速度、姿态、质量及部件身份。无分离冲量的理想模型应保持每个新刚体质心状态的一致性；若存在分离冲量，明确成对线/角冲量，再检查包含全部分离体的动量账目和外力冲量。随后仅对无推力、无分离的地球二体传播段检查比机械能守恒，最后再加入太阳和月球引力。",
+        "assumptions": "各刚体质心一般不同；从组合体质心换算到部件质心必须保留 ω×r 速度项。相同坐标原点、时间尺度和单位只是必要条件，不能把一个六维状态原样复制给全部分离体。",
+        "uncertainty": "分离可能释放储能且伴随质量拓扑变化，不能要求保留下来的上面级总机械能跨事件守恒；新闻中的最远距离或总里程也不能确定唯一实飞状态及机动计划。"
       },
       {
         "parameter": "多版本公开资料 · 参数溯源",
@@ -856,9 +856,13 @@
       {
         "title": "NASA · SLS Reference Guide 2022",
         "url": "https://www.nasa.gov/wp-content/uploads/2022/03/sls-reference-guide-2022-v2-508-0.pdf"
+      },
+      {
+        "title": "NASA / AAS 25-122 · SLS 助推器分离动力学、间隙及 Artemis I 对照",
+        "url": "https://ntrs.nasa.gov/api/citations/20240016417/downloads/AAS_GNC_2025_SLS_Booster_Separation_1.pdf?attachment=true"
       }
     ],
-    "verifiedOn": "2026-10-25",
+    "verifiedOn": "2026-10-28",
     "year": 2022,
     "country": "美国",
     "family": "运载火箭",
@@ -3957,16 +3961,16 @@
     ],
     "inference": [
       {
-        "parameter": "衍射尺度与分段误差",
-        "method": "先以圆形口径近似θ≈1.22λ/D估计6.5m口径在指定波长的角尺度，再将18段镜面、缝隙及遮挡写成孔径函数进行傅里叶传播；扫掠分段活塞和倾斜误差。",
-        "assumptions": "圆孔公式只是量级检查；分段误差、波前和探测器像元响应必须来自明确观测或教学区间。",
-        "uncertainty": "理想点扩散函数不是某次JWST观测的真实PSF，不能仅由口径推断可达信噪比或最终分辨率。"
+        "parameter": "点扩散函数与探测器采样",
+        "method": "先做量级检查：D=6.5 m、λ=2 μm 时，λ/D≈0.0635角秒，对 0.031角秒/像素的短波通道约为 2.05 像素。1.22λ/D≈0.0774角秒是理想圆孔第一暗环半径，不能当 FWHM。随后用 STPSF 固定探测器、滤光片、视场位置、源光谱和波前图，生成过采样 PSF 并积分到像元；对公开恒星数据拟合通量、背景、亚像元位置和附加抖动，比较径向轮廓与包围能量。",
+        "assumptions": "λ/D 仅是尺度检查，不是 18 段真实孔径的精确 PSF。短波与长波像元尺度不同；需要记录 OPD 数据身份及观测历元，不能把预发射模型自动当当日飞行波前。",
+        "uncertainty": "单幅欠采样图像中的散焦、抖动、源扩展和像元响应可相互混淆；多滤光片、多视场及抖动采样有助于约束，但一次拟合不能唯一恢复每片主镜的活塞/倾斜。宣传合成图不适合做此定量拟合。"
       },
       {
         "parameter": "冷热端分离的热网络",
-        "method": "分别设置平台、镜面、近红外仪器和MIRI节点，用Ci·dTi/dt=ΣQij+Qi表示传热；对MIRI加入显式制冷项，对遮阳板改变辐射耦合。比较去掉主动制冷后各节点的响应。",
-        "assumptions": "节点热容、辐射视因子、表面光学参数和制冷曲线没有由示意外形给出，必须设区间。",
-        "uncertainty": "不能把几何遮蔽等同于实测温度预测；多层薄膜张力、导热路径及真实热姿态需独立验证。"
+        "method": "分别建平台、遮阳板、镜面、近红外仪器和 MIRI 节点，使用 Cᵢ·dTᵢ/dt=ΣGᵢⱼ(Tⱼ−Tᵢ)+ΣQrad,ij+Pᵢ−Qcool,i。NASA 说明中的冷侧约 40 K、MIRI 约 7 K 可作尺度对照，不能当所有节点同时精确等于该温度。对公开降温时序拟合有效热容、接触导热与辐射耦合；MIRI 必须另列主动制冷项，并记录制冷开启事件。",
+        "assumptions": "节点热容、视因子、表面性质和制冷曲线是待估参数。只有终态温度而没有功耗和边界信息时，不能同时识别所有导热与辐射系数；温度四次方必须使用 kelvin。",
+        "uncertainty": "不同参数组合可给出相同稳态。应保留多组可行解，用未参与拟合的降温阶段检验；几何遮蔽图不能直接转换为精确的多层热交换网络。"
       },
       {
         "parameter": "从MAST产品复现一次测量",
@@ -4021,9 +4025,21 @@
       {
         "title": "NASA SVS · 单条折页太阳阵",
         "url": "https://svs.gsfc.nasa.gov/13208"
+      },
+      {
+        "title": "STScI · NIRCam PSF、波长与像元采样",
+        "url": "https://jwst-docs.stsci.edu/jwst-near-infrared-camera/nircam-performance/nircam-point-spread-functions"
+      },
+      {
+        "title": "STPSF · 仪器模型与 OPD 选择",
+        "url": "https://stpsf.readthedocs.io/en/stable/jwst.html"
+      },
+      {
+        "title": "NASA · Webb 冷热端及主动制冷",
+        "url": "https://science.nasa.gov/mission/webb/science-overview/science-explainers/how-does-webb-stay-cold/"
       }
     ],
-    "verifiedOn": "2026-10-25",
+    "verifiedOn": "2026-10-28",
     "year": 2021,
     "country": "美国 / 欧洲 / 加拿大",
     "family": "卫星与空间站",
@@ -4269,10 +4285,10 @@
     ],
     "inference": [
       {
-        "parameter": "等离子体波频率与密度",
-        "method": "在PWS波谱中按论文方法确认接近电子等离子体频率的谱带，再用fp≈8980√ne计算ne（fp单位Hz，ne单位cm⁻³）。比较不同时间窗与谱峰选择，传播频率测量区间为密度区间。",
-        "assumptions": "关系基于电子等离子体频率；必须排除不同波模、干扰和缺测，不能只挑最亮像素。",
-        "uncertainty": "窄带辐射的产生机制与观测灵敏度影响可解释性；未识别谱线时只能给候选密度，不能声称原位直接计数。"
+        "parameter": "从宽带谱线估计电子密度",
+        "method": "先分清数据链：16 通道频谱分析器最快每 4 s 返回一谱；2021 年弱窄带研究使用的是 28,800 samples/s、每段约 48 s 的波形。对波形去除坏段和供电干扰，再做频谱、三天分箱和谱线关联。教学验算：若已确认电子等离子体谱线为 3000 Hz，nₑ=(f/8980)²≈0.111607 cm⁻³；若频率区间为 2980–3020 Hz，对应密度为 0.110123–0.113100 cm⁻³。",
+        "assumptions": "该频率区间是自设例子，未从真实 Voyager 数据提取。真实处理必须保存波形采样率、窗长、频率分辨率、坏段掩膜和谱线判别方法；4 秒产品的时间分辨率不能替代宽带频率分辨率。",
+        "uncertainty": "谱线身份、低信噪比、自动增益和遥测错误会影响推断。论文的噪声基线校正后谱强是相对量，不能当绝对电场强度；插值跨越缺测区间也不是新增观测。"
       },
       {
         "parameter": "电力衰减与负载调度",
@@ -4317,9 +4333,13 @@
       {
         "title": "NASA · Voyager 平台、天线及三台 RTG",
         "url": "https://science.nasa.gov/mission/voyager/spacecraft/"
+      },
+      {
+        "title": "University of Iowa · Voyager PWS Instrument Description",
+        "url": "https://space.physics.uiowa.edu/plasma-wave/plasma-wave/voyager/instdesc.html"
       }
     ],
-    "verifiedOn": "2026-10-25",
+    "verifiedOn": "2026-10-28",
     "year": 1977,
     "country": "美国",
     "family": "深空探测器",
@@ -4480,9 +4500,9 @@
     ],
     "dataProducts": [
       {
-        "name": "NASA Helio Data · Voyager 1 PWS 4秒波谱",
+        "name": "NASA Helio Data · PWS 4 秒频谱产品入口",
         "url": "https://helio.data.nasa.gov/dataset/Voyager1_PWS_ASCII_PT4S",
-        "description": "历史全分辨率频谱分析器数据发现入口；读取频段、缺测、单位和实际覆盖日期，再与论文方法比较。"
+        "description": "16 通道频谱分析器产品发现入口。先读通道频率、带宽和覆盖期；不要把时间采样间隔当作细频谱分辨率。入口正文需 JavaScript，本轮未下载数据。"
       },
       {
         "name": "NASA · Voyager位置与逐项仪器状态",
@@ -4493,6 +4513,16 @@
         "name": "PWS团队 · 星际等离子体波研究",
         "url": "https://space.physics.uiowa.edu/~dag/publications/2021_Persistent_plasma_waves_in_interstellar_space_detected_by_Voyager1_NATURE.pdf",
         "description": "2021年原始研究及数据引用；用于理解谱线识别和密度推断限制，不能把单个亮谱峰自动等同于密度。"
+      },
+      {
+        "name": "2021 弱窄带研究引用的 PDS 数据集 DOI",
+        "url": "https://doi.org/10.17189/1519903",
+        "description": "原论文 Data availability 指向此归档；用于追踪宽带波形及处理说明。本轮从论文核对 DOI，归档落地页未成功打开，尚未下载或复现数据。"
+      },
+      {
+        "name": "University of Iowa · PWS 仪器与两类数据链",
+        "url": "https://space.physics.uiowa.edu/plasma-wave/plasma-wave/voyager/instdesc.html",
+        "description": "区分 16 通道分析器与宽带波形接收机，含采样、定标和数据传输说明。"
       }
     ]
   },
