@@ -50,4 +50,5 @@ assert.equal(resourceAccess(resources.find(x=>x.id==='yamcs')),'open');
 assert.equal(resourceAccess(resources.find(x=>x.id==='ccsds-standards')),'standard');
 assert.equal(resourceAccess(resources.find(x=>x.id==='satnogs')),'data');
 assert.equal(resourceAccess(resources.find(x=>x.id==='ansys-fluent')),'commercial');
+for(const id of ['fun3d','espss','esa-godot'])assert.equal(resourceAccess(resources.find(x=>x.id===id)),'restricted',`${id}: restricted eligibility must appear in the directory filter`);
 console.log(`PASS: ${workflows.length} research workflows, ${workflows.reduce((sum,w)=>sum+w.steps.length,0)} step records, ${references} cross-library references; strict archive validation, non-destructive restore, concurrent edits, storage failures, and source-available license classification.`);

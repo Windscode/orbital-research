@@ -5,11 +5,12 @@
   "physicalScaleKnown": false,
   "review": {
     "id": "hubble",
-    "configuration": "在轨观测构型；孔径门打开，双侧太阳翼展开",
-    "reviewedOn": "2026-10-26",
+    "configuration": "2009 SM4 后的外部硬件示意；第三代刚性太阳翼，非 1990 发射构型。",
+    "reviewedOn": "2026-10-29",
     "changes": [
       "改为开放的光学筒口与铰接孔径门",
-      "增加主次镜、仪器后舱、支撑杆与双天线"
+      "增加主次镜、仪器后舱、支撑杆与双天线",
+      "按第三代刚性太阳翼修订为每翼四块、两翼共八块，外轮廓长宽比约 7.1:2.6；仍不声明真实框架厚度。"
     ],
     "features": [
       {
@@ -29,16 +30,27 @@
         "detail": "外部铝壳与隔热包覆负责环境隔离；内部支架不由外罩直接代替。",
         "partId": "frame",
         "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/"
+      },
+      {
+        "title": "第三代刚性太阳翼",
+        "detail": "按第三代刚性太阳翼修订为每翼四块、两翼共八块，外轮廓长宽比约 7.1:2.6；仍不声明真实框架厚度。",
+        "partId": "solar",
+        "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/electrical-power/"
       }
     ],
     "uncertainties": [
       "太阳阵采用服务任务后常见的刚性面板外观，不复原早期卷式太阳阵。",
-      "镜片曲率、真实光学焦距和光机变形不由该网格表达。"
+      "镜片曲率、真实光学焦距和光机变形不由该网格表达。",
+      "本次只修订公开构型和相对比例；没有恢复精确安装平移、质量分布或时间变化的任务姿态。"
     ],
     "sources": [
       {
         "title": "NASA · Hubble 光学与机械设计",
         "url": "https://science.nasa.gov/mission/hubble/observatory/design/"
+      },
+      {
+        "title": "NASA · Hubble Electrical Power，Solar Arrays / Batteries",
+        "url": "https://science.nasa.gov/mission/hubble/observatory/design/electrical-power/"
       }
     ]
   },
@@ -60,9 +72,9 @@
     {
       "id": "solar",
       "name": "双太阳翼",
-      "description": "提供在轨供电。",
+      "description": "2002 安装的第三代刚性太阳翼，两翼共八块；每翼公开尺寸约 7.1 × 2.6 m，展示保留外形比例，框架厚度为示意。",
       "evidence": "公开结构",
-      "sourceUrl": "https://science.nasa.gov/mission/hubble/overview/about-hubble/"
+      "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/electrical-power/"
     },
     {
       "id": "antenna",

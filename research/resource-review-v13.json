@@ -1,0 +1,56 @@
+{
+  "reviewedOn": "2026-10-29",
+  "scope": "官方数据与输入接口复核；未运行商业或开源外部 CFD",
+  "resources": [
+    "fun3d",
+    "ansys-fluent",
+    "openfoam",
+    "nasa-tmr"
+  ],
+  "sources": [
+    {
+      "title": "TMR · FUN3D 典型 SA 输入",
+      "url": "https://tmbwg.github.io/turbmodels/NACA0012_validation/fun3d.nml_typical_sa_2"
+    },
+    {
+      "title": "TMR · SA 代码对照与边界说明",
+      "url": "https://tmbwg.github.io/turbmodels/naca0012_val_sa.html"
+    },
+    {
+      "title": "NASA FUN3D · 用户说明",
+      "url": "https://fun3d.larc.nasa.gov/chapter-1.html"
+    },
+    {
+      "title": "Ansys 官方课程 · 使用 NASA 网格验证翼型",
+      "url": "https://innovationspace.ansys.com/courses/courses/flow-over-an-airfoil/lessons/exercises-lesson-9-6/topic/airfoil-cfd-validation-using-a-nasa-provided-mesh/"
+    },
+    {
+      "title": "TMR · 工况、几何与实验适用范围",
+      "url": "https://tmbwg.github.io/turbmodels/naca0012_val.html"
+    },
+    {
+      "title": "Foundation v13 · forceCoeffs 接口",
+      "url": "https://cpp.openfoam.org/v13/classFoam_1_1functionObjects_1_1forceCoeffs.html"
+    },
+    {
+      "title": "Foundation v13 · forces 压力与剪切积分",
+      "url": "https://cpp.openfoam.org/v13/forces_8H_source.html"
+    },
+    {
+      "title": "Foundation v13 · 后处理用户指南",
+      "url": "https://doc.cfd.direct/openfoam/user-guide-v13/post-processing-functionality"
+    },
+    {
+      "title": "NASA 官方迁移公告",
+      "url": "https://www.nasa.gov/nasa-turbulence-modeling-resource/"
+    },
+    {
+      "title": "TMR · NACA 0012 SA 结果",
+      "url": "https://tmbwg.github.io/turbmodels/naca0012_val_sa.html"
+    },
+    {
+      "title": "TMR · NACA 0012 数值分析",
+      "url": "https://tmbwg.github.io/turbmodels/naca0012numerics_val.html"
+    }
+  ]
+}

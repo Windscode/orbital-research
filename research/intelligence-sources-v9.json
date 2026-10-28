@@ -2092,5 +2092,49 @@
       "/horizons/",
       "/api/horizons.api"
     ]
+  },
+  {
+    "id": "tmr",
+    "name": "TMBWG / NASA · Turbulence Modeling Resource",
+    "url": "https://tmbwg.github.io/turbmodels/",
+    "type": "软件与数据",
+    "region": [
+      "美国",
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "湍流模型",
+      "CFD 验证",
+      "参考数据",
+      "网格"
+    ],
+    "evidenceRole": "official",
+    "description": "追踪模型方程、更正、公开案例与基准文件；NASA 已确认新站迁至 TMBWG 的 GitHub Pages。",
+    "whatToLookFor": [
+      "模型命名与公式修订、验证网格和数据替换",
+      "工况、代码版本、边界条件以及参考结果的已知误差"
+    ],
+    "queryExamples": [
+      "site:tmbwg.github.io/turbmodels \"Last Updated\" \"SA\"",
+      "site:tmbwg.github.io/turbmodels \"NACA 0012\""
+    ],
+    "checks": [
+      "数据更换须重新记录文件哈希，不能只刷新页面日期",
+      "区分实现验证、物理确认和后处理；不能把参考曲线视作无误差真值"
+    ],
+    "cadence": "每月；正在复算的案例更新时加查",
+    "reviewedOn": "2026-10-29",
+    "accessNote": "公开 HTML 与数据文件；大文件可能另在 NASA 下载页。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "已读 NASA 迁移公告、NACA 工况与 SA 结果页，实际下载 Cp/CLCD/配置文件并复算。"
+    },
+    "matchPrefixes": [
+      "/turbmodels/"
+    ]
   }
 ]

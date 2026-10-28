@@ -1,0 +1,65 @@
+{
+  "id": "naca0012-cfl3d-sa-pressure",
+  "retrieved": "2026-10-29",
+  "files": [
+    {
+      "file": "n0012cp_cfl3d_sa.dat",
+      "bytes": 48082,
+      "sha256": "2f1231eba6a7da0e988a6954ac34f2f420ff59a5e24fca331110f980cd881dd2",
+      "kind": "upstream original"
+    },
+    {
+      "file": "n0012clcd_cfl3d_sa.dat",
+      "bytes": 354,
+      "sha256": "b07afec6ce3ae4bf2f2d1a1d53785fde0a5ca68481a0d4186aa92754d811944e",
+      "kind": "upstream original"
+    },
+    {
+      "file": "n0012_cfl3d_typical_sa.inp",
+      "bytes": 6114,
+      "sha256": "73b82981fee8db4e65a12468896faca4b307ce549145f42a356d27347f713318",
+      "kind": "upstream original"
+    },
+    {
+      "file": "naca0012.json",
+      "bytes": 274065,
+      "sha256": "a29efd1baf86472d83ee9072596ed8376bcba801baf0a9e75e2c5ef80ae2de9a",
+      "kind": "local derivation"
+    },
+    {
+      "file": "pressure-points.csv",
+      "bytes": 82411,
+      "sha256": "34518e652d386309123134e74a2cf181b8735c67cfe8d04d6dc260dc01b9c1eb",
+      "kind": "local derivation"
+    },
+    {
+      "file": "../../repro/naca0012_reference.py",
+      "bytes": 5886,
+      "sha256": "d46c651ac08920acb09978eb1ad8b62392b595d8c789a7bff7503df688ca0603",
+      "kind": "local derivation"
+    }
+  ],
+  "frozenRawFiles": "Retain bytes, including CRLF, if copying to public. Git attributes -text prevents hash changes.",
+  "execution": "Only Python pressure post-processing ran; CFL3D was not executed.",
+  "sources": [
+    {
+      "file": "n0012cp_cfl3d_sa.dat",
+      "url": "https://tmbwg.github.io/turbmodels/NACA0012_validation/n0012cp_cfl3d_sa.dat",
+      "sha256": "2f1231eba6a7da0e988a6954ac34f2f420ff59a5e24fca331110f980cd881dd2",
+      "bytes": 48082
+    },
+    {
+      "file": "n0012clcd_cfl3d_sa.dat",
+      "url": "https://tmbwg.github.io/turbmodels/NACA0012_validation/n0012clcd_cfl3d_sa.dat",
+      "sha256": "b07afec6ce3ae4bf2f2d1a1d53785fde0a5ca68481a0d4186aa92754d811944e",
+      "bytes": 354
+    },
+    {
+      "file": "n0012_cfl3d_typical_sa.inp",
+      "url": "https://tmbwg.github.io/turbmodels/NACA0012_validation/n0012_cfl3d_typical_sa.inp",
+      "sha256": "73b82981fee8db4e65a12468896faca4b307ce549145f42a356d27347f713318",
+      "bytes": 6114
+    }
+  ],
+  "note": "脚本位于 repro/；将两个 DAT 与脚本下载到同一文件夹后运行。y/c 为按文档公式重建的派生字段。"
+}

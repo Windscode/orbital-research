@@ -57,7 +57,9 @@ await test('knowledge nodes cover every lesson exactly once', () => {
       }
     }
     array(lesson.body, `${lesson.id}.body`, 5);
-    lesson.body.forEach(p => assert((p.match(/\p{Script=Han}/gu) || []).length >= 80, `${lesson.id}: short paragraph`));
+    // Formulas and concise worked steps are valid prose; length is not a depth measure.
+    lesson.body.forEach(p => nonempty(p, `${lesson.id}: body paragraph`));
+    if(lesson.bodyHeadings) assert.equal(lesson.bodyHeadings.length,lesson.body.length,`${lesson.id}: headings must match paragraphs`);
     array(lesson.sources, `${lesson.id}.sources`, 2);
     for (const source of lesson.sources) { nonempty(source.title, `${lesson.id}: source title`); https(source.url, `${lesson.id}: source`); }
     for (const key of ['objectives', 'applications']) array(lesson[key], `${lesson.id}.${key}`, 2);

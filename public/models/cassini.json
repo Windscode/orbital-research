@@ -5,11 +5,12 @@
   "physicalScaleKnown": false,
   "review": {
     "id": "cassini",
-    "configuration": "Cassini–Huygens 分离前组合体",
-    "reviewedOn": "2026-10-26",
+    "configuration": "Huygens 分离前组合体，MAG 臂展开；任务 X/Y/Z 对应展示 −x/−z/−y。",
+    "reviewedOn": "2026-10-29",
     "changes": [
       "增加高柱状平台、顶置天线与底部三台 RTG",
-      "Huygens 放在平台侧面，保留遥感托盘和外伸磁强计臂"
+      "Huygens 放在平台侧面，保留遥感托盘和外伸磁强计臂",
+      "按 NAIF 任务坐标修正 NAC/WAC 镜筒视轴，增加 +z 光学口；相机与 HGA 约正交。以 HGA 4 m 为局部比例参照，把 MAG 臂改为约 11 m 对应长度，Huygens 直径改为约 2.7 m 对应比例。"
     ],
     "features": [
       {
@@ -29,16 +30,35 @@
         "detail": "高增益天线位于平台上方，侧部遥感设备与外伸科学臂独立。",
         "partId": "antenna",
         "sourceUrl": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+      },
+      {
+        "title": "相机视轴与磁强计臂",
+        "detail": "按 NAIF 任务坐标修正 NAC/WAC 镜筒视轴，增加 +z 光学口；相机与 HGA 约正交。以 HGA 4 m 为局部比例参照，把 MAG 臂改为约 11 m 对应长度，Huygens 直径改为约 2.7 m 对应比例。",
+        "partId": "instruments",
+        "sourceUrl": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/fk/cas_v43.tf"
       }
     ],
     "uncertainties": [
       "本组合不代表 Huygens 分离后的 Cassini 外观。",
-      "仪器托盘、热控百叶与两个主发动机的包络均是简化形状。"
+      "仪器托盘、热控百叶与两个主发动机的包络均是简化形状。",
+      "本次只修订公开构型和相对比例；没有恢复精确安装平移、质量分布或时间变化的任务姿态。"
     ],
     "sources": [
       {
         "title": "NASA · Cassini 轨道器与 Huygens",
         "url": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+      },
+      {
+        "title": "NASA NAIF · Cassini Frame Kernel cas_v43.tf，2024-01-31",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/fk/cas_v43.tf"
+      },
+      {
+        "title": "NASA NAIF · Cassini ISS Instrument Kernel cas_iss_v10.ti",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/ik/cas_iss_v10.ti"
+      },
+      {
+        "title": "NASA/JPL · Cassini–Huygens Spacecraft 图解，JPL 400-856A，1999",
+        "url": "https://science.nasa.gov/wp-content/uploads/2023/09/spacecraft.pdf"
       }
     ]
   },
@@ -81,9 +101,9 @@
     {
       "id": "instruments",
       "name": "土星科学载荷",
-      "description": "开展遥感及空间环境测量。",
+      "description": "ISS 双相机安装于遥感托盘，名义视轴沿任务 −Y，约正交于 HGA 的 −Z；MAG 臂沿 +Y 展开。展示坐标映射见构型记录。",
       "evidence": "公开结构",
-      "sourceUrl": "https://science.nasa.gov/mission/cassini/quick-facts/"
+      "sourceUrl": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/fk/cas_v43.tf"
     }
   ]
 }

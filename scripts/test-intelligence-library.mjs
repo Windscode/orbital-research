@@ -11,7 +11,7 @@ for(const s of sources){
  for(const key of ['region','language','topics','whatToLookFor','queryExamples','checks'])assert.ok(Array.isArray(s[key])&&s[key].length>0&&s[key].every(x=>typeof x==='string'&&x.trim()),`${s.id}.${key}`);
  assert.ok(['official','research','release','reporting','index'].includes(s.evidenceRole));assert.ok(['active','archive','review'].includes(s.status));
  assert.ok(['page-read','search-result','access-limited'].includes(s.verification.method));assert.ok(s.verification.note.length>10);verification[s.verification.method]=(verification[s.verification.method]||0)+1;
- assert.match(s.reviewedOn,/^\d{4}-\d{2}-\d{2}$/);assert.ok(s.reviewedOn<='2026-10-28');
+ assert.match(s.reviewedOn,/^\d{4}-\d{2}-\d{2}$/);assert.ok(s.reviewedOn<='2026-10-29');
  for(const key of ['feedUrl','searchUrl'])if(s[key])assert.equal(new URL(s[key]).protocol,'https:');
 }
 assert.equal(new Set(sources.map(s=>s.type)).size,5);assert.ok(sources.length>=47);

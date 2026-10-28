@@ -7,3 +7,4 @@
 
 # Frozen scientific files: preserve bytes for published SHA-256 checks.
 /public/data/mro-2024/* -text -whitespace
+/public/data/naca0012/* -text -whitespace

@@ -6,7 +6,7 @@ import path from 'node:path';
 // This checks the published content contract. It does not claim live-link or
 // scientific peer review: the primary sources and numerical checks are separate.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const snapshot = process.env.CONTENT_AS_OF || '2026-10-28';
+const snapshot = process.env.CONTENT_AS_OF || '2026-10-29';
 const data = Object.fromEntries(await Promise.all(['library', 'learning', 'vehicles', 'briefings', 'project-audit'].map(async name => [name, JSON.parse(await readFile(path.join(root, 'research', `${name}.json`), 'utf8'))])));
 const ids = new Set();
 const urls = new Set();

@@ -1,0 +1,69 @@
+{
+  "version": "13.0.0",
+  "date": "2026-10-29",
+  "scope": "目录可用性与内容深度审查，公开气动数据后处理，选定知识、工具、历史任务与模型修订。",
+  "reviewed": {
+    "inventory": {
+      "lessons": 59,
+      "resources": 89,
+      "vehicles": 56,
+      "briefings": 30,
+      "sources": 53
+    },
+    "deepLessons": [
+      "attitude-kinematics",
+      "attitude-control",
+      "electric-propulsion",
+      "structural-dynamics"
+    ],
+    "deepResources": [
+      "fun3d",
+      "ansys-fluent",
+      "openfoam",
+      "nasa-tmr"
+    ],
+    "deepVehicles": [
+      "apollo-csm",
+      "hubble",
+      "cassini"
+    ],
+    "geometryChanges": [
+      "Cassini ISS 名义光轴、光学口遮挡、MAG 臂和 Huygens 比例",
+      "Hubble 第三代刚性太阳翼两翼共八片及长宽比例"
+    ],
+    "dataStudy": "NASA Langley CFL3D / SA 的 NACA 0012 压力数据：三个迎角，各 513 点；公开结果后处理，未运行新 CFD。",
+    "project": "基于已提交实现的共同安装参考系与独立材料温度场说明。"
+  },
+  "validation": {
+    "numerical": [
+      "1539 行压力数据与原始文件逐行一致，发布文件与清单 SHA-256 一致。",
+      "三工况乘七档采样的网页算法与独立 Python 分表面积分对照；闭合轮廓常量压力净力为零，压力偏移不改净力，点序反转同步改变积分方向。",
+      "两自由度静态模态解与 K 逆矩阵直接解对照；质量参与度 100% 但漏算局部内力的反例。",
+      "Apollo 11 同一分离事件的单位转换、质量和重心组合、平行轴项与报告对角惯量对照。"
+    ],
+    "browser": [
+      "390、768、1440 宽度抽查；手机数据表保留内部横向滚动，页面不产生横向溢出。",
+      "实际操作研究类型与搜索、压力迎角和采样、逐面元键盘控制、结构载荷和模态、Apollo 平行轴项、工具深度与许可筛选。",
+      "检查个人项目专题、新增关系图，以及 Cassini/Hubble 的方向视图和对应部件说明。",
+      "实际下载压力 DAT、总力 DAT 和 Python 后，在下载目录独立复算三个工况。",
+      "实际导出的计算 JSON 保留工况、坐标、原文件哈希、派生几何说明及当前采样结果。"
+    ],
+    "models": "56 个模型检查构型记录、导出内容、部件和视图边界；另检查 Cassini 光轴及光学口不被设备盒遮挡、Hubble 八块太阳板。",
+    "accessClassification": "FUN3D 按官方发行说明改为申请与受限使用；ESPSS/GODOT 的标签匹配已有资格文字，保留原资料核查日期。后两者本轮访问超时/受限，未声称重新核实全部条款。",
+    "contentCheckChange": "取消每段至少 80 个汉字的长度门槛，保留正文非空及章节匹配检查；字数不是专业深度的验证方法，新增可计算内容由数值对照单独检查。",
+    "site": "npm test、TypeScript/Vite 生产构建和初始包体积检查通过；初始 JS 415952 bytes，gzip 约 135.7 kB。三维引擎和完整目录按需加载。"
+  },
+  "knownGaps": {
+    "resourcesWithoutStarterWorkflow": 39,
+    "vehiclesWithoutDataProducts": 35,
+    "vehiclesWithGenericMassPreparation": 31,
+    "limits": [
+      "全目录结构检查不等于逐条科学复核；未改写条目仍保持原日期。",
+      "NACA 压力文件没有原始 y/c，几何按旧验证网格公式重建；公开 x/c 已舍入，不能声明精确重建全部网格节点。",
+      "压力积分没有包含剪切，总阻力差不能单独解释为计算得到的摩擦阻力；采样抽稀不是 CFD 网格收敛。",
+      "未运行本地 CFL3D、FUN3D、Fluent、OpenFOAM、Basilisk 或新的 UE 仿真。",
+      "Cassini、Hubble 仍为来源约束下的结构示意，内部尺寸、完整装配和制造公差未得到逐项公开图纸约束。",
+      "Hubble JIT 示例与 Cassini 核文件读取方法来自公开说明，本轮未建立实际观测数据处理管线。"
+    ]
+  }
+}

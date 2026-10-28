@@ -124,7 +124,7 @@ export function buildSpacecraftModel(c:ModelBuilderContext):boolean {
   } else if(id==='hubble'){
     const b=part('body');mesh(b,new THREE.CylinderGeometry(.69,.69,3.65,48,1,true),SILVER,[0,.4,0],true);cyl(b,.9,1.2,[0,-1.95,0],SILVER);for(const y of [-1.4,-.7,.3,1.3,2.22])ringAt(b,.7,[0,y,0]);const lid=cyl(b,.7,.045,[0,2.5,-.78],SILVER);lid.rotation.x=-.65;rod(b,[-.3,2.22,-.6],[-.3,2.6,-1],.025);rod(b,[.3,2.22,-.6],[.3,2.6,-1],.025);
     const ins=part('instruments');cyl(ins,.62,.07,[0,-1.14,0],GLASS);cyl(ins,.14,.08,[0,1.7,0],SILVER);for(let i=0;i<4;i++){const a=i*Math.PI/2;rod(ins,[Math.cos(a)*.64,1.72,Math.sin(a)*.64],[0,1.72,0],.012);}for(const x of [-.35,.35])bay(ins,[x,-1.9,0],[.5,.7,.55]);
-    const sol=part('solar');for(const s of [-1,1])wing(sol,s,-.8,2,1.3,1.3,1.05);
+    const sol=part('solar');for(const s of [-1,1])wing(sol,s,-.8,4,.8875,1.3,1.05);
     const ant=part('antenna');for(const s of [-1,1]){rod(ant,[0,-1.4,s*.8],[0,-.8,s*1.25],.035);dish(ant,[0,-.7,s*1.3],.32,[0,.2,s],WHITE);}
     const av=part('avionics');for(let i=0;i<4;i++){const a=i*Math.PI/2;bay(av,[Math.cos(a)*.55,-2.25,Math.sin(a)*.55],[.35,.3,.3]);}
     const f=part('frame');for(let i=0;i<4;i++){const a=i*Math.PI/2;rod(f,[Math.cos(a)*.6,-1.2,Math.sin(a)*.6],[Math.cos(a)*.6,1.8,Math.sin(a)*.6],.024,DARK,false);}
@@ -139,8 +139,8 @@ export function buildSpacecraftModel(c:ModelBuilderContext):boolean {
     const b=part('body');drum(b,.67,2.8,[0,0,0],12,GOLD);for(const y of [-1,.2,1.1])ringAt(b,.7,[0,y,0]);dish(part('antenna'),[0,1.55,0],1.2,[0,1,0],WHITE);
     const svc=part('service');for(let i=0;i<3;i++){const a=i*Math.PI*2/3;const p:Point3=[Math.cos(a)*.95,-1.2,Math.sin(a)*.95];rod(svc,[Math.cos(a)*.6,-1,Math.sin(a)*.6],p,.035);rtg(svc,p,.8,.18);}
     const prop=part('propulsion');for(const x of [-.2,.2])engine(prop,.23,-1.45,x);for(const x of [-.3,.3])bottle(prop,[x,-.5,0],.22,1.2);
-    const payload=part('payload');const h=mesh(payload,new THREE.CylinderGeometry(.65,.5,.3,36),COPPER,[.95,-.25,0],true);h.rotation.z=Math.PI/2;const cap=sphere(payload,.65,[1.11,-.25,0],GOLD,true);cap.scale.set(.15,1,1);rod(payload,[.55,-.6,0],[.95,-.25,0],.05);
-    const ins=part('instruments');rod(ins,[.1,.7,-.6],[.1,.7,-4.1],.016);joint(ins,[.1,.7,-4.1],.08);box(ins,[.45,.5,.5],[-.85,.55,0],DARK,true);for(const y of [.35,.7]){const cam=cyl(ins,.13,.4,[-1.1,y,0],BLACK);cam.rotation.z=Math.PI/2;}for(const s of [-1,1])rod(ins,[0,-.2,.6],[s*1.7,-.4,2.5],.012);
+    const payload=part('payload');const h=mesh(payload,new THREE.CylinderGeometry(.81,.63,.3,36),COPPER,[.95,-.25,0],true);h.rotation.z=Math.PI/2;const cap=sphere(payload,.81,[1.11,-.25,0],GOLD,true);cap.scale.set(.15,1,1);rod(payload,[.55,-.6,0],[.95,-.25,0],.05);
+    const ins=part('instruments');rod(ins,[.1,.7,-.6],[.1,.7,-7.2],.016);joint(ins,[.1,.7,-7.2],.08);const issHousing=box(ins,[.45,.5,.5],[-.85,.55,0],DARK,true);issHousing.name='iss-electronics-housing';for(const y of [.35,.7]){const cam=cyl(ins,.13,.4,[-1.1,y,.35],BLACK);cam.rotation.x=Math.PI/2;cam.name=y===.35?'iss-nac-barrel':'iss-wac-barrel';const lens=cyl(ins,.095,.02,[-1.1,y,.56],GLASS);lens.rotation.x=Math.PI/2;lens.name=y===.35?'iss-nac-aperture':'iss-wac-aperture';}for(const s of [-1,1])rod(ins,[0,-.2,.6],[s*1.7,-.4,2.5],.012);
   } else if(id==='galileo'){
     const b=part('body');drum(b,.67,1,[0,.25,0],12,GOLD);cyl(b,.48,1,[0,-.75,0],BLACK);ringAt(b,.5,[0,-.3,0]);
     const ant=part('antenna');cyl(ant,.25,.3,[0,1,0],SILVER);for(let i=0;i<18;i++){const a=i*Math.PI/9;const radius=[8,9,10].includes(i)?.22:.56;rod(ant,[Math.sin(a)*.22,.92,Math.cos(a)*.22],[Math.sin(a)*radius,2.15,Math.cos(a)*radius],.012,GOLD);}cyl(ant,.6,.035,[0,.86,0],WHITE);rod(ant,[0,2.1,0],[0,2.65,0],.018);joint(ant,[0,2.65,0],.05);

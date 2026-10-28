@@ -1,5 +1,5 @@
 {
-  "generatedOn": "2026-10-26",
+  "generatedOn": "2026-10-29",
   "count": 56,
   "models": [
     {
@@ -114,7 +114,7 @@
       "file": "/models/sls-block-1.glb",
       "preview": "/models/sls-block-1.webp",
       "record": "/models/sls-block-1.json",
-      "bytes": 2319116,
+      "bytes": 2319332,
       "groups": [
         "stage-1",
         "engine",
@@ -151,6 +151,10 @@
         {
           "title": "NASA · SLS Reference Guide 2022",
           "url": "https://www.nasa.gov/wp-content/uploads/2022/03/sls-reference-guide-2022-v2-508-0.pdf"
+        },
+        {
+          "title": "NASA / AAS 25-122 · SLS 助推器分离动力学、间隙及 Artemis I 对照",
+          "url": "https://ntrs.nasa.gov/api/citations/20240016417/downloads/AAS_GNC_2025_SLS_Booster_Separation_1.pdf?attachment=true"
         }
       ],
       "classification": "研究示意模型，非制造CAD"
@@ -318,7 +322,7 @@
       "file": "/models/apollo-csm.glb",
       "preview": "/models/apollo-csm.webp",
       "record": "/models/apollo-csm.json",
-      "bytes": 726964,
+      "bytes": 727164,
       "groups": [
         "crew",
         "heatshield",
@@ -329,12 +333,12 @@
       ],
       "sources": [
         {
-          "title": "官方任务 / 技术资料 · Apollo CSM · 阿波罗指令服务舱",
-          "url": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+          "title": "NASA · Apollo 11 Mission Report，1969-11；§A.6、表 A-I、表 7-V/7-VI",
+          "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_MissionReport.pdf"
         },
         {
-          "title": "官方历史 / 结构补充 · Apollo CSM · 阿波罗指令服务舱",
-          "url": "https://science.nasa.gov/resource/apollo-11-command-and-service-modules/"
+          "title": "NASA · Apollo 11 Press Kit，1969-07-06，印刷第 86–93 页",
+          "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf"
         }
       ],
       "classification": "研究示意模型，非制造CAD"
@@ -571,7 +575,7 @@
       "file": "/models/hubble.glb",
       "preview": "/models/hubble.webp",
       "record": "/models/hubble.json",
-      "bytes": 758584,
+      "bytes": 1110968,
       "groups": [
         "body",
         "instruments",
@@ -588,6 +592,30 @@
         {
           "title": "官方历史 / 结构补充 · Hubble · 哈勃空间望远镜",
           "url": "https://science.nasa.gov/mission/hubble/observatory/design/"
+        },
+        {
+          "title": "STScI · HST Data Handbook §5.1 Observation Log Files",
+          "url": "https://hst-docs.stsci.edu/hstdhb/5-observation-logs/5-1-observation-log-files"
+        },
+        {
+          "title": "STScI · HST Data Handbook §5.2 Using Observation Logs",
+          "url": "https://hst-docs.stsci.edu/hstdhb/5-observation-logs/5-2-using-observation-logs"
+        },
+        {
+          "title": "NASA · Hubble Electrical Power，Solar Arrays / Batteries",
+          "url": "https://science.nasa.gov/mission/hubble/observatory/design/electrical-power/"
+        },
+        {
+          "title": "STScI · HST Primer，SM4 后配置与 U/V 坐标",
+          "url": "https://jwst-docs.stsci.edu/archives/hspcycle29/the-hubble-space-telescope-primer-for-cycle-29/hst-primer-system-overview"
+        },
+        {
+          "title": "NASA · Hubble Pointing Control，Actuators",
+          "url": "https://science.nasa.gov/mission/hubble/observatory/design/pointing-control/"
+        },
+        {
+          "title": "NASA · Hubble Instruments",
+          "url": "https://science.nasa.gov/mission/hubble/observatory/design/instruments/"
         }
       ],
       "classification": "研究示意模型，非制造CAD"
@@ -599,7 +627,7 @@
       "file": "/models/jwst.glb",
       "preview": "/models/jwst.webp",
       "record": "/models/jwst.json",
-      "bytes": 411088,
+      "bytes": 411516,
       "groups": [
         "instruments",
         "frame",
@@ -648,6 +676,18 @@
         {
           "title": "NASA SVS · 单条折页太阳阵",
           "url": "https://svs.gsfc.nasa.gov/13208"
+        },
+        {
+          "title": "STScI · NIRCam PSF、波长与像元采样",
+          "url": "https://jwst-docs.stsci.edu/jwst-near-infrared-camera/nircam-performance/nircam-point-spread-functions"
+        },
+        {
+          "title": "STPSF · 仪器模型与 OPD 选择",
+          "url": "https://stpsf.readthedocs.io/en/stable/jwst.html"
+        },
+        {
+          "title": "NASA · Webb 冷热端及主动制冷",
+          "url": "https://science.nasa.gov/mission/webb/science-overview/science-explainers/how-does-webb-stay-cold/"
         }
       ],
       "classification": "研究示意模型，非制造CAD"
@@ -659,7 +699,7 @@
       "file": "/models/voyager-1.glb",
       "preview": "/models/voyager-1.webp",
       "record": "/models/voyager-1.json",
-      "bytes": 482196,
+      "bytes": 482352,
       "groups": [
         "body",
         "antenna",
@@ -692,6 +732,10 @@
         {
           "title": "NASA · Voyager 平台、天线及三台 RTG",
           "url": "https://science.nasa.gov/mission/voyager/spacecraft/"
+        },
+        {
+          "title": "University of Iowa · Voyager PWS Instrument Description",
+          "url": "https://space.physics.uiowa.edu/plasma-wave/plasma-wave/voyager/instdesc.html"
         }
       ],
       "classification": "研究示意模型，非制造CAD"
@@ -703,7 +747,7 @@
       "file": "/models/cassini.glb",
       "preview": "/models/cassini.webp",
       "record": "/models/cassini.json",
-      "bytes": 760976,
+      "bytes": 787568,
       "groups": [
         "body",
         "antenna",
@@ -720,6 +764,34 @@
         {
           "title": "官方历史 / 结构补充 · Cassini–Huygens · 卡西尼—惠更斯",
           "url": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+        },
+        {
+          "title": "NASA PDS Ring-Moon Systems Node · Cassini ISS 数据获取",
+          "url": "https://pds-rings.seti.org/cassini/iss/access.html"
+        },
+        {
+          "title": "CICLOPS / NASA PDS · ISS Data User’s Guide，2018-09-16",
+          "url": "https://pds-rings.seti.org/holdings/volumes/COISS_0xxx/COISS_0011/document/iss_data_user_guide_180916.pdf"
+        },
+        {
+          "title": "CICLOPS / NASA PDS · ISS Data User’s Guide，2012-07-03，时间和探测器定义",
+          "url": "https://pds-rings.seti.org/cassini/iss/ISS_Data_User_Guide_120703.pdf"
+        },
+        {
+          "title": "NASA PDS · Cassini ISS VICAR Data File SIS，属性定义",
+          "url": "https://pds-rings.seti.org/cassini/iss/COISS_0011_DOCUMENT/report/iss/navcontent/appd/699-414.htm"
+        },
+        {
+          "title": "NASA NAIF · Cassini ISS Instrument Kernel cas_iss_v10.ti",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/ik/cas_iss_v10.ti"
+        },
+        {
+          "title": "NASA NAIF · Cassini Frame Kernel cas_v43.tf，2024-01-31",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/fk/cas_v43.tf"
+        },
+        {
+          "title": "NASA/JPL · Cassini–Huygens Spacecraft 图解，JPL 400-856A，1999",
+          "url": "https://science.nasa.gov/wp-content/uploads/2023/09/spacecraft.pdf"
         }
       ],
       "classification": "研究示意模型，非制造CAD"
@@ -1340,7 +1412,7 @@
       "file": "/models/change-5.glb",
       "preview": "/models/change-5.webp",
       "record": "/models/change-5.json",
-      "bytes": 438748,
+      "bytes": 439408,
       "groups": [
         "body",
         "legs",
@@ -1370,6 +1442,22 @@
         {
           "title": "国资委 · 嫦娥五号机构释放与任务阶段",
           "url": "https://wap.sasac.gov.cn/n2588025/n2641616/c16253063/content.html"
+        },
+        {
+          "title": "国家航天局 · 第一批月球样品信息和科学探测数据上线发布（2021-04-13）",
+          "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6811507/content.html"
+        },
+        {
+          "title": "中国科学院国家天文台 · 地面应用系统与嫦娥五号载荷",
+          "url": "https://www.nao.cas.cn/news/zh/202011/t20201124_6407067.html"
+        },
+        {
+          "title": "Zhang et al. (2025) · Increased small impactor flux on the Moon as inferred from regolith thickness at the Chang’E-5 Region",
+          "url": "https://www.nature.com/articles/s41467-025-67402-3"
+        },
+        {
+          "title": "Zhang et al. · 论文配套数据 v1, Zenodo 17529967（2025-11-05）",
+          "url": "https://zenodo.org/records/17529967"
         }
       ],
       "classification": "研究示意模型，非制造CAD"

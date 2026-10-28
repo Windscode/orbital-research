@@ -6,6 +6,21 @@ const {initialModelView,partVisible,updateSectionPlane,orthographicFrame,directi
 const {buildVehicleModel}=loadTypeScript('src/modelGeometry.ts');
 const vehicles=JSON.parse(await readFile('research/vehicles.json','utf8'));
 const profiles=JSON.parse(await readFile('research/model-research-v8.json','utf8'));
+// The revised Cassini ISS barrels must look across, not along the HGA axis.
+const cassiniReview=buildVehicleModel(vehicles.find(v=>v.id==='cassini'),new THREE.Plane(new THREE.Vector3(-1,0,0),0));
+for(const name of ['iss-nac-barrel','iss-wac-barrel']){
+ const barrel=cassiniReview.meshes.find(m=>m.name===name);assert(barrel,`${name}: missing named camera`);
+ const axis=new THREE.Vector3(0,1,0).applyQuaternion(barrel.quaternion);assert(axis.distanceTo(new THREE.Vector3(0,0,1))<1e-12,`${name}: incorrect mapped boresight`);
+}
+const issHousing=cassiniReview.meshes.find(m=>m.name==='iss-electronics-housing');assert(issHousing);
+const housingBounds=new THREE.Box3().setFromObject(issHousing);
+for(const name of ['iss-nac-aperture','iss-wac-aperture']){
+ const lens=cassiniReview.meshes.find(m=>m.name===name);assert(lens);
+ assert(new THREE.Box3().setFromObject(lens).min.z>housingBounds.max.z,`${name}: housing blocks the optical aperture`);
+}
+const hubbleReview=buildVehicleModel(vehicles.find(v=>v.id==='hubble'),new THREE.Plane(new THREE.Vector3(-1,0,0),0));
+assert.equal(hubbleReview.meshes.filter(m=>m.name==='photovoltaic-panel').length,8,'Hubble SA3 requires eight panel schematics');
+for(const built of [cassiniReview,hubbleReview]){built.meshes.forEach(m=>m.geometry.dispose());built.materials.forEach(m=>m.dispose());}
 assert.equal(profiles.length,vehicles.length);assert.equal(new Set(profiles.map(x=>x.id)).size,vehicles.length);
 let projections=0,features=0;
 for(const vehicle of vehicles){

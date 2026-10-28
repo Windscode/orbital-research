@@ -2070,7 +2070,7 @@
     "organization": "NASA · North American Aviation",
     "type": "地月载人飞船 · 指令舱与服务舱",
     "status": "历史任务档案 · 以所引资料版本为准",
-    "summary": "阿波罗指令服务舱将可返回的乘员舱与在轨推进、能源及消耗品供应分离，形成地月任务的核心运输平台。研究时需要区分组合飞行、与登月舱对接、独立月球轨道运行及抛弃服务舱后的再入阶段，每次事件都会改变质量与控制边界。",
+    "summary": "以 Apollo 11 的 CSM-107 为具体研究对象：公开任务报告包含机动时序、分阶段质量、重心和惯量，可以直接检查组合体与分离后的关系。这里把轨道机动、舱段分离和再入构型分别记录，区分实际任务数据、飞行前公报与网站的结构示意。",
     "dimensions": [
       {
         "label": "指令舱直径",
@@ -2085,38 +2085,54 @@
     ],
     "publicData": [
       {
-        "parameter": "主要舱段",
-        "value": "指令舱 CM + 服务舱 SM",
-        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+        "parameter": "本页数值研究构型",
+        "value": "Apollo 11 的 CSM-107；质量与惯量按任务事件分别取表 A-I，不代表所有 Apollo CSM。",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_MissionReport.pdf"
       },
       {
-        "parameter": "乘员",
-        "value": "月球任务 3 人",
-        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+        "parameter": "CM/SM 分离前总质量",
+        "value": "26,656.5 lb = 12,091.185 kg；飞行后消耗品核算条件。",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_MissionReport.pdf"
       },
       {
-        "parameter": "返回地球部分",
-        "value": "指令舱",
-        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+        "parameter": "分离后两舱质量",
+        "value": "CM 12,107.4 lb；SM 14,549.1 lb；两者之和与分离前相符。",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_MissionReport.pdf"
       },
       {
-        "parameter": "任务照片证据",
-        "value": "Apollo 11 CSM 在 1969 年月球轨道运行",
-        "sourceUrl": "https://science.nasa.gov/resource/apollo-11-command-and-service-modules/"
+        "parameter": "CM/SM 分离前对角惯量",
+        "value": "Ixx / Iyy / Izz = 15,406 / 49,739 / 51,338 slug·ft²；不能把 slug·ft² 当作 kg·m²。",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_MissionReport.pdf"
+      },
+      {
+        "parameter": "月球入轨主机动",
+        "value": "任务经过时间 75:49:50.4 点火；持续 357.5 s；表列速度变化 2917.5 ft/s = 889.254 m/s。",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_MissionReport.pdf"
+      },
+      {
+        "parameter": "服务舱姿控",
+        "value": "四组 SM RCS，每组四台推力器，组间相隔 90°；CM 有独立再入姿控系统。",
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf"
       }
     ],
     "inference": [
       {
-        "parameter": "组合体质量状态与机动 · 简化动力学",
-        "method": "建立独立 CSM、CSM/LM 对接、服务舱分离后三种配置，用同一脉冲或有限推力指令比较速度增量与姿态响应。每个配置独立维护质量、惯量、推力作用点与参考坐标。",
-        "assumptions": "先固定本条目的任务阶段和构型，以公开几何及事件作为边界；未公开的质量分配、惯量和控制参数设为待估区间，不作为厂家实测值。",
-        "uncertainty": "外形与任务结果不能唯一识别内部参数。模型须记录初值、单位、坐标系与数据版本，并用未参与拟合的资料检验。"
+        "parameter": "用公开质量表重构 CM/SM 分离前状态",
+        "method": "取表 A-I 同一“Command & service module separation”事件：CM 为 12107.4 lb、r=(1040.4,−0.2,6.0) in；SM 为 14549.1 lb、r=(896.1,0.1,7.2) in。按 rG=Σmᵢrᵢ/Σmᵢ 得 (961.6412,−0.0363,6.6550) in，与表列 (961.6,0.0,6.7) in 的显示精度相容。该坐标是 Apollo 站位坐标，不能解释为距舱中心 24 m 的物理悬臂。",
+        "assumptions": "本算例只复核公开表的组合关系；保持原 X_A/Y_A/Z_A 共同方向和站位原点。1 lb 转质量取 0.45359237 kg，1 in=0.0254 m。",
+        "uncertainty": "报告说明舱体质量与重心在飞行前测量，消耗品按飞行后分析更新，惯量则由计算获得；不能把全表统称在轨直接测量。"
       },
       {
-        "parameter": "部件质量与姿态耦合 · 工程示意",
-        "method": "依据本页结构分解为指令舱 CM、服务舱 SM、服务推进系统、指令舱热盾等子系统，给出各自质量和安装位置的区间。通过质量加权位置与平行轴定理构造重心、惯量；分别改变部件质量和展开状态，对姿态响应与任务约束做敏感性分析。",
-        "assumptions": "采用刚体与集总部件近似；只有来源明确的部件功能标作公开结构，内部布置和材料厚度按工程示意处理。",
-        "uncertainty": "结果属于可复算的研究先验；缺少质量账本、柔性模态或热参数时，不能声称还原真实飞行器。"
+        "parameter": "平行轴定理核对组合体惯量",
+        "method": "同表给 CM 对角惯量 (6260,5470,4995)，SM 为 (9143,14540,16616)，单位均为 slug·ft²。先乘 1.3558179483314 转为 kg·m²，再对每轴加 mᵢ(d²−d_axis²)。以两舱加权重心计算，组合结果为 (20886.623,67399.744,69567.798) kg·m²；对应表值 (20887.731,67437.029,69604.982)，差异约 −0.0053%、−0.0553%、−0.0534%。",
+        "assumptions": "只比较相同方向的三条对角元素；原始重心只给到 0.1 in，惯量为整数。两舱作为刚体，其内部构型沿用表中分离事件。",
+        "uncertainty": "近似闭合是表内一致性检查，不是对真实姿态响应的验证。完整六自由度还需要确认惯性积符号、参考点、坐标变换、消耗品迁移与外部力矩；本算例没有据外形生成这些缺失参数。"
+      },
+      {
+        "parameter": "按机动表区分有限推力段与瞬时脉冲",
+        "method": "表 7-V 的 Apollo 11 月球入轨为 357.5 s、889.254 m/s；二者相除得 2.48742 m/s²，仅是表列速度增量除时长。先用它核对单位和事件边界，再以点火/关机状态、随时间质量和推力方向建立有限推力传播；不能把这一均值放进任意方向恒加速度，便声称复现实际入轨。",
+        "assumptions": "数据属于 CSM 与 LM 对接时的 Apollo 11 机动；月球重力仍在点火期间作用。任务经过时间从发射起算，不是 UTC 时刻。",
+        "uncertainty": "表 7-V 的“velocity change”、导航系统沿轴累计量、起止惯性速度矢量之差不是同一个观测量。现有网页没有全部推力/姿态历史，暂不提供所谓飞行拟合结果。"
       }
     ],
     "limitations": [
@@ -2125,15 +2141,15 @@
     ],
     "sources": [
       {
-        "title": "官方任务 / 技术资料 · Apollo CSM · 阿波罗指令服务舱",
-        "url": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+        "title": "NASA · Apollo 11 Mission Report，1969-11；§A.6、表 A-I、表 7-V/7-VI",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_MissionReport.pdf"
       },
       {
-        "title": "官方历史 / 结构补充 · Apollo CSM · 阿波罗指令服务舱",
-        "url": "https://science.nasa.gov/resource/apollo-11-command-and-service-modules/"
+        "title": "NASA · Apollo 11 Press Kit，1969-07-06，印刷第 86–93 页",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf"
       }
     ],
-    "verifiedOn": "2026-10-25",
+    "verifiedOn": "2026-10-29",
     "year": 1968,
     "country": "美国",
     "family": "载人飞船",
@@ -2146,39 +2162,39 @@
     "systems": [
       {
         "name": "指令舱 CM",
-        "function": "容纳乘员，并作为地球再入返回舱。",
+        "function": "外层热防护包覆压力壳。前舱含地球着陆系统，乘员舱容纳三人及操纵显示，后舱布置姿控与储罐；只显示功能分区，不从照片推断壁厚。",
         "evidence": "公开结构",
-        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf"
       },
       {
         "name": "服务舱 SM",
-        "function": "承载推进、供电和主要消耗品。",
+        "function": "六个径向扇区围绕中央结构布置推进剂储罐、燃料电池与低温反应物；CSM-107 的一个扇区基本空置。不同任务不能沿用同一装填图。",
         "evidence": "公开结构",
-        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf"
       },
       {
-        "name": "服务推进系统",
-        "function": "支持月球轨道进入及返回等轨道机动。",
+        "name": "服务推进 SPS 与 SM RCS",
+        "function": "SPS 用于较大轨道机动并通过摆动控制推力方向；四组各四台 RCS 负责姿控及小幅平动。两套推进系统不是一组共用喷口。",
         "evidence": "公开结构",
-        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf"
       },
       {
-        "name": "指令舱热盾",
-        "function": "返回时的主要热防护结构。",
+        "name": "热盾与 CM 独立姿控",
+        "function": "SM 分离后，CM 保留自身再入姿控、热盾与着陆系统；推进、供电和质量边界同时改变，不能只从三维场景隐藏服务舱而保持动力学参数。",
         "evidence": "公开结构",
-        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf"
       },
       {
-        "name": "探针与对接接口",
-        "function": "支持与登月舱组合飞行。",
+        "name": "探针—锥套对接机构",
+        "function": "对接后检查锁扣，探针和锥套可从通道移开以允许乘员转移；外观中探针存在与通道开放应属于不同状态。",
         "evidence": "公开结构",
-        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf"
       },
       {
-        "name": "通信天线",
-        "function": "支持地月链路，位置按公开照片简化。",
+        "name": "电源与设备舱",
+        "function": "SM 燃料电池为主要电源并产水，CM 的银锌电池承担再入及落水阶段供电；太阳翼不属于该构型。",
         "evidence": "公开结构",
-        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+        "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf"
       }
     ],
     "model": {
@@ -2239,23 +2255,24 @@
       "review": {
         "id": "apollo-csm",
         "configuration": "Apollo 11 型指令服务舱组合；无逃逸塔与登月舱",
-        "reviewedOn": "2026-10-26",
+        "reviewedOn": "2026-10-29",
         "changes": [
           "重做 CM 锥体、SM 圆筒与大喷管的相对比例",
-          "补充服务舱散热分区、四组姿控附件和四面高增益天线"
+          "补充服务舱散热分区、四组姿控附件和四面高增益天线",
+          "按 Apollo 11 的 CSM-107 资料修正构型来源；本轮未重建该型号几何"
         ],
         "features": [
           {
             "title": "CM / SM 分界",
             "detail": "锥形 CM 与圆筒 SM 分组，热盾位于两者之间；返回时仅 CM 再入。",
             "partId": "crew",
-            "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+            "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf#page=90"
           },
           {
             "title": "推进与服务设备",
             "detail": "SPS 喷管位于服务舱尾部，推进剂功能块位于服务舱内部。",
             "partId": "propulsion",
-            "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+            "sourceUrl": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf#page=90"
           },
           {
             "title": "对接与通信附件",
@@ -2270,8 +2287,8 @@
         ],
         "sources": [
           {
-            "title": "NASA · Apollo CM / SM 总体构型",
-            "url": "https://www.nasa.gov/wp-content/uploads/static/history/Apollo204/spacecraft.html"
+            "title": "NASA · Apollo 11 Press Kit，CSM-107 结构说明，印刷第 86–93 页",
+            "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf#page=90"
           },
           {
             "title": "NASA · Apollo 11 指令服务舱照片",
@@ -2279,7 +2296,29 @@
           }
         ]
       }
-    }
+    },
+    "dataProducts": [
+      {
+        "name": "NASA · Apollo 11 飞行后任务报告与质量属性表",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_MissionReport.pdf#page=335",
+        "description": "直接查看 PDF 第 335 页（印刷 A-11）表 A-I：事件、Weight、X_A/Y_A/Z_A、Ixx/Iyy/Izz 与惯性积。第 334 页说明数据形成方法。保存原始英制列再转换，读取前后同一事件，避免把发射、对接和再入状态混成单一质量。"
+      },
+      {
+        "name": "NASA · Apollo 11 月轨/返回机动表",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_MissionReport.pdf#page=119",
+        "description": "PDF 第 119 页（印刷 7-11）表 7-V 与 7-VI 提供点火任务时间、持续秒数、速度变化及机动后轨道。适合检查事件时序与量纲；它是汇总表，不是逐采样遥测或连续六维状态文件。"
+      },
+      {
+        "name": "NASA · CSM-107 飞行前结构与系统资料",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf#page=90",
+        "description": "Apollo 11 Press Kit 第 90–97 页（印刷 86–93）含 CM、SM 剖面与结构说明；按六个 SM 扇区、四组 RCS 和独立 CM 再入系统划分模型。飞行前预估质量应以飞行后任务报告的对应事件值替换。"
+      }
+    ],
+    "studyQuestions": [
+      "按表 A-I 的 CM 与 SM 质量、重心，重构分离前总质量和重心；为什么 X_A 约为 1000 in 不表示飞船长 25 m？",
+      "把 slug·ft² 误当 kg·m²，会令同一力矩下的角加速度产生多大比例偏差？",
+      "为什么 889.254 m/s 除以 357.5 s 不能给出整个点火段的实际加速度时间曲线？"
+    ]
   },
   {
     "id": "apollo-lm",
@@ -3702,7 +3741,7 @@
     "organization": "NASA · ESA",
     "type": "近地轨道可维护空间天文台",
     "status": "历史任务档案 · 以所引资料版本为准",
-    "summary": "哈勃采用筒形光学结构、太阳翼和高精度指向系统，并被设计为可在轨维护的天文台。对它的仿真不只是展示轨道：微小姿态扰动、热变形、曝光时序和仪器构型共同决定观测质量，历次维护后的配置应分别建档。",
+    "summary": "哈勃的研究资料不仅有天文图像，还包括可与曝光对应的指向日志。这里以 2009 年 SM4 后的硬件布置为结构基准，用 JIT/JIF 说明如何判断一次观测的抖动、失锁和遥测质量，再把这些量与像面模糊、热变形及电源工况联系起来。",
     "dimensions": [
       {
         "label": "总长",
@@ -3735,20 +3774,41 @@
         "parameter": "主要姿态执行器",
         "value": "反作用轮与磁力矩器",
         "sourceUrl": "https://science.nasa.gov/mission/hubble/overview/about-hubble/"
+      },
+      {
+        "parameter": "第三代太阳翼",
+        "value": "2002 年 SM3B 安装；每翼约 7.1×2.6 m，两翼总计八个刚性面板。",
+        "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/electrical-power/"
+      },
+      {
+        "parameter": "姿控执行机构数量",
+        "value": "四个反作用轮、四根磁力矩棒；磁力矩棒负责轮系动量卸载等操作。",
+        "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/pointing-control/"
+      },
+      {
+        "parameter": "本页三维构型范围",
+        "value": "2009 年 SM4 后结构：WFC3 与 COS 已安装；展示不代表某一时刻全部仪器均工作。",
+        "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/instruments/"
       }
     ],
     "inference": [
       {
-        "parameter": "曝光内视轴稳定性 · 简化动力学",
-        "method": "以姿态误差时间序列驱动相机投影，比较曝光时间、轮系周期扰动与热漂移的影响。分别记录绝对指向误差和曝光内抖动，避免用同一个角度指标描述两者。",
-        "assumptions": "先固定本条目的任务阶段和构型，以公开几何及事件作为边界；未公开的质量分配、惯量和控制参数设为待估区间，不作为厂家实测值。",
-        "uncertainty": "外形与任务结果不能唯一识别内部参数。模型须记录初值、单位、坐标系与数据版本，并用未参与拟合的资料检验。"
+        "parameter": "从 JIT/JIF 评估一次曝光的指向稳定性",
+        "method": "在 MAST 下载同一观测的科学文件与 *_jit.fits、*_jif.fits；取消“Minimum Recommended Products”才能在产品分组中找到 jit/jif。先按曝光对应的 FITS 扩展检查 GUIDEACT、GSFAIL、遥测缺口，再读 JIT 的 Seconds、SI_V2_AVG、SI_V3_AVG。对有效曝光窗口内两方向分别去均值后计算 RMS，不把整个关联主头的统计当成某一次曝光。",
+        "assumptions": "JIT 表值为 3 秒平均，SI_V2_AVG/SI_V3_AVG 的角度单位为 arcsec；JIF 的 V2_RMS/V3_RMS 为 milli-arcsec。STScI 典型引导示例给 2.6 与 2.5 mas，合成二维 RMS=√(2.6²+2.5²)=3.60694 mas；这是手册示例的复算，不是本网站下载的新观测。",
+        "uncertainty": "3 秒平均会平滑高频抖动，不能恢复完整轮系振动谱，也不保证由均值序列重算的 RMS 与 JIF 汇总相等。INDEF/NaN 与失锁段不得补成零；遥测窗口可能宽于真正曝光窗口。"
       },
       {
-        "parameter": "部件质量与姿态耦合 · 工程示意",
-        "method": "依据本页结构分解为光学筒与仪器舱、主次镜与科学仪器、双太阳翼、通信天线等子系统，给出各自质量和安装位置的区间。通过质量加权位置与平行轴定理构造重心、惯量；分别改变部件质量和展开状态，对姿态响应与任务约束做敏感性分析。",
-        "assumptions": "采用刚体与集总部件近似；只有来源明确的部件功能标作公开结构，内部布置和材料厚度按工程示意处理。",
-        "uncertainty": "结果属于可复算的研究先验；缺少质量账本、柔性模态或热参数时，不能声称还原真实飞行器。"
+        "parameter": "把抖动统计转成图像模糊量级",
+        "method": "小角度下，以星像位移核与静态 PSF 卷积。若只做各向同性高斯近似，沿同一像面方向有 σ_total²=σ_optics²+σ_jitter²，FWHM=2.35482σ；先将 V2/V3 经仪器角度变换映射到像素方向并采用该模式的像素比例尺。合成 RMS 3.60694 mas 不应直接作为每个像面方向的 σ。",
+        "assumptions": "公式要求独立、零均值、近似高斯的模糊项；这是本站解析模型，不是 Hubble 的在轨性能保证。仪器畸变、波长依赖 PSF 和采样必须另外处理。",
+        "uncertainty": "单星引导的滚转漂移会随目标到引导星的距离变化；RMS 相同的短促跳变与均匀抖动可能得到不同星像。仅靠两个汇总数不能重建长尾或曝光内时间顺序。"
+      },
+      {
+        "parameter": "阴影段能量与太阳翼构型",
+        "method": "按 NASA 页面平均负载 2.1 kW 与约 36 min 阴影段，理想能量消耗为 2.1×36/60=1.26 kWh。它可用于检查自建电源模型的量纲；再加入充放电效率、温控负载、荷电状态和老化。2002 年后刚性太阳翼与早期柔性翼应使用不同的热变形模型。",
+        "assumptions": "2.1 kW 是页面平均值，36 min 是典型轨道阴影段，不代表每次曝光的实际用电和日照。未取得该轨道电流/电压遥测。",
+        "uncertainty": "额定 Ah、额定电压相乘给的是名义能量，不等于给定温度、放电深度和寿命下的可用能量；不能据此宣称剩余寿命或电池安全余量。"
       }
     ],
     "limitations": [
@@ -3763,9 +3823,33 @@
       {
         "title": "官方历史 / 结构补充 · Hubble · 哈勃空间望远镜",
         "url": "https://science.nasa.gov/mission/hubble/observatory/design/"
+      },
+      {
+        "title": "STScI · HST Data Handbook §5.1 Observation Log Files",
+        "url": "https://hst-docs.stsci.edu/hstdhb/5-observation-logs/5-1-observation-log-files"
+      },
+      {
+        "title": "STScI · HST Data Handbook §5.2 Using Observation Logs",
+        "url": "https://hst-docs.stsci.edu/hstdhb/5-observation-logs/5-2-using-observation-logs"
+      },
+      {
+        "title": "NASA · Hubble Electrical Power，Solar Arrays / Batteries",
+        "url": "https://science.nasa.gov/mission/hubble/observatory/design/electrical-power/"
+      },
+      {
+        "title": "STScI · HST Primer，SM4 后配置与 U/V 坐标",
+        "url": "https://jwst-docs.stsci.edu/archives/hspcycle29/the-hubble-space-telescope-primer-for-cycle-29/hst-primer-system-overview"
+      },
+      {
+        "title": "NASA · Hubble Pointing Control，Actuators",
+        "url": "https://science.nasa.gov/mission/hubble/observatory/design/pointing-control/"
+      },
+      {
+        "title": "NASA · Hubble Instruments",
+        "url": "https://science.nasa.gov/mission/hubble/observatory/design/instruments/"
       }
     ],
-    "verifiedOn": "2026-10-25",
+    "verifiedOn": "2026-10-29",
     "year": 1990,
     "country": "美国 / 欧洲",
     "family": "卫星与空间站",
@@ -3840,9 +3924,9 @@
         {
           "id": "solar",
           "name": "双太阳翼",
-          "description": "提供在轨供电。",
+          "description": "2002 安装的第三代刚性太阳翼，两翼共八块；每翼公开尺寸约 7.1 × 2.6 m，展示保留外形比例，框架厚度为示意。",
           "evidence": "公开结构",
-          "sourceUrl": "https://science.nasa.gov/mission/hubble/overview/about-hubble/"
+          "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/electrical-power/"
         },
         {
           "id": "antenna",
@@ -3869,11 +3953,12 @@
       "disclaimer": "本模型使用归一化展示单位，height / diameter 不代表米；真实公开尺寸另列于参数表。外形、部件相对位置及内部剖面均经过简化，用于理解功能，不能视作厂家 CAD 或真实内部测量。",
       "review": {
         "id": "hubble",
-        "configuration": "在轨观测构型；孔径门打开，双侧太阳翼展开",
-        "reviewedOn": "2026-10-26",
+        "configuration": "2009 SM4 后的外部硬件示意；第三代刚性太阳翼，非 1990 发射构型。",
+        "reviewedOn": "2026-10-29",
         "changes": [
           "改为开放的光学筒口与铰接孔径门",
-          "增加主次镜、仪器后舱、支撑杆与双天线"
+          "增加主次镜、仪器后舱、支撑杆与双天线",
+          "按第三代刚性太阳翼修订为每翼四块、两翼共八块，外轮廓长宽比约 7.1:2.6；仍不声明真实框架厚度。"
         ],
         "features": [
           {
@@ -3893,20 +3978,58 @@
             "detail": "外部铝壳与隔热包覆负责环境隔离；内部支架不由外罩直接代替。",
             "partId": "frame",
             "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/"
+          },
+          {
+            "title": "第三代刚性太阳翼",
+            "detail": "按第三代刚性太阳翼修订为每翼四块、两翼共八块，外轮廓长宽比约 7.1:2.6；仍不声明真实框架厚度。",
+            "partId": "solar",
+            "sourceUrl": "https://science.nasa.gov/mission/hubble/observatory/design/electrical-power/"
           }
         ],
         "uncertainties": [
           "太阳阵采用服务任务后常见的刚性面板外观，不复原早期卷式太阳阵。",
-          "镜片曲率、真实光学焦距和光机变形不由该网格表达。"
+          "镜片曲率、真实光学焦距和光机变形不由该网格表达。",
+          "本次只修订公开构型和相对比例；没有恢复精确安装平移、质量分布或时间变化的任务姿态。"
         ],
         "sources": [
           {
             "title": "NASA · Hubble 光学与机械设计",
             "url": "https://science.nasa.gov/mission/hubble/observatory/design/"
+          },
+          {
+            "title": "NASA · Hubble Electrical Power，Solar Arrays / Batteries",
+            "url": "https://science.nasa.gov/mission/hubble/observatory/design/electrical-power/"
           }
         ]
       }
-    }
+    },
+    "dataProducts": [
+      {
+        "name": "MAST · HST 观测检索",
+        "url": "https://mast.stsci.edu/portal/Mashup/Clients/Mast/Portal.html",
+        "description": "按目标、仪器、时间和数据权属选择可下载曝光，保留 rootname、proposal、instrument、EXPSTART/EXPEND 和检索条件。科学图像与工程 JIT/JIF 一起获取；本次资料核对未下载新的观测文件。"
+      },
+      {
+        "name": "STScI · JIT/JIF 获取与结构",
+        "url": "https://hst-docs.stsci.edu/hstdhb/5-observation-logs/5-1-observation-log-files",
+        "description": "JIT 是三秒平均的 PCS 指向表，JIF 含汇总、质量标志与曝光扩展；关联数据不能一律读取第一个扩展。1994 年 10 月前的指向资料通常不按同一流程提供。"
+      },
+      {
+        "name": "STScI · 抖动诊断字段和 Python 读取示例",
+        "url": "https://hst-docs.stsci.edu/hstdhb/5-observation-logs/5-2-using-observation-logs",
+        "description": "含 j6jf01a6j_jit.fits 的公开教学示例，使用 Seconds、SI_V2_AVG、SI_V3_AVG 作图，区分失锁、跟踪模式、遥测缺口。典型 RMS 示例与这一命名数据集不能未经核对就视为同一曝光。"
+      },
+      {
+        "name": "STScI · SM4 后布置与焦面坐标",
+        "url": "https://jwst-docs.stsci.edu/archives/hspcycle29/the-hubble-space-telescope-primer-for-cycle-29/hst-primer-system-overview",
+        "description": "提供 2009 后结构示意和 U/V 轴定义，可用于给三维模型标记光轴、太阳翼转轴、径向和轴向仪器舱。Cycle 29 的运行模式说明是历史版，不作为 2026 当前运行状态。"
+      }
+    ],
+    "studyQuestions": [
+      "JIF 的 2.6/2.5 mas 汇总与 JIT 的 arcsec 表列如何统一单位，为什么不能直接把二维合成 RMS 用作每方向 σ？",
+      "一段 3 秒平均的抖动曲线能否排除 1 Hz 的轮系振动？缺测和重捕获事件怎样影响统计？",
+      "要比较 1990 与 2009 构型的热致抖动，太阳翼刚度、展开尺寸与仪器质量哪些必须变更？"
+    ]
   },
   {
     "id": "jwst",
@@ -4532,7 +4655,7 @@
     "organization": "NASA · ESA · ASI",
     "type": "土星轨道器与土卫六下降探测器组合",
     "status": "历史任务档案 · 以所引资料版本为准",
-    "summary": "卡西尼以大型轨道器携带惠更斯探测器，结合长期土星巡游与土卫六现场探测。它的公开结构适合分析大天线、放射性同位素电源、推进和科学仪器的指向冲突，以及释放子探测器前后组合体质量和通信角色的改变。",
+    "summary": "卡西尼的资料可用于比对影像、曝光时序与空间指向：ISS 原始和标定图像保存在 PDS，NAIF 核给出相机视场及安装方向。档案保留惠更斯分离前的结构示意，并把后续轨道器观测所需的相机、坐标和标定信息单独列出。",
     "dimensions": [
       {
         "label": "总高",
@@ -4565,20 +4688,41 @@
         "parameter": "能源",
         "value": "RTG；非太阳翼",
         "sourceUrl": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+      },
+      {
+        "parameter": "ISS 窄角/广角名义视场",
+        "value": "NAC 0.35°×0.35°；WAC 3.48°×3.48°；两者不严格共轴。",
+        "sourceUrl": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/ik/cas_iss_v10.ti"
+      },
+      {
+        "parameter": "ISS 探测器与采样",
+        "value": "各 1024×1024，12 μm 像元；名义 IFOV 分别为 6 / 60 μrad/pixel（全分辨率）。",
+        "sourceUrl": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/ik/cas_iss_v10.ti"
+      },
+      {
+        "parameter": "相机与天线安装方向",
+        "value": "ISS 在航天器 +X 侧、视轴名义沿 −Y；高增益天线沿 −Z。任务坐标不可直接等同网页显示轴。",
+        "sourceUrl": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/fk/cas_v43.tf"
       }
     ],
     "inference": [
       {
-        "parameter": "组合体释放与任务指向 · 简化动力学",
-        "method": "将惠更斯作为独立质量节点，释放时创建第二个传播对象并核对相对速度。对比对地通信与目标观测的指向约束，明确两类任务不能在任意姿态下同时完成。",
-        "assumptions": "先固定本条目的任务阶段和构型，以公开几何及事件作为边界；未公开的质量分配、惯量和控制参数设为待估区间，不作为厂家实测值。",
-        "uncertainty": "外形与任务结果不能唯一识别内部参数。模型须记录初值、单位、坐标系与数据版本，并用未参与拟合的资料检验。"
+        "parameter": "从 ISS 像素到观测尺度",
+        "method": "先选 NAC/WAC 与 FULL/SUM2/SUM4 模式，再读取对应影像标签和 ISS 核。cas_iss_v10.ti 给 NAC 名义视场 0.35°、1024×1024 和 6 μrad/pixel。自设目标距离 R=10000 km 时，中心像素量级 R×IFOV≈0.060 km/pixel，整个正视平面宽度 2R tan(0.35°/2)≈61.087 km。两种值分别来自近似 IFOV 与整幅视场，不应强行视作完全相同精度。",
+        "assumptions": "10000 km 是教学距离，不对应某张真实照片；忽略畸变和表面倾斜。真实任务必须使用图像对应的几何距离、形状模型与像元合并倍率，NAC 的参数不能用于 WAC。",
+        "uncertainty": "地表分辨率并不等于轨道器到目标中心的距离乘常数；肢缘投影、像移、点扩散、采样和压缩均会改变可分辨细节。"
       },
       {
-        "parameter": "部件质量与姿态耦合 · 工程示意",
-        "method": "依据本页结构分解为轨道器平台、高增益天线、RTG 电源组、主推进与姿控等子系统，给出各自质量和安装位置的区间。通过质量加权位置与平行轴定理构造重心、惯量；分别改变部件质量和展开状态，对姿态响应与任务约束做敏感性分析。",
-        "assumptions": "采用刚体与集总部件近似；只有来源明确的部件功能标作公开结构，内部布置和材料厚度按工程示意处理。",
-        "uncertainty": "结果属于可复算的研究先验；缺少质量账本、柔性模态或热参数时，不能声称还原真实飞行器。"
+        "parameter": "按曝光中点重建相机视线",
+        "method": "ISS 的 IMAGE_TIME 对应快门关闭时刻；IMAGE_MID_TIME 为曝光中点。用 SCLK、LSK 把时间转换到 ET，加载覆盖该时段的 SPK/CK 及 FK/IK/PCK，再将 CASSINI_ISS_NAC 的 +Z 视轴变换到惯性或目标固连系。检查 kernel 覆盖、优先级和文件哈希；若缺 CK 不可用插值外推冒充真实指向。",
+        "assumptions": "任务 FK 规定 ISS 位于航天器 +X 侧、名义视轴沿 −Y；HGA 名义指向 −Z，因此不能把相机轴画成天线轴。展示坐标要明确映射到任务坐标。",
+        "uncertainty": "本次只核查公开核定义与数据文档，未加载 CSPICE 复现某次曝光；名义 FOV 和精化畸变模型不是同一层次。相机散热器 FOV 在 IK 中明确为占位值，不用于真实热视因数。"
+      },
+      {
+        "parameter": "选择可做定量分析的图像产品",
+        "method": "从 OPUS 同时保留原始图、标定图与标签；先核对 FILTER1_NAME/FILTER2_NAME、EXPOSURE_DURATION、GAIN_MODE_ID、INSTRUMENT_MODE_ID、CONVERSION_TYPE、ENCODING_TYPE，再决定比较什么。曝光时长在该 ISS 属性定义中以毫秒记录。跨影像比较亮度时使用有标定记录的产物及其单位，不能直接比较 JPEG 或把原始 DN 当辐亮度。",
+        "assumptions": "标定入口可取得产品，但下载到文件仍需检查其版本与单位；本文没有运行 CISSCAL。若自行重做，按 2018 指南保留配置、暗场/平场等标定文件与日志。",
+        "uncertainty": "饱和、缺失或截断行、8 位转换和有损压缩可能令定量光度不可恢复；“图像看起来正常”不等于像素值可用于科学拟合。"
       }
     ],
     "limitations": [
@@ -4593,9 +4737,37 @@
       {
         "title": "官方历史 / 结构补充 · Cassini–Huygens · 卡西尼—惠更斯",
         "url": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+      },
+      {
+        "title": "NASA PDS Ring-Moon Systems Node · Cassini ISS 数据获取",
+        "url": "https://pds-rings.seti.org/cassini/iss/access.html"
+      },
+      {
+        "title": "CICLOPS / NASA PDS · ISS Data User’s Guide，2018-09-16",
+        "url": "https://pds-rings.seti.org/holdings/volumes/COISS_0xxx/COISS_0011/document/iss_data_user_guide_180916.pdf"
+      },
+      {
+        "title": "CICLOPS / NASA PDS · ISS Data User’s Guide，2012-07-03，时间和探测器定义",
+        "url": "https://pds-rings.seti.org/cassini/iss/ISS_Data_User_Guide_120703.pdf"
+      },
+      {
+        "title": "NASA PDS · Cassini ISS VICAR Data File SIS，属性定义",
+        "url": "https://pds-rings.seti.org/cassini/iss/COISS_0011_DOCUMENT/report/iss/navcontent/appd/699-414.htm"
+      },
+      {
+        "title": "NASA NAIF · Cassini ISS Instrument Kernel cas_iss_v10.ti",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/ik/cas_iss_v10.ti"
+      },
+      {
+        "title": "NASA NAIF · Cassini Frame Kernel cas_v43.tf，2024-01-31",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/fk/cas_v43.tf"
+      },
+      {
+        "title": "NASA/JPL · Cassini–Huygens Spacecraft 图解，JPL 400-856A，1999",
+        "url": "https://science.nasa.gov/wp-content/uploads/2023/09/spacecraft.pdf"
       }
     ],
-    "verifiedOn": "2026-10-25",
+    "verifiedOn": "2026-10-29",
     "year": 1997,
     "country": "美国 / 欧洲",
     "family": "深空探测器",
@@ -4691,19 +4863,20 @@
         {
           "id": "instruments",
           "name": "土星科学载荷",
-          "description": "开展遥感及空间环境测量。",
+          "description": "ISS 双相机安装于遥感托盘，名义视轴沿任务 −Y，约正交于 HGA 的 −Z；MAG 臂沿 +Y 展开。展示坐标映射见构型记录。",
           "evidence": "公开结构",
-          "sourceUrl": "https://science.nasa.gov/mission/cassini/quick-facts/"
+          "sourceUrl": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/fk/cas_v43.tf"
         }
       ],
       "disclaimer": "本模型使用归一化展示单位，height / diameter 不代表米；真实公开尺寸另列于参数表。外形、部件相对位置及内部剖面均经过简化，用于理解功能，不能视作厂家 CAD 或真实内部测量。",
       "review": {
         "id": "cassini",
-        "configuration": "Cassini–Huygens 分离前组合体",
-        "reviewedOn": "2026-10-26",
+        "configuration": "Huygens 分离前组合体，MAG 臂展开；任务 X/Y/Z 对应展示 −x/−z/−y。",
+        "reviewedOn": "2026-10-29",
         "changes": [
           "增加高柱状平台、顶置天线与底部三台 RTG",
-          "Huygens 放在平台侧面，保留遥感托盘和外伸磁强计臂"
+          "Huygens 放在平台侧面，保留遥感托盘和外伸磁强计臂",
+          "按 NAIF 任务坐标修正 NAC/WAC 镜筒视轴，增加 +z 光学口；相机与 HGA 约正交。以 HGA 4 m 为局部比例参照，把 MAG 臂改为约 11 m 对应长度，Huygens 直径改为约 2.7 m 对应比例。"
         ],
         "features": [
           {
@@ -4723,20 +4896,71 @@
             "detail": "高增益天线位于平台上方，侧部遥感设备与外伸科学臂独立。",
             "partId": "antenna",
             "sourceUrl": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+          },
+          {
+            "title": "相机视轴与磁强计臂",
+            "detail": "按 NAIF 任务坐标修正 NAC/WAC 镜筒视轴，增加 +z 光学口；相机与 HGA 约正交。以 HGA 4 m 为局部比例参照，把 MAG 臂改为约 11 m 对应长度，Huygens 直径改为约 2.7 m 对应比例。",
+            "partId": "instruments",
+            "sourceUrl": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/fk/cas_v43.tf"
           }
         ],
         "uncertainties": [
           "本组合不代表 Huygens 分离后的 Cassini 外观。",
-          "仪器托盘、热控百叶与两个主发动机的包络均是简化形状。"
+          "仪器托盘、热控百叶与两个主发动机的包络均是简化形状。",
+          "本次只修订公开构型和相对比例；没有恢复精确安装平移、质量分布或时间变化的任务姿态。"
         ],
         "sources": [
           {
             "title": "NASA · Cassini 轨道器与 Huygens",
             "url": "https://science.nasa.gov/mission/cassini/spacecraft/cassini-orbiter/"
+          },
+          {
+            "title": "NASA NAIF · Cassini Frame Kernel cas_v43.tf，2024-01-31",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/fk/cas_v43.tf"
+          },
+          {
+            "title": "NASA NAIF · Cassini ISS Instrument Kernel cas_iss_v10.ti",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/ik/cas_iss_v10.ti"
+          },
+          {
+            "title": "NASA/JPL · Cassini–Huygens Spacecraft 图解，JPL 400-856A，1999",
+            "url": "https://science.nasa.gov/wp-content/uploads/2023/09/spacecraft.pdf"
           }
         ]
       }
-    }
+    },
+    "dataProducts": [
+      {
+        "name": "NASA PDS · Cassini ISS 原始和标定影像",
+        "url": "https://pds-rings.seti.org/cassini/iss/access.html",
+        "description": "从 OPUS 按目标、相机、时间、滤光片筛选，成组下载影像、标签和元数据。COISS_0xxx 是标定卷，COISS_1xxx 为木星阶段，COISS_2xxx 为土星阶段，COISS_3xxx 为制图；浏览缩略图只用于筛选。"
+      },
+      {
+        "name": "CICLOPS · ISS 数据与标定指南（2018）",
+        "url": "https://pds-rings.seti.org/holdings/volumes/COISS_0xxx/COISS_0011/document/iss_data_user_guide_180916.pdf",
+        "description": "§3 解释 VICAR/PDS 标签及质量问题，§4 为 CISSCAL 辐射标定，§5 是完整通量标定案例。该手册与源图、标签、标定配置一起使用；本轮未运行 IDL/CISSCAL。"
+      },
+      {
+        "name": "NASA NAIF · Cassini ISS 仪器核",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/ik/cas_iss_v10.ti",
+        "description": "机器可读的视场与像元定义：NAC −82360、WAC −82361。注意一基 CCD_CENTER=(512.5,512.5) 与零基 FOV_CENTER_PIXEL=(511.5,511.5) 的差别；漏掉它会产生一像素错位。"
+      },
+      {
+        "name": "NASA NAIF · Cassini 坐标核及安装方向",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/CASSINI/kernels/fk/cas_v43.tf",
+        "description": "cas_v43.tf（2024-01-31）定义任务坐标与仪器安装方向。航天器动态姿态仍来自覆盖曝光时间的 CK，轨道来自 SPK，单独 FK 不能还原某日视线。"
+      },
+      {
+        "name": "NASA PDS · ISS 图像时间与模式定义",
+        "url": "https://pds-rings.seti.org/cassini/iss/ISS_Data_User_Guide_120703.pdf",
+        "description": "2012 版 §2.3 和 §3.1 的已核对字段证据：IMAGE_TIME 为关闭快门时刻，IMAGE_MID_TIME 为中点；分清 FULL、SUM2、SUM4。进行新的完整标定时以 2018 修订版和所用软件说明为准。"
+      }
+    ],
+    "studyQuestions": [
+      "同在 10000 km 距离，NAC 与 WAC 的名义像元尺度分别是多少？SUM2 的有效采样会怎样变化？",
+      "把 IMAGE_TIME 当作曝光起点，对一幅长曝光会造成怎样的几何时间偏移？",
+      "相机与高增益天线名义相差约 90°，为什么不能在模型中用一个共同视轴同时满足任意目标观测和对地通信？"
+    ]
   },
   {
     "id": "galileo",

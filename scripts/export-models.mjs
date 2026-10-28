@@ -25,6 +25,6 @@ globalThis.FileReader=class{result=null;onloadend=null;onerror=null;readAsArrayB
   index.push({id:v.id,name:v.name,kind:v.model.kind,file:`/models/${v.id}.glb`,preview:`/models/${v.id}.webp`,record:`/models/${v.id}.json`,bytes:bytes.length,groups:built.parts.map(p=>p.id),sources:v.sources,classification:'研究示意模型，非制造CAD'});
   built.meshes.forEach(m=>m.geometry.dispose());built.materials.forEach(m=>m.dispose());
  }
- await writeFile(path.join(out,'index.json'),JSON.stringify({generatedOn:'2026-10-26',count:index.length,models:index},null,2));
+ await writeFile(path.join(out,'index.json'),JSON.stringify({generatedOn:'2026-10-29',count:index.length,models:index},null,2));
  console.log(`Exported and checked ${index.length} GLB files (${(index.reduce((s,m)=>s+m.bytes,0)/1024/1024).toFixed(1)} MiB).`);
 }

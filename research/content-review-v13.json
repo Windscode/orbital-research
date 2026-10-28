@@ -1,0 +1,355 @@
+{
+  "version": "13.0.0",
+  "researchedOn": "2026-10-29",
+  "scope": "4 篇知识条目已按研究稿替换正文、公式、练习与来源；结构模态增加网页交互计算。未运行 Basilisk、有限元软件或真实推力器，教学参数与公开设备数据分别标识。",
+  "selectionReason": "现有 thermal-control 与 radiative-view-factors 已有两节点热平衡和无限平板等具体基准，因此保留。下列 4 篇虽有正确术语和注意事项，却缺少读者能够复算的输入、输出、对照及失败实例。",
+  "lessonEdits": [
+    {
+      "id": "attitude-kinematics",
+      "problems": [
+        "约定声明完整，但没有乘法展开式和可核对的基向量结果。",
+        "要求检查相位误差，却没有给出归一化仍可能失败的具体例子。",
+        "读者不能依据正文独立确认接口的乘法顺序。"
+      ],
+      "fields": {
+        "summary": "用两个 90° 旋转核对四元数接口，再用恒定角速度的解析解检查积分相位；给出乘法、坐标映射和误差角的完整约定。",
+        "readTime": 17,
+        "bodyHeadings": [
+          "先固定坐标映射与乘法",
+          "两个 90° 旋转的接口基准",
+          "恒定角速度可以精确推进",
+          "归一化不能修正相位",
+          "用相对旋转评估误差",
+          "接入陀螺和滤波器的边界"
+        ],
+        "body": [
+          "本页使用列向量、右手系、标量在前的 Hamilton 四元数 q=[s,v]，并定义 r_I=R(q)r_B：q 将机体系分量映射到惯性系。Hamilton 乘法为 [s₁s₂−v₁·v₂, s₁v₂+s₂v₁+v₁×v₂]；向量旋转等于 q⊗[0,r_B]⊗q* 的向量部分。单位四元数的逆为共轭 q*=[s,−v]。从文件读入时还须确认轴顺序、右手或左手系，以及角度是 rad 还是 °，只交换四元数分量顺序并不能完成所有坐标约定的转换。",
+          "取 q_x=[√2/2,√2/2,0,0] 与 q_z=[√2/2,0,0,√2/2]。先绕固定 X 轴转 90°，再绕固定 Z 轴转 90°，组合为 q_z⊗q_x=[0.5,0.5,0.5,0.5]，它把 e_x=[1,0,0] 转为 e_y=[0,1,0]。交换顺序得到 q_x⊗q_z=[0.5,0.5,−0.5,0.5]，同一个 e_x 被转为 e_z=[0,0,1]。这两组输入与输出是接口测试数据；若结果相反，先检查映射方向和乘法顺序，不能用翻转模型贴图来补偿。",
+          "当 ω_B 是机体相对惯性系的角速度、并用机体系分量表达时，q̇=½q⊗[0,ω_B]。一个时间步内 ω_B 恒定，可直接使用 q_{k+1}=q_k⊗δq，δq=[cos(θ/2),u sin(θ/2)]，θ=|ω_B|Δt，u=ω_B/|ω_B|。ω_B=0 时取单位增量，极小角用 sin(θ/2)/|ω_B|→Δt/2 避免除零。如果角速度改用惯性系表达，增量改为左乘；将机体系随时间变化的采样简单平均后一次旋转，通常不等价于按时间顺序组合。",
+          "以单位姿态开始，取 ω_B=[0,0,π/2] rad/s、Δt=1 s，解析终值是 [√2/2,0,0,√2/2]，旋转 90°。显式 Euler 一步给出 [1,0,0,π/4]；归一化后模长恰好为 1，却只转了 2 atan(π/4)=76.292052°，仍少转 13.707948°。这说明单位约束和时间积分精度是不同检查量。该刻意粗步长是教学反例；实际积分应做步长减半，比较终点姿态误差及计算量。",
+          "比较两个已归一化姿态 q_a、q_b 时，先求 q_e=q_a*⊗q_b，再用 δθ=2 atan2(|q_e,v|,|q_e,0|) 得到 [0,π] 内的最短误差角。q 与 −q 必须给出零误差。插值前若相邻点内积为负，可翻转后一四元数的整体符号以选短弧；恰好 180° 时旋转轴的符号仍有分支，连续轨迹需要结合前后状态决定。矩阵接口另检查 RᵀR≈I、det(R)≈1 和逆变换往返，不能只检查四元数模长。",
+          "这些运动学测试还没有包含陀螺偏置、噪声或机体动力学。接入传感器时应保存样本时间、角速度表达系与增量定义；接入误差状态滤波器时，全局姿态使用四元数，局部误差使用三维小旋转，并按所选左误差或右误差约定注入及重置协方差。NAIF 的某些角速度接口描述的是坐标框架变换，不能直接把其符号公式套入本页的机体→惯性映射。先通过上面的确定性基准，再评估统计性能。"
+        ],
+        "formula": "Hamilton：[a,u]⊗[b,v]=[ab−u·v,av+bu+u×v]。r_I=R(q)r_B；ω_B 用机体系表达时 q̇=½q⊗[0,ω_B]，恒 ω_B 的一步解 q⁺=q⊗[cos(|ω_B|Δt/2),ω_B sin(|ω_B|Δt/2)/|ω_B|]。姿态误差 δθ=2 atan2(‖(q_a*⊗q_b)_v‖,|(q_a*⊗q_b)_0|)。",
+        "pitfall": "只做归一化就认定积分正确；把固定轴组合与机体轴增量混用；将 q 与 −q 视为不同姿态；直接复制采用另一映射方向的角速度公式。",
+        "exercise": "复现 q_z⊗q_x 与 q_x⊗q_z 的基向量结果；对 90°/s 的转动分别取 1、0.5、0.25 s 步长，以 Euler 加归一化和指数增量传播到 1 s。记录误差角而非四维分量距离，并将全部输入四元数乘 −1 后重复测试。",
+        "sources": [
+          {
+            "title": "JPL NAIF · Rotation Required Reading：Quaternion arithmetic、Quaternion multiplication",
+            "url": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/req/rotation.html"
+          },
+          {
+            "title": "Sommer 等 · Why and How to Avoid the Flipped Quaternion Multiplication（2018，v2，约定及转换）",
+            "url": "https://arxiv.org/abs/1801.07478v2"
+          },
+          {
+            "title": "NASA Markley · Attitude Error Representations for Kalman Filtering（全局姿态与局部误差）",
+            "url": "https://ntrs.nasa.gov/api/citations/20020060647/downloads/20020060647.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "attitude-control",
+      "problems": [
+        "虽然区分力矩和动量，但没有给出饱和时间、可行机动或卸载力矩的数值。",
+        "读者不能定量判断某套控制参数是否违反执行器能力。",
+        "现有正文将总体闭环建议与轮动力学混写，缺少简单可验证的基础模型。"
+      ],
+      "fields": {
+        "summary": "从一次 90° 单轴机动算出力矩与储存动量的不同约束，再检查持续外扰、磁卸载方向和飞轮动力学的符号。",
+        "readTime": 18,
+        "bodyHeadings": [
+          "先把力矩和动量放进同一模型",
+          "不限制动量时的 90° 机动",
+          "储存动量改变可行轨迹",
+          "指向保持也会耗尽动量裕度",
+          "磁卸载并非任意三轴力矩",
+          "从单轴基准进入闭环试验"
+        ],
+        "body": [
+          "先建立一个可手算的单主轴教学模型：锁定转子后的整机转动惯量 J=10 kg·m²，机体初始角速度与飞轮相对动量均为零，无外部力矩，轮轴和旋转轴重合。令 h 是转子相对机体的轴向动量，则 Jω+h=0，机体实际控制力矩 τ_B=Jω̇=−ḣ。这里限制 |τ_B|≤0.01 N·m，并非直接引用某产品的电机额定力矩；真实电机力矩还对应转子的绝对轴向加速度，须包含轮惯量和机体加速度。",
+          "要求从静止转过 θ=π/2 rad 后再次静止。若暂不限制 h，时间最短的理想单轴策略是半程以最大力矩加速、半程反向制动。加速时间 t_a=√(Jθ/τ_max)=39.633273 s，总时间 79.266546 s，峰值角速度 0.0396333 rad/s，即 2.270819°/s。此时需要 |h_peak|=Jω_peak=0.396333 N·m·s。这组数字能直接核验规划器的角度积分、正反力矩与轮动量方向。它忽略摩擦、延迟和力矩变化速率，不是已实现的闭环指向性能。",
+          "若可用相对动量仅为 |h|≤0.2 N·m·s，上一条轨迹不可执行。角速度上限变为 0.02 rad/s：加速 20 s、匀速 58.539816 s、制动 20 s，总时间 98.539816 s。加减速两段合计转过 0.4 rad，其余角度由匀速段完成。制动会使飞轮回到零动量，因此到达速度边界后仍可施加减小动量的力矩，不能把“饱和”实现为禁止两个方向的全部力矩。多轮系统还需按轮轴矩阵做分配，每个轮分别检查力矩与剩余动量。",
+          "再看指向保持。若机体不转、该轴承受恒定外扰 τ_ext=10⁻⁵ N·m，轮动量必须以同样速率增长来保持整机角速度为零。从 h=0 到 0.2 N·m·s 只需 20 000 s，约 5.56 h。加大姿态反馈增益不会延长这段储存时间；带方向的初始偏置会改变正负剩余裕度。实际外扰随姿态和轨道变化，应积分 h(t)=h(0)+∫τ_ext dt，并记录误差首先超限与动量达到边界分别发生在何时。",
+          "磁力矩满足 τ_m=m×B。教学输入 B=[0,0,30] μT、磁偶极矩 m=[0.2,0,0] A·m²，只能产生 [0,−6,0] μN·m，该瞬间无法实现沿 Z 的卸载力矩。给定请求 τ_d，无约束偶极矩 m=(B×τ_d)/|B|² 实现的是 τ_d−B(B·τ_d)/|B|²，即垂直磁场的分量；随后还必须限幅。只有外部执行器改变整机角动量，飞轮间重新分配不会卸掉总动量。弱磁场环境不能照搬低轨卸载方案。",
+          "闭环评估按基准逐项加复杂度：先复现无外扰下 Jω+h 守恒和上述机动时间，再接入姿态误差反馈、测量延迟、轮摩擦与柔性模态。每一步保存命令力矩、分配后实际力矩、角度、角速度、各轮 h 和限幅标志。Basilisk 的公开示例将轮动力学、飞行软件与命令消息分开，并区分力矩饱和和动量配置；本页没有运行该软件。是否满足任务要求应由允许误差、稳定时间及扰动扫描决定，不能仅用一条平滑的角度曲线判断。"
+        ],
+        "formula": "固定轮轴且转子轴对称：J_lockedω̇+ω×(J_lockedω+h_w)=τ_ext−ḣ_w，h_w=ΣJ_s,iΩ_rel,i g_i；所有分量与ḣ_w均在机体系。单主轴无外扰：Jω+h=0，τ_B=−ḣ。无动量限制的静止到静止机动 t_min=2√(Jθ/τ_max)，h_peak=√(Jθτ_max)。磁卸载 τ_m=m×B。",
+        "pitfall": "只限力矩而不积分轮动量；将相对轮速导数直接当作绝对转子加速度；饱和后连减速方向也封锁；要求磁力矩器立即实现沿当地磁场方向的力矩。",
+        "exercise": "对文中 J、θ 和力矩限制，先得到 79.266546 s 与 0.396333 N·m·s；再施加 0.2 N·m·s 动量限制，复现 20 / 58.539816 / 20 s 三段轨迹。加入 10⁻⁵ N·m 恒定外扰进行定向保持，核对 20 000 s 的动量耗尽时间。所有数值均为教学设定。",
+        "sources": [
+          {
+            "title": "NASA Small Spacecraft SoA · 5.2.2 Reaction Wheels、5.2.3 Magnetic Torquers（2026-05-07）",
+            "url": "https://www.nasa.gov/smallsat-institute/sst-soa/guidance-navigation-and-control/"
+          },
+          {
+            "title": "Basilisk 2.12.1 · scenarioAttitudeFeedbackRW：轮轴、初速、maxMomentum 与 useMaxTorque",
+            "url": "https://avslab.github.io/basilisk/examples/scenarioAttitudeFeedbackRW.html"
+          },
+          {
+            "title": "Basilisk · Reaction Wheel State Effector 技术说明：Balanced Wheels 与动量守恒",
+            "url": "https://hanspeterschaub.info/basilisk/_downloads/17eeb82a3f1a8e0b8617c8b8284303ed/Basilisk-REACTIONWHEELSTATEEFFECTOR-20170816.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "electric-propulsion",
+      "problems": [
+        "仅解释一般制约关系，未使用任何同一工作点的公开推力器数值。",
+        "功率口径未落实到 PPU 前后，读者容易拿整星电功率直接带入。",
+        "占空比和寿命均停留在提醒，缺少累计冲量、耗质和电能的账本示例。"
+      ],
+      "fields": {
+        "summary": "用 NASA NEXT 历史节流表的两个完整工作点，复算推进剂流率、推力效率与一天的冲量和电能，并区分推力器输入和整星母线功率。",
+        "readTime": 18,
+        "bodyHeadings": [
+          "按完整工作点读取公开节流表",
+          "由推力和比冲复算流率",
+          "一天运行究竟获得多少冲量",
+          "电源预算要跨过 PPU 接口",
+          "把工作点接入轨迹时间线",
+          "寿命需要任务节流历史"
+        ],
+        "body": [
+          "选用 NASA/TM—2010-216920 的 NEXT 历史资料，正文第 2 页表 1 和第 3 页表 2 按同一束流电流与电压对应：3.52 A、1800 V 时推力 236 mN、推力器输入 6.8 kW、比冲 4190 s；1.00 A、275 V 时为 26 mN、0.5 kW、1400 s。这些是原表的舍入值，适合说明节流和数据口径，不代表所有 NEXT-C 飞行产品的现行额定参数。记录工作点时应同时保存电压、电流、推力、总流率或比冲及功率位置，不能从产品简介拼接独立最大值。",
+          "取 g₀=9.80665 m/s²，等效排气速度 v_eq=g₀I_sp。236 mN 工作点给出 v_eq=41 089.8635 m/s，ṁ=F/v_eq=5.743509 mg/s；由 η_eff=Fv_eq/(2P_thr) 得 0.713030。26 mN 点对应 13 729.31 m/s、1.893759 mg/s 和 0.356962。η_eff 是用推力、总推进剂流率和指定功率口径定义的等效推进效率，并不说明真实羽流是无发散、单速度喷流，也不能把 1−η_eff 全部当成整星内部废热。",
+          "设一天 86 400 s 中仅 60% 时间保持高功率点，其余完全停机，并忽略启动额外耗质，这是教学时序。开机 51 840 s 后累计冲量 12 234.24 N·s，耗氙 0.297744 kg，推力器输入电能 97.92 kWh。若同样时长使用低功率点，则是 1347.84 N·s、0.098172 kg 与 7.20 kWh。对初始总质量 1000 kg、推力始终同向且没有外力的教学模型，高点理想速度增量为 v_eq ln[1000/(1000−0.2977435)]=12.236062 m/s。它不是某条真实轨道转移的收益。",
+          "表内 P_thr 是推力器输入，不是太阳翼必须提供的全部功率。若仅为预算演示假定 PPU 效率 0.92，其他分系统同时消耗 1.0 kW，高点要求母线提供 6.8/0.92+1.0=8.3913 kW；其中 PPU 自身损耗约 0.5913 kW。这里的 0.92 和 1.0 kW 是人为假设，不是该报告的 PPU 实测值。可用功率低于工作点需要时，应切换有证据支持的较低档位或关机，不能保持推力而把电量记成负值。",
+          "轨迹计算应逐段记录开始与结束时间、工作点编号、推力方向、开机状态和质量；食区、通信姿态或热限制作为事件改变可用状态。每一段积分质量与冲量，截止事件截断当前积分步，检查消耗不能超过剩余储量。同样的总冲量在不同轨道相位或不同方向施加会产生不同终态，故日均推力不能替代有时序的动力学传播。太阳距离变化也只先改变可用电功率，不能未经节流表直接独立调整比冲与推力。",
+          "长期使用还要逐档统计累计开机时间和推进剂通过量，并区分推力器、供气、PPU 和中和器的限制。所引 NASA 报告讨论了不同节流点对栅极及阴极寿命评估的影响，因此最大时长、最大通过量和某个工作点的性能不宜拼成一个通用寿命保证。本文完成的是公开表格整理与代数复算，没有运行离子束、侵蚀或任务最优控制模型；若要比较轨道方案，还需加入实际电源、停机窗口、引力和方向约束。"
+        ],
+        "formula": "v_eq=g₀I_sp，ṁ=F/(g₀I_sp)，η_eff=F²/(2ṁP_thr)=Fg₀I_sp/(2P_thr)。分段累计 I_total=ΣF_iΔt_i，m_used=Σṁ_iΔt_i，E_thr=ΣP_thr,iΔt_i。P_bus=P_thr/η_PPU+P_other（该预算式暂不含线缆及其他损耗）。仅对无外力、同向推力且 v_eq 恒定：Δv=v_eq ln(m₀/m_f)。",
+        "pitfall": "跨工作点拼接最大推力和最大比冲；将推力器功率直接当母线输入；用日历时长代替开机时长；将等效喷流功率差全部计入航天器热负荷；把历史 NEXT 表格称为当前 NEXT-C 规格。",
+        "exercise": "从表 1、表 2 找到 3.52 A/1800 V 与 1 A/275 V 两行，复算流率和效率。对 60% 开机的一天核对两档冲量、耗质与电能；再把占空比改为 30%，确认三项累计量减半，而单个工作点的比冲和瞬时效率不变。",
+        "sources": [
+          {
+            "title": "NASA/TM—2010-216920 · Application of the NEXT Ion Thruster Lifetime Assessment to Thruster Throttling，表 1–2（正文页 2–3；PDF 页 6–7）",
+            "url": "https://ntrs.nasa.gov/api/citations/20110000535/downloads/20110000535.pdf"
+          },
+          {
+            "title": "NASA Glenn · Specific Impulse（推力、流率与比冲定义）",
+            "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/specific-impulse/"
+          },
+          {
+            "title": "NASA · A Summary of the NEXT-C Flight Thruster Proto-flight Testing（2021，区分 NEXT-C 的具体型号与试验）",
+            "url": "https://ntrs.nasa.gov/api/citations/20210018563/downloads/NEXT-C%20AIAA%20Paper%202021%20FINAL.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "structural-dynamics",
+      "problems": [
+        "正文建议两自由度算例，却没有质量、刚度矩阵、模态或参考解。",
+        "提到质量参与度不是充分条件，但没有反例说明为什么。",
+        "模态显示、实际振幅、局部输出之间的区别仍很抽象。"
+      ],
+      "fields": {
+        "summary": "从两质量、三弹簧模型算出模态与载荷投影，说明“有效质量 100%”仍可能漏掉局部响应，并给出静态和共振参考值。",
+        "readTime": 18,
+        "bodyHeadings": [
+          "从一个完整的两自由度模型开始",
+          "载荷投影决定是否激发模态",
+          "100% 有效质量仍可能漏掉响应",
+          "加入阻尼后才有有限共振幅值",
+          "基座激励与随机谱的输入口径",
+          "模型截断与试验对照"
+        ],
+        "body": [
+          "构造教学模型：两块质量均为 1 kg 的滑块沿同一方向运动，两端分别以 100 N/m 弹簧连到固定墙，中间再以 100 N/m 弹簧连接。小位移、线弹性且无阻尼时，M=diag(1,1) kg，K=[[200,−100],[−100,200]] N/m。广义特征方程 Kφ=ω²Mφ 给出 ω₁=10、ω₂=√300 rad/s，即 1.591549 Hz 与 2.756644 Hz；质量归一化的振型数值分别为 [1,1]/√2 和 [1,−1]/√2。它们的画图幅值由归一化选择，不是滑块真实振幅。",
+          "用 u=Φq 变换坐标，质量归一化后各模态的激励是 p_i=φ_iᵀf。对同向载荷 f=[1,1] N，第一模态投影为 √2，第二模态为零；反向载荷 f=[1,−1] N 刚好相反。因此知道固有频率并不足以预测响应，还要知道力的方向、位置和时间变化。两套模型若模态次序发生交换，应先对照振型及质量加权相关性，再比较频率，不能仅按“第 1 阶、第 2 阶”逐行匹配。",
+          "同步基座运动的影响向量 r=[1,1]，第一模态有效质量 (φ₁ᵀMr)²/(φ₁ᵀMφ₁)=2 kg，占该方向总质量 100%。但若施加静态点力 f=[1,0] N，完整解 K⁻¹f=[6.666667,3.333333] mm，只保留第一模态则得到 [5,5] mm，两个位移分别偏差 −25% 和 +50%。更严重的是中间弹簧力：完整解为 0.333333 N，单模态解却为零。这直接说明基座方向的质量参与度不能代替任意点载荷或局部内力的收敛检查。",
+          "为两个模态分别指定阻尼比 ζ_i 后，独立模态方程为 q̈_i+2ζ_iω_iq̇_i+ω_i²q_i=p_i(t)。对 f=[0.01,0.01] cos(10t) N、ζ₁=0.02，稳态时两滑块各自振幅为 2.5 mm；把 ζ₁ 降到 0.01 则变为 5 mm。结果来自同一个线性模型的共振解析式，不是材料阻尼实测。若阻尼器使 ΦᵀCΦ 不是对角矩阵，应保留模态间耦合；不能为方便就删除非对角项。较大位移引起几何非线性或接触时，这套线性参考失效。",
+          "基座位移 y(t) 激励时，要先定义相对位移 u，方程右侧为 −Mrÿ，而绝对加速度是 ü+rÿ；将两者混用会错误解释传感器读数。对于稳定线性系统和平稳随机输入，单边响应谱由 S_y=H S_in Hᴴ 得到，方差再对频率积分。输入单位 g²/Hz 必须按 g₀² 换成 (m/s²)²/Hz。多个相关输入需保留交叉谱；应力分量可线性传播，等效应力等非线性组合量不能直接套同一个谱公式。",
+          "验证时先用完整两自由度直接积分或频域解对照全模态解，再故意只保留第一模态，分别记录两个位移、中间弹簧力和绝对加速度。真实有限元模型还需检查边界柔度、质量分布、网格和模态截断，并把阻尼作为待辨识参数扫描。自由三维整机应检查相应刚体模态；安装约束后不能再照搬自由边界结果。没有试验模态或任务载荷时，计算只是当前结构与边界假设下的响应预测，不能用通用试验等级替代任务输入。"
+        ],
+        "formula": "M ü+C u̇+Ku=f；Kφ_i=ω_i²Mφ_i；质量归一化 ΦᵀMΦ=I、ΦᵀKΦ=diag(ω_i²)。p_i=φ_iᵀf；相对基座坐标下 f_eff=−Mrÿ。m_eff,i=(φ_iᵀMr)²/(φ_iᵀMφ_i)。线性平稳响应 S_y(f)=H(f)S_in(f)H(f)ᴴ，单边谱方差 σ_y²=∫₀∞S_y(f)df。",
+        "pitfall": "把振型归一化幅值当实际变形；仅凭某方向有效质量覆盖率判断任意局部输出；混淆相对位移与绝对加速度；将 g²/Hz 当作 SI 谱单位；忽略非比例阻尼的模态耦合。",
+        "exercise": "建立正文 M、K 和 f=[1,0] N，复算两模态、6.666667/3.333333 mm 静位移及 0.333333 N 中间弹簧力；仅保留第一模态并解释误差。然后给同向 0.01 N 谐波载荷，在 10 rad/s 比较 2% 与 1% 阻尼的 2.5/5 mm 稳态振幅。",
+        "sources": [
+          {
+            "title": "MIT 2.003SC · Lecture 22：Finding Natural Frequencies and Mode Shapes of a 2 DOF System",
+            "url": "https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/resources/lecture-22-finding-natural-frequencies/"
+          },
+          {
+            "title": "MIT 2.003SC · Lecture 23：Vibration by Mode Superposition",
+            "url": "https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/resources/lecture-23-vibration-by-mode-superposition/"
+          },
+          {
+            "title": "COMSOL · Mode Superposition：Deriving the Modal Equations、Modal Load、Stresses and Strains、Moving Foundations",
+            "url": "https://www.comsol.com/multiphysics/mode-superposition"
+          },
+          {
+            "title": "COMSOL 6.3 · Random Vibration Theory（线性输出与交叉谱）",
+            "url": "https://doc.comsol.com/6.3/doc/com.comsol.help.sme/sme_ug_theory.06.055.html"
+          }
+        ]
+      }
+    }
+  ],
+  "sourceAudit": [
+    {
+      "url": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/req/rotation.html",
+      "read": "Quaternion arithmetic 和 Quaternion multiplication；qvq* 及组合 q₂q₁。",
+      "supports": "旋转组合定义，不把 NAIF 所有角速度接口符号直接移植到本文。"
+    },
+    {
+      "url": "https://arxiv.org/abs/1801.07478v2",
+      "read": "2018 v2 原论文摘要与范围。",
+      "supports": "Hamilton 与 flipped 乘法约定并存，引用用于接口转换范围。"
+    },
+    {
+      "url": "https://www.nasa.gov/smallsat-institute/sst-soa/guidance-navigation-and-control/",
+      "read": "页面日期 2026-05-07；5.2.2 与 5.2.3。",
+      "supports": "飞轮储存动量、外部执行器卸载、磁卸载方向限制。教材单轴数值全部为本站自设推导。"
+    },
+    {
+      "url": "https://avslab.github.io/basilisk/examples/scenarioAttitudeFeedbackRW.html",
+      "read": "返回版本 2.12.1；How to Add RW Devices 与参数表。",
+      "supports": "Omega 的 RPM、maxMomentum 的 Nms、useMaxTorque 等接口，不声称执行示例。"
+    },
+    {
+      "url": "https://ntrs.nasa.gov/api/citations/20110000535/downloads/20110000535.pdf",
+      "read": "NASA/TM—2010-216920，2010-11；表 1 与表 2，正文页 2–3。",
+      "supports": "同一工作点 236 mN/6.8 kW/4190 s 与 26 mN/0.5 kW/1400 s；后续章节讨论节流与寿命。",
+      "limitation": "web 文字层两表成功读取，PDF 截图工具返回 403/超时；本稿只使用文字层中同一行明确可配对的工作点，不声称表格视觉复核成功。"
+    },
+    {
+      "url": "https://ntrs.nasa.gov/api/citations/20210018563/downloads/NEXT-C%20AIAA%20Paper%202021%20FINAL.pdf",
+      "read": "题名及 Section II NEXT Program Overview。",
+      "supports": "NEXT-C 飞行型号与历史 NEXT 研发数据应区分；不从新版简介混合替换旧表参数。"
+    },
+    {
+      "url": "https://www.comsol.com/multiphysics/mode-superposition",
+      "read": "Deriving the Modal Equations、Damping Models、The Modal Load、Stresses and Strains、Moving Foundations。",
+      "supports": "模态截断按载荷/输出选择、非对角阻尼的耦合、基座加速度变等效体力；具体 2 自由度数值是本站自设推导。"
+    },
+    {
+      "url": "https://engcourses-uofa.ca/books/vibrations-and-sound/forced-vibrations-of-damped-single-degree-of-freedom-systems/base-excitation-in-a-damped-system/",
+      "read": "Base Excitation in a Damped System，式 5.23–5.25 的上下文。",
+      "supports": "基座激励及相对位移口径的交叉核对。"
+    }
+  ],
+  "numericalChecks": {
+    "execution": "Python 标准库代数复算；没有调用工程求解软件。",
+    "quaternion": {
+      "qz_qx": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "qx_qz": [
+        0.5,
+        0.5,
+        -0.5,
+        0.5
+      ],
+      "eulerNormalizedAngle_deg": 76.29205197444509,
+      "eulerNormalizedPhaseError_deg": 13.707948025554913
+    },
+    "wheel": {
+      "Jlocked_kgm2": 10,
+      "bodyTorqueLimit_Nm": 0.01,
+      "angle_rad": 1.5707963267948966,
+      "bangBangDuration_s": 79.26654595212021,
+      "peakRate_rad_s": 0.03963327297606011,
+      "peakRate_deg_s": 2.270819269818144,
+      "requiredRelativeMomentum_Nms": 0.3963327297606011,
+      "limitedMomentum_Nms": 0.2,
+      "capRate_rad_s": 0.02,
+      "accel_s": 20,
+      "coast_s": 58.53981633974482,
+      "limitedDuration_s": 98.53981633974482,
+      "constantDisturbance_Nm": 1e-05,
+      "holdUntilSaturation_s": 20000
+    },
+    "electric": [
+      {
+        "beamCurrent_A": 3.52,
+        "beamVoltage_V": 1800,
+        "F_N": 0.236,
+        "Pthr_W": 6800,
+        "Isp_s": 4190,
+        "ve_m_s": 41089.8635,
+        "mdot_kg_s": 5.74350898001888e-06,
+        "etaEffective": 0.7130299842647058,
+        "onTime_s": 51840,
+        "impulse_Ns": 12234.24,
+        "propellant_kg": 0.2977435055241787,
+        "thrusterEnergy_kWh": 97.92,
+        "dv1000kg_m_s": 12.23606169435847,
+        "busRequiredWithAssumed92percentPPUAnd1kWOther_W": 8391.304347826088
+      },
+      {
+        "beamCurrent_A": 1,
+        "beamVoltage_V": 275,
+        "F_N": 0.026,
+        "Pthr_W": 500,
+        "Isp_s": 1400,
+        "ve_m_s": 13729.31,
+        "mdot_kg_s": 1.8937586812447238e-06,
+        "etaEffective": 0.35696205999999997,
+        "onTime_s": 51840,
+        "impulse_Ns": 1347.84,
+        "propellant_kg": 0.09817245003572649,
+        "thrusterEnergy_kWh": 7.2,
+        "dv1000kg_m_s": 1.3479061647082773,
+        "busRequiredWithAssumed92percentPPUAnd1kWOther_W": 1543.4782608695652
+      }
+    ],
+    "structural": {
+      "mass_kg": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "stiffness_N_m": [
+        [
+          200,
+          -100
+        ],
+        [
+          -100,
+          200
+        ]
+      ],
+      "omega_rad_s": [
+        10,
+        17.320508075688775
+      ],
+      "f_Hz": [
+        1.5915494309189535,
+        2.7566444771089604
+      ],
+      "pointForce_N": [
+        1,
+        0
+      ],
+      "staticFull_m": [
+        0.006666666666666667,
+        0.0033333333333333335
+      ],
+      "staticFirst_m": [
+        0.005,
+        0.005
+      ],
+      "couplingSpringFull_N": 0.33333333333333337,
+      "symmetricResonance_2percent_m": 0.0025,
+      "symmetricResonance_1percent_m": 0.005
+    }
+  },
+  "implementationNotes": [
+    "仅替换 lessonEdits[].fields；保留现有 id、category、prerequisites、related 和图谱链接。bodyHeadings 长度与 body 一致。",
+    "优先将正文中的输入表、参考输出表和短反例以可读表格或带图示算例呈现，避免继续堆砌同样样式的六段文字。",
+    "若添加交互，建议单轴机动规划或两自由度模态投影：数值可解析验证，能让用户实际观察约束或载荷改变。不要把教具标为实际航天器性能。",
+    "未审查的其余知识条目不应整体更新为本轮复核日期。"
+  ]
+}
