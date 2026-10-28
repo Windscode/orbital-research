@@ -4,3 +4,6 @@
 *.jpg binary
 *.woff2 binary
 *.glb binary
+
+# Frozen scientific files: preserve bytes for published SHA-256 checks.
+/public/data/mro-2024/* -text

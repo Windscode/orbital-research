@@ -1,0 +1,54 @@
+{
+  "version": "12.0.0",
+  "date": "2026-10-28",
+  "scope": "实用性审查、公开数据研究与选定内容深度修订",
+  "reviewed": {
+    "inventory": {
+      "lessons": 59,
+      "resources": 88,
+      "vehicles": 56,
+      "briefings": 30,
+      "sources": 52
+    },
+    "deepLessons": [
+      "orbit-determination",
+      "observability",
+      "cfd-verification",
+      "data-provenance",
+      "finite-elements"
+    ],
+    "deepResources": [
+      "orekit",
+      "su2",
+      "gmsh",
+      "spice",
+      "tudat"
+    ],
+    "deepVehicles": [
+      "slim",
+      "change-5"
+    ],
+    "dataStudy": "MRO historical navigation ephemeris; 289 states; 24 hours TDB",
+    "briefings": [
+      "neo-surveyor-sunshade-power-2026",
+      "dragonfly-simulated-flight-2026"
+    ]
+  },
+  "validation": {
+    "numerical": "原始289行一致，冻结文件哈希一致，网页通用变量解与独立Python椭圆法全部样本对照通过；QR、协方差、秩与GCI反例通过。",
+    "browser": "390、768、1440宽度无页面横向溢出；滑杆、RTN和投影切换、偏置和几何退化、GCI失败例、阅读链接均检查。实际下载JSON和Python后成功复算。",
+    "site": "npm test、TypeScript/Vite build及初始包体积检查通过；发布后还将核对线上页面。",
+    "privacy": "当前公开源码、内容和项目导出保留不公开本地工程路径的规则。"
+  },
+  "knownGaps": {
+    "resourcesWithoutStarterWorkflow": 42,
+    "vehiclesWithoutDataProducts": 38,
+    "vehiclesWithMassPreparationOnly": 34,
+    "limits": [
+      "目录结构检查不等于逐篇科学复核，未改写条目保留原日期。",
+      "本轮没有运行CSPICE、Orekit、Tudat、SU2或真实任务CFD；外部工具步骤依文档和源码核对。",
+      "MRO快照无逐样本协方差，五分钟采样不保证捕获精确极值。",
+      "本轮未修改飞行器三维几何，也没有新执行AerospaceSimUE仿真。"
+    ]
+  }
+}

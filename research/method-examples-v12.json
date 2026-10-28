@@ -1,0 +1,439 @@
+[
+  {
+    "id": "range-bias-wls",
+    "title": "五条测距差中的位置改正与公共偏置",
+    "lessonIds": [
+      "orbit-determination",
+      "observability"
+    ],
+    "dataNature": "作者构造的线性化静态二维教学数据；非航天器遥测，非完整轨道确定",
+    "assumptions": [
+      "位置改正足够小，视线导数在参考状态固定。",
+      "五个观测误差零均值、相互独立；sigma是已知绝对标准差。",
+      "公共偏置在五个观测间不变；无先验。",
+      "各视线仅用于局部几何教学，没有构造真实测站可见性或光行时链路。"
+    ],
+    "unknowns": [
+      {
+        "name": "δx",
+        "unit": "m"
+      },
+      {
+        "name": "δy",
+        "unit": "m"
+      },
+      {
+        "name": "b",
+        "unit": "m"
+      }
+    ],
+    "dataRows": [
+      {
+        "observation": 1,
+        "ux": 1,
+        "uy": 0,
+        "differenceM": 13,
+        "sigmaM": 1,
+        "weightPerM2": 1,
+        "predictedM": 12.484581497797361,
+        "residualM": 0.515418502202639,
+        "whitenedResidual": 0.515418502202639
+      },
+      {
+        "observation": 2,
+        "ux": 0,
+        "uy": 1,
+        "differenceM": -1,
+        "sigmaM": 1,
+        "weightPerM2": 1,
+        "predictedM": -1.674008810572691,
+        "residualM": 0.6740088105726909,
+        "whitenedResidual": 0.6740088105726909
+      },
+      {
+        "observation": 3,
+        "ux": -1,
+        "uy": 0,
+        "differenceM": -7,
+        "sigmaM": 2,
+        "weightPerM2": 0.25,
+        "predictedM": -6.682819383259915,
+        "residualM": -0.31718061674008524,
+        "whitenedResidual": -0.15859030837004262
+      },
+      {
+        "observation": 4,
+        "ux": 0,
+        "uy": -1,
+        "differenceM": 7,
+        "sigmaM": 2,
+        "weightPerM2": 0.25,
+        "predictedM": 7.475770925110137,
+        "residualM": -0.47577092511013674,
+        "whitenedResidual": -0.23788546255506837
+      },
+      {
+        "observation": 5,
+        "ux": 0.6,
+        "uy": 0.8,
+        "differenceM": 4,
+        "sigmaM": 1,
+        "weightPerM2": 1,
+        "predictedM": 4.991189427312774,
+        "residualM": -0.9911894273127739,
+        "whitenedResidual": -0.9911894273127739
+      }
+    ],
+    "derivation": [
+      {
+        "title": "从距离函数求导",
+        "equation": "ρᵢ(r,b)=‖r−sᵢ‖+b；uᵢ=(r₀−sᵢ)/‖r₀−sᵢ‖；dᵢ=ρᵢ,obs−ρᵢ(r₀,0)≈[uᵢₓ,uᵢᵧ,1]θ。",
+        "interpretation": "公共偏置不随视线方向改变；位置改正的贡献随视线投影改变。"
+      },
+      {
+        "title": "白化",
+        "equation": "Aᵢⱼ=Hᵢⱼ/σᵢ，zᵢ=dᵢ/σᵢ；J=‖z−Aθ‖²。",
+        "matrixA": [
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            -0.5,
+            0,
+            0.5
+          ],
+          [
+            0,
+            -0.5,
+            0.5
+          ],
+          [
+            0.6,
+            0.8,
+            1
+          ]
+        ],
+        "vectorZ": [
+          13,
+          -1,
+          -3.5,
+          3.5,
+          4
+        ],
+        "interpretation": "两米标准差相对一米标准差的平方残差权重为1/4。"
+      },
+      {
+        "title": "解三参数",
+        "equation": "HᵀWHθ=HᵀWd",
+        "normalMatrix": [
+          [
+            1.6099999999999999,
+            0.48,
+            1.35
+          ],
+          [
+            0.48,
+            1.8900000000000001,
+            1.55
+          ],
+          [
+            1.35,
+            1.55,
+            3.5
+          ]
+        ],
+        "rightHandSide": [
+          17.15,
+          0.4500000000000002,
+          16
+        ],
+        "solutionM": [
+          9.583700440528638,
+          -4.574889867841414,
+          2.9008810572687227
+        ],
+        "implementation": "结果使用 NumPy lstsq 对白化系统进行 SVD 求解；正规矩阵用于独立算术核对，不推荐在病态实际问题中显式求逆。"
+      },
+      {
+        "title": "核对残差",
+        "equation": "r=d−Hθ；HᵀWr≈0；J=rᵀWr",
+        "residualM": [
+          0.515418502202639,
+          0.6740088105726909,
+          -0.31718061674008524,
+          -0.47577092511013674,
+          -0.9911894273127739
+        ],
+        "whitenedResidual": [
+          0.515418502202639,
+          0.6740088105726909,
+          -0.15859030837004262,
+          -0.23788546255506837,
+          -0.9911894273127739
+        ],
+        "J": 1.7841409691629941,
+        "dof": 2,
+        "normalResidual": [
+          -4.107825191113079e-15,
+          5.88418203051333e-15,
+          4.440892098500626e-16
+        ],
+        "interpretation": "驻点条件只核验这一次线性求解。拟合残差协方差是 R−HPHᵀ，并非原始R，所以各残差不独立。"
+      },
+      {
+        "title": "解释协方差",
+        "equation": "P=(HᵀWH)⁻¹",
+        "covarianceM2": [
+          [
+            0.9278634361233483,
+            0.09085903083700439,
+            -0.3981277533039649
+          ],
+          [
+            0.09085903083700454,
+            0.8397577092511014,
+            -0.40693832599118956
+          ],
+          [
+            -0.39812775330396494,
+            -0.4069383259911894,
+            0.6194933920704847
+          ]
+        ],
+        "sigmaM": [
+          0.963256682366309,
+          0.9163829490180955,
+          0.7870790253020878
+        ],
+        "interpretation": "sigma已作为绝对噪声尺度，因此不再乘 J/(5−3)。该协方差不包括未建模系统误差。"
+      },
+      {
+        "title": "检查漏估偏置",
+        "estimate": [
+          11.448000000000002,
+          -2.6693333333333333
+        ],
+        "residual": [
+          1.5519999999999978,
+          1.6693333333333333,
+          4.448000000000002,
+          4.330666666666667,
+          -0.7333333333333343
+        ],
+        "objective": 15.368,
+        "interpretation": "省略偏置后，位置吸收部分公共误差，平方残差和从1.784141增为15.368；两种模型参数数目不同，不能只比较平均未加权残差。"
+      },
+      {
+        "title": "识别几何退化",
+        "wideGeometry": {
+          "singularValues": [
+            2.2409845782925983,
+            1.1230258975219194,
+            0.846640982559805
+          ],
+          "condition": 2.646912474656044
+        },
+        "narrowGeometry": {
+          "anglesDeg": [
+            -2,
+            -1,
+            0,
+            1,
+            2
+          ],
+          "sigmaM": [
+            1,
+            1,
+            2,
+            2,
+            1
+          ],
+          "rank": 3,
+          "singularValues": [
+            2.645228193944715,
+            0.052608951411886866,
+            0.0003165301326303394
+          ],
+          "condition": 8356.955377243505,
+          "parameterSigmaM": [
+            2234.385726824819,
+            19.191041556637337,
+            2233.47657928352
+          ],
+          "correlationXBias": -0.9999999708557313
+        },
+        "identicalGeometry": {
+          "HRow": [
+            1,
+            0,
+            1
+          ],
+          "rank": 1,
+          "nullDirections": [
+            [
+              1,
+              0,
+              -1
+            ],
+            [
+              0,
+              1,
+              0
+            ]
+          ],
+          "interpretation": "δx+b是唯一可见组合；增加相同视线的观测次数不增加矩阵秩。"
+        }
+      }
+    ],
+    "extensions": [
+      "把第四条sigma改为20m，重新计算参数、残差与协方差。",
+      "将全部视线改为(1,0)，要求求解器报告秩不足；不要把最小范数返回值误作唯一物理解。",
+      "加入b的独立标定先验时，分开报告观测信息和先验信息。",
+      "完整定轨需逐测量重建时间、光行时和状态转移关系，本例不替代该过程。"
+    ],
+    "sources": [
+      {
+        "title": "Gilbert Strang / MIT · Multivariate Gaussian and Weighted Least Squares, §12.3",
+        "url": "https://math.mit.edu/~gs/linearalgebra/ila5/linearalgebra5_12-3.pdf"
+      },
+      {
+        "title": "MIT 16.30 · Estimators and Observability, Lecture 14",
+        "url": "https://ocw.mit.edu/courses/16-30-feedback-control-systems-fall-2010/f6de7a51bb043db1d6d3cc7c362b7393_MIT16_30F10_lec14.pdf"
+      },
+      {
+        "title": "Orekit 13.1.3 · AbstractBatchLSModel.java, lines 394–399 / 423–428",
+        "url": "https://github.com/CS-SI/Orekit/blob/13.1.3/src/main/java/org/orekit/estimation/leastsquares/AbstractBatchLSModel.java"
+      }
+    ]
+  },
+  {
+    "id": "nasa-inlet-gci",
+    "title": "NASA 进气道压力恢复：三网格 GCI 复算",
+    "lessonIds": [
+      "cfd-verification"
+    ],
+    "dataNature": "NASA NPARC 已公开表格的数值复算；没有重跑原始 CFD",
+    "sourceTable": {
+      "sourceUrl": "https://www.grc.nasa.gov/www/wind/valid/tutorial/spatconv.html",
+      "section": "Example Grid Convergence Study",
+      "quantity": "Pressure recovery Pr",
+      "unit": "1",
+      "rows": [
+        {
+          "grid": 1,
+          "spacing": 1,
+          "pressureRecovery": 0.9705
+        },
+        {
+          "grid": 2,
+          "spacing": 2,
+          "pressureRecovery": 0.96854
+        },
+        {
+          "grid": 3,
+          "spacing": 4,
+          "pressureRecovery": 0.96178
+        }
+      ],
+      "gridMeaning": "原教程的 i/j 方向系统加密，k方向保持不变且为轴对称问题；不能据此误写成通用三维体网格每级单元数加倍。"
+    },
+    "derivation": [
+      {
+        "title": "确定网格顺序与差值",
+        "equation": "h₁<h₂<h₃；r₂₁=r₃₂=2；ε₂₁=φ₂−φ₁，ε₃₂=φ₃−φ₂",
+        "e21": -0.001960000000000073,
+        "e32": -0.006759999999999988,
+        "R": 0.2899408284023781,
+        "interpretation": "0<R<1且差值同号，本组三点表现为单调趋近；尚未证明渐近区或物理准确。"
+      },
+      {
+        "title": "由主导误差项求阶次",
+        "equation": "φ(h)=φ₀+Chᵖ ⇒ ε₃₂/ε₂₁=rᵖ ⇒ p=ln(ε₃₂/ε₂₁)/lnr",
+        "p": 1.78616959216692,
+        "rPowP": 3.4489795918366006,
+        "interpretation": "这是此网格族与此输出的观察阶；非等比网格要使用对应关系求p，不能沿用简式。"
+      },
+      {
+        "title": "Richardson外推",
+        "equation": "φ_ext=φ₁+(φ₁−φ₂)/(rᵖ−1)",
+        "value": 0.9713003333333334,
+        "interpretation": "外推值是误差模型下的连续网格极限估计，不是实验值。"
+      },
+      {
+        "title": "细网格GCI",
+        "equation": "GCI₂₁=1.25×|φ₁−φ₂|/[|φ₁|(rᵖ−1)]",
+        "fraction": 0.001030826034690117,
+        "percent": 0.1030826034690117,
+        "absoluteUncertainty": 0.0010004166666667585,
+        "interpretation": "细网格结果0.97050，离散不确定度估计0.00100041667。0.103082603%中的百分号不可省略。"
+      },
+      {
+        "title": "中粗网格与渐近比值",
+        "equation": "GCI₃₂/(rᵖGCI₂₁)=|ε₃₂/ε₂₁|×|φ₁/φ₂|/rᵖ=|φ₁/φ₂|",
+        "gci32Percent": 0.3562492686586872,
+        "ratio": 1.0020236644846883,
+        "interpretation": "同一等比三网格差值用于拟合p时，近一比值代数上只是相邻输出接近的反映，不能单独构成渐近区的独立证明。这一说明是本站对公式的独立代数分析。"
+      },
+      {
+        "title": "需要追加什么证据",
+        "checks": [
+          "增加第四级更细网格，比较相邻三网格的观察p与外推值；不要把由前三点生成的第四点当作新计算。",
+          "证明迭代误差和时间/统计误差低于网格间差值。",
+          "检查几何、工况、积分区域和物理模型一致；局部网格尺寸及关键流动特征随加密可比。",
+          "小GCI只涉及选定输出的空间离散估计，不覆盖实验、边界输入、湍流模型或物理失配。"
+        ]
+      }
+    ],
+    "failureCases": [
+      {
+        "label": "振荡序列",
+        "dataNature": "自构教学反例",
+        "fineToCoarse": [
+          1.01,
+          0.99,
+          1.04
+        ],
+        "e21": -0.02,
+        "e32": 0.05,
+        "R": -0.4,
+        "result": "差值异号；停止使用本文的单调幂律简式，不把abs(log差值比)包装成收敛证明。负R本身不保证振荡幅度会继续衰减。"
+      },
+      {
+        "label": "细化差值增大",
+        "dataNature": "自构教学反例",
+        "fineToCoarse": [
+          0.9,
+          0.95,
+          0.98
+        ],
+        "e21": 0.05,
+        "e32": 0.03,
+        "R": 1.6666666666666667,
+        "result": "差值变大，不支持当前正阶单调收敛假设；检查是否进入渐近区、迭代误差或拓扑变化。"
+      },
+      {
+        "label": "差值接近零",
+        "dataNature": "方法边界",
+        "result": "差值为零或与输出舍入/迭代误差同阶时，观察p不可稳定估计，不应通过加极小常数强行输出漂亮数字。"
+      }
+    ],
+    "sources": [
+      {
+        "title": "NASA NPARC · Examining Spatial (Grid) Convergence",
+        "url": "https://www.grc.nasa.gov/www/wind/valid/tutorial/spatconv.html"
+      },
+      {
+        "title": "Celik et al. (2008) · Procedure for Estimation and Reporting of Uncertainty Due to Discretization in CFD Applications",
+        "url": "https://doi.org/10.1115/1.2960953"
+      }
+    ],
+    "sourceAccessNote": "NASA 原文及数值表已读取。Celik 2008 DOI发布页返回403；CiteSeer对原论文的索引片段可核对文章名、h定义与r>1.3的经验建议，完整PDF本轮未能读取。本文的等比推导和数值以已读NASA页面及独立计算为依据。"
+  }
+]

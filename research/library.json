@@ -123,7 +123,7 @@
     "category": "轨道与任务",
     "kind": "开源项目",
     "summary": "数值传播与参数估计工具箱，支持轨道、再入及行星际动力学研究。",
-    "details": "Tudat 的核心以 C++ 实现，通过 TudatPy 提供 Python 接口。它适合把天体环境、加速度、状态传播与观测模型置于同一研究脚本中，开展轨道估计、灵敏度分析及任务设计。输入包含环境数据、初始状态、传播器和观测配置，输出状态历史、观测残差和估计结果。建议把模型复杂度作为可控变量：先建立可解析基线，再加入重力场、大气和第三体作用。估计残差小不等于物理参数唯一可辨识，还需检查参数相关性、观测几何和先验约束。",
+    "details": "Tudat/TudatPy可统一配置动力学、变分方程、观测和估计。分析结果时要区分design_matrix、weighted_design_matrix与normalized_design_matrix：当前官方API将weighted_design_matrix定义为W½H，观测加权根据误差尺度改变行；参数归一化则处理列尺度，二者不是同一件事。应同时保存参数顺序、normalization_terms、物理covariance、formal_errors和correlations，不能将normalized_covariance的对角元直接标为米或米每秒。用外部星历位置作为伪观测拟合动力学，与处理真实测距/多普勒链路是两种验证任务；星历相关误差不能假定为逐历元独立原始测量噪声。",
     "tags": [
       "参数估计",
       "数值传播",
@@ -134,7 +134,7 @@
     "url": "https://docs.tudat.space/",
     "docsUrl": "https://docs.tudat.space/en/latest/index.html",
     "sourceTitle": "TU Delft · Tudat Space / TudatPy Documentation",
-    "verifiedOn": "2026-10-25",
+    "verifiedOn": "2026-10-28",
     "workflow": [
       "轨道传播",
       "轨道确定",
@@ -158,10 +158,11 @@
     ],
     "accessedAt": "2026-10-25 04:43:24 UTC",
     "starterWorkflow": [
-      "按官方 Quickstart 建立点质量地球与单星，确认 SI 单位、弧度和 TDB 历元语义。",
-      "显式选择积分器、初值及终止条件，输出 Cartesian 状态和守恒量。",
-      "逐个开启摄动并做步长收敛，保存环境数据与软件版本。",
-      "若做参数估计，先用合成观测恢复已知参数，再分析真实数据中的偏差与可辨识性。"
+      "固定TudatPy环境与对应文档版本，先选择官方的合成观测估计例，分别声明真值动力学、估计动力学、观测类型、时间与待估参数。不要在两套模型里共用未声明的真值状态。",
+      "导出design_matrix与weighted_design_matrix，按独立测量标准差σ核对每行应由H/σ形成；另保存normalized_design_matrix和normalization_terms，明确归一化作用于参数尺度。",
+      "先在没有先验的满秩小例中用QR/SVD独立求解白化系统，对比参数、残差及物理协方差。本站五测距例可验证代数：sigma=(1,1,2,2,1)m时，位置改正与偏置解为(9.583700,−4.574890,2.900881)m；它不代表已经跑通Tudat的轨道链路。",
+      "真正的传播与估计例要单独改变一项模型，如重力项或测量偏置，并记录残差随时间的结构、参数相关性、积分器设置与估计迭代历史。",
+      "若拟合公开星历生成的Cartesian伪观测，先统一中心、参考系、时间和单位，再保留后续弧段检查外推。该结果检验动力学对指定星历的拟合能力，不应写成实际测站数据的定轨精度。"
     ],
     "selectionQuestions": [
       "主要目标是数值传播、观测建模还是参数估计？",
@@ -170,11 +171,19 @@
     ],
     "starterWorkflowSources": [
       {
-        "title": "TudatPy Quickstart",
-        "url": "https://docs.tudat.space/en/latest/getting-started/quickstart.html"
+        "title": "TudatPy API · estimation_analysis, covariance and weighted design matrices",
+        "url": "https://py.api.tudat.space/en/latest/estimation/estimation_analysis.html"
+      },
+      {
+        "title": "Tudat · Modifying observation collections",
+        "url": "https://docs.tudat.space/en/latest/user-guide/state-estimation/observation-handling/observation-collection-manipulation/modifying-collections.html"
+      },
+      {
+        "title": "Tudat · Estimation examples, simulated observations and external ephemerides",
+        "url": "https://docs.tudat.space/en/latest/examples/estimation.html"
       }
     ],
-    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+    "starterWorkflowStatus": "官方API中的加权/归一化输出定义已核对；五测距代数已独立计算。本站未运行外部TudatPy估计。"
   },
   {
     "id": "spice",
@@ -182,7 +191,7 @@
     "category": "数据与环境",
     "kind": "工程软件",
     "summary": "星历、姿态、时间和参考系的任务几何工具包及带版本的内核数据。",
-    "details": "SPICE 是 NASA JPL NAIF 的任务几何信息系统。通过星历、姿态、时钟和参考系等 kernel，计算天体相对位置、观测几何及坐标变换，适合连接真实任务资料和研究仿真。输入不仅是目标与时刻，还包括 kernel 集合、观察者、参考系及光行时修正选择；输出是具有明确定义的几何状态。SPICE 查询通常使用已有星历，不应被理解为自动求解任意新任务的完整动力学积分器。建议保存 meta-kernel、覆盖区间与文件版本，避免重叠数据或时间尺度混用导致隐蔽偏差。",
+    "details": "SPICE以版本化内核提供任务几何。一个可核验的起点是CSPICE spkezr_c官方例题：使用de421.bsp，target=MOON、observer=EARTH、ref=J2000、abcorr=NONE，在et=0（2000-01-01 12:00:00 TDB）查询月球相对地球状态；位置以km、速度以km/s输出。NONE得到同一历元的几何状态，适合与相同约定的传播结果比较；LT、CN和含恒星光行差的选项回答不同的观测几何问题，不能仅因数值不同判断某个结果错误。任务内核还须核对目标、覆盖、参考系和加载优先级；姿态或仪器几何可能另需CK、SCLK、FK、IK等，并非加载一个SPK就完整。",
     "tags": [
       "星历",
       "参考系",
@@ -193,7 +202,7 @@
     "url": "https://naif.jpl.nasa.gov/naif/",
     "docsUrl": "https://naif.jpl.nasa.gov/naif/documentation.html",
     "sourceTitle": "NASA JPL NAIF · SPICE Concept / Toolkit Documentation",
-    "verifiedOn": "2026-10-25",
+    "verifiedOn": "2026-10-28",
     "workflow": [
       "数据归档与环境",
       "坐标与时间",
@@ -217,10 +226,11 @@
     ],
     "accessedAt": "2026-10-25 04:43:24 UTC",
     "starterWorkflow": [
-      "从官方任务归档选择内核与说明，列出 LSK、SPK、PCK、FK 和所需姿态/时钟数据。",
-      "制作 meta-kernel，保存文件名、版本、覆盖区间与校验值，检查缺失和重叠。",
-      "先查询一个有覆盖的目标相对状态，明确参考系、单位和光行时修正。",
-      "用已知事件或官方样例校核后，再加入仪器视场及图像时标；遇到覆盖缺口时显式说明。"
+      "复现官方spkezr_c例题时明确使用de421.bsp、MOON相对EARTH、J2000、NONE，以及et=0。et=0的定义是2000-01-01 12:00:00 TDB；它不是UTC字符串的默认解析结果。",
+      "官方例题该时刻的位置约为(−291608.385310,−266716.832947,−76102.487147) km，速度约为(0.6435313868,−0.6660876862,−0.3013257043) km/s。逐分量比较前先确认内核版本、查询参数和单位，记录平台与数值差异。",
+      "再查询et=3600、7200、10800秒并与官方表格比较，检查时间步长及目标相对观察者的方向约定。不要只比较距离范数，否则轴顺序或符号错误可能被掩盖。",
+      "只改变abcorr为LT，记录与NONE的差值并解释发射/接收时刻意义；动力学状态验证保留NONE，观测图像配准则按实际光路选择修正。",
+      "接入任务归档时保存meta-kernel、加载顺序、覆盖窗口与文件校验值。加入姿态和仪器前先验证相关参考系连接及CK/SCLK覆盖，覆盖不足应报告失败而非插入任意默认姿态。"
     ],
     "selectionQuestions": [
       "需要的是已有任务几何查询，还是尚未飞行任务的动力学预测？",
@@ -229,11 +239,11 @@
     ],
     "starterWorkflowSources": [
       {
-        "title": "NAIF SPICE Tutorials",
-        "url": "https://naif.jpl.nasa.gov/naif/tutorials.html"
+        "title": "NAIF CSPICE · spkezr_c, geometric Moon/Earth example",
+        "url": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/spkezr_c.html"
       }
     ],
-    "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+    "starterWorkflowStatus": "已核对NAIF官方例题参数及公布的六维状态；本站尚未运行本地CSPICE，不把文档参考值描述为本次计算输出。"
   },
   {
     "id": "jsbsim",
@@ -352,7 +362,7 @@
     "category": "轨道与任务",
     "kind": "开源项目",
     "summary": "可嵌入工程系统的空间动力学库，处理时间、参考系、传播与轨道确定。",
-    "details": "Orekit 是 Java 空间动力学库，提供时间尺度、参考系、轨道传播、事件检测和轨道确定等基础能力。它适合搭建可重复运行的数据处理管线，也适合与图形前端分离部署。输入状态、力模型、地球定向参数、观测和辅助数据，输出传播状态、事件时刻及估计结果。选择它意味着需要自己定义应用流程，而不是获得现成的任务设计界面。建议固定依赖和辅助数据版本，并为每次输出记录坐标系与时间尺度。观测估计时还应分析测量偏差、参数相关性与观测几何，避免仅靠残差判断结果可信。",
+    "details": "Orekit 提供时间与参考系、传播、事件和轨道确定组件，需要使用者定义应用流程。批处理估计尤其要核对测量单位、sigma 和 baseWeight：在固定版本 13.1.3 的 AbstractBatchLSModel 中，送给最小二乘器的残差是 baseWeight×(预测−观测)/sigma，导数按相同比例缩放，所以平方目标中的有效系数为 baseWeight²/sigma²。若残差为 4 m、sigma=2 m、baseWeight=0.5，归一化残差为 1，平方贡献也是 1；不能再把 1/sigma² 填入 baseWeight 造成重复加权。参数还使用各自的尺度归一化，分析物理协方差前应核对返回矩阵的单位与排列。辅助数据、力模型、测量模型和版本应与结果一起保存。",
     "tags": [
       "轨道确定",
       "工程集成",
@@ -361,9 +371,9 @@
     "language": "Java",
     "license": "Apache-2.0",
     "url": "https://github.com/CS-SI/Orekit",
-    "docsUrl": "https://www.orekit.org/",
+    "docsUrl": "https://test.orekit.org/site-orekit-12.0.1/apidocs/org/orekit/estimation/measurements/AbstractMeasurement.html",
     "sourceTitle": "CS GROUP · Orekit Official Repository / Overview",
-    "verifiedOn": "2026-10-25",
+    "verifiedOn": "2026-10-28",
     "workflow": [
       "坐标与时间",
       "轨道传播",
@@ -385,7 +395,15 @@
         "evidenceType": "项目文档（非采用证明）"
       }
     ],
-    "accessedAt": "2026-10-25 04:43:24 UTC"
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "starterWorkflow": [
+      "先用本站“轨道确定”课的五条合成测距差复算 θ=[9.583700,−4.574890,2.900881] m；这是估计代数基准，不是已经在 Orekit 中运行的定轨任务。",
+      "固定 Orekit、依赖库和辅助数据版本；为测量记录时间系统、测站坐标、量纲、sigma 和单程/双程约定，并选用与数据相符的测量类及修正项。",
+      "在已核对的 13.1.3 批处理实现中，先令 baseWeight=1，让 sigma 表示绝对标准差；用 4 m 残差、2 m sigma 的单条检查确认归一化残差幅值为 2，再把 baseWeight 改成 0.5 验证其变为 1。",
+      "仅选择有几何信息支持的轨道与测量参数。记录参数顺序和 scale；对选定参数用有限差分检查观测导数，比较白化矩阵奇异值与参数相关性。",
+      "迭代收敛后分别输出带单位的原始残差、归一化残差、物理协方差及留出弧段预测误差。小代数例通过只能验证缩放与求解，不替代时标、光行时和动力学的端到端验证。"
+    ],
+    "starterWorkflowStatus": "WLS 数值与缩放例已独立复算；API 说明及 13.1.3 固定标签源码已核对。本站未运行外部 Orekit 定轨。"
   },
   {
     "id": "trick",
@@ -595,9 +613,9 @@
     "language": "C++ · Python",
     "license": "LGPL-2.1；附属组件见仓库",
     "url": "https://github.com/su2code/SU2",
-    "docsUrl": "https://su2code.github.io/docs_v7/home/",
+    "docsUrl": "https://su2code.github.io/docs_v7/Quick-Start/",
     "sourceTitle": "SU2 Foundation / SU2 Team · Official Documentation",
-    "verifiedOn": "2026-10-25",
+    "verifiedOn": "2026-10-28",
     "workflow": [
       "流体与气动",
       "气动数据库",
@@ -619,7 +637,15 @@
         "evidenceType": "项目文档（非采用证明）"
       }
     ],
-    "accessedAt": "2026-10-25 04:43:24 UTC"
+    "accessedAt": "2026-10-25 04:43:24 UTC",
+    "starterWorkflow": [
+      "从官方版本 7 文档的 Quick Start 取 inv_NACA0012.cfg 与 mesh_NACA0012_inv.su2，并与所用 SU2 版本对应保存。旧 /docs/Quick-Start/ 页面明确仅适用于 6.2.0 及更早版本，不能混用配置说明。",
+      "复核这个具体入门工况：二维定常 Euler，NACA 0012，Mach=0.8，迎角 1.25°，自由来流压力 101325 Pa、温度 273.15 K；airfoil 与 farfield 是边界标记。此例是无黏流，不能用来核验摩擦阻力或壁面热流。",
+      "先运行直接问题，按官方配置调用 SU2_CFD inv_NACA0012.cfg。保存版本、配置、网格、终止状态、残差和升阻力历史，并检查表面压力与整体载荷是否仍随迭代变化。",
+      "围绕同一个目标量制作系统加密的网格族，保持几何与工况一致。用本站“CFD 验证”课的方法计算差值和观察阶次；无法得到可靠单调序列时保留原始结果，不强行给出 GCI。",
+      "如果下一步研究黏性载荷，另选择与试验匹配的 Navier–Stokes/RANS 案例，明确 Reynolds 数、湍流模型、转捩、壁面解析和参考面积。正式扫工况前先通过单一工况的迭代、网格与外部数据检查。"
+    ],
+    "starterWorkflowStatus": "工况、文件名与运行入口已按官方文档核对；本站未运行外部 SU2，未报告求解器性能或新的气动系数。"
   },
   {
     "id": "celestrak",
@@ -1253,7 +1279,7 @@
     "category": "设计与优化",
     "kind": "开源项目",
     "summary": "可脚本化的几何与有限元网格工具，支持网格尺度、物理分组和边界标记。",
-    "details": "Gmsh 是带有几何、网格、求解接口和后处理模块的开源工具，支持 GUI、脚本及多语言 API。它适合按参数生成计算域，并控制局部尺寸、物理分组和网格阶次，将结果交给有限元或流体求解器。输入几何、尺寸场和边界分组，输出网格与元素及边界标识；这些标识决定下游载荷如何施加，必须纳入版本管理。网格器不会判断选用的物理方程是否正确，细化也不能修复错误边界条件。曲率、狭缝和高长宽比区域应单独检查，比较不同网格时应保留相同几何与边界定义；开源和商业嵌入许可应按官方条款区分。",
+    "details": "Gmsh 的物理分组既是名称，也是下游材料与边界条件的接口。官方 4.15.2 手册说明：定义任何 Physical Groups 后，默认导出仅包含至少属于一个物理分组的元素；因此二维算例只标边界曲线而未标计算域表面，可能导出不到所需的二维单元。应同时建立域与边界分组，并检查维度、tag、名称与单元数量。Mesh.SaveAll 可要求导出全部元素，但某些格式如 MSH2 会因此丢弃物理分组定义，不能把它当成无条件修复。网格写出后应由下游读取器重新打开并核验，截图显示完整网格不代表输出文件保留了求解所需的全部信息。",
     "tags": [
       "网格",
       "前处理",
@@ -1275,7 +1301,7 @@
       "freecad"
     ],
     "sourceTitle": "Gmsh Project · 官方产品与项目资料",
-    "verifiedOn": "2026-10-25",
+    "verifiedOn": "2026-10-28",
     "accessedAt": "2026-10-25 04:43:24 UTC",
     "usageEvidence": [
       {
@@ -1284,7 +1310,15 @@
         "sourceUrl": "https://gmsh.info/",
         "evidenceType": "项目文档（非采用证明）"
       }
-    ]
+    ],
+    "starterWorkflow": [
+      "以一个二维矩形域为最小例，分别给域表面和四条边界建立 Physical Surface 与 Physical Curve，使用明确名称和 tag；说明每个边界将映射到哪一种条件。",
+      "选择下游求解器明确支持的 MSH 版本，保存几何脚本、尺寸场、阶次与导出选项。网格生成后输出各维度的实体与元素数，不只检查 GUI 中的形状。",
+      "把写出的文件重新导入实际下游读取器，核对二维域单元不为空，边界名称、维度和 tag 完整，几何面积与边长符合输入。",
+      "故意去掉域的 Physical Surface 后重新导出，观察默认过滤行为；再检查 Mesh.SaveAll 与 MSH2 的分组风险。把失败保留为输入检查用例，而不是让下游求解器静默补全边界。",
+      "在两种尺寸场上重复检查域和边界映射，再进入物理求解及网格收敛。布尔几何操作后应重新确认实体对应关系，不能依赖旧的数字 tag 仍代表原来的面。"
+    ],
+    "starterWorkflowStatus": "物理分组与导出行为已核对官方 4.15.2 手册；本站未运行外部 Gmsh 或下游求解器。"
   },
   {
     "id": "pointwise",

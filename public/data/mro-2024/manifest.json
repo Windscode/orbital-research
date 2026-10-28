@@ -1,0 +1,31 @@
+{
+  "id": "mro-mars-2024-01-01-5min",
+  "frozenOn": "2026-10-28",
+  "files": [
+    {
+      "file": "gm_de440.tpc",
+      "bytes": 12406,
+      "sha256": "924ddf4fb9ead9fe8a1aa55780bcabde40b09d00065d58226e24b68d8092f140"
+    },
+    {
+      "file": "horizons-response.json",
+      "bytes": 63693,
+      "sha256": "ea9fa265ece5c99e8681494417d730c71f8062f685a1a40354b0a62b0b6ef613"
+    },
+    {
+      "file": "horizons.txt",
+      "bytes": 63612,
+      "sha256": "4158c15955e23754835c8b1d2c629c483e4be69abe1e29f504b249ebb4cd5d10"
+    },
+    {
+      "file": "states.csv",
+      "bytes": 55223,
+      "sha256": "6b6ce8523244a17d0f4c6edd23ade19c2cacc811128fda2d31d96352f0e7e540"
+    },
+    {
+      "file": "states.json",
+      "bytes": 104394,
+      "sha256": "f6d2c7d7561fd952a7dfb23aaa9272ea6ec89ca9616ed666dec11b0c3b9ebc1f"
+    }
+  ]
+}

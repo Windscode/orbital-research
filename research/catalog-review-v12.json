@@ -1,0 +1,532 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-28",
+  "scope": "有界补查：SLIM、嫦娥五号、SPICE、Tudat；仅写test-results交付文件。",
+  "patchGroups": [
+    {
+      "id": "slim-data-method-v12",
+      "entryId": "slim",
+      "reason": "原条目只有任务事件与通用参数推断模板，没有说明哪些资料实际可取得。DARTS当前仍在准备数据集，不能把仪器存在写成科学数据已下载开放。",
+      "sourceIds": [
+        "slimDarts",
+        "slimReport"
+      ],
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "slim",
+          "field": "publicData",
+          "newValue": [
+            {
+              "parameter": "发射",
+              "value": "2023-09-07",
+              "sourceUrl": "https://global.jaxa.jp/projects/result.html"
+            },
+            {
+              "parameter": "月面着陆",
+              "value": "2024-01-20 00:20左右（日本标准时）",
+              "sourceUrl": "https://www.isas.jaxa.jp/home/slim/SLIM/"
+            },
+            {
+              "parameter": "精度目标",
+              "value": "100 m以内；这是目标，不是本页重新测得的误差",
+              "sourceUrl": "https://www.isas.jaxa.jp/home/slim/SLIM/"
+            },
+            {
+              "parameter": "任务运行结束",
+              "value": "2024-08-23完成关闭流程；经历三次月夜",
+              "sourceUrl": "https://global.jaxa.jp/about/president/presslec/202409.html"
+            },
+            {
+              "parameter": "MBC 仪器配置",
+              "value": "10 个带通滤波片；传感器敏感范围 750–1650 nm。此处为仪器说明，不代表全部标定影像已开放下载。",
+              "sourceUrl": "https://darts.isas.jaxa.jp/en/missions/slim"
+            },
+            {
+              "parameter": "公开数据集状态（2026-10-28核对）",
+              "value": "DARTS 的 SLIM Dataset List 仍显示 in preparation；现有入口可读任务与仪器资料，未据此声称原始 MBC/CAM 科学文件已公开。",
+              "sourceUrl": "https://darts.isas.jaxa.jp/en/missions/slim"
+            },
+            {
+              "parameter": "公开着陆报告中的目标点",
+              "value": "经度 25.24889°、纬度 −13.31549°，月球 Mean Earth/Polar Axis（ME）系；是目标位置，不是实测触地点。",
+              "sourceUrl": "https://global.jaxa.jp/press/2024/01/file/jaxa_doc01_20240125_e.pdf"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "slim",
+          "field": "inference",
+          "newValue": [
+            {
+              "parameter": "公开报告图像与阶段事件 · 可复核的导航研究入口",
+              "method": "以2024-01-25任务报告中的下降阶段、导航匹配图像和目标位置为资料索引，先给每张图保存页码、来源、图像类别和坐标口径。若做图像配准，只对共同可识别地物计算像素重投影误差；没有相机标定与同时刻姿态时，不将该误差直接换成真实着陆导航误差。",
+              "assumptions": "图表与公开配图是展示级资料，不等于带时间、姿态、内外参和辐射标定的原始观测产品。目标点使用报告给出的ME坐标；不得与另一月固系直接混比。",
+              "uncertainty": "目前所查DARTS数据集列表仍在准备中。缺少原始图像标签、相机内参、导航状态与控制遥测，不能从截图唯一恢复完整下降轨迹或惯导误差。"
+            },
+            {
+              "parameter": "落姿与日照 · 参数化能源情景",
+              "method": "固定一组声明过的面板法向、太阳方向和面积，计算入射投影 A·max(0,n·s)，再用 P=ηSA·max(0,n·s) 形成能源情景。对不同落姿绘出每日入射因子和电量余额，分别记录日照几何、电池初始能量、待机负载与通信负载；将官方报道的停机和恢复事件作为事件顺序对照。",
+              "assumptions": "面积、效率、温度折减、面板遮挡、电池可用容量与负载若无公开测量必须标为研究输入；由姿态推得的日照窗口不等于真实太阳电池发电曲线。",
+              "uncertainty": "落姿照片只能约束部分几何。缺少各面板电气连接、姿态精密解、热参数与电池遥测时，只能比较情景相对差异，不能反演真实电池容量或宣称解释全部月夜生存原因。"
+            },
+            {
+              "parameter": "MBC 多波段研究 · 待档案发布后开展",
+              "method": "先以官方750–1650nm和十滤波片说明定义预期数据契约：每幅图需要波段、曝光、暗场/平场、辐射标定、温度、指向和时间标签；拿到正式产品后再进行跨波段配准、反射率处理与吸收特征比较。",
+              "assumptions": "本路线目前是数据需求清单，不是已完成的矿物反演。公开拼图或显示色彩不能替代逐波段定标数据。",
+              "uncertainty": "没有实际产品及处理说明前，不从宣传图片定量推算Mg#、矿物丰度或精确反射率；DARTS状态变化需重新核对并留存版本。"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "slim",
+          "field": "limitations",
+          "newValue": [
+            "示意模型用于识别结构和研究边界，不是制造图纸或厂家 CAD；公开图像不能确定全部内部尺寸。",
+            "本页年份表示所述型号的重要首次飞行或发射年份；不同任务批次的配置、质量、软件和工作状态可能不同。",
+            "2026-10-28核对的DARTS Dataset List为in preparation；未承诺MBC/CAM原始科学文件已对外开放。",
+            "公开报告的目标点、导航评估点和最终触地点属于不同定义；坐标系、阶段和来源必须随数值展示。",
+            "面板面积、效率、电池与负载参数不足时只能进行声明输入的能源情景计算，不能把拟合值写成SLIM真实内部参数。"
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "slim",
+          "field": "sources",
+          "newValue": [
+            {
+              "title": "官方任务 / 技术资料 · SLIM",
+              "url": "https://www.isas.jaxa.jp/home/slim/SLIM/"
+            },
+            {
+              "title": "官方历史 / 结构补充 · SLIM",
+              "url": "https://global.jaxa.jp/about/president/presslec/202409.html"
+            },
+            {
+              "title": "官方历史 / 结构补充 · SLIM",
+              "url": "https://global.jaxa.jp/press/2024/01/file/jaxa_doc01_20240125_e.pdf"
+            },
+            {
+              "title": "官方历史 / 结构补充 · SLIM",
+              "url": "https://global.jaxa.jp/projects/result.html"
+            },
+            {
+              "title": "JAXA/ISAS · SLIM 两阶段着陆与五个接触机构",
+              "url": "https://www.isas.jaxa.jp/feature/forefront/191226.html"
+            },
+            {
+              "title": "JAXA DARTS · SLIM 任务资料",
+              "url": "https://darts.isas.jaxa.jp/en/missions/slim"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "slim",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "change-5-data-method-v12",
+      "entryId": "change-5",
+      "reason": "原条目对真实数据入口和四器建模的输入缺口均过于概括，无法分辨官方申请制数据、作者衍生数据和未知工程状态。",
+      "sourceIds": [
+        "ceRelease",
+        "cePayload",
+        "cePaper",
+        "ceData"
+      ],
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "change-5",
+          "field": "publicData",
+          "newValue": [
+            {
+              "parameter": "发射",
+              "value": "2020-11-24",
+              "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810873/content.html"
+            },
+            {
+              "parameter": "月面着陆",
+              "value": "2020-12-01",
+              "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810873/content.html"
+            },
+            {
+              "parameter": "返回地球",
+              "value": "2020-12-17",
+              "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810873/content.html"
+            },
+            {
+              "parameter": "返回样品质量",
+              "value": "1731 g",
+              "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c6840839/content.html"
+            },
+            {
+              "parameter": "官方科学数据入口",
+              "value": "CNSA于2021-04-13公布第一批科学探测数据和样品信息，说明通过发布系统获取信息并申请；不等同于全部工程遥测匿名开放。",
+              "sourceUrl": "https://www.cnsa.gov.cn/n6758823/n6758838/c6811507/content.html"
+            },
+            {
+              "parameter": "具体载荷数据类别",
+              "value": "降落相机、全景相机、月壤结构探测仪和月球矿物光谱分析仪支持着陆区现场调查；其科学结果不直接给出四器惯量和控制律。",
+              "sourceUrl": "https://www.nao.cas.cn/news/zh/202011/t20201124_6407067.html"
+            },
+            {
+              "parameter": "可下载的论文配套数据",
+              "value": "Zenodo 17529967 v1列有CE5_craters.zip、CE5_Dcam.zip、Fig.1/2/5.xlsx等文件；为作者发布的论文数据包，需按README和论文区分原图、选取数据与派生结果。",
+              "sourceUrl": "https://zenodo.org/records/17529967"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "change-5",
+          "field": "inference",
+          "newValue": [
+            {
+              "parameter": "着陆区影像与地形统计 · 有文件入口的研究",
+              "method": "从Zhang等2025年论文及其Zenodo v1归档开始，保存所用文件名、版本和MD5/SHA-256，先检查CE5_craters.zip及图表文件的坐标、尺度和类别定义。可复算撞击坑尺寸或形态统计，再与论文图表比较；若使用CE5_Dcam.zip，先查明它的处理级别和相机/地图配准信息。",
+              "assumptions": "Zenodo条目自述为论文派生数据归档，文件名本身不证明影像是原始遥测。需要同时保留作者的筛选条件、空间分辨率和统计样本范围。",
+              "uncertainty": "本页核对了公开文件清单，尚未下载逐文件审计。影像配准与地形统计可以检验局部场景方法，不能独立约束完整下降导航、推力历史或飞行器质量分配。"
+            },
+            {
+              "parameter": "四器与样品转移 · 离散事件和质量账本",
+              "method": "将轨道器、返回器、着陆器、上升器与样品容器分别建账，按分离、月面采样、起飞、对接、样品交接、再分离建立事件。每个事件保存前后构型、各对象质量、状态所属坐标系、变换和冲量假设，检验对象归属与总质量变化是否闭合。",
+              "assumptions": "公开1731g是最终带回样品质量，不是样品容器总质量，也不能直接作为所有中间阶段的样品质量。推进剂消耗、容器质量、采样损耗和接口冲量须另有来源或设为明确研究变量。",
+              "uncertainty": "缺少各阶段干质量/推进剂账本、重心惯量、对接六自由度状态和实际机动日志时，事件图可以验证软件状态交接，不能称为真实四器动力学重建。"
+            },
+            {
+              "parameter": "采样区光谱与实验室样品 · 观测量匹配",
+              "method": "通过官方数据申请入口获取具处理级别与标定说明的LMS或现场影像产品后，区分原位光谱、轨道遥感和返回样品实验室测量。比较前先统一波长采样、观测几何、热辐射去除、粒径与样品制备条件，并保留原始谱与处理谱。",
+              "assumptions": "不同尺度和条件的数据不能直接合并为同一材料常数；公开研究结论不能替代该批数据的产品标签和实验条件。",
+              "uncertainty": "缺少标定、温度和观测几何时，不以展示光谱反推唯一成分；更不能用矿物光谱替代着陆器结构材料、热防护或接触力学参数。"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "change-5",
+          "field": "limitations",
+          "newValue": [
+            "示意模型用于识别结构和研究边界，不是制造图纸或厂家 CAD；公开图像不能确定全部内部尺寸。",
+            "本页年份表示所述型号的重要首次飞行或发射年份；不同任务批次的配置、质量、软件和工作状态可能不同。",
+            "官方发布公告使用数据与样品申请机制；本站未登录申请系统，未确认每个原始产品的即时下载权限。",
+            "论文作者归档的数据与官方工程遥测是不同证据层级。Zenodo文件清单已核对，包内标签和处理链尚未逐文件审计。",
+            "现有公开资料不足以唯一恢复四器分阶段惯量、推进剂账本、对接状态或返回器热防护参数。"
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "change-5",
+          "field": "sources",
+          "newValue": [
+            {
+              "title": "官方任务 / 技术资料 · 嫦娥五号",
+              "url": "https://www.cnsa.gov.cn/n6758823/n6758844/n6760243/n6760244/c6810873/content.html"
+            },
+            {
+              "title": "官方历史 / 结构补充 · 嫦娥五号",
+              "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6840839/content.html"
+            },
+            {
+              "title": "官方历史 / 结构补充 · 嫦娥五号",
+              "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6811425/content.html"
+            },
+            {
+              "title": "国家航天局 · 嫦娥五号采样与封装",
+              "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6810708/content.html"
+            },
+            {
+              "title": "国资委 · 嫦娥五号机构释放与任务阶段",
+              "url": "https://wap.sasac.gov.cn/n2588025/n2641616/c16253063/content.html"
+            },
+            {
+              "title": "国家航天局 · 第一批月球样品信息和科学探测数据上线发布（2021-04-13）",
+              "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6811507/content.html"
+            },
+            {
+              "title": "中国科学院国家天文台 · 地面应用系统与嫦娥五号载荷",
+              "url": "https://www.nao.cas.cn/news/zh/202011/t20201124_6407067.html"
+            },
+            {
+              "title": "Zhang et al. (2025) · Increased small impactor flux on the Moon as inferred from regolith thickness at the Chang’E-5 Region",
+              "url": "https://www.nature.com/articles/s41467-025-67402-3"
+            },
+            {
+              "title": "Zhang et al. · 论文配套数据 v1, Zenodo 17529967（2025-11-05）",
+              "url": "https://zenodo.org/records/17529967"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/vehicles.json",
+          "id": "change-5",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "spice-data-method-v12",
+      "entryId": "spice",
+      "reason": "现有步骤没有可核对的具体查询与参考数字，也没有明确同历元几何状态和观测修正状态的差别。",
+      "sourceIds": [
+        "spice"
+      ],
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "spice",
+          "field": "details",
+          "newValue": "SPICE以版本化内核提供任务几何。一个可核验的起点是CSPICE spkezr_c官方例题：使用de421.bsp，target=MOON、observer=EARTH、ref=J2000、abcorr=NONE，在et=0（2000-01-01 12:00:00 TDB）查询月球相对地球状态；位置以km、速度以km/s输出。NONE得到同一历元的几何状态，适合与相同约定的传播结果比较；LT、CN和含恒星光行差的选项回答不同的观测几何问题，不能仅因数值不同判断某个结果错误。任务内核还须核对目标、覆盖、参考系和加载优先级；姿态或仪器几何可能另需CK、SCLK、FK、IK等，并非加载一个SPK就完整。"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "spice",
+          "field": "starterWorkflow",
+          "newValue": [
+            "复现官方spkezr_c例题时明确使用de421.bsp、MOON相对EARTH、J2000、NONE，以及et=0。et=0的定义是2000-01-01 12:00:00 TDB；它不是UTC字符串的默认解析结果。",
+            "官方例题该时刻的位置约为(−291608.385310,−266716.832947,−76102.487147) km，速度约为(0.6435313868,−0.6660876862,−0.3013257043) km/s。逐分量比较前先确认内核版本、查询参数和单位，记录平台与数值差异。",
+            "再查询et=3600、7200、10800秒并与官方表格比较，检查时间步长及目标相对观察者的方向约定。不要只比较距离范数，否则轴顺序或符号错误可能被掩盖。",
+            "只改变abcorr为LT，记录与NONE的差值并解释发射/接收时刻意义；动力学状态验证保留NONE，观测图像配准则按实际光路选择修正。",
+            "接入任务归档时保存meta-kernel、加载顺序、覆盖窗口与文件校验值。加入姿态和仪器前先验证相关参考系连接及CK/SCLK覆盖，覆盖不足应报告失败而非插入任意默认姿态。"
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "spice",
+          "field": "starterWorkflowSources",
+          "newValue": [
+            {
+              "title": "NAIF CSPICE · spkezr_c, geometric Moon/Earth example",
+              "url": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/spkezr_c.html"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "spice",
+          "field": "starterWorkflowStatus",
+          "newValue": "已核对NAIF官方例题参数及公布的六维状态；本站尚未运行本地CSPICE，不把文档参考值描述为本次计算输出。"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "spice",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "tudat-data-method-v12",
+      "entryId": "tudat",
+      "reason": "原入门建议只写先合成后真实，无具体诊断产物；未区分观测加权与参数归一化，易误读协方差和奇异值。",
+      "sourceIds": [
+        "tudatApi",
+        "tudatWeights",
+        "tudatExamples"
+      ],
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "tudat",
+          "field": "details",
+          "newValue": "Tudat/TudatPy可统一配置动力学、变分方程、观测和估计。分析结果时要区分design_matrix、weighted_design_matrix与normalized_design_matrix：当前官方API将weighted_design_matrix定义为W½H，观测加权根据误差尺度改变行；参数归一化则处理列尺度，二者不是同一件事。应同时保存参数顺序、normalization_terms、物理covariance、formal_errors和correlations，不能将normalized_covariance的对角元直接标为米或米每秒。用外部星历位置作为伪观测拟合动力学，与处理真实测距/多普勒链路是两种验证任务；星历相关误差不能假定为逐历元独立原始测量噪声。"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "tudat",
+          "field": "starterWorkflow",
+          "newValue": [
+            "固定TudatPy环境与对应文档版本，先选择官方的合成观测估计例，分别声明真值动力学、估计动力学、观测类型、时间与待估参数。不要在两套模型里共用未声明的真值状态。",
+            "导出design_matrix与weighted_design_matrix，按独立测量标准差σ核对每行应由H/σ形成；另保存normalized_design_matrix和normalization_terms，明确归一化作用于参数尺度。",
+            "先在没有先验的满秩小例中用QR/SVD独立求解白化系统，对比参数、残差及物理协方差。本站五测距例可验证代数：sigma=(1,1,2,2,1)m时，位置改正与偏置解为(9.583700,−4.574890,2.900881)m；它不代表已经跑通Tudat的轨道链路。",
+            "真正的传播与估计例要单独改变一项模型，如重力项或测量偏置，并记录残差随时间的结构、参数相关性、积分器设置与估计迭代历史。",
+            "若拟合公开星历生成的Cartesian伪观测，先统一中心、参考系、时间和单位，再保留后续弧段检查外推。该结果检验动力学对指定星历的拟合能力，不应写成实际测站数据的定轨精度。"
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "tudat",
+          "field": "starterWorkflowSources",
+          "newValue": [
+            {
+              "title": "TudatPy API · estimation_analysis, covariance and weighted design matrices",
+              "url": "https://py.api.tudat.space/en/latest/estimation/estimation_analysis.html"
+            },
+            {
+              "title": "Tudat · Modifying observation collections",
+              "url": "https://docs.tudat.space/en/latest/user-guide/state-estimation/observation-handling/observation-collection-manipulation/modifying-collections.html"
+            },
+            {
+              "title": "Tudat · Estimation examples, simulated observations and external ephemerides",
+              "url": "https://docs.tudat.space/en/latest/examples/estimation.html"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "tudat",
+          "field": "starterWorkflowStatus",
+          "newValue": "官方API中的加权/归一化输出定义已核对；五测距代数已独立计算。本站未运行外部TudatPy估计。"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "tudat",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    }
+  ],
+  "dataProductFindings": [
+    {
+      "id": "slim",
+      "availability": "DARTS Dataset List=in preparation",
+      "availableNow": [
+        "任务与仪器说明网页",
+        "2024-01-25公开着陆报告PDF中的目标ME坐标、下降阶段和图像"
+      ],
+      "notEstablished": [
+        "原始MBC/CAM科学文件已公开",
+        "全部图像标定、时间标签、姿态与控制遥测已可下载"
+      ],
+      "sourceUrl": "https://darts.isas.jaxa.jp/en/missions/slim"
+    },
+    {
+      "id": "change-5",
+      "availability": "官方数据按发布系统信息申请；另有作者公开论文数据归档",
+      "publicDataset": {
+        "url": "https://zenodo.org/records/17529967",
+        "version": "v1",
+        "published": "2025-11-05",
+        "files": [
+          {
+            "name": "CE5_craters.zip",
+            "size": "76.5 kB",
+            "md5": "1a58c99d42daf35622598247ea3a8fb1"
+          },
+          {
+            "name": "CE5_Dcam.zip",
+            "size": "43.7 MB",
+            "md5": "8fcae0a31798624d671bfc48596d1255"
+          },
+          {
+            "name": "Fig. 1.xlsx",
+            "size": "15.2 kB"
+          },
+          {
+            "name": "Fig. 2.xlsx",
+            "size": "38.3 kB"
+          },
+          {
+            "name": "Fig. 5.xlsx",
+            "size": "12.7 kB"
+          }
+        ],
+        "accessLevel": "归档元数据和文件清单已读取；未下载解包审计"
+      },
+      "distinction": "论文作者数据不是全套工程遥测；最终返回样品质量不等于容器质量或所有中间阶段样品质量。"
+    }
+  ],
+  "sourceRegistry": [
+    {
+      "id": "slimDarts",
+      "title": "JAXA DARTS · SLIM, instruments and Dataset List",
+      "url": "https://darts.isas.jaxa.jp/en/missions/slim",
+      "accessedOn": "2026-10-28"
+    },
+    {
+      "id": "slimReport",
+      "title": "JAXA · SLIM Results from the Moon Landing, 2024-01-25",
+      "url": "https://global.jaxa.jp/press/2024/01/file/jaxa_doc01_20240125_e.pdf",
+      "accessedOn": "2026-10-28"
+    },
+    {
+      "id": "ceRelease",
+      "title": "国家航天局 · 第一批月球样品信息和科学探测数据上线发布（2021-04-13）",
+      "url": "https://www.cnsa.gov.cn/n6758823/n6758838/c6811507/content.html",
+      "accessedOn": "2026-10-28"
+    },
+    {
+      "id": "cePayload",
+      "title": "中国科学院国家天文台 · 地面应用系统与嫦娥五号载荷",
+      "url": "https://www.nao.cas.cn/news/zh/202011/t20201124_6407067.html",
+      "accessedOn": "2026-10-28"
+    },
+    {
+      "id": "cePaper",
+      "title": "Zhang et al. (2025) · Increased small impactor flux on the Moon as inferred from regolith thickness at the Chang’E-5 Region",
+      "url": "https://www.nature.com/articles/s41467-025-67402-3",
+      "accessedOn": "2026-10-28"
+    },
+    {
+      "id": "ceData",
+      "title": "Zhang et al. · 论文配套数据 v1, Zenodo 17529967（2025-11-05）",
+      "url": "https://zenodo.org/records/17529967",
+      "accessedOn": "2026-10-28"
+    },
+    {
+      "id": "spice",
+      "title": "NAIF CSPICE · spkezr_c, geometric Moon/Earth example",
+      "url": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/spkezr_c.html",
+      "accessedOn": "2026-10-28"
+    },
+    {
+      "id": "tudatApi",
+      "title": "TudatPy API · estimation_analysis, covariance and weighted design matrices",
+      "url": "https://py.api.tudat.space/en/latest/estimation/estimation_analysis.html",
+      "accessedOn": "2026-10-28"
+    },
+    {
+      "id": "tudatWeights",
+      "title": "Tudat · Modifying observation collections",
+      "url": "https://docs.tudat.space/en/latest/user-guide/state-estimation/observation-handling/observation-collection-manipulation/modifying-collections.html",
+      "accessedOn": "2026-10-28"
+    },
+    {
+      "id": "tudatExamples",
+      "title": "Tudat · Estimation examples, simulated observations and external ephemerides",
+      "url": "https://docs.tudat.space/en/latest/examples/estimation.html",
+      "accessedOn": "2026-10-28"
+    }
+  ],
+  "limits": [
+    "未登录中国科学数据与样品申请系统，未声称所有原始产品可匿名下载。",
+    "Zenodo已核对文件清单而未下载解包；不声称检查了包内原始标签或许可证细节。",
+    "SPICE参考状态来自NAIF官方例题，并非本次本地运行所得。",
+    "Tudat latest文档显示1.1.0/开发文档标识，实际使用应固定安装版本对应API。",
+    "JAXA PDF本轮首次open成功，后续find返回403；正文补丁仅采用已读到的目标坐标、下降阶段与报告身份。"
+  ],
+  "verification": {
+    "oldValueChecksPassed": 20,
+    "sourceUrlsHttps": true,
+    "externalSolversRun": false,
+    "archiveFilesDownloaded": false
+  }
+}

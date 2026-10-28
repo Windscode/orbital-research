@@ -2038,12 +2038,59 @@
       "数据表 in preparation 或尚无产品时仅记录任务资料，不宣布数据公开完成"
     ],
     "cadence": "每月查看发布与维护公告；使用某任务数据前复核其产品列表和引用要求。",
-    "reviewedOn": "2026-10-26",
+    "reviewedOn": "2026-10-28",
     "accessNote": "首页和 SLIM 任务页可读；首页列出部分查询应用暂不可用，SLIM 数据集表仍为 in preparation。本次没有下载或分析任务数据文件。",
     "status": "active",
     "verification": {
       "method": "page-read",
-      "note": "读取 DARTS 官方首页及 SLIM 子页，确认任务介绍与实际数据发布状态需分别判断；来源状态为 active 不表示所有子服务均可用。"
+      "note": "读取 DARTS 官方首页及 SLIM 子页，确认任务介绍与实际数据发布状态需分别判断；来源状态为 active 不表示所有子服务均可用。 2026-10-28再次核对SLIM任务页，数据列表仍在准备。"
     }
+  },
+  {
+    "id": "jpl-horizons",
+    "name": "JPL Horizons · 太阳系星历与接口说明",
+    "url": "https://ssd.jpl.nasa.gov/horizons/",
+    "type": "软件与数据",
+    "region": [
+      "美国",
+      "国际"
+    ],
+    "language": [
+      "英文"
+    ],
+    "topics": [
+      "星历版本",
+      "轨道数据",
+      "时间与坐标",
+      "API变更"
+    ],
+    "evidenceRole": "official",
+    "description": "公开向量、轨道要素和观测量服务。维护时同时核对API参数、航天器重建与预测覆盖区间以及返回头部的来源标识。",
+    "whatToLookFor": [
+      "航天器轨迹覆盖和预测/重建边界变化",
+      "API版本、参数与参考系说明变更",
+      "已归档研究所用星历与重新查询结果的差异"
+    ],
+    "queryExamples": [
+      "site:ssd.jpl.nasa.gov/horizons MRO spacecraft trajectory",
+      "site:ssd-api.jpl.nasa.gov/doc/horizons VECTORS TIME_TYPE VEC_CORR"
+    ],
+    "checks": [
+      "保存原始响应、精确查询、提取日期与校验值；不能只存截图",
+      "区分几何状态和光行时修正状态，显式记录目标、中心、参考面、单位与时间尺度",
+      "返回结果不等于直接观测；没有协方差时不附会实际定位误差"
+    ],
+    "cadence": "使用数据前复核；维护时检查文档与航天器数据表的版本变化。",
+    "reviewedOn": "2026-10-28",
+    "accessNote": "已读取手册/API说明并取得MRO相对火星的2024-01-01一日向量快照。在线星历可能更新，本网站冻结了此次响应。",
+    "status": "active",
+    "verification": {
+      "method": "page-read",
+      "note": "官方文档已读，289个向量样本已保存并与原始响应逐行核对；未运行本地SPICE交叉验证。"
+    },
+    "matchPrefixes": [
+      "/horizons/",
+      "/api/horizons.api"
+    ]
   }
 ]

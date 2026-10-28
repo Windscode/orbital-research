@@ -1,3 +1,4 @@
+import AssetDownload from './AssetDownload';
 import {useRef,useState} from 'react';
 import {ArrowDownToLine,ArrowUpRight,Box,Camera,Crosshair,Eye,EyeOff,Layers3,Maximize2,MousePointer2,RotateCcw,RotateCw,Scissors,Search,SlidersHorizontal} from 'lucide-react';
 import {assetUrl} from './assetUrl';
@@ -51,7 +52,7 @@ export default function VehicleExplorer({vehicle,onRead}:{vehicle:Vehicle;onRead
         <details><summary>建模假设与未确定项</summary><ul>{(review?.uncertainties||vehicle.limitations).map(item=><li key={item}>{item}</li>)}</ul></details>
         <details><summary>本轮几何调整</summary><ul>{(review?.changes||['按公开构型整理部件分组。']).map(item=><li key={item}>{item}</li>)}</ul></details>
       </div>}
-      <div className="model-sidebar-actions"><button className="button primary wide" onClick={onRead}>阅读完整档案<ArrowUpRight size={15}/></button><a className="button secondary wide" href={assetUrl(`/models/${vehicle.id}.glb`)} download={`${vehicle.id}-schematic.glb`}><ArrowDownToLine size={15}/>下载 GLB 研究模型</a><a className="model-manifest-link" href={assetUrl(`/models/${vehicle.id}.json`)} download={`${vehicle.id}-model-record.json`}>下载构型与来源记录 <ArrowDownToLine size={12}/></a><small>归一化教学模型 · 非制造 CAD</small></div>
+      <div className="model-sidebar-actions"><button className="button primary wide" onClick={onRead}>阅读完整档案<ArrowUpRight size={15}/></button><AssetDownload className="button secondary wide" href={assetUrl(`/models/${vehicle.id}.glb`)} name={`${vehicle.id}-schematic.glb`}><ArrowDownToLine size={15}/>下载 GLB 研究模型</AssetDownload><AssetDownload className="model-manifest-link" href={assetUrl(`/models/${vehicle.id}.json`)} name={`${vehicle.id}-model-record.json`}>下载构型与来源记录 <ArrowDownToLine size={12}/></AssetDownload><small>归一化教学模型 · 非制造 CAD</small></div>
     </aside>
   </div>;
 }

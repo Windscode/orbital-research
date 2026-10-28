@@ -3,7 +3,7 @@
     "lessons": 59,
     "resources": 88,
     "vehicles": 56,
-    "briefings": 29,
+    "briefings": 30,
     "workflows": 5,
     "dossiers": 6
   },
@@ -206,7 +206,7 @@
       "category": "轨道与任务",
       "kind": "开源项目",
       "summary": "数值传播与参数估计工具箱，支持轨道、再入及行星际动力学研究。",
-      "details": "Tudat 的核心以 C++ 实现，通过 TudatPy 提供 Python 接口。它适合把天体环境、加速度、状态传播与观测模型置于同一研究脚本中，开展轨道估计、灵敏度分析及任务设计。输入包含环境数据、初始状态、传播器和观测配置，输出状态历史、观测残差和估计结果。建议把模型复杂度作为可控变量：先建立可解析基线，再加入重力场、大气和第三体作用。估计残差小不等于物理参数唯一可辨识，还需检查参数相关性、观测几何和先验约束。",
+      "details": "Tudat/TudatPy可统一配置动力学、变分方程、观测和估计。分析结果时要区分design_matrix、weighted_design_matrix与normalized_design_matrix：当前官方API将weighted_design_matrix定义为W½H，观测加权根据误差尺度改变行；参数归一化则处理列尺度，二者不是同一件事。应同时保存参数顺序、normalization_terms、物理covariance、formal_errors和correlations，不能将normalized_covariance的对角元直接标为米或米每秒。用外部星历位置作为伪观测拟合动力学，与处理真实测距/多普勒链路是两种验证任务；星历相关误差不能假定为逐历元独立原始测量噪声。",
       "tags": [
         "参数估计",
         "数值传播",
@@ -217,7 +217,7 @@
       "url": "https://docs.tudat.space/",
       "docsUrl": "https://docs.tudat.space/en/latest/index.html",
       "sourceTitle": "TU Delft · Tudat Space / TudatPy Documentation",
-      "verifiedOn": "2026-10-25",
+      "verifiedOn": "2026-10-28",
       "workflow": [
         "轨道传播",
         "轨道确定",
@@ -241,10 +241,11 @@
       ],
       "accessedAt": "2026-10-25 04:43:24 UTC",
       "starterWorkflow": [
-        "按官方 Quickstart 建立点质量地球与单星，确认 SI 单位、弧度和 TDB 历元语义。",
-        "显式选择积分器、初值及终止条件，输出 Cartesian 状态和守恒量。",
-        "逐个开启摄动并做步长收敛，保存环境数据与软件版本。",
-        "若做参数估计，先用合成观测恢复已知参数，再分析真实数据中的偏差与可辨识性。"
+        "固定TudatPy环境与对应文档版本，先选择官方的合成观测估计例，分别声明真值动力学、估计动力学、观测类型、时间与待估参数。不要在两套模型里共用未声明的真值状态。",
+        "导出design_matrix与weighted_design_matrix，按独立测量标准差σ核对每行应由H/σ形成；另保存normalized_design_matrix和normalization_terms，明确归一化作用于参数尺度。",
+        "先在没有先验的满秩小例中用QR/SVD独立求解白化系统，对比参数、残差及物理协方差。本站五测距例可验证代数：sigma=(1,1,2,2,1)m时，位置改正与偏置解为(9.583700,−4.574890,2.900881)m；它不代表已经跑通Tudat的轨道链路。",
+        "真正的传播与估计例要单独改变一项模型，如重力项或测量偏置，并记录残差随时间的结构、参数相关性、积分器设置与估计迭代历史。",
+        "若拟合公开星历生成的Cartesian伪观测，先统一中心、参考系、时间和单位，再保留后续弧段检查外推。该结果检验动力学对指定星历的拟合能力，不应写成实际测站数据的定轨精度。"
       ],
       "selectionQuestions": [
         "主要目标是数值传播、观测建模还是参数估计？",
@@ -253,11 +254,19 @@
       ],
       "starterWorkflowSources": [
         {
-          "title": "TudatPy Quickstart",
-          "url": "https://docs.tudat.space/en/latest/getting-started/quickstart.html"
+          "title": "TudatPy API · estimation_analysis, covariance and weighted design matrices",
+          "url": "https://py.api.tudat.space/en/latest/estimation/estimation_analysis.html"
+        },
+        {
+          "title": "Tudat · Modifying observation collections",
+          "url": "https://docs.tudat.space/en/latest/user-guide/state-estimation/observation-handling/observation-collection-manipulation/modifying-collections.html"
+        },
+        {
+          "title": "Tudat · Estimation examples, simulated observations and external ephemerides",
+          "url": "https://docs.tudat.space/en/latest/examples/estimation.html"
         }
       ],
-      "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+      "starterWorkflowStatus": "官方API中的加权/归一化输出定义已核对；五测距代数已独立计算。本站未运行外部TudatPy估计。"
     },
     {
       "id": "spice",
@@ -265,7 +274,7 @@
       "category": "数据与环境",
       "kind": "工程软件",
       "summary": "星历、姿态、时间和参考系的任务几何工具包及带版本的内核数据。",
-      "details": "SPICE 是 NASA JPL NAIF 的任务几何信息系统。通过星历、姿态、时钟和参考系等 kernel，计算天体相对位置、观测几何及坐标变换，适合连接真实任务资料和研究仿真。输入不仅是目标与时刻，还包括 kernel 集合、观察者、参考系及光行时修正选择；输出是具有明确定义的几何状态。SPICE 查询通常使用已有星历，不应被理解为自动求解任意新任务的完整动力学积分器。建议保存 meta-kernel、覆盖区间与文件版本，避免重叠数据或时间尺度混用导致隐蔽偏差。",
+      "details": "SPICE以版本化内核提供任务几何。一个可核验的起点是CSPICE spkezr_c官方例题：使用de421.bsp，target=MOON、observer=EARTH、ref=J2000、abcorr=NONE，在et=0（2000-01-01 12:00:00 TDB）查询月球相对地球状态；位置以km、速度以km/s输出。NONE得到同一历元的几何状态，适合与相同约定的传播结果比较；LT、CN和含恒星光行差的选项回答不同的观测几何问题，不能仅因数值不同判断某个结果错误。任务内核还须核对目标、覆盖、参考系和加载优先级；姿态或仪器几何可能另需CK、SCLK、FK、IK等，并非加载一个SPK就完整。",
       "tags": [
         "星历",
         "参考系",
@@ -276,7 +285,7 @@
       "url": "https://naif.jpl.nasa.gov/naif/",
       "docsUrl": "https://naif.jpl.nasa.gov/naif/documentation.html",
       "sourceTitle": "NASA JPL NAIF · SPICE Concept / Toolkit Documentation",
-      "verifiedOn": "2026-10-25",
+      "verifiedOn": "2026-10-28",
       "workflow": [
         "数据归档与环境",
         "坐标与时间",
@@ -300,10 +309,11 @@
       ],
       "accessedAt": "2026-10-25 04:43:24 UTC",
       "starterWorkflow": [
-        "从官方任务归档选择内核与说明，列出 LSK、SPK、PCK、FK 和所需姿态/时钟数据。",
-        "制作 meta-kernel，保存文件名、版本、覆盖区间与校验值，检查缺失和重叠。",
-        "先查询一个有覆盖的目标相对状态，明确参考系、单位和光行时修正。",
-        "用已知事件或官方样例校核后，再加入仪器视场及图像时标；遇到覆盖缺口时显式说明。"
+        "复现官方spkezr_c例题时明确使用de421.bsp、MOON相对EARTH、J2000、NONE，以及et=0。et=0的定义是2000-01-01 12:00:00 TDB；它不是UTC字符串的默认解析结果。",
+        "官方例题该时刻的位置约为(−291608.385310,−266716.832947,−76102.487147) km，速度约为(0.6435313868,−0.6660876862,−0.3013257043) km/s。逐分量比较前先确认内核版本、查询参数和单位，记录平台与数值差异。",
+        "再查询et=3600、7200、10800秒并与官方表格比较，检查时间步长及目标相对观察者的方向约定。不要只比较距离范数，否则轴顺序或符号错误可能被掩盖。",
+        "只改变abcorr为LT，记录与NONE的差值并解释发射/接收时刻意义；动力学状态验证保留NONE，观测图像配准则按实际光路选择修正。",
+        "接入任务归档时保存meta-kernel、加载顺序、覆盖窗口与文件校验值。加入姿态和仪器前先验证相关参考系连接及CK/SCLK覆盖，覆盖不足应报告失败而非插入任意默认姿态。"
       ],
       "selectionQuestions": [
         "需要的是已有任务几何查询，还是尚未飞行任务的动力学预测？",
@@ -312,11 +322,11 @@
       ],
       "starterWorkflowSources": [
         {
-          "title": "NAIF SPICE Tutorials",
-          "url": "https://naif.jpl.nasa.gov/naif/tutorials.html"
+          "title": "NAIF CSPICE · spkezr_c, geometric Moon/Earth example",
+          "url": "https://naif.jpl.nasa.gov/pub/naif/toolkit_docs/C/cspice/spkezr_c.html"
         }
       ],
-      "starterWorkflowStatus": "基于官方文档的研究建议；本站未实测。"
+      "starterWorkflowStatus": "已核对NAIF官方例题参数及公布的六维状态；本站尚未运行本地CSPICE，不把文档参考值描述为本次计算输出。"
     },
     {
       "id": "jsbsim",
@@ -373,6 +383,47 @@
     }
   ],
   "briefings": [
+    {
+      "id": "neo-surveyor-sunshade-power-2026",
+      "title": "NEO Surveyor 遮阳罩完成太阳电池集成与功能测试",
+      "category": "热控与能源",
+      "date": "2026-10-26",
+      "publishedOn": "2026-10-26",
+      "eventDate": null,
+      "eventDateNote": "文章回顾 1 月电池集成、3 月环境测试和 5 月交付等阶段；10 月 26 日是发布日期，不是所有试验的执行日。",
+      "verifiedOn": "2026-10-28",
+      "summary": "NASA 公布遮阳罩与电源组件进展：约 6 m 高、底宽 2.4 m，两平板夹角 23.5°，864 片太阳电池，最大功率约 2 kW。",
+      "analysis": "遮阳和供电共用几何，仿真需要同时检查遮挡、入射余弦、光学表面属性与电池温度。公开尺寸只是外形信息，不能将高乘底宽直接视为有效光伏面积；2 kW 也不等于望远镜的内部热耗散。最大功率的照度、温度和寿命口径没有在此文完整给出。",
+      "implication": "本站可用单面辐射算例检查量纲和能量平衡，再扩展为分面模型。应分别记录每片面元的面积、法向、吸收率、发射率、导热连接和电负载；缺失的材料参数只能作为研究假设，并给出敏感性范围，不能据此发布任务热裕量。",
+      "technicalNotes": [
+        {
+          "title": "模型输入清单",
+          "detail": "几何：面元与望远镜孔径的相对位置；环境：太阳方向、照度与运行姿态；热学：两面光学属性、连接热导与热容；电学：有效面积、转换效率和温度依赖、储能与负载。公开新闻不足以填满这些输入。"
+        },
+        {
+          "title": "可检查的输出",
+          "detail": "逐姿态输出受光比例、入射功率、电功率、辐射和传导热流；对每个时间步核对能量平衡。将发电转出的功率从吸收能量中分离，不能把相同太阳功率同时计为电输出和全部入热。热真空试验相关性还需要试验边界、温度通道和不确定度，本文未提供这些原始记录。"
+        }
+      ],
+      "source": {
+        "title": "NASA · Sunshade for NASA’s NEO Surveyor Mission Ready for Its Day in Sun",
+        "url": "https://science.nasa.gov/blogs/neo-surveyor/2026/10/26/sunshade-for-nasas-neo-surveyor-mission-ready-for-its-day-in-sun/"
+      },
+      "tags": [
+        "NEO Surveyor",
+        "遮阳罩",
+        "太阳电池",
+        "热电耦合"
+      ],
+      "relatedResources": [
+        "thermal-desktop",
+        "esatan",
+        "openmdao"
+      ],
+      "sourceIds": [
+        "nasa-science"
+      ]
+    },
     {
       "id": "centaur-artemis-development-2026",
       "title": "ULA 公布面向 Artemis 的 Centaur 上面级开发计划",
@@ -434,37 +485,6 @@
       ],
       "sourceIds": [
         "nasa-science"
-      ]
-    },
-    {
-      "id": "artemis-iii-orbital-demonstration-2026",
-      "title": "Artemis III 公布近地轨道交会与对接试验方案",
-      "category": "任务架构",
-      "date": "2026-10-23",
-      "publishedOn": "2026-10-23",
-      "eventDate": null,
-      "eventDateNote": "这是 2027 年任务的计划说明，发布日期不代表试验已经执行。",
-      "verifiedOn": "2026-10-26",
-      "summary": "NASA 公布 Artemis III 的近地轨道试验安排：Orion 将先后与 Blue Moon 和 Starship 试验飞行器进行交会、对接及系统联试，任务仍处于计划阶段。",
-      "analysis": "原文将两个对接对象分开安排，分别涉及舱内评估及组合体联试，不能把它们视为同一种构型。研究可从分段任务状态机入手，区分自由飞行、接近、接触、组合体和分离阶段；每次结构连接都需要更新坐标变换、约束与质量属性。轨道窗口、热环境和通信覆盖会同时限制操作顺序，单独优化一次交会并不能代替整段任务规划。",
-      "implication": "本站建议的练习是构建两套公开构型的低阶交会场景，比较对接口方向、接近走廊和组合体惯量变化。初始轨道、接触参数和控制律应自行明确为教学假设；计划文本不能证明具体算法、容差或任务验证结果。",
-      "source": {
-        "title": "NASA · Artemis III Mission to Test Future Moon Lander Operations，2026-10-23",
-        "url": "https://www.nasa.gov/missions/artemis/nasas-artemis-iii-mission-to-test-future-moon-lander-operations/"
-      },
-      "tags": [
-        "Artemis III",
-        "任务计划",
-        "交会对接",
-        "组合体动力学"
-      ],
-      "relatedResources": [
-        "basilisk",
-        "gmat",
-        "spice"
-      ],
-      "sourceIds": [
-        "nasa-news"
       ]
     }
   ]

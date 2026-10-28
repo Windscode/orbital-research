@@ -125,20 +125,20 @@
   },
   {
     "id": "diagram-grid-convergence",
-    "title": "三网格收敛与数值连续极限",
+    "title": "NASA 进气道三网格压力恢复复算",
     "src": "/images/diagrams/grid-convergence.svg",
-    "alt": "合成函数 f(h)=1+0.02h² 的三档网格结果及连续极限，标出二阶收敛和细网格 GCI 约 2.45%。",
-    "caption": "合成教学数据：h=1、2、4 对应 f=1.020、1.080、1.320；观测阶 p=2，三网格安全因子取 1.25。展示数值收敛，不代表实测或物理确认。",
+    "alt": "NASA压力恢复公开表格与本站复算曲线：观察阶1.786170、外推值0.971300333、细网格GCI 0.103083%。",
+    "caption": "NASA NPARC公开数值：细到粗的φ为0.97050、0.96854、0.96178，网格尺度比2。曲线按三点幂律拟合，虚线是外推值；本站未重跑原始CFD。",
     "sourceUrl": "https://www.grc.nasa.gov/www/wind/valid/tutorial/spatconv.html",
     "lessonIds": [
       "cfd-verification"
     ],
     "focus": "50% 50%",
-    "credit": "轨研 ORBITAL · 原创技术图解",
+    "credit": "轨研 ORBITAL 绘制 · 数据来源 NASA NPARC",
     "assetUrl": "/images/diagrams/grid-convergence.svg",
     "kind": "原理图解",
-    "licenseNote": "本站原创矢量图；示意不按比例",
-    "verifiedOn": "2026-10-25"
+    "licenseNote": "本站原创计算图；NASA公开表格复算，非原始试验测量。",
+    "verifiedOn": "2026-10-28"
   },
   {
     "id": "diagram-cr3bp-points",

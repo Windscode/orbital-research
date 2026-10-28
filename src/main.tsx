@@ -14,5 +14,6 @@ import './design-v8.css';
 import './design-v9.css';
 import './design-v10.css';
 import './design-v11.css';
+import './data-study.css';
 import {MediaProvider} from './VisualMedia';
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><LoadBoundary><MediaProvider><App /></MediaProvider></LoadBoundary></React.StrictMode>);

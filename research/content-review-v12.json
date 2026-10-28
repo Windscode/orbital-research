@@ -1,0 +1,1264 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-10-28",
+  "scope": "六篇知识文章与相邻工具的抽样审查，不宣称全站逐条复核。仅写忽略目录中的研究交付，未修改src或公共目录。",
+  "inventoryFindings": [
+    "概念与边界说明总体比旧版本扎实；主要缺陷是讲到方法但缺输入、完整中间矩阵、可复算答案和失败判据。",
+    "state-estimation已含一个有效单步数值例，本次复算确认其舍入后的S、K与状态更新正确，避免重复改写已经有内容深度的段落。",
+    "Orekit、SU2与Gmsh条目当前无starterWorkflow；补充固定版本行为、具体输入及能暴露错误的检查点比增加软件条目数量更有用。",
+    "固定三网格的GCI渐近比值具有代数依赖，固定版本Orekit的baseWeight作用在归一化残差上；这两处细节应显式展示。"
+  ],
+  "patchGroups": [
+    {
+      "id": "range-bias-wls",
+      "entryId": "orbit-determination",
+      "classification": "content-usability-gap",
+      "reason": "原文说明权重、协方差和偏差，但没有观测表、导数矩阵、可复核解或残差；练习要求用户先独自开发完整定轨链，跨度过大。",
+      "sources": [
+        "wls",
+        "orekit"
+      ],
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "orbit-determination",
+          "field": "title",
+          "newValue": "轨道确定：测量权重、测距偏置与残差"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "orbit-determination",
+          "field": "readTime",
+          "newValue": 24
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "orbit-determination",
+          "field": "summary",
+          "newValue": "先用五条测距差解出二维位置改正和公共偏置，再看状态转移、光行时和留出观测如何进入真正的轨道确定。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "orbit-determination",
+          "field": "body",
+          "newValue": [
+            "先把一个定轨中的局部问题算完整：估计平面内的位置改正 δx、δy 和公共测距偏置 b，单位均为米。本例是人为构造的静态几何教学数据，不是真实航天器遥测，也没有包含传播时延、地球遮挡或轨道动力学。已知参考位置 r₀ 与测站位置 sᵢ，ρᵢ=‖r−sᵢ‖+b，线性化得观测减预测 dᵢ≈uᵢₓδx+uᵢᵧδy+b；uᵢ=(r₀−sᵢ)/‖r₀−sᵢ‖，因此偏置列全部为 1。",
+            "五条视线依次取 (1,0)、(0,1)、(−1,0)、(0,−1)、(0.6,0.8)，观测差 d=[13,−1,−7,7,4] m，已知独立噪声标准差 σ=[1,1,2,2,1] m。设计矩阵 H 的每行是 [uₓ,uᵧ,1]。先逐行除以 σ，得到白化矩阵 A=diag(1/σ)H 和数据 z=diag(1/σ)d，再最小化 ‖z−Aθ‖²。标准差为两米的一条观测，其平方残差权重是标准差为一米观测的四分之一，不是二分之一。",
+            "本例 HᵀWH=[[1.61,0.48,1.35],[0.48,1.89,1.55],[1.35,1.55,3.50]] m⁻²，HᵀWd=[17.15,0.45,16.00] m⁻¹，W=diag(1,1,0.25,0.25,1) m⁻²。求解得到 θ=[9.583700,−4.574890,2.900881] m。这里列出正规方程供手算核对；实现时应对白化系统做 QR 或 SVD 分解，避免显式求逆，也避免把本已病态的设计矩阵再平方条件数。非零的非对角项表示参数同时影响同一观测；它们不会因为噪声彼此独立就自动消失。",
+            "拟合后预测为 [12.484581,−1.674009,−6.682819,7.475771,4.991189] m，残差 d−Hθ=[0.515419,0.674009,−0.317181,−0.475771,−0.991189] m。逐项除以 σ 后平方求和为 1.784141，残差自由度是 5−3=2。应同时核对 HᵀWr≈0；这检验求解是否满足最小二乘驻点条件，却不能证明测量模型正确。拟合后的残差彼此相关，不能将五个 rᵢ/σᵢ 当作五次独立标准正态抽样。",
+            "在此线性模型及已知噪声协方差下，形式协方差 P=(HᵀWH)⁻¹，三个参数标准差分别为 0.963257、0.916383、0.787079 m。这里不再乘残差方差估计，因为输入 σ 已作为绝对噪声尺度；只有噪声仅知相对权重、另估公共尺度时才涉及相应缩放。若错误地固定 b=0，位置改正会变成 [11.448000,−2.669333] m，白化平方残差和升到 15.368，展示了未建模偏差如何被位置部分吸收。",
+            "真正的轨道确定还要把本例的静态 H 换成各测量时刻的链路模型导数，并通过状态转移矩阵连接参考历元状态。测距、距离变化率和测角必须各用自己的单位、时间标签及误差模型；真实单程和双程测距还涉及发射与接收时刻。每轮传播、计算残差、重新线性化直到收敛，并保留未用于拟合的弧段检查外推。若估计参数相关，应先解释几何和先验，再增加参数，不能仅通过调小测量噪声获得更漂亮的协方差。"
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "orbit-determination",
+          "field": "formula",
+          "newValue": "dᵢ≈uᵢₓδx+uᵢᵧδy+b；A=diag(1/σᵢ)H，z=diag(1/σᵢ)d；minθ ‖z−Aθ‖²；本例无先验，P=(HᵀWH)⁻¹。真实定轨的观测对参考历元状态导数还需乘状态转移矩阵 Φ(tᵢ,t₀)。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "orbit-determination",
+          "field": "exercise",
+          "newValue": "逐行复算本课的五条观测、正规矩阵、参数和残差；再将第四条 σ 从 2 m 改为 20 m，重新求解并比较协方差。最后把所有视线改为 (1,0)，证明 δx 与 b 不能分离、δy 完全无约束，而不是强行给出逆矩阵。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "orbit-determination",
+          "field": "steps",
+          "newValue": [
+            {
+              "title": "写出数值与单位",
+              "detail": "按本文五条视线、观测差及标准差构造 H、d、W；明确 d 是观测减预测，不是原始绝对距离。"
+            },
+            {
+              "title": "白化后解算",
+              "detail": "通过 QR/SVD 求解；用本课公布的正规矩阵、参数和 HᵀWr≈0 作为独立交叉核对。"
+            },
+            {
+              "title": "检查偏差与几何",
+              "detail": "对比估计公共偏置、固定偏置和所有视线相同三种情况，同时报告残差和可辨识方向。"
+            },
+            {
+              "title": "接入真实定轨模型",
+              "detail": "加入时间、坐标、光行时、传播与导数；用留出弧段检验预测，不把静态教学例当成已验证的轨道确定器。"
+            }
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "orbit-determination",
+          "field": "sources",
+          "newValue": [
+            {
+              "title": "NASA · Basics of Space Flight: Navigation",
+              "url": "https://science.nasa.gov/learn/basics-of-space-flight/chapter13-1/"
+            },
+            {
+              "title": "Tudat · Performing the Estimation",
+              "url": "https://docs.tudat.space/en/latest/user-guide/state-estimation/estimation-settings.html"
+            },
+            {
+              "title": "Gilbert Strang / MIT · Multivariate Gaussian and Weighted Least Squares, §12.3",
+              "url": "https://math.mit.edu/~gs/linearalgebra/ila5/linearalgebra5_12-3.pdf"
+            },
+            {
+              "title": "Orekit 13.1.3 · AbstractBatchLSModel.java, lines 394–399 / 423–428",
+              "url": "https://github.com/CS-SI/Orekit/blob/13.1.3/src/main/java/org/orekit/estimation/leastsquares/AbstractBatchLSModel.java"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "observability-nullspace",
+      "entryId": "observability",
+      "classification": "content-usability-gap",
+      "reason": "原文练习要求计算可观测矩阵，却没有给出矩阵、零空间或不可区分初值；数值满秩与实际弱几何仍停留在概念层。",
+      "sources": [
+        "observability",
+        "wls"
+      ],
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "observability",
+          "field": "readTime",
+          "newValue": 18
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "observability",
+          "field": "summary",
+          "newValue": "用位置、速度、测量偏置模型算出不可观方向，再比较宽视线和窄视线测距中的数值条件。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "observability",
+          "field": "body",
+          "newValue": [
+            "考虑一维匀速运动，状态顺序为 x=[p,v,b]ᵀ，位置 p 与常值测量偏置 b 以米计，速度 v 以米每秒计。模型 ṗ=v、v̇=0、ḃ=0，传感器只输出 y=p+b。这已经说明一个困难：观测中位置和偏置相加出现，不能因为把它们写成两个状态就认为仪器提供了两种信息。已知输入可以改变轨迹，但在这个固定线性模型中不会改变以下不可区分关系。",
+            "该模型 A=[[0,1,0],[0,0,0],[0,0,0]]，C=[1,0,1]，因此 O=[C;CA;CA²]=[[1,0,1],[0,1,0],[0,0,0]]，秩为 2，小于状态维数 3。零空间方向 n=[1,0,−1]ᵀ 满足 On=0。任意增加位置 a、同时减少偏置 a，都不改变观测；速度可以通过随时间的变化被辨认，但位置与偏置的常值部分只能以它们的和被辨认。这个常值不可观方向对任意大小的位置与偏置改变量都成立。",
+            "用两组具体初值检查：第一组 (p₀,v₀,b)=(10 m,2 m/s,3 m)，第二组 (15 m,2 m/s,−2 m)。两者在任意 t 都给出 y(t)=13+2t m；在 0、1、2 s 的输出均为 13、15、17 m。增加相同传感器的采样次数、降低噪声或延长此匀速弧段，仍不能分离 p₀ 与 b。若加一个独立的绝对位置测量，或者用外部标定确定 b，才增加了此前缺少的约束；这时要明确约束来自哪里。",
+            "满秩也可能很脆弱。相邻测距例使用五条分散视线与 σ=[1,1,2,2,1] m，白化矩阵 A 的奇异值约为 [2.240985,1.123026,0.846641]，条件数为 2.646912。把五条视线角度改为 −2°、−1°、0°、1°、2°，仍按相同顺序使用这些 σ，矩阵仍为秩 3，奇异值却约为 [2.645228,0.052609,0.00031653]。形式上的三个未知量都可求出，但沿视线位置改正与偏置几乎完全抵消。",
+            "这个窄视线例的条件数约 8357，位置 x 与偏置 b 的相关系数约 −0.999999971，它们的形式标准差分别约 2234 m 和 2233 m；横向 y 的标准差约 19.19 m。所有未知量本例均以米计，因而条件数比较有明确尺度；真实轨道中混合位置、速度和阻力参数时，必须先声明状态缩放。先验能限制薄弱方向，但不能将这种限制冒充观测提供的信息，应分别报告加入先验前后的信息矩阵与不确定度。"
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "observability",
+          "field": "formula",
+          "newValue": "ṗ=v，v̇=0，ḃ=0，y=p+b；O=[[1,0,1],[0,1,0],[0,0,0]]，rank(O)=2，null(O)=span([1,0,−1]ᵀ)。静态测距 Hᵢ=[cosθᵢ,sinθᵢ,1]；比较奇异值前按噪声白化并声明状态尺度。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "observability",
+          "field": "exercise",
+          "newValue": "先复算两组初值的 13、15、17 m 输出，再对分散视线与 ±2° 窄视线构造白化矩阵并复核奇异值。给 b 加入 0.1 m 标定先验后重新求协方差，说明新增信息来自标定而非原来的五条观测。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "observability",
+          "field": "sources",
+          "newValue": [
+            {
+              "title": "MIT 16.30 · State-Space Systems and Linearization",
+              "url": "https://ocw.mit.edu/courses/16-30-feedback-control-systems-fall-2010/1bfc976fcead1982d90c5057511e5ef7_MIT16_30F10_lec05.pdf"
+            },
+            {
+              "title": "MIT 16.30 · Estimators and Observability",
+              "url": "https://ocw.mit.edu/courses/16-30-feedback-control-systems-fall-2010/f6de7a51bb043db1d6d3cc7c362b7393_MIT16_30F10_lec14.pdf"
+            },
+            {
+              "title": "Gilbert Strang / MIT · Multivariate Gaussian and Weighted Least Squares, §12.3",
+              "url": "https://math.mit.edu/~gs/linearalgebra/ila5/linearalgebra5_12-3.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gci-published-three-grid",
+      "entryId": "cfd-verification",
+      "classification": "content-usability-gap",
+      "reason": "原文公式正确但缺少公开数据的完整推导；未提醒用同一三网格差值拟合 p 后，常用渐近比值对等比网格并非独立证据。",
+      "sources": [
+        "nasaGrid",
+        "celik"
+      ],
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "cfd-verification",
+          "field": "readTime",
+          "newValue": 25
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "cfd-verification",
+          "field": "summary",
+          "newValue": "复算 NASA 公开的三网格压力恢复结果，并检查收敛阶、外推、GCI 与渐近区判断的适用边界。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "cfd-verification",
+          "field": "body",
+          "newValue": [
+            "先分清待判断的误差：残差曲线描述离散方程的迭代过程，网格序列研究空间离散误差，时间步序列研究时间离散误差，而实验对照检验模型与实际物理的差异。下面采用 NASA NPARC 教程公布的进气道压力恢复结果，展示如何从一张三行表得到可复查的 GCI。本站只复算这张已发表表格，没有重新运行原始 CFD，也没有把这组结果当成其他外形的精度证明。",
+            "按细、中、粗三个网格编号 1、2、3，归一化间距 h=[1,2,4]，压力恢复 φ=[0.97050,0.96854,0.96178]，都是无量纲数。先计算 ε₂₁=φ₂−φ₁=−0.00196、ε₃₂=φ₃−φ₂=−0.00676，二者同号且 R=ε₂₁/ε₃₂=0.289940828，说明这三点呈现单调趋近趋势。此处 r₂₁=r₃₂=2；非等比网格不能直接沿用下一步的简式。保留细粗编号能避免倒置网格后误读差值比；三个结果还必须对应同一定义的输出。",
+            "在单一主导误差项 φ(h)=φ₀+Chᵖ 的假设下，rᵖ=ε₃₂/ε₂₁=3.448979592，因此 p=ln(3.448979592)/ln2=1.786169592。Richardson 外推为 φ_ext=φ₁+(φ₁−φ₂)/(rᵖ−1)=0.971300333。这里的 p 是该输出在该网格族中的观察阶次；它不等于求解器标称格式阶次，也不证明其他输出、壁面附近局部场或不同流动工况具有相同误差规律。当前算例只讨论这个积分输出。",
+            "取三网格研究常用安全因子 F_s=1.25，细网格相对差 e_a=|φ₁−φ₂|/|φ₁|=0.00201957754，GCI₂₁=F_s e_a/(rᵖ−1)=0.00103082603，也就是 0.103082603%。换回压力恢复的绝对量纲，U₂₁=0.00100041667；细网格结果应写作 0.97050 并附上这个数值离散不确定度估计。它不是 0.103 的压力恢复误差，更不是把模型、测量和数值误差全部包含在内的概率置信区间。",
+            "中粗网格同理得到 GCI₃₂=0.356249269%，常用比值 GCI₃₂/(rᵖGCI₂₁)=1.002023664，接近 1。这里必须进一步追问它是否提供独立证据：由于本例 p 就由同一组 ε₃₂/ε₂₁ 算出，代入后该比值严格化为 |φ₁/φ₂|，接近 1 本身并不足以证明进入渐近区。应增加更细网格、比较相邻三网格得到的 p 和外推值是否稳定，并把迭代误差控制到明显小于网格间差值；不能仅凭三点可拟合出幂律就通过验收。",
+            "保留失败例有助于识别误用。若细到粗的结果是 [1.01,0.99,1.04]，差值异号且 R=−0.4，说明这三点振荡；不能只对差值比取绝对值就声称获得单调收敛证据。若结果是 [0.90,0.95,0.98]，R=1.6667，细化后的变化反而变大，不支持当前简式的正阶单调收敛假设。等值或接近舍入精度的差值也不能用来稳定估计 p。对此应补算网格、检查迭代与统计误差，并报告无法形成可信外推的原因。",
+            "真实网格研究还需保存每级单元数、代表尺度、网格生成参数、边界条件、求解配置和目标量定义。对同一三维体域的积分量，可用平均单元体积的立方根定义代表 h；二维网格使用面积平方根。全局单元数增长不保证激波、边界层或局部热流区域按同样比例细化。对非定常流另做时间步和统计窗口研究，对不同输出分别估计误差，再与条件匹配的实验数据比较，不能用阻力的收敛替代局部热流的收敛。"
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "cfd-verification",
+          "field": "formula",
+          "newValue": "本课限定等比、单调并采用主导幂律误差模型：ε₂₁=φ₂−φ₁，ε₃₂=φ₃−φ₂，0<R=ε₂₁/ε₃₂<1；p=ln(ε₃₂/ε₂₁)/lnr；φ_ext=φ₁+(φ₁−φ₂)/(rᵖ−1)；GCI₂₁=F_s|ε₂₁|/[|φ₁|(rᵖ−1)]。相同 p 与相同 F_s 下，GCI₃₂/(rᵖGCI₂₁)=|φ₁/φ₂|，因此不能单独作为渐近区的独立证明。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "cfd-verification",
+          "field": "pitfall",
+          "newValue": "将百分数和无量纲比例混用；对振荡序列套单调幂律；把三网格拟合后的近一比值当作独立验证；用全局单元数增加代替关键流动区域的系统细化。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "cfd-verification",
+          "field": "exercise",
+          "newValue": "复算 NASA 表格中的 p、外推值、两个 GCI 和绝对不确定度；手推渐近比值化简。再处理本课两个失败序列，明确为什么停止外推。若运行自己的 CFD，补第四网格并比较相邻三网格的 p、外推值与迭代误差，保存原始目标量与网格配置。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "cfd-verification",
+          "field": "sources",
+          "newValue": [
+            {
+              "title": "NASA NPARC · Verification Assessment",
+              "url": "https://www.grc.nasa.gov/www/wind/valid/tutorial/verassess.html"
+            },
+            {
+              "title": "NASA NPARC · Examining Spatial Grid Convergence",
+              "url": "https://www.grc.nasa.gov/www/wind/valid/tutorial/spatconv.html"
+            },
+            {
+              "title": "NASA NPARC · Uncertainty and Error in CFD",
+              "url": "https://www.grc.nasa.gov/www/wind/valid/tutorial/errors.html"
+            },
+            {
+              "title": "Celik et al. (2008) · Procedure for Estimation and Reporting of Uncertainty Due to Discretization in CFD Applications",
+              "url": "https://doi.org/10.1115/1.2960953"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ephemeris-provenance-contract",
+      "entryId": "data-provenance",
+      "classification": "content-usability-gap",
+      "reason": "原文仅列元数据名词；没有一份能自动拒绝错误时间、坐标或修正设置的数据契约，容易把官方星历状态当作原始测量。",
+      "sources": [
+        "horizons",
+        "horizonsApi"
+      ],
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "data-provenance",
+          "field": "readTime",
+          "newValue": 19
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "data-provenance",
+          "field": "summary",
+          "newValue": "以 Horizons 状态向量为例，记录目标、中心、参考系、时标和修正设置，并区分原始响应、派生量与测量真值。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "data-provenance",
+          "field": "body",
+          "newValue": [
+            "一份可追溯数据首先要说明证据性质。任务网页上的型号参数、测站原始观测、拟合得到的星历状态和作者设定的研究参数是不同层级的资料。即使状态向量来自 JPL Horizons，也应描述为由指定星历计算的状态产品，不能叫作原始遥测或没有误差的真值。页面展示数值时应保留来源主体、产品说明、适用对象与构型，并把作者计算的轨道根数或能量另列为派生量。",
+            "以一个待归档的 Horizons 向量查询为例，机器可读清单至少保存 target、center、start、stop、step、EPHEM_TYPE=VECTORS、REF_SYSTEM=ICRF、REF_PLANE=FRAME、VEC_CORR=NONE、OUT_UNITS=KM-S 与 TIME_TYPE=TDB。这里 FRAME 与 ICRF 分别约束参考平面和参考框架，NONE 表示几何状态；参数只是请求意图，下载后还必须核对响应头实际回显的目标、中心、时间系统、单位、参考系与星历来源，不能只凭请求成功就认定数据口径正确。",
+            "保存完整原始响应及其 SHA-256，再从 $$SOE 与 $$EOE 之间解析数值记录。日期字符串、Julian day、位置和速度应同时保留原始精度；导入时检查记录数、时间严格递增、采样间隔、有限数值及字段数。若需要秒作为横轴，应以相同时标的 Julian day 差乘 86400，不把写着 TDB 的日期直接交给浏览器按 UTC 或本地时区解释。头信息缺失或设置不匹配时应拒绝导入，而不是默认补成常用坐标系。",
+            "处理链应把每次转换写成可重放的操作：输入文件哈希、解析程序版本、单位转换、筛选规则、采用常量和输出哈希。比如先以 km 和 km/s 计算二体比能 ε=v²/2−μ/r，此时 μ 必须以 km³/s² 输入；若转用 SI，则 r 和 v 分别乘 1000，而 μ 要乘 10⁹。将中央天体 μ 的来源与版本单列，既能定位量纲错误，也能区分更换输入星历与更换物理常量带来的结果变化。",
+            "不同产品的差值只有在语义一致后才有解释。目标相同但中心不同、惯性参考面不同，或者一个使用几何向量、另一个使用光行时修正向量，都会产生真实数值差异，却不是传播器误差。坐标、中心、时标、单位和修正约定全部对齐后，才能按同一历元比较位置速度。即使此时差值仍存在，也要区分动力学简化、星历误差、数值误差和时间插值，不能仅通过减去初始偏差就宣称模型准确。",
+            "为验证归档流程，可以复制清单并故意把 OUT_UNITS 从 KM-S 改成 AU-D，确认检查器拒绝读取原有响应；再删除一条时间记录，确认缺测被报告。另一项检查是从保存的原始文本重新生成派生表，比较记录数、数值与输出标识。哈希证明文件是否改变，不能证明物理模型正确；可复现处理和独立物理验证应保留各自的证据与失败记录。"
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "data-provenance",
+          "field": "exercise",
+          "newValue": "给一份 Horizons 向量响应建立本课清单，保留原文与哈希。分别注入单位不符、中心不符、时间缺测三种错误并要求导入失败；再以同一份输入独立计算 r、v 与 ε，检查 μ 的单位和数据出处。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "data-provenance",
+          "field": "sources",
+          "newValue": [
+            {
+              "title": "NASA PDS · PDS4 Training, Product Labels and Archive Organization",
+              "url": "https://pds.nasa.gov/datastandards/training/"
+            },
+            {
+              "title": "NASA-STD-7009B · Model Inputs, Documentation and Supporting Data",
+              "url": "https://standards.nasa.gov/sites/default/files/standards/NASA/B/1/NASA-STD-7009B-Final-3-5-2024.pdf"
+            },
+            {
+              "title": "JPL Horizons · Manual, Cartesian state vector tables",
+              "url": "https://ssd.jpl.nasa.gov/horizons/manual.html"
+            },
+            {
+              "title": "JPL Horizons API · Query parameters and output",
+              "url": "https://ssd-api.jpl.nasa.gov/doc/horizons.html"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finite-element-acceptance-benchmark",
+      "entryId": "finite-elements",
+      "classification": "content-usability-gap",
+      "reason": "原练习只要求比较悬臂梁，未给几何、载荷、材料、解析端点和能量；读者无法判断自己的位移、应力或反力是否对。",
+      "sources": [
+        "beam"
+      ],
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "finite-elements",
+          "field": "readTime",
+          "newValue": 20
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "finite-elements",
+          "field": "summary",
+          "newValue": "用有明确数值答案的悬臂梁核验刚度、位移、反力和能量，再讨论实体网格、载荷施加和应力奇异性。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "finite-elements",
+          "field": "body",
+          "newValue": [
+            "有限元分析先定义载荷路径与目标输出，再决定网格形式。这里取一根人为设定的等截面悬臂梁：长 L=1 m，截面宽 b=0.02 m、沿弯曲方向高 h=0.04 m，均匀各向同性材料 E=70 GPa，自由端横向力 F=100 N。忽略自重、剪切变形与几何非线性，固定端位移和转角为零。这是一个用于验证实现的 Euler–Bernoulli 梁基准，材料数值不是某个飞行硬件的合格材料数据。",
+            "截面二次矩 I=bh³/12=1.066666667×10⁻⁷ m⁴，弯曲刚度 EI=7466.666667 N·m²。由 EI w″=M 与端部载荷的截面平衡可得自由端位移 FL³/(3EI)=0.004464285714 m，即 4.464286 mm；端部转角 FL²/(2EI)=0.006696428571 rad。支座反力与反力矩的大小分别应为 100 N 和 100 N·m，方向与外载平衡。先核对这些量，比先比较彩色应力云图更容易定位单位或约束错误。",
+            "用一个标准两节点三次 Hermite 梁单元，消去固定端自由度后，剩余 [w_L,θ_L] 的刚度为 (EI/L³)[[12,−6L],[−6L,4L²]]，载荷向量为 [F,0]。本例数值矩阵为 [[89600,−44800],[−44800,29866.666667]]，矩阵各块因位移和转角的单位不同而具有不同量纲。解应得到上段的端点位移与转角；这个端载线弹性问题的位移形函数恰能表示解析解，所以一个梁单元的端点正确不构成复杂实体网格的收敛证据。",
+            "再算独立的能量与名义应力。线性缓慢加载的应变能 U=F w_L/2=0.2232142857 J，应与离散形式 uᵀKu/2 相符；不要把末态载荷直接乘位移并漏掉二分之一。梁理论固定端外纤维名义弯曲应力 FL(h/2)/I=18.75 MPa。这是截面理论应力，不能拿来要求三维完全固定面的边缘峰值逐点一致；后者受端部约束、泊松效应和局部应力奇异性影响。",
+            "转为实体模型时，应将端载作为有明确分布或合力传递方式的面载施加，保存所用泊松比，检查总力与作用点。以相同几何、材料和边界生成三档网格，分别记录端面平均位移、应变能、支座合力矩和远离端部的截面应力。固定端附近的最大节点应力可能随细化持续变化，整体位移却已经稳定，因此这些输出不能共用一个笼统的“网格收敛”结论。",
+            "这个基准只验证相应的小变形线弹性梁假设与离散实现，不检验屈服、连接滑移、局部屈曲、复材层合或接触分离。对真实结构，应逐项引入相应物理模型并保留接口柔度和载荷来源。没有约束的刚体自由度会导致刚度矩阵奇异，过多固定自由度则可能把结构变得过硬；先检查反力平衡、变形形态和预期刚体模态，再把偏差归因于求解器。"
+          ]
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "finite-elements",
+          "field": "formula",
+          "newValue": "梁基准：I=bh³/12，δ=FL³/(3EI)=4.464285714 mm，θ=FL²/(2EI)=0.006696428571 rad，U=Fδ/2=0.2232142857 J，σ_nom=FLh/(2I)=18.75 MPa；线弹性有限元 K u=f，U=uᵀKu/2。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "finite-elements",
+          "field": "exercise",
+          "newValue": "先用本课 2×2 刚度矩阵复算端点解，再组装 1、2、4 个 Euler–Bernoulli 梁单元核验位移、反力与能量。另建实体网格时单独记录端面载荷分布和泊松比，比较截面合力及远离端部的应力，不把固定端最大节点应力当作解析验收值。"
+        },
+        {
+          "op": "replace",
+          "file": "research/learning.json",
+          "id": "finite-elements",
+          "field": "sources",
+          "newValue": [
+            {
+              "title": "MIT · Finite Element Procedures for Solids and Structures, Linear Analysis",
+              "url": "https://ocw.mit.edu/courses/res-2-002-finite-element-procedures-for-solids-and-structures-spring-2010/dab1968e6c87110aeb83d0f4e17d75d5_MITRES2_002S10_linear.pdf"
+            },
+            {
+              "title": "NASA · Structures, Materials, and Mechanisms",
+              "url": "https://www.nasa.gov/smallsat-institute/sst-soa/structures-materials-and-mechanisms/"
+            },
+            {
+              "title": "MIT Unified Engineering · Materials and Structures, Problem Set 12 Solutions",
+              "url": "https://live.ocw.mit.edu/courses/16-001-unified-engineering-materials-and-structures-fall-2021/mit16_001_f21_pset12_sol.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "orekit-weight-semantics",
+      "entryId": "orekit",
+      "classification": "content-usability-gap",
+      "reason": "工具条目没有可执行起点，也没有解释 sigma 与 baseWeight 的重要区别；直接把普通WLS权重填入API会改变目标函数。",
+      "sources": [
+        "orekit",
+        "orekitApi",
+        "wls"
+      ],
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "orekit",
+          "field": "details",
+          "newValue": "Orekit 提供时间与参考系、传播、事件和轨道确定组件，需要使用者定义应用流程。批处理估计尤其要核对测量单位、sigma 和 baseWeight：在固定版本 13.1.3 的 AbstractBatchLSModel 中，送给最小二乘器的残差是 baseWeight×(预测−观测)/sigma，导数按相同比例缩放，所以平方目标中的有效系数为 baseWeight²/sigma²。若残差为 4 m、sigma=2 m、baseWeight=0.5，归一化残差为 1，平方贡献也是 1；不能再把 1/sigma² 填入 baseWeight 造成重复加权。参数还使用各自的尺度归一化，分析物理协方差前应核对返回矩阵的单位与排列。辅助数据、力模型、测量模型和版本应与结果一起保存。"
+        },
+        {
+          "op": "add",
+          "file": "research/library.json",
+          "id": "orekit",
+          "field": "starterWorkflow",
+          "newValue": [
+            "先用本站“轨道确定”课的五条合成测距差复算 θ=[9.583700,−4.574890,2.900881] m；这是估计代数基准，不是已经在 Orekit 中运行的定轨任务。",
+            "固定 Orekit、依赖库和辅助数据版本；为测量记录时间系统、测站坐标、量纲、sigma 和单程/双程约定，并选用与数据相符的测量类及修正项。",
+            "在已核对的 13.1.3 批处理实现中，先令 baseWeight=1，让 sigma 表示绝对标准差；用 4 m 残差、2 m sigma 的单条检查确认归一化残差幅值为 2，再把 baseWeight 改成 0.5 验证其变为 1。",
+            "仅选择有几何信息支持的轨道与测量参数。记录参数顺序和 scale；对选定参数用有限差分检查观测导数，比较白化矩阵奇异值与参数相关性。",
+            "迭代收敛后分别输出带单位的原始残差、归一化残差、物理协方差及留出弧段预测误差。小代数例通过只能验证缩放与求解，不替代时标、光行时和动力学的端到端验证。"
+          ]
+        },
+        {
+          "op": "add",
+          "file": "research/library.json",
+          "id": "orekit",
+          "field": "starterWorkflowStatus",
+          "newValue": "WLS 数值与缩放例已独立复算；API 说明及 13.1.3 固定标签源码已核对。本站未运行外部 Orekit 定轨。"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "orekit",
+          "field": "docsUrl",
+          "newValue": "https://test.orekit.org/site-orekit-12.0.1/apidocs/org/orekit/estimation/measurements/AbstractMeasurement.html"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "orekit",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "su2-fixed-tutorial-scope",
+      "entryId": "su2",
+      "classification": "content-usability-gap",
+      "reason": "原条目建议扫描包线却未提供起始工况和配置；容易把入门Euler算例或残差收敛直接当作黏性气动数据库验证。",
+      "sources": [
+        "su2",
+        "nasaGrid"
+      ],
+      "operations": [
+        {
+          "op": "add",
+          "file": "research/library.json",
+          "id": "su2",
+          "field": "starterWorkflow",
+          "newValue": [
+            "从官方版本 7 文档的 Quick Start 取 inv_NACA0012.cfg 与 mesh_NACA0012_inv.su2，并与所用 SU2 版本对应保存。旧 /docs/Quick-Start/ 页面明确仅适用于 6.2.0 及更早版本，不能混用配置说明。",
+            "复核这个具体入门工况：二维定常 Euler，NACA 0012，Mach=0.8，迎角 1.25°，自由来流压力 101325 Pa、温度 273.15 K；airfoil 与 farfield 是边界标记。此例是无黏流，不能用来核验摩擦阻力或壁面热流。",
+            "先运行直接问题，按官方配置调用 SU2_CFD inv_NACA0012.cfg。保存版本、配置、网格、终止状态、残差和升阻力历史，并检查表面压力与整体载荷是否仍随迭代变化。",
+            "围绕同一个目标量制作系统加密的网格族，保持几何与工况一致。用本站“CFD 验证”课的方法计算差值和观察阶次；无法得到可靠单调序列时保留原始结果，不强行给出 GCI。",
+            "如果下一步研究黏性载荷，另选择与试验匹配的 Navier–Stokes/RANS 案例，明确 Reynolds 数、湍流模型、转捩、壁面解析和参考面积。正式扫工况前先通过单一工况的迭代、网格与外部数据检查。"
+          ]
+        },
+        {
+          "op": "add",
+          "file": "research/library.json",
+          "id": "su2",
+          "field": "starterWorkflowStatus",
+          "newValue": "工况、文件名与运行入口已按官方文档核对；本站未运行外部 SU2，未报告求解器性能或新的气动系数。"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "su2",
+          "field": "docsUrl",
+          "newValue": "https://su2code.github.io/docs_v7/Quick-Start/"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "su2",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    },
+    {
+      "id": "gmsh-physical-group-export",
+      "entryId": "gmsh",
+      "classification": "content-usability-gap",
+      "reason": "原文虽提到边界标识，未指出有Physical Groups时默认只导出分组中的元素；缺少域分组可能让下游求解器收不到体/面单元，SaveAll在MSH2中还可能丢失分组。",
+      "sources": [
+        "gmsh"
+      ],
+      "operations": [
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "gmsh",
+          "field": "details",
+          "newValue": "Gmsh 的物理分组既是名称，也是下游材料与边界条件的接口。官方 4.15.2 手册说明：定义任何 Physical Groups 后，默认导出仅包含至少属于一个物理分组的元素；因此二维算例只标边界曲线而未标计算域表面，可能导出不到所需的二维单元。应同时建立域与边界分组，并检查维度、tag、名称与单元数量。Mesh.SaveAll 可要求导出全部元素，但某些格式如 MSH2 会因此丢弃物理分组定义，不能把它当成无条件修复。网格写出后应由下游读取器重新打开并核验，截图显示完整网格不代表输出文件保留了求解所需的全部信息。"
+        },
+        {
+          "op": "add",
+          "file": "research/library.json",
+          "id": "gmsh",
+          "field": "starterWorkflow",
+          "newValue": [
+            "以一个二维矩形域为最小例，分别给域表面和四条边界建立 Physical Surface 与 Physical Curve，使用明确名称和 tag；说明每个边界将映射到哪一种条件。",
+            "选择下游求解器明确支持的 MSH 版本，保存几何脚本、尺寸场、阶次与导出选项。网格生成后输出各维度的实体与元素数，不只检查 GUI 中的形状。",
+            "把写出的文件重新导入实际下游读取器，核对二维域单元不为空，边界名称、维度和 tag 完整，几何面积与边长符合输入。",
+            "故意去掉域的 Physical Surface 后重新导出，观察默认过滤行为；再检查 Mesh.SaveAll 与 MSH2 的分组风险。把失败保留为输入检查用例，而不是让下游求解器静默补全边界。",
+            "在两种尺寸场上重复检查域和边界映射，再进入物理求解及网格收敛。布尔几何操作后应重新确认实体对应关系，不能依赖旧的数字 tag 仍代表原来的面。"
+          ]
+        },
+        {
+          "op": "add",
+          "file": "research/library.json",
+          "id": "gmsh",
+          "field": "starterWorkflowStatus",
+          "newValue": "物理分组与导出行为已核对官方 4.15.2 手册；本站未运行外部 Gmsh 或下游求解器。"
+        },
+        {
+          "op": "replace",
+          "file": "research/library.json",
+          "id": "gmsh",
+          "field": "verifiedOn",
+          "newValue": "2026-10-28"
+        }
+      ]
+    }
+  ],
+  "workedExamples": [
+    {
+      "id": "range-bias-wls",
+      "title": "五条测距差中的位置改正与公共偏置",
+      "lessonIds": [
+        "orbit-determination",
+        "observability"
+      ],
+      "dataNature": "作者构造的线性化静态二维教学数据；非航天器遥测，非完整轨道确定",
+      "assumptions": [
+        "位置改正足够小，视线导数在参考状态固定。",
+        "五个观测误差零均值、相互独立；sigma是已知绝对标准差。",
+        "公共偏置在五个观测间不变；无先验。",
+        "各视线仅用于局部几何教学，没有构造真实测站可见性或光行时链路。"
+      ],
+      "unknowns": [
+        {
+          "name": "δx",
+          "unit": "m"
+        },
+        {
+          "name": "δy",
+          "unit": "m"
+        },
+        {
+          "name": "b",
+          "unit": "m"
+        }
+      ],
+      "dataRows": [
+        {
+          "observation": 1,
+          "ux": 1,
+          "uy": 0,
+          "differenceM": 13,
+          "sigmaM": 1,
+          "weightPerM2": 1,
+          "predictedM": 12.484581497797361,
+          "residualM": 0.515418502202639,
+          "whitenedResidual": 0.515418502202639
+        },
+        {
+          "observation": 2,
+          "ux": 0,
+          "uy": 1,
+          "differenceM": -1,
+          "sigmaM": 1,
+          "weightPerM2": 1,
+          "predictedM": -1.674008810572691,
+          "residualM": 0.6740088105726909,
+          "whitenedResidual": 0.6740088105726909
+        },
+        {
+          "observation": 3,
+          "ux": -1,
+          "uy": 0,
+          "differenceM": -7,
+          "sigmaM": 2,
+          "weightPerM2": 0.25,
+          "predictedM": -6.682819383259915,
+          "residualM": -0.31718061674008524,
+          "whitenedResidual": -0.15859030837004262
+        },
+        {
+          "observation": 4,
+          "ux": 0,
+          "uy": -1,
+          "differenceM": 7,
+          "sigmaM": 2,
+          "weightPerM2": 0.25,
+          "predictedM": 7.475770925110137,
+          "residualM": -0.47577092511013674,
+          "whitenedResidual": -0.23788546255506837
+        },
+        {
+          "observation": 5,
+          "ux": 0.6,
+          "uy": 0.8,
+          "differenceM": 4,
+          "sigmaM": 1,
+          "weightPerM2": 1,
+          "predictedM": 4.991189427312774,
+          "residualM": -0.9911894273127739,
+          "whitenedResidual": -0.9911894273127739
+        }
+      ],
+      "derivation": [
+        {
+          "title": "从距离函数求导",
+          "equation": "ρᵢ(r,b)=‖r−sᵢ‖+b；uᵢ=(r₀−sᵢ)/‖r₀−sᵢ‖；dᵢ=ρᵢ,obs−ρᵢ(r₀,0)≈[uᵢₓ,uᵢᵧ,1]θ。",
+          "interpretation": "公共偏置不随视线方向改变；位置改正的贡献随视线投影改变。"
+        },
+        {
+          "title": "白化",
+          "equation": "Aᵢⱼ=Hᵢⱼ/σᵢ，zᵢ=dᵢ/σᵢ；J=‖z−Aθ‖²。",
+          "matrixA": [
+            [
+              1,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              1
+            ],
+            [
+              -0.5,
+              0,
+              0.5
+            ],
+            [
+              0,
+              -0.5,
+              0.5
+            ],
+            [
+              0.6,
+              0.8,
+              1
+            ]
+          ],
+          "vectorZ": [
+            13,
+            -1,
+            -3.5,
+            3.5,
+            4
+          ],
+          "interpretation": "两米标准差相对一米标准差的平方残差权重为1/4。"
+        },
+        {
+          "title": "解三参数",
+          "equation": "HᵀWHθ=HᵀWd",
+          "normalMatrix": [
+            [
+              1.6099999999999999,
+              0.48,
+              1.35
+            ],
+            [
+              0.48,
+              1.8900000000000001,
+              1.55
+            ],
+            [
+              1.35,
+              1.55,
+              3.5
+            ]
+          ],
+          "rightHandSide": [
+            17.15,
+            0.4500000000000002,
+            16
+          ],
+          "solutionM": [
+            9.583700440528638,
+            -4.574889867841414,
+            2.9008810572687227
+          ],
+          "implementation": "结果使用 NumPy lstsq 对白化系统进行 SVD 求解；正规矩阵用于独立算术核对，不推荐在病态实际问题中显式求逆。"
+        },
+        {
+          "title": "核对残差",
+          "equation": "r=d−Hθ；HᵀWr≈0；J=rᵀWr",
+          "residualM": [
+            0.515418502202639,
+            0.6740088105726909,
+            -0.31718061674008524,
+            -0.47577092511013674,
+            -0.9911894273127739
+          ],
+          "whitenedResidual": [
+            0.515418502202639,
+            0.6740088105726909,
+            -0.15859030837004262,
+            -0.23788546255506837,
+            -0.9911894273127739
+          ],
+          "J": 1.7841409691629941,
+          "dof": 2,
+          "normalResidual": [
+            -4.107825191113079e-15,
+            5.88418203051333e-15,
+            4.440892098500626e-16
+          ],
+          "interpretation": "驻点条件只核验这一次线性求解。拟合残差协方差是 R−HPHᵀ，并非原始R，所以各残差不独立。"
+        },
+        {
+          "title": "解释协方差",
+          "equation": "P=(HᵀWH)⁻¹",
+          "covarianceM2": [
+            [
+              0.9278634361233483,
+              0.09085903083700439,
+              -0.3981277533039649
+            ],
+            [
+              0.09085903083700454,
+              0.8397577092511014,
+              -0.40693832599118956
+            ],
+            [
+              -0.39812775330396494,
+              -0.4069383259911894,
+              0.6194933920704847
+            ]
+          ],
+          "sigmaM": [
+            0.963256682366309,
+            0.9163829490180955,
+            0.7870790253020878
+          ],
+          "interpretation": "sigma已作为绝对噪声尺度，因此不再乘 J/(5−3)。该协方差不包括未建模系统误差。"
+        },
+        {
+          "title": "检查漏估偏置",
+          "estimate": [
+            11.448000000000002,
+            -2.6693333333333333
+          ],
+          "residual": [
+            1.5519999999999978,
+            1.6693333333333333,
+            4.448000000000002,
+            4.330666666666667,
+            -0.7333333333333343
+          ],
+          "objective": 15.368,
+          "interpretation": "省略偏置后，位置吸收部分公共误差，平方残差和从1.784141增为15.368；两种模型参数数目不同，不能只比较平均未加权残差。"
+        },
+        {
+          "title": "识别几何退化",
+          "wideGeometry": {
+            "singularValues": [
+              2.2409845782925983,
+              1.1230258975219194,
+              0.846640982559805
+            ],
+            "condition": 2.646912474656044
+          },
+          "narrowGeometry": {
+            "anglesDeg": [
+              -2,
+              -1,
+              0,
+              1,
+              2
+            ],
+            "sigmaM": [
+              1,
+              1,
+              2,
+              2,
+              1
+            ],
+            "rank": 3,
+            "singularValues": [
+              2.645228193944715,
+              0.052608951411886866,
+              0.0003165301326303394
+            ],
+            "condition": 8356.955377243505,
+            "parameterSigmaM": [
+              2234.385726824819,
+              19.191041556637337,
+              2233.47657928352
+            ],
+            "correlationXBias": -0.9999999708557313
+          },
+          "identicalGeometry": {
+            "HRow": [
+              1,
+              0,
+              1
+            ],
+            "rank": 1,
+            "nullDirections": [
+              [
+                1,
+                0,
+                -1
+              ],
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "interpretation": "δx+b是唯一可见组合；增加相同视线的观测次数不增加矩阵秩。"
+          }
+        }
+      ],
+      "extensions": [
+        "把第四条sigma改为20m，重新计算参数、残差与协方差。",
+        "将全部视线改为(1,0)，要求求解器报告秩不足；不要把最小范数返回值误作唯一物理解。",
+        "加入b的独立标定先验时，分开报告观测信息和先验信息。",
+        "完整定轨需逐测量重建时间、光行时和状态转移关系，本例不替代该过程。"
+      ],
+      "sources": [
+        {
+          "title": "Gilbert Strang / MIT · Multivariate Gaussian and Weighted Least Squares, §12.3",
+          "url": "https://math.mit.edu/~gs/linearalgebra/ila5/linearalgebra5_12-3.pdf"
+        },
+        {
+          "title": "MIT 16.30 · Estimators and Observability, Lecture 14",
+          "url": "https://ocw.mit.edu/courses/16-30-feedback-control-systems-fall-2010/f6de7a51bb043db1d6d3cc7c362b7393_MIT16_30F10_lec14.pdf"
+        },
+        {
+          "title": "Orekit 13.1.3 · AbstractBatchLSModel.java, lines 394–399 / 423–428",
+          "url": "https://github.com/CS-SI/Orekit/blob/13.1.3/src/main/java/org/orekit/estimation/leastsquares/AbstractBatchLSModel.java"
+        }
+      ]
+    },
+    {
+      "id": "nasa-inlet-gci",
+      "title": "NASA 进气道压力恢复：三网格 GCI 复算",
+      "lessonIds": [
+        "cfd-verification"
+      ],
+      "dataNature": "NASA NPARC 已公开表格的数值复算；没有重跑原始 CFD",
+      "sourceTable": {
+        "sourceUrl": "https://www.grc.nasa.gov/www/wind/valid/tutorial/spatconv.html",
+        "section": "Example Grid Convergence Study",
+        "quantity": "Pressure recovery Pr",
+        "unit": "1",
+        "rows": [
+          {
+            "grid": 1,
+            "spacing": 1,
+            "pressureRecovery": 0.9705
+          },
+          {
+            "grid": 2,
+            "spacing": 2,
+            "pressureRecovery": 0.96854
+          },
+          {
+            "grid": 3,
+            "spacing": 4,
+            "pressureRecovery": 0.96178
+          }
+        ],
+        "gridMeaning": "原教程的 i/j 方向系统加密，k方向保持不变且为轴对称问题；不能据此误写成通用三维体网格每级单元数加倍。"
+      },
+      "derivation": [
+        {
+          "title": "确定网格顺序与差值",
+          "equation": "h₁<h₂<h₃；r₂₁=r₃₂=2；ε₂₁=φ₂−φ₁，ε₃₂=φ₃−φ₂",
+          "e21": -0.001960000000000073,
+          "e32": -0.006759999999999988,
+          "R": 0.2899408284023781,
+          "interpretation": "0<R<1且差值同号，本组三点表现为单调趋近；尚未证明渐近区或物理准确。"
+        },
+        {
+          "title": "由主导误差项求阶次",
+          "equation": "φ(h)=φ₀+Chᵖ ⇒ ε₃₂/ε₂₁=rᵖ ⇒ p=ln(ε₃₂/ε₂₁)/lnr",
+          "p": 1.78616959216692,
+          "rPowP": 3.4489795918366006,
+          "interpretation": "这是此网格族与此输出的观察阶；非等比网格要使用对应关系求p，不能沿用简式。"
+        },
+        {
+          "title": "Richardson外推",
+          "equation": "φ_ext=φ₁+(φ₁−φ₂)/(rᵖ−1)",
+          "value": 0.9713003333333334,
+          "interpretation": "外推值是误差模型下的连续网格极限估计，不是实验值。"
+        },
+        {
+          "title": "细网格GCI",
+          "equation": "GCI₂₁=1.25×|φ₁−φ₂|/[|φ₁|(rᵖ−1)]",
+          "fraction": 0.001030826034690117,
+          "percent": 0.1030826034690117,
+          "absoluteUncertainty": 0.0010004166666667585,
+          "interpretation": "细网格结果0.97050，离散不确定度估计0.00100041667。0.103082603%中的百分号不可省略。"
+        },
+        {
+          "title": "中粗网格与渐近比值",
+          "equation": "GCI₃₂/(rᵖGCI₂₁)=|ε₃₂/ε₂₁|×|φ₁/φ₂|/rᵖ=|φ₁/φ₂|",
+          "gci32Percent": 0.3562492686586872,
+          "ratio": 1.0020236644846883,
+          "interpretation": "同一等比三网格差值用于拟合p时，近一比值代数上只是相邻输出接近的反映，不能单独构成渐近区的独立证明。这一说明是本站对公式的独立代数分析。"
+        },
+        {
+          "title": "需要追加什么证据",
+          "checks": [
+            "增加第四级更细网格，比较相邻三网格的观察p与外推值；不要把由前三点生成的第四点当作新计算。",
+            "证明迭代误差和时间/统计误差低于网格间差值。",
+            "检查几何、工况、积分区域和物理模型一致；局部网格尺寸及关键流动特征随加密可比。",
+            "小GCI只涉及选定输出的空间离散估计，不覆盖实验、边界输入、湍流模型或物理失配。"
+          ]
+        }
+      ],
+      "failureCases": [
+        {
+          "label": "振荡序列",
+          "dataNature": "自构教学反例",
+          "fineToCoarse": [
+            1.01,
+            0.99,
+            1.04
+          ],
+          "e21": -0.02,
+          "e32": 0.05,
+          "R": -0.4,
+          "result": "差值异号；停止使用本文的单调幂律简式，不把abs(log差值比)包装成收敛证明。负R本身不保证振荡幅度会继续衰减。"
+        },
+        {
+          "label": "细化差值增大",
+          "dataNature": "自构教学反例",
+          "fineToCoarse": [
+            0.9,
+            0.95,
+            0.98
+          ],
+          "e21": 0.05,
+          "e32": 0.03,
+          "R": 1.6666666666666667,
+          "result": "差值变大，不支持当前正阶单调收敛假设；检查是否进入渐近区、迭代误差或拓扑变化。"
+        },
+        {
+          "label": "差值接近零",
+          "dataNature": "方法边界",
+          "result": "差值为零或与输出舍入/迭代误差同阶时，观察p不可稳定估计，不应通过加极小常数强行输出漂亮数字。"
+        }
+      ],
+      "sources": [
+        {
+          "title": "NASA NPARC · Examining Spatial (Grid) Convergence",
+          "url": "https://www.grc.nasa.gov/www/wind/valid/tutorial/spatconv.html"
+        },
+        {
+          "title": "Celik et al. (2008) · Procedure for Estimation and Reporting of Uncertainty Due to Discretization in CFD Applications",
+          "url": "https://doi.org/10.1115/1.2960953"
+        }
+      ],
+      "sourceAccessNote": "NASA 原文及数值表已读取。Celik 2008 DOI发布页返回403；CiteSeer对原论文的索引片段可核对文章名、h定义与r>1.3的经验建议，完整PDF本轮未能读取。本文的等比推导和数值以已读NASA页面及独立计算为依据。"
+    }
+  ],
+  "confirmedWithoutChange": [
+    {
+      "id": "state-estimation",
+      "finding": "连续白噪声加速度Q的量纲、Δt³/3与Δt²/2项，以及示例预测/更新计算正确；无需为改动而改动。",
+      "recomputed": {
+        "innovationCovariance": 126.06666666666666,
+        "kalmanGain": [
+          0.8016922263352724,
+          0.008725542041248018
+        ],
+        "updatedState": [
+          8.016922263352724,
+          0.08725542041248019
+        ]
+      }
+    },
+    {
+      "id": "spice",
+      "finding": "已有kernel覆盖、版本、时标和几何查询边界说明，没有发现应立即改写的事实错误；本轮未把该条目全文重新核为外部任务采用证据。"
+    },
+    {
+      "id": "ansys-fluent",
+      "finding": "当前区分残差、网格、试验与许可范围，未发现本轮必须修复的确定事实错误；没有实测其CPU/GPU支持矩阵。"
+    },
+    {
+      "id": "calculix",
+      "finding": "现有条目正确提示语法相似不等于完整功能兼容；本轮有限元内容补上数值基准，但未运行CalculiX。"
+    },
+    {
+      "id": "mfem",
+      "finding": "现有条目正确区分离散库与完整领域模型；本轮未执行MFEM，未新增性能或任务使用断言。"
+    }
+  ],
+  "sourceRegistry": [
+    {
+      "id": "wls",
+      "title": "Gilbert Strang / MIT · Multivariate Gaussian and Weighted Least Squares, §12.3",
+      "url": "https://math.mit.edu/~gs/linearalgebra/ila5/linearalgebra5_12-3.pdf",
+      "accessedOn": "2026-10-28",
+      "access": "已读取官方文档或原始教材/源码",
+      "supports": [
+        "range-bias-wls",
+        "observability-nullspace",
+        "orekit-weight-semantics"
+      ]
+    },
+    {
+      "id": "observability",
+      "title": "MIT 16.30 · Estimators and Observability, Lecture 14",
+      "url": "https://ocw.mit.edu/courses/16-30-feedback-control-systems-fall-2010/f6de7a51bb043db1d6d3cc7c362b7393_MIT16_30F10_lec14.pdf",
+      "accessedOn": "2026-10-28",
+      "access": "已读取官方文档或原始教材/源码",
+      "supports": [
+        "observability-nullspace"
+      ]
+    },
+    {
+      "id": "nasaGrid",
+      "title": "NASA NPARC · Examining Spatial (Grid) Convergence",
+      "url": "https://www.grc.nasa.gov/www/wind/valid/tutorial/spatconv.html",
+      "accessedOn": "2026-10-28",
+      "access": "已读取官方文档或原始教材/源码",
+      "supports": [
+        "gci-published-three-grid",
+        "su2-fixed-tutorial-scope"
+      ]
+    },
+    {
+      "id": "celik",
+      "title": "Celik et al. (2008) · Procedure for Estimation and Reporting of Uncertainty Due to Discretization in CFD Applications",
+      "url": "https://doi.org/10.1115/1.2960953",
+      "accessedOn": "2026-10-28",
+      "access": "部分：原论文索引片段与元数据；出版页/PDF访问受限",
+      "supports": [
+        "gci-published-three-grid"
+      ]
+    },
+    {
+      "id": "horizons",
+      "title": "JPL Horizons · Manual, Cartesian state vector tables",
+      "url": "https://ssd.jpl.nasa.gov/horizons/manual.html",
+      "accessedOn": "2026-10-28",
+      "access": "已读取官方文档或原始教材/源码",
+      "supports": [
+        "ephemeris-provenance-contract"
+      ]
+    },
+    {
+      "id": "horizonsApi",
+      "title": "JPL Horizons API · Query parameters and output",
+      "url": "https://ssd-api.jpl.nasa.gov/doc/horizons.html",
+      "accessedOn": "2026-10-28",
+      "access": "已读取官方文档或原始教材/源码",
+      "supports": [
+        "ephemeris-provenance-contract"
+      ]
+    },
+    {
+      "id": "beam",
+      "title": "MIT Unified Engineering · Materials and Structures, Problem Set 12 Solutions",
+      "url": "https://live.ocw.mit.edu/courses/16-001-unified-engineering-materials-and-structures-fall-2021/mit16_001_f21_pset12_sol.pdf",
+      "accessedOn": "2026-10-28",
+      "access": "已读取官方文档或原始教材/源码",
+      "supports": [
+        "finite-element-acceptance-benchmark"
+      ]
+    },
+    {
+      "id": "orekit",
+      "title": "Orekit 13.1.3 · AbstractBatchLSModel.java, lines 394–399 / 423–428",
+      "url": "https://github.com/CS-SI/Orekit/blob/13.1.3/src/main/java/org/orekit/estimation/leastsquares/AbstractBatchLSModel.java",
+      "accessedOn": "2026-10-28",
+      "access": "已读取官方文档或原始教材/源码",
+      "supports": [
+        "range-bias-wls",
+        "orekit-weight-semantics"
+      ]
+    },
+    {
+      "id": "orekitApi",
+      "title": "Orekit 12.0.1 API · AbstractMeasurement sigma and baseWeight",
+      "url": "https://test.orekit.org/site-orekit-12.0.1/apidocs/org/orekit/estimation/measurements/AbstractMeasurement.html",
+      "accessedOn": "2026-10-28",
+      "access": "已读取官方文档或原始教材/源码",
+      "supports": [
+        "orekit-weight-semantics"
+      ]
+    },
+    {
+      "id": "su2",
+      "title": "SU2 · Quick Start, version 7 documentation",
+      "url": "https://su2code.github.io/docs_v7/Quick-Start/",
+      "accessedOn": "2026-10-28",
+      "access": "已读取官方文档或原始教材/源码",
+      "supports": [
+        "su2-fixed-tutorial-scope"
+      ]
+    },
+    {
+      "id": "gmsh",
+      "title": "Gmsh 4.15.2 · Elementary entities vs physical groups / t1",
+      "url": "https://gmsh.info/doc/texinfo/gmsh.html#Elementary-entities-vs-physical-groups",
+      "accessedOn": "2026-10-28",
+      "access": "已读取官方文档或原始教材/源码",
+      "supports": [
+        "gmsh-physical-group-export"
+      ]
+    }
+  ],
+  "accessLimits": [
+    "Celik DOI发布页与CiteSeer原论文PDF返回403；没有声称完整阅读全文，也未从不明下载站取得副本。",
+    "Orekit主站static文档触发Anubis访问保护。改用官方test.orekit.org的12.0.1 API与CS-SI官方仓库13.1.3标签的原始源码；行为说明明确绑定所查版本。",
+    "全部外部求解器流程是依据官方资料编写的可执行建议，尚未在Orekit/SU2/Gmsh/CalculiX/MFEM外部软件运行；只有文中代数与解析基准在本机独立复算。",
+    "NASA三网格压力恢复仅有教程表格数值，本轮不具备原始网格、求解配置或残差历史，不能把复算包装为原始CFD复现。"
+  ],
+  "verification": {
+    "status": "passed",
+    "independentMethod": "NumPy QR versus independently saved lstsq/SVD result; direct matrix algebra; analytic beam and NASA GCI recomputation",
+    "checkCount": 92,
+    "checks": [
+      "old-value:orbit-determination:title",
+      "old-value:orbit-determination:readTime",
+      "old-value:orbit-determination:summary",
+      "old-value:orbit-determination:body",
+      "body-depth:orbit-determination:0",
+      "body-depth:orbit-determination:1",
+      "body-depth:orbit-determination:2",
+      "body-depth:orbit-determination:3",
+      "body-depth:orbit-determination:4",
+      "body-depth:orbit-determination:5",
+      "old-value:orbit-determination:formula",
+      "old-value:orbit-determination:exercise",
+      "old-value:orbit-determination:steps",
+      "old-value:orbit-determination:sources",
+      "old-value:observability:readTime",
+      "old-value:observability:summary",
+      "old-value:observability:body",
+      "body-depth:observability:0",
+      "body-depth:observability:1",
+      "body-depth:observability:2",
+      "body-depth:observability:3",
+      "body-depth:observability:4",
+      "old-value:observability:formula",
+      "old-value:observability:exercise",
+      "old-value:observability:sources",
+      "old-value:cfd-verification:readTime",
+      "old-value:cfd-verification:summary",
+      "old-value:cfd-verification:body",
+      "body-depth:cfd-verification:0",
+      "body-depth:cfd-verification:1",
+      "body-depth:cfd-verification:2",
+      "body-depth:cfd-verification:3",
+      "body-depth:cfd-verification:4",
+      "body-depth:cfd-verification:5",
+      "body-depth:cfd-verification:6",
+      "old-value:cfd-verification:formula",
+      "old-value:cfd-verification:pitfall",
+      "old-value:cfd-verification:exercise",
+      "old-value:cfd-verification:sources",
+      "old-value:data-provenance:readTime",
+      "old-value:data-provenance:summary",
+      "old-value:data-provenance:body",
+      "body-depth:data-provenance:0",
+      "body-depth:data-provenance:1",
+      "body-depth:data-provenance:2",
+      "body-depth:data-provenance:3",
+      "body-depth:data-provenance:4",
+      "body-depth:data-provenance:5",
+      "old-value:data-provenance:exercise",
+      "old-value:data-provenance:sources",
+      "old-value:finite-elements:readTime",
+      "old-value:finite-elements:summary",
+      "old-value:finite-elements:body",
+      "body-depth:finite-elements:0",
+      "body-depth:finite-elements:1",
+      "body-depth:finite-elements:2",
+      "body-depth:finite-elements:3",
+      "body-depth:finite-elements:4",
+      "body-depth:finite-elements:5",
+      "old-value:finite-elements:formula",
+      "old-value:finite-elements:exercise",
+      "old-value:finite-elements:sources",
+      "old-value:orekit:details",
+      "old-value:orekit:starterWorkflow",
+      "old-value:orekit:starterWorkflowStatus",
+      "old-value:orekit:docsUrl",
+      "old-value:orekit:verifiedOn",
+      "old-value:su2:starterWorkflow",
+      "old-value:su2:starterWorkflowStatus",
+      "old-value:su2:docsUrl",
+      "old-value:su2:verifiedOn",
+      "old-value:gmsh:details",
+      "old-value:gmsh:starterWorkflow",
+      "old-value:gmsh:starterWorkflowStatus",
+      "old-value:gmsh:verifiedOn",
+      "WLS-QR-vs-stored-SVD-solution",
+      "WLS-normal-equation",
+      "WLS-QR-covariance",
+      "WLS-objective",
+      "WLS-without-bias",
+      "narrow-geometry-SVD-sigma",
+      "observability-rank-2",
+      "observability-null-direction",
+      "NASA-GCI-p",
+      "NASA-GCI-percent",
+      "NASA-Richardson",
+      "GCI-ratio-identity",
+      "GCI-absolute-ratio-identity",
+      "beam-2x2-solution",
+      "beam-strain-energy",
+      "beam-stress",
+      "Orekit-baseWeight-example"
+    ],
+    "externalSolversRun": false
+  }
+}
